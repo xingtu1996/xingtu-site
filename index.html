@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>行途 XingTu · 实战派技术深耕者</title>
+<meta name="description" content="行途（XingTu）个人作品集 —— 资深技术经理兼一线开发，专注 AI 编程工具链 / Agent 应用 / 终端 coding agent 的实战派技术手记。" />
+<meta property="og:title" content="行途 XingTu · 实战派技术深耕者" />
+<meta property="og:description" content="AI 工具链与 Agent 应用的真实工程实践，利他、实干、可复用。" />
+<meta property="og:type" content="website" />
+<!-- TODO: 上线后把下面这行改成你的真实域名，例如 https://xingtu.dev 或 https://xingtu1996.pages.dev -->
+<!-- <meta property="og:url" content="https://xingtu1996.pages.dev" /> -->
+<style>
+  :root{
+    --bg:#0f1220; --bg2:#161a2e; --card:#1c2138; --line:#2a3050;
+    --txt:#e8ebf5; --muted:#9aa3c0; --brand:#6d7bff; --brand2:#a78bfa;
+    --accent:#f5b14c; --ok:#3ddc97; --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:radial-gradient(1200px 600px at 80% -10%, #20264a 0%, var(--bg) 55%) ,var(--bg);
+    color:var(--txt); line-height:1.65; -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:980px;margin:0 auto;padding:0 22px}
+  /* nav */
+  nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(10px);
+    background:rgba(15,18,32,.72);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .logo{font-weight:800;letter-spacing:.5px;display:flex;align-items:center;gap:8px}
+  .logo .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand2))}
+  .nav-links{display:flex;gap:20px;font-size:14px;color:var(--muted)}
+  .nav-links a:hover{color:var(--txt)}
+  /* hero */
+  header{padding:78px 0 56px}
+  .badge{display:inline-block;font-size:12px;color:var(--brand2);
+    border:1px solid var(--line);padding:5px 12px;border-radius:999px;margin-bottom:18px;
+    background:rgba(167,139,250,.08)}
+  h1{font-size:clamp(34px,6vw,56px);line-height:1.1;font-weight:800;
+    background:linear-gradient(135deg,#fff 30%,var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{margin-top:14px;font-size:18px;color:var(--muted);max-width:640px}
+  .cta{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{padding:12px 22px;border-radius:12px;font-weight:700;font-size:15px;transition:.2s}
+  .btn.p{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#0b0e1a}
+  .btn.s{border:1px solid var(--line);color:var(--txt)}
+  .btn:hover{transform:translateY(-2px);opacity:.95}
+  /* sections */
+  section{padding:46px 0;border-top:1px solid var(--line)}
+  .eyebrow{font-size:13px;color:var(--accent);font-weight:700;letter-spacing:1px;text-transform:uppercase}
+  h2{font-size:26px;margin:6px 0 8px}
+  .lead{color:var(--muted);max-width:680px;margin-bottom:22px}
+  /* about */
+  .about p{color:#cdd3ea;max-width:720px}
+  .tags{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+  .tag{font-size:13px;color:var(--brand2);background:rgba(109,123,255,.1);
+    border:1px solid var(--line);padding:6px 12px;border-radius:999px}
+  /* grid cards */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;transition:.2s}
+  .card:hover{border-color:var(--brand);transform:translateY(-3px)}
+  .card h3{font-size:17px;margin-bottom:6px}
+  .card p{font-size:14px;color:var(--muted);min-height:42px}
+  .card .meta{margin-top:12px;font-size:12px;color:var(--brand2);display:flex;justify-content:space-between;align-items:center}
+  .card .kicker{font-size:11px;color:var(--accent);font-weight:700}
+  .empty{color:var(--muted);font-size:14px;border:1px dashed var(--line);border-radius:12px;padding:16px}
+  /* follow */
+  .follow{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+  .ch{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center}
+  .ch b{display:block;font-size:15px;margin-bottom:2px}
+  .ch span{font-size:12px;color:var(--muted)}
+  /* footer */
+  footer{padding:34px 0 50px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  .host{color:var(--ok)}
+  @media(max-width:560px){.nav-links{display:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo"><span class="dot"></span>行途 · XingTu</div>
+    <div class="nav-links">
+      <a href="#about">关于</a>
+      <a href="#articles">文章</a>
+      <a href="#videos">视频</a>
+      <a href="#opensource">开源</a>
+      <a href="#follow">关注</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <span class="badge">实战派技术深耕者 · 利他 · 实干</span>
+    <h1>行途 XingTu</h1>
+    <p class="sub">资深技术经理兼一线开发，专注 AI 编程工具链 / Agent 应用 / 终端 coding agent 的真实工程实践。这里是一手前沿实践的沉淀地。</p>
+    <div class="cta">
+      <a class="btn p" href="#articles">读文章</a>
+      <a class="btn s" href="#videos">看视频</a>
+      <a class="btn s" href="#opensource">逛开源</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow">About</div>
+    <h2>关于行途</h2>
+    <div class="about">
+      <p>我是李嘉成（Justin Li），一个既带团队又深度写代码的技术人。2023 年起在公司内部做 AI 布道，完整经历了 ChatGPT → Cursor → Kiro → Claude Code → WorkBuddy 的工具链演进。我相信<strong>「利他 = 信任成本 = 变现前提」</strong>：每一篇原创内容，都是在为读者攒信任。</p>
+      <p style="margin-top:12px">这个站点不堆概念，只讲<strong>踩过坑、跑通过、能复用</strong>的东西。AI 进化快，早期实践易贬值，所以我坚持把前沿实践快速转成可发布内容，和同行一起少走弯路。</p>
+      <div class="tags">
+        <span class="tag">AI 编程工具链</span>
+        <span class="tag">Agent / Harness 应用</span>
+        <span class="tag">终端 coding agent</span>
+        <span class="tag">多 harness 协作</span>
+        <span class="tag">AI Native 开发循环</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="articles">
+  <div class="wrap">
+    <div class="eyebrow">Writing</div>
+    <h2>文章 / 图文</h2>
+    <p class="lead">围绕 AI 工具链的实战手记。下面是内容入口，点击直达对应平台原文。</p>
+    <div class="grid" id="articleGrid"></div>
+  </div>
+</section>
+
+<section id="videos">
+  <div class="wrap">
+    <div class="eyebrow">Video</div>
+    <h2>视频</h2>
+    <p class="lead">视频号破圈 + 公众号留存联动，低成本起步（PPT + 真人录音）。</p>
+    <div class="grid" id="videoGrid"></div>
+  </div>
+</section>
+
+<section id="opensource">
+  <div class="wrap">
+    <div class="eyebrow">Open Source</div>
+    <h2>开源 / 工具</h2>
+    <p class="lead">把重复劳动沉淀成可复用工具，反哺社区，也反哺这个 IP。</p>
+    <div class="grid" id="repoGrid"></div>
+  </div>
+</section>
+
+<section id="follow">
+  <div class="wrap">
+    <div class="eyebrow">Follow</div>
+    <h2>关注行途</h2>
+    <p class="lead">全平台统一品牌「行途 / XingTu」。主阵地公众号，技术辅助掘金 / CSDN，泛流量小红书 / 头条 / 知乎，私域知识星球。</p>
+    <div class="follow" id="followGrid"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© <span id="year"></span> 行途 XingTu · 实战派技术深耕者</div>
+    <div class="host">本站在 Cloudflare Pages 免费托管 · 自动 HTTPS · 免备案</div>
+  </div>
+</footer>
+
+<script>
+  // ====== TODO：把下面的占位数据替换成你的真实内容即可（无需改任何样式） ======
+  const ARTICLES = [
+    { kicker:"AI 工具链", title:"从 ChatGPT 到 WorkBuddy：我的终端 Agent 演进史", desc:"9 个月 7488 条高频命令背后的工具链更替与选型逻辑。", url:"#", tag:"公众号/掘金" },
+    { kicker:"Agent 应用", title:"CodeGraph + CBM：省 Token 的代码库检索实践", desc:"用 codebase-memory 把检索成本打下来，实战配置清单。", url:"#", tag:"掘金" },
+    { kicker:"终端 coding", title:"AI Native 开发循环：curl→DB→code→compile→verify", desc:"一套不依赖 GUI 的工程化闭环，适合 CLI 党。", url:"#", tag:"知乎" },
+    { kicker:"踩坑", title:"20+ 条 feedback 军规：scope_discipline 到 ui_taste", desc:"从真实项目里长出来的协作纪律，可抄作业。", url:"#", tag:"公众号" },
+  ];
+  const VIDEOS = [
+    { kicker:"视频号", title:"10 分钟讲清 AI 编程工具链", desc:"面向技术管理者的入门版。", url:"#", tag:"微信视频号" },
+    { kicker:"B 站", title:"Claude Code 实战：重构一个老项目", desc:"录屏 + 真人解说。", url:"#", tag:"B 站" },
+  ];
+  const REPOS = [
+    { kicker:"Skill", title:"project_indexer", desc:"索引本地 AI 会话，给自媒体供料。", url:"#", tag:"GitHub" },
+    { kicker:"Tool", title:"ai_collab_miner", desc:"每日扫描协作片段，挑可做成内容的选题。", url:"#", tag:"GitHub" },
+    { kicker:"Tool", title:"ai_history_indexer", desc:"统一索引多 Agent 历史会话，生成可检索看板。", url:"#", tag:"GitHub" },
+  ];
+  const FOLLOW = [
+    { b:"公众号", s:"行途技术手记" , url:"#" },
+    { b:"知识星球", s:"行途年度社群", url:"#" },
+    { b:"掘金", s:"@行途", url:"#" },
+    { b:"知乎", s:"@行途", url:"#" },
+    { b:"B 站", s:"行途 XingTu", url:"#" },
+    { b:"X / Twitter", s:"@XingTuDev", url:"#" },
+  ];
+
+  const render = (id, data, withKicker) => {
+    const el = document.getElementById(id);
+    if(!data.length){ el.innerHTML = '<div class="empty">内容筹备中，敬请期待。</div>'; return; }
+    el.innerHTML = data.map(d => `
+      <a class="card" href="${d.url}" target="_blank" rel="noopener">
+        ${withKicker ? `<div class="kicker">${d.kicker}</div>` : ''}
+        <h3>${d.title}</h3>
+        <p>${d.desc}</p>
+        <div class="meta"><span>${d.tag||''}</span><span>→</span></div>
+      </a>`).join('');
+  };
+  render('articleGrid', ARTICLES, true);
+  render('videoGrid', VIDEOS, true);
+  render('repoGrid', REPOS, true);
+  document.getElementById('followGrid').innerHTML = FOLLOW.map(f => `
+    <a class="ch" href="${f.url}" target="_blank" rel="noopener"><b>${f.b}</b><span>${f.s}</span></a>`).join('');
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
