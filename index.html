@@ -3,13 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>行途 XingTu · 实战派技术深耕者</title>
-<meta name="description" content="行途（XingTu）个人作品集 —— 资深技术经理兼一线开发，专注 AI 编程工具链 / Agent 应用 / 终端 coding agent 的实战派技术手记。" />
-<meta property="og:title" content="行途 XingTu · 实战派技术深耕者" />
-<meta property="og:description" content="AI 工具链与 Agent 应用的真实工程实践，利他、实干、可复用。" />
+<title>行途 XingTu · AI 工程化一线实践</title>
+<meta name="description" content="行途（XingTu）个人作品集 —— 11 年 Java 后端，技术经理兼一线开发，近两年把 AI 当研发引擎：1 人 + AI 52 天交付全栈平台，生产问题排查 8-10x 提效。" />
+<meta property="og:title" content="行途 XingTu · AI 工程化一线实践" />
+<meta property="og:description" content="跑过生产、有数字、能抄作业的 AI 工程化实践。" />
 <meta property="og:type" content="website" />
-<!-- TODO: 上线后把下面这行改成你的真实域名，例如 https://xingtu.dev 或 https://xingtu1996.pages.dev -->
-<!-- <meta property="og:url" content="https://xingtu1996.pages.dev" /> -->
+<meta property="og:url" content="https://xingtu1996.pages.dev" />
 <style>
   :root{
     --bg:#0f1220; --bg2:#161a2e; --card:#1c2138; --line:#2a3050;
@@ -53,6 +52,12 @@
   .lead{color:var(--muted);max-width:680px;margin-bottom:22px}
   /* about */
   .about p{color:#cdd3ea;max-width:720px}
+  /* career */
+  .career-line{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;font-size:15px;color:#cdd3ea;margin-bottom:20px}
+  .career-line span{color:var(--accent);font-weight:800;font-size:16px}
+  .career-line b{font-weight:600}
+  .career-line i{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--line);flex:0 0 5px}
+  h3.sec{font-size:17px;margin:26px 0 14px;color:var(--txt)}
   .tags{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
   .tag{font-size:13px;color:var(--brand2);background:rgba(109,123,255,.1);
     border:1px solid var(--line);padding:6px 12px;border-radius:999px}
@@ -84,6 +89,7 @@
     <div class="logo"><span class="dot"></span>行途 · XingTu</div>
     <div class="nav-links">
       <a href="#about">关于</a>
+      <a href="#career">履历</a>
       <a href="#articles">文章</a>
       <a href="#videos">视频</a>
       <a href="#opensource">开源</a>
@@ -94,13 +100,13 @@
 
 <header>
   <div class="wrap">
-    <span class="badge">实战派技术深耕者 · 利他 · 实干</span>
+    <span class="badge">11 年 Java 后端 · 技术经理 + 一线开发</span>
     <h1>行途 XingTu</h1>
-    <p class="sub">资深技术经理兼一线开发，专注 AI 编程工具链 / Agent 应用 / 终端 coding agent 的真实工程实践。这里是一手前沿实践的沉淀地。</p>
+    <p class="sub">11 年 Java 后端，近两年把 AI 当作研发底层引擎——一个人 + AI，顶一支传统团队。这里记的是跑过生产、有数字、能抄作业的实践。</p>
     <div class="cta">
-      <a class="btn p" href="#articles">读文章</a>
+      <a class="btn p" href="#career">看履历</a>
+      <a class="btn s" href="#articles">读文章</a>
       <a class="btn s" href="#videos">看视频</a>
-      <a class="btn s" href="#opensource">逛开源</a>
     </div>
   </div>
 </header>
@@ -110,14 +116,78 @@
     <div class="eyebrow">About</div>
     <h2>关于行途</h2>
     <div class="about">
-      <p>我是李嘉成（Justin Li），一个既带团队又深度写代码的技术人。2023 年起在公司内部做 AI 布道，完整经历了 ChatGPT → Cursor → Kiro → Claude Code → WorkBuddy 的工具链演进。我相信<strong>「利他 = 信任成本 = 变现前提」</strong>：每一篇原创内容，都是在为读者攒信任。</p>
-      <p style="margin-top:12px">这个站点不堆概念，只讲<strong>踩过坑、跑通过、能复用</strong>的东西。AI 进化快，早期实践易贬值，所以我坚持把前沿实践快速转成可发布内容，和同行一起少走弯路。</p>
+      <p>我是李嘉成（Justin Li），既带团队又写代码的技术经理。2023 年起在公司内部推 AI，完整经历了 ChatGPT → Cursor → Kiro → Claude Code → WorkBuddy 的工具链演进。这里写的东西都从真实项目里来——跑过生产、有数字、能直接抄。</p>
+      <p style="margin-top:12px">站点只收两种内容：<strong>踩过的坑、跑通的路</strong>。AI 迭代太快，今天有用的实践下个月就过时，所以我跑通一个就记一个。</p>
       <div class="tags">
         <span class="tag">AI 编程工具链</span>
         <span class="tag">Agent / Harness 应用</span>
         <span class="tag">终端 coding agent</span>
         <span class="tag">多 harness 协作</span>
         <span class="tag">AI Native 开发循环</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="career">
+  <div class="wrap">
+    <div class="eyebrow">Career</div>
+    <h2>履历与实战</h2>
+    <p class="lead">11 年技术生涯：从一线 Java 工程师到技术经理。近两年把 AI 当作研发底层引擎——一个人 + AI，顶一支传统团队。</p>
+
+    <div class="career-line">
+      <span>2015</span><b>太原 · Java 工程师</b>
+      <i></i><span>2018</span><b>北京 · 开发工程师</b>
+      <i></i><span>2018.11</span><b>某电商中台服务商 · P5→P7 技术经理 · PMP</b>
+      <i></i><span>2024+</span><b>AI 工程化布道者</b>
+    </div>
+
+    <div class="tags">
+      <span class="tag">52,605 次 AI 请求 · 全平台第 1</span>
+      <span class="tag">1 人 + AI · 52 天交付全栈平台</span>
+      <span class="tag">生产问题排查 8-10x 提效</span>
+      <span class="tag">197M Token · ¥1,043</span>
+      <span class="tag">SonarQube 0 Issue</span>
+      <span class="tag">CI 一次通过率 &gt;90%</span>
+    </div>
+
+    <h3 class="sec">代表项目（客户已脱敏）</h3>
+    <div class="grid">
+      <div class="card">
+        <div class="kicker">2026 · 主力项目</div>
+        <h3>多租户资金管理平台</h3>
+        <p>1 人 + AI 52 天从 0 交付，DB-per-Tenant 物理隔离，SonarQube 0 Issue，提前 2 周交付。</p>
+        <div class="meta"><span>某全球快消巨头</span><span>★</span></div>
+      </div>
+      <div class="card">
+        <div class="kicker">2019-2022 · 核心代表作</div>
+        <h3>全渠道 OMS 中台</h3>
+        <p>订单团队负责人，管理 6-8 人团队，9+ 渠道全链路，38+ 迭代，双11 大促保障。</p>
+        <div class="meta"><span>某大型珠宝零售集团</span><span>★</span></div>
+      </div>
+      <div class="card">
+        <div class="kicker">2022 / 2024 · 技术负责人</div>
+        <h3>零售 APP 融合重构</h3>
+        <p>两轮融合重构，一键登录 / BFF / 全员带货 / 淘宝小时达等 10+ 功能落地。</p>
+        <div class="meta"><span>某大型零售集团</span><span>→</span></div>
+      </div>
+      <div class="card">
+        <div class="kicker">2023-2024 · 项目经理</div>
+        <h3>工作流引擎升级</h3>
+        <p>Zeebe 工作流引擎升级全生命周期，应急预案 / 压测 / 混沌测试组织过程资产。</p>
+        <div class="meta"><span>某大型珠宝零售集团</span><span>→</span></div>
+      </div>
+      <div class="card">
+        <div class="kicker">2025-2026 · AI 提效</div>
+        <h3>供应链物料项目</h3>
+        <p>AI 辅助 3 天完成前后端开发，变更报价 18→8 人天，66% 利润。</p>
+        <div class="meta"><span>某大型珠宝零售集团</span><span>→</span></div>
+      </div>
+      <div class="card">
+        <div class="kicker">2026 · 售前方案</div>
+        <h3>出海 AI 平台私有化方案</h3>
+        <p>为船厂客户输出 AI 平台私有化部署方案，100+ 应用改造评估。</p>
+        <div class="meta"><span>某东南亚船厂客户</span><span>→</span></div>
       </div>
     </div>
   </div>
@@ -145,7 +215,7 @@
   <div class="wrap">
     <div class="eyebrow">Open Source</div>
     <h2>开源 / 工具</h2>
-    <p class="lead">把重复劳动沉淀成可复用工具，反哺社区，也反哺这个 IP。</p>
+    <p class="lead">用过的重复劳动做成小工具开源，别人直接抄。仓库见 GitHub。</p>
     <div class="grid" id="repoGrid"></div>
   </div>
 </section>
@@ -161,7 +231,7 @@
 
 <footer>
   <div class="wrap">
-    <div>© <span id="year"></span> 行途 XingTu · 实战派技术深耕者</div>
+    <div>© <span id="year"></span> 行途 XingTu · AI 工程化一线实践</div>
     <div class="host">本站在 Cloudflare Pages 免费托管 · 自动 HTTPS · 免备案</div>
   </div>
 </footer>
