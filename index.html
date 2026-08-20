@@ -224,7 +224,7 @@
   <div class="wrap">
     <div class="eyebrow">Follow</div>
     <h2>关注行途</h2>
-    <p class="lead">全平台统一品牌「行途 / XingTu」。主阵地公众号，技术辅助掘金 / CSDN，泛流量小红书 / 头条 / 知乎，私域知识星球。</p>
+    <p class="lead">全平台统一品牌「行途 / XingTu」。主阵地公众号，技术辅助掘金 / CSDN，泛流量小红书 / 知乎，私域知识星球。</p>
     <div class="follow" id="followGrid"></div>
   </div>
 </section>
@@ -239,27 +239,34 @@
 <script>
   // ====== TODO：把下面的占位数据替换成你的真实内容即可（无需改任何样式） ======
   const ARTICLES = [
-    { kicker:"AI 工具链", title:"从 ChatGPT 到 WorkBuddy：我的终端 Agent 演进史", desc:"9 个月 7488 条高频命令背后的工具链更替与选型逻辑。", url:"#", tag:"公众号/掘金" },
-    { kicker:"Agent 应用", title:"CodeGraph + CBM：省 Token 的代码库检索实践", desc:"用 codebase-memory 把检索成本打下来，实战配置清单。", url:"#", tag:"掘金" },
-    { kicker:"终端 coding", title:"AI Native 开发循环：curl→DB→code→compile→verify", desc:"一套不依赖 GUI 的工程化闭环，适合 CLI 党。", url:"#", tag:"知乎" },
-    { kicker:"踩坑", title:"20+ 条 feedback 军规：scope_discipline 到 ui_taste", desc:"从真实项目里长出来的协作纪律，可抄作业。", url:"#", tag:"公众号" },
+    // 4 篇均已有真实正文；url 待补（发布平台原文链接，替换 #）
+    { kicker:"排障实录", title:"把 4 小时排查压到 75 分钟（微服务超卖悬案）", desc:"线上库存超卖事故，从 4 小时压到 75 分钟定位根因，附链路回溯步骤与复盘清单。", url:"#", tag:"公众号" },
+    { kicker:"AI 工程化", title:"五层 Token 首篇", desc:"从 197M Token / ¥1,043 真实账单拆出五层成本结构，AI 花销一次看明白。", url:"#", tag:"公众号" },
+    { kicker:"工具箱", title:"行途个人站从 0 到 1 白盒教程", desc:"本站即白盒样例：单文件 HTML、零框架、两小时上线，附结构改造清单。", url:"#", tag:"公众号" },
+    { kicker:"工具箱", title:"行途域名选型与免费建站实战手记", desc:"域名从选型到绑定全流程，Cloudflare Pages 免费托管 + 自动 HTTPS，0 元免备案建站。", url:"#", tag:"公众号" },
   ];
   const VIDEOS = [
     { kicker:"视频号", title:"10 分钟讲清 AI 编程工具链", desc:"面向技术管理者的入门版。", url:"#", tag:"微信视频号" },
     { kicker:"B 站", title:"Claude Code 实战：重构一个老项目", desc:"录屏 + 真人解说。", url:"#", tag:"B 站" },
   ];
   const REPOS = [
-    { kicker:"Skill", title:"project_indexer", desc:"索引本地 AI 会话，给自媒体供料。", url:"#", tag:"GitHub" },
-    { kicker:"Tool", title:"ai_collab_miner", desc:"每日扫描协作片段，挑可做成内容的选题。", url:"#", tag:"GitHub" },
-    { kicker:"Tool", title:"ai_history_indexer", desc:"统一索引多 Agent 历史会话，生成可检索看板。", url:"#", tag:"GitHub" },
+    // 三个工具均已在本地跑通；开源发布后把 # 换成 GitHub 仓库链接
+    { kicker:"Skill", title:"project_indexer", desc:"索引本地 AI 会话，给自媒体供料。开源筹备中。", url:"#", tag:"筹备中" },
+    { kicker:"Tool", title:"ai_collab_miner", desc:"每日扫描协作片段，挑可做成内容的选题。开源筹备中。", url:"#", tag:"筹备中" },
+    { kicker:"Tool", title:"ai_history_indexer", desc:"统一索引多 Agent 历史会话，生成可检索看板。开源筹备中。", url:"#", tag:"筹备中" },
   ];
   const FOLLOW = [
-    { b:"公众号", s:"行途技术手记" , url:"#" },
+    // 9 平台统一品牌「行途 / XingTu」；url 待补对应主页链接
+    { b:"公众号", s:"行途技术手记", url:"#" },
+    { b:"掘金", s:"行途", url:"#" },
+    { b:"CSDN", s:"行途 thinkgame", url:"#" },
+    { b:"知乎", s:"行途", url:"#" },
+    { b:"小红书", s:"行途", url:"#" },
+    { b:"B 站", s:"行途", url:"#" },
+    { b:"视频号", s:"行途", url:"#" },
+    { b:"X", s:"@xingtu1996", url:"#" },
+    { b:"GitHub", s:"xingtu1996", url:"#" },
     { b:"知识星球", s:"行途年度社群", url:"#" },
-    { b:"掘金", s:"@行途", url:"#" },
-    { b:"知乎", s:"@行途", url:"#" },
-    { b:"B 站", s:"行途 XingTu", url:"#" },
-    { b:"X / Twitter", s:"@XingTuDev", url:"#" },
   ];
 
   const render = (id, data, withKicker) => {
