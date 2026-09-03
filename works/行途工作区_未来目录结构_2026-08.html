@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行途工作区 · 未来目录结构（目标态）</title>
+<style>
+  :root{
+    --bg:#f5f7fa; --panel:#fff; --ink:#1f2933; --sub:#5b6b7b; --line:#e3e8ef;
+    --brand:#3a6ea5; --brand-d:#2b5580; --accent:#e8772e; --ok:#1f9d6b; --warn:#e0a800; --bad:#d64545;
+    --l5:#d64545; --l4:#e8772e; --l3:#7b61ff; --l2:#1f9d6b; --l1:#3a6ea5; --l0:#5b6b7b;
+    --shadow:0 1px 3px rgba(20,40,70,.08),0 6px 18px rgba(20,40,70,.06); --radius:14px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--brand);text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px 80px}
+  header{background:linear-gradient(135deg,#2b5580,#3a6ea5 55%,#4f86c6);color:#fff;padding:28px 0 24px;box-shadow:var(--shadow)}
+  header .wrap{padding-bottom:0}
+  .brand-row{display:flex;align-items:center;gap:14px}
+  .logo{width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.18);display:grid;place-items:center;font-size:24px;font-weight:800;border:1px solid rgba(255,255,255,.3)}
+  header h1{margin:0;font-size:24px;letter-spacing:.5px}
+  header .tag{opacity:.92;font-size:14px;margin-top:4px}
+  .pill{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:3px 12px;font-size:12.5px;margin-right:8px;margin-top:10px}
+
+  section{margin-top:32px}
+  .sec-head{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+  .sec-head h2{font-size:20px;margin:0}
+  .sec-head .n{font-size:13px;color:#fff;background:var(--brand);border-radius:6px;padding:2px 9px;font-weight:700}
+  .sec-head .desc{font-size:13px;color:var(--sub)}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;box-shadow:var(--shadow)}
+
+  .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--sub);margin-bottom:16px}
+  .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:middle}
+  .legend .anc{border:2px solid var(--brand);background:#fff}
+  .legend .plan{border:2px dashed var(--brand);background:#fff}
+
+  .tree{font-size:14px}
+  .tree ul{list-style:none;margin:0;padding-left:22px;position:relative}
+  .tree>ul{padding-left:0}
+  .tree li{position:relative;padding:3px 0 3px 0}
+  .tree ul ul::before{content:"";position:absolute;left:8px;top:0;bottom:14px;width:1px;background:var(--line)}
+  .tree li::before{content:"";position:absolute;left:-14px;top:16px;width:14px;height:1px;background:var(--line)}
+  .tree>ul>li::before{display:none}
+  .node{display:inline-flex;align-items:center;gap:8px;padding:3px 10px;border-radius:8px;background:#fff;border:1px solid var(--line)}
+  .node .ic{font-size:15px}
+  .node .nm{font-weight:600}
+  .node.dir .nm{color:var(--brand-d)}
+  .badge{font-size:11.5px;font-weight:700;color:#fff;border-radius:6px;padding:1px 8px;white-space:nowrap}
+  .b-l5{background:var(--l5)} .b-l4{background:var(--l4)} .b-l3{background:var(--l3)}
+  .b-l2{background:var(--l2)} .b-l1{background:var(--l1)} .b-l0{background:var(--l0)}
+  .b-anc{background:#fff;color:var(--brand-d);border:2px solid var(--brand)}
+  .b-keep{background:var(--warn);}
+  .b-opt{background:#fff;color:var(--sub);border:1px dashed var(--sub)}
+  .b-plan{background:#fff;color:var(--brand);border:2px dashed var(--brand)}
+  .note{font-size:13px;color:var(--sub);margin:7px 0 0 4px}
+  .sub-note{font-size:12px;color:var(--sub);margin-left:8px}
+
+  table{border-collapse:collapse;width:100%;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:10px 13px;text-align:left;vertical-align:top}
+  th{background:#eef3f8;color:var(--brand-d);font-weight:700}
+  .from{color:var(--bad);font-weight:600}
+  .to{color:var(--ok);font-weight:600}
+  .tagwarn{display:inline-block;background:#fdf3dc;color:var(--warn);border-radius:6px;padding:1px 8px;font-size:12px;font-weight:600}
+  .tagok{display:inline-block;background:#e6f6ee;color:var(--ok);border-radius:6px;padding:1px 8px;font-size:12px;font-weight:600}
+  .tagplan{display:inline-block;background:#eaf1f8;color:var(--brand-d);border-radius:6px;padding:1px 8px;font-size:12px;font-weight:700;border:1px solid var(--brand)}
+
+  .callout{border-left:4px solid var(--brand);background:var(--panel);border-radius:0 12px 12px 0;padding:14px 18px;box-shadow:var(--shadow);margin-top:16px}
+  .callout b{color:var(--brand-d)}
+  .callout.warn{border-color:var(--warn)}
+  footer{margin-top:40px;font-size:12px;color:var(--sub);text-align:center;border-top:1px solid var(--line);padding-top:18px}
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<header>
+  <div class="wrap">
+    <div class="brand-row">
+      <div class="logo">行</div>
+      <div>
+        <h1>行途工作区 · 未来目录结构</h1>
+        <div class="tag">目标态（整理执行后最终样子）· 含调研/开源/台账/建站四大规划空间 · 每个目录标注 Harness 角色</div>
+      </div>
+    </div>
+    <div style="margin-top:10px">
+      <span class="pill">目标态预览</span>
+      <span class="pill">单文件零依赖</span>
+      <span class="pill">10 大顶层 + 4 规划空间</span>
+      <span class="pill">仍待 Boss 确认执行</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- LEGEND -->
+  <div class="panel" style="margin-top:24px">
+    <div class="legend">
+      <span><i style="background:var(--l5)"></i>L5 产品层</span>
+      <span><i style="background:var(--l4)"></i>L4 编排层</span>
+      <span><i style="background:var(--l3)"></i>L3 执行层</span>
+      <span><i style="background:var(--l2)"></i>L2 护栏层</span>
+      <span><i style="background:var(--l1)"></i>L1 土壤层</span>
+      <span><i style="background:var(--l0)"></i>L0 记忆层</span>
+      <span><i class="anc"></i>锚点文档（刻留根）</span>
+      <span><i style="background:var(--warn)"></i>保留不动</span>
+      <span><i class="plan"></i>规划空间（待建）</span>
+      <span><i style="background:#fff;border:1px dashed var(--sub)"></i>待定/可选归位</span>
+    </div>
+  </div>
+
+  <!-- TREE -->
+  <section>
+    <div class="sec-head"><span class="n">01</span><h2>目标态目录树</h2><span class="desc">最上层 = 根目录；节点后的色标 = 它在 Harness 里的角色；虚线蓝框 = 规划中、尚未创建</span></div>
+    <div class="panel">
+      <div class="tree">
+        <ul>
+          <li><span class="node anc"><span class="ic">📄</span><span class="nm">README.md</span></span> <span class="badge b-anc">锚点</span></li>
+          <li><span class="node anc"><span class="ic">📄</span><span class="nm">HARNESS.md</span></span> <span class="badge b-l5">L5 产品</span> <span class="sub-note">空间「产品说明书」</span></li>
+          <li><span class="node anc"><span class="ic">📄</span><span class="nm">DIRECTORY.md</span></span> <span class="badge b-anc">锚点</span> <span class="sub-note">资产注册中心</span></li>
+          <li><span class="node anc"><span class="ic">📄</span><span class="nm">行途工作空间_Harness体系手册_2026-08.html</span></span> <span class="badge b-anc">锚点</span></li>
+          <li><span class="node anc"><span class="ic">📄</span><span class="nm">行途工作空间_Harness可视化看板_2026-08.html</span></span> <span class="badge b-anc">锚点</span></li>
+          <li><span class="node anc"><span class="ic">📄</span><span class="nm">工作区整理提案_2026-08-19.md</span></span> <span class="badge b-keep">保留</span> <span class="sub-note">执行后归档</span></li>
+
+          <li><span class="node dir"><span class="ic">📁</span><span class="nm">00_回收站 (Trash)/</span></span> <span class="badge b-l0">L0</span> <span class="sub-note">已删物，定期 --clean 30</span></li>
+
+          <li><span class="node dir"><span class="ic">📁</span><span class="nm">01_战略与规章 (Strategy & Rules)/</span></span> <span class="badge b-l2">L2 原文</span>
+            <div class="note">16 份规章原文（SAF/IP/PUB/FEN/STR 的母本）</div>
+          </li>
+
+          <li><span class="node dir"><span class="ic">📁</span><span class="nm">02_内容仓库 (Content Hub)/</span></span> <span class="badge b-l0">内容库</span>
+            <ul>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">01_灵感与选题池/</span></span></li>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">02_草稿写作中/</span></span></li>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">03_待审与排版/</span></span></li>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">04_待发布与定时推送/</span></span></li>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">05_已归档发文/</span></span></li>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">06_元宝对话挖掘/</span></span></li>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">00_历史归档 (Legacy)/</span></span></li>
+              <li><span class="node"><span class="ic">📄</span><span class="nm">AI进化时间线与内容体系/</span></span> <span class="badge b-opt">合并源</span> <span class="sub-note">原空壳 02_内容仓库 的同名子目录，先 diff 再回收空壳</span></li>
+              <li><span class="node"><span class="ic">📄</span><span class="nm">文章成品 / AI素材库索引 / 行途IP内容战略手册 …</span></span></li>
+            </ul>
+            <div class="note">吸收空壳 <code>02_内容仓库</code>（44K）→ 统一用此 Hub。空壳进回收站。</div>
+          </li>
+
+          <li><span class="node dir"><span class="ic">📁</span><span class="nm">03_运营工具箱 (Operations Toolkit)/</span></span> <span class="badge b-l4">L4 SOP</span>
+            <ul>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">01_SOP标准操作程序/</span></span></li>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">02_排版与设计/</span></span></li>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">03_AI提示词与模板库/</span></span></li>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">04_引流与星球运营/</span></span></li>
+              <li><span class="node"><span class="ic">📄</span><span class="nm">自媒体复利工作看板.md</span></span> <span class="badge b-opt">改名移入</span> <span class="sub-note">原 00_自媒体复利工作看板_Canvas.md</span></li>
+              <li><span class="node"><span class="ic">📄</span><span class="nm">CodeMax_DS选型…html / CodingPlan_…html / benchmark_*.csv / codemax_usage_queries.sql / 个人工作台_知识可视化看板.html / 全平台自动发布方案_2026.html</span></span> <span class="badge b-opt">归位</span> <span class="sub-note">原根目录散落 8 文件</span></li>
+            </ul>
+            <div class="note">吸收根目录散落的分析/看板/数据文件 + 改名移入的 Canvas 看板。</div>
+          </li>
+
+          <li><span class="node dir"><span class="ic">📁</span><span class="nm">04_会话与复盘 (Archive & Review)/</span></span> <span class="badge b-l0">L0 记忆</span></li>
+          <li><span class="node dir"><span class="ic">📁</span><span class="nm">05_竞品参考与对标 (Reference & Drops)/</span></span> <span class="badge b-l0">参考</span> <span class="sub-note">被动收集的对标/竞品素材</span></li>
+
+          <li><span class="node dir"><span class="ic">📁</span><span class="nm">06_个人知识库_Obsidian/</span></span> <span class="badge b-l0">L0 知识库</span></li>
+
+          <!-- ===== 规划空间 07-10 ===== -->
+          <li><span class="node dir"><span class="ic">📁</span><span class="nm">07_调研与情报工作台/</span></span> <span class="badge b-plan">规划 · L0+L4</span>
+            <ul>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">01_选题调研/</span></span> <span class="sub-note">单主题调研笔记（含结论/引用）</span></li>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">02_工具链测评/</span></span> <span class="sub-note">AI 编程工具链/模型/平台实测（呼应 harness 调研）</span></li>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">03_市场竞品情报/</span></span> <span class="sub-note">主动情报，区别于 05 被动收集</span></li>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">04_调研素材库/</span></span> <span class="sub-note">截图/数据/原始链接</span></li>
+              <li><span class="node"><span class="ic">📄</span><span class="nm">调研任务模板.md</span></span> <span class="sub-note">对齐 workflows/02_调研任务.md</span></li>
+            </ul>
+            <div class="note">规划：未来调研任务的独立产出空间（过程+结论+素材），与 05 被动素材库区分。</div>
+          </li>
+
+          <li><span class="node dir"><span class="ic">📁</span><span class="nm">08_开源与作品集/</span></span> <span class="badge b-plan">规划 · L3+L4</span>
+            <ul>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">&lt;项目名&gt;/</span></span> <span class="sub-note">每个开源项目一个子目录：源码 + README + 发布记录</span></li>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">&lt;项目名&gt;/</span></span></li>
+              <li><span class="node"><span class="ic">📄</span><span class="nm">仓库映射表.md</span></span> <span class="sub-note">本地目录 ↔ GitHub 仓库 对应关系</span></li>
+            </ul>
+            <div class="note">规划：开源任务产出空间（对应 publish/ 概念）。发布前过 SAF-004 红线 + adversarial-review。</div>
+          </li>
+
+          <li><span class="node dir"><span class="ic">📁</span><span class="nm">09_个人台账/</span></span> <span class="badge b-plan">规划 · L1 资产登记</span>
+            <ul>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">01_自媒体账号台账/</span></span> <span class="sub-note">各平台账号/状态/2FA/绑定/数据（含 03 现有「账号资产台账」迁入）</span></li>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">02_资源台账/</span></span> <span class="sub-note">域名/服务器/API Key 托管位置/工具订阅/邮箱</span></li>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">03_资产与收入台账/</span></span> <span class="sub-note">知识星球/支付/收入流水</span></li>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">04_凭据备忘/</span></span> <span class="sub-note">⚠️ 仅登记「密钥在哪/怎么取」，绝不存明文</span></li>
+              <li><span class="node"><span class="ic">📄</span><span class="nm">台账维护SOP.md</span></span></li>
+            </ul>
+            <div class="note">规划：所有"账号/资源/资产"集中登记中心，从 03_运营工具箱 的零散台账升级为独立空间。</div>
+          </li>
+
+          <li><span class="node dir"><span class="ic">📁</span><span class="nm">10_个人站点/</span></span> <span class="badge b-plan">规划 · L3+L4 网站即产品</span>
+            <ul>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">site-source/</span></span> <span class="sub-note">建站源码（Cloudflare Pages / Astro / 静态生成）</span></li>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">domain-dns/</span></span> <span class="sub-note">域名/解析/SSL 配置（xingtu.dev 等）</span></li>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">deploy/</span></span> <span class="sub-note">部署配置 / CI</span></li>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">content-sync/</span></span> <span class="sub-note">与 02_内容仓库 同步的文章/页面</span></li>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">monitoring/</span></span> <span class="sub-note">可用性/访问分析</span></li>
+              <li><span class="node"><span class="ic">📄</span><span class="nm">站点运营笔记.md</span></span></li>
+            </ul>
+            <div class="note">规划：自媒体独立站的完整管理空间——源码/域名/部署/内容同步/监控一体。</div>
+          </li>
+
+          <li><span class="node dir"><span class="ic">📁</span><span class="nm">11_经历素材库/</span></span> <span class="badge b-plan">规划 · L0 素材</span>
+            <ul>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">01_个人经历/</span></span> <span class="sub-note">AI 工具演进史 / 里程碑事件卡（脱敏后可写）</span></li>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">02_职场经历/</span></span> <span class="sub-note">每段经历一卡：角色/团队/AI布道证据/脱敏要求（技术管理者人设证据链）</span></li>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">03_项目经历/</span></span> <span class="sub-note">项目卡：角色/技术/难点/成果/可拆内容角度/脱敏状态（A可写/B改造/C禁写）</span></li>
+              <li><span class="node"><span class="ic">📄</span><span class="nm">素材索引.md</span></span> <span class="sub-note">已用/未用标记，防重复消费；素材→内容必过利他验证+脱敏检查</span></li>
+            </ul>
+            <div class="note">规划：个人/职场/项目经历的唯一素材仓库，脱敏分级存储，是"技术管理者"人设的内容弹药库（SAF-004/006/012）。</div>
+          </li>
+
+          <li><span class="node dir"><span class="ic">📁</span><span class="nm">12_工具研究室/</span></span> <span class="badge b-plan">规划 · L3 实验</span>
+            <ul>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">&lt;工具名&gt;/</span></span> <span class="sub-note">每开源工具一课题：定位/上手实践/踩坑记录/测评结论/可写内容角度</span></li>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">实验环境/</span></span> <span class="sub-note">沙箱/临时目录/脚本，动手验证不污染内容库</span></li>
+              <li><span class="node"><span class="ic">📄</span><span class="nm">研究清单.md</span></span> <span class="sub-note">待研究工具队列 P0–P2，对接 07 调研选题</span></li>
+            </ul>
+            <div class="note">规划：动手实践研究开源工具（装/跑/改/测/写结论），结论回流 07 选题与 02 内容，自研改进流向 08 开源。</div>
+          </li>
+
+          <li><span class="node dir"><span class="ic">📁</span><span class="nm">rules/</span></span> <span class="badge b-l2">L2 SSoT</span>
+            <div class="note">新增：编号规则索引（SAF/IP/PUB/FEN/STR，39 条），CC/WB 同读</div>
+          </li>
+
+          <li><span class="node dir"><span class="ic">📁</span><span class="nm">workflows/</span></span> <span class="badge b-l4">L4 SOP</span>
+            <ul>
+              <li><span class="node"><span class="ic">📄</span><span class="nm">01_指向性任务.md</span></span></li>
+              <li><span class="node"><span class="ic">📄</span><span class="nm">02_调研任务.md</span></span></li>
+              <li><span class="node"><span class="ic">📄</span><span class="nm">03_开发任务.md</span></span></li>
+              <li><span class="node"><span class="ic">📄</span><span class="nm">04_开源任务.md</span></span></li>
+            </ul>
+            <div class="note">新增：四类任务路由 SOP，内嵌安全护栏</div>
+          </li>
+
+          <li><span class="node dir"><span class="ic">📁</span><span class="nm">tools/</span></span> <span class="badge b-l1">L1 土壤</span> <span class="badge b-l3">L3 执行</span>
+            <ul>
+              <li><span class="node dir"><span class="ic">📁</span><span class="nm">safety/</span></span> <span class="badge b-l1">新增</span>
+                <ul>
+                  <li><span class="node"><span class="ic">📄</span><span class="nm">safe-delete.sh / backup-before-op.sh / env-check.sh / gate.sh / README.md</span></span></li>
+                </ul>
+              </li>
+              <li><span class="node"><span class="ic">📄</span><span class="nm">*.py / *.js（排版引擎/索引器/导出器…）</span></span></li>
+            </ul>
+            <div class="note">新增 safety/ 武器库（从 CC 迁来并本地化）</div>
+          </li>
+
+          <li><span class="node dir"><span class="ic">📁</span><span class="nm">opc-doc/</span></span> <span class="badge b-keep">保留</span> <span class="sub-note">项目文档，保持</span></li>
+          <li><span class="node dir"><span class="ic">📁</span><span class="nm">outputs/</span></span> <span class="badge b-keep">保留</span> <span class="sub-note">输出产物，保持</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout">
+      <b>根目录收口原则：</b>只留「锚点文档 + 待执行提案」。内容、运营、调研、开源、台账、建站、工具、规则全部下沉到对应目录。
+      除 5 个锚点文档（README / HARNESS / DIRECTORY / 体系手册HTML / 可视化看板HTML）和 1 个提案，根目录不再有散落文件。
+      虚线蓝框的 <b>07–10</b> 为规划空间，目标态里预留位置，目前尚未创建。
+    </div>
+  </section>
+
+  <!-- CHANGES -->
+  <section>
+    <div class="sec-head"><span class="n">02</span><h2>现状 → 目标 · 变化对照</h2><span class="desc">执行整理提案后发生的实际改动（走 mv / 回收站，无 rm）</span></div>
+    <div class="panel">
+      <table>
+        <thead><tr><th>#</th><th>变化</th><th>现状</th><th>目标</th><th>方式</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>重复目录合并</td><td class="from">02_内容仓库（44K 空壳）+ 02_内容仓库 (Content Hub) 并存</td><td class="to">仅保留 02_内容仓库 (Content Hub)，空壳进回收站</td><td><span class="tagwarn">先 diff 再回收</span></td></tr>
+          <tr><td>2</td><td>根散落文件归位</td><td class="from">8 个分析/看板/数据文件丢在根</td><td class="to">→ 03_运营工具箱（手册/看板留根）</td><td><span class="tagok">mv 归位</span></td></tr>
+          <tr><td>3</td><td>错前缀改名</td><td class="from">00_自媒体复利工作看板_Canvas.md（撞 00_回收站）</td><td class="to">改名移入 03_运营工具箱（去 00 前缀）</td><td><span class="tagok">mv 改名</span></td></tr>
+          <tr><td>4</td><td>新增 harness 资产</td><td class="from">无 rules / workflows / tools/safety / HARNESS.md / DIRECTORY.md</td><td class="to">五大资产落位（已建，本次无需再动）</td><td><span class="tagok">已落位</span></td></tr>
+          <tr><td>5</td><td>域名报告归位（可选）</td><td class="from">行途品牌碰撞/域名MVP/域名候选评估 3 个 HTML 在根</td><td class="to">建议归入 02_内容仓库 或留根（待定）</td><td><span class="tagwarn">待定</span></td></tr>
+        </tbody>
+      </table>
+      <div class="callout warn">
+        <b>现状根目录的「散落文件」清单（将归位）：</b> CodeMax_DS选型与成本测算_2026-08.html、CodingPlan_用量对照分析_2026-08.html、CodingPlan_全网选型分析_2026-08.html、benchmark_20260807_003640.csv、benchmark_20260807_003918.csv、codemax_usage_queries.sql、个人工作台_知识可视化看板.html、全平台自动发布方案_2026.html、矩阵想法.txt、00_自媒体复利工作看板_Canvas.md（改名）。
+        注：行途品牌碰撞/域名MVP/域名候选评估 3 个 HTML 为独立调研报告，可留根或归入 02。
+      </div>
+    </div>
+  </section>
+
+  <!-- FUTURE PLANNED -->
+  <section>
+    <div class="sec-head"><span class="n">03</span><h2>未来规划新增空间（07–12）</h2><span class="desc">回应 Boss 诉求：调研 / 开源 / 台账 / 建站 / 经历素材 / 工具研究 各留独立空间，目标态里预留</span></div>
+    <div class="panel">
+      <table>
+        <thead><tr><th>空间</th><th>角色归属</th><th>子结构</th><th>解决什么问题</th></tr></thead>
+        <tbody>
+          <tr><td><b>07_调研与情报工作台</b></td><td><span class="tagplan">L0 知识沉淀 + L4 调研SOP</span></td><td>选题调研 / 工具链测评 / 市场竞品情报 / 调研素材库 / 调研任务模板</td><td>调研任务有独立产出位（过程+结论+素材），与 05 被动素材库区分</td></tr>
+          <tr><td><b>08_开源与作品集</b></td><td><span class="tagplan">L3 执行 + L4 开源SOP</span></td><td>每项目一子目录（源码+README+发布记录）+ 仓库映射表</td><td>开源任务产出集中管理，对应 publish/ 概念，发布前过红线+对抗审查</td></tr>
+          <tr><td><b>09_个人台账</b></td><td><span class="tagplan">L1 资产登记</span></td><td>自媒体账号台账 / 资源台账 / 资产与收入台账 / 凭据备忘(仅位置) / 维护SOP</td><td>账号/域名/服务器/API/收入集中登记，从 03 零散台账升级为独立中心；凭据绝不存明文</td></tr>
+          <tr><td><b>10_个人站点</b></td><td><span class="tagplan">L3 执行 + L4 编排</span></td><td>site-source / domain-dns / deploy / content-sync / monitoring / 运营笔记</td><td>自媒体独立站（xingtu.dev 等）源码/域名/部署/内容同步/监控一体管理</td></tr>
+          <tr><td><b>11_经历素材库</b></td><td><span class="tagplan">L0 素材 + 内容转化</span></td><td>个人经历 / 职场经历 / 项目经历（素材卡）+ 素材索引.md</td><td>真实经历是 credibility 锚不是内容主角（SAF-012）：脱敏分级存储，按需提取素材，防重复消费</td></tr>
+          <tr><td><b>12_工具研究室</b></td><td><span class="tagplan">L3 实验 + 实践</span></td><td>每工具一课题（上手/踩坑/结论/可写角度）+ 实验环境 + 研究清单</td><td>动手研究开源工具与 AI 工程化实践（装/跑/改/测），结论回流 07→02→08，形成"输入→实验→输出"闭环</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <b>编号逻辑：</b>沿用 <code>01–06</code> 现有数字前缀体系，新增 <code>07–12</code>，保持根目录"门面"整齐有序。
+        07/08 是任务型空间（对应 workflows 的调研/开源 SOP，产出有落点）；09 是资产登记中心；10 是"网站即产品"的工程空间；
+        11 是经历素材库（脱敏分级，内容弹药库）；12 是工具研究室（动手实践，AI 工程化研究主阵地）。
+        这 6 个空间<b>当前尚未创建</b>，待 Boss 确认后按安全承诺（mv/备份/小批量）建目录骨架。
+      </div>
+    </div>
+  </section>
+
+  <div class="callout">
+    <b>安全承诺（执行任何变化时）：</b>所有移动用 <code>mv</code>，绝不 <code>rm</code>/<code>rm -rf</code>；
+    结构性移动前先 <code>bash tools/safety/backup-before-op.sh</code> 打快照；
+    删除（空壳）走 <code>safe-delete.sh</code> 可还原；小批量（≤10/批）；根锚点文档不动。
+    全量备份已就绪：<code>xingtu_backup_20260819/</code>（354M）。
+  </div>
+
+  <footer>
+    行途工作区 · 未来目录结构（目标态）· 数据源自工作区真实盘点 + 工作区整理提案_2026-08-19.md · 单文件零依赖 · 2026-08-19
+  </footer>
+</div>
+</body>
+</html>

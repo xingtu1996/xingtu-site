@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>行途 · 自媒体工作台</title>
+<style>
+  :root{
+    --bg:#f3f4f9; --card:#ffffff; --border:#e7e9f0;
+    --primary:#6d5ce7; --primary-soft:#efebfd;
+    --green:#10b981; --green-soft:#e5f8f0;
+    --orange:#f59e0b; --orange-soft:#fdf3e0;
+    --red:#ef4444; --red-soft:#fdeaea;
+    --blue:#3b82f6; --blue-soft:#e8f1fe;
+    --purple:#8b5cf6; --purple-soft:#f1ecfe;
+    --text:#1f2430; --text2:#6b7280; --text3:#9aa1b0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;padding:24px 20px 40px}
+  .wrap{max-width:1180px;margin:0 auto}
+
+  /* header */
+  header{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:18px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,#6d5ce7,#a78bfa);
+    display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:20px;box-shadow:0 6px 16px rgba(109,92,231,.28)}
+  h1{font-size:24px;font-weight:800;letter-spacing:.5px}
+  .sub{color:var(--text2);font-size:13px;margin-top:2px}
+  .stamp{font-size:12px;color:var(--text3);background:var(--card);border:1px solid var(--border);border-radius:999px;padding:5px 12px}
+
+  /* metrics */
+  .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+  .metric{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column}
+  .metric .k{font-size:13px;color:var(--text2)}
+  .metric .v{font-size:30px;font-weight:800;margin-top:2px;line-height:1.1}
+  .metric .v small{font-size:13px;font-weight:600;color:var(--text2);margin-left:4px}
+  .metric .hint{font-size:12px;color:var(--text3);margin-top:4px}
+  .metric.c-purple .v{color:var(--primary)}
+  .metric.c-green .v{color:var(--green)}
+  .metric.c-orange .v{color:var(--orange)}
+  .metric.c-blue .v{color:var(--blue)}
+
+  /* section */
+  section{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:16px}
+  .sec-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+  .sec-t{font-size:16px;font-weight:700;display:flex;align-items:center;gap:8px}
+  .sec-t .dot{width:8px;height:8px;border-radius:50%;background:var(--primary)}
+  .sec-t .dot.g{background:var(--green)} .sec-t .dot.o{background:var(--orange)}
+  .sec-t .dot.b{background:var(--blue)} .sec-t .dot.r{background:var(--red)}
+  .sec-more{font-size:12px;color:var(--text3)}
+
+  /* grid */
+  .grid{display:grid;grid-template-columns:1fr 340px;gap:16px;align-items:start}
+  @media(max-width:900px){.grid{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,1fr)}}
+
+  /* anchor */
+  .anchor .row{display:flex;flex-wrap:wrap;gap:10px}
+  .anchor .pill{background:var(--primary-soft);color:#5b45d6;border-radius:10px;padding:9px 14px;font-size:13px;font-weight:600}
+  .anchor .pill.g{background:var(--green-soft);color:#0a9168}
+  .anchor .pill.o{background:var(--orange-soft);color:#b97a06}
+  .anchor .pill.b{background:var(--blue-soft);color:#2563eb}
+
+  /* tags */
+  .tag{display:inline-block;font-size:11px;font-weight:600;border-radius:6px;padding:2px 8px;margin:2px 4px 2px 0;line-height:1.5}
+  .tag.green{background:var(--green-soft);color:#0a9168}
+  .tag.orange{background:var(--orange-soft);color:#b97a06}
+  .tag.red{background:var(--red-soft);color:#dc2626}
+  .tag.blue{background:var(--blue-soft);color:#2563eb}
+  .tag.purple{background:var(--purple-soft);color:#7c3aed}
+  .tag.gray{background:#f0f1f5;color:#6b7280}
+
+  /* list cards */
+  .item{border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:10px}
+  .item:last-child{margin-bottom:0}
+  .item .t{font-size:14px;font-weight:600}
+  .item .d{font-size:12.5px;color:var(--text2);margin-top:3px}
+  .item .tags{margin-top:6px}
+
+  /* 选题卡 */
+  .topic{border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:10px;border-left:3px solid var(--primary)}
+  .topic .t{font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .topic .hook{font-size:12.5px;color:var(--text2);margin-top:5px}
+  .topic .tags{margin-top:6px}
+
+  /* 素材卡 */
+  .mat{border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:10px;display:flex;gap:12px;align-items:flex-start}
+  .mat .rank{width:26px;height:26px;border-radius:8px;background:var(--primary-soft);color:var(--primary);font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+  .mat .m-title{font-size:13.5px;font-weight:600;line-height:1.45}
+  .mat .m-meta{font-size:12px;color:var(--text2);margin-top:3px}
+  .mat .tags{margin-top:5px}
+
+  /* 平台 */
+  .plat{display:flex;align-items:center;justify-content:space-between;padding:9px 2px;border-bottom:1px dashed var(--border)}
+  .plat:last-child{border-bottom:none}
+  .plat .l{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600}
+  .plat .l .ic{width:26px;height:26px;border-radius:7px;background:var(--primary-soft);color:var(--primary);font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
+
+  /* todo */
+  .todo{border-left:3px solid var(--orange);border-radius:12px;padding:10px 14px;margin-bottom:9px;background:#fffdf7;border:1px solid var(--border);border-left:3px solid var(--orange)}
+  .todo .t{font-size:13.5px;font-weight:600}
+  .todo .d{font-size:12px;color:var(--text2);margin-top:2px}
+
+  .redline{border-left:3px solid var(--red);border-radius:12px;padding:10px 14px;margin-bottom:9px;background:#fffafa;border:1px solid var(--border);border-left:3px solid var(--red)}
+  .redline .t{font-size:13px;font-weight:600;color:#b91c1c}
+
+  .empty{color:var(--text3);font-size:13px;text-align:center;padding:18px 0}
+  footer{margin-top:22px;text-align:center;color:var(--text3);font-size:12px}
+  .loading{color:var(--text3);font-size:13px;padding:14px;text-align:center}
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <div class="logo">行</div>
+      <div>
+        <h1>行途 · 自媒体工作台</h1>
+        <div class="sub">XingTu Content OS ｜ 战略 · 选题 · 文章 · 素材 · 平台 一站式总览</div>
+      </div>
+    </div>
+    <div class="stamp" id="stamp">数据实时同步</div>
+  </header>
+
+  <!-- 指标卡 -->
+  <div class="metrics">
+    <div class="metric c-purple"><div class="k">素材卡（可检索）</div><div class="v"><span id="m-sucai">—</span><small>条</small></div><div class="hint" id="h-sucai">在架 · 已产出</div></div>
+    <div class="metric c-blue"><div class="k">选题池</div><div class="v"><span id="m-xuanti">—</span><small>个</small></div><div class="hint" id="h-xuanti">P0 待排</div></div>
+    <div class="metric c-orange"><div class="k">文章台账</div><div class="v"><span id="m-wenzhang">—</span><small>篇</small></div><div class="hint" id="h-wenzhang">定时 · 已发布</div></div>
+    <div class="metric c-green"><div class="k">平台账号</div><div class="v"><span id="m-pingtai">—</span><small>个</small></div><div class="hint" id="h-pingtai">已上线</div></div>
+  </div>
+
+  <!-- 战略锚点 -->
+  <section class="anchor">
+    <div class="sec-h"><div class="sec-t"><span class="dot"></span>战略锚点</div><div class="sec-more">IP 定位 · 发布铁律 · 变现路径</div></div>
+    <div class="row">
+      <span class="pill">🎯 IP 定位：小厂技术人 / 全栈开发，真实硬核复盘</span>
+      <span class="pill g">📅 铁律：每周二干货 · 每周六感情 · 20:30 定时</span>
+      <span class="pill b">🏠 主阵地：公众号（养护 + 变现收口）</span>
+      <span class="pill o">📡 分发矩阵：掘金 / 知乎 / CSDN / 小红书</span>
+      <span class="pill">💰 变现：赞赏/矿石/分成 → 蒲公英/互选 → 知识星球</span>
+    </div>
+  </section>
+
+  <div class="grid">
+    <!-- 左列 -->
+    <div>
+      <!-- 本周排期 -->
+      <section>
+        <div class="sec-h"><div class="sec-t"><span class="dot o"></span>本周发布排期</div><div class="sec-more">来自文章台账</div></div>
+        <div id="schedule" data-sp-bindable="database" data-sp-database-id="dNwOfx68yChrWkbHo5XHy5"><div class="loading">加载中…</div></div>
+      </section>
+
+      <!-- 选题池 -->
+      <section>
+        <div class="sec-h"><div class="sec-t"><span class="dot b"></span>选题池</div><div class="sec-more">按优先级排序</div></div>
+        <div id="xuanti" data-sp-bindable="database" data-sp-database-id="35i7UAis0joPmzZ3iAKwFe"><div class="loading">加载中…</div></div>
+      </section>
+
+      <!-- 高优先级素材 -->
+      <section>
+        <div class="sec-h"><div class="sec-t"><span class="dot"></span>高优先级素材 Top</div><a class="sec-more" href="https://www.workbuddy.cn/space/d/RcCLQ8k45NHg5CD7TTfssQ" style="color:#6d5ce7;font-weight:600;text-decoration:none">白盒查看全部 1125 条 →</a></div>
+        <div id="sucai" data-sp-bindable="database" data-sp-database-id="BMu3OZgVvurFsZAUGxWVCp"><div class="loading">加载中…</div></div>
+      </section>
+    </div>
+
+    <!-- 右列 -->
+    <div>
+      <!-- 平台矩阵 -->
+      <section>
+        <div class="sec-h"><div class="sec-t"><span class="dot g"></span>平台矩阵</div><div class="sec-more">11 平台</div></div>
+        <div id="pingtai" data-sp-bindable="database" data-sp-database-id="s26DF6EOZR1dqojkkGcTi4"><div class="loading">加载中…</div></div>
+      </section>
+
+      <!-- 待办 -->
+      <section>
+        <div class="sec-h"><div class="sec-t"><span class="dot o"></span>待办清单</div><div class="sec-more">P0 / P1</div></div>
+        <div class="todo"><div class="t">thinkgame 遗留 5 平台改名「行途」+ 移除学历暴露</div><div class="d">B站 / 抖音 / 小红书 / 掘金 / 知乎</div></div>
+        <div class="todo"><div class="t">知乎「行途」抢注官方号（撞衫 5+）</div><div class="d">防冒用 + 认证</div></div>
+        <div class="todo"><div class="t">定头像主推 1 张 + 补封面图 3 张</div><div class="d">全平台统一品牌素材</div></div>
+        <div class="todo"><div class="t">CSDN thinkgame → 行途 + 置顶「我是谁」</div><div class="d">H3 首发链路核实</div></div>
+        <div class="todo"><div class="t">公众号 001/003 设「仅自己可见」+ 简介改版</div><div class="d">虚构学历叙事背调风险</div></div>
+        <div class="todo"><div class="t">学历提升推进（中外合办硕士锁定 P1）</div><div class="d">定预算 / 院校 → 查教育部备案</div></div>
+      </section>
+
+      <!-- 红线 -->
+      <section>
+        <div class="sec-h"><div class="sec-t"><span class="dot r"></span>红线提醒</div><div class="sec-more">防跑偏</div></div>
+        <div class="redline"><div class="t">学历统一「专科」（西南科技网教 2019-2022）</div></div>
+        <div class="redline"><div class="t">已冻结文档 20+：不删不引不续写</div></div>
+        <div class="redline"><div class="t">履历台账三处同步，新内容跑 check-flavor 门禁</div></div>
+        <div class="redline"><div class="t">站点 pages.dev 公开，客户名一律代号化</div></div>
+        <div class="redline"><div class="t">在职合规：绝不在上班时间发布 / 操作</div></div>
+      </section>
+    </div>
+  </div>
+
+  <footer>行途 XingTu · AI 工程化一线实践 ｜ 工作台由资料库数据表驱动，改表即刷新</footer>
+</div>
+
+<script>
+(function(){
+  var db = (window.__SMART_PAGE__ && window.__SMART_PAGE__.database) || null;
+
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
+  function dateShort(s){ if(!s) return ''; return String(s).slice(0,10); }
+
+  // select 状态 → 颜色
+  function statusColor(v){
+    var map = {
+      '在架':'green','已产出':'gray','已发布':'green','已上线':'green',
+      '定时':'orange','审查':'orange','撰写':'blue','选题':'gray',
+      '待成稿':'blue','成稿中':'blue','待迁移':'orange','待抢注':'red','占位':'gray',
+      '主阵地':'purple','分发矩阵':'blue','出海':'green','P0':'red','P1':'orange','P2':'gray',
+      '高':'red','中':'orange','低':'green','入门':'blue','进阶':'purple',
+      '时效抢发':'red','深度精工':'purple','长尾常态':'blue','常规轮转':'gray',
+      '技术闪记':'purple','行途故事':'orange','管理笔记':'blue'
+    };
+    return map[v] || 'gray';
+  }
+  function tags(arr){ return (arr||[]).map(function(t){ return '<span class="tag '+statusColor(t)+'">'+esc(t)+'</span>'; }).join(''); }
+  function tag(v){ return v ? '<span class="tag '+statusColor(v)+'">'+esc(v)+'</span>' : ''; }
+
+  function setText(id, v){ var el=document.getElementById(id); if(el) el.textContent = v==null?'—':v; }
+
+  function renderXuanti(rows){
+    var box = document.getElementById('xuanti');
+    if(!rows || !rows.length){ box.innerHTML = '<div class="empty">暂无选题</div>'; return; }
+    var order = {P0:0,P1:1,P2:2};
+    rows.sort(function(a,b){ return (order[a['优先级']]??9)-(order[b['优先级']]??9); });
+    var p0 = rows.filter(function(r){return r['优先级']==='P0';}).length;
+    setText('m-xuanti', rows.length);
+    setText('h-xuanti', 'P0 待排 ' + p0 + ' 个');
+    box.innerHTML = rows.map(function(r){
+      return '<div class="topic">'
+        + '<div class="t">'+esc(r['选题'])+' '+tag(r['优先级'])+'</div>'
+        + (r['核心钩子'] ? '<div class="hook">'+esc(r['核心钩子'])+'</div>' : '')
+        + '<div class="tags">'+tag(r['类型'])+tag(r['状态'])+tags(r['平台'])+'</div>'
+        + '</div>';
+    }).join('');
+  }
+
+  function renderWenzhang(rows){
+    var box = document.getElementById('schedule');
+    var list = (rows||[]).filter(function(r){ return r['阶段']==='定时' || r['阶段']==='已发布' || r['阶段']==='审查'; });
+    var all = rows||[];
+    var ding = all.filter(function(r){return r['阶段']==='定时';}).length;
+    var pub = all.filter(function(r){return r['阶段']==='已发布';}).length;
+    setText('m-wenzhang', all.length);
+    setText('h-wenzhang', '定时 '+ding+' · 已发布 '+pub);
+    if(!list.length){ box.innerHTML = '<div class="empty">暂无排期</div>'; return; }
+    var order = {定时:0,已发布:1,审查:2};
+    list.sort(function(a,b){ return (order[a['阶段']]??9)-(order[b['阶段']]??9); });
+    box.innerHTML = list.map(function(r){
+      return '<div class="item">'
+        + '<div class="t">'+esc(r['文章'])+' '+tag(r['阶段'])+'</div>'
+        + (r['备注'] ? '<div class="d">'+esc(r['备注'])+'</div>' : '')
+        + '<div class="tags">'+tag(r['合集'])+tags(r['平台'])+'</div>'
+        + '</div>';
+    }).join('');
+  }
+
+  function renderPingtai(rows){
+    var box = document.getElementById('pingtai');
+    if(!rows || !rows.length){ box.innerHTML = '<div class="empty">暂无数据</div>'; return; }
+    var online = rows.filter(function(r){return r['状态']==='已上线';}).length;
+    setText('m-pingtai', rows.length);
+    setText('h-pingtai', '已上线 ' + online + ' 个');
+    var icons = {'公众号':'公','掘金':'掘','知乎':'知','CSDN':'C','小红书':'红','B站':'B','视频号':'视','X':'X','GitHub':'G','博客园':'博','个人站 pages.dev':'站'};
+    box.innerHTML = rows.map(function(r){
+      var name = r['平台']||'';
+      var ic = icons[name] || name.charAt(0);
+      return '<div class="plat"><div class="l"><span class="ic">'+esc(ic)+'</span>'+esc(name)+'</div><div>'+tag(r['状态'])+tag(r['定位'])+'</div></div>';
+    }).join('');
+  }
+
+  function renderSucai(rows, hasMore){
+    var box = document.getElementById('sucai');
+    if(!rows || !rows.length){ box.innerHTML = '<div class="empty">暂无素材</div>'; return; }
+    box.innerHTML = rows.map(function(r, i){
+      var title = r['标题']||'';
+      var meta = [];
+      if(r['分类']) meta.push(r['分类']);
+      if(r['主题']) meta.push(r['主题']);
+      if(r['优先级']!=null) meta.push('优先级 '+r['优先级']);
+      return '<div class="mat"><div class="rank">'+(i+1)+'</div><div style="flex:1">'
+        + '<div class="m-title">'+esc(title)+'</div>'
+        + '<div class="m-meta">'+esc(meta.join(' · '))+'</div>'
+        + '<div class="tags">'+tag(r['难度'])+tag(r['脱敏'])+tag(r['读者'])+tag(r['策略'])+tags(r['平台'])+'</div>'
+        + '</div></div>';
+    }).join('');
+    setText('m-sucai', (hasMore ? '100+' : (rows.length)));
+  }
+
+  function renderSucaiStat(rows){
+    var zai = rows.filter(function(r){return r['状态']==='在架';}).length;
+    var chan = rows.filter(function(r){return r['状态']==='已产出';}).length;
+    setText('h-sucai', '在架 '+zai+' · 已产出 '+chan);
+  }
+
+  function fallback(){
+    var tips = ['schedule','xuanti','sucai','pingtai'];
+    tips.forEach(function(id){ var el=document.getElementById(id); if(el) el.innerHTML='<div class="empty">需在资料库中查看动态数据</div>'; });
+    setText('m-sucai','1125'); setText('h-sucai','在架 1119 · 已产出 1');
+    setText('m-xuanti','7'); setText('h-xuanti','P0 待排 4 个');
+    setText('m-wenzhang','8'); setText('h-wenzhang','定时 2 · 已发布 1');
+    setText('m-pingtai','11'); setText('h-pingtai','已上线 8 个');
+    var st=document.getElementById('stamp'); if(st) st.textContent='快照数据 · 上线后实时';
+  }
+
+  if(!db){ fallback(); return; }
+
+  // 并行加载
+  Promise.all([
+    db.query({ databaseId: '35i7UAis0joPmzZ3iAKwFe', pageSize: 50 }).then(function(res){ return (res && res.results)||[]; }).catch(function(){ return []; }),
+    db.query({ databaseId: 'dNwOfx68yChrWkbHo5XHy5', pageSize: 50 }).then(function(res){ return (res && res.results)||[]; }).catch(function(){ return []; }),
+    db.query({ databaseId: 's26DF6EOZR1dqojkkGcTi4', pageSize: 50 }).then(function(res){ return (res && res.results)||[]; }).catch(function(){ return []; }),
+    db.query({ databaseId: 'BMu3OZgVvurFsZAUGxWVCp', pageSize: 8, sorts:[{property:'优先级', direction:'descending'}] }).then(function(res){ return {rows:(res&&res.results)||[], hasMore:!!(res&&res.hasMore)}; }).catch(function(){ return {rows:[],hasMore:false}; }),
+    db.query({ databaseId: 'BMu3OZgVvurFsZAUGxWVCp', pageSize: 500 }).then(function(res){ return (res&&res.results)||[]; }).catch(function(){ return []; })
+  ]).then(function(r){
+    renderXuanti(r[0]);
+    renderWenzhang(r[1]);
+    renderPingtai(r[2]);
+    renderSucai(r[3].rows, r[3].hasMore);
+    renderSucaiStat(r[4]);
+  }).catch(function(){
+    fallback();
+  });
+})();
+</script>
+</body>
+</html>

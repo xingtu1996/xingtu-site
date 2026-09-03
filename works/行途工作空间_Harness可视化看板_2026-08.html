@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行途工作空间 · Harness 可视化看板</title>
+<style>
+  :root{
+    --bg:#f5f7fa; --panel:#ffffff; --ink:#1f2933; --sub:#5b6b7b; --line:#e3e8 ef;
+    --line:#e3e8ef; --brand:#3a6ea5; --brand-d:#2b5580; --accent:#e8772e;
+    --ok:#1f9d6b; --warn:#e0a800; --bad:#d64545; --soft:#eef3f8;
+    --saf:#d64545; --ip:#7b61ff; --pub:#1f9d6b; --fen:#e8772e; --str:#3a6ea5;
+    --shadow:0 1px 3px rgba(20,40,70,.08),0 6px 18px rgba(20,40,70,.06);
+    --radius:14px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--brand);text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px 80px}
+
+  /* Header */
+  header{background:linear-gradient(135deg,#2b5580,#3a6ea5 55%,#4f86c6);color:#fff;
+    padding:30px 0 26px;box-shadow:var(--shadow)}
+  header .wrap{padding-bottom:0}
+  .brand-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .logo{width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.18);
+    display:grid;place-items:center;font-size:24px;font-weight:800;border:1px solid rgba(255,255,255,.3)}
+  header h1{margin:0;font-size:25px;letter-spacing:.5px}
+  header .tag{opacity:.9;font-size:14px;margin-top:4px}
+  .pill{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
+    border-radius:999px;padding:3px 12px;font-size:12.5px;margin-right:8px;margin-top:8px}
+
+  /* Tabs */
+  nav.tabs{position:sticky;top:0;z-index:20;background:rgba(245,247,250,.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);margin-top:-1px}
+  nav.tabs .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:10px;padding-bottom:10px}
+  nav.tabs a{white-space:nowrap;font-size:13.5px;color:var(--sub);padding:7px 14px;border-radius:999px;
+    border:1px solid transparent;transition:.15s}
+  nav.tabs a:hover{background:#fff;color:var(--brand)}
+  nav.tabs a.active{background:var(--brand);color:#fff;border-color:var(--brand)}
+
+  section{margin-top:34px;scroll-margin-top:60px}
+  .sec-head{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+  .sec-head h2{font-size:20px;margin:0}
+  .sec-head .n{font-size:13px;color:#fff;background:var(--brand);border-radius:6px;padding:2px 9px;font-weight:700}
+  .sec-head .desc{font-size:13px;color:var(--sub)}
+
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px 22px;box-shadow:var(--shadow)}
+
+  /* KPI cards */
+  .kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+  .kpi{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px 14px;
+    box-shadow:var(--shadow);text-align:center}
+  .kpi .v{font-size:30px;font-weight:800;color:var(--brand);line-height:1.1}
+  .kpi .l{font-size:12.5px;color:var(--sub);margin-top:6px}
+  .kpi .s{font-size:11px;color:var(--ok);margin-top:3px}
+  @media(max-width:900px){.kpis{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:560px){.kpis{grid-template-columns:repeat(2,1fr)}}
+
+  /* Six-layer architecture */
+  .stack{display:flex;flex-direction:column;gap:10px}
+  .layer{display:grid;grid-template-columns:74px 1fr;gap:0;border-radius:12px;overflow:hidden;
+    border:1px solid var(--line);box-shadow:var(--shadow)}
+  .layer .lv{display:grid;place-items:center;color:#fff;font-weight:800;font-size:15px;text-align:center;padding:14px 6px}
+  .layer .body{background:#fff;padding:13px 16px}
+  .layer .body .t{font-weight:700;font-size:15px}
+  .layer .body .c{font-size:13px;color:var(--sub);margin-top:3px}
+  .layer .body code{background:var(--soft);padding:1px 6px;border-radius:5px;font-size:12.5px;color:var(--brand-d)}
+  .l5{background:linear-gradient(135deg,#d64545,#b83232)}
+  .l4{background:linear-gradient(135deg,#e8772e,#c75e1c)}
+  .l3{background:linear-gradient(135deg,#7b61ff,#5b46c9)}
+  .l2{background:linear-gradient(135deg,#1f9d6b,#178158)}
+  .l1{background:linear-gradient(135deg,#3a6ea5,#2b5580)}
+  .l0{background:linear-gradient(135deg,#5b6b7b,#425260)}
+  .roles{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .role{background:var(--soft);border:1px dashed var(--brand);border-radius:10px;padding:9px 13px;font-size:13px;flex:1;min-width:200px}
+  .role b{color:var(--brand-d)}
+
+  /* task routes */
+  .routes{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  @media(max-width:760px){.routes{grid-template-columns:1fr}}
+  .route{border:1px solid var(--line);border-radius:14px;padding:0;overflow:hidden;box-shadow:var(--shadow);background:#fff}
+  .route .top{padding:14px 18px;color:#fff;font-weight:700;font-size:16px;display:flex;justify-content:space-between;align-items:center}
+  .route .top .go{font-size:12px;background:rgba(255,255,255,.22);padding:3px 10px;border-radius:999px}
+  .route .bd{padding:14px 18px}
+  .route .row{font-size:13px;margin-bottom:9px}
+  .route .row .k{color:var(--sub);font-size:12px}
+  .route .sig{display:flex;flex-wrap:wrap;gap:6px;margin-top:3px}
+  .chip{background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-size:12px;color:var(--brand-d)}
+  .route.r1 .top{background:linear-gradient(135deg,#3a6ea5,#2b5580)}
+  .route.r2 .top{background:linear-gradient(135deg,#1f9d6b,#178158)}
+  .route.r3 .top{background:linear-gradient(135deg,#e8772e,#c75e1c)}
+  .route.r4 .top{background:linear-gradient(135deg,#7b61ff,#5b46c9)}
+
+  /* compatibility table */
+  table{border-collapse:collapse;width:100%;font-size:13px}
+  th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+  th{background:var(--soft);color:var(--brand-d);font-weight:700}
+  td .cc{color:var(--brand-d);font-weight:600}
+  td .wb{color:var(--ip);font-weight:600}
+  .tagok{display:inline-block;background:#e6f6ee;color:var(--ok);border-radius:6px;padding:1px 8px;font-size:12px;font-weight:600}
+  .tagwarn{display:inline-block;background:#fdf3dc;color:var(--warn);border-radius:6px;padding:1px 8px;font-size:12px;font-weight:600}
+
+  /* rules bars */
+  .rbar{margin-bottom:14px}
+  .rbar .lab{display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:5px}
+  .rbar .lab b{font-weight:700}
+  .rbar .track{height:18px;background:var(--soft);border-radius:999px;overflow:hidden}
+  .rbar .fill{height:100%;border-radius:999px;display:flex;align-items:center;justify-content:flex-end;
+    color:#fff;font-size:11px;font-weight:700;padding-right:8px}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--sub);margin-top:6px}
+  .legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:middle}
+
+  /* safety arsenal */
+  .arsenal{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  @media(max-width:760px){.arsenal{grid-template-columns:1fr}}
+  .script{border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow);background:#fff}
+  .script .nm{font-weight:700;font-size:14.5px;color:var(--brand-d);display:flex;justify-content:space-between;align-items:center}
+  .chk{color:var(--ok);font-weight:700;font-size:12.5px;background:#e6f6ee;border-radius:6px;padding:2px 9px}
+  .script .dsc{font-size:12.5px;color:var(--sub);margin-top:6px}
+  .script code{background:var(--soft);padding:1px 6px;border-radius:5px;font-size:12px;color:var(--brand-d)}
+
+  /* proposal */
+  .props{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:860px){.props{grid-template-columns:1fr}}
+  .prop{border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow);background:#fff;border-top:4px solid var(--warn)}
+  .prop .pt{font-weight:700;font-size:14.5px;margin-bottom:8px}
+  .prop ul{margin:6px 0 0;padding-left:18px;font-size:13px;color:var(--sub)}
+  .prop li{margin-bottom:5px}
+  .done-box{margin-top:18px;border:1px solid var(--line);border-radius:12px;background:#fff;padding:16px 18px;box-shadow:var(--shadow)}
+  .done-box h4{margin:0 0 10px;font-size:14.5px}
+  .done-box ul{margin:0;padding-left:20px;font-size:13px}
+  .done-box li{margin-bottom:6px}
+  .yes{color:var(--ok);font-weight:700}
+
+  footer{margin-top:40px;font-size:12px;color:var(--sub);text-align:center;border-top:1px solid var(--line);padding-top:18px}
+  .note{font-size:12.5px;color:var(--sub);background:var(--soft);border-radius:10px;padding:11px 14px;margin-top:12px}
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<header>
+  <div class="wrap">
+    <div class="brand-row">
+      <div class="logo">行</div>
+      <div>
+        <h1>行途工作空间 · Harness 可视化看板</h1>
+        <div class="tag">把「你如何把工作做对」交给 AI · 自媒体复利工程的「操作系统」</div>
+      </div>
+    </div>
+    <div style="margin-top:12px">
+      <span class="pill">V1.1 · 2026-08-19</span>
+      <span class="pill">单文件零依赖</span>
+      <span class="pill">Claude Code ↔ WorkBuddy 双平台</span>
+      <span class="pill">安全：全程无 rm · 已全量备份</span>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs">
+  <div class="wrap">
+    <a href="#overview" class="active">概览</a>
+    <a href="#arch">六层架构</a>
+    <a href="#routes">任务路由</a>
+    <a href="#compat">CC↔WB 兼容</a>
+    <a href="#rules">规则 SSoT</a>
+    <a href="#safety">安全武器库</a>
+    <a href="#proposal">整理提案</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- OVERVIEW -->
+  <section id="overview">
+    <div class="sec-head"><span class="n">00</span><h2>总览</h2><span class="desc">本次迁移 + 整理骨架已落位的资产量化</span></div>
+    <div class="kpis">
+      <div class="kpi"><div class="v">39</div><div class="l">编号规则</div><div class="s">5 族 SSoT</div></div>
+      <div class="kpi"><div class="v">4</div><div class="l">工作流 SOP</div><div class="s">全路由覆盖</div></div>
+      <div class="kpi"><div class="v">2</div><div class="l">跨平台 Skill</div><div class="s">已迁 WB</div></div>
+      <div class="kpi"><div class="v">4</div><div class="l">安全脚本</div><div class="s">冒烟全过</div></div>
+      <div class="kpi"><div class="v">3</div><div class="l">锚点文档</div><div class="s">HARNESS/DIR/手册</div></div>
+      <div class="kpi"><div class="v">354M</div><div class="l">全量备份</div><div class="s">校验一致</div></div>
+    </div>
+    <div class="note">核心理念：Harness 不是把工作交给 AI，而是把「你如何把工作做对」交给 AI。AI 是选手（受控轨道上运行），人是裁判（审查与决策），同一套标准人 AI 共用。</div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section id="arch">
+    <div class="sec-head"><span class="n">01</span><h2>六层架构</h2><span class="desc">沿用某零售供应链/Ctf + Haiting 验证过的分层模型，映射到 xingtu 载体</span></div>
+    <div class="panel">
+      <div class="stack">
+        <div class="layer"><div class="lv l5">L5</div><div class="body"><div class="t">产品层 · Product</div><div class="c">愿景/分层/纪律/进化 — <code>HARNESS.md</code> + <code>00_自媒体复利工作看板_Canvas.md</code></div></div></div>
+        <div class="layer"><div class="lv l4">L4</div><div class="body"><div class="t">编排层 · Orchestration</div><div class="c">工作流 SOP — <code>workflows/</code>（4 条）+ <code>03_运营工具箱</code>（排版/分发 SOP）</div></div></div>
+        <div class="layer"><div class="lv l3">L3</div><div class="body"><div class="t">执行层 · Execution</div><div class="c">技能与代理 — <code>tools/</code>（排版引擎/索引器）+ <code>~/.workbuddy/skills/</code>（adversarial-review / ponytail）</div></div></div>
+        <div class="layer"><div class="lv l2">L2</div><div class="body"><div class="t">护栏层 · Guardrails</div><div class="c">规则与规格 — <code>rules/RULES.md</code>（编号 SSoT）+ <code>01_战略与规章</code></div></div></div>
+        <div class="layer"><div class="lv l1">L1</div><div class="body"><div class="t">土壤层 · Soil</div><div class="c">配置与脚本 — <code>models.json</code>/<code>mcp.json</code> + <code>tools/*.py/*.js</code> + <code>tools/safety/*.sh</code></div></div></div>
+        <div class="layer"><div class="lv l0">L0</div><div class="body"><div class="t">记忆层 · Memory</div><div class="c">记忆与事故 — <code>.workbuddy/memory/</code> + <code>04_会话与复盘</code> + <code>06_Obsidian</code></div></div></div>
+      </div>
+      <div class="roles">
+        <div class="role"><b>路标层</b>：README / DIRECTORY / 看板 → 新人 30 分钟上手</div>
+        <div class="role"><b>锚点</b>：SOUL.md+USER.md+IDENTITY.md / config → 进入即锚定身份与纪律</div>
+        <div class="role"><b>渐进式披露</b>：分层按需加载，省 Token，避免一次性灌爆上下文</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROUTES -->
+  <section id="routes">
+    <div class="sec-head"><span class="n">02</span><h2>四类任务路由</h2><span class="desc">AI 进空间后按信号识别任务类型，自动走对应层与护栏</span></div>
+    <div class="routes">
+      <div class="route r1">
+        <div class="top">① 指向性任务<span class="go">走 L1–L3</span></div>
+        <div class="bd">
+          <div class="row"><div class="k">识别信号</div><div class="sig"><span class="chip">"整理/改这个文件"</span><span class="chip">"跑一下 xxx"</span><span class="chip">明确指令</span></div></div>
+          <div class="row"><div class="k">执行要点</div>先读上下文→小步执行→先 <code>backup-before-op.sh</code>→删除走 <code>safe-delete.sh</code></div>
+          <div class="row"><div class="k">产出落点</div>原地改 / 指定目录，不发散</div>
+        </div>
+      </div>
+      <div class="route r2">
+        <div class="top">② 调研任务<span class="go">走 L0+L2</span></div>
+        <div class="bd">
+          <div class="row"><div class="k">识别信号</div><div class="sig"><span class="chip">"查一下/对比"</span><span class="chip">"可行性"</span><span class="chip">"选型"</span></div></div>
+          <div class="row"><div class="k">执行要点</div>并行 WebSearch（不串行）→ 先查官方文档 → 对照 <code>rules/RULES.md</code> 脱敏</div>
+          <div class="row"><div class="k">产出落点</div><code>02_内容仓库/</code> 或 <code>04_会话与复盘</code></div>
+        </div>
+      </div>
+      <div class="route r3">
+        <div class="top">③ 开发任务<span class="go">走 L1–L4</span></div>
+        <div class="bd">
+          <div class="row"><div class="k">识别信号</div><div class="sig"><span class="chip">"写个工具"</span><span class="chip">"脚本/页面"</span><span class="chip">"重构"</span></div></div>
+          <div class="row"><div class="k">执行要点</div>design_before_code → 单文件零依赖优先 → 自包含（不硬编码绝对路径）→ <code>ponytail</code> 反过度工程</div>
+          <div class="row"><div class="k">产出落点</div><code>tools/</code> 或 <code>publish/</code></div>
+        </div>
+      </div>
+      <div class="route r4">
+        <div class="top">④ 开源任务<span class="go">走 L2–L4</span></div>
+        <div class="bd">
+          <div class="row"><div class="k">识别信号</div><div class="sig"><span class="chip">"发 GitHub"</span><span class="chip">"公开作品"</span><span class="chip">"反哺 IP"</span></div></div>
+          <div class="row"><div class="k">执行要点</div>过 <code>SAF-004</code> 红线 + <code>adversarial-review</code> 对抗审查 → 去敏 → README+License</div>
+          <div class="row"><div class="k">产出落点</div><code>publish/</code>（GitHub 公开作品集）</div>
+        </div>
+      </div>
+    </div>
+    <div class="note">通用护栏：四类任务执行前后都夹 <code>adversarial-review</code>（多 Agent 对抗审查）。安全铁律贯穿始终——永不 <code>rm</code>、结构性改动前先备份。</div>
+  </section>
+
+  <!-- COMPAT -->
+  <section id="compat">
+    <div class="sec-head"><span class="n">03</span><h2>CC ↔ WB 兼容映射</h2><span class="desc">同一套 Harness 在 Claude Code 与 WorkBuddy 上如何复用</span></div>
+    <div class="panel">
+      <table>
+        <thead><tr><th>能力维度</th><th>Claude Code（CLI）</th><th>WorkBuddy</th><th>复用策略</th></tr></thead>
+        <tbody>
+          <tr><td>角色铁律</td><td class="cc">CLAUDE.md</td><td class="wb">SOUL.md + USER.md + IDENTITY.md</td><td><span class="tagok">共享理念</span> 角色用 SOUL 承载，规则用 rules/ 同读</td></tr>
+          <tr><td>项目配置</td><td class="cc">settings.json / .local</td><td class="wb">WorkBuddy 设置</td><td><span class="tagwarn">各归各家</span> 平台专属配置不互迁</td></tr>
+          <tr><td>钩子</td><td class="cc">hooks/（PreTool/PostTool）</td><td class="wb">automation_update（rrule）</td><td><span class="tagwarn">转自动化</span> CC hooks 框架 WB 无原生等价</td></tr>
+          <tr><td>定时任务</td><td class="cc">scheduled_tasks.json（cron）</td><td class="wb">automation_update（rrule）</td><td><span class="tagok">等价</span> 调度语义接近，可互译</td></tr>
+          <tr><td>子代理</td><td class="cc">agents/（15 Agent）</td><td class="wb">Expert / 子 Agent</td><td><span class="tagwarn">各归各家</span> 角色定义平台专属</td></tr>
+          <tr><td>技能</td><td class="cc">skills/（SKILL.md）</td><td class="wb">Skills/（SKILL.md）</td><td><span class="tagok">最大公约数</span> 格式几乎一致，直接迁移</td></tr>
+          <tr><td>命令</td><td class="cc">commands/（/xxx）</td><td class="wb">Slash 命令 / Skill</td><td><span class="tagok">可迁移</span> 逻辑转 Skill</td></tr>
+          <tr><td>规格工作流</td><td class="cc">specs/（6 文件模板）</td><td class="wb">Spec 驱动</td><td><span class="tagok">共享</span> 模板中性存放</td></tr>
+          <tr><td>脚本</td><td class="cc">scripts/*.sh</td><td class="wb">Bash 同跑</td><td><span class="tagok">共享</span> 已迁至 tools/safety/</td></tr>
+          <tr><td>记忆</td><td class="cc">projects/*.jsonl + 摘要</td><td class="wb">.workbuddy/memory/</td><td><span class="tagok">共享层</span> 已用 ai_history_indexer 统一</td></tr>
+          <tr><td>外部能力</td><td class="cc">MCP（~/.claude）</td><td class="wb">MCP（~/.workbuddy/mcp.json）</td><td><span class="tagwarn">各读各的</span> 凭据不共享</td></tr>
+        </tbody>
+      </table>
+      <div class="note">三条兼容铁律：① 共享层（rules/config/specs/scripts）不分裂、同读；② 平台专属（hooks/agents/MCP）各归各家；③ <b>Skill 是最大公约数</b>——可复用能力优先写成 SKILL.md，一份双平台生效。</div>
+    </div>
+  </section>
+
+  <!-- RULES -->
+  <section id="rules">
+    <div class="sec-head"><span class="n">04</span><h2>规则 SSoT 分布</h2><span class="desc">39 条编号规则按族统计，完整索引见 rules/RULES.md</span></div>
+    <div class="panel">
+      <div class="rbar"><div class="lab"><b style="color:var(--saf)">SAF · 安全合规/隐私</b><span>12 条</span></div><div class="track"><div class="fill" style="width:100%;background:var(--saf)">12</div></div></div>
+      <div class="rbar"><div class="lab"><b style="color:var(--str)">STR · 内容战略/规划</b><span>8 条</span></div><div class="track"><div class="fill" style="width:66%;background:var(--str)">8</div></div></div>
+      <div class="rbar"><div class="lab"><b style="color:var(--pub)">PUB · 发布/SEO/运营</b><span>9 条</span></div><div class="track"><div class="fill" style="width:75%;background:var(--pub)">9</div></div></div>
+      <div class="rbar"><div class="lab"><b style="color:var(--fen)">FEN · 变现路径</b><span>6 条</span></div><div class="track"><div class="fill" style="width:50%;background:var(--fen)">6</div></div></div>
+      <div class="rbar"><div class="lab"><b style="color:var(--ip)">IP · 品牌人设</b><span>4 条</span></div><div class="track"><div class="fill" style="width:33%;background:var(--ip)">4</div></div></div>
+      <div class="legend">
+        <span><i style="background:var(--saf)"></i>SAF 触犯即拦截（含四条红线 SAF-004）</span>
+        <span><i style="background:var(--str)"></i>STR 主线占比≥70%</span>
+        <span><i style="background:var(--pub)"></i>PUB 含平台差异化硬规则</span>
+        <span><i style="background:var(--fen)"></i>FEN 信任成本铁律</span>
+        <span><i style="background:var(--ip)"></i>IP 人设定位</span>
+      </div>
+      <div class="note">给 AI 的使用约定：审查文章先对照 <code>SAF-*</code> 四条红线（SAF-004）与脱敏规则（SAF-005~009），命中即拦截；写 SEO 引用 <code>PUB-001/002</code>；规划发布引用 <code>PUB-003/004</code>；变现表述引用 <code>FEN-001</code>。</div>
+    </div>
+  </section>
+
+  <!-- SAFETY -->
+  <section id="safety">
+    <div class="sec-head"><span class="n">05</span><h2>安全武器库</h2><span class="desc">从 CC harness 迁来并改造，工作区本地自带，不依赖 CC 地盘</span></div>
+    <div class="arsenal">
+      <div class="script"><div class="nm">safe-delete.sh <span class="chk">✓ 冒烟通过</span></div><div class="dsc">mv 进工作区本地 <code>.trash</code>，带禁区越界防护，可 <code>--restore</code> 还原、<code>--list</code> 查看、<code>--clean N</code> 清 N 天前。直接对抗「不要 rm -rf」。</div></div>
+      <div class="script"><div class="nm">backup-before-op.sh <span class="chk">✓ 冒烟通过</span></div><div class="dsc">操作前打包带时间戳 tar.gz 快照到 <code>.backups</code>，落地「做好备份」诉求。用法：<code>bash backup-before-op.sh '说明' &lt;路径&gt;</code></div></div>
+      <div class="script"><div class="nm">env-check.sh <span class="chk">✓ 17 PASS</span></div><div class="dsc">为 xingtu 重写的环境自检：磁盘/工具链/锚点/六层/安全脚本就位与否。进空间先跑一遍。</div></div>
+      <div class="script"><div class="nm">gate.sh <span class="chk">✓ 自检 PASS</span></div><div class="dsc">海事工程仓 spec Hard Gate 参考副本，发布/交付前结构校验（specs 缺失仅为 WARN，符合 xingtu 现状）。</div></div>
+    </div>
+    <div class="note">路径已中文化改造：原 CC 版回收站写死 <code>~/.claude/trash</code>，现改为工作区本地 <code>.trash</code>/<code>.backups</code>，让 xingtu 自带安全机制、跨平台可跑。配套 <code>README.md</code> 说明用法与跨平台注意点。</div>
+  </section>
+
+  <!-- PROPOSAL -->
+  <section id="proposal">
+    <div class="sec-head"><span class="n">06</span><h2>工作区整理提案</h2><span class="desc">只读盘点 + 方案，待 Boss 确认后再执行（当前未移动任何文件）</span></div>
+    <div class="props">
+      <div class="prop"><div class="pt">① 重复目录合并</div><ul>
+        <li><code>02_内容仓库</code>（44K 空壳）与 <code>02_内容仓库 (Content Hub)</code>（1.6M 真仓库）撞名</li>
+        <li>先 <code>diff -r</code> 两个同名子目录</li>
+        <li>若 legacy 是子集 → safe-delete 空壳</li>
+        <li>若 legacy 独有 → mv 独有文件进 Hub 再回收</li>
+      </ul></div>
+      <div class="prop"><div class="pt">② 根目录散落文件归位</div><ul>
+        <li>8 个分析/看板/数据文件 → <code>03_运营工具箱</code></li>
+        <li><code>矩阵想法.txt</code> → <code>02_内容仓库/灵感与选题池</code></li>
+        <li>体系手册 HTML 刻意留根（锚点文档）</li>
+      </ul></div>
+      <div class="prop"><div class="pt">③ 错前缀文件改名</div><ul>
+        <li><code>00_自媒体复利工作看板_Canvas.md</code> 撞 <code>00_回收站</code></li>
+        <li>建议移入 <code>03_运营工具箱</code> 或去 00 前缀</li>
+        <li>回收站可选 <code>--clean 30</code> 清 30 天前条目</li>
+      </ul></div>
+    </div>
+    <div class="done-box">
+      <h4>✅ 已落位（本次执行，无需再确认）</h4>
+      <ul>
+        <li class="yes">全量备份</li>：<code>xingtu_backup_20260819/</code>（354M，与源逐项校验一致）
+        <li class="yes">安全武器库</li>：<code>tools/safety/</code>（safe-delete / backup-before-op / env-check / gate + README）
+        <li class="yes">两个 WB Skill</li>：<code>~/.workbuddy/skills/adversarial-review</code>、<code>~/.workbuddy/skills/ponytail</code>（CC/WB 通用）
+        <li class="yes">编号规则</li>：<code>rules/RULES.md</code>（39 条 SSoT）
+        <li class="yes">四条 SOP</li>：<code>workflows/</code>（指向性/调研/开发/开源）
+        <li class="yes">锚点回填</li>：<code>HARNESS.md</code>(V1.1) / <code>DIRECTORY.md</code> 登记以上资产，清除「待建/待迁」
+        <li class="yes">冒烟测试</li>：env-check 17 PASS、safe-delete 移入+还原、backup 快照生成、gate 自检 PASS
+      </ul>
+    </div>
+    <div class="note">安全承诺：所有移动用 <code>mv</code>（绝不 <code>rm</code>/<code>rm -rf</code>）；结构性移动前先 <code>backup-before-op.sh</code>；删除走回收站可还原；小批量（≤10 个/批）；根目录保留 4 个锚点文档（README/HARNESS/DIRECTORY/手册 HTML）不动。Boss 点「动手」后按提案执行。</div>
+  </section>
+
+  <footer>
+    行途 Harness 可视化看板 · 数据源自 HARNESS.md / rules/RULES.md / 工作区整理提案_2026-08-19.md · 单文件零依赖 · 生成于 2026-08-19
+  </footer>
+</div>
+
+<script>
+  // sticky tab active state + smooth scroll
+  const links=[...document.querySelectorAll('nav.tabs a')];
+  const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+  links.forEach(a=>a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+  }));
+  const obs=new IntersectionObserver(es=>{
+    es.forEach(en=>{
+      if(en.isIntersecting){
+        const id='#'+en.target.id;
+        links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')===id));
+      }
+    });
+  },{rootMargin:'-45% 0px -50% 0px'});
+  secs.forEach(s=>s&&obs.observe(s));
+</script>
+</body>
+</html>

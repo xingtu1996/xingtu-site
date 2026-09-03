@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>飞轮效率观测台</title><style>
+:root{--bg:#f5f6f8;--card:#ffffff;--ink:#1f2329;--sub:#6b7280;--line:#e5e7eb;
+--blue:#2563eb;--green:#16a34a;--red:#dc2626;--amber:#d97706;--chip:#eef2ff}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+background:var(--bg);color:var(--ink);padding:28px;line-height:1.65}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:22px;margin-bottom:4px}
+.sub{color:var(--sub);font-size:13px;margin-bottom:20px}
+h2{font-size:16px;margin:26px 0 12px;padding-left:10px;border-left:4px solid var(--blue)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.kpi .v{font-size:24px;font-weight:700}
+.kpi .l{font-size:12px;color:var(--sub);margin-top:2px}
+.kpi .n{font-size:11px;color:var(--sub)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;color:var(--sub);font-weight:600;padding:7px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:7px 8px;border-bottom:1px solid #f1f2f4;vertical-align:middle}
+tr:last-child td{border-bottom:none}
+.badge{display:inline-block;padding:1px 9px;border-radius:99px;font-size:12px;font-weight:600}
+.b-ok{background:#dcfce7;color:var(--green)} .b-bad{background:#fee2e2;color:var(--red)}
+.b-wait{background:#fef3c7;color:var(--amber)} .b-info{background:var(--chip);color:var(--blue)}
+.gantt-row{display:flex;align-items:center;gap:8px;margin:5px 0;font-size:12px}
+.gantt-row .t{width:118px;color:var(--sub);flex:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gantt-row .bar{height:14px;border-radius:4px;min-width:3px}
+.gantt-row .d{color:var(--sub);white-space:nowrap}
+.bar.ok{background:var(--green)} .bar.bad{background:var(--red)}
+.ubar{background:var(--line);border-radius:99px;height:8px;width:110px;display:inline-block;vertical-align:middle;margin-right:6px}
+.ubar>i{display:block;height:8px;border-radius:99px;background:var(--blue)}
+code{background:#f3f4f6;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:12px;font-family:ui-monospace,Menlo,monospace}
+.note{font-size:12px;color:var(--sub);margin-top:8px}
+.big{font-size:30px;font-weight:800;color:var(--blue)}
+.method li{margin:6px 0;font-size:13.5px}
+.footer{color:var(--sub);font-size:12px;text-align:center;margin-top:26px}
+</style></head><body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div><div class="wrap">
+<h1>🛞 飞轮效率观测台</h1>
+<div class="sub">生成于 2026-08-26 22:28:44 · 数据源 ~/.workbuddy/workbuddy.db + 飞轮运行日志.jsonl ·
+刷新：<code>python3 tools/flywheel_monitor.py</code></div>
+
+<div class="kpis">
+<div class="kpi"><div class="v">4</div><div class="l">自动化任务（含待首跑）</div></div>
+<div class="kpi"><div class="v">19</div><div class="l">近 14 天运行次数</div></div>
+<div class="kpi"><div class="v" style="color:var(--red)">42%</div><div class="l">整体成功率（8/19）</div></div>
+<div class="kpi"><div class="v">¥169.08</div><div class="l">今日会话 credit 成本</div><div class="n">自动化的 credit 暂未入此表</div></div>
+<div class="kpi"><div class="v">8</div><div class="l">今日会话数（含后台）</div></div>
+<div class="kpi"><div class="v">97k<span style="font-size:13px;color:var(--sub)">/1000k</span></div><div class="l">最大单会话上下文占用</div></div>
+</div>
+
+<h2>① 自动化任务健康度</h2>
+<div class="card"><table>
+<tr><th>任务</th><th>排程</th><th>次数</th><th>成功</th><th>平均时长</th><th>最近一次</th><th>下次运行</th><th>状态</th></tr>
+<tr>
+<td><b>广撒网采集</b><div style="color:var(--sub);font-size:11px">AI会话广撒网采集·主题与自媒体潜力分析（每日累积沉淀）</div></td>
+<td>每日 2:00</td><td>9</td>
+<td>2/9 (22%)</td>
+<td>28.9min</td><td>08-26 02:21 · 33.3min · 失败</td>
+<td>08-27 02:00</td><td><span class="badge b-bad">告警</span></td></tr><tr>
+<td><b>对话挖掘</b><div style="color:var(--sub);font-size:11px">AI协作对话挖掘·每日1素材</div></td>
+<td>每日 14:00</td><td>10</td>
+<td>6/10 (60%)</td>
+<td>23.5min</td><td>08-26 14:30 · 23.5min · 成功</td>
+<td>08-27 14:30</td><td><span class="badge b-wait">波动</span></td></tr><tr>
+<td><b>素材库周刷</b><div style="color:var(--sub);font-size:11px">行途素材库每周刷新（L3·遵循素材挖掘Skill）</div></td>
+<td>每周日 21:00</td><td>0</td>
+<td>0/0 </td>
+<td>-</td><td>-</td>
+<td>08-30 21:00</td><td><span class="badge b-wait">待首跑</span></td></tr><tr>
+<td><b>变现飞轮</b><div style="color:var(--sub);font-size:11px">行途·变现驱动内容飞轮</div></td>
+<td>每周日 22:00</td><td>0</td>
+<td>0/0 </td>
+<td>-</td><td>-</td>
+<td>08-30 22:00</td><td><span class="badge b-wait">待首跑</span></td></tr></table></div>
+
+<h2>② 运行时间线（绿=成功 红=失败，条长≈时长）</h2>
+<div class="card"><div class="gantt-row"><span class="t">08-17 广撒网采集</span><div class="bar ok" style="width:0.7544366666666666%"></div><span class="d">✓ 51s</span></div><div class="gantt-row"><span class="t">08-17 对话挖掘</span><div class="bar ok" style="width:4.380683809523809%"></div><span class="d">✓ 4.9min</span></div><div class="gantt-row"><span class="t">08-18 广撒网采集</span><div class="bar ok" style="width:0.7442804761904761%"></div><span class="d">✓ 50s</span></div><div class="gantt-row"><span class="t">08-18 对话挖掘</span><div class="bar bad" style="width:62.0%"></div><span class="d">✗ 2.2h · 失败</span></div><div class="gantt-row"><span class="t">08-19 对话挖掘</span><div class="bar bad" style="width:0.6%"></div><span class="d">✗ 13s · 失败</span></div><div class="gantt-row"><span class="t">08-20 广撒网采集</span><div class="bar bad" style="width:29.377504285714284%"></div><span class="d">✗ 33.2min · 失败</span></div><div class="gantt-row"><span class="t">08-20 对话挖掘</span><div class="bar ok" style="width:10.940091904761903%"></div><span class="d">✓ 12.4min</span></div><div class="gantt-row"><span class="t">08-21 广撒网采集</span><div class="bar bad" style="width:16.182044285714284%"></div><span class="d">✗ 18.3min · 失败</span></div><div class="gantt-row"><span class="t">08-21 对话挖掘</span><div class="bar ok" style="width:5.383031904761904%"></div><span class="d">✓ 6.1min</span></div><div class="gantt-row"><span class="t">08-22 广撒网采集</span><div class="bar bad" style="width:19.93077095238095%"></div><span class="d">✗ 22.5min · 失败</span></div><div class="gantt-row"><span class="t">08-22 对话挖掘</span><div class="bar bad" style="width:14.3003%"></div><span class="d">✗ 16.1min · 失败</span></div><div class="gantt-row"><span class="t">08-23 广撒网采集</span><div class="bar bad" style="width:60.03178047619048%"></div><span class="d">✗ 67.8min · 失败</span></div><div class="gantt-row"><span class="t">08-23 对话挖掘</span><div class="bar bad" style="width:24.247520952380953%"></div><span class="d">✗ 27.4min · 失败</span></div><div class="gantt-row"><span class="t">08-24 广撒网采集</span><div class="bar bad" style="width:29.895632380952385%"></div><span class="d">✗ 33.8min · 失败</span></div><div class="gantt-row"><span class="t">08-24 对话挖掘</span><div class="bar ok" style="width:7.3289904761904765%"></div><span class="d">✓ 8.3min</span></div><div class="gantt-row"><span class="t">08-25 广撒网采集</span><div class="bar bad" style="width:43.66825333333333%"></div><span class="d">✗ 49.3min · 失败</span></div><div class="gantt-row"><span class="t">08-25 对话挖掘</span><div class="bar ok" style="width:5.068219523809524%"></div><span class="d">✓ 5.7min</span></div><div class="gantt-row"><span class="t">08-26 广撒网采集</span><div class="bar bad" style="width:29.52432619047619%"></div><span class="d">✗ 33.3min · 失败</span></div><div class="gantt-row"><span class="t">08-26 对话挖掘</span><div class="bar ok" style="width:20.82681857142857%"></div><span class="d">✓ 23.5min</span></div>
+<div class="note">超过 70min 的失败运行（如 08-18 的 2.2h）已被截断显示——长红条 = 空烧信号。</div></div>
+
+<h2>③ Agent 层并行效率（埋点契约）</h2>
+<div class="card"><div style="font-size:13.5px">暂无埋点数据。周日晚 22:00「变现飞轮」首跑后，每个 agent 会向
+<code>outputs/内容战略分析/飞轮运行日志.jsonl</code> 追加起止时间，届时此卡片自动出现精确加速比。</div></div>
+
+<h2>④ 产物时间线 · 并行完成簇物证</h2>
+<div class="card"><div style="font-size:13px;margin-bottom:4px"><span class="badge b-info">并行完成簇</span> <b>08-26 22:03:42</b> · 5 个产物 · 簇跨度 6.6min</div><div style="font-size:12.5px;color:var(--sub)">03_平台变现与分发策略.md、02_深度资产与自动化积木盘点.md、04_受众与内容匹配分析.md、01_素材库盘点.md、变现驱动投稿规划飞轮_2026-08-26.html</div></div>
+<div class="note" style="margin-top:-6px">同一簇内 ≥3 个产物几乎同时落地 = 多 agent 并行收工的直接物证（今天 4 份报告落在 2 分 21 秒窗口内）。</div>
+
+<h2>⑤ 今日会话成本观测</h2>
+<div class="card"><table>
+<tr><th>开始</th><th>会话</th><th>上下文占用</th><th>活跃时长</th><th>credit</th></tr>
+<tr><td>21:59</td>
+<td>规划文章发布与平台变现策略</td>
+<td><span class="ubar"><i style="width:52%"></i></span>87,357/168,000</td>
+<td>29.2min</td><td><b>62.55</b></td></tr><tr><td>18:32</td>
+<td>整理沟通记录并入库评估</td>
+<td><span class="ubar"><i style="width:42%"></i></span>71,085/168,000</td>
+<td>3.9h</td><td><b>43.45</b></td></tr><tr><td>22:17</td>
+<td>自媒体场景下选择workbuddy模型</td>
+<td><span class="ubar"><i style="width:10%"></i></span>97,003/1,000,000</td>
+<td>10.2min</td><td><b>35.72</b></td></tr><tr><td>18:52</td>
+<td>构建自动化工作台并规划变现投稿</td>
+<td><span class="ubar"><i style="width:40%"></i></span>66,613/168,000</td>
+<td>3.6h</td><td><b>25.04</b></td></tr><tr><td>22:28</td>
+<td>盘点一下我最近的工作，我印象里有些就是平台开号的也有，然后呢还有 1 个就是作品可以隐藏的也有啥的。</td>
+<td><span class="ubar"><i style="width:24%"></i></span>39,647/168,000</td>
+<td>10s</td><td><b>2.32</b></td></tr><tr><td>02:21</td>
+<td>自动化·后台会话 <span class="badge b-info">后台自动化</span></td>
+<td><span class="ubar"><i style="width:0%"></i></span>0/192,000</td>
+<td>33.3min</td><td><b>0</b></td></tr><tr><td>14:30</td>
+<td>自动化·后台会话 <span class="badge b-info">后台自动化</span></td>
+<td><span class="ubar"><i style="width:45%"></i></span>86,956/192,000</td>
+<td>23.5min</td><td><b>0</b></td></tr><tr><td>21:58</td>
+<td>复盘 Frida 破解微信数据库密钥</td>
+<td><span class="ubar"><i style="width:41%"></i></span>78,194/192,000</td>
+<td>15.8min</td><td><b>0</b></td></tr></table>
+<div class="note">credit 为平台计量额度（非人民币实付）；used 接近 size 时上下文将触发压缩，长会话建议及时拆分。</div></div>
+
+<h2>⑥ 观测方法论：怎么判断「并行到底快没快」</h2>
+<div class="card"><ol class="method">
+<li><b>加速比</b>（唯一硬指标）：并行加速比 = Σ(各 agent 个体时长) ÷ (最晚结束 − 最早开始)。=1 等于没并行；≈agent 数才算真并行。数据来自埋点 JSONL，本看板 ③ 区自动计算。</li>
+<li><b>完成簇</b>（物证法）：多个产物文件 mtime 落在数分钟窗口内 → 同时收工。今天 4 份报告 22:03:42–22:06:03 落地，即并行证据。</li>
+<li><b>健康度</b>（别让飞轮空转）：成功率 + 平均时长 + 失败空烧时长。失败但跑 1h 的任务比快速失败更伤——烧的是你的 credit。</li>
+<li><b>成本</b>：每会话 credit 与上下文占用，防止「并行很爽、账单很痛」。</li></ol></div>
+
+<h2>⑦ 本期诊断结论</h2>
+<div class="card" style="font-size:13.5px">🔴 <b>广撒网采集</b>：近 8 次失败 7 次，平均每次空烧 36.9min——建议修复 prompt 或暂停，止损时长与 token。<br>🔴 <b>对话挖掘</b>：近 8 次失败 3 次，平均每次空烧 14.6min——建议修复 prompt 或暂停，止损时长与 token。<br>🟢 对话挖掘：成功率约 70%，产出正常，维持现状。<br>🟡 素材库周刷 + 变现飞轮：周日晚 21:00/22:00 首跑，跑完本看板自动出加速比。
+<div class="note" style="margin-top:10px">操作建议：广撒网采集已连续失败多日，建议 <b>暂停并重写 prompt</b>（或改为与对话挖掘合并跑），避免每晚空烧。是否处理由 Boss 拍板，本探针只诊断不自动改配置。</div></div>
+
+<div class="footer">flywheel_monitor.py · 单文件零依赖 · 每次运行覆盖刷新本看板</div>
+</div></body></html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="U+0022UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>带资上班 · 选题策划包（四环实跑验证）</title>
+<style>
+  :root { --blue:#056DE8; --ink:#1f2430; --bg:#f5f7fb; --card:#ffffff; --line:#e3e8f0; --muted:#5b6472; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; line-height:1.7; }
+  .wrap { max-width:920px; margin:0 auto; padding:32px 20px 60px; }
+  h1 { font-size:26px; border-left:6px solid var(--blue); padding-left:12px; }
+  h2 { font-size:19px; margin-top:34px; color:var(--blue); }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 20px; margin:14px 0; }
+  table { width:100%; border-collapse:collapse; margin:10px 0; }
+  th,td { border:1px solid var(--line); padding:10px 12px; text-align:left; font-size:14px; }
+  th { background:#eef3fb; color:var(--ink); }
+  .bad { color:#d33; font-weight:700; }
+  .good { color:#1a9e5a; font-weight:700; }
+  .kv { font-size:14px; }
+  .kv b { display:inline-block; min-width:120px; color:var(--muted); }
+  .quote { border-left:4px solid var(--blue); background:#eef3fb; padding:10px 14px; margin:12px 0; border-radius:8px; }
+  /* SignalDistilled 封面占位 */
+  .cover { background:#0b1020; color:#eaf2ff; border-radius:16px; padding:48px 40px; text-align:center; }
+  .cover .big { font-size:96px; font-weight:800; color:#3c82f6; letter-spacing:2px; margin:10px 0; }
+  .cover .sub { font-size:24px; margin-top:8px; }
+  .cover .tag { font-size:14px; color:#9fb4d6; margin-top:18px; }
+  .pill { display:inline-block; background:#103a73; color:#fff; padding:4px 12px; border-radius:999px; font-size:13px; margin:4px; }
+  footer { color:var(--muted); font-size:13px; margin-top:30px; }
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap">
+  <h1>「带资上班」选题策划包 · 四环实跑验证</h1>
+  <p class="kv"><b>产出日期</b> 2026-08-28 · <b>方法</b> AI 协作偏好自我进化闭环（METHOD-001）<br>
+  <b>关联</b> 与 harness 框架选题同源互补：带资补强模型缺口，但 “资” 会折旧，Domain Harness 才是护城河（记忆 §12.5）</p>
+
+  <div class="card">
+    <h2 style="margin-top:0">一、四环实跑 · 调研结论（诚实优先）</h2>
+    <p>按 METHOD-001「调研取证」挖本地 <code>*.jsonl</code>（云 <code>conversation_search</code> 对本案返回 0）：</p>
+    <ul>
+      <li><b>可用素材</b>：仅 1 条关联洞察（带资 vs harness 互补），<b>无成稿、无真实数据、无读者反馈</b>。</li>
+      <li><b>结论</b>：本选题属 “待拍板是否出文” 级，按 PUB-021「选题立项三问」——真实数据缺失，<b>先确认再写，绝不凭印象硬编</b>。</li>
+      <li><b>合规边界（SAF 同查）</b>：在职不暴露雇主 / 同事 / 薪资精确值；用 “某中型公司”“行业惯例” 指代。</li>
+    </ul>
+  </div>
+
+  <h2>二、有系统 vs 无系统（验证「少踩坑」）</h2>
+  <table>
+    <tr><th>维度</th><th style="color:#d33">无系统（旧）</th><th style="color:#1a9e5a">有系统（本套）</th></tr>
+    <tr><td>开头</td><td class="bad">“0.x% 涨薪？带资上班的真相” 纯数据钩子</td><td class="good">讲道式「你的护城河还是折旧资产」+ 前13字含核心词</td></tr>
+    <tr><td>配图/封面</td><td class="bad">PIL 手排坐标，易乱、对齐差</td><td class="good">HTML/CSS→截图，SignalDistilled 深空底+大数字</td></tr>
+    <tr><td>数据</td><td class="bad">凭印象写 “平均涨 30%”</td><td class="good">标注 “待 boss 提供真实值”，未实测如实声明（BUL-003）</td></tr>
+    <tr><td>模型</td><td class="bad">随手用 Auto</td><td class="good">主动提示切 deepseek-v4-pro 写稿</td></tr>
+    <tr><td>审查</td><td class="bad">单视角写完即发</td><td class="good">多专家对抗审查 + 脱敏 + 红线同查</td></tr>
+  </table>
+
+  <h2>三、选题大纲（3 段法）</h2>
+  <div class="card">
+    <p><b>思想锚点（开篇）</b>：「带资上班」不是薪资谈判的筹码——你带去的 “资” 会折旧，真正能留下的护城河，是你离开时带不走、却已长在组织里的东西。</p>
+    <p><b>工具实现（中段）</b>：拆解三种常见的 “资”——技术栈（会用工具，半年折旧）、客户资源（随跳槽转移却易断）、行业认知（相对稳定但要转成 harness）。对照：Domain Harness（领域脚手架 / 经验沉淀）才是抗折旧资产。切入点用 “从一线开发到技术管理” 的泛指经历。</p>
+    <p><b>思想升华（结尾 · 金句）</b>：“带资是入场券，harness 才是复利。” 给读者一张「把资转成可复用方法论」的 Checklist。</p>
+  </div>
+  <div class="quote">金句候选（保留思想定调锚点）：“模型贵在想不贵在搬——人也是，资贵在转不贵在带。”</div>
+
+  <h2>四、SignalDistilled 封面占位（HTML/CSS，非 PIL）</h2>
+  <div class="cover">
+    <div class="tag">行途 · XingTu</div>
+    <div class="big">带资上班</div>
+    <div class="sub">你的护城河，还是折旧资产？</div>
+    <div style="margin-top:20px">
+      <span class="pill">技术栈·折旧</span><span class="pill">客户资源·易断</span><span class="pill">行业认知·转 harness</span>
+    </div>
+  </div>
+  <p class="kv"><b>说明</b>：实际产出用 <code>Chrome --headless --screenshot</code> 裁成 900×383 PNG（PUB-010/011/012），此处为可截图的原生 HTML。</p>
+
+  <h2>五、四环校验清单（发布前必过）</h2>
+  <ul>
+    <li>✅ 未用 PIL 手排 —— 走 HTML/CSS 截图</li>
+    <li>✅ 标题非纯数据钩子 —— 讲道式 + 前13字核心词</li>
+    <li>✅ 无编造数据 —— 真实值待 boss 提供，已声明</li>
+    <li>✅ 在职合规 —— 未暴露雇主/同事/精确薪资</li>
+    <li>✅ 模型 —— 写稿应切 deepseek-v4-pro（创作禁 Auto）</li>
+    <li>⏳ 多专家对抗审查 + 双锚点发布 —— 待成稿后执行</li>
+  </ul>
+
+  <footer>交付：本策划包由四环方法论实跑产出 · 配套 PUB-021「选题立项三问」· skill xingtu-content-craft 自动约束</footer>
+</div>
+</body>
+</html>

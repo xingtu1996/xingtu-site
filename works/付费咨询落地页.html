@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行途 · AI 工程化咨询</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; background:#f7f9fc; color:#1e293b; padding:36px 20px; }
+  .wrap { max-width:860px; margin:0 auto; }
+  h1 { text-align:center; font-size:25px; color:#0f172a; margin-bottom:6px; }
+  .tagline { text-align:center; color:#64748b; font-size:14px; margin-bottom:26px; }
+  .tagline b { color:#2E8B57; }
+
+  .intro { background:#fff; border:1px solid #eef2f7; border-radius:14px; padding:22px 26px; margin-bottom:22px; box-shadow:0 1px 4px rgba(0,0,0,.05); }
+  .intro p { font-size:14px; color:#475569; line-height:1.9; }
+  .intro .hl { color:#2E8B57; font-weight:600; }
+
+  .sec { display:flex; align-items:center; gap:9px; font-size:16px; font-weight:700; color:#0f172a; margin:24px 0 12px; }
+  .sec .bar { width:4px; height:17px; background:#2E8B57; border-radius:2px; }
+
+  .plans { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+  .plan { background:#fff; border:1px solid #eef2f7; border-radius:14px; padding:20px 22px; box-shadow:0 1px 4px rgba(0,0,0,.05); }
+  .plan.hl { border:2px solid #2E8B57; }
+  .plan .pt { font-size:15px; font-weight:700; color:#0f172a; display:flex; justify-content:space-between; align-items:center; }
+  .plan .pt .tag { font-size:10px; background:#e8f5ee; color:#2E8B57; padding:2px 8px; border-radius:999px; }
+  .plan .pv { font-size:24px; font-weight:700; color:#2E8B57; margin:10px 0 6px; }
+  .plan .pd { font-size:12.5px; color:#64748b; line-height:1.8; }
+  .plan ul { list-style:none; margin-top:10px; }
+  .plan li { font-size:12.5px; color:#475569; padding:4px 0; padding-left:16px; position:relative; }
+  .plan li::before { content:"◆"; position:absolute; left:0; color:#94a3b8; font-size:9px; top:6px; }
+
+  .note { background:#fff8ec; border:1px solid #fde68a; border-radius:12px; padding:18px 22px; margin-top:16px; }
+  .note h3 { font-size:14px; color:#92400e; margin-bottom:8px; }
+  .note ul { list-style:none; }
+  .note li { font-size:12.5px; color:#78350f; line-height:1.9; padding-left:16px; position:relative; }
+  .note li::before { content:"→"; position:absolute; left:0; color:#d97706; }
+
+  .steps { background:#fff; border:1px solid #eef2f7; border-radius:14px; padding:22px 26px; box-shadow:0 1px 4px rgba(0,0,0,.05); }
+  .step { display:flex; gap:14px; padding:12px 0; border-bottom:1px dashed #eef2f7; }
+  .step:last-child { border-bottom:none; }
+  .step .n { width:26px; height:26px; background:#e8f5ee; color:#2E8B57; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px; flex-shrink:0; }
+  .step .t { font-size:14px; font-weight:600; color:#0f172a; margin-bottom:3px; }
+  .step .d { font-size:12.5px; color:#64748b; line-height:1.7; }
+
+  .contact { text-align:center; background:#2E8B57; border-radius:14px; padding:26px; margin-top:24px; color:#fff; }
+  .contact .ct { font-size:16px; font-weight:700; margin-bottom:10px; }
+  .contact .ce { font-size:15px; background:rgba(255,255,255,.18); display:inline-block; padding:8px 20px; border-radius:999px; }
+  .contact .cs { font-size:12px; opacity:.85; margin-top:10px; }
+
+  .footer { text-align:center; color:#94a3b8; font-size:11px; margin-top:20px; }
+  @media (max-width:680px){ .plans{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap">
+  <h1>行途 · AI 工程化咨询</h1>
+  <div class="tagline">一线 AI 工程化实践者，把<b>真实生产经验</b>给你讲透 —— 不卖课，给方向与方法</div>
+
+  <div class="intro">
+    <p>我是一线 AI 工程化实践者，深度写代码，专注 <span class="hl">harness / Agent / MCP / Skill</span>。开源矩阵累计 <span class="hl">11 个仓</span>、26 个 skill，全部来自真实生产踩坑。咨询基于我的实战理解做<span class="hl">方向性指导</span>——帮你少走弯路、少烧 token、搭出能落地的 AI 工作流。</p>
+  </div>
+
+  <div class="sec"><span class="bar"></span>咨询档位</div>
+  <div class="plans">
+    <div class="plan">
+      <div class="pt">轻咨询 <span class="tag">方向诊断</span></div>
+      <div class="pv">¥199-299</div>
+      <div class="pd">单次 60 分钟 · 1v1 视频/语音</div>
+      <ul>
+        <li>现状诊断：先了解你的背景与卡点</li>
+        <li>方向建议：该走哪条路、先做什么</li>
+        <li>咨询后产出：要点纪要 + 建议清单</li>
+      </ul>
+    </div>
+    <div class="plan hl">
+      <div class="pt">深度咨询 <span class="tag">推荐</span></div>
+      <div class="pv">¥499-699</div>
+      <div class="pd">单次 90-120 分钟 · 深度拆解</div>
+      <ul>
+        <li>深度问题拆解（选型/架构/工作流）</li>
+        <li>可执行方案：落地步骤 + 关键取舍</li>
+        <li>咨询后产出：结构化方案文档</li>
+      </ul>
+    </div>
+    <div class="plan">
+      <div class="pt">知识星球 <span class="tag">持续陪伴</span></div>
+      <div class="pv">¥199-365/年</div>
+      <div class="pd">深度方法论 + 案例 + 社群</div>
+      <ul>
+        <li>五大工程深度方法论 + 实战案例</li>
+        <li>专属提问答疑</li>
+        <li>同行社群 + 不定期直播</li>
+      </ul>
+    </div>
+    <div class="plan">
+      <div class="pt">定制陪跑 <span class="tag">项目制</span></div>
+      <div class="pv">¥2000-5000/项目</div>
+      <div class="pd">按需定制 · 提前沟通</div>
+      <ul>
+        <li>定制 harness / skills / 方案搭建</li>
+        <li>从 0 到 1 陪跑落地</li>
+        <li>项目制报价，先沟通再启动</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note">
+    <h3>服务边界与免责（请先读）</h3>
+    <ul>
+      <li>咨询仅基于我的实战经验做方向性指导，不构成法律/财务/投资等专业意见</li>
+      <li>不承诺特定结果（不保证涨粉、变现、offer、项目成功）</li>
+      <li>不涉及你主业内部机密，仅讨论通用方法论与你的个人场景</li>
+      <li>不做正式雇佣、不代写代做交付型工作（定制陪跑除外）</li>
+      <li>按我的理解给建议，最终决策与风险由你自己承担</li>
+    </ul>
+  </div>
+
+  <div class="sec"><span class="bar"></span>预约流程</div>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><div><div class="t">发邮件简述</div><div class="d">说明你的背景（行业/角色/经验）+ 想解决的问题（1-2 个），发至下方邮箱</div></div></div>
+    <div class="step"><div class="n">2</div><div><div class="t">确认范围与档位</div><div class="d">我会回复确认是否适合、推荐档位、预计时长，双方对齐问题范围</div></div></div>
+    <div class="step"><div class="n">3</div><div><div class="t">付费 + 预约时间</div><div class="d">确认后按档位付费，约定 1v1 时间（视频/语音）</div></div></div>
+    <div class="step"><div class="n">4</div><div><div class="t">咨询 + 交付纪要</div><div class="d">按约定进行咨询，结束后产出要点纪要/建议清单（深度档含方案文档）</div></div></div>
+  </div>
+
+  <div class="contact">
+    <div class="ct">开始咨询</div>
+    <div class="ce">***@***</div>
+    <div class="cs">标题建议：【咨询】+ 你的问题 · 邮件里附简要背景即可</div>
+  </div>
+
+  <div class="footer">行途 XingTu · AI 工程化咨询 · 2026</div>
+</div>
+</body>
+</html>

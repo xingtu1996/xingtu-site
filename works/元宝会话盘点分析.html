@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>元宝会话盘点分析</title>
+<script src="https://cdn.jsdelivr.net/npm/***@***/dist/echarts.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin:0; padding:0; }
+  body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background:#F4F3EE; color:#1A1B1C; padding:24px; }
+  .wrap { max-width:1000px; margin:0 auto; }
+  h1 { font-size:24px; font-weight:700; margin-bottom:4px; }
+  .sub { color:#6B7280; font-size:13px; margin-bottom:24px; }
+  .cards { display:flex; gap:16px; flex-wrap:wrap; margin-bottom:24px; }
+  .card { flex:1 1 150px; background:#fff; border:1px solid #E4E3DD; border-radius:14px; padding:16px 18px; }
+  .card .num { font-size:26px; font-weight:700; color:#2E5FA3; }
+  .card .lbl { font-size:12px; color:#6B7280; margin-top:4px; }
+  .chart { background:#fff; border:1px solid #E4E3DD; border-radius:14px; padding:16px; margin-bottom:20px; }
+  .chart h2 { font-size:15px; font-weight:600; margin-bottom:8px; }
+  .chartbox { width:100%; height:340px; }
+  .insight { background:linear-gradient(135deg,#eef3fb,#eaf6fb); border:1px solid #d5e3f5; border-radius:14px; padding:16px 20px; margin-bottom:20px; font-size:14px; line-height:1.7; }
+  .insight b { color:#2E5FA3; }
+  table { width:100%; border-collapse:collapse; background:#fff; border:1px solid #E4E3DD; border-radius:14px; overflow:hidden; font-size:13px; }
+  th,td { padding:9px 12px; text-align:left; border-bottom:1px solid #f0f0ec; }
+  th { background:#f8f7f3; font-weight:600; color:#444; }
+  tr:hover td { background:#fafaf6; }
+  .tag { display:inline-block; background:#eef3fb; color:#2E5FA3; border-radius:6px; padding:1px 8px; font-size:12px; margin-right:6px; }
+  a { color:#2E5FA3; text-decoration:none; }
+  @media(max-width:640px){ .chartbox{height:300px;} .card{flex-basis:45%;} }
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap">
+  <h1>元宝会话盘点分析</h1>
+  <div class="sub">数据源：本地微信解密库（元宝会话）｜2025-09 ~ 2026-09｜自动化流水线生成</div>
+
+  <div class="cards">
+    <div class="card"><div class="num">771</div><div class="lbl">元宝分析卡（张）</div></div>
+    <div class="card"><div class="num">152</div><div class="lbl">活跃天数</div></div>
+    <div class="card"><div class="num">63.6%</div><div class="lbl">AI主题占比</div></div>
+    <div class="card"><div class="num">2153</div><div class="lbl">消息总数</div></div>
+  </div>
+
+  <div class="insight">
+    <b>核心结论：</b>你与元宝近一年的对话已沉淀为 <b>771 张结构化分析卡</b>（转发内容→元宝解析），其中 AI 相关主题占比 <b>63.6%</b>，与「行途」技术自媒体定位高度契合。6-8 月为使用高峰，说明这段时间是你内容输入的密集期，这些素材可直接反哺选题与写作。
+  </div>
+
+  <div class="chart">
+    <h2>每月有效分析卡数量</h2>
+    <div id="trend" class="chartbox"></div>
+  </div>
+
+  <div class="chart">
+    <h2>主题分布</h2>
+    <div id="pie" class="chartbox"></div>
+  </div>
+
+  <div class="chart">
+    <h2>近期高价值素材（按时间倒序）</h2>
+    <table>
+      <tr><th>时间</th><th>标题</th><th>主题</th></tr>
+      <tr><td style="white-space:nowrap">2025-09-24</td><td><span class="tag">个人成长/职场</span>团队内耗破解五步法</td><td>个人成长/职场</td></tr>
+<tr><td style="white-space:nowrap">2025-09-26</td><td><span class="tag">AI编程/开发</span>Chrome DevTools MCP：AI开发新利器</td><td>AI编程/开发</td></tr>
+<tr><td style="white-space:nowrap">2025-09-26</td><td><span class="tag">其他/未分类</span>为你生成回答</td><td>其他/未分类</td></tr>
+<tr><td style="white-space:nowrap">2025-09-26</td><td><span class="tag">AI编程/开发</span>Hadoop谢幕？腾讯云大数据破局AI时代</td><td>AI编程/开发</td></tr>
+<tr><td style="white-space:nowrap">2025-09-26</td><td><span class="tag">AI工具/应用</span>开源神器Caido：颠覆传统流量分析</td><td>AI工具/应用</td></tr>
+<tr><td style="white-space:nowrap">2025-10-05</td><td><span class="tag">家庭/育儿</span>婴儿气质揭秘：暴躁与淡定的神经密码</td><td>家庭/育儿</td></tr>
+<tr><td style="white-space:nowrap">2025-10-10</td><td><span class="tag">其他/未分类</span>2万块买AI超算？老黄这次玩真的</td><td>其他/未分类</td></tr>
+<tr><td style="white-space:nowrap">2025-10-23</td><td><span class="tag">AI工具/应用</span>茶吧机对比评测</td><td>AI工具/应用</td></tr>
+<tr><td style="white-space:nowrap">2025-11-03</td><td><span class="tag">其他/未分类</span>LocalDate.plusMonths逻辑解析</td><td>其他/未分类</td></tr>
+<tr><td style="white-space:nowrap">2025-11-08</td><td><span class="tag">AI编程/开发</span>Blob Tree心理测试：你的内心在哪儿？</td><td>AI编程/开发</td></tr>
+<tr><td style="white-space:nowrap">2025-11-08</td><td><span class="tag">家庭/育儿</span>选猴子测性格？投射技术揭秘</td><td>家庭/育儿</td></tr>
+<tr><td style="white-space:nowrap">2025-11-21</td><td><span class="tag">其他/未分类</span>反思：被培养者的背叛与感恩</td><td>其他/未分类</td></tr>
+<tr><td style="white-space:nowrap">2025-11-21</td><td><span class="tag">其他/未分类</span>培养为何招致背叛？</td><td>其他/未分类</td></tr>
+<tr><td style="white-space:nowrap">2025-11-23</td><td><span class="tag">AI编程/开发</span>Supabase实战：数据库+存储+鉴权全解析</td><td>AI编程/开发</td></tr>
+<tr><td style="white-space:nowrap">2025-11-25</td><td><span class="tag">其他/未分类</span>十四五到十五五：产业爆发的十年密码</td><td>其他/未分类</td></tr>
+<tr><td style="white-space:nowrap">2025-11-28</td><td><span class="tag">其他/未分类</span>杭州E类人才政策</td><td>其他/未分类</td></tr>
+<tr><td style="white-space:nowrap">2025-11-28</td><td><span class="tag">AI工具/应用</span>杭深双城内卷对比</td><td>AI工具/应用</td></tr>
+<tr><td style="white-space:nowrap">2025-11-30</td><td><span class="tag">AI编程/开发</span>AI革命：RAG如何终结工程师时代？</td><td>AI编程/开发</td></tr>
+<tr><td style="white-space:nowrap">2025-11-30</td><td><span class="tag">其他/未分类</span>Google RAG技术解析</td><td>其他/未分类</td></tr>
+<tr><td style="white-space:nowrap">2025-11-30</td><td><span class="tag">AI工具/应用</span>Java接入File Search指南</td><td>AI工具/应用</td></tr>
+<tr><td style="white-space:nowrap">2025-11-30</td><td><span class="tag">其他/未分类</span>为你生成回答</td><td>其他/未分类</td></tr>
+<tr><td style="white-space:nowrap">2025-11-30</td><td><span class="tag">AI编程/开发</span>思维破局：AI工程师的认知跃迁术</td><td>AI编程/开发</td></tr>
+<tr><td style="white-space:nowrap">2025-12-04</td><td><span class="tag">其他/未分类</span>为你生成回答</td><td>其他/未分类</td></tr>
+<tr><td style="white-space:nowrap">2025-12-10</td><td><span class="tag">个人成长/职场</span>职业身份困局：为何越强调头衔身价越低？</td><td>个人成长/职场</td></tr>
+<tr><td style="white-space:nowrap">2025-12-10</td><td><span class="tag">其他/未分类</span>程序员身份破局法</td><td>其他/未分类</td></tr>
+    </table>
+  </div>
+</div>
+
+<script>
+(function(){
+  var m = ["2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06", "2026-07", "2026-08", "2026-09"];
+  var v = [5, 3, 14, 4, 7, 4, 22, 26, 48, 206, 194, 230, 8];
+  var trend = echarts.init(document.getElementById('trend'));
+  trend.setOption({
+    backgroundColor:'transparent',
+    title:{text:'月度分析卡数量', left:'center', textStyle:{fontSize:14,fontWeight:600,color:'#1A1B1C'}},
+    tooltip:{trigger:'axis', triggerOn:'click', renderMode:'richText', confine:true},
+    grid:{left:44,right:18,top:48,bottom:30,containLabel:true},
+    xAxis:{type:'category', data:m, axisLabel:{color:'#555',fontSize:11, hideOverlap:true}},
+    yAxis:{type:'value', name:'张', axisLabel:{color:'#555',fontSize:11}},
+    series:[{name:'分析卡', type:'bar', data:v,
+      itemStyle:{color:'#8BC8EA', borderRadius:[6,6,0,0]},
+      label:{show:true,position:'top',fontSize:10,color:'#555'}}]
+  });
+  var pie = echarts.init(document.getElementById('pie'));
+  pie.setOption({
+    backgroundColor:'transparent',
+    title:{text:'主题分布', left:'center', textStyle:{fontSize:14,fontWeight:600,color:'#1A1B1C'}},
+    tooltip:{trigger:'item', triggerOn:'click', renderMode:'richText', confine:true},
+    legend:{bottom:0, type:'scroll', textStyle:{color:'#6B7280',fontSize:11}},
+    series:[{name:'主题', type:'pie', radius:['40%','66%'], center:['50%','46%'],
+      avoidLabelOverlap:true,
+      label:{formatter:'{b}: {d}%', color:'#555', fontSize:11},
+      data:[{"name": "其他/未分类", "value": 224}, {"name": "AI编程/开发", "value": 199}, {"name": "AI工具/应用", "value": 171}, {"name": "AI模型/大模型", "value": 120}, {"name": "个人成长/职场", "value": 24}, {"name": "创业/商业", "value": 16}, {"name": "家庭/育儿", "value": 11}, {"name": "生活/消费", "value": 6}]}]
+  });
+  window.addEventListener('resize', function(){ trend.resize(); pie.resize(); });
+})();
+</script>
+</body>
+</html>

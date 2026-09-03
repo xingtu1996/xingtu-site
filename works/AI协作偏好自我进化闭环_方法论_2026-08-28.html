@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 协作偏好自我进化闭环 · 通用方法论</title>
+<style>
+  :root{
+    --blue:#056DE8; --blue-dark:#0C2A4D; --blue-light:#EAF2FB;
+    --teal:#0F6E56; --teal-light:#E1F5EE;
+    --purple:#534AB7; --purple-light:#EEEDFE;
+    --coral:#993C1D; --coral-light:#FAECE7;
+    --ink:#1a2433; --muted:#5a6678; --line:#d9e2ee;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+    background:#f5f8fc; color:var(--ink); line-height:1.65; padding:32px 20px;}
+  .wrap{max-width:960px;margin:0 auto;}
+  header{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-dark) 100%);
+    color:#fff;border-radius:16px;padding:28px 32px;margin-bottom:24px;}
+  header h1{font-size:24px;font-weight:700;letter-spacing:.5px;}
+  header p{font-size:14px;opacity:.92;margin-top:8px;max-width:680px;}
+  .tag{display:inline-block;background:rgba(255,255,255,.18);border-radius:20px;
+    padding:3px 12px;font-size:12px;margin-top:14px;margin-right:8px;}
+  section{background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:22px 26px;margin-bottom:18px;}
+  h2{font-size:17px;color:var(--blue-dark);margin-bottom:14px;
+    padding-left:10px;border-left:4px solid var(--blue);}
+  h3{font-size:14px;color:var(--muted);font-weight:600;margin:14px 0 8px;}
+  .lead{font-size:14px;color:var(--ink);}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+  .ring{border-radius:12px;padding:14px;min-height:200px;}
+  .ring .n{font-size:13px;font-weight:700;opacity:.85;}
+  .ring .t{font-size:15px;font-weight:700;margin:4px 0 8px;}
+  .ring .row{font-size:12px;margin:6px 0;line-height:1.5;}
+  .ring .k{font-weight:600;}
+  .r1{background:var(--blue-light);border:1px solid #b5d4f4;}
+  .r1 .t{color:var(--blue-dark);} .r1 .k{color:var(--blue);}
+  .r2{background:var(--teal-light);border:1px solid #9fe1cb;}
+  .r2 .t{color:var(--teal);} .r2 .k{color:var(--teal);}
+  .r3{background:var(--purple-light);border:1px solid #afa9ec;}
+  .r3 .t{color:var(--purple);} .r3 .k{color:var(--purple);}
+  .r4{background:var(--coral-light);border:1px solid #f0997b;}
+  .r4 .t{color:var(--coral);} .r4 .k{color:var(--coral);}
+  .flywheel{display:flex;align-items:center;justify-content:center;gap:8px;
+    flex-wrap:wrap;background:var(--purple-light);border-radius:12px;padding:18px;margin-top:8px;}
+  .fw-node{background:#fff;border:1.5px solid var(--purple);border-radius:20px;
+    padding:6px 14px;font-size:13px;font-weight:600;color:var(--purple);}
+  .fw-arrow{color:var(--purple);font-size:18px;font-weight:700;}
+  .fw-loop{width:100%;text-align:center;font-size:12px;color:var(--purple);
+    margin-top:10px;font-weight:600;}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px;}
+  th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top;}
+  th{background:var(--blue-light);color:var(--blue-dark);font-weight:600;}
+  td code{background:#f0f4fa;padding:1px 6px;border-radius:5px;font-size:12px;color:var(--blue-dark);}
+  .mig{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:8px;}
+  .mig .card{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:#fafcff;}
+  .mig .card b{color:var(--blue-dark);font-size:13px;}
+  .mig .card p{font-size:12px;color:var(--muted);margin-top:4px;}
+  .case{font-size:13px;}
+  .case li{margin:6px 0 6px 20px;}
+  .case .bad{color:var(--coral);font-weight:600;}
+  .case .good{color:var(--teal);font-weight:600;}
+  .assets{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;}
+  .asset{background:var(--blue-light);border:1px solid #b5d4f4;border-radius:10px;
+    padding:10px 14px;font-size:13px;}
+  .asset b{color:var(--blue-dark);}
+  .asset span{display:block;font-size:12px;color:var(--muted);margin-top:3px;}
+  footer{text-align:center;font-size:12px;color:var(--muted);margin-top:10px;}
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap">
+
+<header>
+  <h1>AI 协作偏好自我进化闭环 · 通用方法论</h1>
+  <p>把"复盘 / 反哺 / 沉淀 / 调研"抽象成一套可复用的四环飞轮：让 AI 从"靠记忆归纳"升级为"多源取证 → 带出处归因 → SSoT 沉淀 → 自动约束反哺"，越协作越懂人、越少踩坑。</p>
+  <div>
+    <span class="tag">来源：2026-08-28 boss 提议</span>
+    <span class="tag">SSoT：METHOD-001~003</span>
+    <span class="tag">配套 skill：xingtu-collab-evolution-loop</span>
+  </div>
+</header>
+
+<section>
+  <h2>一、这是什么（一句话定义）</h2>
+  <p class="lead">一套<b>通用的方法论</b>——拔掉"公众号创作"外壳后，它的内核（四环 + 四不防错）可以原样套到<strong>任何"人带 AI 长期协作、需要 AI 学人偏好"的场景</strong>：内容创作、代码协作、调研 SOP、团队规范、个人知识管理飞轮、跨项目偏好迁移。它本质是<b>偏好数据飞轮</b>在协作上的落地。</p>
+</section>
+
+<section>
+  <h2>二、四环工作流（按序执行，闭环）</h2>
+  <div class="grid4">
+    <div class="ring r1">
+      <div class="n">环 1</div><div class="t">调研取证</div>
+      <div class="row"><span class="k">核心动作：</span>多源交叉，不轻信单一记忆源</div>
+      <div class="row"><span class="k">来源：</span>云检索 / 本地 jsonl / 过程产物 / 记忆日志</div>
+      <div class="row"><span class="k">产出：</span>原始证据清单（带来源标注）</div>
+      <div class="row"><span class="k">防错：</span>检索为空 ≠ 无会话，转挖本地 <code>*.jsonl</code></div>
+    </div>
+    <div class="ring r2">
+      <div class="n">环 2</div><div class="t">复盘归因</div>
+      <div class="row"><span class="k">核心动作：</span>带原话/原产物出处，拒绝无出处总结</div>
+      <div class="row"><span class="k">出处：</span>时间戳原话 / 文件 / 逐句对照</div>
+      <div class="row"><span class="k">产出：</span>"为什么这样改"证据链</div>
+      <div class="row"><span class="k">防错：</span>无出处的抽象总结先回头补取证</div>
+    </div>
+    <div class="ring r3">
+      <div class="n">环 3</div><div class="t">沉淀 SSoT</div>
+      <div class="row"><span class="k">核心动作：</span>编号铁律 + 严重度，人审可维护</div>
+      <div class="row"><span class="k">载体：</span>RULES 索引 / 方法论文档 / 看板</div>
+      <div class="row"><span class="k">产出：</span>单一事实源</div>
+      <div class="row"><span class="k">防错：</span>分散记忆 ≠ SSoT，否则下次重挖</div>
+    </div>
+    <div class="ring r4">
+      <div class="n">环 4</div><div class="t">反哺约束</div>
+      <div class="row"><span class="k">核心动作：</span>skill 自动加载 + 开工自检 + 提示</div>
+      <div class="row"><span class="k">载体：</span>项目级 skill + 使用约定挂钩</div>
+      <div class="row"><span class="k">产出：</span>下次 AI 少踩坑</div>
+      <div class="row"><span class="k">防错：</span>只记不用 = 白沉淀</div>
+    </div>
+  </div>
+  <div class="flywheel">
+    <span class="fw-node">偏好（人）</span><span class="fw-arrow">→</span>
+    <span class="fw-node">规则（SSoT）</span><span class="fw-arrow">→</span>
+    <span class="fw-node">约束（skill 自动加载）</span><span class="fw-arrow">→</span>
+    <span class="fw-node">下次协作少踩坑</span>
+    <div class="fw-loop">↺ 再取证复盘，越跑越准 —— 前两步决定"沉淀得对不对"，后两步决定"沉淀用不用得上"</div>
+  </div>
+</section>
+
+<section>
+  <h2>三、四不防错（通用内核）</h2>
+  <table>
+    <tr><th style="width:22%">防错句</th><th>含义</th><th style="width:30%">反面（踩坑）</th></tr>
+    <tr><td><b>调研不轻信单一源</b></td><td>任何"找历史依据"都先列全来源再交叉验证</td><td>只翻记忆日志，漏掉本地会话真身（曾误判"会话无索引"）</td></tr>
+    <tr><td><b>复盘不带出处不总结</b></td><td>每条结论都能指回原话时间戳 / 原文件</td><td>"我们偏好 X"一句话归纳，boss 纠偏"只有记忆、没出处"</td></tr>
+    <tr><td><b>沉淀不分散</b></td><td>散点偏好必须汇成编号 + 严重度的 SSoT</td><td>偏好只躺在记忆里，下次又得重挖一遍</td></tr>
+    <tr><td><b>反哺不空转</b></td><td>沉淀必须落成自动约束（skill + 自检）</td><td>写完文档不落地，AI 下次照样踩坑</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>四、通用迁移场景（拔掉外壳直接套）</h2>
+  <div class="mig">
+    <div class="card"><b>代码协作偏好沉淀</b><p>把"封面迭代/去 AI 味"换成"重构偏好/命名规范"，四环不变。</p></div>
+    <div class="card"><b>调研 SOP</b><p>调研环 = 列全信源交叉验证；复盘环 = 每结论标来源与验证程度（BUL-003）。</p></div>
+    <div class="card"><b>团队规范</b><p>沉淀环 = 团队 RULES；反哺环 = CI / PR 模板 / 评审 checklist 自动拦。</p></div>
+    <div class="card"><b>个人知识管理飞轮</b><p>本地 jsonl + 记忆 = 第二大脑；定期跑四环把碎片变 SSoT。</p></div>
+    <div class="card"><b>跨项目偏好迁移</b><p>把 SSoT 抽成跨项目级 skill（放用户级 skills/），新项目直接加载。</p></div>
+    <div class="card"><b>新 AI 工具接入</b><p>调研环测能力边界、复盘环记坑、沉淀环写接入 SOP、反哺环做配置自检。</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>五、本项目实证（A0 / B09 怎么用四环跑通）</h2>
+  <ul class="case">
+    <li><span class="bad">踩坑起点：</span>首轮只引记忆日志归纳，boss 纠偏"来源一定是那两份记忆么？会话呢？内容偏好要详尽"。</li>
+    <li><span class="good">环 1 调研：</span><code>conversation_search</code> 返回 0 → 转挖本地 <code>*.jsonl</code>（主会话 16MB），抽 boss 30+ 条原话。</li>
+    <li><span class="good">环 2 复盘：</span>用《去 AI 味对照》逐句"改前→改后"归因，§11 铁律溯源到 01:12 那条 192 字语音原话。</li>
+    <li><span class="good">环 3 沉淀：</span>写成 <code>PUB-010~020</code> 编号铁律 + 严重度，汇入 <code>rules/RULES.md</code> SSoT。</li>
+    <li><span class="good">环 4 反哺：</span>建 <code>xingtu-content-craft</code> skill 自动加载 + 开工自检 + 主动喊切模型，下次创作 AI 先过清单。</li>
+  </ul>
+</section>
+
+<section>
+  <h2>六、落地资产清单</h2>
+  <div class="assets">
+    <div class="asset"><b>METHOD-001~003</b><span>rules/RULES.md 新增"通用方法论"分类（四环 + 四不防错 + 取证顺序）</span></div>
+    <div class="asset"><b>xingtu-collab-evolution-loop</b><span>项目级 skill：四环工作流 + 四不防错自检，触发"复盘/沉淀/调研/方法论"类任务</span></div>
+    <div class="asset"><b>本看板</b><span>outputs/AI协作偏好自我进化闭环_方法论_2026-08-28.html</span></div>
+    <div class="asset"><b>实证来源</b><span>outputs/公众号内容创作偏好深度沉淀_2026-08-28.html + tools/session_preference_miner.py</span></div>
+  </div>
+</section>
+
+<footer>行途 · 通用方法论 · 2026-08-28 · 单文件离线可用</footer>
+</div>
+</body>
+</html>

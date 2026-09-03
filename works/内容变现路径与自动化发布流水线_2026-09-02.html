@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="A9AGQtt35iHRk9OJ93t86y">
+<head data-page-node-id="jVrxrARUbM1g3zy7J3HQWT">
+<meta charset="UTF-8" data-page-node-id="QpEnAStjA7NqyMSyIrCSFN">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="ojQJToISsju53ztXADL7e4">
+<title>行途 · 变现路径倒推与自动化发布流水线 2026-09-02</title>
+<style>
+:root{
+  --xt-blue:#056DE8; --xt-blue-l:#4A9EFF; --xt-cyan:#00D4FF; --xt-orange:#FF6B35;
+  --ink:#1a1a1a; --ink-2:#3f3f3f; --ink-3:#6b7280; --ink-4:#9ca3af;
+  --line:#e5e7eb; --line-2:#f0f2f5; --bg:#ffffff; --bg-soft:#f8fafc;
+  --green:#10b981; --red:#ef4444; --amber:#f59e0b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background:var(--bg-soft); color:var(--ink); line-height:1.75; font-size:15px;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px 80px}
+
+/* header */
+header{background:linear-gradient(135deg,var(--xt-blue) 0%,var(--xt-blue-l) 55%,var(--xt-cyan) 100%);color:#fff;padding:52px 0 44px;margin-bottom:36px}
+header .wrap{padding-bottom:0}
+.kicker{font-size:13px;letter-spacing:2px;opacity:.85;font-weight:500}
+h1{font-size:34px;font-weight:800;margin:10px 0 14px;letter-spacing:-.5px;line-height:1.3}
+.sub{font-size:15px;opacity:.92;max-width:800px}
+.meta{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap}
+.chip{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);padding:5px 13px;border-radius:20px;font-size:12.5px}
+
+/* section */
+section{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:30px 32px;margin-bottom:24px}
+h2{font-size:22px;font-weight:800;color:var(--ink);margin-bottom:6px;display:flex;align-items:center;gap:11px;letter-spacing:-.3px}
+h2 .no{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:9px;background:var(--xt-blue);color:#fff;font-size:15px;font-weight:800;flex-shrink:0}
+h2 .no.warn{background:var(--red)}
+h2 .no.ok{background:var(--green)}
+.lead{color:var(--ink-3);font-size:14px;margin:0 0 22px 41px}
+h3{font-size:16.5px;font-weight:700;margin:26px 0 12px;color:var(--ink);padding-left:11px;border-left:3px solid var(--xt-blue)}
+h3:first-of-type{margin-top:0}
+p{margin-bottom:12px;color:var(--ink-2)}
+
+/* callout */
+.callout{border-radius:11px;padding:18px 22px;margin:18px 0;border-left:4px solid}
+.callout h4{font-size:15px;font-weight:800;margin-bottom:8px}
+.callout p:last-child{margin-bottom:0}
+.c-red{background:#fef2f2;border-color:var(--red)}
+.c-red h4{color:#b91c1c}
+.c-green{background:#ecfdf5;border-color:var(--green)}
+.c-green h4{color:#047857}
+.c-blue{background:#eff6ff;border-color:var(--xt-blue)}
+.c-blue h4{color:var(--xt-blue)}
+.c-amber{background:#fffbeb;border-color:var(--amber)}
+.c-amber h4{color:#b45309}
+
+/* table */
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13.5px}
+th{background:var(--bg-soft);text-align:left;padding:11px 13px;font-weight:700;color:var(--ink-2);border-bottom:2px solid var(--line);white-space:nowrap;font-size:13px}
+td{padding:11px 13px;border-bottom:1px solid var(--line-2);vertical-align:top;color:var(--ink-2)}
+tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#fafbfc}
+td.num,th.num{text-align:center;font-variant-numeric:tabular-nums}
+.star{color:var(--amber);letter-spacing:-1px}
+
+/* badges */
+.b{display:inline-block;padding:2px 9px;border-radius:5px;font-size:11.5px;font-weight:700;white-space:nowrap}
+.b-hi{background:#dcfce7;color:#166534}
+.b-mid{background:#fef3c7;color:#92400e}
+.b-lo{background:#fee2e2;color:#991b1b}
+.b-gray{background:#f3f4f6;color:#4b5563}
+.b-blue{background:#dbeafe;color:#1e40af}
+
+/* cards */
+.grid{display:grid;gap:14px;margin:18px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.card{border:1px solid var(--line);border-radius:11px;padding:17px 19px;background:var(--bg)}
+.card.hl{border-color:var(--xt-blue);background:#f5f9ff;box-shadow:0 1px 3px rgba(5,109,232,.08)}
+.card h5{font-size:14.5px;font-weight:800;margin-bottom:7px;color:var(--ink)}
+.card .big{font-size:26px;font-weight:800;color:var(--xt-blue);line-height:1.2;font-variant-numeric:tabular-nums}
+.card .big.red{color:var(--red)}
+.card .big.green{color:var(--green)}
+.card p{font-size:13px;color:var(--ink-3);margin:6px 0 0;line-height:1.65}
+
+/* pipeline */
+.pipe{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin:22px 0;align-items:stretch}
+.pstep{position:relative;padding:16px 12px;text-align:center;background:var(--bg-soft);border:1px solid var(--line)}
+.pstep:first-child{border-radius:10px 0 0 10px}
+.pstep:last-child{border-radius:0 10px 10px 0}
+.pstep .pn{font-size:11px;font-weight:800;color:var(--xt-blue);letter-spacing:1px}
+.pstep .pt{font-size:13.5px;font-weight:700;margin:5px 0 4px;color:var(--ink)}
+.pstep .pd{font-size:11.5px;color:var(--ink-3);line-height:1.5}
+.pstep.human{background:#fff7ed;border-color:#fed7aa}
+.pstep.human .pn{color:var(--xt-orange)}
+.pstep.ai{background:#eff6ff;border-color:#bfdbfe}
+
+/* code */
+pre{background:#0f172a;color:#e2e8f0;padding:16px 18px;border-radius:10px;overflow-x:auto;font-size:12.5px;line-height:1.7;margin:14px 0;font-family:"SF Mono",Menlo,Consolas,monospace}
+pre .c{color:#64748b}
+pre .k{color:#7dd3fc}
+pre .s{color:#86efac}
+code{background:#f1f5f9;padding:1.5px 6px;border-radius:4px;font-size:12.5px;font-family:"SF Mono",Menlo,Consolas,monospace;color:#b91c1c}
+
+/* list */
+ul,ol{margin:10px 0 14px 20px;color:var(--ink-2)}
+li{margin-bottom:7px}
+li strong{color:var(--ink)}
+
+/* decision */
+.dec{border:1px solid var(--line);border-radius:11px;padding:0;overflow:hidden;margin:16px 0}
+.dec-h{background:var(--bg-soft);padding:13px 18px;font-weight:800;font-size:14.5px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.dec-b{padding:16px 18px}
+.opt{margin-bottom:11px;padding:11px 14px;border-radius:8px;background:var(--bg-soft);border-left:3px solid var(--line)}
+.opt.rec{border-left-color:var(--green);background:#f0fdf4}
+.opt.no{border-left-color:var(--red)}
+.opt b{font-size:13.5px;color:var(--ink)}
+.opt span{font-size:12.5px;color:var(--ink-3);display:block;margin-top:3px}
+
+/* compare bar */
+.bar-row{display:grid;grid-template-columns:150px 1fr 70px;gap:12px;align-items:center;margin-bottom:9px;font-size:13px}
+.bar-label{color:var(--ink-2);font-weight:600}
+.bar-track{background:var(--line-2);border-radius:5px;height:22px;overflow:hidden}
+.bar-fill{height:100%;border-radius:5px;display:flex;align-items:center;padding-left:9px;color:#fff;font-size:11.5px;font-weight:700}
+.bar-val{text-align:right;font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink-2)}
+
+footer{text-align:center;color:var(--ink-4);font-size:12.5px;padding:28px 0 0;border-top:1px solid var(--line);margin-top:8px}
+@media(max-width:900px){
+  .g3,.g4{grid-template-columns:repeat(2,1fr)}
+  .pipe{grid-template-columns:1fr}
+  .pstep{border-radius:0!important}
+  .g2{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body data-page-node-id="QwVWMslVy3tTMRAcLvWDU5"><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+
+<header data-page-node-id="nq3qIvLdw7DR6fVxyBNuKE">
+<div class="wrap" data-page-node-id="RKM9JTOf9W59pYFd1Dbuv1">
+  <div class="kicker" data-page-node-id="dhXoIwX5EBp2H3rFNc2BH7">XINGTU · 战略看板</div>
+  <h1 data-page-node-id="bZg4FLApFepFn1ZRECaxKB">变现路径倒推 &amp; 自动化发布流水线</h1>
+  <div class="sub" data-page-node-id="PHEz6qZlElCDwgcF47A9ga">以终为始：从「个人作品集 + 第二曲线」两个终点倒推内容形态、平台选择与自动化边界。含抖音图文赛道纠偏、4 个对标账号解码、Playwright 发布流水线四期设计。</div>
+  <div class="meta" data-page-node-id="iC4bs76XCqigK0wbgiW08O">
+    <span class="chip" data-page-node-id="gWAun0vZyqmuh8uYAA1BvI">2026-09-02</span>
+    <span class="chip" data-page-node-id="PHP0JzPvBoEpJ8vkVzX8Cl">待 boss 审核</span>
+    <span class="chip" data-page-node-id="EjxxGgXyx8aAeETdHe7Fbg">多源交叉验证</span>
+    <span class="chip" data-page-node-id="PzlR9aEP09IyPyW4hdBuHD">含 5 项待拍板决策</span>
+  </div>
+</div>
+</header>
+
+<div class="wrap" data-page-node-id="rTBJ9PD5AvGZsZ38C4BFo8">
+
+<!-- 0 一句话结论 -->
+<section data-page-node-id="JJrv7x5gYcqJj7Eu5OpgyG">
+  <h2 data-page-node-id="EwHuHkoi118di6TNOQWG0I"><span class="no" data-page-node-id="8wEDq2CyJdbDlQ1W76NLHw">0</span>一句话结论</h2>
+  <p class="lead" data-page-node-id="9p8PBtnSZ0M2HilnTWiEpj">先给结论，后面是论证过程。</p>
+  <div class="callout c-green" data-page-node-id="wT1XtkM4TW2EDDubopJJ0k">
+    <h4 data-page-node-id="Qst7Y7zusZEIjwZ6Hy0Bj2">别扩平台，把已跑通的公众号自动化到极致</h4>
+    <p data-page-node-id="uHqcC8OCHqyuAICwVe6jKu">你的稀缺资产是<strong data-page-node-id="96RGHRpuTGWYJCQGFIBJlR">「一线技术经理 + 仍在写代码 + 真实工程实践」</strong>——这个资产只能通过<strong data-page-node-id="sgvjE1Tn1k0GavENweooXL">署名长文 + 开源项目</strong>兑现。而这两个载体的共同前提是：<strong data-page-node-id="MwbD0KC6BCYBNRVnljd801">可沉淀、可检索、可迁移</strong>。<br data-page-node-id="QFNoCeGe61HN3AC5URD0MR">
+    抖音静态漫画图文恰恰相反：平台分成系数最低档（<strong data-page-node-id="ObvvIKZHdSPRRjUojbGf1Z">1x</strong>）、内容不可迁移、无作品集价值、无护城河——是<strong data-page-node-id="BKvisDJlsMljCljQsozyz0">用你最不稀缺的能力（内容生产）去换最不值钱的收益</strong>。</p>
+  </div>
+  <div class="grid g3" data-page-node-id="FvfD1qgyAHuOPc617DQlv3">
+    <div class="card hl" data-page-node-id="MrANGMBHokXAzvU163RIQU">
+      <h5 data-page-node-id="bf8TGtjVSZOby5xjdIx5r2">立即做</h5>
+      <p data-page-node-id="DBBtBuPUMBsGSYeoGlAqUI"><strong data-page-node-id="cH8n5eoInmDZZYvzilElur">P0 草稿自动化</strong>：Playwright 填好标题/摘要/正文/封面 → 存草稿箱 → 你只按最后一下「发布」。本周可跑通。</p>
+    </div>
+    <div class="card" data-page-node-id="lFYyXx5iRiaLCZHI7OwYi2">
+      <h5 data-page-node-id="JkXrPiCFU1Ba2ldpj5DrDR">立即改</h5>
+      <p data-page-node-id="MN5n81pxSzHIuw5zFRAzcc"><strong data-page-node-id="n7whfLQGC93KYozuVT5ltC">排版降级</strong>：<code data-page-node-id="n9QZ2nn0wuHjhNDlmJhMZ8">render_wechat.js</code> 从「行途蓝风格」降级为「克制排版」——行途蓝作唯一强调色，砍掉所有装饰元素。</p>
+    </div>
+    <div class="card" data-page-node-id="4o6rEmwB4B0oujpJWiwSzL">
+      <h5 data-page-node-id="f4mchRHUk5xqf9hdLYkLNX">立即否</h5>
+      <p data-page-node-id="GFrn2nE3dxzgaTSYGS7dau"><strong data-page-node-id="nUKSYP5PYjGnPfRzVH7t2X">抖音静态漫画图文</strong>：过期 9 个月的信息 + 引流钩子。平台正在踩刹车，不是窗口期。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 1 以终为始 -->
+<section data-page-node-id="CypkcLn6iiss93wndso0AQ">
+  <h2 data-page-node-id="Oj1cT5MroGpGbk0gkKQD4y"><span class="no" data-page-node-id="oswJpMbii9S7oIeNaIgWIg">1</span>以终为始：两个终点倒推形态选择</h2>
+  <p class="lead" data-page-node-id="pTNQUheT3DLkOby7WUTOId">不是「我能做什么内容」，而是「我要的结果需要什么内容」。</p>
+
+  <h3 data-page-node-id="ZPieX5L8GjVDlR81F4Gduf">1.1 两个终点分别需要什么</h3>
+  <div class="grid g2" data-page-node-id="PXOYpzSwjMLOjbGQlPE9od">
+    <div class="card" data-page-node-id="oKB5Gt1RgdvDMk9A02QHKR">
+      <h5 data-page-node-id="bCA7DQLXsGUEPNYnTuU4cu">终点 A：个人作品集</h5>
+      <p data-page-node-id="OG39Q0FNau1dFdLfZAGVy5"><strong data-page-node-id="HtCwY2FFqLRJbTucHVdzgB">本质需求</strong>：可展示、可验证、可检索、抗时间衰减。<br data-page-node-id="Go8b3D6k9pES4xQZ0fqGBq">
+      <strong data-page-node-id="VKyTScXfbicaIMJaTzz4Da">硬约束</strong>：必须署名、必须公开、必须能被陌生人搜到并读完。<br data-page-node-id="G5UlQeXvNgEsPE8LaBuzE1">
+      <strong data-page-node-id="5aLKJEWf507FDjU9wlFDIg">淘汰项</strong>：平台锁死的形态（短视频只在抖音内可看）、无署名的形态（漫画图文）、7 天衰减的形态。</p>
+    </div>
+    <div class="card" data-page-node-id="rIRvFESPJRoJVhmwAryy5q">
+      <h5 data-page-node-id="ftHa7lz0vdfUIspEN6LzYz">终点 B：第二曲线</h5>
+      <p data-page-node-id="RI8zabAXJ1fJGMqrDGBEuJ"><strong data-page-node-id="6kmB9HcvzVRB1TFAFRQoNT">本质需求</strong>：可变现，且变现上限与你的专业能力正相关。<br data-page-node-id="4vO5uhNGWdcZc22s5lzUPW">
+      <strong data-page-node-id="fOG7jyUp0isaYwxSHiOGUr">硬约束</strong>：变现路径必须能复用「技术经理」身份溢价，而非纯流量变现。<br data-page-node-id="EhoxiqCIeWWXMCDwtk3xwD">
+      <strong data-page-node-id="8KNobSkF5uNcAVqrrawR7B">淘汰项</strong>：靠播放量分成（与身份无关，谁都能做）、靠信息差卖课（不可持续）。</p>
+    </div>
+  </div>
+
+  <h3 data-page-node-id="MaFz0Y7G01PxpbXOe0aiBh">1.2 四种形态对照（按两个终点打分）</h3>
+  <table data-page-node-id="Am13t43zfRBYFydmKuNq5n">
+    <thead data-page-node-id="ODoXz72czIe0RGqJyheEPP">
+      <tr data-page-node-id="VMf6wfQQYLAwRGiYs51yD4">
+        <th data-page-node-id="05RdA5DeC9fe94Dhip3RTp">形态</th><th data-page-node-id="lZ2a4loguYNcvLTLtYIeVa">作品集价值</th><th data-page-node-id="weMtRGyGjwYYkT8WN5Twtd">变现路径</th><th data-page-node-id="5jCuxZen95oFBIEcfVwjnS">资产沉淀</th><th data-page-node-id="eMgfens0UdqcEGpLBnyPea">时间成本</th><th class="num" data-page-node-id="yfRGY8l8rYYcM6uYdkVkNd">行途适配</th>
+      </tr>
+    </thead>
+    <tbody data-page-node-id="GKxEVcZs8Y5EhH2jqsmuJn">
+      <tr data-page-node-id="nbHiLAD8QIqK0nKjNYJe1E">
+        <td data-page-node-id="zK8lhaYCgZ0mJLgTVDkKVR"><strong data-page-node-id="cM8vcZ9q4E8KoogzTEVobp">长文（公众号）</strong></td>
+        <td data-page-node-id="KVqfe8HnCEVnnpi5q0kCdC"><span class="b b-hi" data-page-node-id="fn8bU61VeRkBTspWQJpxV9">极高</span> 可出书/可 SEO/可被搜一搜长尾检索</td>
+        <td data-page-node-id="f8kTuzu8DsChvqN45FjeeP">赞赏 → 流量主 → 付费阅读 → 知识星球 → <strong data-page-node-id="2YgevCMvv3smtms61W0cxk">出书</strong></td>
+        <td data-page-node-id="BUOY7m94LOd4Ck45veEpbC"><span class="b b-hi" data-page-node-id="NsLWDhkAMFpe6jxwFpQSd0">强</span> 一篇文章 = 永久资产</td>
+        <td data-page-node-id="UnIh61E5SXLh2UVXHkFiDr">中（2-4h/篇）</td>
+        <td class="num" data-page-node-id="lARcCIuB36HtonFAU74EpF"><span class="star" data-page-node-id="Iuy44utNRmjxCvCDD3meCa">★★★★★</span></td>
+      </tr>
+      <tr data-page-node-id="L6UsnS3wYSfRXGTBjE76vO">
+        <td data-page-node-id="ZO2mnCdAtEssfDbLk31LqB"><strong data-page-node-id="zaTGGT33Kt1H7HBnRBjpzM">开源项目</strong></td>
+        <td data-page-node-id="eFSjwK693wbxvbbRvijFku"><span class="b b-hi" data-page-node-id="x9Tik5Se2BOVuHf8jZtDLO">极高</span> 最强背书形式</td>
+        <td data-page-node-id="vsvFh4UMfIHCsAaRaIumZx">Sponsors → 咨询 → 求职亮牌</td>
+        <td data-page-node-id="Vww94VuHtpA5ewoeOCz3p0"><span class="b b-hi" data-page-node-id="w5Iy7M30Rhg2cxgU6BkP2f">极强</span> Star 复利</td>
+        <td data-page-node-id="N9aixLAV0ZlbyvUSyY8uP3">高</td>
+        <td class="num" data-page-node-id="Jp0TBruzmbPenZzT30QGwF"><span class="star" data-page-node-id="ZY8fpWtjhKpXLYSxbZtV2H">★★★★★</span></td>
+      </tr>
+      <tr data-page-node-id="eERFGacAjeoxM1NY83D0ON">
+        <td data-page-node-id="dLllEzubnetNAH4ACCpvwk"><strong data-page-node-id="CjmX5N7eMgb11Fd22pZdir">短视频</strong></td>
+        <td data-page-node-id="TUot4vRS6xFBd71Gb4ms5J"><span class="b b-lo" data-page-node-id="Go5nPbK33Ww338uZSxmrnE">低</span> 平台锁死，不可迁移</td>
+        <td data-page-node-id="9eeEdmTR9C0H28I2jaQJeb">平台分成 → 星图/花火商单（需 1 万粉）</td>
+        <td data-page-node-id="hLyJCToUj5MzFtanS3neqV"><span class="b b-gray" data-page-node-id="tJA3uxEDhyZqz8fHmbomTb">弱</span> 7 天流量衰减</td>
+        <td data-page-node-id="HDiJwOOskSKi0Zwe5DlGSF">高（拍摄+剪辑）</td>
+        <td class="num" data-page-node-id="pHmvUoCR7Usu3ShqcyQQ6C"><span class="star" data-page-node-id="fG5KeHQBVasgIOE50KtSAW">★★</span></td>
+      </tr>
+      <tr data-page-node-id="nGbNFXjaqj6GD3l36iBiWu">
+        <td data-page-node-id="vkhscVxEetw9anLZABEu95"><strong data-page-node-id="1eQK4cYoa9xcymVOuJejlr">静态漫画图文</strong></td>
+        <td data-page-node-id="XfBbSi8UV5CAVP7c8MG1GJ"><span class="b b-lo" data-page-node-id="KIltIlW3jSaZ5CoN0DKJ7R">无</span> 无署名、无沉淀</td>
+        <td data-page-node-id="Bc8KerB7uWrx10AIsJCGMH">抖音分成（<strong data-page-node-id="fYw5ADW7EfHe9COVntjjCd">系数 1x，最低档</strong>）</td>
+        <td data-page-node-id="EBoKU6hIBA8TG6tIC9PumA"><span class="b b-lo" data-page-node-id="6i1BMHCtA5AkHnJnpjPQMc">无</span></td>
+        <td data-page-node-id="aGcVEiEFWTaeiEIa3mCN0n">中（但需日更才有效）</td>
+        <td class="num" data-page-node-id="wCDVQ7Z5ifewBjt1t3D39a"><span class="star" data-page-node-id="pgDKaPDgUivULd59hdx9Iv">★</span></td>
+      </tr>
+      <tr data-page-node-id="q9djtcurhXz9F0NvnHKSKJ">
+        <td data-page-node-id="RDcdAF1A6mxu7mgtoNAZJb"><strong data-page-node-id="bXRhkfnAhWhOzZOcfyUCFN">播客</strong></td>
+        <td data-page-node-id="alCF4L5JZlkAbv1vVCfpab"><span class="b b-mid" data-page-node-id="DngECr1AUpRhCiOqE5UxPs">中</span> 有但检索困难</td>
+        <td data-page-node-id="mairR1AEYyfqQq5fIh7yTo"><span class="b b-lo" data-page-node-id="nZYBVyR5vVqeuum29yAayP">极弱</span> 国内无成熟分成机制</td>
+        <td data-page-node-id="1lyljJbtnmydu369glHEry"><span class="b b-mid" data-page-node-id="aoo1wmcm7M0hQc8tty2Hhp">中</span></td>
+        <td data-page-node-id="RlreizB8OZ9EjcUuF3riTl">高（录制+剪辑）</td>
+        <td class="num" data-page-node-id="d8FQrHzGVXfjwRW68Ui4LA"><span class="star" data-page-node-id="xGDXgI7y0z4E8fUCvELlo5">★★</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout c-blue" data-page-node-id="POsm6KgJLyFgiBjntHNKa4">
+    <h4 data-page-node-id="WfxsnpHtCVEjlvhqxxs6PG">倒推结论：长文 + 开源项目 = 唯一同时满足两个终点的组合</h4>
+    <p data-page-node-id="gXm2zSCFgQQaHB7duW8RRZ">而且这两者<strong data-page-node-id="FW5z9yZkBVPF7WXoHftQzJ">互为弹药</strong>：开源项目给长文提供真实素材（你已有 <code data-page-node-id="orsN7siKfyOEWzuF2T9Mzd">tokenhub_bench</code> 筹备中），长文给开源项目导流（发布后 24h 内发解读文，这条你已经在 RULES 里固化了）。<br data-page-node-id="iR8cwRrhGAu87cVwUYb8Px">
+    视频的正确定位是<strong data-page-node-id="8YTABgvaofAnT6pkEfUsS3">放大器而非主阵地</strong>——等长文跑通后再用视频号做破圈，而不是现在开新坑。</p>
+  </div>
+</section>
+
+<!-- 2 纠偏 -->
+<section data-page-node-id="ZtqoJ8Z1PF3ezHobnFnMUU">
+  <h2 data-page-node-id="iZ5lhvZGHtTVoWC1OOCJ9i"><span class="no warn" data-page-node-id="035e8ZOFfAKvv5zH2pk3I8">2</span>纠偏：抖音静态漫画图文不是窗口期，是平台在踩刹车</h2>
+  <p class="lead" data-page-node-id="CLfCZX0Kh52O7kt6IyrtfO">这条必须说清楚——你转述的那段文案是过期 9 个月的信息，且带引流钩子。</p>
+
+  <div class="callout c-red" data-page-node-id="fQhdeQD5iquPOidhcExAN3">
+    <h4 data-page-node-id="P897ockjSNniTs7fnekgRe">先看最硬的事实：抖音官方分成系数</h4>
+    <p data-page-node-id="zVPNcwDah6RdQwGQALKjdH">2025-11-20 抖音版权中心发布《漫剧分成系数调整公告》，这组数字被腾讯新闻、网易新闻、36 氪等多个独立来源交叉验证：</p>
+  </div>
+
+  <div class="bar-row" data-page-node-id="J8nFDBhiIF4GmnTmLdARs4">
+    <div class="bar-label" data-page-node-id="wHRlC77avHS2OqWG6Tw9dI">仿真人漫剧</div>
+    <div class="bar-track" data-page-node-id="EKcJSzGudxH1DaAxc862sX"><div class="bar-fill" style="width:100%;background:var(--green)" data-page-node-id="71Ijp4vzfuPnWNXzMCHqGQ">系数 60</div></div>
+    <div class="bar-val" data-page-node-id="tuX2hyOcJdHwGep4aHYh5p">重点扶持</div>
+  </div>
+  <div class="bar-row" data-page-node-id="F4Ic4zkMvfJyjR7qOUiKc5">
+    <div class="bar-label" data-page-node-id="N8FnjQVwa4G04V8liIbs25">2D / 3D 漫剧</div>
+    <div class="bar-track" data-page-node-id="L7sWrW5jwExE293cdWDebA"><div class="bar-fill" style="width:83%;background:var(--green)" data-page-node-id="BzVHDMzJO1X1ctwylNeqUJ">系数 50</div></div>
+    <div class="bar-val" data-page-node-id="E6NMkWzqlSQMHjKvgNQ2fv">重点扶持</div>
+  </div>
+  <div class="bar-row" data-page-node-id="4klaOR1ZlEjbpCDC2OfYmU">
+    <div class="bar-label" data-page-node-id="0XH3jH3hp7fiRHrB0iGIMc">沙雕漫</div>
+    <div class="bar-track" data-page-node-id="ivqePbQueXiHwYCabaY8fh"><div class="bar-fill" style="width:17%;background:var(--amber)" data-page-node-id="Upw5KBdIepChRwyJHV0uuF">系数 10</div></div>
+    <div class="bar-val" data-page-node-id="jDMyFf82lj0MZ5sYLEY9eZ">几乎放弃</div>
+  </div>
+  <div class="bar-row" data-page-node-id="Wi1FPr1MNEwiACXN201vVR">
+    <div class="bar-label" data-page-node-id="bAEm5pqLjP7km6OwaotqzN">解说漫</div>
+    <div class="bar-track" data-page-node-id="2GhlJWsH8MybJNH7pa5vJe"><div class="bar-fill" style="width:17%;background:var(--amber)" data-page-node-id="gUXYCb27i8BC9HLRhGtVdh">系数 10</div></div>
+    <div class="bar-val" data-page-node-id="wcJ0y1namu5bAbqGAuC0fk">1→10 回暖</div>
+  </div>
+  <div class="bar-row" data-page-node-id="J3o3ZYBPkiLrwd2yNeTE84">
+    <div class="bar-label" data-page-node-id="GNFMdbPLQbeCTGinKP8QCN"><strong data-page-node-id="Vu5JfE4FVW8HCPnhRZH9TY">静态漫画图文</strong></div>
+    <div class="bar-track" data-page-node-id="XxdQeNj3ajW0sJriCLXLjO"><div class="bar-fill" style="width:5%;background:var(--red)" data-page-node-id="R1RCXaJ0zOHfiqxwPvPAQn">1</div></div>
+    <div class="bar-val" style="color:var(--red)" data-page-node-id="xgEof0aTbPfqE8xehtuJEh">无机会</div>
+  </div>
+  <p style="font-size:12.5px;color:var(--ink-3);margin-top:10px" data-page-node-id="CnKPDunuIFTMeG05jC4ufM">注：全版权合作可获 2 倍系数加成。2026-07-29 抖音再次调整，解说类漫画系数由 1% 提至 10%（其余类型不变）。</p>
+
+  <div class="grid g3" data-page-node-id="Evii6I8XCSa7ctaKKEkurb">
+    <div class="card" data-page-node-id="yqMwfanJIcG9Uubs3J7mV3">
+      <div class="big red" data-page-node-id="SHjAHMY9sfxfmnrcg3mLyn">1x</div>
+      <h5 data-page-node-id="RHFap4oAXg8meC5vBRlBA0">静态漫画的分成系数</h5>
+      <p data-page-node-id="RV1ryJY3epbcmUGe13HWJ5">与仿真人漫剧差 <strong data-page-node-id="3Ho1NOqe7tcNy30GzwUM9A">60 倍</strong>。同样的播放量，收益差两个数量级。媒体原文：「静态漫更是无机会」。</p>
+    </div>
+    <div class="card" data-page-node-id="F6F6U0w9ekJq1zNIRjlMhP">
+      <div class="big red" data-page-node-id="9ijVYjeHxTHzuAjzaZm6b2">&lt;1%</div>
+      <h5 data-page-node-id="G8yDLQfL3IS7rs1zQqysGu">能月入 10 万+ 的创作者占比</h5>
+      <p data-page-node-id="6tqklec3cxWfrrvoSljiAg">行业数据显示，绝大多数创作者月收益 <strong data-page-node-id="ZCZtKDWZTAomqDcAFNILoD">不到 10 元</strong>。万次有效播放收益区间 15-80 元，且强依赖完播率。</p>
+    </div>
+    <div class="card" data-page-node-id="Ud8iFAZvW9gR0PF2dXM6bs">
+      <div class="big red" data-page-node-id="RX8G8csFEzpqxgmgFVXsKg">监管</div>
+      <h5 data-page-node-id="FIx5yfmIBThXmhqrG0j1F1">政策风险已落地</h5>
+      <p data-page-node-id="IpoD5X5JXgOweajXUPv3FD">广电总局已下发《管理提示（动画微短剧管理）》，官媒点名 AI 魔改动漫为「邪典视频」。未成年人保护是绝对红线。</p>
+    </div>
+  </div>
+
+  <div class="callout c-amber" data-page-node-id="HqGUkGYWM5ZPZjMoICg88T">
+    <h4 data-page-node-id="Bb82GfJ6qVkcH4EB18o6Ho">那段文案的三个红旗</h4>
+    <p data-page-node-id="81M6ZsUNF6sn5rjf1H8nhi">① <strong data-page-node-id="xxEtCRCNXHQIYBWOkgoVX8">信息过期</strong>：说「静态漫画图文稳稳吃分成」，但平台 2025-11 就把它的系数砍到 1，明确引导创作者转向精品化；<br data-page-node-id="alk6mhKIUGDHS8bOwaA3F2">
+    ② <strong data-page-node-id="YLlP1vdf7yseLUZ8IpZyXe">引流钩子</strong>：末尾 <code data-page-node-id="NhNQSTa3u7k8PjF8jiZZT5">pan.quark.cn/s/...</code> 网盘链接是典型的「资料包/教程」引流，卖铲子的人告诉你挖金子容易；<br data-page-node-id="i0zrJgUCtQ7hAgvwVnu7JT">
+    ③ <strong data-page-node-id="97Z3ICPdfhZSN1Thvn7i59">赛道错配</strong>：这个赛道的护城河是「日更产量 + 批量矩阵账号」，而你最稀缺的是「一线技术经理的真实实践背书」——用它去换 1x 分成，是资产错配。</p>
+  </div>
+
+  <p data-page-node-id="PZgDtQxlnEi3z1K9gbHvkm"><strong data-page-node-id="V1TmOh1h5PKTQfs2IZMMG8">如果你的判断是「但确实有人赚到了」</strong>——是的，赚到的人在做两件事：一是<strong data-page-node-id="TOQWIxH5sSlQlM0FBcHnBO">批量矩阵账号</strong>（十几二十个号同时跑），二是<strong data-page-node-id="ZRoeVdW821EHfjukW3H9Z2">网文 CPS 推文分销</strong>（挂载小说链接抽 50%-90% 佣金，而非靠播放分成）。这两件事都需要全职投入，与「在职低调」的约束直接冲突。</p>
+</section>
+
+<!-- 3 对标账号 -->
+<section data-page-node-id="jhpTf7JUdwkMf3iGP3EjDJ">
+  <h2 data-page-node-id="euwwahTlGSQqTjrCMwFcd3"><span class="no" data-page-node-id="8viM1qYhrncsoeUE3IE1mQ">3</span>对标账号解码：4 个账号的唯一共性是「合集化 + 资产化」</h2>
+  <p class="lead" data-page-node-id="9ODGit4lsD633hp8iW4vPQ">不是学他们做什么内容，是学他们怎么把内容变成资产。</p>
+
+  <table data-page-node-id="z36MG8LJgoGDxwDfhhlEWW">
+    <thead data-page-node-id="F95coZpODhCcveWTaaw8sz">
+      <tr data-page-node-id="apka1D4qKvnJ6tQyq4Wx1A"><th data-page-node-id="3MeP89L7A08p4x49DLqB4k">账号</th><th data-page-node-id="aZRzjFZW67eHmu6PfPQv5D">主阵地</th><th data-page-node-id="v6094cb30UJYdMKXWjsTEF">量级</th><th data-page-node-id="BUDIaQr9wWFpqBsdQ5indx">核心打法</th><th data-page-node-id="wz7XzqCKGOAcZoackhrQYP">对行途最可抄的一点</th></tr>
+    </thead>
+    <tbody data-page-node-id="8KgN4YKxaBWLYp7GdpoTBU">
+      <tr data-page-node-id="JUVRsYI27mLX5T3yLqf0f9">
+        <td data-page-node-id="kgwQatJ9kTdPFOZNsXDL21"><strong data-page-node-id="uaFnxbJ3eQMx6f7JFyJhCA">数字生命卡兹克</strong></td>
+        <td data-page-node-id="JIvn4Q1houGD6zWfU4Tzlx">公众号</td>
+        <td data-page-node-id="gyMjgOALBm1HWSU7qHiOYi">AI 榜连续 11 个月 TOP1<br data-page-node-id="lMQNgSVQ7pFnXgaw1KDAX3">单月阅读 55 万+</td>
+        <td data-page-node-id="4bHLNxEh5RRJIAUhBycfVd">「活人感」是 AI 时代最贵的奢侈品；HKR 原则（Hook + Knowledge + Resonance）；选题交集模型 = 专业领域 × 读者兴趣 × 时间节点</td>
+        <td data-page-node-id="B0DzAqnnaA2sCOapb7LMPt"><strong data-page-node-id="Robj1XlNfiOyQSaLHQZp5R">人味即护城河</strong>——正对你说的「直接、不花哨、可信度更高」</td>
+      </tr>
+      <tr data-page-node-id="ScG1sqVaYEeSkjPzEQ1WXQ">
+        <td data-page-node-id="M5oiJjkoP6yhWc2zyvjMLX"><strong data-page-node-id="RD8PR3PEMrJYPBfDRqC1VJ">玄离199</strong></td>
+        <td data-page-node-id="WK7GvizR5I23SFH51dlfAB">B站</td>
+        <td data-page-node-id="6KvC70KELehZpSpxnJ6ZSw">单条最高 670 万播放<br data-page-node-id="OA6veQWDhi5w1BS35YsCkK">合集 100+ 期</td>
+        <td data-page-node-id="BFN2bOIrye74cWJri1IGbP">「每周科技补全」周更系列；<strong data-page-node-id="5zMFO1DvuBApqVoYxOJlB1">视频里提到的开源项目沉淀成 GitHub 仓库</strong>（<code data-page-node-id="ARpAE2ubNwI4N0xcdsEMLZ">xuanli199/weekly</code>，3.4k⭐），再做成静态博客 + 飞书文档</td>
+        <td data-page-node-id="tdIwswd8iHEqz4lNiQzHaw"><strong data-page-node-id="fD7MStTSz27C8sFISV7qL7">内容资产化</strong>：一期视频 = 一个可检索的 GitHub 仓库 + 长尾搜索入口</td>
+      </tr>
+      <tr data-page-node-id="XFGLygCAwO6KJ7HhKL6faM">
+        <td data-page-node-id="gzSiYoDN3e9bId1iLiW07t"><strong data-page-node-id="UAY1bA01iBJ31EcRAOW9st">小白debug</strong></td>
+        <td data-page-node-id="VhqRSUrjXjNa71HD9wDRUC">抖音 + 公众号<br data-page-node-id="CnGjEIHwa6SZY0Fs2MBPnt">+ YouTube</td>
+        <td data-page-node-id="D5eVJhnl0GE0y5CWhguJs0">抖音 30 万粉<br data-page-node-id="hEJEMO4L9HEXzX8i56u8na">前字节资深研发</td>
+        <td data-page-node-id="RXMM4bBZgbeyhfOxGLi4Rp">硬核技术趣味解说（《玩原神学编程》《MySQL 索引为什么选 B+ 树》）；全网同名；<strong data-page-node-id="b4dBlKgt9hMaLDGc61psV1">已出版《趣味图解网络》</strong></td>
+        <td data-page-node-id="TaX0oHVgsiZiV66SOepfT6"><strong data-page-node-id="KOfY3AnFWSpt8p7SJxbPm1">长文→出书路径已被验证</strong>，且与你「攒下去就是一本书」的 RULES 完全同构</td>
+      </tr>
+      <tr data-page-node-id="UT5lu4EeEHGvEPiOR3aTBX">
+        <td data-page-node-id="jXGddQWb9DzWLuA8S80qaU"><strong data-page-node-id="RT5yUE5tPFtVjGU13aLaKx">神秘的鱼仔</strong></td>
+        <td data-page-node-id="RTaBHoU7jkMqI5rKJyKvRP">B站</td>
+        <td data-page-node-id="mGM8wiqHBMbROfuiSzHMi9">3 万粉<br data-page-node-id="XUIWC9Xfks9uczSWMOH8io">单条 7-19 万播放</td>
+        <td data-page-node-id="eSDNlqve7SrbsojsNgP4mH">1-3 分钟短片；终端工具 / 开源项目 / AI 客户端；<strong data-page-node-id="4S0w7Rl9pGKthJQliKGmX1">合集化</strong>（AI 聚集地 67 期、有趣的 Github 39 期）</td>
+        <td data-page-node-id="BaFUErP7AyGU37zFbKtk7i"><strong data-page-node-id="rEaWiCKDMNgAH5GH1hCOny">与你 harness 定位高度重合</strong>；但注意他在好看视频的分发只有几十到几百播放——<strong data-page-node-id="7K4DFfwfqccux6kjbBYQqZ">多平台分发不等于有效分发</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout c-blue" data-page-node-id="7XXNsngvd8d6xyLovjCM5Y">
+    <h4 data-page-node-id="b4AEDkgzZLOrj6qtj1b1kQ">四条共性，正好对上你的四个问题</h4>
+    <p data-page-node-id="Ol2nwKvXITAriutl3SXKrs"><strong data-page-node-id="XxgFqycA9mGfgnavJaa7ow">① 全都在做合集/系列</strong>——玄离199 的「每周科技补全」100 期、鱼仔的「AI 聚集地」67 期。这就是你说的「定义好合集啥的，系列啥的」，而且是<strong data-page-node-id="U25ix4RPEnt3H9nHdxrNhY">涨粉主引擎</strong>。<br data-page-node-id="lOSPSE0OAAv0km8V7eaXIt">
+    <strong data-page-node-id="hCfokJUdfD7U9qs8oV1EXQ">② 全都在做资产沉淀</strong>——玄离199 沉淀成 GitHub 仓库，小白debug 沉淀成书，卡兹克沉淀成课程。<strong data-page-node-id="rvzk2gU7vSknZ94FaqplL3">没有一个人只靠平台分成活着。</strong><br data-page-node-id="HbCCGfF8MkUxxrx81AhHRn">
+    <strong data-page-node-id="JHBfXH2s7R5hGKn6GEtBVs">③ 全都靠长尾而非爆款</strong>——合集化的意义是让存量内容持续被搜到，这和你「搜一搜长尾友好」的判断一致。<br data-page-node-id="Sxh7DJ8ZcOLyJzZkzMHlCu">
+    <strong data-page-node-id="R16TLb67489hy0wxOdMVfU">④ 都在「人味」上做文章</strong>——卡兹克原话：「<strong data-page-node-id="RlsYjB3o2I343mdLYZdS42">你的不完美、你的主观、你的各种『我以为』，才是你在 AI 时代最坚固的护城河。</strong>」</p>
+  </div>
+</section>
+
+<!-- 4 内容风格 -->
+<section data-page-node-id="bBv94O4eBOXsWrb9CMh0Uu">
+  <h2 data-page-node-id="ygXgEieXfROMHIEeC2D8RC"><span class="no" data-page-node-id="SqWPtnwUAR5UvQACSqLiHD">4</span>你的洞察是对的：克制排版 = 降低认知负载，它直接换算成流量</h2>
+  <p class="lead" data-page-node-id="8e7DWT9EepIlNAZrtR7IzV">「很直接没啥花里胡哨、人味更高、可信度更高」——这个判断有认知心理学支撑，且有可量化的参数。</p>
+
+  <h3 data-page-node-id="7KBB1o5AQcXaPBaBhcDO6J">4.1 为什么花哨排版会赶走读者</h3>
+  <p data-page-node-id="mNR9A0S6n9F13SzCRkH7oR">2026 年的流量环境下，用户注意力已从「获取信息」退化为「<strong data-page-node-id="auEnE0PcQ0ofGm8S1vDUbT">过滤信息</strong>」。装饰性元素（边框、渐变、花哨分割线、动图贴纸）属于<strong data-page-node-id="g0sOxlgBwNHfOYklJLaLFD">非语义信息</strong>，会挤占读者处理核心观点的带宽——结果是文章看起来很美，读完大脑一片空白，甚至视觉疲劳直接跳出。</p>
+  <div class="grid g2" data-page-node-id="kQgGPF0REelfgPg9nZ0jfT">
+    <div class="card" data-page-node-id="ce1ZOPzTTFPUspNlae2BLl">
+      <h5 style="color:var(--red)" data-page-node-id="zFSByApCh65X2gPABbbQsV">装饰性排版（业余）</h5>
+      <p data-page-node-id="JAqDQeCalpnJjbNsbTEyki">目标：视觉愉悦 / 自我表达<br data-page-node-id="4sECewrhjJ9m7RCc0I4DJp">重心：找精美模板<br data-page-node-id="SyNqzcfSDcDkekUHsocAMc">视觉逻辑：元素堆砌<br data-page-node-id="lxXtF5M0JGFPgzGqHXvJiK">结果：点赞数好看，完读率崩</p>
+    </div>
+    <div class="card hl" data-page-node-id="cmHMA9675Ia1mClxgADmdg">
+      <h5 style="color:var(--green)" data-page-node-id="YfmGiaHZsQNGZAm7pJKQ2V">转化型交付（专业）</h5>
+      <p data-page-node-id="VcIe5GvqVW2geqQ7lHegkd">目标：降低认知负载 / 驱动 CTA<br data-page-node-id="zzSM91gBXwthKGfSezBXqD">重心：设计信息流向<br data-page-node-id="yQ7lC3YoOAUFNNO9uRKnMh">视觉逻辑：视觉引导线<br data-page-node-id="7u49cmzf7VdJPynGgTxVjE">结果：完读率高 → 搜一搜收录稳 → 长尾流量</p>
+    </div>
+  </div>
+  <p data-page-node-id="tnU62DwUHtu8iLoZRzFpO2"><strong data-page-node-id="kvBLVDWBRXjBG7bAqCCdmb">关键因果链</strong>：排版杂乱 → 完读率低 / 停留时长短 → 被平台判定为「低质内容」→ 搜一搜收录不稳定 → 长尾流量归零。<strong data-page-node-id="R6m4fPzz5GU6FlLFMeckNa">排版不是审美，是流量工具。</strong></p>
+
+  <h3 data-page-node-id="fjDiPSmCS2qb5I8ct98Wio">4.2 可直接抄的极简排版参数</h3>
+  <table data-page-node-id="mwWTRdRWh4iDaDLalBxVKC">
+    <thead data-page-node-id="1UGj5XZ4tHhLJEIkqjm2Ys"><tr data-page-node-id="7XC3gUgaUmUA8Fks8fT70k"><th data-page-node-id="Kg8FtbCdAm9LrAjihl6JNF">维度</th><th data-page-node-id="7rlVBfACoLWU6zMLkAN3Qe">参数</th><th data-page-node-id="psM3743qoip86oelDYKJPP">原因</th></tr></thead>
+    <tbody data-page-node-id="NYydmI6Vlp0gcXBuCHGpGS">
+      <tr data-page-node-id="HmvBxbOXz74FsdH6MiAOwO"><td data-page-node-id="kH70hkP5BhcUkkOryERh0e">字体</td><td data-page-node-id="LhtUc0wKSabJfxi74Nyt1F"><strong data-page-node-id="H54FcGMM2llwgWW7Ri2xQp">保持默认，不要手动改</strong></td><td data-page-node-id="Wr5VUWDTkltdzNxY7VLP4b">你在电脑端选的字体，到手机端会被微信强制还原成系统字体（iOS 苹方 / 安卓思源黑体），改了白改还容易格式错乱</td></tr>
+      <tr data-page-node-id="1iUAzZKCBcBJupSELDiLDZ"><td data-page-node-id="fNTfqDAo8c7pcXFdqUWgqS">字号</td><td data-page-node-id="Yd7sS2GlxTiGftYr1nGpUQ">15-16 px</td><td data-page-node-id="X2IMwiPOCiTAK14ttGYc03">手机阅读黄金尺寸；14 太小费眼，17+ 偏大显粗糙</td></tr>
+      <tr data-page-node-id="ssRdXI9GD2zR1n0V7juNk7"><td data-page-node-id="ETYr1wwcrIsAEjANtkdper">行距</td><td data-page-node-id="eCjhJ0PQUeEFwX22jOpLb8">1.75</td><td data-page-node-id="A1KTsThA2LqjQQNEkN4hwS">疏密适中，拉长停留时长</td></tr>
+      <tr data-page-node-id="IVCGMZmX98LxmcL66wa2Tz"><td data-page-node-id="FfhumuDBZznLCXhMwnNGVG">字色</td><td data-page-node-id="SV0xgxHmZvriwMajGI2Aav">#333333</td><td data-page-node-id="2Aufo4DTNTGbYNZ0UBLWwH">比纯黑柔和，不累眼；<strong data-page-node-id="i3nleL7Blyan1pB1bsS7ga">拒绝大红大紫</strong></td></tr>
+      <tr data-page-node-id="KEq9kuwUCDZcQyjvfEIfUK"><td data-page-node-id="ljD2lHKSlVdUCeDqZYyebY">段间距</td><td data-page-node-id="4R6LnA9Tg18jEsttYRx9GI">8-15 px</td><td data-page-node-id="jjaO9LWpEhCUIBhQPITnny">制造呼吸感</td></tr>
+      <tr data-page-node-id="LmsDlH2pHTo90BaZz2vx5g"><td data-page-node-id="dgZnVA7Zs8igj8Ubr0pHd8">段落长度</td><td data-page-node-id="KgPGrr1khdKSU1YXEaXAvp"><strong data-page-node-id="gtC9UnoZrVVCfQ5fBwAFsQ">每段 2-4 行</strong></td><td data-page-node-id="VqFYef7uakg7gA7zWsr1SR">单段超 5 行，跳出率直接翻倍</td></tr>
+      <tr data-page-node-id="nVXjMXaYWS5zBd6ymt1Sbr"><td data-page-node-id="qZfGloNO9EUQ1ArzFX7o0n">强调方式</td><td data-page-node-id="yd5xN1E3AjmaeHNvGw2XAn"><strong data-page-node-id="AR2EK908lY7w9IrHB5ZeLU">只加粗，不上色</strong></td><td data-page-node-id="fUvo6vbGMSWQxAYvdguKEO">全篇仅 1 种低饱和强调色（行途蓝 #056DE8）</td></tr>
+      <tr data-page-node-id="wRZGzT5VE4tyEci6088Oag"><td data-page-node-id="zXr3TAzdsd5R9wVlA3FDaA">标题层级</td><td data-page-node-id="AcoZUV4t9yeUpqzIQ3QNkx">一级 18px 加粗 / 二级 16px 加粗</td><td data-page-node-id="Vtrv0Cmhm59uvRzUQyl7E7">只放大字号 + 加粗，<strong data-page-node-id="xlqf3utgayzvATu6UEg91N">不换字体、不涂色、不加底纹</strong></td></tr>
+      <tr data-page-node-id="mPeMNnOtn7gCFjp8nArdkB"><td data-page-node-id="osM4RlJ8jx1Zhy3u2NQ5Fx">禁止清单</td><td colspan="2" data-page-node-id="4lkT6AfTDlQT5fUlAv93ZY">❌ 花哨分割线 ❌ 背景模板 ❌ 动图贴纸 ❌ 多色文字 ❌ 花边框 ❌ 彩虹标题</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout c-amber" data-page-node-id="z2KOMFHQeO35lcv56OYTjQ">
+    <h4 data-page-node-id="gvaCxAC8AfkspOSFWDL1VM">对现有工具的影响：<code data-page-node-id="3IQJSonIzbtH7vgyTykIEY">render_wechat.js</code> 不是推倒重来，是降级</h4>
+    <p data-page-node-id="WSQXDiv8XSDpDbRZX6dExd">行途蓝 #056DE8 作为<strong data-page-node-id="DAthg0ER4HmmaEs7XfOF06">唯一强调色</strong>完全 OK，品牌识别度就靠它。要动的是：砍掉装饰性元素（背景、花哨分割线、多色），统一字号行距段距，把「设计感」的预算从正文转移到<strong data-page-node-id="fWd0XPpXC9uB54p5WBHq9W">封面图和头图</strong>上——正文老实系统默认，封面图做足品牌感，这才是高级感的正确投放位置。</p>
+  </div>
+</section>
+
+<!-- 5 流水线 -->
+<section data-page-node-id="Ym1JZTev0pZedNzbpt9eII">
+  <h2 data-page-node-id="xKRBRm6yj7P1G23NzFaSFv"><span class="no ok" data-page-node-id="MaEHSK6gBPlVrxDy1jij03">5</span>发布流水线设计：AI 干到草稿箱，人只按最后一下</h2>
+  <p class="lead" data-page-node-id="3ID5VvaJlsgDkAgLbkgGKY">这是本次的核心交付。设计原则已由多个成熟方案交叉验证：<strong data-page-node-id="jwr1WO7Y5u9C4cKaa6lNwx">所有方案都停在「草稿箱」，由人工最终审核发布</strong>——这正是你要的边界。</p>
+
+  <h3 data-page-node-id="wTpbPNNdw9fcUQkUclQrpf">5.1 技术选型三选一</h3>
+  <table data-page-node-id="36yXoUONV6ZD9hNAgiLMQn">
+    <thead data-page-node-id="e8nJDOtTE7O3L7z1Flk1TZ"><tr data-page-node-id="yVmtrPrkHCvM2W4HREAEVW"><th data-page-node-id="0G5wt7XAsrHxVEcnGJFRNJ">方案</th><th data-page-node-id="ppSTdfj7x0N3c6aHP0gmNB">原理</th><th data-page-node-id="XE0xg7FdUTUfCfHlfbZ6Lt">优点</th><th data-page-node-id="W2xO911hFWDcio5mdv9lDH">缺点</th><th class="num" data-page-node-id="Iq5aifaDztZb6neHsSoOoC">适配度</th></tr></thead>
+    <tbody data-page-node-id="a5QNGMmfoXfMKuBkYpkLuK">
+      <tr data-page-node-id="2B1YgwTp2t1NGQIdnsaGjl">
+        <td data-page-node-id="VInZFzHPrIapSgkfCkd40v"><strong data-page-node-id="gAQiq66TKaFmTwyMDetGVq">wenyan-mcp</strong><br data-page-node-id="qJTH4XbEgfkxCaEgV4JbuJ"><span class="b b-blue" data-page-node-id="ByjV1cUdzJlMZdqOAAzga1">官方 API</span></td>
+        <td data-page-node-id="BCV6KdUtBnSrnsavREpwbG">AppID + AppSecret + IP 白名单，调官方草稿箱接口</td>
+        <td data-page-node-id="2wte57Co15r5ITV3xBxpw1">最稳定、官方认可、支持图片自动上传、可主题化排版</td>
+        <td data-page-node-id="9EHVqd7TafgVRWG22CjDYS">需配 IP 白名单（家庭宽带动态 IP 需定期更新）；<strong data-page-node-id="d3DC4lR60F7R1wv5v8gFKK">订阅号部分接口权限受限</strong>，需确认你的号类型</td>
+        <td class="num" data-page-node-id="uLc0JcM9YV6FvxjQex6nSq"><span class="star" data-page-node-id="Nr1iY4qpsU7QMq9NVOrTgh">★★★★★</span></td>
+      </tr>
+      <tr data-page-node-id="VQy0XCooKj9ekPqSIeGMnE">
+        <td data-page-node-id="ruZLLVCOuxAlGn4UbupmBw"><strong data-page-node-id="rVE1u1fbWYuIEcn6TNthCK">Playwright + 持久化登录态</strong><br data-page-node-id="ZB3Xung7wRt8A7KGpyF0ub"><span class="b b-gray" data-page-node-id="0GDVt989yHAUCBQ3SIteoQ">模拟人工（你倾向的方案）</span></td>
+        <td data-page-node-id="nOVRBs0nKPCFZXHMwKYaUK">持久化 <code data-page-node-id="VeWNapv0r8SUQni0Z8H3RK">user_data</code> 目录保存登录态，驱动 Chromium 填表</td>
+        <td data-page-node-id="yoCwzKh021nX5o0vKYJzZ3">无 API 权限限制，人工能做的它都能做；一次扫码长期复用</td>
+        <td data-page-node-id="0GzcNHhYIssCMF8jelXuME">需内嵌反检测脚本规避识别；<strong data-page-node-id="DAEqVmlmM3xulQPPDE2SWw">微信编辑器会过滤样式</strong>（需 section+span 渲染模式）；UI 改版会失效</td>
+        <td class="num" data-page-node-id="j1ojej6qsKqyMrk3slfD2B"><span class="star" data-page-node-id="CwOAMGTT4nI7Cgv6BxN29T">★★★★</span></td>
+      </tr>
+      <tr data-page-node-id="nXTDxeiaMH1GwvLMfraGBZ">
+        <td data-page-node-id="YtpsDK6KCAxFoA2ick0ifH"><strong data-page-node-id="gCSdIGHW2IzneMEd5u9ThK">Chrome 控制模式</strong></td>
+        <td data-page-node-id="bqStkEtz89o4B88WBjsZLt">复用你本机已登录的浏览器会话</td>
+        <td data-page-node-id="fJzI1QYYL49IZ6mz56K62U">最简单，登录态直接可用，实时可见操作</td>
+        <td data-page-node-id="9r7nhX4Sq1OtPLK909utwa">交互式，不适合批量；不适合定时任务</td>
+        <td class="num" data-page-node-id="5tgIKW9o1KG081aeimFnFJ"><span class="star" data-page-node-id="rICSgkFt1FgwzQKyxgzuUu">★★★</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="callout c-blue" data-page-node-id="uHQ4bkzr0WfVFa2u3E5PR5">
+    <h4 data-page-node-id="AuM3VrsS29YTuWDohBok8c">建议：主 Playwright，备 wenyan-mcp</h4>
+    <p data-page-node-id="nmR6bW1wQBKJySTTVDduFd">先用 Playwright 跑通（不依赖 API 权限，且能填合集/标签等 API 不好做的字段），等确认你的号类型和 IP 条件后，把稳定性要求高的部分切到官方 API。<strong data-page-node-id="6UtGrsHR4WEkd7hpwGp5av">两条路不冲突，可以并存。</strong></p>
+  </div>
+
+  <div style="background:#fef2f2;border:1px solid #fecaca;border-left:4px solid #ef4444;border-radius:8px;padding:16px 20px;margin:16px 0">
+    <h4 style="color:#b91c1c;font-size:15px;font-weight:650;margin-bottom:8px">⚠️ 2026-09-02 修正：主线建议已变更，动手前先看这条</h4>
+    <p style="font-size:14px;color:#3f3f3f;line-height:1.85;margin-bottom:10px">
+      上面「主 Playwright」的建议，在后续调研中发现两个此前未纳入的硬约束，<strong>优先级高于原建议</strong>：
+    </p>
+    <p style="font-size:14px;color:#3f3f3f;line-height:1.85;margin-bottom:10px">
+      <strong>① 封号风险。</strong>浏览器自动化模拟登录公众号后台，行业资料明确标注<strong>违反《微信软件许可及服务协议》「自动化操作」条款，有封号与司法风险</strong>；适用场景被限定为「个人订阅号、低频自用、只存草稿后人工确认」，明确<strong>不适合高频/商用/多账号</strong>。而公众号是你 IP 战略的<strong>主阵地、职业安全垫的载体</strong>——用安全垫载体去冒封号风险，是目的与手段倒置。
+    </p>
+    <p style="font-size:14px;color:#3f3f3f;line-height:1.85;margin-bottom:10px">
+      <strong>② API 权限口径冲突。</strong>行途技术手记为<strong>未认证个人订阅号</strong>。官方接口文档「适用范围」表把 <code>draft/add</code> 对订阅号标为可调，但<strong>微信开放社区有大量实测反馈：未认证/个人订阅号调用返回 <code>48001 api unauthorized</code></strong>。官方回答原文亦称「该接口仅对企业主体且已完成微信认证的公众号开放」。同时 <code>freepublish</code> 发布接口<strong>自 2025-07 起已对个人主体回收</strong>。
+    </p>
+    <p style="font-size:14px;color:#3f3f3f;line-height:1.85;margin-bottom:10px">
+      <strong>修正后的执行顺序</strong>：<strong>先实调一次 <code>draft/add</code> 定生死（一个 curl，成本极低）</strong>。
+      · 返回 media_id → <strong>改走 API 路线为主</strong>（比 Playwright 稳定得多：不受 UI 改版影响、不需反检测、不需关沙箱；且「只到草稿箱、人工终审」本来就是我们的设计原则，与个人号权限天然契合）。
+      · 返回 48001 → Playwright 成为唯一路线，<strong>此时必须重新评估封号风险后再决定是否推进</strong>。
+    </p>
+    <p style="font-size:13px;color:#6b7280;line-height:1.8;margin-bottom:0">
+      补充坑位：AppSecret 自 2025 年底起已迁至<strong>微信开发者平台</strong>（developers.weixin.qq.com/platform，不在 mp 后台），仅在「启用/重置」时显示一次，关窗即焚；IP 白名单必配，否则报 40164。
+      详见 <code>outputs/工作流编排工具选型判断_2026-09-02.html</code>（含完整 curl 测试命令）。
+    </p>
+  </div>
+
+  <h3 data-page-node-id="bOoZNHS1o6BkSKIpeKpNpe">5.2 流水线全景：AI 段 + 人工段的分界</h3>
+  <div class="pipe" data-page-node-id="TCP0Q6PuQOzaYBqxslL38d">
+    <div class="pstep ai" data-page-node-id="S3Vi44AdkSrxapHsXyOx8l"><div class="pn" data-page-node-id="xnpsdnDhdlKmTUHYr84S7v">STAGE 1</div><div class="pt" data-page-node-id="VwFsPaPh4HXFqT0keATdVs">素材 → 选题</div><div class="pd" data-page-node-id="TbBN9hcWDLKVXighQB1yfj">脚本扫描会话/项目<br data-page-node-id="hPFSIcqFhExhYgBOjNcelF">生成选题卡<br data-page-node-id="FKRPmsiTHYMN5Bqn9S8May"><em data-page-node-id="U3Hg8tbDAUQCEtrt5GSUye">全自动</em></div></div>
+    <div class="pstep ai" data-page-node-id="BoBfo2r1JjHFxmCVqLMZSO"><div class="pn" data-page-node-id="errLBnBQ1n4j2F0e70erAI">STAGE 2</div><div class="pt" data-page-node-id="ep8e4SOXjzOniB6BOiHHlf">选题 → 成稿</div><div class="pd" data-page-node-id="zomblYX7MHfeEPRdXr9jGh">3 段法撰写<br data-page-node-id="vFJenPkBLpMt9jLYxTdTyD">合规+SEO 门禁<br data-page-node-id="s0tB7rjznP8tjC7ubokLyO"><em data-page-node-id="1rBWtK7fGkCRnO9xvsoYr1">AI 生成</em></div></div>
+    <div class="pstep ai" data-page-node-id="NrAMQWeIJfdGlkVxbDR538"><div class="pn" data-page-node-id="IlMJOrotYF4oLo4cbI6rCY">STAGE 3</div><div class="pt" data-page-node-id="1L8zQHabAxSaIFVuDymoUt">成稿 → 排版</div><div class="pd" data-page-node-id="CfHutC69PUOVOsvLBMxvLP">render_wechat 渲染<br data-page-node-id="iSx3xensNpNuJ39qBUhEOE">封面图生成<br data-page-node-id="1ODptxfO6OeDl4hmwuz4M7"><em data-page-node-id="MHvhFzLA7oMWjWTR1HoChV">全自动</em></div></div>
+    <div class="pstep ai" data-page-node-id="yZkyp0UPBB3eDoiRWZ9v8l"><div class="pn" data-page-node-id="fB8Um620sUNxlPRFcKNyG5">STAGE 4</div><div class="pt" data-page-node-id="CxXHYnUsQ6YojBw9iSG527">填草稿箱</div><div class="pd" data-page-node-id="lagBVdHejcdrQOS9HyJhns">Playwright 填表<br data-page-node-id="icwbr12Xv5uabNq9U0xi7W">含合集/标签<br data-page-node-id="4IUv6dVVZYfOFgob4MRFSr"><em data-page-node-id="nh5rKBZ4HdgGi20d2xrZ0z">全自动</em></div></div>
+    <div class="pstep human" data-page-node-id="oiBzM7gxmbQGIGXYC1EJpX"><div class="pn" data-page-node-id="O2gWuSxT7jRnz9tIYXwaJJ">GATE ★</div><div class="pt" data-page-node-id="b8kjQlTctIKB1h3KqEVuSr">人工审核发布</div><div class="pd" data-page-node-id="hUUFbMEQFmsHKCn1xREoA0"><strong data-page-node-id="WMtONXpk5WCRxqoMpcaMB1">你读一遍<br data-page-node-id="2K0KTuavrAry7b8iInORVG">点「发布」</strong><br data-page-node-id="dlXgGdWp2UVNg6fbtAuXGS"><em data-page-node-id="WBEhS30HdGF33cMCHsxWaI">人工</em></div></div>
+  </div>
+  <p style="text-align:center;font-size:13px;color:var(--ink-3);margin-top:-6px" data-page-node-id="POgqXuO7wFpvmksQA6796g">↑ 蓝色段全自动，橙色段是唯一的人工卡点 —— 这也是所有成熟方案的共识边界</p>
+
+  <h3 data-page-node-id="9Jl15uIcduv85BkLZH57vc">5.3 四期落地节奏</h3>
+  <table data-page-node-id="cLYOlm7B5h0GWm7gUBd2zQ">
+    <thead data-page-node-id="AIUXqXPxKA0xAELW7YXd14"><tr data-page-node-id="WXCMWGoc7DrsDqEpGrZb3K"><th data-page-node-id="p1IUvmCfYg1mkXtDQrf9fo">期</th><th data-page-node-id="rxMaf9P8tf0zECpOhH5ubF">目标</th><th data-page-node-id="tGAMDG5dro73zdR3IeLQs5">交付物</th><th data-page-node-id="Ihh0HeJluFAsJ46zhHwgZh">关键动作</th><th class="num" data-page-node-id="SiWhZHFm2g8zGUZC5G0naM">周期</th></tr></thead>
+    <tbody data-page-node-id="G7QGUteh1Do97HBYW2rC5A">
+      <tr data-page-node-id="E0gGrKsCX8161Q1GZcMkDW">
+        <td data-page-node-id="Rm45Y4yH1N1ABDNbLmuhs9"><strong data-page-node-id="Dp9aRgOpIL8edjZ86oQvYY">P0</strong><br data-page-node-id="yuAtO0ZHTnKwOPf5pJH7vK"><span class="b b-hi" data-page-node-id="CnpsbnccIszWRwqCariJyB">本周启动</span></td>
+        <td data-page-node-id="fI4T8s6e0Flze9dyPK43tx">草稿自动化跑通</td>
+        <td data-page-node-id="YF8LHehoNqBZJitf6cmQ0A"><code data-page-node-id="HHmlFUqFjyLqHvJFfDn5tZ">tools/publish/wechat_draft.py</code></td>
+        <td data-page-node-id="TUUBOz9UnfETLlaGuzxRzq">持久化登录态 → 读 md → 渲染 HTML → 填标题/作者/摘要/正文/封面/合集 → 存草稿箱 → 输出草稿链接</td>
+        <td class="num" data-page-node-id="wC6EOp7FLtTYp2mbHG1p6j">1 周</td>
+      </tr>
+      <tr data-page-node-id="zPTUFE6jILAa6erT4dSeJ7">
+        <td data-page-node-id="OwbgFFdThsK4cQSBssT83L"><strong data-page-node-id="CXqf6CZ94YLY1ilQERBXog">P1</strong></td>
+        <td data-page-node-id="A5bWElsSJAuFnQqPDEspJL">选题自动化</td>
+        <td data-page-node-id="RZ9sLW4mtD5foUDLLqbi5W"><code data-page-node-id="wCixNO7MncXRXkFVazpDru">topics.json</code> + 台账同步</td>
+        <td data-page-node-id="sEEHnOrMCT4jzY5gqRvKvq">复用 <code data-page-node-id="iyPbmhdK4A2piYDOmU9qDj">ai_collab_miner.py</code> 输出 → 自动生成选题卡 → 同步飞书/本地台账 → 状态流转</td>
+        <td class="num" data-page-node-id="pks4CozeJtE20SERb04Qhh">2 周</td>
+      </tr>
+      <tr data-page-node-id="dlhYFO5w5X7OmqzUFU9ImP">
+        <td data-page-node-id="9dKrrf3ttwvtCpNkcuiWQX"><strong data-page-node-id="B0WEgjv75n6FNJzRO4ySmJ">P2</strong></td>
+        <td data-page-node-id="fOGirQEAkzHSaNNKkZHXsB">多平台差异化分发</td>
+        <td data-page-node-id="ZfdGusbQdaiN0OezwaknZd">各平台改写器 + 排期</td>
+        <td data-page-node-id="qAiPkx2PRCcRr1GpfeW20c">一稿多版（禁通稿）→ 掘金/知乎/CSDN 差异化改写 → 定时发布 → 链接回填台账</td>
+        <td class="num" data-page-node-id="92SLyWz71UwAAuK6c8ephO">2 周</td>
+      </tr>
+      <tr data-page-node-id="zIsGCtmlOVoAKcR6ch8YJ5">
+        <td data-page-node-id="tQyulPCCZ7ABw6NLWTcxJs"><strong data-page-node-id="fvHTiHIfOZYyZYEJHTZ9Hn">P3</strong></td>
+        <td data-page-node-id="jMxSJSoEa5894W5LwezByw">数据反哺闭环</td>
+        <td data-page-node-id="H1HkK8F481uqdjxjR722u6">复盘报告 + 选题池刷新</td>
+        <td data-page-node-id="ij2uF06azeDNJAuSUAkNhS">采集 24h/72h/7d 数据 → 高阅读提炼 / 低阅读归因 → 反哺选题池</td>
+        <td class="num" data-page-node-id="ANQ2etRG87iKIcaxeJFA3T">持续</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 data-page-node-id="RU1CGeAXMhrR4VyNXyvCQ7">5.4 脚本骨架</h3>
+  <pre data-page-node-id="UPjFeaQhjLPkmMidhmSm8k"><span class="c" data-page-node-id="Xf9cY2aBvSbiyrymH4Q0Ah"># 目录结构（建议放在 tools/publish/，独立 gitignore 凭据）</span>
+tools/publish/
+├── wechat_draft.py      <span class="c" data-page-node-id="gjj6PlFezXa8O9o6pHm3rB"># Playwright 填草稿主脚本</span>
+├── config.yaml          <span class="c" data-page-node-id="moDeoa6f2Px7mdrSrCJtwB"># 合集映射、默认作者、摘要模板</span>
+├── state/               <span class="c" data-page-node-id="E5GK0vOaD1uqw0xVqjOo5t"># 持久化登录态 ⚠️ 必须 gitignore</span>
+│   └── wechat-state.json
+├── logs/
+│   └── screenshots/     <span class="c" data-page-node-id="IYRdHTEqYVnoj7UIR3aBPe"># 每步截图，失败可回溯</span>
+└── published.json       <span class="c" data-page-node-id="09eyWIwVS3XKxQsID6ydaT"># 发布台账（标题/合集/草稿URL/发布时间/数据）</span>
+
+<span class="c" data-page-node-id="LsRb3YUWZb6pY0AtD7mmxO"># 核心流程（伪代码）</span>
+<span class="k" data-page-node-id="x96fH9fFQg1sIWtlv9E6kc">def</span> push_draft(md_path, collection, cover):
+    html = render_wechat(md_path)          <span class="c" data-page-node-id="beus5a8HtIxOpdCOhlkhZC"># 复用已有 render_wechat.js</span>
+    ctx  = browser.new_context(storage_state=<span class="s" data-page-node-id="oGW9jOdjgsoEfYdOrZQX9l">"state/wechat-state.json"</span>)
+    page = ctx.new_page()
+    goto_draft_editor(page)
+    fill_title(page, frontmatter.title)    <span class="c" data-page-node-id="IsuWcZ4Yme3hJzAtyxOgUh"># 前 13 字含核心词（SEO）</span>
+    fill_author(page, <span class="s" data-page-node-id="Edh99y1BldsZEDiG9oLUmM">"行途"</span>)
+    fill_content(page, html)               <span class="c" data-page-node-id="P056kBksNjdj0jDj3FmEUL"># section+span 渲染，规避样式过滤</span>
+    upload_cover(page, cover)              <span class="c" data-page-node-id="TE2rCwmd7J1kVj5Bqu46zu"># 900×383</span>
+    select_collection(page, collection)    <span class="c" data-page-node-id="BSbqHCL31nVWFfrx58pvfi"># ← 你要的「合集/系列」在这里定义</span>
+    fill_summary(page, frontmatter.digest)
+    save_draft(page)                       <span class="c" data-page-node-id="FVmA3Nrw0NMcI6X29ReoGL"># ⚠️ 只存草稿，绝不点发布</span>
+    <span class="k" data-page-node-id="PLrzeWB2RyVY2DD7m1cuFw">return</span> draft_url                       <span class="c" data-page-node-id="c4DI7vQ23NJvopQZPhFyEa"># 返回链接，人工审核后手动发布</span></pre>
+
+  <div class="callout c-red" data-page-node-id="WhEWEDMsiuAFec9EOLO5g7">
+    <h4 data-page-node-id="GzqSiIUWmRCv2JyAGOQn87">四条红线（写进脚本，不可绕过）</h4>
+    <p data-page-node-id="H3G4Hjb1sIMWXRDa1zkjHw">① <strong data-page-node-id="tFtWhHUcnDwxARxRDGCMfN">只到草稿箱</strong>——脚本里绝不出现「点击发布」的动作，发布按钮 100% 人工点击；<br data-page-node-id="AAz0LdtCNTB4hUc7E5cnj4">
+    ② <strong data-page-node-id="IEDhhL9TDOHpBnIWkHKWF9">登录态绝不入库</strong>——<code data-page-node-id="Q0CAxbklt2JDm9yt8gyewj">state/</code> 目录写进 <code data-page-node-id="67K0VZk3MKA6w4NNJPnxjM">.gitignore</code>，且绝不上传到任何公开仓库；<br data-page-node-id="WU71I3pNi8uoLWpzfHKuU0">
+    ③ <strong data-page-node-id="OHhtoPwa2SGzjBZPI92MGY">频率控制</strong>——批量操作加随机间隔，避免触发微信风控；<br data-page-node-id="WsDC6W15zcNhYzvIEOEvBy">
+    ④ <strong data-page-node-id="HAaN5Cr2n28j5rnr2KSqOd">每步截图存档</strong>——失败时可回溯，这也是排查微信编辑器样式过滤的唯一手段。</p>
+  </div>
+
+  <div class="callout c-amber" data-page-node-id="UVJQ6QNDdGVTHseFKvKmhv">
+    <h4 data-page-node-id="3ZopkM7Npb7kU6pi6XkDXI">两个已知技术坑（提前规避）</h4>
+    <p data-page-node-id="VEXpXnkGZ3gBBUz2XiMjMj">① <strong data-page-node-id="myi0UkwqfcAHQYgC24iBVg">微信编辑器会过滤样式</strong>：成熟方案的做法是用 <code data-page-node-id="8blRwMtIoM5arGWwbL2hcN">section</code> + <code data-page-node-id="zOq3GU4PET8W6WmD8M5szW">span</code> 渲染模式替代 <code data-page-node-id="BWDX4F7DY5nwNU45aockhk">div</code> + <code data-page-node-id="HGKc1zmX83GshiB7lBsqfG">class</code>，兼容性显著更好——这也是 <code data-page-node-id="q4CMNY9y0UBAoCnyU79UIO">render_wechat.js</code> 需要同步改造的点；<br data-page-node-id="ygeX5xCTyPiH1gLK5bD8mv">
+    ② <strong data-page-node-id="0iQ8C3v1TA9D39og3n7QUp">沙箱内浏览器会闪退</strong>：你的环境坑记录里已有结论，跑浏览器自动化时必须关闭沙箱，否则 Chromium 子进程被 SIGKILL 且零报错输出。</p>
+  </div>
+</section>
+
+<!-- 6 决策 -->
+<section data-page-node-id="TQVOGGAKke7OOa7hra4WRR">
+  <h2 data-page-node-id="cokOBlahkWW7XDQ9tW2ZQu"><span class="no" data-page-node-id="acd3iUjv4WWnpquAon1qI6">6</span>待拍板：5 个决策点</h2>
+  <p class="lead" data-page-node-id="4QjM03hGBMN04JwjeWHmfE">我给了推荐项，你可以直接采纳或改——改完我就照着落地。</p>
+
+  <div class="dec" data-page-node-id="QbE6RNHnDWCXGzA2l0171A">
+    <div class="dec-h" data-page-node-id="krPpGExbvPu5FdUmxeXCZX"><span data-page-node-id="kOJu9zu3NiQzvQUS8fYXxS">D1 · 内容形态优先级</span><span class="b b-blue" data-page-node-id="hCDuWWk4gkvjmmGGParedn">影响全局</span></div>
+    <div class="dec-b" data-page-node-id="dadNDn1F4IvvxrQkdqWMok">
+      <div class="opt rec" data-page-node-id="uP6bSV0Euk4L8Skt4Sopfd"><b data-page-node-id="kdM9faxaR4NlLEHnL6D8j0">A. 长文为绝对主力 + 开源项目为背书（推荐）</b><span data-page-node-id="PwNGj7pqM4GrSpseMNNPj2">公众号长文是主阵地，tokenhub_bench 等开源项目同步推进，视频号等长文跑通后再开。不变现也积累作品集。</span></div>
+      <div class="opt" data-page-node-id="WiEJb8DY6TtzL183F4L8LL"><b data-page-node-id="q7hI5A8quqdgjkJNDa9ZaQ">B. 长文 + 同步启动视频</b><span data-page-node-id="RMpzzNfGDy1IjhsdCHqpdC">需要额外投入拍摄/剪辑时间。风险：在职低调约束下时间本就稀缺，同时开两个坑大概率两个都做不深。</span></div>
+      <div class="opt no" data-page-node-id="mh4YqnzO4vdnCusptp4OLd"><b data-page-node-id="0zthAB8D5Z0xTpS98LjvWO">C. 加入抖音漫画图文</b><span data-page-node-id="f6ppNwzhTqWITXK4jluyT1">分成系数 1x，无作品集价值，与你的核心资产错配。</span></div>
+    </div>
+  </div>
+
+  <div class="dec" data-page-node-id="GiDkm45nW3AzBCUyyDY9h3">
+    <div class="dec-h" data-page-node-id="DLZsyN8yDgXHMvIjN42I7o"><span data-page-node-id="JxalTC43PrcueTtoqEYawV">D2 · 排版风格</span><span class="b b-gray" data-page-node-id="vK4S1ax0WrkdIDZirwkDvK">影响工具改造</span></div>
+    <div class="dec-b" data-page-node-id="PeDhM672B0mpj0b8TGtoAX">
+      <div class="opt rec" data-page-node-id="Km9WGS1JCHQj9AYY2lDyhZ"><b data-page-node-id="l6aiuLBTPJiK8wnS7Zd5rH">A. render_wechat.js 降级为「克制排版」（推荐）</b><span data-page-node-id="PL4vNUK46fQbS74E3qVAPW">保留行途蓝作唯一强调色，砍掉装饰元素，统一 15-16px / 1.75 行距 / #333333 / 段距 8-15px。改造量小，收益是完读率和搜一搜收录。</span></div>
+      <div class="opt" data-page-node-id="YS2NIpy9sQEk2OVRPvxnPf"><b data-page-node-id="v9PFksHEEkbh5lBdMOU6V1">B. 保持现有行途蓝风格</b><span data-page-node-id="1AECUcK5H3rn6BRqKb7pWT">品牌识别度高，但需先验证当前风格是否含装饰性元素、是否拖累完读率。</span></div>
+    </div>
+  </div>
+
+  <div class="dec" data-page-node-id="IxDCM8g7Ynm8PqLbkmlwlA">
+    <div class="dec-h" data-page-node-id="q441vsB2SVUXVZECAIGWHW"><span data-page-node-id="dbkdcIZ1LjPEyzEipEqejj">D3 · 自动化范围</span><span class="b b-blue" data-page-node-id="W0f03MLbvRS1KbjHuOpY10">影响投入节奏</span></div>
+    <div class="dec-b" data-page-node-id="kJMVcnzl3bjbXCDxciRYLJ">
+      <div class="opt rec" data-page-node-id="zF8EI3AyUqS1SUEjLLHcRL"><b data-page-node-id="ipQFSEdxJ02gjmjmJ6ZXwE">A. 先跑 P0 草稿自动化，验证后再推 P1-P3（推荐）</b><span data-page-node-id="CRWg8DGN7yfx3noAruxg2I">一周内能看到「脚本填好草稿、你点一下发布」的真实效果，再决定投多少。</span></div>
+      <div class="opt" data-page-node-id="s8FxZBUqMdD8Uzr4rqfUDy"><b data-page-node-id="sjimf4NDERSCdee86eQYDr">B. 一次设计四期全部再动手</b><span data-page-node-id="rS106LQzFx8blB39Bd6oDG">架构更完整，但反馈周期长，容易在设计上过度投入而迟迟不发布。</span></div>
+    </div>
+  </div>
+
+  <div class="dec" data-page-node-id="GjzbAFlIEumQq9MIM2H7mf">
+    <div class="dec-h" data-page-node-id="AngZrMjX920a2k9HPoWPox"><span data-page-node-id="WFvmyaNSARrAl1gBDKWnBR">D4 · 合集 / 系列怎么定</span><span class="b b-blue" data-page-node-id="J7Gm023bOgrzdJBMWgDAZG">影响涨粉引擎</span></div>
+    <div class="dec-b" data-page-node-id="gajzZNLakCLM89CfmcYWF3">
+      <div class="opt rec" data-page-node-id="uV6wdIzRfBohf8F4kwhlsp"><b data-page-node-id="zhXuHddvF9t6tuMCzLnncb">A. 沿用已规划的「省 Token 专题」三线结构（推荐）</b><span data-page-node-id="u7sDsl6FmA9ig9Mfrp6EIU">A 线六层落地 + B 线工具横评 + C 线模型选型，共 16 篇，天然就是合集。再单开「技术闪记」「行途故事」两个长期合集。</span></div>
+      <div class="opt" data-page-node-id="jnXkntHNW5kvYm1s2HPbip"><b data-page-node-id="K9vXb58NiGItZ8s52UxEI9">B. 重新设计合集体系</b><span data-page-node-id="CCEdNDxowiZWkESSK6Jbfk">如果你觉得现有规划需要调整，我先出合集设计再落地。</span></div>
+    </div>
+  </div>
+
+  <div class="dec" data-page-node-id="i2l3R84v5RbHEwggBzouDU">
+    <div class="dec-h" data-page-node-id="2O5MjWzV2cjgl0PGSKsZJ0"><span data-page-node-id="7zOfrU3bZQdDodgvL7k8xQ">D5 · 存量内容怎么消化</span><span class="b b-red" data-page-node-id="EPwGaSjWiFaFzbZqAIXOXm">直击痛点</span></div>
+    <div class="dec-b" data-page-node-id="aIM5dExGwGAqSmaqADK5Wr">
+      <div class="opt rec" data-page-node-id="Fa58ncmCzdySriSzE7xvfJ"><b data-page-node-id="mE7ZBu5UE8DLyzoYCH1r80">A. 按「可直接发 / 需改写 / 废弃」三分类，先清可直接发的（推荐）</b><span data-page-node-id="BEt571chCTKdk6u43Yo4NU">你本地躺着 182 个 outputs 文件、1125 条素材。先盘一遍，把能直接发的排进发布日历，这是最快的正反馈。</span></div>
+      <div class="opt" data-page-node-id="vmPYCbGbSOkucjrQgBtkMU"><b data-page-node-id="dzH6UHyibkfuCpezyYpnIT">B. 全部重新写</b><span data-page-node-id="iEwLI7Vc2b4oBHNm9PbaBw">质量更高，但存量继续贬值。</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 下一步 -->
+<section data-page-node-id="BLLy5c4woCERVg0kYt18gu">
+  <h2 data-page-node-id="IuGTZnChu28mN6d5TmcLbZ"><span class="no" data-page-node-id="57B75Y2d21UL1clUhIQ2py">7</span>你拍板后我立刻做的三件事</h2>
+  <p class="lead" data-page-node-id="7LhrADdtGFchLxCE91oay2">按优先级排序，第一件事本周内可交付。</p>
+  <div class="grid g3" data-page-node-id="o143okKAEXvWMye7byDMWg">
+    <div class="card hl" data-page-node-id="2PyvFvLlQwqgJSpsAbt0wb">
+      <h5 data-page-node-id="6O7qHXYC6j7GfpiEXblT4O">① 存量内容盘点</h5>
+      <p data-page-node-id="a75cEh86WMo5GwMlHEnUri">扫一遍 <code data-page-node-id="6StJTdHWs4swhSWcCo5ybz">outputs/</code> 和素材库，输出「可直接发 / 需改写 / 废弃」三分类清单 + 建议发布日历。<strong data-page-node-id="u1Yhst7lyeNxnDX5Q0OoYh">这是解决「内容躺着不发布」最快的一步。</strong></p>
+    </div>
+    <div class="card" data-page-node-id="PP7Lg79jwCaxCUAWUHRW4p">
+      <h5 data-page-node-id="rv2BD3HLKbNZDXQACbUWQu">② P0 脚本落地</h5>
+      <p data-page-node-id="jeTtIiZIQh9FwUuIKcufZ8">写 <code data-page-node-id="IF28A6s4HBQHGZA24ElEaX">tools/publish/wechat_draft.py</code>，跑通「md → 渲染 → 草稿箱 → 返回链接」全链路，你审核后手动发布。</p>
+    </div>
+    <div class="card" data-page-node-id="66MR27W944Va78cFnV49kE">
+      <h5 data-page-node-id="XTM8VNUWCO3LrWUamvhM82">③ 排版改造</h5>
+      <p data-page-node-id="av2imuk78GyW9mZqpHYHVf">按 §4.2 参数改造 <code data-page-node-id="h6upNiUNcfEBqvyZl99If4">render_wechat.js</code>，并同步适配 section+span 渲染模式（规避微信样式过滤）。</p>
+    </div>
+  </div>
+</section>
+
+<footer data-page-node-id="GNg8i5giCkZnD8OflMDGOP">
+  行途 · 内容战略看板 ｜ 生成于 2026-09-02 ｜ 数据来源：抖音版权中心公告（2025-11-20 / 2026-07-29，多源交叉验证）、公开对标账号数据、微信公众号自动化方案调研<br data-page-node-id="zSyx3Jm6xHzNZ45ddjOQTP">
+  本报告为决策输入，非定稿 —— 待 boss 审核确认后执行
+</footer>
+
+</div>
+
+  <footer style="margin-top:36px;border-top:2px solid #056DE8;padding:16px 20px;background:#f5f9ff;border-radius:10px;font-size:13px;color:#1a1a1a;line-height:1.9">
+    <div style="font-weight:700;color:#056DE8;margin-bottom:8px">📎 权威锚点 / 引用来源</div>
+    <ul style="margin:0;padding-left:18px">
+      <li>微信公众平台·发布能力官方文档（freepublish 回收确认）：<a href="https://developers.weixin.qq.com/doc/service/guide/product/publish.html" target="_blank" rel="noopener" style="color:#056DE8;text-decoration:underline">https://developers.weixin.qq.com/doc/service/guide/product/publish.html</a></li>
+      <li>微信公众平台·草稿箱官方文档（draft/add 个人号待实调）：<a href="https://developers.weixin.qq.com/doc/service/guide/product/draft.html" target="_blank" rel="noopener" style="color:#056DE8;text-decoration:underline">https://developers.weixin.qq.com/doc/service/guide/product/draft.html</a></li>
+      <li>公众号「行途技术手记」</li>
+      <li>变现分层（赞赏/矿石/星球年费）为规划口径，实际到账数据待跑通回填，禁编造</li>
+    </ul>
+    <div style="margin-top:8px;color:#555">完整引用索引：<code style="background:#eef4ff;padding:1px 6px;border-radius:4px;color:#0a3d7a">specs/20260902-断点续传与集中提示词/05_权威锚点与引用来源.md</code></div>
+  </footer>
+
+</body>
+</html>

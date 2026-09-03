@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行途模型智能提示决策卡 · 2026-08-27</title>
+<style>
+  :root {
+    --blue: #056DE8;
+    --blue-dark: #044FA8;
+    --blue-light: #EAF2FE;
+    --ink: #1a2433;
+    --sub: #5b6b82;
+    --line: #e3e9f2;
+    --bg: #f7f9fc;
+    --red: #d64545;
+    --green: #1e9e6a;
+    --amber: #b7791f;
+    --orange: #e8813b;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; background:var(--bg); color:var(--ink); line-height:1.65; padding:32px 16px 64px; }
+  .wrap { max-width:980px; margin:0 auto; }
+
+  /* Header */
+  .hero { background:linear-gradient(135deg,var(--blue) 0%,#2b8cf5 100%); border-radius:18px; padding:34px 36px; color:#fff; position:relative; overflow:hidden; }
+  .hero::after { content:""; position:absolute; right:-60px; top:-60px; width:240px; height:240px; border-radius:50%; background:rgba(255,255,255,.08); }
+  .hero::before { content:""; position:absolute; right:40px; bottom:-90px; width:200px; height:200px; border-radius:50%; background:rgba(255,255,255,.06); }
+  .hero h1 { font-size:26px; letter-spacing:1px; }
+  .hero .sub { margin-top:6px; font-size:14px; opacity:.85; }
+  .kousi { margin-top:16px; display:inline-block; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.35); padding:8px 16px; border-radius:10px; font-size:14px; font-weight:600; }
+  .kousi b { color:#ffe9a8; }
+
+  h2 { font-size:19px; margin:38px 0 14px; display:flex; align-items:center; gap:9px; }
+  h2 .no { display:inline-flex; width:26px; height:26px; border-radius:8px; background:var(--blue); color:#fff; font-size:13px; align-items:center; justify-content:center; flex:none; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:14px; padding:22px 24px; }
+
+  /* Decision tree */
+  .tree-root { text-align:center; }
+  .root-node { display:inline-block; background:var(--ink); color:#fff; padding:10px 26px; border-radius:12px; font-weight:700; font-size:15px; }
+  .tree-branches { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:16px; }
+  @media (max-width:720px){ .tree-branches { grid-template-columns:1fr; } }
+  .branch { border:1px solid var(--line); border-radius:12px; padding:12px 14px; background:#fbfcfe; display:flex; gap:12px; align-items:flex-start; }
+  .branch .cond { flex:1; font-size:13.5px; color:var(--sub); }
+  .branch .cond b { color:var(--ink); display:block; font-size:14px; margin-bottom:2px; }
+  .branch .model { flex:none; text-align:center; min-width:132px; }
+  .branch .model .m { display:inline-block; font-weight:700; font-size:13.5px; padding:4px 12px; border-radius:8px; }
+  .branch .model .r { font-size:11.5px; color:var(--sub); margin-top:2px; }
+  .m-pro { background:var(--blue-light); color:var(--blue-dark); }
+  .m-flash { background:#e6f9f0; color:var(--green); }
+  .m-hy3 { background:#fff4e0; color:var(--amber); }
+  .m-m3 { background:#fdeaf2; color:#b5327f; }
+  .m-glm53 { background:#f0ecff; color:#6b46c1; }
+  .m-5v { background:#e0f2ff; color:#0b7dc2; }
+  .m-kimi { background:#e8eef7; color:#34558b; }
+  .m-auto { background:#f1f3f6; color:var(--sub); }
+  .m-ban { background:#fdeaea; color:var(--red); }
+
+  /* Table */
+  table { width:100%; border-collapse:collapse; font-size:13.5px; }
+  th { background:var(--blue-light); color:var(--blue-dark); text-align:left; padding:10px 12px; font-weight:600; white-space:nowrap; }
+  td { padding:9px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+  tr:hover td { background:#fafcff; }
+  .sig { color:var(--sub); font-size:12.5px; }
+  .badge { display:inline-block; padding:2px 8px; border-radius:6px; font-size:11.5px; font-weight:600; }
+
+  /* Rules */
+  .rules { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+  @media (max-width:720px){ .rules { grid-template-columns:1fr; } }
+  .rule { border-radius:12px; padding:14px 16px; border:1px solid var(--line); }
+  .rule.red { background:#fef7f6; border-color:#f3d3d0; }
+  .rule.blue { background:#f2f8ff; border-color:#cfe4fb; }
+  .rule.dark { background:#f5f6f9; border-color:#dfe4ec; }
+  .rule h4 { font-size:14px; margin-bottom:4px; }
+  .rule p { font-size:13px; color:var(--sub); }
+
+  /* Usage */
+  .steps { counter-reset:s; }
+  .step { display:flex; gap:14px; padding:12px 0; border-bottom:1px dashed var(--line); }
+  .step:last-child { border-bottom:none; }
+  .step::before { counter-increment:s; content:counter(s); flex:none; width:26px; height:26px; border-radius:50%; background:var(--blue); color:#fff; font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center; margin-top:2px; }
+  .step .t { font-size:14px; font-weight:600; }
+  .step .d { font-size:13px; color:var(--sub); }
+  code { background:#eef1f6; border:1px solid #e0e5ee; border-radius:6px; padding:1px 7px; font-family:"SF Mono",Menlo,Consolas,monospace; font-size:12.5px; color:#24344d; }
+  .cmd { display:block; background:#1a2433; color:#9fd0ff; padding:10px 14px; border-radius:10px; font-family:"SF Mono",Menlo,monospace; font-size:12.5px; margin-top:6px; }
+
+  .foot { text-align:center; color:var(--sub); font-size:12px; margin-top:40px; }
+  .pill { display:inline-block; background:var(--blue-light); color:var(--blue-dark); border-radius:999px; padding:2px 10px; font-size:12px; font-weight:600; margin:0 3px 3px 0; }
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap">
+
+  <div class="hero">
+    <h1>🤖 行途模型智能提示 · 决策卡</h1>
+    <div class="sub">任务输入 → 自动识别 → 推荐切换 · 规则源：tools/model_assignment.json · 2026-08-27</div>
+    <div class="kousi">口诀：写稿锁 <b>Pro</b> · 看图切 <b>5v</b> · 夜间抢 <b>Hy3</b> · 杂活丢 <b>Auto</b> · <b>K3 永不碰</b></div>
+  </div>
+
+  <h2><span class="no">1</span>智能决策树</h2>
+  <div class="card">
+    <div class="tree-root">
+      <div class="root-node">任务来了 👇</div>
+      <div class="tree-branches">
+        <div class="branch"><div class="cond"><b>⚠️ 点名黑名单模型</b>kimi-k3 / kimi-k2.7-code / glm-5.2 / glm-5.1</div><div class="model"><span class="m m-ban">⛔ 拦截</span><div class="r">换 V4-Pro 兜底</div></div></div>
+        <div class="branch"><div class="cond"><b>🖼️ 涉及看图/读图</b>截图 / 封面 / 配图 / 图说 / OCR / 海报</div><div class="model"><span class="m m-5v">glm-5v-turbo</span><div class="r">0.71x · 唯一带视觉</div></div></div>
+        <div class="branch"><div class="cond"><b>🌙 夜间批量生产</b>夜间 / 周末备稿 / 定时排一周 / 批量 3-5 篇</div><div class="model"><span class="m m-hy3">hy3 夜间版</span><div class="r">0.00x · 白嫖</div></div></div>
+        <div class="branch"><div class="cond"><b>📋 杂活</b>查资料 / 搜索 / 读文件 / 整理表格 / 问答 / 汇总</div><div class="model"><span class="m m-auto">Auto</span><div class="r">错配代价低</div></div></div>
+        <div class="branch"><div class="cond"><b>✍️ 深度写作/分析</b>公众号主稿 / 长文整稿 / 观点解读 / 方案评估 / 行业分析</div><div class="model"><span class="m m-pro">V4-Pro</span><div class="r">0.51x · 默认锁死</div></div></div>
+        <div class="branch"><div class="cond"><b>⚡ 跨平台改写/蒸馏</b>掘金 / CSDN / 知乎版 / 批量蒸馏 / 标题 SEO</div><div class="model"><span class="m m-flash">V4-Flash</span><div class="r">0.17x · 副手</div></div></div>
+        <div class="branch"><div class="cond"><b>🌸 小红书调性</b>口语化短版 / 接地气 / 转发文案 / 家人群</div><div class="model"><span class="m m-m3">minimax-m3</span><div class="r">0.25x · 差异化</div></div></div>
+        <div class="branch"><div class="cond"><b>✨ 金句润色</b>更地道的中文 / 文笔 / 疑难稿</div><div class="model"><span class="m m-glm53">glm-5.3</span><div class="r">0.79x · 备胎</div></div></div>
+        <div class="branch"><div class="cond"><b>🧠 超长素材蒸馏</b>信息员长会话整本 / 海量素材 / 全量分析</div><div class="model"><span class="m m-kimi">kimi-k2.6</span><div class="r">0.52x · 烧 token</div></div></div>
+        <div class="branch"><div class="cond"><b>☀️ 白天碎片活</b>补标题 / 改错别字 / 轻整理 / 小改</div><div class="model"><span class="m m-hy3">hy3 标准版</span><div class="r">0.05x</div></div></div>
+      </div>
+    </div>
+    <p style="font-size:12.5px;color:var(--sub);margin-top:14px;">🌙 22:00–07:59 时段内若命中深度写作/改写，提示器会自动追加「可切 hy3 夜间版白嫖」建议（非急稿直接切）。</p>
+  </div>
+
+  <h2><span class="no">2</span>速查表（含信号词）</h2>
+  <div class="card" style="overflow-x:auto;">
+    <table>
+      <thead><tr><th>模型</th><th>倍率</th><th>优先级</th><th>典型场景</th><th>触发信号词</th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge" style="background:var(--blue-light);color:var(--blue-dark);">deepseek-v4-pro</span></td><td>0.51x</td><td>🔒 默认锁死</td><td>公众号深度文 / 深度分析 / 长文整稿 / 方案评估</td><td class="sig">公众号 主稿 深度 长文 整稿 观点 解读 行业 专栏 定稿 首发 研究报告 文章 方案 评估 思路 规划</td></tr>
+        <tr><td><span class="badge" style="background:#e6f9f0;color:var(--green);">deepseek-v4-flash</span></td><td>0.17x</td><td>⚡ 副手主力</td><td>跨平台改写 / 批量蒸馏 / 标题与 SEO 提取</td><td class="sig">改写 搬运 分发 掘金 CSDN 知乎 批量 蒸馏 标题 SEO 长尾 关键词 摘要 卡片</td></tr>
+        <tr><td><span class="badge" style="background:#fff4e0;color:var(--amber);">hy3 夜间版</span></td><td>0.00x</td><td>🌙 白嫖优先</td><td>夜间批量生产（周末 3-5 篇定时排一周）</td><td class="sig">夜间 批量生产 周末 定时发布 排一周 排期 备稿</td></tr>
+        <tr><td><span class="badge" style="background:#fff4e0;color:var(--amber);">hy3 标准版</span></td><td>0.05x</td><td>☀️ 白天碎片</td><td>补标题 / 改错别字 / 轻整理</td><td class="sig">碎片 补标题 错别字 轻整理 小改 微调 快速 顺手</td></tr>
+        <tr><td><span class="badge" style="background:#fdeaf2;color:#b5327f;">minimax-m3</span></td><td>0.25x</td><td>🌸 差异化调教</td><td>小红书短版 / 口语化改写 / 转发文案</td><td class="sig">小红书 口语化 短版 调性 朋友圈 接地气 转发文案 家人群</td></tr>
+        <tr><td><span class="badge" style="background:#f0ecff;color:#6b46c1;">glm-5.3</span></td><td>0.79x</td><td>🎯 疑难备胎</td><td>金句润色 / 更地道中文 / V4-Pro 写不动时</td><td class="sig">金句 润色 地道 疑难 拗口 文笔 文采</td></tr>
+        <tr><td><span class="badge" style="background:#e0f2ff;color:#0b7dc2;">glm-5v-turbo</span></td><td>0.71x</td><td>🖼️ 唯一视觉</td><td>读图 / 截图 / 封面描述 / 图说</td><td class="sig">看图 读图 截图 封面 配图 图说 图片 OCR 识别 海报 图解 视觉</td></tr>
+        <tr><td><span class="badge" style="background:#e8eef7;color:#34558b;">kimi-k2.6</span></td><td>0.52x</td><td>🧠 烧 token 专用</td><td>超长素材蒸馏 / 信息员长会话整本</td><td class="sig">超长 长会话 整本 信息员 会话记录 历史会话 海量素材 全量分析</td></tr>
+        <tr><td><span class="badge" style="background:#f1f3f6;color:var(--sub);">Auto</span></td><td>—</td><td>📋 杂活默认</td><td>问答 / 查资料 / 读文件 / 整理表格</td><td class="sig">查资料 搜索 读文件 整理表格 问答 查一下 汇总 小问题 查证 找一下 翻译 换算 算一下</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2><span class="no">3</span>三条硬规则</h2>
+  <div class="card">
+    <div class="rules">
+      <div class="rule red"><h4>⛔ 黑名单永不碰</h4><p><b>kimi-k3</b>（1.62x 最贵 + 实测编码仅 50 分）、kimi-k2.7-code（编码专用）、glm-5.2 / 5.1（旧款同价）。点名即拦截警告。</p></div>
+      <div class="rule blue"><h4>🖼️ 看图无条件切 5v</h4><p>截图 / 封面 / 配图 / OCR 类任务其他模型看不了图，信号命中即强制 glm-5v-turbo，不参与打分。</p></div>
+      <div class="rule dark"><h4>🔒 默认锁 Pro 而非 Auto</h4><p>防懒切换。只有明确命中杂活信号（查/读/整理/汇总）才丢 Auto；内容创作一律锁 V4-Pro，禁 Auto（文风漂移 + 质量盲盒）。</p></div>
+    </div>
+  </div>
+
+  <h2><span class="no">4</span>怎么用（三步）</h2>
+  <div class="card">
+    <div class="steps">
+      <div class="step">
+        <div><div class="t">干活前先问一句</div><div class="d">把任务描述丢给提示器，3 秒出建议（也可直接问我「这活该切哪个模型」，我按同一套规则回答）</div>
+        <code class="cmd">python3 ~/工作室/xingtu/tools/model_suggester.py "帮我写一篇公众号深度文"</code></div>
+      </div>
+      <div class="step">
+        <div><div class="t">按建议手动切模型</div><div class="d">WorkBuddy：模型选择器手动切到推荐模型；CC 类终端：<code>/model &lt;名字&gt;</code>。夜间想白嫖加 <code>--time 23:30</code> 模拟，管道输入 <code>echo "任务" | python3 ...</code> 也可，<code>--json</code> 出结构化结果。</div></div>
+      </div>
+      <div class="step">
+        <div><div class="t">（可选）挂个 alias 秒调</div><div class="d">加到 ~/.zshrc：</div>
+        <code class="cmd">alias ms='python3 ~/工作室/xingtu/tools/model_suggester.py'</code>
+        <div class="d" style="margin-top:4px;">之后 <code>ms "改写去小红书"</code> 即可。规则改 model_assignment.json 的 signals 就行，提示器自动跟随，无需改代码。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">行途 · 模型分工固化规则 · 单一事实源 tools/model_assignment.json · 改信号词即改提示行为</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="Sl4TDhKxUq2ryymn0NtClM">
+<head data-page-node-id="EeCNgnVyXXKzSaaf5rg5EO">
+<meta charset="UTF-8" data-page-node-id="8OK2sYMnGxkQAIzZvLkpyD">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="rIe8BOinHCC5Lz9FkXosFe">
+<title>行途发布作战台 · 平台矩阵与四周排期 · 2026-09-02</title>
+<style>
+:root{
+  --bg:#F5F7FA; --card:#FFFFFF; --line:#E4E9F0; --line2:#EFF2F7;
+  --ink:#1B2733; --ink2:#4A5A6A; --ink3:#7A8896;
+  --green:#2E8B57; --green-l:#E8F5ED; --blue:#056DE8; --blue-l:#E8F1FD;
+  --amber:#B8760B; --amber-l:#FDF3E2; --red:#C0392B; --red-l:#FDECEA;
+  --purple:#6B4FA8; --purple-l:#F0EBF9;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  font-size:14px; line-height:1.7; padding:32px 20px 64px;
+}
+.wrap{max-width:1180px;margin:0 auto}
+
+/* header */
+.hd{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:28px 32px;margin-bottom:20px;
+  box-shadow:0 1px 3px rgba(27,39,51,.04)}
+.hd h1{font-size:24px;font-weight:700;letter-spacing:-.2px}
+.hd .sub{color:var(--ink2);margin-top:8px;font-size:14px}
+.hd .tags{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap}
+.tag{font-size:12px;padding:4px 10px;border-radius:20px;background:var(--green-l);color:var(--green);font-weight:600}
+.tag.b{background:var(--blue-l);color:var(--blue)}
+.tag.a{background:var(--amber-l);color:var(--amber)}
+.tag.r{background:var(--red-l);color:var(--red)}
+
+/* section */
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 30px;margin-bottom:20px;
+  box-shadow:0 1px 3px rgba(27,39,51,.04)}
+h2{font-size:18px;font-weight:700;display:flex;align-items:center;gap:10px;margin-bottom:6px}
+h2 .no{width:26px;height:26px;border-radius:7px;background:var(--green);color:#fff;font-size:13px;
+  display:inline-flex;align-items:center;justify-content:center;font-weight:700;flex:none}
+.lead{color:var(--ink2);font-size:13px;margin-bottom:18px;padding-left:36px}
+h3{font-size:15px;font-weight:700;margin:20px 0 10px;color:var(--ink)}
+
+/* kpi */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:18px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:14px 16px}
+.kpi .n{font-size:26px;font-weight:700;color:var(--green);line-height:1.2}
+.kpi .n.b{color:var(--blue)} .kpi .n.a{color:var(--amber)} .kpi .n.r{color:var(--red)}
+.kpi .l{font-size:12px;color:var(--ink3);margin-top:2px}
+.kpi .d{font-size:11px;color:var(--ink3);margin-top:6px;border-top:1px dashed var(--line);padding-top:6px}
+
+/* diag */
+.diags{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.diag{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;padding:14px 16px;background:#FCFDFE}
+.diag.g{border-left-color:var(--green)} .diag.a{border-left-color:var(--amber)} .diag.b{border-left-color:var(--blue)}
+.diag .t{font-weight:700;font-size:14px;margin-bottom:6px}
+.diag .c{font-size:12.5px;color:var(--ink2)}
+
+/* table */
+table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+th{background:#F7F9FC;color:var(--ink2);font-weight:600;text-align:left;padding:9px 11px;border:1px solid var(--line);font-size:12.5px;white-space:nowrap}
+td{padding:9px 11px;border:1px solid var(--line);vertical-align:top;color:var(--ink)}
+tr:hover td{background:#FBFCFE}
+td.c,th.c{text-align:center}
+.small{font-size:12px;color:var(--ink3)}
+
+/* bars */
+.bar{height:6px;border-radius:3px;background:var(--line2);overflow:hidden;min-width:70px;display:inline-block;vertical-align:middle;width:70px}
+.bar i{display:block;height:100%;background:var(--green);border-radius:3px}
+
+/* platform cards */
+.pcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:14px;margin-top:12px}
+.pcard{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+.pcard .ph{padding:11px 15px;display:flex;align-items:center;justify-content:space-between;gap:8px;border-bottom:1px solid var(--line2)}
+.pcard .ph .nm{font-weight:700;font-size:14.5px;display:flex;align-items:center;gap:8px}
+.dot{width:9px;height:9px;border-radius:50%;flex:none}
+.pcard .ph .role{font-size:11.5px;color:var(--ink3);font-weight:500}
+.pcard .pb{padding:13px 15px;font-size:12.8px;color:var(--ink2)}
+.pcard .pb dl{display:grid;grid-template-columns:52px 1fr;gap:5px 8px;margin:0}
+.pcard .pb dt{color:var(--ink3);font-size:12px}
+.pcard .pb dd{color:var(--ink)}
+.pcard .pb dd b{color:var(--ink);font-weight:600}
+.warn{color:var(--red);font-weight:600}
+
+/* week blocks */
+.week{border:1px solid var(--line);border-radius:12px;margin-bottom:14px;overflow:hidden}
+.wh{background:#F7F9FC;padding:10px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.wh .wt{font-weight:700;font-size:14px}
+.wh .wg{font-size:12px;color:var(--ink3)}
+.wb{padding:0}
+.wb table{margin:0;border:0}
+.wb th,.wb td{border-left:0;border-right:0;border-top:0}
+.badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:5px;font-weight:600;white-space:nowrap}
+.b-pub{background:var(--green-l);color:var(--green)}
+.b-jue{background:var(--blue-l);color:var(--blue)}
+.b-csdn{background:var(--red-l);color:var(--red)}
+.b-zhi{background:var(--purple-l);color:var(--purple)}
+.b-xhs{background:#FDECF2;color:#C2185B}
+.b-new{background:var(--amber-l);color:var(--amber)}
+
+/* collection */
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.col{border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.col .ch{padding:11px 15px;color:#fff;font-weight:700;font-size:14px;display:flex;justify-content:space-between;align-items:center}
+.col .ch .cnt{font-size:11.5px;font-weight:600;background:rgba(255,255,255,.22);padding:2px 8px;border-radius:10px}
+.col .cb{padding:13px 15px;font-size:12.8px}
+.col ol{margin:0 0 8px 16px;color:var(--ink2)}
+.col li{margin-bottom:4px}
+.col li.done{color:var(--ink3);text-decoration:none}
+.col li.done::before{content:"✔ ";color:var(--green)}
+.col li.todo::before{content:"○ ";color:var(--amber)}
+.col .goal{font-size:12px;background:var(--green-l);color:var(--green);padding:6px 9px;border-radius:7px;font-weight:600}
+
+.note{background:var(--amber-l);border:1px solid #F0DCB4;border-radius:10px;padding:12px 15px;font-size:12.8px;color:#7A5410;margin:14px 0}
+.note.r{background:var(--red-l);border-color:#F3C9C4;color:#8C2B20}
+.note.g{background:var(--green-l);border-color:#C6E4D2;color:#1E6B41}
+.note b{font-weight:700}
+
+ul.plain{margin:6px 0 0 18px;font-size:13px;color:var(--ink2)}
+ul.plain li{margin-bottom:5px}
+code{background:#F0F3F7;padding:1px 6px;border-radius:4px;font-size:12px;font-family:"SF Mono",Menlo,monospace;color:#2A3A4A}
+.src{font-size:11.5px;color:var(--ink3);margin-top:14px;padding-top:12px;border-top:1px dashed var(--line)}
+.src a{color:var(--blue);text-decoration:none}
+.foot{text-align:center;color:var(--ink3);font-size:12px;padding:18px}
+</style>
+</head>
+<body data-page-node-id="71TfGiq8lQq3zik4esdDrG"><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap" data-page-node-id="gmYcqVwf5GsKfB5DkOv28G">
+
+<div class="hd" data-page-node-id="UP7giUnPhvq08dMpTY3S7y">
+  <h1 data-page-node-id="ADjnq8hoBOdEmI7FG83Qjo">行途发布作战台 · 平台矩阵与四周排期</h1>
+  <div class="sub" data-page-node-id="EFZzzgtf7e7iH4OZwPFCsq">2026-09-02 建立 ｜ 一句话目标：<b data-page-node-id="spelVHqvnZQ6da2SVGrrFM">把 6 篇压着的成稿，按平台特性拆成分发弹药，四周内让 3 个公众号合集全部跨过「3 篇生效」门槛。</b></div>
+  <div class="tags" data-page-node-id="DLl6CUj1QvOOEykXuwoVvP">
+    <span class="tag" data-page-node-id="AxNsMGzN3aYNTcGcDCZWkh">主阵地 公众号</span>
+    <span class="tag b" data-page-node-id="CCgEfVo9GewS1LGHXdn8Ok">分发 掘金 / CSDN / 知乎</span>
+    <span class="tag a" data-page-node-id="RgAz77x3DFsiDHU72knzi7">泛流量 小红书</span>
+    <span class="tag r" data-page-node-id="QOnvrBTSMwFuFDPdMKHJps">红线 禁通稿 · 禁外链 · 禁 PIL 出图</span>
+  </div>
+</div>
+
+<!-- 1 现状 -->
+<section data-page-node-id="oCs6PiitYvGS3rRQTxEJUf">
+  <h2 data-page-node-id="vJ2Eg4CF6J1LV9fZrx3C2r"><span class="no" data-page-node-id="YwZ5ajZ12FLhVJVIZaCiHf">1</span>现状盘点：弹药充足，缺的是发射序列</h2>
+  <div class="lead" data-page-node-id="2wDc3wA1EkEMWZwB4EfrEa">所有数字来自本地文件实测，非估算。未核实的一律标「待回填」，不编造。</div>
+
+  <div class="kpis" data-page-node-id="jWpHCxawWQCw21V79CK7Hz">
+    <div class="kpi" data-page-node-id="aSGvq6OhigCrkIRw2qVSOt"><div class="n" data-page-node-id="0YHRMLFwKoDbP5PiSeYjEV">6</div><div class="l" data-page-node-id="StTzinnfjazp8oYwIAC7Bj">已正式发布</div><div class="d" data-page-node-id="gwTijUz1dvleOMTklQLfUM">公众号 4 / CSDN 1 / 掘金 1<br data-page-node-id="6Hwsi46oSDI8eEJLB40eIC">（001·003 已转仅个人可见）</div></div>
+    <div class="kpi" data-page-node-id="dQHWiA3P1GghPy2soAfKcM"><div class="n b" data-page-node-id="15ZB9pT5pRBGgnqrsBevcw">5</div><div class="l" data-page-node-id="kTaigyS1u17HlJFWOTTXF1">成稿待发（素材库/成稿）</div><div class="d" data-page-node-id="VOTg3mn9JF0WL3iqF0CyA3">B02/B09/B11/B12/M01<br data-page-node-id="NqqDztWKUQgJu9J4lOeb93">+ outputs 速评01 = 6 篇</div></div>
+    <div class="kpi" data-page-node-id="Mos2XvfuVGRaBNaWQiEFHl"><div class="n a" data-page-node-id="9Sg1N0sXVSpjO6j7fL7aAJ">1</div><div class="l" data-page-node-id="rHJj73nzg3U9iMPeQDPGlc">公众号合集（未生效）</div><div class="d" data-page-node-id="HxRznEJ6w4IbwVprFfjvPT">「技术闪记」仅 1 篇<br data-page-node-id="DpHhaj8lscEUF9ZP7fx5g5">微信要求 ≥3 篇才展示</div></div>
+    <div class="kpi" data-page-node-id="s3M5LDnWQlbirpaw4NViig"><div class="n r" data-page-node-id="HHRQEt93qHBirC5WSKn5gb">0</div><div class="l" data-page-node-id="xDhTrDXk8QBaRhkaGDN9Qz">已发布文章回流链接</div><div class="d" data-page-node-id="RHCaVczoUNmeF3hiEztEHh">台账「链接」列全为空<br data-page-node-id="bH71YBnXrVL7XGRnKnV8iQ">闭环断点</div></div>
+    <div class="kpi" data-page-node-id="2mCY5yIU4K4OPZ3lywm04T"><div class="n" data-page-node-id="nAUGvzswnZEOstoiNESarL">134</div><div class="l" data-page-node-id="YxtpWOXIeSrsgfAsGZe7Y9">GLM-5.3 Flash 篇阅读</div><div class="d" data-page-node-id="ZBSuMgyIS85Lft4DziduF3">搜一搜 103 / 分享 11<br data-page-node-id="MIqSaFWMVriIuoZDbmH3sm">唯一有真实数据的爆文</div></div>
+    <div class="kpi" data-page-node-id="sOOaDdHCcR3xDkNwCy9S2s"><div class="n b" data-page-node-id="2pLHZIBxsVaKef8BjOUmUJ">1161</div><div class="l" data-page-node-id="uckPjK4XkuROD1ZBEVgZpv">素材卡底盘</div><div class="d" data-page-node-id="Eq3CIZWON3DcsQmlQO8U3W">314 工具 / 71 spec<br data-page-node-id="4rivESAatPYagGDwGVZVHV">存量远大于外显</div></div>
+  </div>
+
+  <div class="diags" data-page-node-id="YU2YOEF1kiLE675YsZoUKt">
+    <div class="diag" data-page-node-id="vdfDGLz1S5I8LQ9FalyB2j">
+      <div class="t" data-page-node-id="wTrJKbZvtLInBjcfMuCUhm">🔴 问题一：合集建了等于没建</div>
+      <div class="c" data-page-node-id="B1ySlXj9G9MtNm21X4LdeD">「技术闪记」已有 1 篇 GLM 速评，但微信合集 <b data-page-node-id="tILGWczYa5ZvAyScDbdD36">需 ≥3 篇原创才在前端展示</b>（2026 仍执行）。合集是搜一搜用户「关注理由」的第一承接物——现在它是空转的。补够 3 篇，比多发 3 篇散文的收益高一个量级。</div>
+    </div>
+    <div class="diag" data-page-node-id="Gz0AJmC8q3Shimp8IKl6IE">
+      <div class="t" data-page-node-id="opEUG4UFb7u80iEmqFLVXg">🔴 问题二：发布了，但没回流</div>
+      <div class="c" data-page-node-id="z8OZPiHPDArUq4QD1y6bnv">个人订阅号拿不到统计接口，唯一能迭代的依据就是<b data-page-node-id="fVZlj9CkXByrWC2l1BDAy8">人工回填链接 + 后台截图</b>。当前台账链接全空，导致「哪类内容有流量」只能凭感觉——GLM 篇 134 阅读是唯一真实数据点，其余全是黑箱。</div>
+    </div>
+    <div class="diag a" data-page-node-id="TfSFUo6LJw9L9Yo1kdgVEt">
+      <div class="t" data-page-node-id="2tDf3wh40yroz2ElHK00Hl">🟠 问题三：成稿堆在仓库里贬值</div>
+      <div class="c" data-page-node-id="wHzuFw5jLG8UM76JA3c5Du">B02/B09/B11/B12/M01 五篇 8 月就成稿，速评01 写于 8-31（Qwen3.8-Flash 时效窗口正在关闭）。AI 内容贬值极快，<b data-page-node-id="PJAel5Q47i1miKip0CcnFl">压稿 = 资产减值</b>。这轮不要求完美，要求先发。</div>
+    </div>
+    <div class="diag b" data-page-node-id="NmvCRCtTcDuy4w8Crr94VO">
+      <div class="t" data-page-node-id="urUCaUqQLpt9eFO2KNKOyk">🔵 问题四：平台规则没落到每篇稿上</div>
+      <div class="c" data-page-node-id="XqbTtEbeDvvvgbn8VIMOKC">PUB-004 差异化规则已写进 RULES.md，但成稿里的「平台微调」只有一句话提示，没有可直接照发的标题/改写/红线清单。本轮补上发布卡，把规则变成发射动作。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 平台矩阵 -->
+<section data-page-node-id="oetvMxjNZYyNUFaBhCpGGr">
+  <h2 data-page-node-id="JJl70IbmaUtj5jKU0BmRs2"><span class="no" data-page-node-id="dwI6prGa22dkHtRKFofIhf">2</span>平台矩阵：角色分工与差异化硬规则</h2>
+  <div class="lead" data-page-node-id="aFRYA5V6nluJN37Dduvlg0">适配度 = 五维加权（受众重合 / 内容形态 / 长尾价值 / 合规成本 / 产能占用），数据来自 2026-08-31 实测结论。核心纪律：<b data-page-node-id="I9i4xMJnZ5tkpqrtp2x27f">一篇素材，一平台一版本，禁通稿。</b></div>
+
+  <table data-page-node-id="cy2839IXFLTioA0w6CsWAJ">
+    <thead data-page-node-id="AdcqIzV2wkHL1tNVwmVHit">
+      <tr data-page-node-id="IYIZdarNTH2seA3lUVs4rH"><th data-page-node-id="AD2ryuIc02X6q7eMe9coLi">平台</th><th class="c" data-page-node-id="g1ps9yb94t6mEs387Qh7vp">适配度</th><th data-page-node-id="JFa2ju41o46PxM28sB6xms">角色定位</th><th data-page-node-id="wSeDguAWYb98u7V8KBmJ7K">标题规则</th><th data-page-node-id="pKGvtVXmE9Evps4PrNbFVp">改写要点</th><th data-page-node-id="aBLOJHbNYXaSRsaUBEHZen">合规红线</th></tr>
+    </thead>
+    <tbody data-page-node-id="zeBmWepiKbXMxosVnR6wJY">
+      <tr data-page-node-id="JfUQ0A3JO18X6mLZcmQnBy">
+        <td data-page-node-id="j5MNYQgj9HKbaCpAN4ETZg"><b data-page-node-id="o8pLbhZ1UQA56TEdp2Jk9c">公众号</b><br data-page-node-id="Yhp7acHj8EwSdxleBevcUu"><span class="small" data-page-node-id="tDj4q8jklFKoVDVFXnHPHD">行途技术手记</span></td>
+        <td class="c" data-page-node-id="fFVhDor2q2UFEJeYrE6UcN">9.5<br data-page-node-id="niSvlyAVuJSZI6Z5SgDBD5"><span class="bar" data-page-node-id="FQCDHeQVollSDh7xo2XyYE"><i style="width:95%" data-page-node-id="uAK0PyHFFQHyC8eO8qIt2G"></i></span></td>
+        <td data-page-node-id="MSIGNNuleJafE6SpeTN6Cy"><b data-page-node-id="wc1UBtyK8K1q9iSf2d0Y0e">主阵地</b><br data-page-node-id="uNMPIJt0HhLMu1eGD9BCks">首发拿原创 · 搜一搜长尾 · 粉丝沉淀 · 变现收口</td>
+        <td data-page-node-id="SkiY065LozybxFrM6k5sPD">前 13–15 字含核心词（防折叠）</td>
+        <td data-page-node-id="VCBazuovBLGKpbQnPg2MvE">情绪 + 故事开场；3 段法；结尾合集引导 + 下期预告</td>
+        <td data-page-node-id="O06bKlNgNDfxRKTuMAx87v">群发 1 次/天；「只发表」不占次数但<b style="color:#d93025">基本不进搜一搜</b>（2026-09-02 纠错，主推必须群发）</td>
+      </tr>
+      <tr data-page-node-id="N2uKMX8Nbt4BHVTdDeOJ61">
+        <td data-page-node-id="Qm9cvTFCUQYguqZm9xTvEh"><b data-page-node-id="Uwgzq7vBNW5UUsMs6D3sia">掘金</b><br data-page-node-id="7peIxUPv256ghmr24ZaPA2"><span class="small" data-page-node-id="FcM8fdajxsKpkIUUXTcTtD">行途</span></td>
+        <td class="c" data-page-node-id="VOkpUxJ10A4zCChhHFOY2Q">8.8<br data-page-node-id="GH9ehugE5sHjrKTEJj1vyv"><span class="bar" data-page-node-id="7Bj30N70MGxqDTWyzomC0h"><i style="width:88%" data-page-node-id="tYszYBRCKg6mX71Gn3c6oX"></i></span></td>
+        <td data-page-node-id="KeKK7P8E5HHilOcWPTlxfJ"><b data-page-node-id="5PhcD1NnTaQJZ4CXTFfNKc">技术社区涨粉口</b><br data-page-node-id="ieCm6Mtyq2kMvq6xJF2llD">已跑通（首篇获矿石 100001）</td>
+        <td data-page-node-id="iM44unHe1MODQfQDoIDv4O">10–20 字，观点/数字先行</td>
+        <td data-page-node-id="lIVTmlDMmnXa8h9GAkiS4l">禁寒暄，开场直给结论；结构紧凑；代码块保留；突出工程深度</td>
+        <td class="warn" data-page-node-id="jsGMvh7MMpycXoG3RyNyna">禁引流：删「福利/邀请链接/扫码注册」整块</td>
+      </tr>
+      <tr data-page-node-id="pOHqr2snpP1EQWyH23ykdr">
+        <td data-page-node-id="aObhTVYDSpnk29zY5nriTr"><b data-page-node-id="Ac8EvrlKI4Dh5a037Kzry5">CSDN</b><br data-page-node-id="p1TYshYvneQYTkqIejObfi"><span class="small" data-page-node-id="oXy6Tc7Kk4AlCdl7kRX6e0">行途(thinkgame)</span></td>
+        <td class="c" data-page-node-id="hdRpEkUBe3B7qx2h5MoVLs">7.8<br data-page-node-id="unuMdT95NgONPCeRjF4tU3"><span class="bar" data-page-node-id="xy7anD6JW9zv7byAnOyfRR"><i style="width:78%" data-page-node-id="izQv3Fa5p9unr9cjHgtNLI"></i></span></td>
+        <td data-page-node-id="QRhb4wKXomsXt8amw5fZSF"><b data-page-node-id="Yw4quBkaeZk2r0bsV5QQ3E">百度 SEO 长尾入口</b><br data-page-node-id="jC2lXrAaMQaJKwX08oGhsv">教程型内容的最佳沉淀场</td>
+        <td data-page-node-id="7Zf4PNlMNSJlFK18350CQq">15–25 字，带关键词</td>
+        <td data-page-node-id="T7HdpgBxPAUfGJKFjN5aIl">教程完整度优先；长文全保留；代码块全量；开头直接给结论</td>
+        <td class="warn" data-page-node-id="jlYJnmRSNv2XvYnwlwweo7">引流须走「推广管理」推广卡（光明正大放公众号）</td>
+      </tr>
+      <tr data-page-node-id="2EkeyDUHzBVuFZEP1BLZpa">
+        <td data-page-node-id="fmMTmG14l0jOiCu2xqyQtD"><b data-page-node-id="hmYEvy5NtQOgzpKRHRLrrB">知乎</b><br data-page-node-id="MB0ZzmavZoEd0zaRKHEWYG"><span class="small" data-page-node-id="lORKPzPdGGeq6S8tzpNFeO">行途</span></td>
+        <td class="c" data-page-node-id="JffYNQZXrQYtx5ZPPYgE3R">8.2<br data-page-node-id="t1Pq7JLHPPBesJOilvJ8Pm"><span class="bar" data-page-node-id="UquyR4IGXa6XxYWWutQLAI"><i style="width:82%" data-page-node-id="Bi7i2pZai5HalYFzBwYJGp"></i></span></td>
+        <td data-page-node-id="nrYkP5iVcTXHdw4DvDyW8h"><b data-page-node-id="ZBj97xgnILKbJND4pjFSQO">专家人设 + 长尾检索</b><br data-page-node-id="8zPmJT0Dd5XauKc3KI78XQ">问题式内容天然获客</td>
+        <td data-page-node-id="lvIm5xNh0NPcfGIhDH7KiQ">15–30 字，问题化</td>
+        <td data-page-node-id="26nzE8pC7GOn6AgJRPPHH6">回答体；开头摆身份 + 立场；正文答疑；结尾给结论；可挂相关问题</td>
+        <td class="warn" data-page-node-id="MQ0H1XhFnNabIFJVlDEW59">禁导流 / 营销；禁二维码外链</td>
+      </tr>
+      <tr data-page-node-id="i1gYop7PBTizWG5Fs93UMn">
+        <td data-page-node-id="ZGxCAZ5MXnAG73VFfubN41"><b data-page-node-id="2kFUJfdk2ibJJy3b1uLdpI">小红书</b><br data-page-node-id="OJDA1mu6ZfrVcSp60jgk47"><span class="small" data-page-node-id="RhpqojDAc24ZMcoUuFkHxc">行途</span></td>
+        <td class="c" data-page-node-id="IPS09sevQ5QwAkdkglWjUB">5.5<br data-page-node-id="cBAaT4oq60Mw2Wesck6peY"><span class="bar" data-page-node-id="wzmriFZJBabfBKeLN3xXcU"><i style="width:55%" data-page-node-id="Ip5NP8ghqWCr5zlD1wnLsm"></i></span></td>
+        <td data-page-node-id="qrPd5wldETeFIaAYwtir0g"><b data-page-node-id="2oV6AGEYNxCU9Xj9O4T4xT">泛流量入口</b><br data-page-node-id="WtHxAzs19krecZ814F2bAR">竖图 + 短文，认知类卡片最吃香</td>
+        <td data-page-node-id="l41oU6thTokjLIWBQFwTPN">口语化，带情绪词</td>
+        <td data-page-node-id="AowbqUYBFQzUhkwFUd372A">长文拆 6–9 张竖图卡；一张一观点；首图定生死</td>
+        <td class="warn" data-page-node-id="0zCgqgZ1AYIH69yW9ZW3iz">默认禁一切外链/二维码/联系方式；仅简介可挂名</td>
+      </tr>
+      <tr data-page-node-id="r56WacX0KgZjXEAYJ7bJqH">
+        <td data-page-node-id="R5YG1NnZtythBGUrD2u0Dc"><b data-page-node-id="7mbRgot9CaDGwUTiAcldm9">B站 / 抖音 / 快手</b><br data-page-node-id="y62H7Avvsm7XcSU3sjkJ8f"><span class="small" data-page-node-id="jwbRQwPbkkZREud0y2Ikoj">未纳入本轮</span></td>
+        <td class="c" data-page-node-id="4Am7hNqGuWF6oXzOg1TNop">6.8 / 4.2 / 3.3<br data-page-node-id="E2uNvmFzkK2R5dAV8beFUe"><span class="bar" data-page-node-id="RBRZ2DtJtGCMMOEbybYIHv"><i style="width:42%;background:#C0392B" data-page-node-id="myCSs50VcQwBwfyG7Z0DDc"></i></span></td>
+        <td data-page-node-id="o8JNauC6EqRPCNZy1mDGUy">短视频平台，图文权重极低</td>
+        <td data-page-node-id="Zw7oDjbSOgGdGb702dONFq">—</td>
+        <td data-page-node-id="6Ml8H0AjtUpIUaKizEsRBa">本轮不碰：图文硬塞短视频平台 = 白发</td>
+        <td data-page-node-id="WxiIgxHDA0wr40N6fufgqv">需先跑通视频线（PPT+录音）再谈分发</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note" data-page-node-id="CSZYIPrPF7jVuDViCRFxCW"><b data-page-node-id="k5Gg8ZlPtnf51bDV9urggb">四条分发约法（写进每篇发布卡）：</b>
+    ① <b data-page-node-id="dDnzH65w8VUYtHM8LrNr9r">禁通稿</b>——同一素材跨平台，标题 / 开头 / 结构必须重写；
+    ② <b data-page-node-id="m8UuBIpGYbdvDPbiIbscPV">窗口期</b>——公众号首发后 24–48h 再分发，避免判低质搬运；
+    ③ <b data-page-node-id="KJiyVJ9Y9DvAGc3NcPPesU">脱敏红线</b>——技术平台被搜索引擎收录、暴露度高于公众号，公司 / 项目代号 / 薪资 / 年限一律模糊化；
+    ④ <b data-page-node-id="iGFFAuGEOqhKEDbasizw0q">回填台账</b>——发布链接 24h 内回填发布日志，72h / 7d 数据回流选题池。
+  </div>
+</section>
+
+<!-- 3 W1 发布卡 -->
+<section data-page-node-id="Rm1x5s4KAvNmKHKMC7d9VW">
+  <h2 data-page-node-id="hhZNwnwadXqqr97cjFv8Eh"><span class="no" data-page-node-id="TxUOtVhHgIboz8QZMEUg9M">3</span>首轮发射（W1）：一个平台一个内容，素材不重样</h2>
+  <div class="lead" data-page-node-id="36EUTB6vXpvjEAlrgGXjJp">6 张发布卡 = 6 份弹药，全部来自现有成稿，<b data-page-node-id="xQjLZ0sB3K9iejExtQZU9X">不需要新写长文</b>，只做平台化改写。卡片字段可直接照着执行。</div>
+
+  <div class="pcards" data-page-node-id="P5arVicFISFPcB1NAjDLCF">
+
+    <div class="pcard" data-page-node-id="F3TG4QYtYEmlA1GzEXaGH2">
+      <div class="ph" data-page-node-id="9yHTjnSdag4Orewk768mcp">
+        <span class="nm" data-page-node-id="ouEe6akJbOwFVa9kJ8ulI7"><span class="dot" style="background:#2E8B57" data-page-node-id="RlHc6usy1pUU2HQrTwB2lj"></span>公众号 · 首发</span>
+        <span class="role" data-page-node-id="1QfA4YDSw5b8f8CVkhAEvK">9/3（周四）20:00</span>
+      </div>
+      <div class="pb" data-page-node-id="fySQQGaS8QPKpP4wlBmYSt">
+        <dl data-page-node-id="RJHdgLeCQv31qUajuOC6Km">
+          <dt data-page-node-id="QCc1Bvwhe48JEgvXAeajFc">素材</dt><dd data-page-node-id="iyExqCzFhJb72Wsvnht86F"><b data-page-node-id="uV3B3UbNpAFEncRFipFsP1">B12「harness 我只是听名字」</b>（已成稿 · 认知差故事向）</dd>
+          <dt data-page-node-id="OKtRYZhQsijlKK3QltYuwz">合集</dt><dd data-page-node-id="GJYhXpo7eVsjyr3fucFof0"><b data-page-node-id="HAbtDOoMnUgjchfBRvK6RL">AI 工程化实战</b>（新建 · 第 1 篇）</dd>
+          <dt data-page-node-id="9zMJviE06G3gd3ddCA5dEz">标题</dt><dd data-page-node-id="jf1i6CNRsS1khEiB8M64FV">① <b data-page-node-id="EUTRadcMcwqg8klXkUcCzR">「harness 我只是听名字」：一次对话暴露的 AI 认知差</b>（主推，前 13 字含词）<br data-page-node-id="9SH61vfwzeU6SnvmxWBCVa">② 多数技术人对 AI 的认知，还停在「要提示词」<br data-page-node-id="yzavDpZcLi32rPpjW70YQO">③ 一条五级认知梯度：你在第几级</dd>
+          <dt data-page-node-id="RLCMSss27x8A9S342L2VDU">摘要</dt><dd data-page-node-id="hjDlvdf2pg9sbuLyoHOyzZ">一个前同事问我「有没有可收藏的提示词」，我意识到这条信息差正在把技术人分成两拨。</dd>
+          <dt data-page-node-id="1LjHs9Wne3ojzRgN5QkOP7">埋词</dt><dd data-page-node-id="W0An0hJApqMka312sFBGm2">核心：harness 认知差｜长尾：harness 是什么 / coding agent / AI 工程化体系 / 小厂 AI 实践</dd>
+          <dt data-page-node-id="eSJFfdjHTgsTLnUv1z9J3k">待办</dt><dd data-page-node-id="WOWL8533d4dH42ZkOMyaVJ">① mermaid 五级梯度图 → 转 PNG（禁直接贴 mermaid）<br data-page-node-id="xGGRkDETs76D5xyy1wXeSf">② 封面 900×383（HTML/CSS → headless，<b data-page-node-id="jaOJEMoqppwoTFZsqrdX9F">禁 PIL</b>）<br data-page-node-id="1qVUtl8eROpvqQx2xdq7ed">③ 结尾补：合集引导 + 下期预告（速评01）</dd>
+          <dt data-page-node-id="HZiQi9n7nn0L3vHiPzCdoL">金句</dt><dd data-page-node-id="R35hAeScqxjZ083yBSgkiC">「提示词只能解决一个问题，体系才能解决一类问题。」</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="pcard" data-page-node-id="jgDq6RFBUkMdk5ihZr7qSC">
+      <div class="ph" data-page-node-id="d3K5JhgWEst2AFjlVlVwY3">
+        <span class="nm" data-page-node-id="Aii7krwDCidEBUY3rgGhOO"><span class="dot" style="background:#056DE8" data-page-node-id="DZNdNhmu523ZsJKIarRGsS"></span>公众号 · 第二弹</span>
+        <span class="role" data-page-node-id="ZDzwd0D0xTk7rhBICtrlZD">9/6（周日）20:00</span>
+      </div>
+      <div class="pb" data-page-node-id="BZQTAygXLD7GG16SxV21lM">
+        <dl data-page-node-id="BZoLdewqOt9bT1H5W8ziGg">
+          <dt data-page-node-id="b2pXDS2IEAUlKN9y4B5Vts">素材</dt><dd data-page-node-id="tAU5xT8IjEGDz0azQkcpQw"><b data-page-node-id="nT2bnUEph3ZL5tvXmzCQbh">速评01 Qwen3.8-Flash 对比 GLM</b>（outputs · 已成稿）</dd>
+          <dt data-page-node-id="eHBqKcgnpx6GKcgtXcaJ0C">合集</dt><dd data-page-node-id="qUDEkT6b2jIBICATJ6aOW3"><b data-page-node-id="rDSOnaijGK0J5yjBWAB29o">国产大模型速评</b>（第 2 篇；+GLM 篇 = 2 篇）</dd>
+          <dt data-page-node-id="rTGhQiLcKhr8ZabMZ44upe">标题</dt><dd data-page-node-id="9HJ8AQJIJ1lapYiRjDtddP">① <b data-page-node-id="xJdNdPHJSIiz3XwHHDkfmr">千问 Qwen3.8-Flash 开源：6B 激活叫板 Opus 4.6，训练成本降 90%</b><br data-page-node-id="maUyGIqVZ258o4BXIZyCIA">② 同一天两个 Flash：千问和智谱，谁更值得用</dd>
+          <dt data-page-node-id="Hlv7RSlVUEfFbLC3XHEatP">时效</dt><dd data-page-node-id="CjbpDx8TbCdlCsE3227Q4x">⚠️ 8-26 发布，已过 7 天，<b data-page-node-id="SoCcnanNX2nLP0qTbPcp81">时效红利在关闭</b>——本轮必须发，再拖就浪费对比钩子</dd>
+          <dt data-page-node-id="otAt28vGNdRyIjgRTrr9s3">埋词</dt><dd data-page-node-id="bm8RLMzTR2NF9ULUtE4F1i">核心：Qwen3.8-Flash｜长尾：千问 Flash 价格 / 6B 激活 / 大模型选型</dd>
+          <dt data-page-node-id="deVlAkCksPT10MzmJa0ufM">待办</dt><dd data-page-node-id="TsNkVF5syKzAWfWEY7wKtp">① 价格表核对官方最新口径（禁凭印象）<br data-page-node-id="kA4CMKEYnnen0yA6IDAHPR">② 兄弟篇 GLM-5.3 文内互链<br data-page-node-id="fVoAZ8js32VEXTBtmDxwtB">③ 「内容由 AI 生成」标注（同上篇）</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="pcard" data-page-node-id="kK4qv6ilaQJQzryJUGJ1PK">
+      <div class="ph" data-page-node-id="NPcaZBkGGzaHF7gsDwsTxk">
+        <span class="nm" data-page-node-id="nng2q9xGbuOlgKtEkik5P9"><span class="dot" style="background:#056DE8" data-page-node-id="RGP4pMPDLvvLhnxE4Ys7Vr"></span>掘金</span>
+        <span class="role" data-page-node-id="ru1hahRzM2GAcAnvtqxLdD">9/4（周五）20:00</span>
+      </div>
+      <div class="pb" data-page-node-id="BXSo3BXYYxPVZ7Xzn9fDS6">
+        <dl data-page-node-id="KsSPrROubdzt3D6p7rUKq9">
+          <dt data-page-node-id="RrIi4PCgF0NXUrtnUWb2fn">素材</dt><dd data-page-node-id="LoOkVT1P25D0jXGj0CZEhD"><b data-page-node-id="m4j2MnbXWWbgy5rfWidIn6">B02 Ponytail · 代码量砍 73%</b>（工程向，最对掘金胃口）</dd>
+          <dt data-page-node-id="GuoiGJkO99mM5auZUnATwC">标题</dt><dd data-page-node-id="N4FS3g4o39MNBIgPNFSO97">① <b data-page-node-id="RssJQdIDfOEbO7BVTk7Npf">用 7 级 YAGNI 阶梯，我把 AI 生成的代码量砍了 73%</b><br data-page-node-id="FDIFjvzux6CUZCQ7QXtqZj">② AI 写代码爱加戏？给它一条「能偷懒就偷懒」的纪律</dd>
+          <dt data-page-node-id="pFeTJG3PLuz6mGnwdjQ6se">改写</dt><dd data-page-node-id="nAFVuI4dAd8FISq11QWqlY">开头直给结论（删故事铺垫）；7 阶梯表格保留；补真实模块前后对比数据；代码块全量</dd>
+          <dt data-page-node-id="9PwVROaqwsZp2ZUsixOC5O">标签</dt><dd data-page-node-id="09cXDyuBrPSzSKPaSdCa0j">AI 编程 / Claude Code / 工程实践 / YAGNI</dd>
+          <dt class="warn" data-page-node-id="hqJMNJ5jcCPHGT7vyXb60F">红线</dt><dd class="warn" data-page-node-id="NPlaNyEDogBbP95ll1R5b2">删干净公众号引导；禁「福利 / 邀请链接 / 扫码注册」</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="pcard" data-page-node-id="RzSINUQJNgqqeVHPF7WNOD">
+      <div class="ph" data-page-node-id="DP1HKcI178O48bDJUQtDD0">
+        <span class="nm" data-page-node-id="lHwcQRt4yWeXS3qnPojfQV"><span class="dot" style="background:#C0392B" data-page-node-id="r1BBPQwBHg7h8p1Z9xnYHV"></span>CSDN</span>
+        <span class="role" data-page-node-id="T7IME2TcvDhXDUs8qS6IiE">9/5（周六）10:00</span>
+      </div>
+      <div class="pb" data-page-node-id="sf8ID3GBNha39YWulG4l7D">
+        <dl data-page-node-id="ZC1kR9uYYx0WPgKGs8LC4E">
+          <dt data-page-node-id="9cwqSJRvgGnUNt02jCxjiy">素材</dt><dd data-page-node-id="nV3PUK4FHj95vwVRmkFO4l"><b data-page-node-id="OvcsemRv5yz4tszXfrNHch">B09 Claude Code 省 token 配置</b>（教程型 + 高收藏）</dd>
+          <dt data-page-node-id="CReH6pIbSokrqDl6LMq2Go">标题</dt><dd data-page-node-id="My6fAaGfx4yHCjXmDPH5wu"><b data-page-node-id="oLAHqhHWnPJEG9g4lVakWS">Claude Code 省 token 实战：outputStyle Concise + 压缩阈值完整配置教程</b>（25 字，SEO 满配）</dd>
+          <dt data-page-node-id="VVe50trMSvdOWiQSmyV9gI">改写</dt><dd data-page-node-id="dnEhdFURkk7El0C8n07UKV">教程完整度优先；开头「结论先行」；<code data-page-node-id="cpTuAXECFHT1nNVFPBMGKm">settings.json</code> 配置块全量；补 Concise 前后对比截图</dd>
+          <dt data-page-node-id="CTJZL0jzTrtBbwJ0CBhBPR">引流</dt><dd data-page-node-id="EUEIKeKwysCqi97SZsPGV7">✅ 走<b data-page-node-id="JBD8cwShhWO6k7xgHDK1Wv">推广管理推广卡</b>（CSDN 唯一合规的公众号曝光位）</dd>
+          <dt class="warn" data-page-node-id="3EFVQM9Qumchgb1H1nndgl">红线</dt><dd class="warn" data-page-node-id="aQPPYjs1sbMucVHQTiYfq9">正文不放二维码/外链；账单数字脱敏到量级（PUB-018）</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="pcard" data-page-node-id="0b0OK5nr5vT0KrfqdhemX0">
+      <div class="ph" data-page-node-id="OWx1w68bYY9tyC60DJnFdg">
+        <span class="nm" data-page-node-id="FHdBHjck1io4qiLH3ye3J2"><span class="dot" style="background:#6B4FA8" data-page-node-id="VmqkyHdZmY3VC9HLFuEd3o"></span>知乎</span>
+        <span class="role" data-page-node-id="XUvOZ6RVR8MeZenFbUol9b">9/7（周一）20:00</span>
+      </div>
+      <div class="pb" data-page-node-id="WDslJr8FCgidV7VOwDRqy4">
+        <dl data-page-node-id="cVriBKvzouAoPxrygSZ6Ij">
+          <dt data-page-node-id="riJujJP957ab8mAnVdKMqH">素材</dt><dd data-page-node-id="gaTxyERybIE3gDx4dtHSwa"><b data-page-node-id="8Ijbka2G4DVZn79hD4Djq4">M01 素材永动机</b>（方法论 → 问题化改写）</dd>
+          <dt data-page-node-id="SQ8lxE0u0xsJRRtfuyBss4">标题</dt><dd data-page-node-id="cIKrtBCAeofXFwxRAshdRY">① <b data-page-node-id="yieSHSK4lb8sNBpLEbCwnH">为什么你和 AI 干了几百小时，却写不出一篇公众号？</b><br data-page-node-id="F75vrF6dnCYE9jkcD3Cgjd">② 怎么把和 AI 的日常会话，变成可持续的内容资产？</dd>
+          <dt data-page-node-id="vAVti2DcioaPmu81JvAmKX">改写</dt><dd data-page-node-id="h3eRcshsuA7fqxuDfmm7Xr">回答体；开头摆身份（一线技术经理 + 仍写代码）+ 立场；三层痕迹漏斗图；结尾给可执行结论</dd>
+          <dt data-page-node-id="8RCrP6yRPWQ3BMtwZBvCFD">动作</dt><dd data-page-node-id="6v9pCRbewJWReCLxQwk0E1">挂到相关问题（AI 变现 / 技术博主 / 知识管理）下，蹭问题流量</dd>
+          <dt class="warn" data-page-node-id="YLWBsD0P2pW8RVL5yjYBdi">红线</dt><dd class="warn" data-page-node-id="WL5u6Gc1qZOPjzadyGFNyJ">禁导流、禁营销、禁二维码；不提公众号名做引流</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="pcard" data-page-node-id="4yvdY6fc69mT9FoshyMAA2">
+      <div class="ph" data-page-node-id="GFzp75mYs5LQKjTErBo2Ek">
+        <span class="nm" data-page-node-id="NEnf6116v0drdS4cC4751G"><span class="dot" style="background:#C2185B" data-page-node-id="Ht0n8uEDQnhj40LLboIIop"></span>小红书</span>
+        <span class="role" data-page-node-id="NeQ7PdZoXAnJSvhuckMotk">9/8（周二）12:30</span>
+      </div>
+      <div class="pb" data-page-node-id="PYnAkZViqEM8Dfajb4Eu81">
+        <dl data-page-node-id="9GlSjgHtcLVVjmGK4NHKGB">
+          <dt data-page-node-id="HqGqpr5vPIX93JnoHrFXn4">素材</dt><dd data-page-node-id="MGfbMoLwAlj7E0jrKwseem"><b data-page-node-id="clhYOXI0j29ffT9VJV3JXL">B11 技术人的复利</b>（成长向，泛流量最吃）</dd>
+          <dt data-page-node-id="YG0JvdTGk2SoDQDVKyoeET">标题</dt><dd data-page-node-id="jTiMN3VYnKL6XsMLCbb0Aq"><b data-page-node-id="WpFRnSO7ETtmPgSWx8Z4wb">技术人的复利：每次沉淀都在给未来加息</b>（+ 情绪副标）</dd>
+          <dt data-page-node-id="HJZUqcwsFIKFCI9uGvOYZf">形态</dt><dd data-page-node-id="EBE3laZMD3tLe2cCqxztbH">7 图：封面 + 复利曲线 + 双环学习卡 + 沉淀三步 + 反模式卡 + 金句卡 + 尾图（竖版 3:4）</dd>
+          <dt data-page-node-id="T4A4VWlWvjvwtgtOIZnSPs">出图</dt><dd data-page-node-id="qVJK3g9yBUeFREuFegoM2o">HTML/CSS → Chrome headless 截 PNG，<b data-page-node-id="4vY9o2A7WKBtj7mqNuKvk6">PUB-010 禁 PIL</b></dd>
+          <dt class="warn" data-page-node-id="dGDgpUCwznBLb0VpmQAMR1">红线</dt><dd class="warn" data-page-node-id="4ReiKHbBdcWO73mFl8Ae7W">正文零外链 / 二维码 / 联系方式；引流只走简介挂名「行途技术手记」</dd>
+        </dl>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="note g" data-page-node-id="CUL8O1uAVkptDWP3hYYIqv"><b data-page-node-id="vC06PJ9eATmSW3QkFx9Mq6">为什么这样分配（不是随便排的）：</b>
+    公众号拿<b data-page-node-id="evSGUY0HhsMoWB5i6ADatk">最有人味、最能引发对号入座</b>的 B12（认知差）+ 最有时效的速评01；掘金拿<b data-page-node-id="byXHgXZ4DrUu5VUlybb9Nr">工程颗粒度最细</b>的 B02；CSDN 拿<b data-page-node-id="FDHxEQEU1o1ZRA98GFJnXe">教程完整、长尾可搜</b>的 B09；知乎拿<b data-page-node-id="cnfu01ILE4LxXPlE3OkwOc">最像「一个问题」</b>的 M01；小红书拿<b data-page-node-id="bAMO7wAyy0f3ohsKgJhRH4">最容易被截图传播</b>的 B11。六个内容互不重复，一轮下来等于用同一批素材在五个平台同时「在场」。
+  </div>
+</section>
+
+<!-- 4 四周排期 -->
+<section data-page-node-id="TlrIpjMVD45HhMlldpoTFD">
+  <h2 data-page-node-id="YqZGNIWqV56SwaYbOcI0Ou"><span class="no" data-page-node-id="LnywM62SrJ2toeuMORXpfb">4</span>四周发射序列（2026-09-03 → 09-30）</h2>
+  <div class="lead" data-page-node-id="2js2tQXZHGa96Oxtb5121J">节奏：公众号每周 2 篇（周四 20:00 技术线 + 周日 20:00 认知/时效线），分发平台跟在首发后 24–48h。<b data-page-node-id="NsGpz8Rrzbbj3k9DX8PmDH">核心 KPI 不是篇数，是三个合集全部跨过 3 篇门槛。</b></div>
+
+  <div class="week" data-page-node-id="O0g5OUxRB5whBNcmZ1dEiD">
+    <div class="wh" data-page-node-id="aLoswIMwiF20S43faC897q"><span class="wt" data-page-node-id="9JkyHZGt4bLoccAyOMmt1X">W1 · 首轮铺开（9/3–9/8）</span><span class="wg" data-page-node-id="mQ1ayE7HUSZxNrZGH5LOZb">目标：五平台全部「在场」+ 公众号连发 2 篇</span></div>
+    <div class="wb" data-page-node-id="COv7kGIyX6HCZV54fIHX3B"><table data-page-node-id="ZoaY3eeAmTq4Krksvz1pxA">
+      <thead data-page-node-id="PEALOEr30tP7gU9OJxGlfs"><tr data-page-node-id="bxxvkmnIAMJx2Q8De7d9Ah"><th style="width:80px" data-page-node-id="MmDwX0udLfcF6dcAmQBrxN">日期</th><th style="width:70px" data-page-node-id="SkzqM6iZ1skMj2ztKgiKyR">平台</th><th data-page-node-id="GYWcKTff4AdWULEOmsWrcd">内容</th><th style="width:130px" data-page-node-id="gllgQtEtQn2dIXrNccTghk">合集</th><th style="width:96px" data-page-node-id="BhONT4YPGGEzm1FttbQBsQ">状态</th></tr></thead>
+      <tbody data-page-node-id="mVFwWz4C6l6Kr3r2xG952y">
+        <tr data-page-node-id="nBtwHSyqzqrUn5EAvxiRXw"><td data-page-node-id="Z8vU2Rr3cMaclwNFQbXztZ">9/3 周四 20:00</td><td data-page-node-id="V1I0alFILflvQqaelw1Axt"><span class="badge b-pub" data-page-node-id="noM5UIAF5GczUItscP08mx">公众号</span></td><td data-page-node-id="ILCg21Ls96Xs9PtFVf3eY4">B12「harness 我只是听名字」认知差</td><td data-page-node-id="9mD7S4vk6alSv4m3uazF2R">AI 工程化实战 ①</td><td data-page-node-id="dgTkrZ1b8CuAzJlteJGSyN">待发</td></tr>
+        <tr data-page-node-id="vyDjRtREEohpAmA3zpABJL"><td data-page-node-id="mikt0AroIPhxEvmo9mIXuG">9/4 周五 20:00</td><td data-page-node-id="ejpULUAzHX3aJCj7fU8ZdA"><span class="badge b-jue" data-page-node-id="rmbJhxfyU788WLxEECqOd3">掘金</span></td><td data-page-node-id="BMwyUX451MAbDwCjBtL5HI">B02 Ponytail 代码量砍 73%</td><td data-page-node-id="vPI0jznitPC1qETt8lFB3D">—</td><td data-page-node-id="KIWKEzDV9CWVvT7JhIKcAd">待发</td></tr>
+        <tr data-page-node-id="ZAI7VBvFEbDD9lf2CfUldi"><td data-page-node-id="wduFCrhDEG4QUq8OTWGs1I">9/5 周六 10:00</td><td data-page-node-id="PGwF4dilwHz0OZwYTQl3gV"><span class="badge b-csdn" data-page-node-id="HvPoHHI1mMTnvj1s9CUy1k">CSDN</span></td><td data-page-node-id="1Y9QorufQYnmEJ74vLNfWY">B09 省 token 配置教程</td><td data-page-node-id="Gm8D8glAfqIZYQtBqp1eEu">—</td><td data-page-node-id="7aqW4DRjDIPuLnRXaNLQCQ">待发</td></tr>
+        <tr data-page-node-id="T1kk75HQ6GTavg2JsXxGio"><td data-page-node-id="N0qjuN2jQWOZqb5PONlnuW">9/6 周日 20:00</td><td data-page-node-id="FVWrKLqqjjljYEa3mxUyqH"><span class="badge b-pub" data-page-node-id="zYEQERM25lJ54duV0PJo6p">公众号</span></td><td data-page-node-id="iS2eCOlIICBJm2R4P1kCvv">速评01 Qwen3.8-Flash 对比 GLM</td><td data-page-node-id="kFRZCsDyV3IXWarpaoseVz">国产大模型速评 ②</td><td data-page-node-id="dZ3dW05Og6ds5iy7jari5n">待发</td></tr>
+        <tr data-page-node-id="hPLqwWV9ijqFdDYnZDr5dN"><td data-page-node-id="y7jHvCqoWki0NNGq2wdSdb">9/7 周一 20:00</td><td data-page-node-id="z8npMhEeWd5xAtj4kOWcVv"><span class="badge b-zhi" data-page-node-id="lnnlFLkvDaQgpXs8heOEzv">知乎</span></td><td data-page-node-id="UT3rUmgjK33o1hq4mwdUSE">M01 素材永动机（问题化）</td><td data-page-node-id="d2GnvZNCJ80vosysmzMBuF">—</td><td data-page-node-id="KT9KAMpX5FAqGwzzSuW5LE">待发</td></tr>
+        <tr data-page-node-id="as02VEpy5sn9Jlri1EyM4Z"><td data-page-node-id="3iVl03br0k7QIuKyCDPbUj">9/8 周二 12:30</td><td data-page-node-id="g5YutGgl7NdgTeF4zHet6l"><span class="badge b-xhs" data-page-node-id="tSkddIiPcItqHfoFfTD4IQ">小红书</span></td><td data-page-node-id="LGU4Ele31NhvJkIZawgbWS">B11 技术人的复利（7 图卡）</td><td data-page-node-id="uCDuYazSWEHHtLdnfA5x6w">—</td><td data-page-node-id="cmAUQ9mAxoledjyi1fu39I">待发</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="week" data-page-node-id="A9i6lff5KDPaziRtOPFbSa">
+    <div class="wh" data-page-node-id="q1fgp5i0A3Mf4IdmHdsxKk"><span class="wt" data-page-node-id="wNFdECVmHkNOL2JC42qmG4">W2 · 补合集密度（9/9–9/14）</span><span class="wg" data-page-node-id="V8DGEsxXXvi8LAfeRtUmjI">目标：国产大模型速评 凑满 3 篇 → 首个合集正式生效</span></div>
+    <div class="wb" data-page-node-id="Hht39KW7TzIruQgGIMPplm"><table data-page-node-id="RjG7iajeD2sGbe2v4s1d8O">
+      <thead data-page-node-id="zhdw28xYni8D0zqFEuEt3r"><tr data-page-node-id="2n4vifGQwmcirUuQZUCQkm"><th style="width:80px" data-page-node-id="9UvNlQeRMF24pZZ9oLSAHj">日期</th><th style="width:70px" data-page-node-id="wCiqP4aKANcTkbxjIvZXfJ">平台</th><th data-page-node-id="vIYpdklD8yiKcbLrAby5kg">内容</th><th style="width:130px" data-page-node-id="5XldU1Aid2cSEtn3xoID8V">合集</th><th style="width:96px" data-page-node-id="aB0zvlnM0EBjjwQzBvjkKs">状态</th></tr></thead>
+      <tbody data-page-node-id="TM8lou3VH9vILcrTDWiSTA">
+        <tr data-page-node-id="0kv5ey684VnaiCUwZckoPf"><td data-page-node-id="YAfdbWLPLA3EgZgd3qP33B">9/10 周四 20:00</td><td data-page-node-id="aFo3oNNy9T8oCnKQdLMTX7"><span class="badge b-pub" data-page-node-id="wmlMbUMH2MneKulp8pQwO8">公众号</span></td><td data-page-node-id="HPwByDWjj8u1SVQbeAYHLy">速评02 <b data-page-node-id="6mFZ2zPyvdsLrdXJAZJy9B">DeepSeek V4-Pro 转正：我用它写了半个月稿的真实账</b></td><td data-page-node-id="Hgi2pyHEyKbQsovXZHAhca">国产大模型速评 ③</td><td data-page-node-id="VYpzvmnpgCvN6hJG0imgb8"><span class="badge b-new" data-page-node-id="mulHNuhNkiC2P8NuOZbGMI">需新写</span></td></tr>
+        <tr data-page-node-id="mwUpBQouD6Za0AeW6bnrDX"><td data-page-node-id="u9TFkU4vrb6zltnQcahDD2">9/11 周五 20:00</td><td data-page-node-id="DF80igqQmCEiA4xQbxlyDF"><span class="badge b-jue" data-page-node-id="nVWW2cE3BBDGtkoIrHPecV">掘金</span></td><td data-page-node-id="ZR32ecN6I1VCLuGD8raegB">B12 认知差（工程深度改写版：五级梯度 + 约束文件怎么建）</td><td data-page-node-id="XmJzvTA8gAdQTPTdCDkXB3">—</td><td data-page-node-id="q2oKyJt3jgouCwVjBqPSkj">改写</td></tr>
+        <tr data-page-node-id="8WFcMOkG0bDhDC8lO3M7sV"><td data-page-node-id="zAhdacc15jACRy4ipCk5aK">9/12 周六 10:00</td><td data-page-node-id="SRQguSvFH2cPzamCToY60R"><span class="badge b-csdn" data-page-node-id="J1uUYqtzrd468CvsOsTRvu">CSDN</span></td><td data-page-node-id="KxN0n4T25dO31kssqvvAEQ">B02 Ponytail（教程完整版）</td><td data-page-node-id="2A2vBiLYM8SAUt1W2Rn6YD">—</td><td data-page-node-id="yhpWcyq2AdzEjrRELsX1Fd">改写</td></tr>
+        <tr data-page-node-id="gT9BYJ32vWBugX1jKAWob9"><td data-page-node-id="BqLbV4oQuRosVR2AcsNhFc">9/13 周日 20:00</td><td data-page-node-id="ynuwkFntEs2BnwlgvEaylq"><span class="badge b-pub" data-page-node-id="aZHJrKxmmeYCrsxIwIPyAc">公众号</span></td><td data-page-node-id="XPtv72iYyV9EaBe6Nb99AS">M01 素材永动机</td><td data-page-node-id="XOBoZkhiLfxjweGrn6YmB7">技术人的复利 ①</td><td data-page-node-id="MdnkHZPm989Vg3GZjywYSY">待发</td></tr>
+        <tr data-page-node-id="HjG3RoCzZPHhZ0d3limBba"><td data-page-node-id="hAD0iyYOfgwF0ZXynEw9aQ">9/14 周一 12:30</td><td data-page-node-id="SLWKBDufNr0iFoQ4iw98Zv"><span class="badge b-xhs" data-page-node-id="fEmUgcMJLZrXbhmcGWQol9">小红书</span></td><td data-page-node-id="VBusPNJdWHVZfn80R6w6Vw">B09 省 token（配置清单卡 6 图）</td><td data-page-node-id="c5bly4GTDTHlfH7x8EvCsz">—</td><td data-page-node-id="F35MeonLAOIL7pBjjToeaM">改写</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="week" data-page-node-id="OD5B1MYeBixBOVumbx5t56">
+    <div class="wh" data-page-node-id="0HCRwKgALyRRIyH7wWZsGM"><span class="wt" data-page-node-id="4TJqBkY9WHqUGs8OSwuoLG">W3 · 主阵地加厚（9/16–9/21）</span><span class="wg" data-page-node-id="VjulZupc5ku4Y5bFJPaa28">目标：AI 工程化实战 凑满 3 篇；速评补旗舰篇吃 GLM 搜索流量</span></div>
+    <div class="wb" data-page-node-id="1XFkMrrnOD9oHTZ1APliqF"><table data-page-node-id="0ZEmDDh0Ba00OSTfAOeuqM">
+      <thead data-page-node-id="ktJIeX6ODIsvhOBdzBN8Wr"><tr data-page-node-id="F9sg7G650oE2rWE3p3YC0S"><th style="width:80px" data-page-node-id="RFbJQ8xeOJ5wfJN9PZoEOY">日期</th><th style="width:70px" data-page-node-id="X7QqFT7xGINoux2ieJhTqV">平台</th><th data-page-node-id="WxIMYOEEs7c99l9x5YRGea">内容</th><th style="width:130px" data-page-node-id="bE8F5WMvxAjS8IT67Oekpk">合集</th><th style="width:96px" data-page-node-id="LhqtVPVGbiKGOscdQKmsUO">状态</th></tr></thead>
+      <tbody data-page-node-id="GqjcdLF51rCHnFuo5OCJeA">
+        <tr data-page-node-id="xo9ors5OwYXcxvLEBIHy9V"><td data-page-node-id="HD5rshzivOomJ1BaAFwhy3">9/17 周四 20:00</td><td data-page-node-id="bLT0Fgxbq7EXfyebpQOLFP"><span class="badge b-pub" data-page-node-id="M8FpkE428Qzv3r6jLYKltX">公众号</span></td><td data-page-node-id="EqrV7zjehX8OwQDrKFmPR0">速评03 <b data-page-node-id="9t3aQEXxs6SNZCMHHu4RVn">GLM-5.3：不改基座的「后训练奇迹」</b>（承接爆文）</td><td data-page-node-id="TtqIwLGXqRqkisnsPmqLGw">国产大模型速评 ④</td><td data-page-node-id="4BQ7ZIBy2s78RnvHsg1sta"><span class="badge b-new" data-page-node-id="Vgegss4BgibJxuLsPK3urD">需新写</span></td></tr>
+        <tr data-page-node-id="qrSM9BIJkGA1aQb6cQnl8q"><td data-page-node-id="vxsb6uJjMzLJQ3gVENYssY">9/18 周五 20:00</td><td data-page-node-id="Evmzti8H8gryECC9V0eClp"><span class="badge b-jue" data-page-node-id="gwLK2GG7D77wbaAjiNk9Hr">掘金</span></td><td data-page-node-id="ev59zZbM5Xrv8SUt6RAMXf">B09 省 token（工程向精简版）</td><td data-page-node-id="K53pz7FC3p2SshuOKMikH6">—</td><td data-page-node-id="MbSo3imK2xyDnE7ym8tEj0">改写</td></tr>
+        <tr data-page-node-id="RUEiL6Vq3tvBwDLZTWkUDJ"><td data-page-node-id="X0Kbbwu6RiOa0uuKlTMVqF">9/19 周六 10:00</td><td data-page-node-id="BBypD0lPnS15JWe2zWtZhd"><span class="badge b-csdn" data-page-node-id="AaTLSD0iGgmO29vosKDxqp">CSDN</span></td><td data-page-node-id="bgC5RzYGB9iLobgsxOXE2X">速评01 Qwen3.8-Flash（SEO 版）</td><td data-page-node-id="UjmyZBrAZqJqf47xKdY5pn">—</td><td data-page-node-id="KBx8nhP5x8FQzNDFuCZzHX">改写</td></tr>
+        <tr data-page-node-id="P4cwauqg1geGu314AlMXGo"><td data-page-node-id="233rPUpYASCScavkdZfGZR">9/20 周日 20:00</td><td data-page-node-id="0BGah8z3l6NwPGgiGNDQSG"><span class="badge b-pub" data-page-node-id="yMQOhVEOMKwnXBQhJn40Gx">公众号</span></td><td data-page-node-id="RbYDm5AD3n9rHNHNR28OVZ">B11 技术人的复利</td><td data-page-node-id="OZAopIfkvGLOCBWworlWsu">技术人的复利 ②</td><td data-page-node-id="P42oeX0bANJWMIbuksifZk">待发</td></tr>
+        <tr data-page-node-id="iWdM1IZsnjPdV9DhL6cqmX"><td data-page-node-id="xmU1cWGv1kdhuom9ddqXkF">9/21 周一 20:00</td><td data-page-node-id="4cYfa7hiotSGPD4iuXgRzP"><span class="badge b-zhi" data-page-node-id="dtY4rpCt5iFExAuFeVWrwh">知乎</span></td><td data-page-node-id="KadOBIgAZGeYQ87ikngmxT">B12 认知差（讨论向：《多数技术人对 AI 工程化的认知，为什么还停在「要提示词」？》）</td><td data-page-node-id="SiWUwPXOfM8kmoEtiP6Gn6">—</td><td data-page-node-id="L4SDeRUT4J8IaK9coIKhO1">改写</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="week" data-page-node-id="NlOUzQuK4OxRbG1aHCpCwO">
+    <div class="wh" data-page-node-id="Y58rhjkCPwZckfksK567Ku"><span class="wt" data-page-node-id="zt5tS1Y0TOr6IkMMhx2Wd7">W4 · SEO 大词收口（9/23–9/30）</span><span class="wg" data-page-node-id="IsDjO1Cf8Dnc23qs47V9mC">目标：横评篇吃「国产大模型横评」大词；三个合集全部生效</span></div>
+    <div class="wb" data-page-node-id="6TAn1PLiM2EHeJFYLO5tt8"><table data-page-node-id="2ZxFrXw1bgp3bpD1dC1mEX">
+      <thead data-page-node-id="JEAJRKg2tRpjTflpPPWLUH"><tr data-page-node-id="UlGizwC3V1lsJuXNrUap1b"><th style="width:80px" data-page-node-id="KCKaE83SV3L4jK8TzHqJtW">日期</th><th style="width:70px" data-page-node-id="1mJZUAoKTGFY97M37FuOiw">平台</th><th data-page-node-id="WUpzOVGQKfEcdOpJlf5Trk">内容</th><th style="width:130px" data-page-node-id="Ax8X1mOgRUzvxfM82OBXKB">合集</th><th style="width:96px" data-page-node-id="d628TzWDXl2nqYYYMLaaGg">状态</th></tr></thead>
+      <tbody data-page-node-id="iyaJw9Nzc1kYO9ymICvoWh">
+        <tr data-page-node-id="4PJbTDk0zF6FNTwUOsD81q"><td data-page-node-id="t3Bri0DU7ms2aT9RD0lSat">9/24 周四 20:00</td><td data-page-node-id="ZnJRERQw6ADoOpWYk9eEVX"><span class="badge b-pub" data-page-node-id="SUTjeuoVMrTnlUGIOyPROm">公众号</span></td><td data-page-node-id="gqVFJtiJyfSd0riRvugAbg"><b data-page-node-id="lc8MibvFtWZzLuqqWlBzXH">国产大模型期中考试：四家旗舰一张表横评</b>（系列门面 · SEO 大词）</td><td data-page-node-id="Ym9IXEs1eisBhvtylNzXMY">国产大模型速评 ⑤</td><td data-page-node-id="N4zZMmFELQKTCceK3eIWmq"><span class="badge b-new" data-page-node-id="a5abpDKcTBYyoAtmjCDAYU">需新写</span></td></tr>
+        <tr data-page-node-id="sIgAgwBMzjoU5AvZzsRBa9"><td data-page-node-id="ZKlTTSkZpIDrHv6iEWTQsd">9/25 周五 20:00</td><td data-page-node-id="VzpG5aefILEyRJpB4VYXyj"><span class="badge b-jue" data-page-node-id="DaTb23qiWtwTjQKZQjWTJi">掘金</span></td><td data-page-node-id="7vurn70xfoRIxrhpbAWNpB">横评精编（只留对比表 + 选型结论）</td><td data-page-node-id="skpZiZpIWBG8gbtLhPzmDS">—</td><td data-page-node-id="prnN6ZDNedMfLORh9KHkmh">改写</td></tr>
+        <tr data-page-node-id="69i1ZgvHkLibXG4MoRvIGk"><td data-page-node-id="zXNexZylw9Lr1X0wvEVa7j">9/26 周六 10:00</td><td data-page-node-id="RGaDzGYdqIBK4ZXq7ZBa4K"><span class="badge b-csdn" data-page-node-id="ECFLrbv49lUnJGYlcQmMNM">CSDN</span></td><td data-page-node-id="NsOnFeFJe06vSdcNmSn8R7">B12 认知差（五步进阶教程版）</td><td data-page-node-id="Pset5cYU9MTc6EkxRtoNeR">—</td><td data-page-node-id="fSumPeWabz2QjxX3IczpWj">改写</td></tr>
+        <tr data-page-node-id="cL3MF2IigG8kuQIrXO5Zan"><td data-page-node-id="GiIRAGjKm9kEp4WuZ3oIq6">9/27 周日 20:00</td><td data-page-node-id="FSpXFAXYUPF6tczQhAuYez"><span class="badge b-pub" data-page-node-id="Um8VFyRxCzivxTn32Z73Wi">公众号</span></td><td data-page-node-id="40MEl9NVb72s211qCwSrTS">B02 Ponytail 代码量砍 73%</td><td data-page-node-id="QUhkgARbhkzfUERnvn3Jrv">AI 工程化实战 ②</td><td data-page-node-id="5992DEJnjFybSkfWGXQcPE">待发</td></tr>
+        <tr data-page-node-id="TtLT6xbnviPU5U1LNQ2rjI"><td data-page-node-id="D9FbCssSXX0Eqp0DueB6ZK">9/29 周二 12:30</td><td data-page-node-id="2quJaSbgPZb5iaI1itrDFe"><span class="badge b-xhs" data-page-node-id="tph1K1UXwm7y1jPbFD0UHb">小红书</span></td><td data-page-node-id="YCs3ygjfWvRfAUoiJVpiXw">速评卡片流（模型价格对比 6 图）</td><td data-page-node-id="nM3f4VtFwbnHTzWRkDpkBE">—</td><td data-page-node-id="ciSdtSiOVerHtTGGlljpgT">改写</td></tr>
+        <tr data-page-node-id="kwaEoWbGOfEohHOd9WCAL2"><td data-page-node-id="hjxlN1BXWDLrSkgLvLYw8x">9/30 周三 20:00</td><td data-page-node-id="dhW1YXchQTOi4OvXc3kac1"><span class="badge b-pub" data-page-node-id="lvEsDhsYoFwlQqzHvcLPh3">公众号</span></td><td data-page-node-id="aCgkHbTdJhbxcbzVa4ist1">B09 省 token 配置</td><td data-page-node-id="EZVliyHygser1U4FcpTByU">AI 工程化实战 ③</td><td data-page-node-id="QqQQG1Qv9mux4jA4oA8fZY">待发</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="note" data-page-node-id="SN3yiAvpP6yKq1WOJvCCmo"><b data-page-node-id="uNC7GHHDTUtL0OeJSJpxc2">产能现实检查：</b>四周 22 篇里，<b data-page-node-id="BseAN7DDQkyWsVqDFCkADC">只需新写 3 篇</b>（速评02 V4-Pro、速评03 GLM-5.3、横评总纲），其余 19 篇都是现有成稿 / 已发内容的平台化改写。按每周 2 个晚上、每晚 1.5h 估算，是能扛住的——<b data-page-node-id="ftcxbJVa4haxUnVrobjU5D">前提是改写不要追求完美，按发布卡执行即可。</b></div>
+</section>
+
+<!-- 5 合集 -->
+<section data-page-node-id="v5mshFJVHlHNIl3zQEZ9J9">
+  <h2 data-page-node-id="80NFqELtHol5UCmvRJiFqf"><span class="no" data-page-node-id="iZN3OjqPat2yMr354h28Yv">5</span>公众号合集规划：三个抽屉，互斥归档</h2>
+  <div class="lead" data-page-node-id="5dHbMk12gyxwbYaKjMdbz5">微信硬规则（2026 仍执行，务必遵守）：<b data-page-node-id="j5jOXACGyTIm3KyIZmKQbV">单篇文章只能加入 1 个合集</b>（2024-04-28 起由 5 个降为 1 个）· <b data-page-node-id="DUuRocBddCUauHezcHGnNK">合集需 ≥3 篇原创才在前端展示</b> · 仅原创图文可入 · 主页最多展示 10 个合集 · 合集名 ≤30 字 · 改名需间隔 24h。</div>
+
+  <div class="cols" data-page-node-id="YTQ7XL0x5PhjIfnsoiKx0N">
+    <div class="col" data-page-node-id="5GnFm1sFqpsoXBxGfx9C32">
+      <div class="ch" style="background:#2E8B57" data-page-node-id="r0PicUze1wv14wR8WSV1kW"><span data-page-node-id="PkAmIgQRNotyjSgAqWdbVT">① 国产大模型速评</span><span class="cnt" data-page-node-id="92mLd75CUM7SH214FO7XxC">现 1 篇 / 目标 3+（9/13 达标）</span></div>
+      <div class="cb" data-page-node-id="ERj3Fu4KVqTDdkQXlE9rf9">
+        <b data-page-node-id="v6Zp79HtfLO536o4nGYEt0">定位：</b>小厂技术人视角的第一手模型测评——官方数据 + 真实成本账 + 上手结论。<br data-page-node-id="wDSNTzCmCW4K7FlXvvyCkl">
+        <b data-page-node-id="4YlBNXY5OOUrfD5JufgBHM">slogan：</b>模型会换代，我的测评帮你省钱。
+        <ol style="margin-top:8px" data-page-node-id="VW0fczJD6C3ypXdrMhkS1q">
+          <li class="done" data-page-node-id="baPjCkLuFRHfhyC2OuNHqA">GLM-5.3 Flash 开源（已发 8-27 · 阅读 134 / 搜一搜 103 / 分享 11）</li>
+          <li class="todo" data-page-node-id="FmaIw3eNA6QhYIYtxvuD0w">速评01 Qwen3.8-Flash（9/6 待发）</li>
+          <li class="todo" data-page-node-id="uIdowud0iR9rWtQ7WCFTJR">速评02 DeepSeek V4-Pro 亲测（9/10 新写）</li>
+          <li class="todo" data-page-node-id="md2GbZvtIsnFkAKwN0Dojm">速评03 GLM-5.3 后训练奇迹（9/17 新写）</li>
+          <li class="todo" data-page-node-id="cHwW4PnodCpHbqo6XZSvog">横评总纲：四家旗舰一张表（9/24 · SEO 大词）</li>
+        </ol>
+        <div class="goal" data-page-node-id="7a4GngH5IVMqcB31FgpUTh">为什么放第一个：唯一有真实流量数据的题材，先把已验证的引擎做厚</div>
+      </div>
+    </div>
+
+    <div class="col" data-page-node-id="2W46hfsfdZLHAE9NTp1nHr">
+      <div class="ch" style="background:#056DE8" data-page-node-id="F2WvTuZeWMKw6gVq0pRL4q"><span data-page-node-id="S8ltERKFNLqLWIFplBjjEm">② AI 工程化实战</span><span class="cnt" data-page-node-id="PxpobAxP5MzAkYBlJPveCA">现 0 篇 / 目标 3+（9/30 达标）</span></div>
+      <div class="cb" data-page-node-id="Xasa97pmBHPYGUjcIXORN3">
+        <b data-page-node-id="gzpoEVDKSvgyHPazeCixpn">定位：</b>能力模型 C1 主战场（护城河 25 分全场最高）——把 harness / 约束 / 降本讲成可抄的作业。<br data-page-node-id="GDAAtnlLVMLR5AQ6lDb5XS">
+        <b data-page-node-id="yFWvV1IsUza9H5pA7ahTJK">这是「既带团队又写代码」人设的核心载体。</b>
+        <ol style="margin-top:8px" data-page-node-id="BruYRwK5JelLjKAzlW1Erj">
+          <li class="todo" data-page-node-id="oHPreswmVm3AqI9E7xb1wX">B12 harness 认知差（9/3 待发）</li>
+          <li class="todo" data-page-node-id="CJYVxmmDIZBmLeAsPL6f5g">B02 Ponytail 代码量砍 73%（9/27 待发）</li>
+          <li class="todo" data-page-node-id="is9FiTqtMxyp07eRIUuXFQ">B09 省 token 配置（9/30 待发）</li>
+          <li class="done" data-page-node-id="VsfECvQoYFXSo7BxlPGeT2">002 微服务超卖悬案（已发 4-15 · 公开，可补挂）</li>
+        </ol>
+        <div class="goal" data-page-node-id="SSrkd78omATD2R3ory0fiq">⚠️ 002 已发布，可在后台补挂进合集；因「一文只能入一集」，不与其他合集重复</div>
+      </div>
+    </div>
+
+    <div class="col" data-page-node-id="5CoWahu5FAdw7jdkhkCx3a">
+      <div class="ch" style="background:#6B4FA8" data-page-node-id="HOO9igMHK8ppG6gmcg54TT"><span data-page-node-id="O3nitVtEWzLnxZa9G8lBTf">③ 技术人的复利</span><span class="cnt" data-page-node-id="OBnETh2sADVs04TLIPFEkU">现 0 篇 / 目标 3+（需补 1 篇）</span></div>
+      <div class="cb" data-page-node-id="PeePkyedfxVjJUlAR4lDkA">
+        <b data-page-node-id="xTaD2xUd9s0GD6wBHS2iVy">定位：</b>成长线与理念线——长期主义、知识复利、职业安全垫。承接「情绪共鸣 → 关注」。<br data-page-node-id="dVMljREkZ0J0Q6x7QMFZFB">
+        <b data-page-node-id="fyHd7h3Ea3TEzONexurvFg">人设温度来源，也是最容易出金句的抽屉。</b>
+        <ol style="margin-top:8px" data-page-node-id="M1OBM4itHEGNwZvrDh9cBM">
+          <li class="todo" data-page-node-id="mwmqOL27KnVDfdFYLEDK7S">M01 素材永动机（9/13 待发）</li>
+          <li class="todo" data-page-node-id="rqk2T0MEFGS6ZFq4tY7E4w">B11 技术人的复利（9/20 待发）</li>
+          <li class="todo" data-page-node-id="qzVrZLSniCaLUPpXt9xd3u"><b data-page-node-id="NrMNhNzFNNS6nwr0EYWqLC">缺第 3 篇</b>：建议「带资上班 / 协资上班」职场观察（已有素材卡）或「从外卖员到技术经理」<b data-page-node-id="ZbgYtDaRoVJ78bQsFa6qFr">重写版</b></li>
+        </ol>
+        <div class="goal" data-page-node-id="sCKGAYfhUPpZZ3MlmB3RjP">⚠️ 001/003 因虚构学历叙事已冷冻，不可复用；成长线需重写，不能解冻</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note r" data-page-node-id="LlGrjfUCztGI9FK1gtw5go"><b data-page-node-id="LjhcaG6V79M0E387syztxI">归档纪律（避免以后返工）：</b>每篇发布前先问「它进哪个抽屉」，再写结尾的合集引导语。因为<b data-page-node-id="k9OrEBiSEE7SYbCHEDQp2B">一文只能归一个合集</b>，事后挪动要「先移出再移入」，且合集改名需间隔 24h——建集时一次想好名字，别返工。</div>
+</section>
+
+<!-- 6 发布日志 -->
+<section data-page-node-id="fsOAODcVgott5o3KDECCbp">
+  <h2 data-page-node-id="Ovrxs1g4mzKJAZ3d4eTKO5"><span class="no" data-page-node-id="vaOU4kGH0P0kX5mUHeacZK">6</span>发布日志：把「发了」变成「知道发得怎么样」</h2>
+  <div class="lead" data-page-node-id="BNjdIFxpIMSkxbB95PBNpw">个人订阅号没有数据接口，唯一能迭代的依据是人工回填。这一环不做，前面 22 篇全是盲发。</div>
+
+  <table data-page-node-id="YpAE1CWTAk8KYJAY6y0BNc">
+    <thead data-page-node-id="bVtb3klTAkNMTRGnHwJ7oG"><tr data-page-node-id="Gl3b0JjmTXiScKzWwvfTzg"><th style="width:110px" data-page-node-id="977udo8IWa2D8VU1GvnYYv">环节</th><th data-page-node-id="dus4oVVA2GXQvkO71XiH68">动作</th><th style="width:110px" data-page-node-id="GyDvVF9MMpdKgwc2aLDJt4">时限</th><th style="width:150px" data-page-node-id="hH2YGl2ZjlQi38v3uWQXr5">落到哪</th></tr></thead>
+    <tbody data-page-node-id="XpktT6FTjcMPGn2Il56XLA">
+      <tr data-page-node-id="2BJr2DvkgtPbCve4QrAmTI"><td data-page-node-id="2NC0wirEy9IAycLrzdfKxL"><b data-page-node-id="WhW7faF0bDZgUde7jTQMd4">发布前</b></td><td data-page-node-id="ZgBuwb43nlxA3aEtbse6M9">发布卡 Checklist 逐项打勾（标题字数 / 封面 / 摘要 / 埋词 / 脱敏 / 平台红线）</td><td data-page-node-id="yW1QeyNPnHIMok2oYGFMgk">发布当天</td><td data-page-node-id="RuPrUhEj6CGN4XhgA324YH"><code data-page-node-id="Zc04Ln1juJeEPYLdweCP5j">发布包_W1_五平台_2026-09-03.md</code></td></tr>
+      <tr data-page-node-id="uEwDS4mYbOpGdqVdiuIYs5"><td data-page-node-id="DAYbVtv708EstaKwIKQQdY"><b data-page-node-id="TCeu5yTyzZ5wSG4MqAy3ux">发布后</b></td><td data-page-node-id="P12ucEHFtDw7rG3gyhRphr">回填：真实标题 + 平台 + 链接 + 发布时间</td><td data-page-node-id="OiqKYj7dJ1m8umHWprjI8q">24h 内</td><td data-page-node-id="LgmvLlDJLCBTLoqWQhSa6h">发布日志 <code data-page-node-id="5Wqfckp02NqttPACXvMvKw">发布日志_2026-09.md</code></td></tr>
+      <tr data-page-node-id="9gx23145fERrMHAnvh2FTU"><td data-page-node-id="c2T1WYa9CENAggQGIW1YXB"><b data-page-node-id="ULKtE2CtCnTKMpVV3rZupS">数据回流</b></td><td data-page-node-id="aMrMqFo6eNX41KrEH6torf">后台截图 / 手记：阅读、分享、搜一搜、关注转化</td><td data-page-node-id="l2x9GHp1kdDZwLLPcDzhEQ">72h / 7d 各记一次</td><td data-page-node-id="H1NBE4J6oqpiXUz35Nyxzu">同上（同一条目追加）</td></tr>
+      <tr data-page-node-id="zymSvJOwhoqXKwKrF4TJRr"><td data-page-node-id="Os9gvGNOb3A8VtzdTbn07e"><b data-page-node-id="yWKPKCm4Qt4kd5jSPrl5rQ">归因复盘</b></td><td data-page-node-id="upFE1o7L35dytgm28jrbsc">数据好 → 同题材加发；数据差 → 定位是标题 / 选题 / 还是分发窗口</td><td data-page-node-id="QsszZvpSWjdGdaHRsQrUD7">每周日</td><td data-page-node-id="lyhOMgG02111UvPKgPZ6tN">周复盘 → 选题池</td></tr>
+      <tr data-page-node-id="LpodMhF1PvzIGTC79h4tKO"><td data-page-node-id="8nBAzwAD3eftkSCyMK0lTK"><b data-page-node-id="i0sjeqNwQ1nxx8l53fL9M2">台账同步</b></td><td data-page-node-id="V7tmZOJ6R3Lj8ygTWSPe8i">月度汇总粉丝曲线与「最近活跃」，更新账号台账</td><td data-page-node-id="F8InaZ5Fi6CUuNH7IbdGvh">每月 1 日</td><td data-page-node-id="GmaBDSKe3IyYHE3k8mvXWb"><code data-page-node-id="QJ7MAFh0n67vtQTj1gjosl">自媒体账号台账.md</code></td></tr>
+    </tbody>
+  </table>
+
+  <div class="note g" data-page-node-id="9hhAD1obB9ksAikw79OqNt"><b data-page-node-id="D4fSCy4rfZ7hutGGDcPXHM">最低成本回流法（3 分钟/篇）：</b>发完把公众号文章链接直接丢给小研（或粘贴到发布日志），数据等周末一次性截图回填。<b data-page-node-id="xHWu9AZTl8hP3sRVqSe08u">不要追求完整，先追求「链接不为空」</b>——这是从 0 到 1 的一步。</div>
+
+  <div class="src" data-page-node-id="AJthFQmJhKqi4eYItXNx6s">
+    <b data-page-node-id="G52k87HGGRops2sIibPeCS">数据来源与权威锚点：</b><br data-page-node-id="azp1EHQige0MGIq0aD1DqP">
+    · 已发布清单 / 可见性状态：<code data-page-node-id="b5bAsFj4SuXif8VKq3GRUE">xingtu-vault/02_内容仓库/07_发布与归档/已发布文章管理清单.md</code>（2026-08-31 更新）<br data-page-node-id="3B366IH0Ocitav5fZQcUCI">
+    · 平台适配度五维加权（2026-08-31）：<code data-page-node-id="MHiotg9syJD2rB6z9twYYV">outputs/对标账号系统与适配度分析_2026-09-02.html</code><br data-page-node-id="LBO5MY2DPTgGjDC8pMA2uv">
+    · 分发四条约法 / 平台角色：<code data-page-node-id="7tUBWXDRog0bGSOoNuBshv">outputs/多平台分发策略_公众号主阵地_2026-09-02.html</code><br data-page-node-id="CtRWyqG1F5ApU60C3ok70K">
+    · GLM-5.3 Flash 篇数据（阅读 134 / 搜一搜 103 / 分享 11）：<code data-page-node-id="rmZz9s2bVcPBQKOodGHznv">outputs/国产大模型速评系列规划_2026-08-31.html</code><br data-page-node-id="r3fmjHblkoVqjyzl8layFR">
+    · 微信合集规则（单篇仅入 1 集合 / 需 ≥3 篇 / 主页上限 10 个 / 改名间隔 24h）：腾讯客服专辑 FAQ + 微信开放社区（2026 检索）<br data-page-node-id="RqZciVhFiD6DndRgBTHlRK">
+    · 发布红线：<code data-page-node-id="Zn9IQVfIJDaa026Lx8FaQQ">rules/RULES.md</code> PUB-004 / PUB-010 / PUB-018 / PUB-020<br data-page-node-id="j4ssGtTLcVqFoGJr4fAyiu">
+    · ⚠️ 001 / 003 因虚构学历叙事已冷冻下沉，本排期不复用、不续写。
+  </div>
+</section>
+
+<div class="foot" data-page-node-id="4sbvFlmrMNlqZUxeBp6aJE">行途发布作战台 · 2026-09-02 · 小研出品 ｜ 下一步：审这份排期 → 拍板 W1 六张发布卡 → 9/3 晚首发</div>
+
+</div>
+</body>
+</html>

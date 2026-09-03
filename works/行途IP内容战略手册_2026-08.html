@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行途 IP 内容战略手册 · 2026-08</title>
+<style>
+  :root{
+    --bg:#f7f8fa; --card:#ffffff; --ink:#1f2329; --sub:#5b6470;
+    --line:#e6e9ef; --brand:#2f6df0; --brand2:#13b58a; --warn:#e8743b;
+    --gold:#e0a93b; --soft:#eef3ff; --soft2:#eafaf3; --soft3:#fff5ec;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.75;font-size:15px}
+  .wrap{max-width:1080px;margin:0 auto;padding:32px 20px 80px}
+  header{background:linear-gradient(135deg,#2f6df0,#13b58a,#e8743b);color:#fff;
+    border-radius:18px;padding:36px 32px;margin-bottom:26px}
+  header h1{font-size:29px;letter-spacing:.5px;margin-bottom:10px}
+  header p{opacity:.94;font-size:14.5px;max-width:820px}
+  .tag{display:inline-block;background:rgba(255,255,255,.2);border-radius:20px;
+    padding:3px 12px;font-size:12.5px;margin:8px 8px 0 0}
+  h2{font-size:21px;margin:38px 0 14px;padding-left:12px;border-left:5px solid var(--brand)}
+  h3{font-size:17px;margin:22px 0 10px;color:#2b3340}
+  p{margin:8px 0}
+  .lead{background:var(--soft);border-radius:12px;padding:16px 20px;margin:14px 0;
+    border:1px solid #d7e3ff}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin:16px 0}
+  .navcard{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:20px 18px;box-shadow:0 2px 10px rgba(20,40,80,.04);display:flex;flex-direction:column}
+  .navcard .badge{font-size:12px;font-weight:700;padding:3px 10px;border-radius:8px;align-self:flex-start;margin-bottom:10px}
+  .b1{background:var(--soft);color:var(--brand)} .b2{background:var(--soft2);color:#0f8f63} .b3{background:var(--soft3);color:#c4742a}
+  .navcard h3{margin:0 0 6px;font-size:18px}
+  .navcard p{font-size:13.5px;color:var(--sub);flex:1}
+  .navcard a{display:inline-block;margin-top:14px;background:var(--brand);color:#fff;
+    text-decoration:none;padding:9px 16px;border-radius:9px;font-size:13.5px;font-weight:600;text-align:center}
+  .navcard a:hover{opacity:.9}
+  .kv{font-size:13.5px;margin:4px 0}
+  .kv b{color:#33405a}
+  .mono{background:var(--soft3);border-left:3px solid var(--gold);padding:8px 12px;
+    border-radius:0 8px 8px 0;margin:8px 0;font-size:13.5px}
+  ul{margin:8px 0 8px 20px} li{margin:4px 0}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;
+    background:var(--card);border-radius:10px;overflow:hidden;box-shadow:0 1px 6px rgba(20,40,80,.05)}
+  th,td{border:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
+  th{background:#eef2f8;color:#2b3340;font-weight:600}
+  tr:nth-child(even) td{background:#fafbfd}
+  .pill{display:inline-block;padding:1px 8px;border-radius:20px;font-size:11.5px;font-weight:600}
+  .p-hi{background:#eafaf3;color:#0f8f63} .p-mid{background:#fff5ec;color:#c4742a}
+  .band{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:14px 0}
+  .band.blue{background:var(--soft);border-color:#d7e3ff}
+  .band.green{background:var(--soft2);border-color:#cdeee0}
+  .band.gold{background:var(--soft3);border-color:#f3dcae}
+  .steps{counter-reset:s;list-style:none;margin:10px 0;padding:0}
+  .steps li{counter-increment:s;position:relative;padding:10px 12px 10px 44px;margin:8px 0;
+    background:#fff;border:1px solid var(--line);border-radius:10px}
+  .steps li::before{content:counter(s);position:absolute;left:12px;top:10px;width:24px;height:24px;
+    background:var(--brand);color:#fff;border-radius:50%;text-align:center;line-height:24px;font-size:13px;font-weight:700}
+  .timeline{counter-reset:t;list-style:none;margin:10px 0;padding:0}
+  .timeline li{counter-increment:t;position:relative;padding:10px 12px 10px 48px;margin:8px 0;
+    background:#fff;border:1px solid var(--line);border-radius:10px}
+  .timeline li::before{content:"T"counter(t);position:absolute;left:12px;top:10px;width:26px;height:26px;
+    background:var(--brand2);color:#fff;border-radius:50%;text-align:center;line-height:26px;font-size:11px;font-weight:700}
+  .note{background:#fbfaff;border:1px dashed #c4b8f0;color:#5a4b9c;border-radius:10px;
+    padding:12px 16px;margin:16px 0;font-size:13px}
+  .sub{color:var(--sub);font-size:12.5px;margin:8px 0}
+  .foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);color:var(--sub);font-size:12.5px}
+  @media(max-width:640px){.grid{grid-template-columns:1fr}header{padding:24px 18px}}
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap">
+
+<header>
+  <h1>行途 IP 内容战略手册（总纲）</h1>
+  <p>「行途 / XingTu」AI harness 实战派个人 IP 的战略入口与作战地图。把三份调研（免费模型 / 国内平台 / 出海）串成一条「<b>选工具 → 做内容 → 国内沉淀 → 海外放大 → 收口变现</b>」的完整链路。数据截至 2026-08。</p>
+  <div>
+    <span class="tag">定位：一线实战派</span>
+    <span class="tag">核心词：harness / AI 工具链</span>
+    <span class="tag">战略：响应力 + 抢先占位</span>
+    <span class="tag">变现：利他 → 信任 → 收口</span>
+  </div>
+</header>
+
+<div class="note">
+  <b>作者内部备注（发布前可删除）：</b>本手册是三份调研的统一入口（导航 + 战略衔接），不是发布稿。发布时建议按平台横评 / 变现拆解 / 出海实操 / 免费模型 拆篇，每篇保留「30% 独家踩坑」过原创度。所有价格与政策均为 2026-08 公开聚合数据，上线前务必复核官方页。
+</div>
+
+<h2>一、战略总览：我们是谁、护城河在哪</h2>
+<div class="lead">
+  <p><b>核心定位：</b>AI 迭代极快，必须靠「响应力」（快速把一手前沿实践转成可发布内容）+「抢先占位」建立 IP。<b>护城河</b>是自身的一线实战派身份——技术经理 + 仍写代码，内容有真实工程背书，区别于纯科普/搬运号，别人难抄。</p>
+  <p><b>受众：</b>深浅都做、偏干货、实践偏多——从「连 WorkBuddy 都不知的入门者」到进阶玩家，受众面大。<b>核心词锚定</b> harness / AI 工具链 / Agent 应用实践（非泛 AI 科普），正文需同时埋中文通俗同义词兼顾可达性。</p>
+  <p><b>第一性原理：</b>每篇内容必须足够利他、对准目标用户——因为每篇原创都在积累「信任成本」，信任足够别人才会内容付费 / 进星球。这是变现前提。</p>
+</div>
+
+<h2>二、三份调研导航（点击进入）</h2>
+<div class="grid">
+
+  <div class="navcard">
+    <span class="badge b1">① 工具选型</span>
+    <h3>免费 / 便宜大模型全景</h3>
+    <p>GPT-5.6 Luna 澄清、免费 coding 工具、便宜订阅档、免费体验站、可白嫖 API 平台、资深工程师省钱组合。解决「用什么划算」。</p>
+    <a href="国内外免费便宜大模型全景_2026-08.html">打开 →</a>
+  </div>
+
+  <div class="navcard">
+    <span class="badge b2">② 国内阵地</span>
+    <h3>个人 IP 平台全景与变现</h3>
+    <p>国内图文/视频/文章三类 × 适配性+可行性评分 × 各平台变现门槛收益 × 1000 粉广告阈值 × 知识星球/微信豆专题。解决「国内怎么打」。</p>
+    <a href="个人IP平台全景与变现调研_2026-08.html">打开 →</a>
+  </div>
+
+  <div class="navcard">
+    <span class="badge b3">③ 出海放大</span>
+    <h3>个人 IP 出海与海外平台</h3>
+    <p>海外视频/社交/文章/独立站/会员五类 × 适配性+可行性 × 出海合规专题（W-8BEN/Stripe/PayPal/主体）× 国内+海外组合建议。</p>
+    <a href="个人IP出海与海外平台调研_2026-08.html">打开 →</a>
+  </div>
+
+  <div class="navcard">
+    <span class="badge b3">④ 收款税务</span>
+    <h3>出海收款与税务实操手册</h3>
+    <p>收款通道(Stripe/PayPal/Payoneer/Wise/Mercury) × 结汇落地(机构结汇不占5万额度) × 平台预扣≠完税 × 银行卡定位 × 分阶段 SOP。出海的钱怎么回国内。</p>
+    <a href="出海收款与税务实操手册_2026-08.html">打开 →</a>
+  </div>
+
+</div>
+
+<h2>三、内容生产 SOP：一篇内容，多平台复利</h2>
+<div class="lead">
+  <p>同一份实战内容做<b>中英双语 + 多形态</b>复利，而不是一篇通稿无脑同步。核心是「先发原创拿权重，再差异化分发」。复利的前提是<b>合规</b>与<b>原创度</b>——否则多平台分发会变成"搬运 / 洗稿"，触发降权与非原创判定。下面把老板最关心的三件事拆实：要不要洗稿、AI 怎么判非原创、合规要覆盖哪些维度。</p>
+</div>
+<table>
+  <tr><th>步骤</th><th>动作</th><th>平台 / 形态</th><th>要点</th></tr>
+  <tr><td><b>1. 源头创作</b></td><td>写一篇深度实战（带独家踩坑/数据）</td><td>本地 Obsidian 主库</td><td>≥30% 独家内容过原创度；人主导观点</td></tr>
+  <tr><td><b>2. 关键词埋词</b></td><td>标题前 13–15 字含核心词 + 长尾簇</td><td>公众号搜一搜</td><td>harness 蓝海词中英双埋</td></tr>
+  <tr><td><b>3. 国内分发</b></td><td>掘金首发 → 隔 1–2 天 CSDN → 公众号 → 知乎</td><td>技术辅助阵地</td><td>差异化改写（见 3.1），禁一篇通稿</td></tr>
+  <tr><td><b>4. 出海复用</b></td><td>改写英文发 Dev.to + LinkedIn 摘要</td><td>海外零门槛</td><td>LinkedIn 长文无需粉丝破圈</td></tr>
+  <tr><td><b>5. 形态裂变</b></td><td>文章 → PPT + 真人录音视频 → 短视频切片</td><td>视频号 / B站 / YouTube / TikTok</td><td>国内切片先验证，爆款再搬 YouTube</td></tr>
+  <tr><td><b>6. 收口</b></td><td>私域沉淀 + 付费社群</td><td>知识星球+微信豆 / Substack+Ko-fi</td><td>国内人民币、海外美元双轨</td></tr>
+</table>
+
+<h3>3.1 要不要「洗稿」？——同质化 vs AI 原创判定</h3>
+<div class="band gold">
+  <b>先泼冷水：不要洗稿。</b>「洗稿 / 伪原创」（同义替换、调语序、搬运拼凑）恰恰是<b>被平台和 AI 判定"非原创 / 低质"的典型特征</b>，反而触发降权与违规。多平台复利 ≠ 洗稿，靠的是"结构化差异化分发"，不是"改字躲避查重"。
+</div>
+<div class="band green">
+  <b>正确做法：一次创作，多形态差异化分发 + 独家增量。</b>
+  <ul>
+    <li><b>改角度不改素材</b>：同一实战，掘金讲"踩坑与技术选型"、公众号讲"对团队协作的启发"、知乎讲"和行业方案对比"——受众不同、角度不同，自然不雷同。</li>
+    <li><b>加平台专属一手增量</b>：每平台补 ≥10–30% 该平台读者才关心的案例 / 数据 / 结论，这是过原创度的硬通货。</li>
+    <li><b>改形态</b>：文章 → PPT+真人录音 → 短视频切片，形态改造本身降低指纹重合。</li>
+    <li><b>人主导观点</b>：AI 辅助整理，但核心判断 / 踩坑 / 结论必须是一手经验，这是"AI 辅助"而非"AI 生成"的边界，也是原创度的根本。</li>
+  </ul>
+</div>
+<p class="sub">AI / 平台判定"非原创"的本质是：<b>内容指纹高度重合 + 缺原创性表达 + 缺真实一手信息</b>。差异化分发 + 独家增量正好对冲这三点。结论：<b>不需要洗稿，但需要"结构化改写 + 本地化 + 独家增量"</b>。</p>
+
+<h3>3.2 多平台复利的合规维度（发布前逐条过）</h3>
+<table>
+  <tr><th>合规维度</th><th>要点</th><th>红线 / 对策</th></tr>
+  <tr><td><b>① 跨平台版权与首发权重</b></td><td>平台互不共享内容指纹做侵权判定；A 平台发、B 平台发<b>不构成互侵权</b></td><td>同一<b>平台内</b>重复 / 高度相似会降权；公众号靠订阅+搜一搜，跨平台限流几乎不影响它；建议"首发拿权重 → 隔 1–2 天再分发"</td></tr>
+  <tr><td><b>② AI 内容标注</b></td><td>AI 生成媒体（虚拟人 / AI 配音 / AI 画面）强制标"AI 生成"；AI 辅助写作（人出观点）不强制</td><td>带货 / 营销视频前 5 秒大字 + 平台水印；普通视频主动标更稳</td></tr>
+  <tr><td><b>③ 平台形态适配合规</b></td><td>视频号 / 抖音带货 AI 标注是硬红线；B站 / 小红书各有 AI 披露要求；YouTube 需符合 FTC</td><td>先查目标平台最新社区规范，再定形态与标注</td></tr>
+  <tr><td><b>④ 数据真实性</b></td><td>引用第三方数据需注明来源；价格 / 额度以官方为准</td><td>避免虚假宣传 / 误导；"实测"类内容留存截图凭证</td></tr>
+  <tr><td><b>⑤ 广告与带货标识</b></td><td>软广 / 带货 / 联盟营销需披露</td><td>出海联盟收入按 FTC 要求 disclosure；国内按平台软广规范</td></tr>
+  <tr><td><b>⑥ 商业秘密与隐私</b></td><td>不泄露客户代码 / 内部路径 / 企业敏感信息</td><td>用 Trae 等遥测不可关的工具写客户项目有风险；开源发布前脱敏</td></tr>
+  <tr><td><b>⑦ 出海当地法规</b></td><td>YouTube / TikTok / Substack 需符合当地（美）法规</td><td>FTC 披露 + W-8BEN 税务 + DMCA 版权；详见《出海收款与税务实操手册》</td></tr>
+</table>
+
+<h3>3.3 每平台合规要点速查</h3>
+<table>
+  <tr><th>平台</th><th>合规红线</th><th>改写 / 分发要求</th></tr>
+  <tr><td><b>公众号</b></td><td>原创声明须真原创；带货图文需合规</td><td>搜一搜 SEO 靠标题词 + 长尾；可首发拿权重</td></tr>
+  <tr><td><b>视频号</b></td><td>带货视频 AI 生成必须标"AI 生成"（硬红线）</td><td>PPT+真人录音为起步最优信任解；先验证再扩</td></tr>
+  <tr><td><b>小红书</b></td><td>蒲公英 1000 粉起接单；AI 内容需标注</td><td>图文为主；口语化、首图吸睛</td></tr>
+  <tr><td><b>B站 / 抖音</b></td><td>星图 / 花火 1 万粉起；AI 生成需 disclose</td><td>中长视频 / 切片；数据真实</td></tr>
+  <tr><td><b>掘金 / CSDN / 知乎</b></td><td>转载需授权；伪原创会被识别降权</td><td>技术细节展开；差异化角度</td></tr>
+  <tr><td><b>LinkedIn</b></td><td>海外需 FTC 披露赞助；长文无粉丝也可破圈</td><td>英文摘要 + 观点，引流不硬广</td></tr>
+  <tr><td><b>YouTube / TikTok</b></td><td>FTC 披露联盟 / 赞助；TikTok 美国可用性波动</td><td>爆款切片复利；字幕 + 本地化</td></tr>
+  <tr><td><b>Substack / Ko-fi</b></td><td>邮件营销合规；Stripe 需海外主体</td><td>深度长文 + 付费墙；自有列表</td></tr>
+</table>
+
+<h2>四、国内外组合拳（1+3+N 阵地架构）</h2>
+<div class="grid">
+  <div class="band blue">
+    <h3>主阵地 · 公众号</h3>
+    <p>信任沉淀中枢 + 搜一搜长尾（微信内搜索公域，非纯私域）。变现收口主场。</p>
+  </div>
+  <div class="band green">
+    <h3>技术辅助 · 掘金 + CSDN</h3>
+    <p>AI/Agent 标签流量最大（掘金，被同行认可）+ 百度 DA9 长尾霸屏（CSDN，被搜到）。经典分工：掘金首发 → 隔天 CSDN。</p>
+  </div>
+  <div class="band gold">
+    <h3>泛流量 + 私域 · 小红书 / 视频号 / 知识星球</h3>
+    <p>小红书种草、视频号破圈联动公众号、知识星球做私域收口（2026-08-01 新规手续费阶梯降至 10 万内 20%、超 10 万 10%）。</p>
+  </div>
+</div>
+<div class="mono"><b>出海叠加层：</b>Dev.to / LinkedIn（零成本英文 SEO + 破圈）+ GitHub（开源自研工具做信任地基）+ YouTube（长尾复利）+ Substack / Ko-fi（海外私域收口）。国内做信任与私域变现，海外做国际影响力与美元收入，两条线互不冲突、互相背书。</div>
+
+<h2>五、变现路径优先级（对 boss）</h2>
+<table>
+  <tr><th>层级</th><th>动作</th><th>平台 / 门槛</th></tr>
+  <tr><td><b>第 0 层（立刻）</b></td><td>公众号赞赏 0 粉 + 掘金矿石 0 粉 + 视频号分成 100 粉 + 知乎养号</td><td>零门槛启动</td></tr>
+  <tr><td><b>第 1 层（1000 粉）</b></td><td>小红书蒲公英 + 视频号任务 + 公众号互选</td><td>图文/文章 1000 粉内即可接单</td></tr>
+  <tr><td><b>第 2 层（1 万粉）</b></td><td>B站花火 + 抖音星图</td><td>视频类普遍要 1 万粉</td></tr>
+  <tr><td><b>第 3 层（信任收口）</b></td><td>知识星球年度社群（199–599 元）+ 公众号付费阅读</td><td>私域终局</td></tr>
+  <tr><td><b>出海层（美元）</b></td><td>Ko-fi + GitHub Sponsors（起步）→ Substack + AdSense（成长）</td><td>机构结汇不占 5 万额度</td></tr>
+</table>
+
+<h2>六、战略时间线（从 0 到出海）</h2>
+<ul class="timeline">
+  <li><b>启动期（0–1 月）：</b>锚定 harness 定位；公众号 + 掘金 + CSDN 三连发；Obsidian 主库沉淀素材；每天频发紧跟时事建立响应力。</li>
+  <li><b>起号期（1–3 月）：</b>搜一搜关键词布局见效；视频号 + B站 视频裂变；1000 粉后接蒲公英/互选；GitHub 开源自研工具（索引器/榜单引擎）。</li>
+  <li><b>变现期（3–6 月）：</b>开知识星球做私域收口；视频号会员专区保持更新节奏；出海零成本启动（Dev.to + LinkedIn + Ko-fi + GitHub Sponsors）。</li>
+  <li><b>出海期（6 月+）：</b>YouTube 长视频跨 1000 粉；Substack Newsletter 养订阅；月入 $500+ 注册海外主体开 Stripe；保持 W-8BEN 有效 + 中国申报抵免。</li>
+</ul>
+
+<h2>七、发布前检查清单</h2>
+<ul class="steps">
+  <li><b>原创度：</b>每篇含 ≥30% 独家踩坑/数据，AI 辅助标注、核心观点人出。</li>
+  <li><b>合规红线：</b>带货视频标「AI 生成」（前 5 秒大字 + 平台水印）；非带货普通视频主动标更稳。</li>
+  <li><b>差异化分发：</b>禁一篇通稿无脑同步；各平台标题/摘要/钩子按阵地改写。</li>
+  <li><b>关键词：</b>标题前 13–15 字含核心词 + 长尾簇；文章设置加话题标签（非正文手写 #）。</li>
+  <li><b>出海合规：</b>W-8BEN 有效；收款走机构结汇通道；大额咨询持牌跨境税务顾问。</li>
+  <li><b>数据复核：</b>价格/政策/预扣率上线前核官方页（月月变）。</li>
+</ul>
+
+<div class="band gold">
+  <p><b>一句话战略：</b>用「响应力」抢先占位，用「一线实战派」身份立不可抄的护城河，用「利他内容」积累信任成本，最终在公私域双轨（国内知识星球 / 海外 Substack）完成变现闭环。</p>
+</div>
+
+<div class="foot">
+  <p>本文档由「行途 / XingTu」内容战略内部调研生成 · 配套四份明细调研（见上方导航）· 数据截至 2026-08，供战略参考，非发布稿。</p>
+  <p>引用来源：各平台 2026 官方创作者计划页、YouTube Partner Program、Substack / Dev.to / Hashnode 帮助中心、Stripe / PayPal / Payoneer / Wise / Mercury 政策、IRS W-8BEN 指引、外管局《经常项目外汇业务指引(2020)》、财政部 税务总局 2020 第3号公告、知识星球 2026-08-01 新规。</p>
+</div>
+
+</div>
+</body>
+</html>

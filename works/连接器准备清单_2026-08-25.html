@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行途 IP · 粉丝数据连接器准备清单</title>
+<style>
+  :root{--navy:#1B2A4A;--orange:#FF6B35;--ink:#22303f;--muted:#6b7a8d;--line:#e4e9f0;--bg:#f6f8fb;--card:#fff;--green:#2e9e6b;--amber:#e0a32e;--red:#c0392b}
+  *{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
+  .wrap{max-width:1080px;margin:0 auto;padding:32px 24px 64px}
+  header{background:linear-gradient(120deg,var(--navy),#27375c);color:#fff;border-radius:16px;padding:28px 30px;margin-bottom:24px}
+  header h1{margin:0 0 6px;font-size:24px}header .sub{opacity:.82;font-size:14px}
+  header .tag{display:inline-block;margin-top:12px;background:rgba(255,107,53,.18);border:1px solid rgba(255,107,53,.5);color:#ffd2bf;padding:3px 10px;border-radius:20px;font-size:12px}
+  h2{font-size:19px;margin:36px 0 14px;padding-left:12px;border-left:4px solid var(--orange);color:var(--navy)}
+  h3{font-size:15px;margin:18px 0 8px;color:var(--navy)}
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13.5px;margin:10px 0}
+  th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}th{background:#eef2f8;color:var(--navy);font-weight:600}
+  tr:last-child td{border-bottom:none}
+  .yes{color:var(--green);font-weight:600}.no{color:var(--red);font-weight:600}.part{color:var(--amber);font-weight:600}
+  code{background:#eef2f8;padding:1px 6px;border-radius:5px;font-size:12.5px;color:#234}
+  .note{background:#fff7ef;border:1px solid #ffd9c2;border-radius:10px;padding:12px 14px;font-size:13px;color:#7a4a2c;margin:12px 0}
+  .okbox{background:#eafaf1;border:1px solid #bfe9cf;border-radius:10px;padding:12px 14px;font-size:13px;color:#1f6b45;margin:12px 0}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:10px 0}
+  .step .n{display:inline-block;background:var(--orange);color:#fff;width:26px;height:26px;border-radius:50%;text-align:center;line-height:26px;font-weight:700;margin-right:8px}
+  ul{margin:8px 0;padding-left:20px}li{margin:4px 0}
+  .foot{margin-top:30px;color:var(--muted);font-size:12px;text-align:center}
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap">
+
+<header>
+  <h1>行途 IP · 粉丝数据连接器准备清单</h1>
+  <div class="sub">把「推断画像」升级为「实测画像」前，先把各平台的取数连接器准备好。</div>
+  <span class="tag">生成于 2026-08-25 · 等授权/密钥到位即可拉数</span>
+</header>
+
+<div class="warnbox" style="background:#fff4f2;border:1px solid #f3c9c2;color:#a23a2c;border-radius:10px;padding:12px 14px;font-size:13px">
+  <b>核心结论：</b>能程序化拉取真实粉丝数据的平台，<b>只有微信公众号</b>（开放接口含 sex/province/language/subscribe_time）。
+  知乎 / 掘金 / 小红书 / 视频号 / B站 / 知识星球 <b>没有开放粉丝画像 API</b>，只能后台手动导出 CSV / 截图，再人工喂进来。
+  所以连接器准备的重点 = <b>公众号 AppID + AppSecret + 已搭好的取数脚本</b>。
+</div>
+
+<!-- 平台矩阵 -->
+<h2>一、各平台取数可行性矩阵</h2>
+<table>
+  <thead><tr><th>平台</th><th>真实粉丝画像 API</th><th>准备动作</th><th>状态</th></tr></thead>
+  <tbody>
+    <tr><td><b>微信公众号</b></td><td class="yes">✓ 有（openid + user/info）</td><td>填 AppID/AppSecret → 跑 <code>wechat_audience_puller.py</code></td><td><span class="part">△ 工具已就绪，待密钥</span></td></tr>
+    <tr><td>视频号</td><td class="no">✗ 无开放 API</td><td>视频号助手后台「数据看板」手动导出</td><td><span class="no">✗ 待手动</span></td></tr>
+    <tr><td>知乎</td><td class="no">✗ 无</td><td>创作者中心「粉丝」页截图/录屏</td><td><span class="no">✗ 待手动</span></td></tr>
+    <tr><td>掘金 / CSDN</td><td class="no">✗ 无</td><td>个人主页「粉丝」统计截图</td><td><span class="no">✗ 待手动</span></td></tr>
+    <tr><td>小红书</td><td class="no">✗ 无</td><td>创作者后台「粉丝数据」导出（部分开放）</td><td><span class="no">✗ 待手动</span></td></tr>
+    <tr><td>B站</td><td class="part">△ 部分</td><td>创作中心「粉丝画像」（性别/年龄/地域）截图</td><td><span class="no">✗ 待手动</span></td></tr>
+    <tr><td>知识星球</td><td class="no">✗ 无</td><td>星球后台「成员」导出</td><td><span class="no">✗ 待手动</span></td></tr>
+  </tbody>
+</table>
+
+<!-- 公众号准备步骤 -->
+<h2>二、公众号连接器准备步骤（重点）</h2>
+<div class="step"><span class="n">1</span><b>取 AppID / AppSecret</b><br>
+  登录 <code>mp.weixin.qq.com</code> → 左侧「设置与开发 / 基本配置」→ 拿到 <b>AppID(开发者ID)</b> 与 <b>AppSecret(开发者密码)</b>。
+  若 AppSecret 遗忘需重置（会让你扫码确认）。</div>
+<div class="step"><span class="n">2</span><b>确认接口权限</b><br>
+  「设置与开发 / 接口权限」里确认 <b>用户管理</b>（获取用户基本信息、获取用户列表）已获得。订阅号/服务号通常默认有；未认证订阅号可能受限。</div>
+<div class="step"><span class="n">3</span><b>落地密钥（安全）</b><br>
+  复制 <code>tools/wechat_audience_config.example.json</code> → 改名 <code>wechat_audience_config.json</code> → 填入真实值；
+  并把该文件名加入 <b>.gitignore</b>（密钥绝不入库）。也可改用环境变量 <code>WX_APPID</code> / <code>WX_APPSECRET</code>。</div>
+<div class="step"><span class="n">4</span><b>跑取数连接器</b><br>
+  <code>python3 tools/wechat_audience_puller.py --config wechat_audience_config.json --out 受众实测画像.html</code><br>
+  脚本自动拉全部粉丝 openid → 批量 user/info → 聚合性别/省份/语言/关注时间 → 输出单文件看板。</div>
+<div class="step"><span class="n">5</span><b>校验再下结论</b><br>
+  把实测画像和上一版「推断画像」对照：性别比、地域集中度、关注时间是否与"程序员/技术经理"假设吻合，再修正 IP 战略。</div>
+
+<!-- 已备好的工具 -->
+<h2>三、已提前准备好的工具</h2>
+<div class="okbox">
+  ✅ <code>tools/wechat_audience_puller.py</code> — 零依赖（仅标准库），已通过自测（生成 1200 样本示例图）与 dry-run（无密钥正确退出）。<br>
+  ✅ <code>tools/wechat_audience_config.example.json</code> — 配置模板（占位 + gitignore 提示）。<br>
+  ✅ <code>受众实测画像_示例.html</code> — 自测产出的输出样例，先看格式。<br>
+  ✅ 安全红线已落实：密钥只从本地文件/环境变量读取，绝不硬编码、绝不入库；脚本只读不改。
+</div>
+
+<!-- 手动平台 -->
+<h2>四、无 API 平台的"手动连接器"方案</h2>
+<p>对这些平台，我这边没法程序化拉数，但可以承接你导出的数据：</p>
+<ul>
+  <li><b>统一收口目录</b>：把各平台后台导出的 CSV / 截图放到 <code>素材库/后台数据/</code>（待建，本地私有），文件名带平台+日期。</li>
+  <li><b>我来做的事</b>：截图 → 我可 OCR/读取提取关键指标（粉丝总量、男女比、年龄、地域 TOP、关注来源）；CSV → 我直接解析聚合。</li>
+  <li><b>目标</b>：把"公众号实测 + 多平台手动导出"拼成一个<strong>统一粉丝画像看板</strong>，补漏公众号覆盖不到的维度。</li>
+</ul>
+
+<!-- 下一步 -->
+<h2>五、下一步（待 Boss 执行/授权）</h2>
+<ul>
+  <li><b>Boss 动作</b>：去 mp.weixin.qq.com 取 AppID/AppSecret，落 <code>wechat_audience_config.json</code> 并加 gitignore。</li>
+  <li><b>我方动作</b>：密钥到位后跑 puller，产出「实测画像」，与推断画像对照修正战略。</li>
+  <li><b>并行</b>：手动平台后台导出数据丢进 <code>素材库/后台数据/</code>，我接手解析。</li>
+</ul>
+
+<div class="foot">行途 IP · 粉丝数据连接器准备清单 · 单文件离线可用 · 2026-08-25</div>
+
+</div>
+</body>
+</html>

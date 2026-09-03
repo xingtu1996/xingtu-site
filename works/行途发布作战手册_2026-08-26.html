@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行途 · 发布作战手册（2026-08-26）</title>
+<style>
+  :root{
+    --bg:#f7f8fa; --card:#ffffff; --ink:#1f2937; --muted:#6b7280;
+    --line:#e5e7eb; --brand:#2563eb; --brand2:#0ea5e9; --ok:#16a34a;
+    --warn:#d97706; --danger:#dc2626; --soft:#eff6ff; --soft2:#f0fdf4;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.7;font-size:15px}
+  .wrap{max-width:980px;margin:0 auto;padding:28px 20px 80px}
+  h1{font-size:26px;margin:0 0 4px}
+  h2{font-size:20px;margin:36px 0 12px;padding-left:10px;border-left:4px solid var(--brand)}
+  h3{font-size:16px;margin:22px 0 8px;color:var(--brand)}
+  .sub{color:var(--muted);font-size:13px;margin-bottom:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:18px 20px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+  .tldr{background:linear-gradient(135deg,#eff6ff,#f0fdf4);border:1px solid #bfdbfe}
+  .tag{display:inline-block;font-size:12px;padding:2px 9px;border-radius:999px;
+    background:var(--soft);color:var(--brand);margin-right:6px;font-weight:600}
+  .tag.ok{background:var(--soft2);color:var(--ok)}
+  .tag.warn{background:#fffbeb;color:var(--warn)}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#f1f5f9;font-weight:600;color:#334155}
+  tr:nth-child(even) td{background:#fafafa}
+  ul{margin:8px 0;padding-left:20px}
+  li{margin:4px 0}
+  .pill{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;font-weight:600}
+  .p-ok{background:var(--soft2);color:var(--ok)}
+  .p-warn{background:#fffbeb;color:var(--warn)}
+  .p-danger{background:#fef2f2;color:var(--danger)}
+  .p-brand{background:var(--soft);color:var(--brand)}
+  .note{font-size:13px;color:var(--muted);margin-top:6px}
+  .ck{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#0f172a;color:#e2e8f0;
+    border-radius:8px;padding:14px 16px;font-size:13px;line-height:1.9;overflow:auto}
+  .ck .done{color:#4ade80}
+  .ck .todo{color:#fbbf24}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:720px){.grid2{grid-template-columns:1fr}}
+  svg{display:block;margin:8px auto;max-width:100%}
+  .foot{color:var(--muted);font-size:12px;margin-top:40px;border-top:1px solid var(--line);padding-top:14px}
+  .big{font-size:18px;font-weight:700}
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap">
+
+<h1>行途 · 发布作战手册</h1>
+<div class="sub">生成日期 2026-08-26（周三）｜ 主理人视角 · 单文件零依赖 · 可直接照做</div>
+
+<!-- ============ TL;DR ============ -->
+<div class="card tldr">
+  <div class="big">🎯 今日作战结论</div>
+  <p style="margin:10px 0 4px"><span class="tag ok">今天发</span>
+  <b>B09《改 1 个配置，AI 编程账单肉眼可见地瘦了》</b><br>
+  <span class="sub" style="margin:0">公众号 20:00–21:00 首发（标题≤15字防折叠），隔 6–24h 分发掘金 / 小红书 / 知乎（差异化微调，禁通稿）。</span></p>
+  <p style="margin:8px 0 0"><span class="tag warn">本周六存弹</span>
+  合集2 感情线《初入社会电脑城实录》（看板已完稿，排周末）。</p>
+  <p style="margin:8px 0 0"><span class="tag">备选</span>
+  B11《技术人的复利》留作"管理笔记"合集预热文，建议下周二（9/1）发。</p>
+</div>
+
+<!-- ============ 1. 待办快照 ============ -->
+<h2>① 工作待办快照（看板现状）</h2>
+<div class="card">
+<table>
+  <tr><th>状态</th><th>内容</th><th>今天能否发</th></tr>
+  <tr><td>待孵化灵感</td><td>3 个核弹级素材待清洗：AI 协作排查生产 BUG 实录 / 赠品库存并发 / 重新寻源库存未预占</td><td><span class="pill p-warn">需清洗</span></td></tr>
+  <tr><td>撰写中</td><td>《外卖退单扣钱的至暗时刻》《工作台搭建心法》</td><td><span class="pill p-warn">未成稿</span></td></tr>
+  <tr><td>待排版审查</td><td>《初入社会电脑城实录》（故事线，已就绪）</td><td><span class="pill p-ok">可排周末</span></td></tr>
+  <tr><td>待发/定时</td><td>《AI 协作排查生产 BUG 实录》（标注"急"，仍在草稿/替换流程图）</td><td><span class="pill p-warn">未定稿</span></td></tr>
+  <tr><td><b>成稿待发</b></td><td><b>B09 省 token 配置</b> ｜ <b>B11 技术人的复利</b>（B02 已发）</td><td><span class="pill p-ok">✅ 可发</span></td></tr>
+  <tr><td>新选题池(8/26)</td><td>T12–T17 共 6 个方向（横评/定价/TokenPlan/Cherry Studio 等）</td><td><span class="pill p-warn">仅选题</span></td></tr>
+</table>
+<div class="note">结论：今天能直接发的只有 B09、B11 两篇成稿。新选题池与草稿都需加工，不在"今天可发"范围。</div>
+</div>
+
+<!-- ============ 2. 今日决策 ============ -->
+<h2>② 今日发布决策：为什么是 B09</h2>
+<div class="card">
+<h3>选 B09 的 5 个理由</h3>
+<table>
+  <tr><th style="width:8%">#</th><th>理由</th><th>影响</th></tr>
+  <tr><td>1</td><td><b>零脱敏风险</b>：纯公开配置能力（outputStyle / AUTO_COMPACT_WINDOW），无公司 / 客户 / 数据 → 合规安全垫稳</td><td><span class="pill p-ok">最安全</span></td></tr>
+  <tr><td>2</td><td><b>最贴核心定位</b>：harness / AI 编程工具链 / 降本，正是行途护城河（一线技术经理 + 仍写代码）</td><td><span class="pill p-brand">强人设</span></td></tr>
+  <tr><td>3</td><td><b>收藏价值高</b>：省钱实操 = 高收藏 = 利于涨粉 + 搜一搜长尾（标题/开头已埋词）</td><td><span class="pill p-ok">引流</span></td></tr>
+  <tr><td>4</td><td><b>三平台通吃</b>：公众号故事化 / 掘金工程向 / 小红书清单卡，差异化微调成本低</td><td><span class="pill p-brand">易分发</span></td></tr>
+  <tr><td>5</td><td><b>B11 更适合节点</b>：理念软文宜做"管理笔记"合集预热，硬凑今天反而稀释；留下周更稳</td><td><span class="pill p-warn">节奏</span></td></tr>
+</table>
+</div>
+
+<div class="card">
+<h3>各平台标题与微调（PUB-004 禁通稿）</h3>
+<table>
+  <tr><th>平台</th><th>标题（含词/防折叠）</th><th>微调要点</th><th>时机</th></tr>
+  <tr><td><b>公众号</b><br>(首发)</td><td>《改 1 个配置，账单瘦了》<br><span class="note">≤15字 · 埋"AI 编程账单/省 token"</span></td><td>故事化开场："我怎么发现账单变瘦的"；结尾金句"AI 编程的真实成本一半藏在配置文件里"</td><td><b>今天 20–21</b></td></tr>
+  <tr><td>掘金</td><td>《Claude Code 省 token 配置：Concise+压缩阈值》</td><td>删故事，保留配置清单表 + 多模型适配（deepseek[1m] 坑）；工程向</td><td>隔 6–24h</td></tr>
+  <tr><td>小红书</td><td>《程序员抄作业：AI 账单瘦了》</td><td>清单体图卡，"抄作业 4 条"直接可做收藏贴</td><td>隔 6–24h</td></tr>
+  <tr><td>知乎</td><td>《AI 编程成本一半藏在配置里，怎么调？》</td><td>问题化 + 结论先行；禁引流</td><td>隔 6–24h</td></tr>
+</table>
+<div class="note">分发矩阵定位（MEMORY §9）：掘金/知乎/小红书只做低成本占位 + 长尾，不重点养护；公众号是变现收口主阵地。</div>
+</div>
+
+<div class="card">
+<h3>🚀 发布前 Checklist（照勾）</h3>
+<div class="ck">
+<span class="done">☐</span> 公众号标题 ≤15 字，前 13–15 字含核心词<br>
+<span class="done">☐</span> 开头 100–200 字含核心词 + 2–3 长尾词（密度 2–4%）<br>
+<span class="done">☐</span> 小标题含词；金句保留<br>
+<span class="done">☐</span> 脱敏确认：无雇主/客户/内部数据（B09 纯公开，勾完即过）<br>
+<span class="done">☐</span> 发布时段 20:00–21:00（下班后，SAF-003）<br>
+<span class="done">☐</span> 原创声明 + 话题卡片（灰度期别只依赖 #）<br>
+<span class="todo">☐</span> 首发后 ≥6h 再分发掘金/小红书/知乎（各改标题与开头）<br>
+<span class="todo">☐</span> 分发版存档：<span style="color:#93c5fd">素材库/成稿/B09-*.md</span> 标注已发 + 平台链接
+</div>
+</div>
+
+<!-- ============ 3. 未来规划 ============ -->
+<h2>③ 未来发布规划（4 周排期）</h2>
+<div class="card">
+<table>
+  <tr><th>周</th><th>日期</th><th>合集</th><th>内容</th><th>状态</th><th>平台策略</th></tr>
+  <tr><td rowspan="2"><b>本周</b></td><td>8/26 周三</td><td>技术闪记</td><td><b>B09 省 token 配置（首发）</b></td><td><span class="pill p-ok">✅今发</span></td><td>公众号首发→隔日分发</td></tr>
+  <tr><td>8/29 周六</td><td>行途故事</td><td>《初入社会电脑城实录》</td><td><span class="pill p-ok">可发</span></td><td>公众号感情线 + 视频号联动</td></tr>
+  <tr><td rowspan="2"><b>下周</b></td><td>9/1 周二</td><td>管理笔记(预热)</td><td><b>B11 技术人的复利</b></td><td><span class="pill p-ok">待发</span></td><td>公众号理念向收心 + 小红书成长卡</td></tr>
+  <tr><td>9/3 周四</td><td>技术闪记</td><td>《AI 协作排查生产 BUG 实录》</td><td><span class="pill p-warn">定稿中</span></td><td>替换 Emoji 流程图后发</td></tr>
+  <tr><td rowspan="2"><b>第3周</b></td><td>9/8 周二</td><td>技术闪记</td><td>横评 T12《Work Agent vs Coding Agent 选型》</td><td><span class="pill p-warn">需成稿</span></td><td>周末批量生产 3–5 篇补库存</td></tr>
+  <tr><td>9/12 周六</td><td>行途故事</td><td>《外卖退单扣钱的至暗时刻》</td><td><span class="pill p-warn">需语音提炼</span></td><td>故事线</td></tr>
+  <tr><td><b>第4周</b></td><td>9/15–19</td><td>管理笔记</td><td>T13 2B 定价横评 / T15 Cherry Studio 本地 RAG</td><td><span class="pill p-warn">需成稿</span></td><td>公众号深度 + 掘金工程</td></tr>
+</table>
+<div class="note">节奏铁律（看板）：每周二干货、每周六感情，黄金 20:30。今天周三为"加更"，保持下班后时段即可。库存 <3 时周末批量补货（目标 3–5 篇）。</div>
+</div>
+
+<!-- ============ 4. 平台规则 ============ -->
+<h2>④ 发布平台规则差异化矩阵</h2>
+<div class="card">
+<table>
+  <tr><th>平台</th><th>角色</th><th>标题规则</th><th>内容调性</th><th>关键禁忌</th><th>变现接口</th></tr>
+  <tr><td><b>公众号</b></td><td>主阵地·收口</td><td>≤15字防折叠；前13–15字含词</td><td>情绪+故事+深度</td><td>上班时间发(SAF-003)；碰雇主数据</td><td>赞赏/付费阅读/星球</td></tr>
+  <tr><td><b>掘金</b></td><td>技术辅助</td><td>10–20字；禁寒暄</td><td>精炼+工程深度</td><td>故事化注水</td><td>矿石激励</td></tr>
+  <tr><td><b>CSDN</b></td><td>技术辅助</td><td>15–25字；教程+SEO</td><td>教程向+长尾</td><td>无原创洗稿</td><td>流量分成</td></tr>
+  <tr><td><b>知乎</b></td><td>泛流量</td><td>15–30字；问题化</td><td>结论先行+讨论</td><td>引流/硬广</td><td>致知养号(晚)</td></tr>
+  <tr><td><b>小红书</b></td><td>泛流量</td><td>清单体/截图党</td><td>成长向+图卡</td><td>硬广/导流微信</td><td>蒲公英1000粉</td></tr>
+  <tr><td><b>视频号</b></td><td>放大器</td><td>口播标题</td><td>PPT+真人录音</td><td>带货未标AI生成</td><td>分成/会员专区</td></tr>
+</table>
+<div class="note">硬规则 PUB-004：<b>禁止一篇通稿全平台同步</b>。首发拿原创 → 隔 6–24h 分发 → 各平台改标题/开头/结构。简介头像统一，分发矩阵不重点养护。</div>
+</div>
+
+<!-- ============ 5. AI 防作弊 ============ -->
+<h2>⑤ AI 防作弊策略（重点）</h2>
+<div class="card">
+<p>平台对"AI 生成内容"的判定不是禁发，而是<b>识别低质、洗稿、搬运、虚假</b>。行途策略：<b>用 AI 提效，但让人控质量/真实/信任（BUL-003）</b>。下面左是平台风控维度，右是对应对策。</p>
+
+<svg viewBox="0 0 680 250" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <rect x="0" y="0" width="680" height="250" fill="#fff"/>
+  <!-- 左：平台风控 -->
+  <rect x="14" y="20" width="310" height="210" rx="10" fill="#fef2f2" stroke="#fca5a5"/>
+  <text x="169" y="44" text-anchor="middle" font-size="14" font-weight="700" fill="#dc2626">平台风控维度（它查什么）</text>
+  <text x="28" y="74" font-size="12.5" fill="#334155">① 原创度/查重：洗稿、跨平台一键通稿</text>
+  <text x="28" y="104" font-size="12.5" fill="#334155">② 低质 AI 水文：句式雷同、空话套话</text>
+  <text x="28" y="134" font-size="12.5" fill="#334155">③ 敏感领域限流：时政/医疗/财经建议</text>
+  <text x="28" y="164" font-size="12.5" fill="#334155">④ 标识合规：未标"AI 生成"违规</text>
+  <text x="28" y="194" font-size="12.5" fill="#334155">⑤ 搬运判定：同稿多平台被降权</text>
+  <!-- 箭头 -->
+  <path d="M324 125 L356 125" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar)"/>
+  <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#94a3b8"/></marker></defs>
+  <!-- 右：对策 -->
+  <rect x="356" y="20" width="310" height="210" rx="10" fill="#f0fdf4" stroke="#86efac"/>
+  <text x="511" y="44" text-anchor="middle" font-size="14" font-weight="700" fill="#16a34a">创作者对策（我们怎么做）</text>
+  <text x="370" y="74" font-size="12.5" fill="#334155">① PUB-004 禁通稿 → 天然规避搬运</text>
+  <text x="370" y="104" font-size="12.5" fill="#334155">② de-ai-flavor 去 AI 味 → 破水文识别</text>
+  <text x="370" y="134" font-size="12.5" fill="#334155">③ 真实踩坑/数据锚点 → 提真实权重</text>
+  <text x="370" y="164" font-size="12.5" fill="#334155">④ 原创声明+带货双标"含AI生成"</text>
+  <text x="370" y="194" font-size="12.5" fill="#334155">⑤ 敏感词下放私域(梯子/跨网等)</text>
+</svg>
+
+<h3>可落地的 6 条防作弊纪律</h3>
+<ol>
+  <li><b>禁通稿（PUB-004）</b>：每平台改标题 + 开头 + 结构。同稿多平台是平台最易判搬运的情形，行途已制度化规避。</li>
+  <li><b>去 AI 味（de-ai-flavor skill）</b>：发前跑一遍，清掉空泛口号/抽象形容词/无数字套话，让文字有"人味"。这是对抗"低质 AI 水文识别"的核心动作。</li>
+  <li><b>真实锚点背书</b>：像 B02 的"打自己脸"、B09 的"我的实测决策(2026-08-25)"——具体时间、具体数值、具体踩坑，是机器最难伪造的"真实感"信号。</li>
+  <li><b>合规标识</b>：挂商品链接的带货视频必须双标注「含 AI 生成内容」；图文若大段 AI 辅助，原创声明时如实勾选 AI 参与（微信原创规则）。</li>
+  <li><b>敏感红线</b>：绝不用 AI 代写时政/医疗/新闻；财经只做"个人实践分享"不荐股；梯子/跨网类话题全部下放个人号私域做钩子（看板严禁项）。</li>
+  <li><b>人控终检</b>：AI 放效率、人控质量/真实/信任（BUL-003）。发布前主理人过一遍 Checklist，确保"像我行途写的"，而非"像机器写的"。</li>
+</ol>
+<div class="note">法规背景：国家网信办等四部门《人工智能生成合成内容标识办法》已于 2025-09-01 施行，要求 AI 生成内容显式/隐式标识。平台据此升级检测——合规不是可选项，是底线。</div>
+</div>
+
+<!-- ============ 6. 变现逻辑 ============ -->
+<h2>⑥ 变现逻辑（信任漏斗）</h2>
+<div class="card">
+<svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <rect x="0" y="0" width="680" height="260" fill="#fff"/>
+  <!-- 漏斗 -->
+  <polygon points="120,30 560,30 470,90 210,90" fill="#dbeafe"/>
+  <polygon points="210,100 470,100 410,160 280,160" fill="#bfdbfe"/>
+  <polygon points="280,170 410,170 370,220 320,220" fill="#93c5fd"/>
+  <text x="340" y="62" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">利他内容（免费图文/视频）</text>
+  <text x="340" y="128" text-anchor="middle" font-size="13" font-weight="700" fill="#1e40af">信任积累（真实+持续+互动）</text>
+  <text x="340" y="192" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1e3a8a">私域收口（星球/付费阅读）</text>
+  <!-- 右侧收入 -->
+  <rect x="500" y="30" width="160" height="48" rx="8" fill="#f0fdf4" stroke="#86efac"/>
+  <text x="580" y="59" text-anchor="middle" font-size="12" fill="#15803d">0层·立刻：赞赏/矿石/分成</text>
+  <rect x="500" y="92" width="160" height="48" rx="8" fill="#eff6ff" stroke="#93c5fd"/>
+  <text x="580" y="121" text-anchor="middle" font-size="12" fill="#1d4ed8">1层·1000粉：蒲公英/互选</text>
+  <rect x="500" y="154" width="160" height="48" rx="8" fill="#faf5ff" stroke="#d8b4fe"/>
+  <text x="580" y="183" text-anchor="middle" font-size="12" fill="#7e22ce">3层·信任后：星球199–599</text>
+</svg>
+
+<h3>变现优先级（MEMORY §4）</h3>
+<table>
+  <tr><th>层级</th><th>动作</th><th>门槛</th><th>说明</th></tr>
+  <tr><td><b>0 层</b></td><td>公众号赞赏 + 掘金矿石 + 视频号分成 + 知乎致知养号</td><td>立刻</td><td>零门槛启动，先跑通现金流感知</td></tr>
+  <tr><td><b>1 层</b></td><td>小红书蒲公英 / 公众号互选</td><td>1000 / 500 粉</td><td>图文类 1000 粉内即可接单；广告≤1次/周</td></tr>
+  <tr><td><b>2 层</b></td><td>B 站花火 / 抖音星图</td><td>1 万粉</td><td>视频类门槛高，靠视频号放大器铺垫</td></tr>
+  <tr><td><b>3 层</b></td><td>知识星球年度社群(199–599) + 公众号付费阅读</td><td>信任后</td><td>终局收口：利他→信任→星球。星球无公域，全靠外部导入</td></tr>
+</table>
+<div class="note">终局公式：<b>利他内容 → 信任成本 → 私域收口（星球/付费阅读）</b>。每一篇原创都在攒信任；今天发的 B09 越真实利他，漏斗顶端越宽。</div>
+</div>
+
+<!-- ============ 待议 ============ -->
+<h2>⑦ 待议 / 下一步</h2>
+<div class="card">
+<ul>
+  <li><b>今天执行</b>：20:00 前定稿 B09 公众号版 → 发布 → 标记卡状态已发。</li>
+  <li><b>本周末</b>：批量生产 3–5 篇补库存（优先 T12/T13/T15 横评成稿 + 清洗 3 个核弹素材）。</li>
+  <li><b>待确认</b>：知乎「行途」撞衫是否抢注防冒用（MEMORY §9 标记🔴）。</li>
+  <li><b>待确认</b>：B11 是否下周二(9/1)发，还是并入"管理笔记"合集（需先沉淀≥5篇才建群）。</li>
+  <li><b>合规检查</b>：发布前跑 <span style="font-family:monospace">tools/check-flavor.sh</span> 门禁（虚构口径/学历口径残留扫描）。</li>
+</ul>
+</div>
+
+<div class="foot">
+  行途 · 发布作战手册 ｜ 数据源：素材库成稿(B02/B09/B11)、新选题池_2026-08-26、看板 Canvas、MEMORY §2/§4/§9 ｜ 单文件零依赖，可离线打开。
+</div>
+
+</div>
+</body>
+</html>

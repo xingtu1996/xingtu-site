@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>真人出镜短视频启动规划 · 行途 | 2026-08-31</title>
+<style>
+:root{
+  --blue:#056DE8; --blue-l:#4A9EFF; --cyan:#00D4FF; --orange:#FF6B35;
+  --ink:#12233F; --ink-2:#3D5470; --ink-3:#7189A6;
+  --bg:#F5F8FC; --card:#FFFFFF; --line:#E3EAF3; --line-2:#EEF3F9;
+  --ok:#0E9F6E; --warn:#E8A317; --bad:#D93025;
+  --r:14px; --sh:0 2px 10px rgba(16,42,78,.06);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background:var(--bg); color:var(--ink); line-height:1.7; font-size:15px;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px 80px}
+
+.hero{
+  background:linear-gradient(135deg,#12233F 0%,#1B3A63 55%,#056DE8 100%);
+  color:#fff;padding:46px 0 38px;margin-bottom:34px;position:relative;overflow:hidden;
+}
+.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:320px;height:320px;
+  background:radial-gradient(circle,rgba(255,255,255,.13),transparent 62%);border-radius:50%}
+.hero .wrap{padding-bottom:0}
+.tagline{display:inline-block;font-size:12px;letter-spacing:2px;background:rgba(255,255,255,.16);
+  padding:5px 13px;border-radius:20px;margin-bottom:16px}
+h1{font-size:29px;font-weight:800;letter-spacing:-.5px;line-height:1.35;margin-bottom:13px}
+.hero-sub{font-size:14.5px;opacity:.92;max-width:800px;margin-bottom:24px}
+.verdict{background:rgba(255,255,255,.12);border-left:4px solid #7FC4FF;border-radius:0 10px 10px 0;
+  padding:15px 19px;max-width:850px}
+.verdict b{color:#7FC4FF;font-size:15px;display:block;margin-bottom:5px}
+.verdict p{font-size:14px;opacity:.95}
+
+section{margin-bottom:38px}
+h2{font-size:20px;font-weight:750;display:flex;align-items:center;gap:10px;margin-bottom:6px}
+h2 .idx{background:var(--blue);color:#fff;font-size:12px;font-weight:700;width:25px;height:25px;
+  border-radius:7px;display:grid;place-items:center;flex:none}
+.h2-sub{color:var(--ink-3);font-size:13.5px;margin:0 0 18px 35px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;box-shadow:var(--sh)}
+.card + .card{margin-top:14px}
+
+/* gate */
+.gate{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g-box{border-radius:12px;padding:18px 20px;border:1px solid}
+.g-a{background:#F0F6FE;border-color:#CBE1FB}
+.g-b{background:#FFF6F1;border-color:#FBDCC8}
+.g-box h4{font-size:14px;font-weight:750;margin-bottom:10px}
+.g-a h4{color:var(--blue)} .g-b h4{color:#C2531B}
+.g-box ul{list-style:none;font-size:13.5px}
+.g-box li{padding:5px 0 5px 17px;position:relative;color:var(--ink-2)}
+.g-box li::before{content:"";position:absolute;left:0;top:13px;width:6px;height:6px;border-radius:50%}
+.g-a li::before{background:var(--blue-l)} .g-b li::before{background:var(--orange)}
+.decision{
+  background:linear-gradient(135deg,#FFF8F3,#FFF3EA);border:1px solid #FBDCC8;border-radius:12px;
+  padding:17px 20px;margin-top:14px;font-size:13.5px;color:var(--ink-2);line-height:1.8;
+}
+.decision b{color:#C2531B}
+
+/* levels */
+.lv{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.lv-item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:17px;position:relative}
+.lv-item .lv-tag{display:inline-block;font-size:11px;font-weight:800;color:#fff;background:var(--ink-3);
+  padding:2px 9px;border-radius:20px;margin-bottom:9px}
+.lv-item .lv-tag.hot{background:var(--orange)}
+.lv-item .lv-tag.ok{background:var(--ok)}
+.lv-item h4{font-size:14.5px;font-weight:750;margin-bottom:5px}
+.lv-item .desc{font-size:12.5px;color:var(--ink-3);line-height:1.6;min-height:76px}
+.lv-item .risk{margin-top:10px;font-size:12px;padding:7px 9px;border-radius:7px;background:#F6F8FB;color:var(--ink-2)}
+.lv-item .risk b{display:block;margin-bottom:2px}
+.path{
+  margin-top:14px;background:#F3F7FC;border-left:3px solid var(--blue);border-radius:0 10px 10px 0;
+  padding:13px 17px;font-size:13.5px;color:var(--ink-2);line-height:1.8;
+}
+.path b{color:var(--blue)}
+
+/* schedule */
+.days{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+.day{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:13px 11px}
+.day .dn{font-size:12px;font-weight:800;color:var(--blue);margin-bottom:8px;text-align:center}
+.day .load{font-size:11px;text-align:center;padding:3px 0;border-radius:6px;margin-bottom:8px;font-weight:700}
+.day .slots{list-style:none}
+.day .slots li{font-size:11.5px;color:var(--ink-2);padding:3.5px 0 3.5px 11px;position:relative;line-height:1.5}
+.day .slots li::before{content:"·";position:absolute;left:2px;color:var(--blue-l);font-weight:800}
+.l-hi{background:#E8F2FE;color:#056DE8}
+.l-mid{background:#FFF0E8;color:#C2531B}
+.l-lo{background:#E6F7F0;color:#0B7A55}
+.day.sat,.day.sun{background:#FBFDFF;border-color:#CBE1FB}
+
+.flow{display:flex;flex-direction:column;gap:0}
+.fstep{display:grid;grid-template-columns:130px 1fr 150px;gap:16px;align-items:center;
+  padding:13px 0;border-bottom:1px dashed var(--line-2)}
+.fstep:last-child{border-bottom:none}
+.fstep .role{font-size:13px;font-weight:750;color:var(--ink)}
+.fstep .do{font-size:13px;color:var(--ink-2)}
+.fstep .when{font-size:12px;color:var(--ink-3);text-align:right;background:#F3F7FC;border-radius:7px;padding:5px 10px}
+
+/* equip */
+.eq{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.eq-item{border:1px solid var(--line);border-radius:11px;padding:14px 15px;background:#FBFCFE}
+.eq-item .n{font-size:13.5px;font-weight:750;margin-bottom:4px}
+.eq-item .p{font-size:12.5px;color:var(--blue);font-weight:800;margin-bottom:5px}
+.eq-item .d{font-size:12px;color:var(--ink-3);line-height:1.55}
+
+/* formula */
+.formula{background:linear-gradient(90deg,#F3F7FC,#FAFCFF);border:1px solid var(--line);border-radius:12px;
+  padding:18px 20px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.f-step{border-left:3px solid var(--blue-l);padding-left:12px}
+.f-step .t{font-size:12px;font-weight:800;color:var(--blue);margin-bottom:3px}
+.f-step .d{font-size:12.5px;color:var(--ink-2);line-height:1.55}
+
+/* rhythm */
+.rh{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.rh-item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.rh-item .ph{font-size:11px;font-weight:800;color:#fff;background:var(--blue);display:inline-block;
+  padding:2px 10px;border-radius:20px;margin-bottom:9px}
+.rh-item:nth-child(2) .ph{background:var(--blue-l)}
+.rh-item:nth-child(3) .ph{background:var(--orange)}
+.rh-item h4{font-size:14px;font-weight:750;margin-bottom:7px}
+.rh-item ul{list-style:none;font-size:12.5px;color:var(--ink-2)}
+.rh-item li{padding:3.5px 0 3.5px 15px;position:relative}
+.rh-item li::before{content:"›";position:absolute;left:2px;color:var(--blue-l);font-weight:800}
+
+/* risk */
+.risk{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;padding:14px 0;border-bottom:1px solid var(--line-2)}
+.risk:last-child{border-bottom:none}
+.risk .ic{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;font-size:15px;font-weight:800;color:#fff;flex:none}
+.ic-r{background:var(--bad)} .ic-w{background:var(--warn)} .ic-i{background:var(--blue)}
+.risk .tt{font-size:14px;font-weight:700;margin-bottom:3px}
+.risk .ds{font-size:13px;color:var(--ink-2);line-height:1.65}
+
+/* action */
+.actions{counter-reset:act}
+.act{display:flex;gap:14px;align-items:flex-start;padding:13px 0;border-bottom:1px dashed var(--line-2)}
+.act:last-child{border-bottom:none}
+.act .no{counter-increment:act;flex:none;width:30px;height:30px;border-radius:8px;background:var(--blue);color:#fff;
+  font-weight:800;font-size:14px;display:grid;place-items:center}
+.act .tx{font-size:13.5px;color:var(--ink-2);line-height:1.7}
+.act .tx b{color:var(--ink)}
+
+.final{background:linear-gradient(135deg,#12233F,#1B3A63);color:#fff;border-radius:14px;padding:26px 28px}
+.final h3{font-size:17px;font-weight:750;margin-bottom:12px;color:#7FC4FF}
+.final ol{margin-left:19px;font-size:14px;line-height:1.85}
+.final li{margin-bottom:5px}
+.final b{color:#FFD9A0}
+
+footer{text-align:center;color:var(--ink-3);font-size:12.5px;margin-top:40px;padding-top:22px;border-top:1px solid var(--line)}
+
+@media(max-width:880px){
+  .gate,.lv,.eq,.rh,.formula{grid-template-columns:1fr 1fr}
+  .days{grid-template-columns:repeat(4,1fr)}
+  .fstep{grid-template-columns:1fr}
+  .fstep .when{text-align:left;background:none;padding:0}
+  h1{font-size:23px}
+}
+@media(max-width:560px){.gate,.lv,.eq,.rh,.formula,.days{grid-template-columns:1fr}}
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+
+<div class="hero">
+  <div class="wrap">
+    <span class="tagline">真人出镜启动规划 · 行途 / XingTu</span>
+    <h1>真人出镜短视频：怎么拍、什么时候拍<br>——一套不占用上班时间的可执行方案</h1>
+    <p class="hero-sub">
+      承接快手调研结论（快手 = 流量入口定位），回答两个具体问题：<b>① 真人出镜怎么开始？② 上班族时间怎么协调？</b>
+      本方案建立在你的三条硬约束之上：绝不在上班时间发布/操作、在职低调、不牺牲家庭时间（2.5 岁女儿）。
+    </p>
+    <div class="verdict">
+      <b>核心思路：日更 ≠ 每天现拍，用「批量生产 + 定时发布」把创作压缩进固定小块时间。</b>
+      <p>真人出镜本身不是难点，难点是「出镜 = 同事一眼认出」与「在职低调」的红线冲突。
+      本方案给出四档出镜形式和一个分阶段路径——先不出全脸也能有真实感，90 天数据验证后再决定要不要全出镜。</p>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ========== 0 定位 ========== -->
+<section>
+  <h2><span class="idx">0</span>先把定位钉死：这是「流量入口」，不是「变现阵地」</h2>
+  <p class="h2-sub">你认可的那个想法——快手作为流量入口存在——是对的，但要想清楚入口往哪引。</p>
+  <div class="card">
+    <div style="font-size:14px;font-weight:750;margin-bottom:12px;color:var(--blue)">短视频（快手/抖音）在这个体系里的位置</div>
+    <div style="font-size:13.5px;color:var(--ink-2);line-height:2;background:#F8FAFD;border-radius:9px;padding:14px 17px">
+      <b style="color:var(--ink)">入口层（拉新）</b>：短视频 → 用「AI 帮普通人解决具体问题」的低门槛内容吸引泛流量<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;↓ 同名搜索 / 简介引导<br>
+      <b style="color:var(--ink)">信任层（沉淀）</b>：公众号 / 掘金 / 知乎 → 深度长文建立专业信任<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;↓ 信任积累<br>
+      <b style="color:var(--ink)">变现层（收口）</b>：知识星球 + 海外 Substack/Ko-fi
+    </div>
+    <p style="font-size:13px;color:var(--ink-3);margin-top:13px;line-height:1.75">
+      所以短视频的 KPI 不是「变现」，而是 <b>① 搜索长尾占位 ② 同名品牌认知 ③ 往公众号导流</b>。
+      这直接决定了内容怎么拍：60 秒讲清楚「一个具体问题怎么用 AI 解决」，结尾引导去公众号看完整实践。
+      （注意：快手/抖音严打外链，导流只能靠同名搜索 + 简介文字，不能放链接/二维码。）
+    </p>
+  </div>
+</section>
+
+<!-- ========== 1 决策门 ========== -->
+<section>
+  <h2><span class="idx">1</span>第一道决策门：真人出镜 vs 在职低调</h2>
+  <p class="h2-sub">这是必须先想清楚的问题——拍法由它决定，而不是反过来。</p>
+  <div class="gate">
+    <div class="g-box g-a">
+      <h4>🔵 真人出镜的好处（为什么你想出镜）</h4>
+      <ul>
+        <li>信任度最高：人脸 + 声音 = 人设立得住，「技术经理带团队落地 AI」的 insider 可信度要靠脸背书</li>
+        <li>平台算法友好：真人出镜 + 口播完播率高，更容易进推荐池</li>
+        <li>差异化：快手 AI 垂类「真人技术博主」供给极少，你可能是最早一批</li>
+        <li>IP 资产：脸是你自己的，可跨平台复用，不随平台沉浮</li>
+      </ul>
+    </div>
+    <div class="g-box g-b">
+      <h4>🟠 真人出镜的成本（必须承认的代价）</h4>
+      <ul>
+        <li><b>同事/同行一眼认出</b>：短视频公域分发 + 快手通讯录推荐 + 同城，被认出的概率不低</li>
+        <li>与「当前公司不透明、在职低调」红线直接冲突</li>
+        <li>一旦露脸，内容就和你本人绑定——每句话都要对「技术管理者」人设负责</li>
+        <li>出镜的心理门槛高，容易三天打鱼（这是真人出镜最常见的死因）</li>
+      </ul>
+    </div>
+  </div>
+  <div class="decision">
+    <b>这个矛盾没有「既要又要」的解，只有「分阶段」的解：</b>
+    先用 <b>不露全脸但保留真实感</b> 的形式跑 90 天（真人声音 + 真人手/侧面 + 屏幕演示），
+    数据证明内容方向对、你也习惯了镜头，<b>再和爱人商量后决定是否升级为全出镜</b>。
+    全出镜前必须做的准备：快手关通讯录推荐 + 关同城展示（或用辅号 172…）、确认露脸不露公司标识、家人知情同意。
+  </div>
+</section>
+
+<!-- ========== 2 出镜四档 ========== -->
+<section>
+  <h2><span class="idx">2</span>出镜形式四档：从零出镜到全出镜</h2>
+  <p class="h2-sub">不用一步到位。每一档都是完整可发布的形态，只是「真实感」和「被认出风险」不同。</p>
+
+  <div class="lv">
+    <div class="lv-item">
+      <span class="lv-tag">L0 · 立即可做</span>
+      <h4>零出镜</h4>
+      <div class="desc">PPT/代码/屏幕录制 + 你的真人口播配音（你现有的低成本起步方案）</div>
+      <div class="risk"><b>风险</b>0 — 同事认不出</div>
+    </div>
+    <div class="lv-item">
+      <span class="lv-tag hot">L1 · 推荐起点</span>
+      <h4>半出镜</h4>
+      <div class="desc">屏幕演示为主 + 真人小窗（角落 15–25% 画面）/ 露手操作特写 + 全程真人口播</div>
+      <div class="risk"><b>风险</b>低 — 小窗尺寸下熟人不易认出；声音暴露度中等</div>
+    </div>
+    <div class="lv-item">
+      <span class="lv-tag ok">L2 · 数据验证后</span>
+      <h4>全出镜</h4>
+      <div class="desc">真人出镜口播，60 秒讲一个具体问题，偶尔加屏幕演示</div>
+      <div class="risk"><b>风险</b>高 — 同事一眼认出；必须过「在职低调」决策 + 隐私设置</div>
+    </div>
+    <div class="lv-item">
+      <span class="lv-tag">L3 · 备选</span>
+      <h4>AI 数字人</h4>
+      <div class="desc">可灵/剪映数字人 + 你的声音克隆（保留声音真实感，脸是虚拟的）</div>
+      <div class="risk"><b>风险</b>0 — 但平台要求 AIGC 标识，且「真人感」最弱，与你人设定位冲突，仅作 L1/L2 前的过渡</div>
+    </div>
+  </div>
+
+  <div class="path">
+    <b>建议路径：</b>起步直接做 <b>L1 半出镜</b>（真实感够、风险可控，比 L0 只多一个手机支架）→
+    90 天后看数据（完播/涨粉/评论）→ 达标且你已习惯镜头 → 升级 L2 全出镜；
+    不达标 → 退回 L0 继续跑搜索长尾。L3 数字人只在你决定「绝不露脸但想更生动」时启用。
+  </div>
+</section>
+
+<!-- ========== 3 时间协调（核心） ========== -->
+<section>
+  <h2><span class="idx">3</span>时间协调：上班族的创作流水线（本方案的心脏）</h2>
+  <p class="h2-sub">原则：① 绝不在上班时间发布/操作（铁律）；② 日更靠批量预产 + 定时发布，不靠每天现拍；③ 创作只占你精力最差的碎片时间，不占家庭时间。</p>
+
+  <div class="card" style="padding:20px 22px">
+    <div style="font-size:14px;font-weight:750;margin-bottom:14px;color:var(--blue)">一周时间块地图（示例模板，可按你的实际通勤/加班弹性调整）</div>
+    <div class="days">
+      <div class="day">
+        <div class="dn">周一</div>
+        <div class="load l-lo">轻</div>
+        <ul class="slots">
+          <li>通勤：语音写 1 条选题脚本</li>
+          <li>21:30–22:10：录 1 条 + 定时发布</li>
+        </ul>
+      </div>
+      <div class="day">
+        <div class="dn">周二</div>
+        <div class="load l-lo">轻</div>
+        <ul class="slots">
+          <li>通勤：语音写脚本</li>
+          <li>21:30–22:10：录 1 条 + 定时发布</li>
+        </ul>
+      </div>
+      <div class="day">
+        <div class="dn">周三</div>
+        <div class="load l-lo">轻</div>
+        <ul class="slots">
+          <li>通勤：语音写脚本</li>
+          <li>21:30–22:00：剪前一天的素材</li>
+        </ul>
+      </div>
+      <div class="day">
+        <div class="dn">周四</div>
+        <div class="load l-lo">轻</div>
+        <ul class="slots">
+          <li>通勤：语音写脚本</li>
+          <li>21:30–22:10：录 1 条 + 定时发布</li>
+        </ul>
+      </div>
+      <div class="day">
+        <div class="dn">周五</div>
+        <div class="load l-lo">轻</div>
+        <ul class="slots">
+          <li>通勤：语音写脚本</li>
+          <li>21:30–22:00：补录 1 条 or 休息</li>
+        </ul>
+      </div>
+      <div class="day sat">
+        <div class="dn">周六</div>
+        <div class="load l-hi">集中</div>
+        <ul class="slots">
+          <li>上午/下午 1–1.5h：<b>批量录 4–6 条</b>（一周量一次拍完）</li>
+          <li>当晚：批量剪辑 20 分钟</li>
+        </ul>
+      </div>
+      <div class="day sun">
+        <div class="dn">周日</div>
+        <div class="load l-mid">复盘</div>
+        <ul class="slots">
+          <li>晚 21:00–21:30：数据复盘</li>
+          <li>21:30–21:50：下周选题排期</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:12.5px;color:var(--ink-3);margin-top:14px;line-height:1.7">
+      投入核算：工作日每天 ≤ 45 分钟（通勤碎片 15–20 分钟 + 晚间 25 分钟）+ 周末集中 2 小时 ≈
+      <b>每周 5.5–6 小时，产出 6–7 条</b>。晚间 21:00 后是你的深夜工作习惯时段，正好接上。
+    </p>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <div style="font-size:14px;font-weight:750;margin-bottom:6px;color:var(--blue)">创作流水线：每个环节落在哪个时间块</div>
+    <div class="flow">
+      <div class="fstep"><div class="role">① 选题</div><div class="do">从选题池（素材卡/文章台账/评论区）挑 1 个具体问题；写「钩子 + 三步骤」两行大纲</div><div class="when">通勤 · 语音输入 10 分钟</div></div>
+      <div class="fstep"><div class="role">② 脚本</div><div class="do">把大纲扩成 60 秒口播稿（约 180–220 字），口语化，别书面腔</div><div class="when">晚间 10 分钟 or 周末批量</div></div>
+      <div class="fstep"><div class="role">③ 拍摄</div><div class="do">手机横屏/竖屏 + 支架 + 领夹麦；对着提词器一次过，NG 不怕</div><div class="when">工作日 1 条 10 分钟 / 周末批量 4–6 条</div></div>
+      <div class="fstep"><div class="role">④ 剪辑</div><div class="do">剪映：智能字幕 + 掐头去尾 + 封面字；每条 ≤ 5 分钟</div><div class="when">次日晚上 or 周末 20 分钟</div></div>
+      <div class="fstep"><div class="role">⑤ 发布</div><div class="do">用平台「定时发布」，固定晚 19:30–21:00 高峰段，设好就退出</div><div class="when">睡前 2 分钟 · 上班时间零操作</div></div>
+      <div class="fstep"><div class="role">⑥ 互动</div><div class="do">回复前 10 条评论（真实互动是快手权重关键），顺手把评论区好问题记入选题池</div><div class="when">晚间统一 10 分钟</div></div>
+      <div class="fstep"><div class="role">⑦ 复盘</div><div class="do">看 3 个数：完播率、3 秒留存、搜索曝光；只调选题不调节奏</div><div class="when">周日 30 分钟</div></div>
+    </div>
+    <p style="font-size:12.5px;color:var(--ink-3);margin-top:13px;background:#F8FAFD;border-radius:8px;padding:10px 14px">
+      💡 三条省力机制：<b>① 批量生产</b>——周末一次录一周的，日更只是「每天定时发一条」；
+      <b>② 语音优先</b>——通勤用语音输入写稿，不动键盘不花眼睛；
+      <b>③ 发布自动化</b>——所有平台都支持定时发布，你在床上设置，内容按时上线，铁律零触碰。
+    </p>
+  </div>
+</section>
+
+<!-- ========== 4 装备 ========== -->
+<section>
+  <h2><span class="idx">4</span>装备清单：总成本 ≤ 300 元</h2>
+  <p class="h2-sub">不做高投入假设——先把流程跑通，再决定要不要加码。</p>
+  <div class="eq">
+    <div class="eq-item"><div class="n">手机 + 支架</div><div class="p">¥20–40</div>
+      <div class="d">现有手机即可；桌面支架/八爪鱼支架，够拍到人 + 屏幕即可</div></div>
+    <div class="eq-item"><div class="n">领夹麦克风</div><div class="p">¥50–150</div>
+      <div class="d">入门领夹麦（如 BOYA 入门款）或直接手机有线耳机，收音比手机自录好一个档次</div></div>
+    <div class="eq-item"><div class="n">补光灯（可选）</div><div class="p">¥40–80</div>
+      <div class="d">白天窗边可不买；晚上补一盏桌面灯，脸就清晰了</div></div>
+    <div class="eq-item"><div class="n">背景</div><div class="p">¥0</div>
+      <div class="d">书桌/书架/纯色墙面；<b>绝不出现公司工牌、logo、工位</b></div></div>
+    <div class="eq-item"><div class="n">剪辑</div><div class="p">¥0</div>
+      <div class="d">剪映（免费）：智能字幕、提词器、封面模板全包</div></div>
+    <div class="eq-item"><div class="n">提词</div><div class="p">¥0</div>
+      <div class="d">剪映自带提词器，或手机横屏提词 APP；熟稿后可不依赖</div></div>
+  </div>
+</section>
+
+<!-- ========== 5 内容公式 ========== -->
+<section>
+  <h2><span class="idx">5</span>60 秒口播公式：给快手用户的「降维版」AI 内容</h2>
+  <p class="h2-sub">回到快手调研的核心洞察——快手的 AI 受众问的是「怎么用 AI 帮我干活」，不是「subagent 怎么配」。</p>
+  <div class="formula">
+    <div class="f-step"><div class="t">0–3 秒 · 钩子</div>
+      <div class="d">结果先行或反常识：<br>「领导以为我加班了，其实我用 AI 3 分钟写完周报」</div></div>
+    <div class="f-step"><div class="t">3–10 秒 · 问题</div>
+      <div class="d">谁 + 什么场景 + 什么难：<br>「很多人写周报要花一晚上，卡在不会总结」</div></div>
+    <div class="f-step"><div class="t">10–45 秒 · 解法</div>
+      <div class="d">给「能直接抄」的 1-2-3 步骤，屏幕演示为主、你真人口播</div></div>
+    <div class="f-step"><div class="t">45–60 秒 · 带走</div>
+      <div class="d">一个可带走的结果 + 一个具体问题引导评论：<br>「你现在最想用 AI 解决哪件事？评论区告诉我」</div></div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <div style="font-size:14px;font-weight:750;margin-bottom:11px;color:var(--blue)">选题池来源（不用现想，全部有存量）</div>
+    <div style="font-size:13.5px;color:var(--ink-2);line-height:2">
+      <b>① 素材库/素材卡</b>（已有 30+ 条）→ 每条卡拆 1–2 个 60 秒选题<br>
+      <b>② 文章台账</b>（已发长文）→ 每篇长文拆 2–3 个「普通人能抄」的短选题<br>
+      <b>③ AI 会话沉淀</b>（ai_collab_miner 产出）→ 一手实践直接转口播<br>
+      <b>④ 评论区</b> → 真实用户问题 = 天然选题，还能增强互动权重<br>
+      <b>⑤ 你自己当「技术管理者」的日常</b> → 带团队落地 AI 的真实片段，这是别人抄不走的差异化
+    </div>
+    <p style="font-size:12.5px;color:var(--ink-3);margin-top:10px;background:#F8FAFD;border-radius:8px;padding:10px 14px">
+      示例（占位，具体选题等 boss 拍板口径后由素材卡拆解产出）：「用 AI 3 分钟写完周报」/「不懂代码，怎么让 AI 帮你整理文件」/
+      「AI 写文案不对味？一个提示词技巧」——全部是「问题 + 能直接抄」结构。
+    </p>
+  </div>
+</section>
+
+<!-- ========== 6 节奏 ========== -->
+<section>
+  <h2><span class="idx">6</span>90 天节奏：日更是目标，不是起点</h2>
+  <p class="h2-sub">先保质量与稳定，再提频。直接日更 = 三天后断更，是真人出镜最普遍的死法。</p>
+  <div class="rh">
+    <div class="rh-item">
+      <span class="ph">第 1–4 周</span>
+      <h4>打标签期 · 每周 3 条</h4>
+      <ul>
+        <li>固定 1 个垂直主题（先讲「AI 帮打工人提效」）</li>
+        <li>测 3 种开头钩子，看哪种 3 秒留存最高</li>
+        <li>目标：让系统认识你，不追数据</li>
+      </ul>
+    </div>
+    <div class="rh-item">
+      <span class="ph">第 5–8 周</span>
+      <h4>加频期 · 每周 5–6 条</h4>
+      <ul>
+        <li>确认 2–3 个稳定选题公式</li>
+        <li>标题开始埋搜索长尾词（口语化写法）</li>
+        <li>开始攒合集：同主题系列视频有搜索聚合优势</li>
+      </ul>
+    </div>
+    <div class="rh-item">
+      <span class="ph">第 9–13 周</span>
+      <h4>定型期 · 每周 6–7 条</h4>
+      <ul>
+        <li>跑通「搜索长尾 + 同合集」稳定流量</li>
+        <li>尝试 1 次直播（平台百亿流量池鼓励视频作者开播）</li>
+        <li>数据达标 → 决策是否升级 L2 全出镜</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 7 风险 ========== -->
+<section>
+  <h2><span class="idx">7</span>风险红线：开始之前过一遍</h2>
+  <div class="card">
+    <div class="risk">
+      <div class="ic ic-r">1</div>
+      <div><div class="tt">🔴 上班时间零创作零发布（铁律，不可破）</div>
+        <div class="ds">脚本可放通勤语音，但拍摄/剪辑/发布全部只在下班后。所有发布用定时发布功能，
+        睡前设好即退出，内容自动上线。若有急事需要临时处理，也只在晚间 21:00 后操作。</div></div>
+    </div>
+    <div class="risk">
+      <div class="ic ic-r">2</div>
+      <div><div class="tt">🔴 快手熟人可见性（上轮调研已确认的风险）</div>
+        <div class="ds">发布第一条前必做：关闭「通讯录推荐 + 同城展示」；或改用辅号 172… 注册新号起号。
+        这是你的账号，被同事刷到只是时间问题——提前决策，不要侥幸。</div></div>
+    </div>
+    <div class="risk">
+      <div class="ic ic-w">3</div>
+      <div><div class="tt">🟡 画面零公司信息</div>
+        <div class="ds">背景不出现工牌、公司 logo、工位、同事、内部文档。家里书架/纯色墙即可。
+        不聊公司业务细节，只聊通用方法论（这点你已有 SAF-006 纪律，直接沿用）。</div></div>
+    </div>
+    <div class="risk">
+      <div class="ic ic-w">4</div>
+      <div><div class="tt">🟡 AIGC 合规标识</div>
+        <div class="ds">若用 AI 生成画面/配音/数字人，按平台规则明示 AIGC 标识（未标识可限流）。
+        你的视觉一致性自检里已有「AI 辅助声明」，发布时同步带上。</div></div>
+    </div>
+    <div class="risk">
+      <div class="ic ic-i">5</div>
+      <div><div class="tt">🔵 单平台聚焦，不做通稿</div>
+        <div class="ds">先只在快手跑通（或抖音二选一），同一素材可用「不同标题 + 微调开头」二次分发，
+        但内容调性必须按平台重写——通稿全平台同步是你定的死规则，短视频同样适用。</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 8 行动清单 ========== -->
+<section>
+  <h2><span class="idx">8</span>接下来 7 天的行动清单</h2>
+  <div class="card">
+    <div class="actions">
+      <div class="act"><div class="no">1</div><div class="tx"><b>决策出镜档位</b>（建议 L1 半出镜起步）——今天拍板，其他都围绕它展开</div></div>
+      <div class="act"><div class="no">2</div><div class="tx"><b>隐私设置 10 分钟</b>：快手关通讯录推荐 + 关同城展示（或改用辅号）——发布前必须完成</div></div>
+      <div class="act"><div class="no">3</div><div class="tx"><b>下单装备</b>：支架 + 领夹麦 ≤ 200 元，2 天到货</div></div>
+      <div class="act"><div class="no">4</div><div class="tx"><b>定 1 个垂直主题 + 3 个首批选题</b>（从素材卡拆，示例选题已给）</div></div>
+      <div class="act"><div class="no">5</div><div class="tx"><b>周末批量录 3 条</b>（L1：屏幕 + 小窗 + 口播），剪映出片</div></div>
+      <div class="act"><div class="no">6</div><div class="tx"><b>设置定时发布</b>：晚 19:30–21:00 高峰段，周一上线第一条</div></div>
+      <div class="act"><div class="no">7</div><div class="tx"><b>记入复盘日历</b>：11 月底（90 天）用数据决定「继续 / 升级全出镜 / 退回纯占位」</div></div>
+    </div>
+  </div>
+
+  <div class="final">
+    <h3>我的判断（有观点版本）</h3>
+    <ol>
+      <li><b>真人出镜值得做，但 90 天内不一定要露全脸。</b>L1 半出镜既有真实感又保住「在职低调」，
+      还能让你先习惯镜头——绝大多数人死在第 10 条视频，而不是露不露脸。</li>
+      <li><b>时间问题不是「没时间」，是「没把创作切成碎片」。</b>通勤语音写稿 + 周末批量录制 + 定时发布，
+      一周 6 小时换 6–7 条内容，是上班族能长期坚持的上限。</li>
+      <li><b>流量入口定位下，短视频的及格线很低。</b>它不背变现 KPI，只要做到「同名搜索能搜到你 +
+      偶尔一条小爆」就算成功，剩下的交给公众号和星球。</li>
+      <li><b>唯一不能妥协的是红线：上班时间零操作、画面零公司信息、熟人可见性提前决策。</b>
+      这三条守住，出镜就不会翻车。</li>
+    </ol>
+  </div>
+</section>
+
+<footer>
+  规划时间：2026-08-31 ｜ 承接《快手平台调研_行途适配度分析_2026-08-31.html》流量入口定位 ｜ 时间块为示例模板，按实际通勤/加班弹性调整<br>
+  ⚠ 本规划为初稿，供 boss 审核确认；涉及露脸/辅号/家人知情等决策，需本人拍板后执行。
+</footer>
+
+</div>
+</body>
+</html>

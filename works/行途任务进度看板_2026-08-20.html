@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>行途任务进度看板 · 2026-08-20</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:radial-gradient(1000px 500px at 85% -10%,#20264a 0%,#0f1220 55%);color:#e8ebf5;line-height:1.6;min-height:100vh;padding:32px 20px}
+  .wrap{max-width:1000px;margin:0 auto}
+  h1{font-size:26px;font-weight:800;background:linear-gradient(135deg,#fff 30%,#a78bfa);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{color:#9aa3c0;font-size:14px;margin-top:4px}
+  /* progress */
+  .prog{margin:22px 0 8px}
+  .prog .bar{height:14px;border-radius:999px;background:#1c2138;border:1px solid #2a3050;overflow:hidden}
+  .prog .fill{height:100%;width:88%;border-radius:999px;background:linear-gradient(90deg,#3ddc97,#6d7bff);display:flex;align-items:center;justify-content:flex-end}
+  .prog .fill span{font-size:11px;color:#0b0e1a;font-weight:800;padding-right:8px}
+  .prog .label{color:#9aa3c0;font-size:13px;margin-top:6px}
+  /* grid */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;margin-top:18px}
+  .card{background:#161a2e;border:1px solid #2a3050;border-radius:14px;padding:16px}
+  .card.done{border-left:4px solid #3ddc97}
+  .card.todo{border-left:4px solid #f5b14c}
+  .card.red{border-left:4px solid #ef4444}
+  .card h3{font-size:15px;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+  .card.done h3{color:#3ddc97}
+  .card.todo h3{color:#f5b14c}
+  .card.red h3{color:#ef4444}
+  .item{font-size:13px;color:#cdd3ea;padding:4px 0;border-bottom:1px dashed #2a3050}
+  .item:last-child{border-bottom:none}
+  .item b{color:#fff}
+  .tag{display:inline-block;font-size:11px;color:#a78bfa;background:rgba(167,139,250,.1);border:1px solid #2a3050;border-radius:999px;padding:2px 8px;margin:2px 4px 2px 0}
+  .muted{color:#9aa3c0;font-size:12px}
+  .sec{font-size:13px;color:#f5b14c;font-weight:700;letter-spacing:1px;margin-top:26px;text-transform:uppercase}
+  footer{margin-top:30px;color:#5b6b83;font-size:12px;text-align:center}
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap">
+  <h1>行途 · 任务进度看板</h1>
+  <div class="sub">2026-08-20 ｜ 工作空间：xingtu 自媒体复利工程 ｜ 明细：specs/任务总览与断点续传_20260819.md</div>
+
+  <div class="prog">
+    <div class="bar"><div class="fill" style="width:88%"><span>88%</span></div></div>
+    <div class="label">核心工作完成度 —— 并行批次 6 组全完成 · 个人站已上线 · 剩余 2 项需你操作</div>
+  </div>
+
+  <div class="grid">
+    <div class="card done">
+      <h3>✅ 已完成（7 域）</h3>
+      <div class="item"><b>.claude 体系</b> —— CLAUDE.md + 多 agent 编排 + 五层 Token</div>
+      <div class="item"><b>黄金知识区</b> —— 履历台账迁入 + 学历修正（西南科技网教专科）</div>
+      <div class="item"><b>学历提升 spec</b> —— 中外合办硕士锁定 P1</div>
+      <div class="item"><b>IP 定位 spec</b> —— 6 文件（策略/受众/agent/流程/事实表/一档两用）</div>
+      <div class="item"><b>个人站</b> —— pages.dev 上线（真实文章 + 9 平台）</div>
+      <div class="item"><b>一致性审计</b> —— 冻结 20+ 虚构文档 + P0 全修</div>
+      <div class="item"><b>并行批次 6 组</b> —— agent 落盘 / 事实表 / 运营清理 / 站点 / 路径 / 脚本</div>
+    </div>
+
+    <div class="card todo">
+      <h3>📌 需你操作（2 项）</h3>
+      <div class="item"><b>CSDN / 简书账号迁移</b> —— thinkgame → 行途，核实 H3 首发链路</div>
+      <div class="item"><b>公众号 001/003 设「仅自己可见」</b> —— 虚构学历叙事，背调风险</div>
+    </div>
+
+    <div class="card todo">
+      <h3>🛠 可选扩展（我做）</h3>
+      <div class="item"><b>平台台账动态化</b> —— bash 抓粉丝/内容数自动更新</div>
+      <div class="item"><b>5-8 篇 Agent 实战作品集</b> —— 求职作品集弹药</div>
+      <div class="item"><b>行途工具箱 GitHub 仓库</b> —— 可下载资产沉淀私域</div>
+    </div>
+
+    <div class="card done">
+      <h3>📦 产出资产</h3>
+      <div class="tag">spec 6 文件</div><div class="tag">agents 5 个</div><div class="tag">脚本 2 个</div>
+      <div class="tag">冻结文档 20+</div><div class="tag">发布管理清单</div><div class="tag">叙事事实表</div>
+      <div class="tag">一档两用表述</div><div class="tag">check-flavor 门禁</div><div class="tag">check-ledger-sync</div>
+    </div>
+
+    <div class="card done">
+      <h3>🚀 个人站已上线</h3>
+      <div class="item"><b>https://xingtu1996.pages.dev</b> —— HTTP 200</div>
+      <div class="item">真实文章 4 篇 + 9 平台关注 + 履历 section（客户已脱敏）</div>
+      <div class="item">源码 xingtu1996/xingtu-site（私有）+ GitHub Pages 名片页</div>
+    </div>
+
+    <div class="card red">
+      <h3>🔴 红线（防跑偏）</h3>
+      <div class="item">学历只认「专科」（西南科技网教 2019-2022），禁用 全日制本科/16年/中专逆袭</div>
+      <div class="item">已冻结文档（20+）：不删不引不续写</div>
+      <div class="item">履历台账三处同步 + 新内容跑 <b>check-flavor.sh</b> 门禁</div>
+    </div>
+  </div>
+
+  <footer>行途 XingTu · AI 工程化一线实践 ｜ 进度看板由 harness 自动化生成</footer>
+</div>
+</body>
+</html>

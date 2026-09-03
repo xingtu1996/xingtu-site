@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="OTWgoirmWegZiqZXb3cRHE">
+<head data-page-node-id="yOjjCeNUzxH51jjf8aJsTy">
+<meta charset="UTF-8" data-page-node-id="TuXBumB54wu8SJvXjz4QTW">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="H2cX8xUA4rRUwhxjKBAtni">
+<title>行途 · 对标账号系统与适配度分析 2026-09-02</title>
+<style>
+:root{
+  --blue:#056DE8; --blue-l:#4A9EFF; --cyan:#00D4FF; --orange:#FF6B35;
+  --ink:#1a1a1a; --ink-2:#333; --ink-3:#5a5a5a; --ink-4:#8a8a8a;
+  --bg:#f7f9fc; --card:#ffffff; --line:#e3e8ef; --line-2:#eef1f6;
+  --green:#0a8f4d; --red:#d93025; --amber:#e8860c;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--ink-2);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  line-height:1.75; font-size:15px; padding:32px 20px 80px;
+}
+.wrap{max-width:1180px;margin:0 auto}
+
+/* header */
+.hero{
+  background:linear-gradient(135deg,#056DE8 0%,#2b8ef5 55%,#00b8e6 100%);
+  border-radius:16px; padding:34px 38px; color:#fff; margin-bottom:26px;
+  box-shadow:0 8px 28px rgba(5,109,232,.18);
+}
+.hero h1{font-size:27px;font-weight:700;letter-spacing:-.3px;margin-bottom:8px}
+.hero .sub{font-size:14.5px;opacity:.93;line-height:1.7}
+.hero .anchor{
+  display:inline-block;margin-top:14px;padding:6px 14px;border-radius:20px;
+  background:rgba(255,255,255,.18);font-size:13px;backdrop-filter:blur(4px);
+}
+
+/* section */
+section{margin-bottom:30px}
+h2{
+  font-size:19px;color:var(--ink);font-weight:700;margin-bottom:14px;
+  padding-left:12px;border-left:4px solid var(--blue);line-height:1.4;
+}
+h2 .en{font-size:12px;color:var(--ink-4);font-weight:400;margin-left:8px}
+h3{font-size:16px;color:var(--ink);font-weight:650;margin:20px 0 10px}
+
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:22px 24px;margin-bottom:14px;
+}
+
+/* 诊断条 */
+.diag{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.diag .box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;text-align:center}
+.diag .num{font-size:26px;font-weight:700;color:var(--blue);line-height:1.2}
+.diag .num.warn{color:var(--red)}
+.diag .lbl{font-size:12.5px;color:var(--ink-4);margin-top:4px}
+
+.alert{
+  background:#fff5ed;border:1px solid #ffd7bd;border-left:4px solid var(--orange);
+  border-radius:8px;padding:14px 18px;font-size:14.5px;color:#7a3b12;
+}
+.alert b{color:#c2410c}
+
+/* 打分表 */
+.tbl{width:100%;border-collapse:separate;border-spacing:0;font-size:13.5px;
+  background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.tbl th{
+  background:#f0f4fa;color:var(--ink);font-weight:650;text-align:left;
+  padding:11px 12px;border-bottom:1px solid var(--line);font-size:12.5px;white-space:nowrap;
+}
+.tbl td{padding:11px 12px;border-bottom:1px solid var(--line-2);vertical-align:middle}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tbody tr:hover{background:#fafcff}
+.tbl .rank{font-weight:700;color:var(--ink-4);width:34px}
+.tbl .nm{font-weight:650;color:var(--ink);white-space:nowrap}
+.tbl .plat{font-size:11.5px;color:var(--ink-4);line-height:1.5}
+
+/* 分数点 */
+.sc{display:inline-flex;gap:2px;align-items:center}
+.sc i{width:7px;height:7px;border-radius:50%;background:#dfe4ec;display:inline-block}
+.sc i.on{background:var(--blue)}
+.sc i.half{background:linear-gradient(90deg,var(--blue) 50%,#dfe4ec 50%)}
+.tot{
+  display:inline-block;min-width:52px;text-align:center;font-weight:700;font-size:14px;
+  padding:3px 8px;border-radius:6px;background:#eaf2fd;color:var(--blue);
+}
+.tot.s{background:#e6f4ec;color:var(--green)}
+.tot.m{background:#fff4e5;color:var(--amber)}
+.tot.l{background:#fdecea;color:var(--red)}
+
+.tier{display:inline-block;font-size:11px;font-weight:700;padding:2px 7px;border-radius:4px;margin-left:6px}
+.tier.S{background:#056DE8;color:#fff}
+.tier.A{background:#4A9EFF;color:#fff}
+.tier.B{background:#a8b6c8;color:#fff}
+
+/* 账号卡 */
+.acct{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;overflow:hidden}
+.acct-hd{
+  display:flex;align-items:flex-start;gap:14px;padding:16px 22px;
+  background:linear-gradient(90deg,#f5f9ff 0%,#fff 100%);border-bottom:1px solid var(--line-2);
+}
+.acct-hd .ti{flex:1}
+.acct-hd .ti h3{margin:0 0 4px;font-size:17px;color:var(--ink)}
+.acct-hd .ti .idn{font-size:13px;color:var(--ink-3);line-height:1.6}
+.acct-hd .score{text-align:center;flex-shrink:0}
+.acct-hd .score .v{font-size:24px;font-weight:700;color:var(--blue);line-height:1}
+.acct-hd .score .u{font-size:11px;color:var(--ink-4)}
+.acct-bd{padding:18px 22px}
+.metrics{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.metrics span{font-size:12px;background:#f0f4fa;color:var(--ink-3);padding:4px 10px;border-radius:5px}
+.facts{list-style:none;margin-bottom:16px}
+.facts li{
+  font-size:14px;color:var(--ink-2);padding:5px 0 5px 18px;position:relative;line-height:1.65;
+}
+.facts li::before{content:"";position:absolute;left:2px;top:13px;width:5px;height:5px;
+  border-radius:50%;background:var(--blue-l)}
+.lv{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:860px){.lv{grid-template-columns:1fr}.diag{grid-template-columns:repeat(2,1fr)}}
+.lv .blk{border-radius:9px;padding:13px 16px}
+.lv .learn{background:#f0f7ff;border:1px solid #cfe4fb}
+.lv .avoid{background:#fff6f5;border:1px solid #fbd5d0}
+.lv .blk h4{font-size:13.5px;font-weight:700;margin-bottom:7px}
+.lv .learn h4{color:var(--blue)}
+.lv .avoid h4{color:var(--red)}
+.lv ul{list-style:none}
+.lv li{font-size:13.2px;line-height:1.65;padding:3px 0 3px 14px;position:relative}
+.lv .learn li::before{content:"+";position:absolute;left:0;color:var(--blue);font-weight:700}
+.lv .avoid li::before{content:"−";position:absolute;left:0;color:var(--red);font-weight:700}
+.beyond{
+  margin-top:14px;background:linear-gradient(90deg,#fff9f2,#fffdfa);
+  border:1px solid #ffe0c2;border-left:4px solid var(--orange);
+  border-radius:8px;padding:12px 16px;font-size:13.8px;color:#7a3b12;line-height:1.7;
+}
+.beyond b{color:#c2410c}
+
+/* 三轴 */
+.axes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:860px){.axes{grid-template-columns:1fr}}
+.axis{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;
+  border-top:4px solid var(--blue)}
+.axis:nth-child(2){border-top-color:var(--cyan)}
+.axis:nth-child(3){border-top-color:var(--orange)}
+.axis .k{font-size:11.5px;color:var(--ink-4);letter-spacing:1px;font-weight:600}
+.axis h4{font-size:16px;color:var(--ink);margin:6px 0 4px}
+.axis .from{font-size:13px;color:var(--blue);font-weight:650;margin-bottom:10px}
+.axis p{font-size:13.5px;color:var(--ink-3);line-height:1.7}
+
+/* 定位空隙 */
+.gap{
+  background:linear-gradient(135deg,#f0f7ff 0%,#f7fbff 50%,#fff5ef 100%);
+  border:2px solid var(--blue);border-radius:14px;padding:26px 28px;
+}
+.gap .st{font-size:20px;font-weight:700;color:var(--ink);margin-bottom:10px;line-height:1.5}
+.gap .fm{
+  font-size:14px;color:var(--blue);background:#fff;padding:12px 16px;border-radius:8px;
+  border:1px dashed var(--blue-l);margin:14px 0;
+}
+.gap .rs{font-size:14px;color:var(--ink-2);line-height:1.8}
+.evid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+@media(max-width:860px){.evid{grid-template-columns:1fr 1fr}}
+.evid .e{background:#fff;border:1px solid var(--line);border-radius:8px;padding:11px 13px}
+.evid .e .n{font-size:13px;font-weight:650;color:var(--ink)}
+.evid .e .d{font-size:11.8px;color:var(--ink-4);line-height:1.5;margin-top:2px}
+
+/* 路线图 */
+.road{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.road .r{display:flex;gap:16px;padding:16px 22px;border-bottom:1px solid var(--line-2)}
+.road .r:last-child{border-bottom:none}
+.road .ph{
+  flex-shrink:0;width:78px;text-align:center;font-size:12.5px;font-weight:700;
+  color:#fff;background:var(--blue);border-radius:6px;padding:5px 0;height:fit-content;
+}
+.road .r:nth-child(2) .ph{background:var(--blue-l)}
+.road .r:nth-child(3) .ph{background:var(--cyan);color:#00404d}
+.road .r:nth-child(4) .ph{background:var(--orange)}
+.road .ct{flex:1}
+.road .ct h4{font-size:15px;color:var(--ink);margin-bottom:4px}
+.road .ct p{font-size:13.5px;color:var(--ink-3);line-height:1.7}
+
+/* 通用 */
+ul.plain{list-style:none}
+ul.plain li{font-size:14px;padding:5px 0 5px 18px;position:relative;line-height:1.7}
+ul.plain li::before{content:"▸";position:absolute;left:0;color:var(--blue-l);font-weight:700}
+.pill{display:inline-block;font-size:11.5px;padding:2px 9px;border-radius:11px;
+  background:#eaf2fd;color:var(--blue);margin-right:6px}
+.pill.g{background:#e6f4ec;color:var(--green)}
+.pill.o{background:#fff0e6;color:#c2410c}
+.pill.gy{background:#eef0f3;color:var(--ink-4)}
+table.mini{width:100%;border-collapse:collapse;font-size:13.3px;margin-top:8px}
+table.mini th{background:#f0f4fa;padding:9px 11px;text-align:left;font-weight:650;
+  font-size:12.5px;border-bottom:1px solid var(--line)}
+table.mini td{padding:9px 11px;border-bottom:1px solid var(--line-2);vertical-align:top;line-height:1.6}
+table.mini tr:last-child td{border-bottom:none}
+footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);
+  font-size:12.5px;color:var(--ink-4);line-height:1.8}
+code{background:#f0f4fa;padding:1px 5px;border-radius:4px;font-size:12.5px;color:var(--blue)}
+</style>
+</head>
+<body data-page-node-id="XohdhXY3KsW5liaVi5DlQE"><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap" data-page-node-id="EHNZ56tjvmdTDsxpBEBDFk">
+
+<div class="hero" data-page-node-id="LVis1cfpcQoqlzQEF9YaUT">
+  <h1 data-page-node-id="iAs5dbgxmoku6H7sr9ddtH">行途 · 对标账号系统与适配度分析</h1>
+  <div class="sub" data-page-node-id="Qq062xTDphihe5IKBmxqYa">
+    9 个对标账号逐个拆解 · 5 维适配度打分 · 学什么/不学什么/怎么超越<br data-page-node-id="D5012USS5gg8J5wRXmOAqv">
+    核心命题：不是找「谁做得好」，而是找「谁的位置我能站、且站得比他更稳」
+  </div>
+  <div class="anchor" data-page-node-id="1mBePPkIf3mLLsTmRreSgC">对标锚点：实战派技术深耕者 · AI 工具链 harness · 资深技术经理 + 一线写代码</div>
+</div>
+
+<!-- 1 资产底数 -->
+<section data-page-node-id="OTpDqDnccXj4fpX9Tocu0f">
+<h2 data-page-node-id="EHONTwsJBtU8jgUjFN8mu4">一、先看清自己的牌：产能过剩，出口堵塞<span class="en" data-page-node-id="0GAFzGfdZgPAoeCUjbTAbd">Asset Baseline</span></h2>
+
+<div class="diag" data-page-node-id="VxLrX26vdq0GVm5eIsZD1m">
+  <div class="box" data-page-node-id="DLIpccx1mk5G4K0J3LiEO1"><div class="num" data-page-node-id="C3sCoOVyJDSiwyYiFi6YHZ">1161</div><div class="lbl" data-page-node-id="ptT6kQhHnRTLAPlyQT96X8">素材卡（已结构化）</div></div>
+  <div class="box" data-page-node-id="JcrlityH9TBWn9x36GdRO3"><div class="num" data-page-node-id="fDEAJwDm4Ia0RrhnHdZ81Y">11</div><div class="lbl" data-page-node-id="60UBt3aO9TkII7F2Won11f">平台账号（已铺开）</div></div>
+  <div class="box" data-page-node-id="KDfoLst1rMuNru4IWqczcc"><div class="num warn" data-page-node-id="4HuIGaR3jgNn4wNnmHNwpI">4</div><div class="lbl" data-page-node-id="8Cd130zv0ZcFc40ocDu4sk">已成稿（真正写完）</div></div>
+  <div class="box" data-page-node-id="lsJDTdeMCwUwte9fHFWcjO"><div class="num warn" data-page-node-id="2CXnmcbuaUJado8Nnji5yF">0.34%</div><div class="lbl" data-page-node-id="9nGqTczSebhAdVhomEU1vA">素材 → 成稿转化率</div></div>
+</div>
+
+<div class="alert" data-page-node-id="DWclLgYFh5L4ZDZzYQkw8F">
+  <b data-page-node-id="xnxwUkZx521GNmlwUzFBHp">这是全篇最扎眼的数字。</b>你不是缺素材、不是缺平台、不是缺工具链 —— 你缺的是<b data-page-node-id="Bm0XHnbszNYJmcsrN47wvJ">「把素材变成成品并推出去」的流水线</b>。
+  1161 张素材卡对 4 篇成稿，转化率 0.34%。平台账号铺了 11 个，但内容出口只有 1 个（公众号）在跑。
+  对标账号的意义，恰恰在于回答一个问题：<b data-page-node-id="wHDsVhd2KMNjf341K3ILux">别人用什么结构，把同样的「原材料」高效地推成品？</b>
+</div>
+
+<h3 data-page-node-id="ZJWTTtKlepdTvNSnTKBkEJ">你的硬约束（决定了谁不能对标）</h3>
+<div class="card" data-page-node-id="ExbhgvrZAUicbldjsMZ9wd">
+  <ul class="plain" data-page-node-id="wTQ6zMnyuAGtxGRdbrbqSC">
+    <li data-page-node-id="FjFXiWBtmMMkTcMxZ0qPxz"><b data-page-node-id="qkWboG14A9emUzJn3Hrmja">在职低调</b> —— 不在上班时间发布/操作，内容边界铁律。这意味着任何需要「全职投入」的路径都是伪命题。</li>
+    <li data-page-node-id="OhdtwexfFblh4SSrqDwxog"><b data-page-node-id="WH3IwKSrJ2mSRpM9eXDsIh">时间有限</b> —— 深夜工作，无法日更。这意味着「高频更新」型账号全部出局。</li>
+    <li data-page-node-id="YDSGjEWbqhZyPb24KUeF3O"><b data-page-node-id="oGnXDAE4lArBaH7mVHpFuy">已跑通</b> —— 公众号编辑素材 / 制作封面 / 定时发布 / 微信贴图；HTML+CSS 排版 → Chrome headless 截图的图片生产链路。</li>
+    <li data-page-node-id="5V7EfLzMacfKkAK4twFWXj"><b data-page-node-id="kzhXK90MqJtCbENVEmkaZ9">未跑通</b> —— 视频。6 个脚本躺在脚本库里，0 条成片。这是最大的能力缺口，也是最大的杠杆点。</li>
+  </ul>
+</div>
+</section>
+
+<!-- 2 打分总表 -->
+<section data-page-node-id="006RZbeENCMH4nqTFMvdeg">
+<h2 data-page-node-id="AiPoiEr5aAcQNUB14NBf3U">二、9 个对标账号适配度总表<span class="en" data-page-node-id="QrTyheLAdf191VG6YL5ynY">Fit Scoring / 25 分制</span></h2>
+
+<div class="card" style="padding:16px 18px;margin-bottom:14px" data-page-node-id="QEWPH9EuJ2tyNUPpYHOW4B">
+  <div style="font-size:13px;color:var(--ink-3);line-height:1.8" data-page-node-id="3VizplgA9m5IE2bGqJ2ZX0">
+    <b data-page-node-id="bDIgCqVT97Woa31BzPepdx">打分维度（各 1–5 分）</b>　
+    <span class="pill" data-page-node-id="01DkVfe32MWowmPd7GhjTT">人设重合度</span>与「技术经理+一线写代码」的贴合程度　
+    <span class="pill g" data-page-node-id="4iDNaMCoMKAN5ec9Tnnmc2">可复制性</span>在职+深夜+时间受限下能否跑得动　
+    <span class="pill o" data-page-node-id="W7BuucBdZaEnAgy0SnSd2u">资产沉淀性</span>能否转成作品集/书/开源　
+    <span class="pill" data-page-node-id="FLiOo674uAtV0ACRmHrkGj">变现清晰度</span>路径已验证且可迁移　
+    <span class="pill gy" data-page-node-id="F4YMfvwPDHeImQiaPFMqCr">空隙度</span>该赛道是否已被占满（5=几乎空白）
+  </div>
+</div>
+
+<table class="tbl" data-page-node-id="1MBOHS1SNj5FTx2AFIF5dU">
+<thead data-page-node-id="KFmP31bOBpJ6gZAkcSGaBx">
+<tr data-page-node-id="zpIcbGhuRX9mnuA2ayHAIN">
+  <th data-page-node-id="vhzwtTARMLIGL3PBBbQwB2">#</th><th data-page-node-id="ZqtOBemCWEhjCYxeL7qPuY">账号</th><th data-page-node-id="IIUsBZ3FitZeNn6Xdpg26z">平台体量</th>
+  <th data-page-node-id="L2HmqxU7LHJO20jvVzDRBZ">人设</th><th data-page-node-id="HCEWEBpfK271DTysB2mVob">可复制</th><th data-page-node-id="LjCC0s9M3tyKFqpMOltqHn">资产</th><th data-page-node-id="hmxsZBzNoAYaEdqt3N4SWM">变现</th><th data-page-node-id="rYhggwDZvqYqeYppmT3HPJ">空隙</th><th data-page-node-id="fpAmrYniFFfYXP4owG2I8b">总分</th>
+</tr>
+</thead>
+<tbody data-page-node-id="iY9Q6mgtLsjLlXnzv5QKUs">
+<tr data-page-node-id="V6lEf9q6YCWoHXDCpehvIz">
+  <td class="rank" data-page-node-id="VXrffedNogGaHgkUctu3jc">1</td>
+  <td data-page-node-id="brqD5avwElkxXUw7Aos1z0"><span class="nm" data-page-node-id="WbCKOFlmpE977CKis5NcGG">小白debug</span><span class="tier S" data-page-node-id="IjDT0MHYRvJjVP3QAbQTSq">S</span><div class="plat" data-page-node-id="i5xxn9mmntovkySLTTGU9S">前字节资深研发</div></td>
+  <td class="plat" data-page-node-id="InSgtLPhbEKARObBMQ5xau">抖音 30.1万粉 / <b data-page-node-id="hB57CGt98Vaay6WFF8zJRA">仅 58 部作品</b><br data-page-node-id="xAp3guNEBfhAtCaz19L4cS">B站百万播放 / 公众号</td>
+  <td data-page-node-id="z0772zXbmlojpB3pe2TL08"><div class="sc" data-page-node-id="PGNk7jrLhXs59iKgeji6ih"><i class="on" data-page-node-id="0z1FALvmT2SOfKmfuVOTtp"></i><i class="on" data-page-node-id="HJreCLhDovilKijKluBIQZ"></i><i class="on" data-page-node-id="n77H3pNkKiOqBcDSuleFHh"></i><i class="on" data-page-node-id="r8CS3SSsHM2gmK2tWKoJBJ"></i><i class="on" data-page-node-id="xYl50cE2lRdPsokC9YRZBL"></i></div></td>
+  <td data-page-node-id="anD4bXAFanoI6FhDkdZOkh"><div class="sc" data-page-node-id="TWTqGnz7imVf02RRUZQeHM"><i class="on" data-page-node-id="CMq6twf1FefufiRRHoGLgN"></i><i class="on" data-page-node-id="hCeijaXRSEN9NIT0h7u1ZO"></i><i class="on" data-page-node-id="KskWspmFO7ENLE3qhNMCuO"></i><i class="on" data-page-node-id="3sKOo5qZ7xfxPzmuofeM8D"></i><i data-page-node-id="ezd8UyzCly27FMOeQO1m2n"></i></div></td>
+  <td data-page-node-id="PylLoAEWqjcUzkLoRFgWj8"><div class="sc" data-page-node-id="A2AjsVrmiitjeSpOFLOwtg"><i class="on" data-page-node-id="kWOQ3sepvUAvSlWYGljG18"></i><i class="on" data-page-node-id="xgtx3KVHcsetQ2NeswMWnJ"></i><i class="on" data-page-node-id="wiIEpb4vS03AcwNg1RfMYR"></i><i class="on" data-page-node-id="2SlevOc9jN1HYASFX9rrxQ"></i><i class="on" data-page-node-id="3x9GaGVDdCqUNM9R7rM1TY"></i></div></td>
+  <td data-page-node-id="8PRR9iy0yGaBAFoF1gtr6A"><div class="sc" data-page-node-id="cSnpMoTGd880PInE1e8mYi"><i class="on" data-page-node-id="wwe4mEp2rth5AKciMIMzxZ"></i><i class="on" data-page-node-id="i1zdXqZysrpHCP6FPYxfIw"></i><i class="on" data-page-node-id="t0aXeSjo5zN0Ce8CxUnEXV"></i><i class="on" data-page-node-id="6VXJ6rs9jkJjNDgnT60fAl"></i><i class="on" data-page-node-id="Ixm1r425HFcDz1kBQ3w3o8"></i></div></td>
+  <td data-page-node-id="vp0w8EX2rxJsSeSnQgDE8q"><div class="sc" data-page-node-id="jQP9nQMxo2o8JiHOAeEn1y"><i class="on" data-page-node-id="todPyMw22BE6HqAbnwozqo"></i><i class="on" data-page-node-id="ALnSy4MjjszCYufPMU1rKv"></i><i class="on" data-page-node-id="LgxzISeBvZBLzFUBib1zsx"></i><i data-page-node-id="pV3QEpwpjfSat44MeaEYoa"></i><i data-page-node-id="SB3mHRCySOGPy3aqCg05bS"></i></div></td>
+  <td data-page-node-id="rnDTcsaMIWDxduxwoRAjAg"><span class="tot s" data-page-node-id="u53l6euyClF9llCSHt4FaY">22</span></td>
+</tr>
+<tr data-page-node-id="QJAlcJqbBLKopUhe15okfx">
+  <td class="rank" data-page-node-id="s7pxYw0qPVusOePcRDBpmT">1</td>
+  <td data-page-node-id="Zb8QNkAalkhQdmoTiV7DOc"><span class="nm" data-page-node-id="uTH0v5XjBbaCtffGmZ0oZ5">IndyDevDan</span><span class="tier S" data-page-node-id="dDG6PfHrkW42mUJECoz1Z2">S</span><div class="plat" data-page-node-id="6q8LfzxTVTjyteVafBi1pU">harness engineering</div></td>
+  <td class="plat" data-page-node-id="BMsQm2LYY7ZLpBpQ99NJw2">YouTube 145K 订阅 / 210 视频<br data-page-node-id="WFJGC59f8tcceKHqVoE9bb">5M 播放 / 4.15% 互动</td>
+  <td data-page-node-id="oF5QVt9VakzFeSNsj4pUxR"><div class="sc" data-page-node-id="yYU9Wn2oBTAG8d20mDvTb7"><i class="on" data-page-node-id="5SRzjZPASBlNbT9phiMXa4"></i><i class="on" data-page-node-id="ZBDx4T60EpCLBU7DR4uY0y"></i><i class="on" data-page-node-id="XrZrtfEqBtTyyvGQprLKO9"></i><i class="on" data-page-node-id="GKdZAFdeyzpQ2Avs9tFbr7"></i><i class="on" data-page-node-id="bN44xnrjEePrh2p9AExqr6"></i></div></td>
+  <td data-page-node-id="P3uckRrubWY9D92YO4Vt2f"><div class="sc" data-page-node-id="EkQtTk3jrsrAss38JRFspt"><i class="on" data-page-node-id="WcdlsaV3QDQZv2tq0GGJku"></i><i class="on" data-page-node-id="0jgCkpmZrcnIOGkDVvA3hL"></i><i class="on" data-page-node-id="8BpIzKL69cNyKOtWK1qbBI"></i><i class="on" data-page-node-id="4bgztec48ojiERWtP8a2z1"></i><i data-page-node-id="jenMI5txhLMuoPvu1bFj6C"></i></div></td>
+  <td data-page-node-id="Mu84RClrcSjooyLveRhwyk"><div class="sc" data-page-node-id="N66ZIwxWy8mUdoV8wUrKGd"><i class="on" data-page-node-id="SJCGn81uLsOPQUYQbkUUmo"></i><i class="on" data-page-node-id="rhdKAngN4Epl8MMQK5mN8g"></i><i class="on" data-page-node-id="dnOxd49lQe41LygJSNYUek"></i><i class="on" data-page-node-id="WKQ96pcN9H4ueOHUf56to8"></i><i data-page-node-id="pxVtwU0TKHX0odEvT5GOqD"></i></div></td>
+  <td data-page-node-id="TffSDYobCDGwQu4Adw5w0w"><div class="sc" data-page-node-id="hPtpoFa9aGA6TkXuEt1mXJ"><i class="on" data-page-node-id="K8P1LUMDPRwgXiG7fqaUxD"></i><i class="on" data-page-node-id="M5iQA75biWDV7Fm3pbMiO9"></i><i class="on" data-page-node-id="C3u9iOzN0pRDbyPifW9x1f"></i><i class="on" data-page-node-id="AnLRlc62oNGwp0qtZFtvmK"></i><i data-page-node-id="6XbVHVCxPZ7Oozwd54xzVm"></i></div></td>
+  <td data-page-node-id="YmNECPunuDnZxixvitAmrg"><div class="sc" data-page-node-id="VCmYqEp34YMbXleICws8Mj"><i class="on" data-page-node-id="FwlgXZjL4UrUc5SZEbuDyI"></i><i class="on" data-page-node-id="F0vIcyElXfqRtEpurwsUPg"></i><i class="on" data-page-node-id="ffecMBxAcJBBxKCBKDmGyE"></i><i class="on" data-page-node-id="1stMCtPRSmUkCdQfVAbneo"></i><i class="on" data-page-node-id="IcBHuQEpt2bH4WCgeO1sLc"></i></div></td>
+  <td data-page-node-id="BY5GDAxAkjUH3tDyGq4JR3"><span class="tot s" data-page-node-id="n9OxXxamy36HMtCZeoIXrr">22</span></td>
+</tr>
+<tr data-page-node-id="N9TkZmTPGvzIJLWd0fk2L9">
+  <td class="rank" data-page-node-id="HLyT9fsniGll8zSGrpJCv0">3</td>
+  <td data-page-node-id="AGrYf09AoatX42xr2zw6AA"><span class="nm" data-page-node-id="UfQz6BmPLX7sDG5IHpHlIc">刘小排r</span><span class="tier S" data-page-node-id="rWIfVOKxBST7SByC15wJTW">S</span><div class="plat" data-page-node-id="ePPl6KwPtZth4dLMiHU5eb">Claude Code 垂直</div></td>
+  <td class="plat" data-page-node-id="eMCn2GraABTd8GwUIrMLuA">公众号首月 2.25 万粉<br data-page-node-id="jjVnN1vW3qq0ip0Z6ULPwa">A 类号第 14 名 / 单条商单 2 万</td>
+  <td data-page-node-id="uLqHJWv4fsFbD6FhxaAx9W"><div class="sc" data-page-node-id="a9nkPAQjkyUKeV7aQ20TiD"><i class="on" data-page-node-id="m5NLjBCwYDtQphekQHUv9G"></i><i class="on" data-page-node-id="Y6fDMkQF1YBNZtkRkpKffc"></i><i class="on" data-page-node-id="9CYUkpDIcUacYG3MChoUFw"></i><i class="on" data-page-node-id="EeCDL93LTtnLUmnKiq3rnr"></i><i data-page-node-id="9vFTfDAvEHETTUOLA0828H"></i></div></td>
+  <td data-page-node-id="QSaBT44UBBzu2DVcP4ZezS"><div class="sc" data-page-node-id="uVO7Fj9n9D9tRh6LPD1FTP"><i class="on" data-page-node-id="2uMHwjZegFaN5FWEJqHI4C"></i><i class="on" data-page-node-id="gPNDZjSLTUq1DYrV6idZGA"></i><i class="on" data-page-node-id="wMrcUzoFPN5GxOCFMTrFwq"></i><i class="on" data-page-node-id="OIM2EG9xqGcDKpAAvjXyXw"></i><i data-page-node-id="SmwjJZJjTivwrsxKLMNzCf"></i></div></td>
+  <td data-page-node-id="0v4RagUAT3C6xg82vhhF7f"><div class="sc" data-page-node-id="ihJEz3UTXSbOhipqbDL0CU"><i class="on" data-page-node-id="uOHnQHd9TUOVwl8zDg2T5z"></i><i class="on" data-page-node-id="d2VJgzHkwyr9Ws84mNQ2vO"></i><i class="on" data-page-node-id="1p1J7GG3qbXnCPvHISwUMn"></i><i data-page-node-id="Rb9FFu8Fcpvyczdc7R7MVk"></i><i data-page-node-id="85l1GYKgrBhANO5FjuIivc"></i></div></td>
+  <td data-page-node-id="RxKiiwdV7ADLIp7FAMtmg0"><div class="sc" data-page-node-id="NMfWKZnJeYcP49Hi8xfLPE"><i class="on" data-page-node-id="nuOsDhGgU9EmFIsdoKbqaB"></i><i class="on" data-page-node-id="Jj2Nkz3uISbKn2Ddk71BLd"></i><i class="on" data-page-node-id="n33sdDRdphLerPkKMFx7tc"></i><i class="on" data-page-node-id="bLLqDqlvxX5aV9JjhB3KQf"></i><i class="on" data-page-node-id="sIcOdVzfDtXkFYJTWc9zf3"></i></div></td>
+  <td data-page-node-id="BexqbKtnHKWRpTUMeRxbjG"><div class="sc" data-page-node-id="4GyOfmSP1jjVbeQUVJW9vM"><i class="on" data-page-node-id="9nl5Yr8jqVeQ9fB9d7leKh"></i><i class="on" data-page-node-id="dfHsyugIc94y4Y73r2KGhD"></i><i class="on" data-page-node-id="tA4S8FDqtHLqNnBcd8ks25"></i><i data-page-node-id="GZHHHCWDRpr9nnDyJ1ZUj7"></i><i data-page-node-id="HnFodANtLpDK1IY3J9ruoS"></i></div></td>
+  <td data-page-node-id="adzLoS6vaDatWB52Ojknfe"><span class="tot s" data-page-node-id="tVHCxWEVFhEMfOoeSRIu0Y">19</span></td>
+</tr>
+<tr data-page-node-id="6mIAUENUVICeEPt8TaFA9e">
+  <td class="rank" data-page-node-id="dlErjTrnXCE9FJnjSziwM7">4</td>
+  <td data-page-node-id="XO8REbVqTUprRrAzQ5J0nd"><span class="nm" data-page-node-id="uDdjoRikJzQdwy8DWAdfej">玄离199</span><span class="tier A" data-page-node-id="acgwViA3DXt8NrPAYpUrzG">A</span><div class="plat" data-page-node-id="83LTMjl6jWksPOroIDmdUU">每周科技补全</div></td>
+  <td class="plat" data-page-node-id="x9ZmanYBhVWauZMxL5u8FC">B站 59.5万粉 / 609 投稿<br data-page-node-id="cD8RkgGJOW4AC6NpYHWduJ">抖音 10万 / GitHub 3.4k⭐</td>
+  <td data-page-node-id="vGe5JiYGaaUzNsqq4rsUFY"><div class="sc" data-page-node-id="oAtmVxYAvL1iN96yTy4ZWN"><i class="on" data-page-node-id="mZdMJhOTJsIInSUXxmbt6n"></i><i class="on" data-page-node-id="iY8BWRgJH32QjnCNaWhlb8"></i><i class="on" data-page-node-id="9HToDOi0hmhNaHqVPiqjpw"></i><i data-page-node-id="bztKCB2Efp56orLBFPXAPI"></i><i data-page-node-id="0TipdoGpMYXoCYj2fiX8CM"></i></div></td>
+  <td data-page-node-id="UM39g8qJ5a0NrvQYjxNwsp"><div class="sc" data-page-node-id="Gb4jMZbk3NPZ34K96WCdfY"><i class="on" data-page-node-id="4Shp0tEofYUUDJeccHZruH"></i><i class="on" data-page-node-id="pgfYv04fEcWhGsaJ2QZ2SG"></i><i class="on" data-page-node-id="lSlV4goaYVrCWKWdVm9BmZ"></i><i class="on" data-page-node-id="9BbAp7V30Ejl64xZKzQAWH"></i><i data-page-node-id="b3G3TOvLH419MGRZcyshqr"></i></div></td>
+  <td data-page-node-id="H2n4vAaMCBvJlKvuP8LuQ5"><div class="sc" data-page-node-id="QXGMkR7GSBugicRMYVFyaA"><i class="on" data-page-node-id="rshTIjYBtdXmhD3IymijWT"></i><i class="on" data-page-node-id="tecdWxuV94KN6Cs84g5xeK"></i><i class="on" data-page-node-id="6PnTJ5I47fLAQ08D46guUb"></i><i class="on" data-page-node-id="NKWUDDEESNyHyFc2dfkj9U"></i><i class="on" data-page-node-id="fR8mayU6hGJYP2OC6WIOI0"></i></div></td>
+  <td data-page-node-id="5OPJrN2fiHc6qjZWOyKpZE"><div class="sc" data-page-node-id="Q5av1h6tvQucxkdzpHyoo6"><i class="on" data-page-node-id="F4gReIOyNiuJsuy5k6IT0T"></i><i class="on" data-page-node-id="fbdvILc3DRp6q8Ht2UXTIh"></i><i class="on" data-page-node-id="PGe42mU9FT7yBsDZKrCB8l"></i><i data-page-node-id="xm6mdHyWHEaUPD2XsfEzKi"></i><i data-page-node-id="EbPXx0mgONG7zfVawWZku0"></i></div></td>
+  <td data-page-node-id="rN91QdyFC3QliqoC3o2d2z"><div class="sc" data-page-node-id="EEKo4CMGHhmYaMl69DfTk5"><i class="on" data-page-node-id="HbOK1H3murTN2xrI6O9TAu"></i><i class="on" data-page-node-id="qBQMuxhpPaCrRHRsyVsOLc"></i><i class="on" data-page-node-id="BHXPZX2krc4y46YnzDtvjD"></i><i data-page-node-id="dbuvQXntLUcyVgwEZbXdoq"></i><i data-page-node-id="wileOGTIX6SiEHXTSE0BMM"></i></div></td>
+  <td data-page-node-id="fWStIQRFsBmkUH8G546nhd"><span class="tot m" data-page-node-id="oxHlEDKEeXkH0PVlMimChA">18</span></td>
+</tr>
+<tr data-page-node-id="OPMxSchVmV73sjNJweHfmo">
+  <td class="rank" data-page-node-id="XQObBqN3f9DnRogGUHuDiY">4</td>
+  <td data-page-node-id="JHkU2CjpbQcEJtaYyb2mkx"><span class="nm" data-page-node-id="qQghKtHmTBwSsE4N732wKM">神秘的鱼仔</span><span class="tier A" data-page-node-id="osU1yPDX1PYCDil3KthIpF">A</span><div class="plat" data-page-node-id="yAvrBBgv5EN8CEWqTIwugU">2 分钟程序员短片</div></td>
+  <td class="plat" data-page-node-id="r2ajwSHNkokiJmrsa0wKhi">B站 3万粉 / 好看视频同步<br data-page-node-id="eAlIspxmgqAwDrqmwRJHjP">爆款单条 19.7万播放</td>
+  <td data-page-node-id="icwiRLQF3y0ZGy5pi6DH7G"><div class="sc" data-page-node-id="BRrNmCgMCiPI6vhObq9RmY"><i class="on" data-page-node-id="x3DPX2b23mlKBVEN5KiLLQ"></i><i class="on" data-page-node-id="s5wDPyVZIdT6sHsZeC21IF"></i><i class="on" data-page-node-id="89pwmmTKBxGtXF2f31h1CX"></i><i class="on" data-page-node-id="E0O04nbWNaiMNj70vnOsxa"></i><i class="on" data-page-node-id="5DQLHLlTQu3HyO818hA5jv"></i></div></td>
+  <td data-page-node-id="cE2btRdOQi1bVNwGo46meg"><div class="sc" data-page-node-id="gg7MLyYeERAceZ92HLe24l"><i class="on" data-page-node-id="nKla0eqpezNvHwUwpMCYl7"></i><i class="on" data-page-node-id="pj9k5k0n9OJzJUnJwGFIBo"></i><i class="on" data-page-node-id="GWR9NKusUMfzbIKkFqoONH"></i><i class="on" data-page-node-id="eR9CE7k5ZJ2TEM3BTEuL8f"></i><i class="on" data-page-node-id="y8rvCwxXKdVvZGKIX4SKJU"></i></div></td>
+  <td data-page-node-id="qcNmHj0EYpO2EFKRGT1gtg"><div class="sc" data-page-node-id="6UgDEbOuSXhWZYntiJ6Woy"><i class="on" data-page-node-id="BklG4iVpT0horZAgI3HTQB"></i><i class="on" data-page-node-id="Bvr6HD09tRxk2hDEGJjGEG"></i><i class="on" data-page-node-id="XMXeBKO9laS34jDMtPsFfW"></i><i data-page-node-id="c2TNe1G1lXbyIySgeU51nR"></i><i data-page-node-id="yBupj0PVT45eQnxqLTACWY"></i></div></td>
+  <td data-page-node-id="Vi0aCnC0JXznUL8IAROA5e"><div class="sc" data-page-node-id="FGCFDceDUF04wAJCbxUcG1"><i class="on" data-page-node-id="CWVfHUznQUe0jVtArAISUO"></i><i class="on" data-page-node-id="KfzHc0GD6xdgFHddPTefp1"></i><i class="on" data-page-node-id="ox7BEBJq27zzBBARXPZuww"></i><i data-page-node-id="nOjzyA5u1kMhqyC3rOwDS1"></i><i data-page-node-id="WDPC99O3eBtwCY2vIe8t6X"></i></div></td>
+  <td data-page-node-id="VqRr4J6CFloOjQGFtnoNzA"><div class="sc" data-page-node-id="5XLP0aVhu1B3ftg7k16o9e"><i class="on" data-page-node-id="j5RFj21H47E1U4GRvZRbuZ"></i><i class="on" data-page-node-id="j6pzC5m7NfjzKzCOqPxkuf"></i><i data-page-node-id="i0C70V1b5w9h5ePMkbKPzb"></i><i data-page-node-id="fvewPa32Bb587rolHks18I"></i><i data-page-node-id="HbrSa7ritFJHaJgGWzZSvF"></i></div></td>
+  <td data-page-node-id="qqorplnkt5iUAaNDgOFQ79"><span class="tot m" data-page-node-id="EAyUWRs699gKTCgx6VspDF">18</span></td>
+</tr>
+<tr data-page-node-id="cTQCXuNk8eFjzSvhCyW6KV">
+  <td class="rank" data-page-node-id="gGtoHpbUm54tCJO03DRgyu">4</td>
+  <td data-page-node-id="iP2e20lhqPZ5QwvxxO9oyz"><span class="nm" data-page-node-id="jdSPdIpJOVeZ6UBvIGbxBJ">五道口纳什</span><span class="tier A" data-page-node-id="IC8Cys9NeKphhGlL91LPtc">A</span><div class="plat" data-page-node-id="Fft29KgvCEsHStXsHiZK01">原理派 · 实验室大师兄</div></td>
+  <td class="plat" data-page-node-id="mEPS4A8PAE9XhQ9fksxpvy">B站知名 AI UP主<br data-page-node-id="caomOGY5Bzvdp0iaUNfJzL">粉丝 60–70% 是博士/博士生</td>
+  <td data-page-node-id="etqlhDhVKFh1MRtaBFMs71"><div class="sc" data-page-node-id="LFpXGDgaI9MiVfVboHB0oM"><i class="on" data-page-node-id="ctrGrSDshbz2riVjxBS5JA"></i><i class="on" data-page-node-id="o6HZXH28eVHhEgHADyihTT"></i><i class="on" data-page-node-id="XjLpucQrhBsgEXyboYvER8"></i><i class="on" data-page-node-id="ADvqer00keeDVIktxrEcF5"></i><i data-page-node-id="sWtKRlqgAXQfB7CAFsCRWc"></i></div></td>
+  <td data-page-node-id="yC4XMRTI4DeQUAz5kY5JpU"><div class="sc" data-page-node-id="vHnxhWIf2oiZnbxzGHVqpF"><i class="on" data-page-node-id="ft3fWH44DQE2GwptNL5Kla"></i><i class="on" data-page-node-id="gdhoBRN5oLar3pZXsXPLmH"></i><i class="on" data-page-node-id="1acTMItfRtT5542I7mFZRQ"></i><i data-page-node-id="FtPG9yiSXvB2mBdhtwZFWf"></i><i data-page-node-id="DMOCMKlFY1KY9H2nom04Bk"></i></div></td>
+  <td data-page-node-id="bhYBXy3wux30oqf3iQGiNj"><div class="sc" data-page-node-id="9SbwaqfMOTUfdEEyw4T2Mt"><i class="on" data-page-node-id="Gi9tKH5RBGeePOb6faIYoC"></i><i class="on" data-page-node-id="5jONnMCLPHFK6d8EjZgpCA"></i><i class="on" data-page-node-id="fgi52Iuq5HpwZoO4V6G2Dq"></i><i class="on" data-page-node-id="w6wRg1G3JlRak12BypeRwg"></i><i data-page-node-id="mtroQGMx5nTHZa8e7KxdkY"></i></div></td>
+  <td data-page-node-id="E4vlU7YHc5Z27NEyWKCs3S"><div class="sc" data-page-node-id="DIJ1AYBUlEDvxOmYQI8HP9"><i class="on" data-page-node-id="5rRcuMsV12HlAyVoKJZPvt"></i><i class="on" data-page-node-id="wZP4fjZwMQWjVkUSFBTIuW"></i><i class="on" data-page-node-id="P41HA1rHBnLC2R8hfGOKSx"></i><i data-page-node-id="yfzefV5HCWvIHdSqup77K6"></i><i data-page-node-id="Q3xFaGdcvBaOMYKzHdhEh1"></i></div></td>
+  <td data-page-node-id="W1yWe8Z34IIEX7xMq0IjZG"><div class="sc" data-page-node-id="fvworEPCbklkWWFxwto9Lx"><i class="on" data-page-node-id="ld8EnGgh6uW5D30o6XVNsJ"></i><i class="on" data-page-node-id="aD1AIyUVMY51BU5ABR4ToV"></i><i class="on" data-page-node-id="9Oci8T9nMF8H38yvytmKjx"></i><i class="on" data-page-node-id="jeQZgiWp4ZWcEolMjrWsEX"></i><i data-page-node-id="Giz42Pdb7ssoLxlxS7Gos9"></i></div></td>
+  <td data-page-node-id="vGhTJQWcN92H2awGirH0VW"><span class="tot m" data-page-node-id="QsKXcU5KbKXXp5KFQzpuT0">18</span></td>
+</tr>
+<tr data-page-node-id="UwqMGF1GliyKSlM2vxraLh">
+  <td class="rank" data-page-node-id="AtFaXJwExSiZm4s1ltxpad">4</td>
+  <td data-page-node-id="jYs84FNkAjaRTwVv1R6ZEz"><span class="nm" data-page-node-id="gPjFWvL88cOS7Hfao566fa">花叔v</span><span class="tier A" data-page-node-id="ByT19MGapzF2QxNBmryfBn">A</span><div class="plat" data-page-node-id="YT5EGWbSISg7mLgthmb6AI">开源即内容</div></td>
+  <td class="plat" data-page-node-id="oimeuoIKQAtD8qADDDhTXw">B站 AI 创作者<br data-page-node-id="WE7PyqaUdxD1pCw1cG23GB">GitHub 女娲.skill 26.4k⭐</td>
+  <td data-page-node-id="AluGHj5p5JrQEXbqzJgmQI"><div class="sc" data-page-node-id="rHiYpoxyU82ndobFjnnTE8"><i class="on" data-page-node-id="xaxTpkOAk964NLjpa7tX2T"></i><i class="on" data-page-node-id="l76C2gO7aqXWhjBfNiUHqb"></i><i data-page-node-id="CB8RGua2UtAK193EXjCA5U"></i><i data-page-node-id="En3sGYhXCbB9Ch4mE4aZZ3"></i><i data-page-node-id="HlLK87sCTtPsPrFmF9fDLQ"></i></div></td>
+  <td data-page-node-id="8E5jUQ4qhcVD5dMs8Y0Hhg"><div class="sc" data-page-node-id="lV9FRypxOlrX4c9EGhESH8"><i class="on" data-page-node-id="rSDfCkbbkKrqBX6CuO20TB"></i><i class="on" data-page-node-id="rHTQ2pu7BTNcY3USDGQbIf"></i><i class="on" data-page-node-id="Fce1pXdxJIOOc4rbANPfzb"></i><i class="on" data-page-node-id="4hslw6VV4zD7tdBZhFJzgo"></i><i data-page-node-id="WHeDY3bwzQuazoWuwZDKNo"></i></div></td>
+  <td data-page-node-id="vOBD8O1OMd21ZRaMw3JiCH"><div class="sc" data-page-node-id="5WO1zHSj4FbJ7CUsgyjKKj"><i class="on" data-page-node-id="m4ssoRuZrjjDyCoxbttMqG"></i><i class="on" data-page-node-id="seyfHFWr9H250LPVqwqn74"></i><i class="on" data-page-node-id="xWZwHY523h7vFyFRYvklSe"></i><i class="on" data-page-node-id="gbJMpNPdGvHS469EiWa9GQ"></i><i class="on" data-page-node-id="iGvigdeUomqvsqBoqdHBm1"></i></div></td>
+  <td data-page-node-id="lKAmr9Y06RNn43YalnvQJ7"><div class="sc" data-page-node-id="j0Wop7VvzyOmBmMBLMUvau"><i class="on" data-page-node-id="XhvdMR0Ng3KCtWi1YxQWm9"></i><i class="on" data-page-node-id="vvAhqkhWxCoPftCVwY6gce"></i><i class="on" data-page-node-id="yYGBOlTC028eUf2EfU5Z9S"></i><i data-page-node-id="ZBAVlQDoCUiP86QgmWLmPl"></i><i data-page-node-id="2IV8AgZNONsm8MFHW3HE66"></i></div></td>
+  <td data-page-node-id="DnbB2CrWTaDtgiJ8CCYoFR"><div class="sc" data-page-node-id="MbxXcpTvpsrYYurZ7RdPAC"><i class="on" data-page-node-id="JzEYy1by4n7M0wwngH6qSx"></i><i class="on" data-page-node-id="ZJ85I3IEZ9k7wRMz5kNu7O"></i><i class="on" data-page-node-id="NTzEkxjyGP1syhfAPMfhdR"></i><i class="on" data-page-node-id="VGljU4FpV1c2yrNdbJqd2d"></i><i data-page-node-id="OR3vTdx7I0cFwvpJPyt938"></i></div></td>
+  <td data-page-node-id="4xHuguGwwN3VTu9GuHEgHG"><span class="tot m" data-page-node-id="RnxH2c9EvAGuvzcYRdlEmT">18</span></td>
+</tr>
+<tr data-page-node-id="MG5d9RpG2tzrP4wcg35Hjs">
+  <td class="rank" data-page-node-id="ZWA7ZAk53W28vIoO9EoOTL">8</td>
+  <td data-page-node-id="i6urRZtkvoEWKS4G5Ht286"><span class="nm" data-page-node-id="rc1LG2luskzqPjVBBcB6Sq">秋芝2046</span><span class="tier B" data-page-node-id="aRNCVaH2ghCm2el70H4YPC">B+</span><div class="plat" data-page-node-id="IUEA1EvQANYzRhwjeAjOLU">全网最全长教程</div></td>
+  <td class="plat" data-page-node-id="zi1EaFuU143KSnj0I3BCxe">B站 105.6万 / 抖音 149.5万<br data-page-node-id="7A8KFTalQQDPkyobx8G0zs">小红书 39.4万</td>
+  <td data-page-node-id="MFvsyLFmF9R5Nyg5XOmo2U"><div class="sc" data-page-node-id="flRKTuCiSvu2MsOOezk9wq"><i class="on" data-page-node-id="gOh4S6gng9u0q0ZkJxMIQO"></i><i class="on" data-page-node-id="8WVtSLmFyEH8mI7CEMGuDK"></i><i class="on" data-page-node-id="m4mLoVC4sfBxqBdVYGfwBh"></i><i data-page-node-id="D4c1zOFn8tJQWHf9iuUo5v"></i><i data-page-node-id="D09QSCyjLuO1fQcBUXwftg"></i></div></td>
+  <td data-page-node-id="oD6Xnzw0BOREbRdzSCOiyO"><div class="sc" data-page-node-id="DBNzklgCKsPfm2q0kHpBOV"><i class="on" data-page-node-id="WrBX1Lv4Lq1bIFKuS4CRoA"></i><i class="on" data-page-node-id="PLDCRb6GqSeYswWTiHUL7c"></i><i data-page-node-id="tAx28WEEDWyesd0Juq6dFJ"></i><i data-page-node-id="aBJhsKiNTjSoXfw7Yv0qUg"></i><i data-page-node-id="kS6QEuTbDdSceYFBRwT6jF"></i></div></td>
+  <td data-page-node-id="Z3Qh0tEbEsVC8FSTNV24FE"><div class="sc" data-page-node-id="3FPWsJU4aQOlmZBVRowgBI"><i class="on" data-page-node-id="HYGJBJmXTLyoQVc5fT8DDc"></i><i class="on" data-page-node-id="HGSleD9MSaAfGjenkmOFxr"></i><i class="on" data-page-node-id="S9uvJiy3HGFAHWtfZOB2NV"></i><i class="on" data-page-node-id="5JBeRUUOPDo4764voBKOu0"></i><i data-page-node-id="5Xa8OCJJ4iKh8JxYCUaKRC"></i></div></td>
+  <td data-page-node-id="Ms0X0enwzBDlhmF7Gsuyb7"><div class="sc" data-page-node-id="IECB4AOsQuAfHQpwjaeaek"><i class="on" data-page-node-id="FQ5G7kN3uBis4TXFb0ZYyK"></i><i class="on" data-page-node-id="lIEI7RNIYoQhQKOWhGSNx2"></i><i class="on" data-page-node-id="QSgCGyZloLMlxIHtKAKVjw"></i><i class="on" data-page-node-id="h1nZ2CZBor42l0aWJFQt3L"></i><i data-page-node-id="qmRbBEYOuVI2O3BVd0re8J"></i></div></td>
+  <td data-page-node-id="EhreZbbXOzwmvqQ8xtbeLZ"><div class="sc" data-page-node-id="IPGDYquF7y3QU3hrGlcFKz"><i class="on" data-page-node-id="hGUFkr4x7tKNRI7Ym3Vy1q"></i><i class="on" data-page-node-id="e2Ix6BhREmKRY7MBNBWQ8k"></i><i class="on" data-page-node-id="B65JnpvhAXQlL9K2xDPEwj"></i><i data-page-node-id="pgv8mO8DjK6nXpLH7wq3jf"></i><i data-page-node-id="IDO1JS9alZ0BnqI27iS4XL"></i></div></td>
+  <td data-page-node-id="PzzQNKlYAlgtlm5UIrROAb"><span class="tot m" data-page-node-id="lb27Ttmg2dsBJogv4sQbFB">16</span></td>
+</tr>
+<tr data-page-node-id="DEU3rU1XipKWqjF2TAd2Cq">
+  <td class="rank" data-page-node-id="0xxYLbCHK7ooK2FzpRVoCd">9</td>
+  <td data-page-node-id="tza5dxy4QF8lChj1KNO6tp"><span class="nm" data-page-node-id="jo1OPf6Gm7lSjLmtlRR3JC">数字生命卡兹克</span><span class="tier B" data-page-node-id="91D2i7GxeA5UfMwDfMdg8m">B</span><div class="plat" data-page-node-id="kgCr6AQmGGirhJf1q9ZfLP">方法论 S / 路径 D</div></td>
+  <td class="plat" data-page-node-id="TTWhtAJsPfLI2sPwA7YY3I">公众号 746 篇 / 微博 25万<br data-page-node-id="zHYTafC7S81N9uH46u3daQ">B站 1.7万 / X 3.3万</td>
+  <td data-page-node-id="DX1zNAXmC51OsnfdpDySKC"><div class="sc" data-page-node-id="lzCzUHFDWx1MeN6PbdBEWP"><i class="on" data-page-node-id="BTbnG7hLbXGrA0zA9DMZ86"></i><i class="on" data-page-node-id="lrFhsDaQGkFJiuWg6hBu52"></i><i data-page-node-id="779NtTkzXsCTRv7Pa0BhFf"></i><i data-page-node-id="sdSeJlASLNadG7wCCUjv4m"></i><i data-page-node-id="7ISHEXI7MkHCDvFMabGzHE"></i></div></td>
+  <td data-page-node-id="U8bVfiZIqTroJTFyXfISSP"><div class="sc" data-page-node-id="JEAZ9XorgwMkDsogy1s4Cd"><i class="on" data-page-node-id="Q80M8FyOEUh0dpiGVWRpP9"></i><i data-page-node-id="iEPIC4wXpzaybaxvjyxXc8"></i><i data-page-node-id="MUA9J6PR5KGNL3cZiWNsk6"></i><i data-page-node-id="YGXlj5ZWbRcUJiesX40ljz"></i><i data-page-node-id="9LsRAhmybK1HW7G88JZoxL"></i></div></td>
+  <td data-page-node-id="d03AmX8moxPnq75FHQXaAu"><div class="sc" data-page-node-id="vCnF0GbQVozOVcwm7XdJhH"><i class="on" data-page-node-id="tBMZrlsk9lIXqdXlQZ9ayf"></i><i class="on" data-page-node-id="RuI5Gg0sQo6bsSXXlsOQCm"></i><i class="on" data-page-node-id="jcY9nGbvm1yhCtNJXqkpXt"></i><i data-page-node-id="4J6YU6ocJu66FCToFBKanY"></i><i data-page-node-id="9E7ZvwGaV5Z00pLfbCzlDH"></i></div></td>
+  <td data-page-node-id="NherK9wQHlZJTJM2yLxsbY"><div class="sc" data-page-node-id="73BlP4nkITg9LlDowajNGE"><i class="on" data-page-node-id="HmPDx7xQ8ENto5PT3Re0LO"></i><i class="on" data-page-node-id="KIpqEVoCbrVqdwobEnJm4Q"></i><i class="on" data-page-node-id="RPhYECS8lTuRDl8iIA0eTO"></i><i class="on" data-page-node-id="GuM7rlyzWwiCpbThk5bnCT"></i><i class="on" data-page-node-id="XMd6lioCFe8VVqUssP6NB4"></i></div></td>
+  <td data-page-node-id="oCT1xLXM8JFFvlhorrkSv8"><div class="sc" data-page-node-id="lqE5A6hZ5TnvoRJ8zYSUad"><i class="on" data-page-node-id="SGs1k0bDTMoFpnYDBGRBZE"></i><i class="on" data-page-node-id="hX4x8UFV3yQb5HOkI6wbGS"></i><i data-page-node-id="iNNiUsA3jlcDeGM7DCWnTp"></i><i data-page-node-id="10Gx6tCTpHNh0fEuK24Qu5"></i><i data-page-node-id="sHlFejEwwSojqP2RDPZJYN"></i></div></td>
+  <td data-page-node-id="FBM5FU1lkvJNN9SvhcdJox"><span class="tot l" data-page-node-id="Emry4HF5eEPd0GxAVD05NE">13</span></td>
+</tr>
+</tbody>
+</table>
+
+<div class="alert" style="margin-top:14px" data-page-node-id="UGuKO4E7Ahl7nh7FpDufLc">
+  <b data-page-node-id="0TE2TrLd3rfmdVeKOiBHJB">读表提示：</b>总分高 ≠ 全面照抄。<b data-page-node-id="2qWqzBuQ58wBNVqWIz2elF">卡兹克总分 13 分最低，但他是唯一给出「公众号数据验收线」的人</b>（点赞率 2.5%、转发率 8%、完读率 30%、常读 30%）——这四个数字应该直接抄进你的发布检查清单。
+  <b data-page-node-id="zNSalGwPvIUyQIgwPDiRFW">秋芝2046 只有 16 分，但他的《60分钟全面掌握Claude Code》153 万播放，是证明你赛道有巨大需求的最强市场信号。</b>
+  所以：学人家的<b data-page-node-id="O4N7W3ZHBcYHsKAU0TgP9B">结构和指标</b>，不学人家的<b data-page-node-id="0ZGkdbFQhyIW8SINSXOAli">路径和节奏</b>。
+</div>
+</section>
+
+<!-- 3 逐个拆解 -->
+<section data-page-node-id="5zjL7MPVCyZC5aTvgD3zGo">
+<h2 data-page-node-id="nOXT4dS9JlOwskUwKovLLz">三、逐个拆解：学什么 / 不学什么 / 怎么超越<span class="en" data-page-node-id="ElTWdGh8Lkkvebm5HmenWG">Account Teardown</span></h2>
+
+<!-- 小白debug -->
+<div class="acct" data-page-node-id="S6ur0niQYq6Hj5x7Urzsll">
+  <div class="acct-hd" data-page-node-id="7HWDgBWzjmzvHXCIoXgfyR">
+    <div class="ti" data-page-node-id="pd5NuEUIGAIwEbPVd97Uop">
+      <h3 data-page-node-id="AK2W61HwCFjDQksDgz6gCN">小白debug <span class="tier S" data-page-node-id="wy3Hyj2TwoP3csJFbQkmus">S 级 · 最该对标</span></h3>
+      <div class="idn" data-page-node-id="r6zcLYWlOFXBvF9UFHU7CS">前字节资深研发 · 游戏服务端转互联网后端 · Go/网络方向<br data-page-node-id="lygBlSwZG02KfGpDrHEQ1B">
+      <b data-page-node-id="W4dRVNLgGIt32OYQy6Q63c">核心武器：动图图解，灰绿主色调，被全网疯狂搬运</b></div>
+    </div>
+    <div class="score" data-page-node-id="I94nNptKEVWE68Lqw75vEO"><div class="v" data-page-node-id="ORSTPiJoBw3IH5KZJBExvv">22</div><div class="u" data-page-node-id="SswpHRKh9In5rusrqH7Aje">/ 25</div></div>
+  </div>
+  <div class="acct-bd" data-page-node-id="MYRmuk54x0Fh9JIBWV0g9y">
+    <div class="metrics" data-page-node-id="a5eEMZDxix1b8W6vMiyQWf">
+      <span data-page-node-id="ssMEQUrihkIKWo0sn0rUf1">抖音 30.1万粉（2025-06）</span><span data-page-node-id="ZEpSnBdtIWayF7UMQCD5n2">仅 58 部作品</span><span data-page-node-id="ythIYEqREECHRgXWAQaNGT">79.2万赞</span>
+      <span data-page-node-id="1SY28c7glcmDTpIVWLBLzC">B站百万播放</span><span data-page-node-id="t8geDrzhRBOSI7dpdrDHEf">单日涨粉 2497</span><span data-page-node-id="SMsZHCqC8Ikrsvsj8rN2T9">已出书</span>
+    </div>
+    <ul class="facts" data-page-node-id="P9PGcvuiLZaKdr4DXdINdJ">
+      <li data-page-node-id="8eWG9kZpv1lRbItqEmixh9"><b data-page-node-id="0Im4kO4C2L9bVpSog2EK3F">58 个作品换 30 万粉</b> —— 这是全表最重要的数字。它证明了：在职工程师不必日更，低频高质量同样能起来。</li>
+      <li data-page-node-id="SqfVMgCLSwQFKl57AbMrcG">出书《趣味网络图解 从基础到应用》：38 个核心话题，新增 40% 内容，打磨一年多。</li>
+      <li data-page-node-id="r8hDIjco9AA5znJ9k3XFUE">变现闭环完整：公众号回复关键词领 PDF → 沉淀私域 → 出版实体书。</li>
+      <li data-page-node-id="QmZKWnlvMXgfCQW3qqYKQ6">选题法：从面试题/常见困惑切入，专挑「别人想不到的侧面」展开。</li>
+      <li data-page-node-id="DFsrSYw9ChctJJFaglvOLs">视觉统一到极致：固定灰绿主色调，内容被搬运时仍自带品牌识别 —— <b data-page-node-id="nICh5MargEB3sJEyfJreWP">搬运成了免费分发</b>。</li>
+    </ul>
+    <div class="lv" data-page-node-id="dv56ui0EY1WxEmp2qSoQND">
+      <div class="blk learn" data-page-node-id="XfltkDsVeuuL7ZzGO0YGKI">
+        <h4 data-page-node-id="dtyXvXSLjAG06RxQ72z8tJ">学什么</h4>
+        <ul data-page-node-id="CvnuZtMKyPGCjkDcsfrxBg">
+          <li data-page-node-id="FHPRjpCdY2F9JjBLaW4AHE">用图解把硬核技术降维，一图胜千言，且图自带传播属性</li>
+          <li data-page-node-id="H9xOj5UYABI2JAAMtsVG1w">低频高质量路线，与你的时间约束完全兼容</li>
+          <li data-page-node-id="wZXLpnQMWPHTAIvQLbVGAs">「内容 → PDF 资料 → 私域 → 出书」的闭环 —— 这正是你 RULES 里「攒下去就是一本书」的已验证路径</li>
+          <li data-page-node-id="4hcTWw918yznHOWzNxGgFh">固定主色调，让搬运变成免费分发</li>
+        </ul>
+      </div>
+      <div class="blk avoid" data-page-node-id="mn2tVyEmAeEMUBGhQ1aHCf">
+        <h4 data-page-node-id="Z5go9gLdnArovrDHEaMnTV">不学什么</h4>
+        <ul data-page-node-id="pBgVXAOhcVSMzhQnqT0Ys8">
+          <li data-page-node-id="S00qa9QIrPydHK3srCN7pA">他做的是计算机网络（经典知识，半衰期长）；你做 AI 工具链（半衰期短），图解必须绑「思想层」才不被时代淘汰</li>
+          <li data-page-node-id="OEjNc1gRgd5z8iZepPnDZp">动图制作成本高，需先验证 HTML→截图 链路能否覆盖</li>
+        </ul>
+      </div>
+    </div>
+    <div class="beyond" data-page-node-id="ooe2OUko0v3buZYdKfYryZ">
+      <b data-page-node-id="m9qrlb2k6I9rJdXgD0PSIm">超越点 ——</b> 他是「资深研发」，不是「带团队的技术经理」。同一套图解形态，他讲<b data-page-node-id="0EGIGiaI9cGOAVh0qERfRA">个人怎么懂</b>，你讲<b data-page-node-id="7MCBAwKZ59Riig2GyCXGUe">团队怎么落地</b>。
+      一篇《你的团队为什么用不好 Claude Code》配上架构图 + 落地检查表，是只有「既带团队又写代码」的人才能画出来的图。
+      <b data-page-node-id="aFHtUdBBAVkw0O4zFkLjt7">形态照抄，内容升维。</b>
+    </div>
+  </div>
+</div>
+
+<!-- IndyDevDan -->
+<div class="acct" data-page-node-id="4kvQxZ3GlXE3VMRHfrDLdE">
+  <div class="acct-hd" data-page-node-id="SGs7nwarPrzmj0DjAIBEaD">
+    <div class="ti" data-page-node-id="mJEvuHRiuq1gPGJPoOTMHB">
+      <h3 data-page-node-id="KeLwBYzvEkYnNCkG1cv36M">IndyDevDan <span class="tier S" data-page-node-id="8Dz2IgVYQdDFPQIcfogxJk">S 级 · 空隙度最高</span></h3>
+      <div class="idn" data-page-node-id="44Buap5FLR4igOfLe5jBrs">agentic coding / harness engineering · 反 hype 工程纪律派<br data-page-node-id="exxZ8xtbxucKVSR7ggQazD">
+      <b data-page-node-id="2rSO47HM1k78v5nVA940Fc">核心主张：solve problem classes, not tasks —— 解决一类问题，而非单个任务</b></div>
+    </div>
+    <div class="score" data-page-node-id="a0E7fWYb6iJEJRn0FdRW4W"><div class="v" data-page-node-id="UUX3b9NjVdahTjRbz7ot2u">22</div><div class="u" data-page-node-id="kTXLWg5HmEPR3johsrbOoV">/ 25</div></div>
+  </div>
+  <div class="acct-bd" data-page-node-id="3u90AopjzCwWlvXPuZZBLG">
+    <div class="metrics" data-page-node-id="0S4t6FDjJ0n4gLZ3x5bg7n">
+      <span data-page-node-id="ldOAyN0tsPP5ye0vpvHTSr">YouTube 145K 订阅</span><span data-page-node-id="ADOvfLaThDKUGrn4aij91B">210 视频</span><span data-page-node-id="D3toTsKchMZPjPLoqIWH0A">5M 播放</span>
+      <span data-page-node-id="8Yla00a0Y3IfRPo8dKfJCF">4.15% 互动（AI coding 前 18%）</span><span data-page-node-id="R7lDadGW7OXtZst82he2oL">空隙度 5/5</span>
+    </div>
+    <ul class="facts" data-page-node-id="Q8Lh4bbAmFbl1zEXIcpApc">
+      <li data-page-node-id="dhyLwAL0vfZRbPKGx3X83D"><b data-page-node-id="ACfunyTOwJ5dQcxmrtTD4n">空隙度 5 分（全表最高）</b>：harness engineering 在中文区几乎是空白赛道，你的 MEMORY 里也写着「harness / AI 工具链 / Agent 应用实践」是核心关键词。</li>
+      <li data-page-node-id="cDNFu5rw6UwECko5oPgYNd">课程化框架已成体系：AFK agents / close the loops / 12 leverage points / multi-agent orchestration —— <b data-page-node-id="eBQNZ9IJavspmd8HQ45gVC">这是天然的系列化骨架，可以直接本土化成合集</b>。</li>
+      <li data-page-node-id="dtUimNZzZyzlG3aYbWfl1X">只讲真实工程，不做资讯搬运 —— 与你的「真实为本」铁律完全一致。</li>
+      <li data-page-node-id="1NAnBqjpRS6vdCMUueg8M2">「problem classes not tasks」可以直接翻译成你的<b data-page-node-id="XHEnmh9UbHhZon1q37rdkQ">选题筛选器</b>：这个选题是在解决一个任务，还是一类问题？</li>
+    </ul>
+    <div class="lv" data-page-node-id="hFeDT46JeX425OI3wt9EOt">
+      <div class="blk learn" data-page-node-id="jPlVIVRHoM0B5phFzLGNM0">
+        <h4 data-page-node-id="w2fwkghACBiPjCz2Or2zxa">学什么</h4>
+        <ul data-page-node-id="oy0sAnvPAG9FR2ERxHZM9E">
+          <li data-page-node-id="rQO5RHL7EAKfiHKJNvYXa7">把他的课程框架本土化成中文系列（12 leverage points = 12 篇合集）</li>
+          <li data-page-node-id="E5ffOvqR1ppatggOHq3fRZ">「problem classes not tasks」作为选题筛选的第一道闸门</li>
+          <li data-page-node-id="63b1zYrXpCrU2tJSYWCSFX">反 hype 的工程纪律派调性 —— 与你的「不追黑科技」人设天然契合</li>
+        </ul>
+      </div>
+      <div class="blk avoid" data-page-node-id="AvX6l3ABZPKHh0aBgptvp2">
+        <h4 data-page-node-id="D0ast2KjuLgWyTM5pFb1l0">不学什么</h4>
+        <ul data-page-node-id="x43kfrmoIAfGi8gMWcVP2t">
+          <li data-page-node-id="zSQMkbgWdmy0shP1IZJvIt">英语语境无法直接搬运，必须做本土化改造（不是翻译，是重写）</li>
+          <li data-page-node-id="khadAQmKIwC3gnyDdm9UJh">不要照搬他的 YouTube 视频形态，你的链路在图文</li>
+        </ul>
+      </div>
+    </div>
+    <div class="beyond" data-page-node-id="gGIf1ehSeKU6R6MwUa1iBz">
+      <b data-page-node-id="BBBVrG26ByTiAgtiehrBNN">超越点 ——</b> 他是海外 solo dev，<b data-page-node-id="cKPlg6HbOAz9ds4QhK9Hha">没有中国中小公司的落地语境</b>：预算紧、合规多、团队水平参差、老板要短期见效。
+      你的差异化 = harness 方法论 + 中国企业真实约束。
+      <b data-page-node-id="5nS9szxyKbHcGe8SkLe0r7">他讲方法论本身，你讲方法论在资源受限团队里怎么打折落地 —— 后者才是中国技术经理真正的痛点。</b>
+    </div>
+  </div>
+</div>
+
+<!-- 玄离199 -->
+<div class="acct" data-page-node-id="jgYq8YDkWo6VaJYlEc4E1p">
+  <div class="acct-hd" data-page-node-id="iLjeyBCx4NaLFf63ZuW4km">
+    <div class="ti" data-page-node-id="XROOFXEO6q4s8tCMlfflr7">
+      <h3 data-page-node-id="Bw8R9btsbRCrmpAjGFE9d3">玄离199 <span class="tier A" data-page-node-id="7oNB7zlZqDvKOZIE3qHvl2">A 级 · 结构必抄</span></h3>
+      <div class="idn" data-page-node-id="DBmeECTWccsiid6s5Mqkyo">河南籍科技 UP · 软件操作指南 + AI 应用 + 科技功能挖掘<br data-page-node-id="4604Io8ckIimddGO8ctegH">
+      <b data-page-node-id="ZGLW0Guc10JlSOBqekBSfk">核心结构：「每周科技补全」周更栏目 + GitHub 开源仓库沉淀</b></div>
+    </div>
+    <div class="score" data-page-node-id="ci0GDLNP5SL8nAChG3T3eD"><div class="v" data-page-node-id="EAzkAsWyphXBu3t1dTBh3E">18</div><div class="u" data-page-node-id="vG41EP9FjkFzv3JhqSEGfx">/ 25</div></div>
+  </div>
+  <div class="acct-bd" data-page-node-id="8IFSz0FhI50Ymaa44zms8C">
+    <div class="metrics" data-page-node-id="6dEY6crBopFbr2OeEav1K8">
+      <span data-page-node-id="Zs56JZF9DB9VC6gqsBzoDH">B站 59.5万粉</span><span data-page-node-id="WgcjlYviArwUE4AybI1v58">609 投稿</span><span data-page-node-id="xIM93ogsfB9ufzs4CYsaXT">抖音 10万 / 100万赞</span>
+      <span data-page-node-id="k9sS1rXywmbDjwCL1UB566">GitHub 3.4k⭐</span><span data-page-node-id="JOl5SVjPRPmUs61tlHc4Zx">爆款 669.8万播放</span>
+    </div>
+    <ul class="facts" data-page-node-id="V7sWsNL1x8DyDe3DSuQiod">
+      <li data-page-node-id="lGThURNpiTmGfOAXIrQBJl">《打字速度提升两倍?比五笔还快!双拼输入》<b data-page-node-id="ORON4fGRajSodHBfQzjs4f">669.8 万播放 / 2.4 万赞</b>；《活了20多年,第一次知道鼠标还能这么用》186.6 万。</li>
+      <li data-page-node-id="cfkbuq1sPHYd51Yx18IZ8z"><b data-page-node-id="wkn2XEd3bAZYxFENhF0RJO">合集化极强</b>：「软件知识」100 个 /「从零开始」4 个 /「微信」10 个 —— 合集是留存工具，让单条内容互相导流。</li>
+      <li data-page-node-id="UC3USGBCn1AAeelUNizSUt"><b data-page-node-id="reqzOBg1tAqyXmkWrXQn3O">GitHub xuanli199：3.4k⭐ 的「每周科技补全提到的软件和项目」仓库</b> —— 把视频里提到的东西沉淀成可检索长尾资产。</li>
+      <li data-page-node-id="umd6CEgc18PKkivZlAeKXd"><b data-page-node-id="JshABa3WBPv07yDK3JA5iv">粉丝自发做了 <code data-page-node-id="v3hAeifpBsN7ZjpuRg9hS7">comebackpack/xuanli199weekly</code> 整理他的每周推荐</b> —— 这是内容资产化的最高信号：说明内容有检索价值，社区会自己长出来。</li>
+    </ul>
+    <div class="lv" data-page-node-id="cCVCGx7pIEOdWGWLGZ0HMX">
+      <div class="blk learn" data-page-node-id="zXAu7RksEegAZ2M3AjYcpL">
+        <h4 data-page-node-id="CK131OZQvYn8PXq03dxGqJ">学什么</h4>
+        <ul data-page-node-id="PRNdTczuwJ3qphnBbnbkZb">
+          <li data-page-node-id="TSByg9g3Y45LAlWtDiu7SD"><b data-page-node-id="R1j0EXNgmraqvFPDB0UpO3">周更栏目化</b>：「每周科技补全」= 固定节奏 + 固定结构，把选题成本压到最低 —— 这直接回答了你的「合集/系列」问题</li>
+          <li data-page-node-id="tvAUJQsVKh88uLLLKGNzSy"><b data-page-node-id="8WwDEMmwPPyW5CJp51xDyp">把内容里提到的项目沉淀成 GitHub 仓库</b>：从一次性流量变成可检索的长尾资产</li>
+          <li data-page-node-id="075KAZysO6KH1OycFIq10e">合集即留存：100 个合集让单条内容互相导流，拉高整体播放</li>
+          <li data-page-node-id="lDCMzlwwqqn3b3Fo6BZhht">目标不是让人整理你，而是<b data-page-node-id="UNqwHRBIBl6ELQgT6AQCrb">让内容值得被整理</b></li>
+        </ul>
+      </div>
+      <div class="blk avoid" data-page-node-id="A7zzMeQCeyBKo8TigxxE82">
+        <h4 data-page-node-id="Jod5pa8zGtdpNHEUjExHoA">不学什么</h4>
+        <ul data-page-node-id="jRrpJPJASaEg0r0BaRWjsR">
+          <li data-page-node-id="8dZHC4F2bAsCtZjFyDBwCi">内容偏工具技巧/冷知识，技术深度浅，无壁垒，容易被抄</li>
+          <li data-page-node-id="5j7cRL2ewkBAeBFmp0COHv">609 个投稿的高频更新，你的时间预算不允许</li>
+        </ul>
+      </div>
+    </div>
+    <div class="beyond" data-page-node-id="ez5OeOIL4yQ4NEqmPN1Oxw">
+      <b data-page-node-id="Sxo0ckwqEe7DKSLYHy8Gjt">超越点 ——</b> 他是科技 UP，<b data-page-node-id="HTBjVNS4Tb5OsHtJScZY4j">不是工程师</b>。同样的「每周补全」结构，你填的是真实工程实践 + 团队落地 + 真实账单。
+      做一档「<b data-page-node-id="8Alz8lwmNZJokC7Ls3SFsa">每周 AI 工程补全</b>」：每周挑 3 个真实踩过的坑/测过的工具，配 GitHub 仓库沉淀。
+      <b data-page-node-id="PjiWL0P4iEndWGEv2VJUHO">他的栏目是「我发现了个好东西」，你的栏目是「我踩过这个坑，这是账单」—— 后者不可复制。</b>
+    </div>
+  </div>
+</div>
+
+<!-- 神秘的鱼仔 -->
+<div class="acct" data-page-node-id="nJgqNBsywZDEw5XTazSvuz">
+  <div class="acct-hd" data-page-node-id="DKL7THqxTYXVaROa5J96ZA">
+    <div class="ti" data-page-node-id="I5AEVgG4y0xE3P7hPwKe7Q">
+      <h3 data-page-node-id="90TBgvCiceinOn4BVSmOla">神秘的鱼仔 <span class="tier A" data-page-node-id="AI206CiV64zt1BEAYvFsia">A 级 · 可复制性最高</span></h3>
+      <div class="idn" data-page-node-id="SF9kym6Mqo07cKVhKZDNSx">5 年程序员 + 2 年 UP 主 · 分享技术 / 工具 / 程序人生<br data-page-node-id="mEtJHHgsTxUEjIjCiGuwQs">
+      <b data-page-node-id="8pQy3MaJtflBbhOUqIjbq0">核心形态：2 分钟超短视频 + 强合集化</b></div>
+    </div>
+    <div class="score" data-page-node-id="gibDpRETmj8iKuwzYrLF8K"><div class="v" data-page-node-id="cGdCqFc7g4C1s3lZbtgfa5">18</div><div class="u" data-page-node-id="73vk6HRC1eXftYAujc4Xp2">/ 25</div></div>
+  </div>
+  <div class="acct-bd" data-page-node-id="ethkVaKh8pLzaoyD2jiRT9">
+    <div class="metrics" data-page-node-id="NAyvLiwzROeYxdPJWqo9d9">
+      <span data-page-node-id="leLoRHGVCmd3iGpwlNQ5r6">B站 3万粉</span><span data-page-node-id="WX1v5HpmFRFibln8Z25FIl">视频 1:35–3:09</span><span data-page-node-id="JG53jdaaeEqI21hMryQZAw">爆款 19.7万播放</span>
+      <span data-page-node-id="qRtOpCVREB3mNndqsWkzNT">合集 67 + 39 个</span><span data-page-node-id="eq2HZ4MjJDGDu0R51Y2GNf">商单已挂微信</span>
+    </div>
+    <ul class="facts" data-page-node-id="JscjmBJKToqHErszvGsDbp">
+      <li data-page-node-id="SIEVwJxIUMsYPRmW9Du4lb"><b data-page-node-id="CTE6TfeG5swZdjmgCcsOCR">可复制性 5 分（全表最高）</b>：同为程序员、体量小（3 万粉）、2 分钟短视频，你完全能做。</li>
+      <li data-page-node-id="JrhTxZd9ZeHOdcFbVTj0sj">时长集中在 <b data-page-node-id="E6msE2tiXGEFyS1atowznJ">1:35–3:09，平均 2 分钟</b> —— 完播率的甜点区，且制作成本低。</li>
+      <li data-page-node-id="o8eaEFCXyqgwrrAjr9atJ9">《DeepSeek为什么还是服务器繁忙》<b data-page-node-id="J4xiE8awoV9Ecs4yb0ycJo">19.7 万播放</b> —— 打法是「用原理解释热点」，不是蹭热点。</li>
+      <li data-page-node-id="MAq7CqIATSEGsWQPADN9zQ">合集：「AI聚集地」67 个 /「有趣的Github」39 个 —— 单条视频互相导流。</li>
+      <li data-page-node-id="3nXCu0IDPHavnC7QIE4oIE">商务合作公开挂微信 yuzai2048，说明 3 万粉已有商单。</li>
+    </ul>
+    <div class="lv" data-page-node-id="PnMUIMgOQkwgjoEDW3pAYD">
+      <div class="blk learn" data-page-node-id="g2TX7HwPzOEp0GXFr9dB9X">
+        <h4 data-page-node-id="ztzLM6p1RNSBOV5jfDC8nI">学什么</h4>
+        <ul data-page-node-id="KM4v5MCuVBCUz7u7D3R0nP">
+          <li data-page-node-id="WCUoOU91rGrqVODhyqVtaw">2 分钟时长控制 —— 这是你视频起步的正确粒度（比 40 分钟教程现实得多）</li>
+          <li data-page-node-id="Mw4EaKByeUxAzeYk3lcwiW">合集化结构，拉高整体播放</li>
+          <li data-page-node-id="wD0njSifj3xGqLaNjBxCVw">「用原理解释热点」而非「蹭热点」—— 与你的「真实为本」一致</li>
+          <li data-page-node-id="OeDru5Gy8UMdjeC0RpliwB">小体量也能有商单：3 万粉就挂出了商务微信</li>
+        </ul>
+      </div>
+      <div class="blk avoid" data-page-node-id="5OYwy1TyQGtH89uBYB6Kwt">
+        <h4 data-page-node-id="ZQlPC1mE8oQ0hyhXDjVcEe">不学什么</h4>
+        <ul data-page-node-id="CePWdv4mq5sJeKIKV7yiHj">
+          <li data-page-node-id="nUHZHOy1CBy5XogltkbFv8">纯工具推荐无壁垒 —— 谁都能做，粉丝记不住你是谁</li>
+          <li data-page-node-id="Qyrue2afDEkxW2ZlMQJtWt">3 万粉 / 大量视频的投产比偏低，说明纯工具推荐天花板有限</li>
+        </ul>
+      </div>
+    </div>
+    <div class="beyond" data-page-node-id="FkQ23Jo0Z1KuvlF99kl07y">
+      <b data-page-node-id="UlmX19QhWVvsz2Iw9bd21B">超越点 ——</b> 他的「终端开源项目推荐」可以升级成你的「<b data-page-node-id="VPgISACdtal463kv3zF2lO">AI 工程化工具实测</b>」：
+      带上真实账单（花了多少 token、多少钱）、真实踩坑、团队落地结论。
+      <b data-page-node-id="ltkNg0wOlUvqBwLgGhbt4q">从「推荐」升维到「评测」，从「我发现」升维到「我花过钱、踩过坑」。</b>
+    </div>
+  </div>
+</div>
+
+<!-- 五道口纳什 -->
+<div class="acct" data-page-node-id="2OtBGo0CPDt8TlPtRwDoJf">
+  <div class="acct-hd" data-page-node-id="Rx7PGCTYt9ACVS2KJ0PKIo">
+    <div class="ti" data-page-node-id="FClg09fFh9GltbeibkuVVA">
+      <h3 data-page-node-id="r6ZP2WFvi3JiB9dE9VUOpA">五道口纳什 <span class="tier A" data-page-node-id="gehhmznR5lao41GiLcQTPH">A 级 · 定位可借鉴</span></h3>
+      <div class="idn" data-page-node-id="MjocCvoyBR4OfH8p2bqtb0">原理派 · 自定位「实验室的大师兄」· 2019 年起做了 7 年<br data-page-node-id="vvWOoKzFYXQNtf68CVNLY3">
+      <b data-page-node-id="2ZDOkRM3Zwc9FG4IIXWyj7">核心姿态：把黑盒尽量变白，反复追问工具背后的原理</b></div>
+    </div>
+    <div class="score" data-page-node-id="VL2Ob7kCIG8c7R47sYqB0Y"><div class="v" data-page-node-id="djLvFOG94myetVVxcVWNjX">18</div><div class="u" data-page-node-id="sgYIk8e91OuRDNIAXVAh9c">/ 25</div></div>
+  </div>
+  <div class="acct-bd" data-page-node-id="UpYCgRsd2qTEfcQtx2LTvI">
+    <div class="metrics" data-page-node-id="pLDCdURy4fCtmJ48NSJh0H">
+      <span data-page-node-id="oyE2VqnLEUdEqk5SpdLvDU">粉丝 60–70% 是博士/博士生</span><span data-page-node-id="shIuHnWPoWiyeWqdbTUaoG">B站知名 AI UP主</span>
+      <span data-page-node-id="K9zePtM13rbxWh2q7BAHLU">坚持 7 年</span><span data-page-node-id="CsqyVeAg3nsjm1QxMpt4QX">空隙度 4/5</span>
+    </div>
+    <ul class="facts" data-page-node-id="CCQtGvSOVEMwYCGAbZCsm2">
+      <li data-page-node-id="xrFeGavDCrH1or7RiUpcuy"><b data-page-node-id="bRH2jVWJkJeK22ZLXoigTJ">受众层级极高</b>：粉丝中 60–70% 是博士或博士生 —— 原理派内容天然筛出高价值受众。</li>
+      <li data-page-node-id="FoqAylL3H8E4ZkOB0q7Fgn"><b data-page-node-id="Ot0EUCX5AimR0aGZv4PNAj">定位话术值得抄</b>：「实验室的大师兄」而非「老师」—— 站在更靠前一点的位置分享笔记，不是站在讲台上给标准答案。</li>
+      <li data-page-node-id="XiZlY7EFEiWYFn9zhaQorO">标题前置分类标签：《BERT、T5与GPT》《分布式训练》《RL4LLM》《Agentic RL》—— 天然的系列化 + SEO 结构。</li>
+      <li data-page-node-id="kEnJnbH4PzvifccYzQw98G">做视频的两个动机：费曼学习法 + 把学习笔记数字化沉淀 —— <b data-page-node-id="2tpDpfbjUjEpeidZXrGBSX">与你的素材库思路完全一致</b>。</li>
+    </ul>
+    <div class="lv" data-page-node-id="I9Z2pvZxhfFWiXGgeTBSz4">
+      <div class="blk learn" data-page-node-id="OvH3IKYmdkd9IVuJJuDvIc">
+        <h4 data-page-node-id="fDsCExzPlbHDUkuMguTEe3">学什么</h4>
+        <ul data-page-node-id="0REcqHa98HECXieCi6uRAC">
+          <li data-page-node-id="5UTNwOxGMJEaGk68qjYmZH">「大师兄」式定位 —— 比「专家」更讨喜，也更安全（在职低调要求）</li>
+          <li data-page-node-id="L1UnOEyYq4MatNtw3RYEBF">标题前置分类标签，直接可抄到你的公众号/掘金标题结构</li>
+          <li data-page-node-id="Tf62Di9Xy9K7FCFsjX9xbs">「费曼学习法 + 笔记沉淀」的双动机，与你的素材库哲学一致</li>
+          <li data-page-node-id="q6A9HtOwFIUSc3X6K08YDk">原理派在中文区是稀缺位（空隙度 4）</li>
+        </ul>
+      </div>
+      <div class="blk avoid" data-page-node-id="Vp0kPFN39N1Qr9ebabmRJ9">
+        <h4 data-page-node-id="52H3GDbCjAdVm6EzVcYY3f">不学什么</h4>
+        <ul data-page-node-id="owdr0HiN02OEFFDNngqtRu">
+          <li data-page-node-id="6iNGuuajW6V3NAcccVR2IS">长视频 + 原理推导制作成本极高，你的时间不允许</li>
+        </ul>
+      </div>
+    </div>
+    <div class="beyond" data-page-node-id="ZGcRZKxrOEEXC90HCQD7Em">
+      <b data-page-node-id="Hg6LaOa4b32qAltUdrRixQ">超越点 ——</b> 他有原理深度但<b data-page-node-id="F3zjaV4KokbDbnFhm1KAoS">缺企业落地</b>；你有企业落地但可补原理深度。
+      把「实验室大师兄」换成「<b data-page-node-id="sklOyTPAxUXFQ7MbNOEG8t">带过团队的老师兄</b>」：既讲原理，也讲这东西在真实团队里怎么落地、会踩什么坑、老板会问什么问题。
+      <b data-page-node-id="LbpuxB3SpPDRIYa7FpDkXG">纯原理派吸引博士生，原理+落地派吸引的是技术经理 —— 后者才是你的目标受众，也是你能卖知识星球的那群人。</b>
+    </div>
+  </div>
+</div>
+
+<!-- 花叔v -->
+<div class="acct" data-page-node-id="wmAvh1HhlLATI2B28BJV1C">
+  <div class="acct-hd" data-page-node-id="eV3oZxrHUMf8q51FYfxCb3">
+    <div class="ti" data-page-node-id="yvBGgBVbHQqEBMWLhvxBn6">
+      <h3 data-page-node-id="uYCVBhNXekFmFZzMCUZzRl">花叔v <span class="tier A" data-page-node-id="m4PB25IW0lsEke9cYTUhVG">A 级 · 杠杆最高</span></h3>
+      <div class="idn" data-page-node-id="CGToVOD4WMlADJiegnYgCC">非技术出身的 AI 创作者 · B站 + GitHub<br data-page-node-id="ShIKzBj5ZKADYoe7si6HQn">
+      <b data-page-node-id="q2BGCDVUNCoXPQmZUGGaaX">核心打法：开源即内容 —— 一个 skill 仓库撬动 26.4k⭐</b></div>
+    </div>
+    <div class="score" data-page-node-id="pHBCUUnbangrYJYGeUYqv7"><div class="v" data-page-node-id="HQI9iofINdGXoDrpK39p3p">18</div><div class="u" data-page-node-id="W0FHsHvehlA0Y7i5vA2QTR">/ 25</div></div>
+  </div>
+  <div class="acct-bd" data-page-node-id="va2bPA1RH06CNbIizGossQ">
+    <div class="metrics" data-page-node-id="onpXBMUUMYNuwDYnkxyYKi">
+      <span data-page-node-id="5BIsXcIP9RnnQMs5YyK9Cb">女娲.skill 26.4k⭐</span><span data-page-node-id="VarYNDLwFgy1UuxY92yWmZ">4 天 6000+⭐</span>
+      <span data-page-node-id="vihLEjqZHK1UcfnmHDkLzX">配套视频《我蒸馏了17个大佬给我打工》</span><span data-page-node-id="638sPamAkVuKK36zT9JDlI">资产沉淀 5/5</span>
+    </div>
+    <ul class="facts" data-page-node-id="o6edmeEK5BE5kxVpO7anAb">
+      <li data-page-node-id="vpuP6feIT4uPkja59UQprc">2026-04 开源「女娲.skill」，<b data-page-node-id="fcHGFzK8ZawCQoUlgBeDBC">4 天 6000+⭐，现已 26.4k⭐</b>。</li>
+      <li data-page-node-id="ATa6jIr7VURZJBIFIpBclS">选题嗅觉：看到「同事.skill」爆火 → 一晚上刷完整个蒸馏宇宙 → 做出女娲.skill。<b data-page-node-id="HNXXiMpgexZbrdQSEJAYsH">这是「热点 → 作品」的转化速度，比内容本身更值钱。</b></li>
+      <li data-page-node-id="6tGOiy6qk9ZrvDmWbSabpp">定位话术：「把新工具试过一遍后，回到人群中展示路径的人」，<b data-page-node-id="ynAZWnNl3UAi6YSCCBZ6Xb">不是老师</b>。</li>
+      <li data-page-node-id="qpJGStdbLLHGTdGjgc9nKs">「先承认自己也在摸索，再把摸索过程拆开给别人看」—— 这比权威教学更接近读者真实状态。</li>
+    </ul>
+    <div class="lv" data-page-node-id="zP8d3a2SEEp5F4mOznGi8E">
+      <div class="blk learn" data-page-node-id="9aoGnMGFxAmmsye8YSPkxk">
+        <h4 data-page-node-id="aOMwo9cCMcxmqz0sB5YH93">学什么</h4>
+        <ul data-page-node-id="SZxrjE1zaleAcZiBUSsRvY">
+          <li data-page-node-id="jvGjtxlvjvcjJ8OKDN9GPU"><b data-page-node-id="xw0wq4F0s03rPX21FJmCfD">开源 = 内容 = 作品集，三合一</b>：一个仓库的杠杆远大于十篇文章</li>
+          <li data-page-node-id="FfF7fOMx7ejxDdCr4DBOD9">非技术出身都能靠开源破圈 —— 你的技术底子做开源是降维</li>
+          <li data-page-node-id="1FhwUIOniOymwCPkY3tmaa">「先承认自己也在摸索」的表达姿态 —— 正好对应你说的「人味更高」</li>
+          <li data-page-node-id="VFL2Gewr2TJRxXlp9Izk84">热点 → 作品的转化速度</li>
+        </ul>
+      </div>
+      <div class="blk avoid" data-page-node-id="z94jjqp8Hv1jHRvHOIKEcJ">
+        <h4 data-page-node-id="KKqpTi5gHf0dPAa1q65pAg">不学什么</h4>
+        <ul data-page-node-id="MXXpziWdqAiVvYNH75qOb5">
+          <li data-page-node-id="8DFKChF2ioSpvCQ2yyCpSN">他偏产品创意，非工程深度，你不要往这个方向漂移</li>
+        </ul>
+      </div>
+    </div>
+    <div class="beyond" data-page-node-id="7L8GZE1Ze62JAq3BA8tlxb">
+      <b data-page-node-id="xbkTPBj0ZvlhLv7kqVws2e">超越点 ——</b> 你的 <b data-page-node-id="JUKOFOKenX4aFnMXxFGacT">tokenhub_bench 就是这个路径的现成载体</b>：模型榜单评测工具，开源 + 解读文 + Star 目标 100，
+      本地已有完整的「04 开源 SOP」和仓库映射表。<b data-page-node-id="AXKoUE6Dh5XO2aaydEJplO">这是全场唯一一个「资产已经躺在硬盘里、只差推出去」的动作。</b>
+    </div>
+  </div>
+</div>
+
+<!-- 卡兹克 -->
+<div class="acct" data-page-node-id="is3O44ArGUMyd49aLEyaBJ">
+  <div class="acct-hd" data-page-node-id="RM4jRb0hWyxfW1Y8UHkUzJ">
+    <div class="ti" data-page-node-id="tBxC2gmrTE18TYNCpU3U9e">
+      <h3 data-page-node-id="EjOhuMDAt2tjjp1jyxCpLW">数字生命卡兹克 <span class="tier B" data-page-node-id="8WBO8RhXGO7XJBpLSJKQXO">B 级 · 方法论 S / 路径 D</span></h3>
+      <div class="idn" data-page-node-id="yNm6rKn3ITjJ3pASgBno5p">95后张仁杰 · 视觉传达设计背景 · 原互联网金融设计总监 · 2024-03 全职做号<br data-page-node-id="XYNKGcMrIqHzGfZ3DOpwfb">
+      <b data-page-node-id="i3xejCqT2FC7R6m6lYQdiK">核心能力：把 AI 技术转化为普通人能理解的场景化内容</b></div>
+    </div>
+    <div class="score" data-page-node-id="ur9JlILGiGKxTB3ycQKn5x"><div class="v" data-page-node-id="HXWVCoAlJ7GueXq1zJiZ2z">13</div><div class="u" data-page-node-id="vqn8TChMFLvBbswB7eQZbi">/ 25</div></div>
+  </div>
+  <div class="acct-bd" data-page-node-id="47SP45Hc6vID0dtc9E12sC">
+    <div class="metrics" data-page-node-id="z034tzQyJw7WLnmhUhczko">
+      <span data-page-node-id="EWFZtEDC4ZqkmMzLpGks3t">公众号 746 篇</span><span data-page-node-id="2e8jWo6rIkbGzO1fzIqxAO">微博 25万</span><span data-page-node-id="MODi2MkdUBmaVRgG4E0TGC">B站 1.7万</span>
+      <span data-page-node-id="R4IEHr5O1yPam7l7gc3OUw">X 3.3万</span><span data-page-node-id="KADAArt4NwozyZ7F0J1ncc">知乎 7万赞同</span><span data-page-node-id="LV2JI18upRNDhgU6DLjECS">虎嗅 95 篇专栏</span>
+    </div>
+    <ul class="facts" data-page-node-id="JgeHNYE2zDuHole8oyO3ok">
+      <li data-page-node-id="UntDuSi2nWHMYuSXz7HKYB"><b data-page-node-id="qVnrUwHNaW46dXwaEGDFJK">内容演进路径（必抄）</b>：从「教别人用 AI」的教程热点 →「用 AI 做作品」的创作和项目。<b data-page-node-id="TDgNUkBSXE0Ov2Afz6SzwT">这是所有 AI 自媒体的必经跃迁，你现在正站在跃迁点上。</b></li>
+      <li data-page-node-id="PlAMGwzTMbp4anY609RC2i"><b data-page-node-id="HIIJjaEdHDHCp1r6vTOwtE">运营硬指标（必抄）</b>：常读用户比例接近 <b data-page-node-id="t3iPcyIo7RdyXWM5Slc4i9">30%</b>、点赞率硬指标 <b data-page-node-id="CmhijApCHlC0FJruWYqvWA">2.5%</b>（1万阅读 250 赞）、转发率标准 <b data-page-node-id="XaGykOWixrLkQhXOlvzwwE">8%</b> 以上（1万阅读 800 转发）、完读率维持 <b data-page-node-id="rd1STsutd31BnRMolwj1PY">30%</b> 左右。</li>
+      <li data-page-node-id="pDSmvlAD309jdGpqoNrbz1">降维方法：Prompt 与人生话题结合 —— 挖掘天赋 Prompt / 了解陌生行业 Prompt / 寓言故事 Prompt。</li>
+      <li data-page-node-id="6kROsE6vuutbzZsuQBMmwm">2026-03《我花 499 找人上门安装 OpenClaw》单篇几十万阅读，虎嗅/投资界/果壳/新浪全文转载。</li>
+      <li data-page-node-id="NioR5nZtGJDmba2rIJ2AqX">2024-03 离职全职做号，创立虚实传媒任 CEO；2026 主办 AI FUTURE 大会（线上 200 万人、线下 3500 平展区）。</li>
+    </ul>
+    <div class="lv" data-page-node-id="YTbmQUhkFNRCWXtfSloqRa">
+      <div class="blk learn" data-page-node-id="qYwBAi7rIS5CXAUqRVCxUn">
+        <h4 data-page-node-id="IgdIg3JOGLGRtFSmZQdduz">学什么（只学这两样）</h4>
+        <ul data-page-node-id="H9cIZvpgBVYfShCTbBbVJg">
+          <li data-page-node-id="U7VV9yOaFnz4aUH0XjbHdP"><b data-page-node-id="6xcxCoYPswhHlVUfQpwkoN">四个数据验收线</b>：点赞率 2.5% / 转发率 8% / 完读率 30% / 常读 30%，直接抄进发布检查清单</li>
+          <li data-page-node-id="NIttXHE1fuHDOThItdsGvQ"><b data-page-node-id="il1QZoS1mGq3lcRSmbuJoC">演进方向</b>：从「教用 AI」转向「用 AI 做作品」</li>
+          <li data-page-node-id="q80yDS7FZiREHpk1aHvLLZ">场景化降维：把技术概念与人的真实处境结合</li>
+        </ul>
+      </div>
+      <div class="blk avoid" data-page-node-id="zJQrQsDqqZmbEbcFtmmI63">
+        <h4 data-page-node-id="CBpv47XzAf8naTEVAnzPNE">不学什么（路径完全不可复制）</h4>
+        <ul data-page-node-id="obseQqHF9HCiQAWClITr5S">
+          <li data-page-node-id="x6LFr4BTJHOM0Ckh57aW01"><b data-page-node-id="ZoExzAUrQjGd8PJhsKItYu">日更 746 篇 = 全职投入</b>，你在职身份下绝无可能（可复制性仅 1 分）</li>
+          <li data-page-node-id="eZ3i2baV5DktmiWZPVozwV">AIGC 泛资讯是竞争最惨烈的赛道（空隙度 2），内容半衰期极短</li>
+          <li data-page-node-id="bRBAU6HWO1Th4wX9EBMXiA">设计背景非技术，人设与你完全不重合</li>
+        </ul>
+      </div>
+    </div>
+    <div class="beyond" data-page-node-id="M8jBUOdT6SVYNRtlddjMc6">
+      <b data-page-node-id="fgLlFW7W9E1GYAVb8j4BSL">关键提醒 ——</b> 不要被「他做到了」误导。<b data-page-node-id="k8RCOjSYJ4HMYlh9UbsAII">他的成功前提是 2024 年全职 all in，而你的战略前提是「职业安全垫」。</b>
+      目标不同，路径不可能相同。你能拿走的只有：<b data-page-node-id="OXBEEQ45jyiKblQVbOhsjH">数据验收线 + 演进方向 + 场景化降维手法</b>。
+      你的降维方向不是「降到人生话题」，而是「<b data-page-node-id="BWVDVK9Ak8mKqZqxEQgTPq">降到团队场景</b>」—— 把 AI 工具链翻译成技术经理能听懂、能落地的语言。
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 4 三轴模仿法 -->
+<section data-page-node-id="6xwY9qugyRALgCZ7XO3JKe">
+<h2 data-page-node-id="4eOA3A3yylqDMyPVVIvEBJ">四、三轴模仿法：不要整体抄，要拆开抄<span class="en" data-page-node-id="biUfswylkuTgfppvP3pXSm">Decomposed Imitation</span></h2>
+<div class="card" style="background:#fafcff;border-color:#cfe4fb;margin-bottom:16px" data-page-node-id="xFBd42ia9sYQSpx3Ey8lYn">
+  <div style="font-size:14px;color:var(--ink-2);line-height:1.8" data-page-node-id="7DxwrBmEsmBqSaGWB7Ksx6">
+    <b data-page-node-id="wODAdM9Ve7BZu5Ys63j16V">核心方法论：</b>对标账号是一个「组合体」，不能整体复制。把它拆成三个独立维度 ——
+    <b data-page-node-id="NAXm378DkDBIeTadm3q2bI">形态（长什么样）、结构（怎么组织）、深度（讲多深）</b> —— 然后各取最强的一个，拼成你自己的东西。
+    这样既避开了「抄不像」，也避开了「抄了也白抄」。
+  </div>
+</div>
+<div class="axes" data-page-node-id="j3LUnbZD9qj79oYrhflErg">
+  <div class="axis" data-page-node-id="A7IA2tAy1SIfgg2ik5WKG2">
+    <div class="k" data-page-node-id="a8iV0OqDARx5Q0PTSkOBMa">AXIS 01 · 形态</div>
+    <h4 data-page-node-id="nEKtfzDKcAhrBreUWhTVMq">图解化降维</h4>
+    <div class="from" data-page-node-id="8rKRxxXucebTy5uNqXGkUq">← 学小白debug</div>
+    <p data-page-node-id="jXQoy4XTTaecztV1ygRSIh">用一张图讲清一个硬核概念，固定主色调形成视觉识别。
+    <b data-page-node-id="8jxuP4JlZGjwN0o9FcZbKn">对你最友好</b>：你的 HTML+CSS 排版 → Chrome headless 截图链路已跑通，
+    这意味着图解的生产成本几乎为零 —— 这是小白debug 需要逐张手绘、而你能半自动产出的关键差距。</p>
+  </div>
+  <div class="axis" data-page-node-id="YSMnyU37SnMhf0AhVJiQQP">
+    <div class="k" data-page-node-id="6aMyJRp6D0LC9alAvgTXKj">AXIS 02 · 结构</div>
+    <h4 data-page-node-id="Mi4xxrBq5DdhRoVMnaSMNz">周更栏目 + 仓库沉淀</h4>
+    <div class="from" data-page-node-id="LVtTMBj0iJGeau3JEORt8T">← 学玄离199</div>
+    <p data-page-node-id="L8vLAqOjGeOR5anqgYYGdP">固定栏目名、固定节奏、固定结构，把选题成本压到最低；
+    内容里提到的项目沉淀进 GitHub 仓库，把一次性流量变成可检索长尾资产。
+    <b data-page-node-id="M0R8DG3iCTkMkxYhVkG2g6">这直接回答了你「合集/系列怎么定义」的问题。</b></p>
+  </div>
+  <div class="axis" data-page-node-id="KqHJSVnbNsmfG5SAq2Z5Tf">
+    <div class="k" data-page-node-id="mytqH85pGbEiyq5tUJqkvl">AXIS 03 · 深度</div>
+    <h4 data-page-node-id="zMjqUK6OTnqX37b5WAecYB">方法论 + 落地约束</h4>
+    <div class="from" data-page-node-id="NVJ9JjxKTugoU3wKF1STTa">← 学 IndyDevDan + 五道口纳什</div>
+    <p data-page-node-id="1O9cBDxyKYEGVAqPLe53N3">harness 方法论（solve problem classes, not tasks）提供骨架，
+    中国企业真实约束（预算/合规/团队水平）提供血肉。
+    <b data-page-node-id="EpIaTW1Qg4HdxdKHm3pkVs">原理让人佩服，落地让人付费。</b></p>
+  </div>
+</div>
+</section>
+
+<!-- 5 定位空隙 -->
+<section data-page-node-id="7SDW6VSRXpjwOF1ahxZLoR">
+<h2 data-page-node-id="zzGmmw0L83Vsyv7WajVc1z">五、定位空隙：那个没人站的位置<span class="en" data-page-node-id="m2U4sjdjyYlcSRCOOCk9vd">The Gap</span></h2>
+<div class="gap" data-page-node-id="5CvNvMSoQLEdxT1dbXv8Uq">
+  <div class="st" data-page-node-id="lXM1iLLLnkpAkeaswjynMO">「技术经理视角的 AI 工程化落地」</div>
+  <div class="rs" data-page-node-id="NMcCkcocncCDagsDxcZbJj">
+    把 9 个对标账号摊开看，会发现一个有意思的事实：<b data-page-node-id="7YDv5LqaPDRwjGwdvMosMK">没有任何一个人同时具备「带团队 + 写代码 + 中国企业真实约束」这三重身份。</b>
+  </div>
+  <div class="evid" data-page-node-id="yU1wwtbgOe2Q9T8GtuPnN7">
+    <div class="e" data-page-node-id="f69aK9oPW2pJ5JN8hzA3Dy"><div class="n" data-page-node-id="oCwGdGM0YY2uFIdyLopvVZ">小白debug</div><div class="d" data-page-node-id="Gjcu4KlTLghULuIG9YOf7b">资深研发 —— 有深度，<b data-page-node-id="L4AWE7yEqORgEOUyg5pEPk">但是个人视角</b>，不讲团队怎么落地</div></div>
+    <div class="e" data-page-node-id="duCK0RkcDjXMZp8hPPV92L"><div class="n" data-page-node-id="P33lODphGqVuyrWgPbwyBL">IndyDevDan</div><div class="d" data-page-node-id="GV1cMdDNNGnL7rAWJZTl9s">harness 方法论 —— 有骨架，<b data-page-node-id="RkPkNTqja8HxvjijLtBQBd">但没有中国企业语境</b></div></div>
+    <div class="e" data-page-node-id="8s4ubTXze5JCeV1Y45UiBX"><div class="n" data-page-node-id="XoOdYfinaqXrYnVVX92KX9">玄离199</div><div class="d" data-page-node-id="ne2Phxx3WDDSvGx4sGjwbq">科技 UP —— 有结构，<b data-page-node-id="QzLQKcUGyFDA6ufEsoQ4Y0">但不是工程师</b>，技术深度浅</div></div>
+    <div class="e" data-page-node-id="Kx5f8dNZ3jAxMf1hPJO9jb"><div class="n" data-page-node-id="8FcVE9wgXH5BIzIbptjSyU">五道口纳什</div><div class="d" data-page-node-id="lYV4NuSf4hVZ7146YsrHuj">原理派 —— 有原理，<b data-page-node-id="6qMODEXStvLjMBCwHwmEHK">但缺企业落地</b>，受众偏学术</div></div>
+  </div>
+  <div class="fm" data-page-node-id="Zl38CtEBb5jZwxp2GT9Flx">
+    <b data-page-node-id="FXjDVhyfkcWgpMiRFQgtMk">定位公式 =</b> 小白debug 的图解形态 ＋ 玄离199 的系列化结构 ＋ IndyDevDan 的方法论深度 ＋ 技术经理的管理视角
+  </div>
+  <div class="rs" data-page-node-id="oZ1Y0nBUAjdLe7NjLU9Npj">
+    这个位置为什么是空的？因为它是个「交叉地带」：<b data-page-node-id="PFo9R55nTr96EOk1AnaTN5">纯技术博主带不了团队，纯管理博主写不了代码。</b>
+    你的 MEMORY 里那句「既带团队又深度写代码，区别于市面大多数」，在这里第一次有了可执行的落点 ——
+    <b data-page-node-id="0EjNK2vCQ0zWSMCxcwbEKg">不是拿来当人设标签，而是拿来当选题筛选器：这个选题，是不是只有「既带团队又写代码」的人才能写？</b>
+  </div>
+</div>
+</section>
+
+<!-- 6 90 天路线 -->
+<section data-page-node-id="XYHKOw1PzEICPp1rwxOHpP">
+<h2 data-page-node-id="OmcqcIuyJjRBLYQHlXBVsv">六、先模仿再超越：90 天路线图<span class="en" data-page-node-id="yAh85qOUEKo6SW1pS8Ew6d">90-Day Roadmap</span></h2>
+<div class="road" data-page-node-id="epB7lenOMVevAYgAMDWnj1">
+  <div class="r" data-page-node-id="f6zP7cxGholJV1hDxGcnX6">
+    <div class="ph" data-page-node-id="E0EGF7BsPZqJqthTXUOE8q">D1–30<br data-page-node-id="voLj7n8tQVHKW9HriWrD59">模仿形态</div>
+    <div class="ct" data-page-node-id="c3Ms05MMIdRFtQhy2ucpMY">
+      <h4 data-page-node-id="qVB0vuBva5Cz9ET9ax19mA">把「图解」跑成默认动作</h4>
+      <p data-page-node-id="I4N47nB0T7oz6LAE8Ip0Fi">对标小白debug + 玄离199。<b data-page-node-id="FeIGgBRZGXzY6Bod8nJIF7">动作：</b>① 把 4 篇已成稿（B02/B09/B11/M01）全部配图解重做一遍，验证 HTML→截图 链路在公众号的实际效果；
+      ② 立一档周更栏目「每周 AI 工程补全」，每周 3 条，固定结构；③ 建对应 GitHub 仓库沉淀每期提到的工具/项目。
+      <b data-page-node-id="P08oTCd04hCb4GBeW8n29I">验收：</b>栏目连更 4 期，仓库有 12+ 条沉淀。</p>
+    </div>
+  </div>
+  <div class="r" data-page-node-id="pA1Pti0K9RLygRcIIJQdpz">
+    <div class="ph" data-page-node-id="cPLmKzNlif5mAoVYSFxRvA">D31–60<br data-page-node-id="kcQHVTYlWOQsiALrVvESQZ">模仿结构</div>
+    <div class="ct" data-page-node-id="jN5b0yICfzaKHNed7AUp9T">
+      <h4 data-page-node-id="1APpCt0lWvhxM1G1YOcEBZ">把「系列化」跑成合集</h4>
+      <p data-page-node-id="WTfkz2IU1bFq8CHlD74d9X">对标 IndyDevDan + 五道口纳什。<b data-page-node-id="C9e1qNgYY3szkoegAQd4WC">动作：</b>① 把 IndyDevDan 的 12 leverage points 框架本土化，做成公众号合集「AI 工程化 12 讲」；
+      ② 标题前置分类标签（抄五道口纳什），统一 SEO 结构；③ 用「problem classes not tasks」筛选器重过一遍 1161 张素材卡，标出能进合集的。
+      <b data-page-node-id="Ez8QZrutBh2xgLSLh4NOyE">验收：</b>合集有 6 篇以上の成稿，素材卡筛选出 30+ 候选。</p>
+    </div>
+  </div>
+  <div class="r" data-page-node-id="vTT5rGeNfNDCUeXAWdyed1">
+    <div class="ph" data-page-node-id="hZYGbm5HeUTiUa9NPbFw03">D61–90<br data-page-node-id="1vQ8ZJ1rUmVGy3BNJBgfRD">开始超越</div>
+    <div class="ct" data-page-node-id="PsKaqLk7Tuo5ziYhigxKbR">
+      <h4 data-page-node-id="qEGcCPlt393poyETP5FfEj">把「技术经理视角」跑成壁垒</h4>
+      <p data-page-node-id="2FKMhuqgBHGfyDDSsYYydf">对标全部、超越全部。<b data-page-node-id="OMvmQ1x6jmcKGekeWVRRJC">动作：</b>① 开一个只有你能写的系列：《技术经理的 AI 落地手册》—— 预算怎么批、团队怎么推、老板怎么汇报、坑在哪；
+      ② 用卡兹克的四个数据线（点赞率 2.5% / 转发率 8% / 完读率 30% / 常读 30%）给自己设验收标准；
+      ③ 开源 tokenhub_bench，走 04 开源 SOP，24h 内发解读文。
+      <b data-page-node-id="aItHosORIljFsIrsUW455I">验收：</b>手册系列 3 篇 + tokenhub_bench 上线 + 数据达标率过半。</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 7 三不学 & 待议 -->
+<section data-page-node-id="GoIXs95EnF7u2Qm7THwAXe">
+<h2 data-page-node-id="qcn3U6bP21cI8pvLcKTP3s">七、明确的「三不学」与待议事项<span class="en" data-page-node-id="nSSgEWAfxmnbMvFiAwkxVI">Anti-Patterns & Open Questions</span></h2>
+
+<h3 data-page-node-id="6NuFccD9S5e9ZYuJLjVm0C">三不学（有理由的放弃）</h3>
+<table class="mini" data-page-node-id="SB3AC43icgM9eMusNWLJiP">
+<thead data-page-node-id="A3dmxEKq9Kk8XySrV3QWI2"><tr data-page-node-id="eFANid6p3jfkJ855GTH3gO"><th style="width:30%" data-page-node-id="QiDbrCO5x5w3oW5vVccS30">不学什么</th><th data-page-node-id="3fMIB0In5UzS9gbkLdbRxs">理由</th></tr></thead>
+<tbody data-page-node-id="UYt5JzRtLk8IlpSoSAVGM3">
+<tr data-page-node-id="hp0lRej4MPTMMNRuXR6nuF"><td data-page-node-id="GAK6kK9WUfIxpjdyoAZ1cW"><b data-page-node-id="GZcNzCHEQD5MTNB2ZOqxxL">卡兹克的日更 + 全职路径</b></td><td data-page-node-id="vlPDbNnFOSq52pyQHGmcFS">可复制性 1 分。746 篇日更的前提是 2024 年全职 all in，而你的战略前提是「职业安全垫」。目标不同，路径不可能相同。</td></tr>
+<tr data-page-node-id="PlcDER0gLLxExag3Z1NF4w"><td data-page-node-id="f7dIV64YbswDrl3QEV1v8s"><b data-page-node-id="xBfVWuy8mH5vOVVAZxy7uD">鱼仔的纯工具推荐</b></td><td data-page-node-id="lqMFUDwEowSXTO45WTN87D">谁都能做，无壁垒。3 万粉 / 大量视频的投产比偏低，说明这条路线天花板有限，粉丝记不住你是谁。</td></tr>
+<tr data-page-node-id="JYvx1uNalxZp2MkGCHEwBX"><td data-page-node-id="A9o0SgLWE5ucxc1bqj0rm3"><b data-page-node-id="FpSzoUXWlpGPtgQ0zkxtpj">秋芝的 40–60 分钟长视频</b></td><td data-page-node-id="Kk7gqMr0ilWEkGOxHBpVHZ">制作成本远超你的时间预算。但<b data-page-node-id="MZYj5P6ut7xyFId4vULmtY">要偷他的 SEO 词</b>：「全网最全」迁移到图文 —— 《全网最全 Claude Code 省 token 配置指南》，你的 B09 成稿和省 token 总纲直接可改，成本只有视频的 1/10。</td></tr>
+</tbody>
+</table>
+
+<h3 style="margin-top:22px" data-page-node-id="HQlWMJeBjA2XNehdjJdA4p">顺带发现的强相关账号（赛道高度重合）</h3>
+<table class="mini" data-page-node-id="hqFQwpjb9B4QPGCbLILhBJ">
+<thead data-page-node-id="hYv93uRZBN9e5Iur8tw1m8"><tr data-page-node-id="HHP13E1Lrg8PWi7JDYBWfk"><th style="width:20%" data-page-node-id="M1jgYGxdTi2DeAd7eisej2">账号</th><th style="width:22%" data-page-node-id="XUEfsMpmw2fSVwX2w8m3xO">体量</th><th data-page-node-id="x1V7xa5NMImFqvUfZDeJmU">可借鉴点</th></tr></thead>
+<tbody data-page-node-id="KCb5kkydijNtM1GskAwQjs">
+<tr data-page-node-id="zNG03W52qWBVuoRkfshtcR"><td data-page-node-id="MG5HMPKVYiGvSjeLoZ7rJF"><b data-page-node-id="9nnFbt4FHC6iEW5PiP8InQ">宝玉xp</b></td><td data-page-node-id="hPeDMHxNjHhQHa4UOz22dJ">微博 114 万</td><td data-page-node-id="0e311KyjEVqDNuFfr9uj0Y">微软 ASP.NET MVP，技术深度 + 快速跟进新模型，「热点 + 原理」的成熟参照</td></tr>
+<tr data-page-node-id="kFg797pPaqTtTnBeoGukQH"><td data-page-node-id="c2uIjtr8wNR7c6vEqsDgwn"><b data-page-node-id="TwkkE2HnEvg7DWlbqx4ncC">归藏</b></td><td data-page-node-id="qRVBHMwok7TjmHgJ0v5TX6">小红书 4.2万 / 抖音 1.7万</td><td data-page-node-id="1WyE8yBLfcuAZOA5JRIObY">PPT 生成 Skill 在 GitHub 拿 1 万⭐ —— 验证「Skill 即内容」这条路径成立</td></tr>
+<tr data-page-node-id="6CVEm1bBQHIjKCCxthgi56"><td data-page-node-id="EoUarG1zfpdBx9kwdfS4io"><b data-page-node-id="4Ehw5WtibnqhtFaxZTgu8i">karminski-牙医</b></td><td data-page-node-id="uJlfccIPHpG1CL9HH1Zf7S">微博 30 万</td><td data-page-node-id="ZvPJmSHzS0CiOHj9RaG6Al">新模型首发测评（人称「肝帝」），直接对标你的 tokenhub_bench</td></tr>
+<tr data-page-node-id="bZ0kLswvktQ6MudEeuHWFq"><td data-page-node-id="PE0kPSBwPh3iFSVCgDVp9S"><b data-page-node-id="TNkYuhzq5FYgwqbxTE5ByB">老麦的工具库</b></td><td data-page-node-id="ptCcsBw1VOeazxaQxW5rrx">B站 144.9万 / 小红书 96.7万</td><td data-page-node-id="3HV0uHlNu3KFUeGiJxBgtw">工具测评赛道的天花板参照，看看这条路能做到多大</td></tr>
+</tbody>
+</table>
+
+<div class="alert" style="margin-top:18px" data-page-node-id="atj2A9jtLSM1AogWLMCs3c">
+  <b data-page-node-id="xGyFjkZNXmr79Tm0rS26WG">待核实 ——</b> 你提到的「<b data-page-node-id="kWSJ3BZwRHtFq25J0aiCzs">小黄正在烧Token</b>」，公开搜索（B站/抖音）未找到可核实的账号数据，可能是新号、小号或名称记忆有出入。
+  <b data-page-node-id="rmCrpVfzXIr3EYrk50U0bg">麻烦你提供准确的账号链接，我补录进系统。</b>
+</div>
+
+<h3 style="margin-top:22px" data-page-node-id="uz5S4f28OCNSQM54RGzUg5">待你拍板的 4 件事</h3>
+<div class="card" data-page-node-id="mbnx6yZhETb0kymzx2zUUL">
+  <ul class="plain" data-page-node-id="LfCboGcJ47tyHtTc0mpvVR">
+    <li data-page-node-id="obZcdOPmu9riGvRXiZjDSE"><b data-page-node-id="eluPhvYtnBO0qfROBER8G5">Q1 · 周更栏目叫什么？</b>　建议「每周 AI 工程补全」（玄离199 结构 + 你的工程深度）。备选：「每周 AI 工程实践」/「行途周报」。<span class="pill" data-page-node-id="q33D46uuCzhegnrnVachLU">需定名</span></li>
+    <li data-page-node-id="VXIEsgqOR4WM5O1hVa6P4Q"><b data-page-node-id="gUCN0dYnBfgP6XfFC5J4wM">Q2 · 图解走哪条路？</b>　① HTML+CSS → headless 截图（已跑通，成本最低，但样式死板）；② 手绘/工具制图（更灵活，成本高）。建议先 ① 跑通再评估。<span class="pill g" data-page-node-id="sWJtM07O5aNWPyvBxiuiAV">建议①</span></li>
+    <li data-page-node-id="KkdzRuqLFzEyh4AT72aJGP"><b data-page-node-id="x7Fs1wv4fZTAaFpbxkyReW">Q3 · 视频要不要现在启动？</b>　对标鱼仔的 2 分钟粒度是可行的，但视频是第 4 个待跑通的链路（前三个：图文/图解/发布已通）。建议 D61 之后再动，先把图文出口打通。<span class="pill o" data-page-node-id="CL4t1dF6PCdOyHerLK5eP3">建议延后</span></li>
+    <li data-page-node-id="ztelGvzrdHcGnCns2p9AOG"><b data-page-node-id="yrDesgQZS4WinWObBxPXQZ">Q4 · tokenhub_bench 开源是否提前？</b>　这是全场唯一「资产已躺在硬盘、只差推出去」的动作，ROI 最高。建议从 D61–90 提前到 D1–30。<span class="pill g" data-page-node-id="xjsPTGGBHsFvEtI6EOiDRJ">建议提前</span></li>
+  </ul>
+</div>
+</section>
+
+<footer data-page-node-id="yropU3RB4uPAXqX1ZrYXm9">
+  数据来源：B站个人空间 / 百度百科 / 虎嗅《AI博主站上风口》/ 界面新闻《我在B站和野生UP主学AI》/ EET电子工程专辑 / CSDN / GitHub / 海克财经访谈 / 本地对标账号库 v1<br data-page-node-id="xKrVOwu49ZNJ3guYbqBLPa">
+  结构化数据层：<code data-page-node-id="FvHtVXWL9CFDvEqsADRaIw">素材库/对标账号数据.json</code>（9 个账号，5 维打分，可被脚本消费与定期刷新）<br data-page-node-id="W4leunnIm7nPS9aEGkWmJt">
+  生成：2026-09-02 · 行途内容系统 · 本报告为决策输入，需 boss 审核确认后执行
+</footer>
+
+</div>
+
+  <footer style="margin-top:36px;border-top:2px solid #056DE8;padding:16px 20px;background:#f5f9ff;border-radius:10px;font-size:13px;color:#1a1a1a;line-height:1.9">
+    <div style="font-weight:700;color:#056DE8;margin-bottom:8px">📎 权威锚点 / 引用来源</div>
+    <ul style="margin:0;padding-left:18px">
+      <li>本看板 9 个对标账号均为各平台公开账号；精确主页链接待 boss 提供（平台：微信公众号/掘金/知乎/抖音/B站/小红书）</li>
+      <li>对标账号数据（SSoT）：<code style="background:#eef4ff;padding:1px 6px;border-radius:4px;color:#0a3d7a">素材库/对标账号数据.json</code></li>
+      <li>对标账号库 v2 文档：<code style="background:#eef4ff;padding:1px 6px;border-radius:4px;color:#0a3d7a">素材库/对标账号库_v2_2026-09-02.md</code></li>
+      <li>对标系统 SOP：<code style="background:#eef4ff;padding:1px 6px;border-radius:4px;color:#0a3d7a">workflows/08_对标账号系统SOP.md</code></li>
+    </ul>
+    <div style="margin-top:8px;color:#555">完整引用索引：<code style="background:#eef4ff;padding:1px 6px;border-radius:4px;color:#0a3d7a">specs/20260902-断点续传与集中提示词/05_权威锚点与引用来源.md</code></div>
+  </footer>
+
+</body>
+</html>

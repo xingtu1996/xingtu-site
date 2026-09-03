@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>个人 IP 平台全景与变现调研 · 2026-08</title>
+<style>
+  :root{
+    --bg:#f7f8fa; --card:#ffffff; --ink:#1f2329; --sub:#5b6470;
+    --line:#e6e9ef; --brand:#2f6df0; --brand2:#13b58a; --warn:#e8743b;
+    --gold:#e0a93b; --soft:#eef3ff; --soft2:#eafaf3; --soft3:#fff5ec;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.75;font-size:15px}
+  .wrap{max-width:1080px;margin:0 auto;padding:32px 20px 80px}
+  header{background:linear-gradient(135deg,#2f6df0,#13b58a);color:#fff;
+    border-radius:18px;padding:34px 32px;margin-bottom:26px}
+  header h1{font-size:27px;letter-spacing:.5px;margin-bottom:10px}
+  header p{opacity:.92;font-size:14.5px;max-width:760px}
+  .tag{display:inline-block;background:rgba(255,255,255,.2);border-radius:20px;
+    padding:3px 12px;font-size:12.5px;margin:8px 8px 0 0}
+  h2{font-size:21px;margin:38px 0 14px;padding-left:12px;border-left:5px solid var(--brand)}
+  h3{font-size:17px;margin:22px 0 10px;color:#2b3340}
+  h4{font-size:15px;margin:14px 0 6px;color:var(--brand)}
+  p{margin:8px 0}
+  .lead{background:var(--soft);border-radius:12px;padding:16px 20px;margin:14px 0;
+    border:1px solid #d7e3ff}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;margin:16px 0}
+  .pcard{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:18px 18px 16px;box-shadow:0 2px 10px rgba(20,40,80,.04)}
+  .pcard .ph{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+  .pcard h3{margin:0 0 2px;font-size:18px}
+  .ptype{font-size:12px;color:var(--sub);background:var(--soft);padding:2px 9px;border-radius:8px;white-space:nowrap}
+  .scores{display:flex;gap:14px;margin:10px 0 6px;font-size:12.5px}
+  .score{display:flex;align-items:center;gap:5px}
+  .bar{width:60px;height:7px;background:#e9edf3;border-radius:5px;overflow:hidden}
+  .bar i{display:block;height:100%;border-radius:5px}
+  .s-adapt i{background:var(--brand)} .s-feas i{background:var(--brand2)}
+  .kv{font-size:13.5px;margin:4px 0}
+  .kv b{color:#33405a}
+  .mono{background:var(--soft3);border-left:3px solid var(--gold);padding:8px 12px;
+    border-radius:0 8px 8px 0;margin:8px 0;font-size:13.5px}
+  ul{margin:8px 0 8px 20px} li{margin:4px 0}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;
+    background:var(--card);border-radius:10px;overflow:hidden;box-shadow:0 1px 6px rgba(20,40,80,.05)}
+  th,td{border:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
+  th{background:#eef2f8;color:#2b3340;font-weight:600}
+  tr:nth-child(even) td{background:#fafbfd}
+  .pill{display:inline-block;padding:1px 8px;border-radius:20px;font-size:11.5px;font-weight:600}
+  .p-hi{background:#eafaf3;color:#0f8f63} .p-mid{background:#fff5ec;color:#c4742a}
+  .p-lo{background:#fdecec;color:#c0392b} .p-must{background:#eef3ff;color:#2f6df0}
+  .band{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:14px 0}
+  .band.blue{background:var(--soft);border-color:#d7e3ff}
+  .band.green{background:var(--soft2);border-color:#cdeee0}
+  .band.gold{background:var(--soft3);border-color:#f3dcae}
+  .steps{counter-reset:s;list-style:none;margin:10px 0;padding:0}
+  .steps li{counter-increment:s;position:relative;padding:10px 12px 10px 44px;margin:8px 0;
+    background:#fff;border:1px solid var(--line);border-radius:10px}
+  .steps li::before{content:counter(s);position:absolute;left:12px;top:10px;width:24px;height:24px;
+    background:var(--brand);color:#fff;border-radius:50%;text-align:center;line-height:24px;font-size:13px;font-weight:700}
+  .note{background:#fbfaff;border:1px dashed #c4b8f0;color:#5a4b9c;border-radius:10px;
+    padding:12px 16px;margin:16px 0;font-size:13px}
+  .foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);color:var(--sub);font-size:12.5px}
+  .legend{display:flex;flex-wrap:wrap;gap:10px;font-size:12.5px;margin:8px 0 4px}
+  .legend span{display:flex;align-items:center;gap:5px}
+  .dot{width:11px;height:11px;border-radius:50%}
+  @media(max-width:640px){.grid{grid-template-columns:1fr}header{padding:24px 18px}}
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap">
+
+<header>
+  <h1>个人 IP 平台全景与变现可行性调研</h1>
+  <p>面向「行途 / AI 工具链实战派（harness）」定位的广度扫盲：按图文 · 视频 · 文章三类拆解主流平台，评估对技术实战 IP 的<b>适配性</b>与<b>可行性</b>，并汇总各平台变现方式、创作者分层、1000 粉广告阈值，以及知识星球 / 微信豆等私域收口手段。数据截至 2026-08。</p>
+  <div>
+    <span class="tag">图文：小红书</span>
+    <span class="tag">视频：抖音 · 快手 · 视频号 · B站</span>
+    <span class="tag">文章：CSDN · 知乎 · 掘金 · 公众号 · 简书</span>
+    <span class="tag">私域：知识星球 · 微信豆</span>
+  </div>
+</header>
+
+<div class="note">
+  <b>作者内部备注（发布前可删除）：</b>本文是战略底稿，不是直接发布稿。发布时建议拆成 2-3 篇（平台横评 / 变现拆解 / 我的组合拳），每篇保留「30% 独家踩坑」过原创度。所有价格均为 2026-08 公开聚合数据，上线前务必再核一遍官方页——平台规则月月变。
+</div>
+
+<h2>一、怎么读这份调研</h2>
+<div class="lead">
+  <p><b>适配性评分（蓝条）</b>：这个平台的技术实战受众是否精准、能否沉淀信任、是否利于 harness 方向建立人设。满分 5。</p>
+  <p><b>可行性评分（绿条）</b>：从 0 起步的门槛高低、是否需要养号/粉丝门槛、内容制作成本。满分 5。</p>
+  <p>两个分都高 = 优先打；适配高可行低 = 值得投入但需沉淀；适配低 = 辅助或放弃。</p>
+</div>
+<div class="legend">
+  <span><i class="dot" style="background:#2f6df0"></i>适配性</span>
+  <span><i class="dot" style="background:#13b58a"></i>可行性</span>
+  <span><i class="pill p-hi">高</i>强烈推荐</span>
+  <span><i class="pill p-mid">中</i>可用/辅助</span>
+  <span><i class="pill p-lo">低</i>慎入/放弃</span>
+</div>
+
+<h2>二、平台全景速览（按适配性排序）</h2>
+<table>
+  <tr><th>平台</th><th>类型</th><th>适配性</th><th>可行性</th><th>对 harness IP 的一句话定位</th></tr>
+  <tr><td><b>公众号</b></td><td>文章/私域</td><td><span class="pill p-hi">5.0</span></td><td><span class="pill p-hi">4.5</span></td><td>信任中枢 + 搜一搜长尾，变现收口主场</td></tr>
+  <tr><td><b>掘金</b></td><td>文章</td><td><span class="pill p-hi">5.0</span></td><td><span class="pill p-hi">5.0</span></td><td>AI/Agent 标签流量最大，被同行认可</td></tr>
+  <tr><td><b>CSDN</b></td><td>文章</td><td><span class="pill p-hi">5.0</span></td><td><span class="pill p-hi">4.5</span></td><td>百度 DA9、40 分钟收录，技术长尾「被搜到」</td></tr>
+  <tr><td><b>B站</b></td><td>视频</td><td><span class="pill p-hi">4.5</span></td><td><span class="pill p-mid">3.5</span></td><td>学习意愿最强用户，深度技术视频复利</td></tr>
+  <tr><td><b>知乎</b></td><td>文章</td><td><span class="pill p-hi">4.0</span></td><td><span class="pill p-mid">3.5</span></td><td>技术人员精准，问答式长尾复利</td></tr>
+  <tr><td><b>视频号</b></td><td>视频</td><td><span class="pill p-hi">4.0</span></td><td><span class="pill p-hi">5.0</span></td><td>社交裂变破圈 + 公众号天然联动</td></tr>
+  <tr><td><b>小红书</b></td><td>图文</td><td><span class="pill p-mid">3.5</span></td><td><span class="pill p-mid">3.5</span></td><td>高知用户，但偏「工具种草」而非深度</td></tr>
+  <tr><td><b>抖音</b></td><td>视频</td><td><span class="pill p-mid">3.0</span></td><td><span class="pill p-mid">3.5</span></td><td>泛流量最大，AI 非主流爆款，靠教程切片</td></tr>
+  <tr><td><b>快手</b></td><td>视频</td><td><span class="pill p-lo">2.5</span></td><td><span class="pill p-hi">4.0</span></td><td>偏下沉老铁经济，技术垂直红利但受众错配</td></tr>
+  <tr><td><b>简书</b></td><td>文章</td><td><span class="pill p-lo">2.0</span></td><td><span class="pill p-hi">5.0</span></td><td>偏文学生活，技术受众弱，仅练笔可用</td></tr>
+</table>
+
+<h2>三、视频类平台详解</h2>
+
+<div class="grid">
+
+  <div class="pcard">
+    <div class="ph"><h3>视频号</h3><span class="ptype">视频 · 微信生态</span></div>
+    <div class="scores">
+      <div class="score">适配 <div class="bar s-adapt"><i style="width:80%"></i></div>4.0</div>
+      <div class="score">可行 <div class="bar s-feas"><i style="width:100%"></i></div>5.0</div>
+    </div>
+    <div class="kv"><b>核心受众：</b>微信 10 亿生态，社交推荐（~55%）+ 算法推荐（~45%），好友点赞→曝光给好友的好友</div>
+    <div class="kv"><b>关键变现：</b></div>
+    <ul>
+      <li>创作分成计划：<b>100 有效粉</b> + 10 条原创，评论区广告，创作者约拿 60%，千次播放 3-12 元</li>
+      <li>视频变现任务：<b>1000 有效粉</b>，官方任务广场明码标价</li>
+      <li>会员专区：定价 56-1316 微信豆，平台抽成内测 10%→常态 20%</li>
+      <li>付费合集：微信豆结算，技术服务费 20%（内测 10%）</li>
+      <li>直播打赏：<b>0 粉可开播</b>，微信豆 1=0.1 元，分成 50%-70%</li>
+    </ul>
+    <div class="mono"><b>harness 适配点评：</b>门槛极低、依托微信社交信任，是公众号的「破圈放大器」。PPT + 真人录音低成本即可起，AI 配音纯分享主动标、带货必标。</div>
+  </div>
+
+  <div class="pcard">
+    <div class="ph"><h3>B站</h3><span class="ptype">视频 · 中长</span></div>
+    <div class="scores">
+      <div class="score">适配 <div class="bar s-adapt"><i style="width:90%"></i></div>4.5</div>
+      <div class="score">可行 <div class="bar s-feas"><i style="width:70%"></i></div>3.5</div>
+    </div>
+    <div class="kv"><b>核心受众：</b>全中国学习意愿最强的群体，AI/Agent/LLM 标签流量大，用户付费意愿高</div>
+    <div class="kv"><b>关键变现：</b></div>
+    <ul>
+      <li>创作激励：<b>1000 粉</b>或总播放超 10 万，1 万播放 15-40 元</li>
+      <li>充电计划：1000 粉可开，UP 主分 70%</li>
+      <li>花火商单：<b>1 万粉</b>，10 万粉单条 1 万-5 万；1 万粉约 500-1000/条</li>
+      <li>知识付费：500 粉可开，最强路径＝充电+课程</li>
+    </ul>
+    <div class="mono"><b>harness 适配点评：</b>中长视频适合深度技术讲解，视频可 3 年后还在推荐。制作成本高（脚本+录制+剪辑），适合把公众号深度文裂变成视频。</div>
+  </div>
+
+  <div class="pcard">
+    <div class="ph"><h3>抖音</h3><span class="ptype">视频 · 泛流量</span></div>
+    <div class="scores">
+      <div class="score">适配 <div class="bar s-adapt"><i style="width:60%"></i></div>3.0</div>
+      <div class="score">可行 <div class="bar s-feas"><i style="width:70%"></i></div>3.5</div>
+    </div>
+    <div class="kv"><b>核心受众：</b>泛流量最大，算法重收藏率/复访率，AI 技术非主流爆款</div>
+    <div class="kv"><b>关键变现：</b></div>
+    <ul>
+      <li>中视频伙伴计划：3 条横屏≥1 分钟，累计 1.7 万播放，2-4 元/万播放（抖音+西瓜+头条三端）</li>
+      <li>创作者分成：1000 粉 + 30 天 15 条原创 + 播放超 10 万，1 万播放 10-50 元</li>
+      <li>商品橱窗：<b>200 有效粉</b>即可（2026 新规下调），佣金 5%-50%</li>
+      <li>星图广告：<b>1 万粉</b>，单条报价 5-50 元/万粉</li>
+    </ul>
+    <div class="mono"><b>harness 适配点评：</b>适合把工具实测剪成「3 步解决 XXX」短教程引流；但 AI 深度内容在这类平台难出圈，定位为泛流量入口而非主阵地。</div>
+  </div>
+
+  <div class="pcard">
+    <div class="ph"><h3>快手</h3><span class="ptype">视频 · 下沉</span></div>
+    <div class="scores">
+      <div class="score">适配 <div class="bar s-adapt"><i style="width:50%"></i></div>2.5</div>
+      <div class="score">可行 <div class="bar s-feas"><i style="width:80%"></i></div>4.0</div>
+    </div>
+    <div class="kv"><b>核心受众：</b>老铁私域 + 全域兴趣推荐，2026 垂直知识类处流量红利期</div>
+    <div class="kv"><b>关键变现：</b></div>
+    <ul>
+      <li>创作者激励：<b>0 粉</b>可加入</li>
+      <li>快手小店：0 粉可挂车，佣金 5%-50%</li>
+      <li>磁力聚星（商单）：<b>1 万粉</b>可申请，10 万粉垂类单条 500-3000 元</li>
+      <li>快手课堂：付费课程 99-999 元</li>
+    </ul>
+    <div class="mono"><b>harness 适配点评：</b>受众与高知技术 IP 错配明显，除非做「程序员副业/小白科普」下沉向，否则优先级最低。可作为多平台分发的「顺带」而非主攻。</div>
+  </div>
+
+</div>
+
+<h2>四、图文类平台详解</h2>
+
+<div class="grid">
+  <div class="pcard">
+    <div class="ph"><h3>小红书</h3><span class="ptype">图文 · 种草</span></div>
+    <div class="scores">
+      <div class="score">适配 <div class="bar s-adapt"><i style="width:70%"></i></div>3.5</div>
+      <div class="score">可行 <div class="bar s-feas"><i style="width:70%"></i></div>3.5</div>
+    </div>
+    <div class="kv"><b>核心受众：</b>一二线高知、女性占比高、消费力强，适合「AI 工具种草 / 效率提升」</div>
+    <div class="kv"><b>关键变现：</b></div>
+    <ul>
+      <li>蒲公英（品牌广告）：<b>1000 粉</b>（美妆家居 500 粉也可），平台抽 10%</li>
+      <li>报价：1k-5k 粉 200-800 元/条；1w-5w 粉 2000-5000 元/条；5w+ 粉 8000 元+/条</li>
+      <li>笔记带货：<b>0 粉</b>可挂商品链接，佣金 5%-30%</li>
+      <li>直播带货：1000 粉</li>
+    </ul>
+    <div class="mono"><b>harness 适配点评：</b>适合做「AI 工具实测图文」引流（封面精致 + 干货截图）。红线极严：私域暗语（薇/卫星/vx）语义追踪直接封，商单 AI 不标三次违规永封。</div>
+  </div>
+</div>
+
+<h2>五、文章类平台详解</h2>
+
+<div class="grid">
+
+  <div class="pcard">
+    <div class="ph"><h3>公众号</h3><span class="ptype">文章 · 私域中枢</span></div>
+    <div class="scores">
+      <div class="score">适配 <div class="bar s-adapt"><i style="width:100%"></i></div>5.0</div>
+      <div class="score">可行 <div class="bar s-feas"><i style="width:90%"></i></div>4.5</div>
+    </div>
+    <div class="kv"><b>核心受众：</b>订阅 + 朋友圈 + 搜一搜长尾；标题权重占 45%，长尾关键词布局实测 +700% 增幅</div>
+    <div class="kv"><b>关键变现：</b></div>
+    <ul>
+      <li>流量主：<b>100 粉</b>（部分口径 500），1 万阅读 100-500 元</li>
+      <li>赞赏：3 篇原创即可，0 粉可用</li>
+      <li>付费阅读：<b>800 粉</b> + 3 篇原创，微信豆结算（1 元=10 豆），月 15 号结算</li>
+      <li>互选广告：500 粉，自主定价，官方担保</li>
+      <li>商品返佣：100 粉可开</li>
+    </ul>
+    <div class="mono"><b>harness 适配点评：</b>你的信任沉淀中枢。每天仅 1 次群发是物理限制——定位「低频重内容 + 搜一搜长尾」，不做高频发声主阵地。原创声明是你跨平台维权的护盾。</div>
+  </div>
+
+  <div class="pcard">
+    <div class="ph"><h3>掘金</h3><span class="ptype">文章 · 技术社区</span></div>
+    <div class="scores">
+      <div class="score">适配 <div class="bar s-adapt"><i style="width:100%"></i></div>5.0</div>
+      <div class="score">可行 <div class="bar s-feas"><i style="width:100%"></i></div>5.0</div>
+    </div>
+    <div class="kv"><b>核心受众：</b>国内最活跃技术社区，AI/Agent/LLM 标签流量最大，社区质量高</div>
+    <div class="kv"><b>关键变现：</b></div>
+    <ul>
+      <li>矿石奖励：每篇 1000-10000 矿石，20000 矿石≈60 元，单篇优质 ¥30-50</li>
+      <li>新人首发：400 字+ 文章即得 10000 矿石</li>
+      <li>签约计划：累计 10 篇+ 推荐文，月补贴 5000-50000 元</li>
+      <li>付费小册 / 直播：后续变现路径</li>
+    </ul>
+    <div class="mono"><b>harness 适配点评：</b>0 粉可发、新人友好，字节系 AI 编程战略扶持（Trae/征文），最适合「被同行认可」。建议作为技术深度文首发阵地。</div>
+  </div>
+
+  <div class="pcard">
+    <div class="ph"><h3>CSDN</h3><span class="ptype">文章 · 搜索权重</span></div>
+    <div class="scores">
+      <div class="score">适配 <div class="bar s-adapt"><i style="width:100%"></i></div>5.0</div>
+      <div class="score">可行 <div class="bar s-feas"><i style="width:90%"></i></div>4.5</div>
+    </div>
+    <div class="kv"><b>核心受众：</b>百度 DA9、40 分钟级收录，技术长尾词占百度首页 40%+，「被搜到」之王</div>
+    <div class="kv"><b>关键变现：</b></div>
+    <ul>
+      <li>广告分成：实名+活跃原创，分成 40%-60%，优质文万次阅读 100-300 元</li>
+      <li>付费专栏：Lv4 + 原创≥10 篇，定价 30-299 元，阶梯分成最高 90%</li>
+      <li>付费资源：原力 Lv5，收益 100% 归作者</li>
+    </ul>
+    <div class="mono"><b>harness 适配点评：</b>你的「搜索引擎收口」。掘金首发拿认可 → 隔 1-2 天同步 CSDN 吃百度长尾。官方 sync.csdn.net 一键同步公众号/知乎/小红书/掘金，MD 自动转富文本。</div>
+  </div>
+
+  <div class="pcard">
+    <div class="ph"><h3>知乎</h3><span class="ptype">文章 · 问答</span></div>
+    <div class="scores">
+      <div class="score">适配 <div class="bar s-adapt"><i style="width:80%"></i></div>4.0</div>
+      <div class="score">可行 <div class="bar s-feas"><i style="width:70%"></i></div>3.5</div>
+    </div>
+    <div class="kv"><b>核心受众：</b>技术人员精准，内容复利强（冷问题多年后被搜到），适合问答式深度</div>
+    <div class="kv"><b>关键变现：</b></div>
+    <ul>
+      <li>好物推荐：Lv3 可开，佣金 15%-50%</li>
+      <li>致知计划：Lv4 + 100 粉，单篇最高约 800 元，千次阅读 1-5 元</li>
+      <li>付费咨询：Lv4 + 盐值 500，定价 19.9-2000 元/次</li>
+      <li>盐选专栏：签约分成，头部月入 10 万+</li>
+    </ul>
+    <div class="mono"><b>harness 适配点评：</b>需养号到 Lv3/Lv4。禁引导关注公众号（判违规）。适合用「回答技术热点问题」做精准引流，再把深度读者导到公众号/星球。</div>
+  </div>
+
+  <div class="pcard">
+    <div class="ph"><h3>简书</h3><span class="ptype">文章 · 文学</span></div>
+    <div class="scores">
+      <div class="score">适配 <div class="bar s-adapt"><i style="width:40%"></i></div>2.0</div>
+      <div class="score">可行 <div class="bar s-feas"><i style="width:100%"></i></div>5.0</div>
+    </div>
+    <div class="kv"><b>核心受众：</b>偏文学/生活/随笔，技术受众弱</div>
+    <div class="kv"><b>关键变现：</b></div>
+    <ul>
+      <li>简书钻/贝：点赞评论得钻，约 0.08-0.1 元/贝，按小时结算</li>
+      <li>付费文章：余额&gt;300 钻可每天发 1 篇付费文</li>
+      <li>专题收录：5-10 元奖励；赞赏</li>
+    </ul>
+    <div class="mono"><b>harness 适配点评：</b>收益极低、受众错配，仅适合新手练笔或作「内容备份仓」。不建议投入精力，多平台分发时顺带同步即可。</div>
+  </div>
+
+</div>
+
+<h2>六、跨平台变现专题</h2>
+
+<div class="band blue">
+  <h3>6.1 知识星球（私域收口首选）</h3>
+  <ul>
+    <li><b>门槛：</b>无门槛，任何人可建星球，1 分钟搞定，付费/免费两模式，按月订阅或买断。</li>
+    <li><b>手续费（2026-08-01 新规）：</b>个人星球 <b>年收入≤10 万抽 20%，超 10 万部分仅抽 10%</b>；企业星球 5%-10% 阶梯。首个统计周期延长至 2026-08-01 ~ 2027-12-31（17 个月）。</li>
+    <li><b>通道费：</b>微信支付 0.6%-1%；iOS 内购（IAP）另收 27% 苹果税——安卓用户付费星主到手更高，引导用户安卓端付费更划算。</li>
+    <li><b>优势：</b>知识付费赛道抽成最低之一；内容永久存储可检索；有门槛自然过滤喷子；续费折扣+礼品卡社交裂变。</li>
+    <li><b>劣势：</b>无公域推荐，流量完全靠外部导入（公众号/视频号/掘金引流）。</li>
+  </ul>
+  <div class="mono"><b>对 boss 的意义：</b>你的「利他=信任成本=变现」第一性原理，最终收口就在这里。公域（掘金/CSDN/小红书/视频号）高频轻内容攒曝光 → 公众号深度文沉淀信任 → 知识星球年度社群变现。星球定价建议 199-599 元区间（科技/AI 类常见），前期用优质内容积累口碑再逐步提价。</div>
+</div>
+
+<div class="band gold">
+  <h3>6.2 微信豆（微信内统一虚拟支付）</h3>
+  <ul>
+    <li><b>汇率：</b>1 元 = 10 微信豆；充值不可退；安卓与 iOS 微信豆<b>不互通</b>。</li>
+    <li><b>用途：</b>公众号付费文章 / 视频号付费合集 / 视频号会员专区 / 直播打赏 / 付费表情。</li>
+    <li><b>公众号付费阅读：</b>无粉丝门槛即可设付费（需 3 篇原创+实名），试读比例自定，微信豆定价后不可改，且<b>付费文章与流量主二选一</b>。收益每月 15 号结算，超 800 元扣税。</li>
+    <li><b>视频号付费合集：</b>微信豆定价档位（7 豆~11186 豆），技术服务费 20%（内测 10%），每笔流水 30 日后月度结算，每月 6 日可提现。</li>
+    <li><b>视频号会员专区：</b>定价 56-1316 微信豆，平台抽成内测 10%→常态 20%；<b>超 60 天未更新专区会被关闭且暂不支持重开</b>——做会员必须保持更新节奏。</li>
+  </ul>
+  <div class="mono"><b>注意：</b>微信豆体系把公众号与视频号的付费彻底打通，是你在微信生态内做「深度付费内容」的统一收银台。但付费内容一旦与广告互斥，需规划好「免费引流文 vs 付费深度文」的分配。</div>
+</div>
+
+<div class="band green">
+  <h3>6.3 「1000 粉」广告植入阈值全景</h3>
+  <p>你问的「1000 粉之后的广告植入」——各平台门槛差异极大，整理如下：</p>
+  <table>
+    <tr><th>平台</th><th>官方商单/广告入口</th><th>接单门槛</th><th>报价参考</th></tr>
+    <tr><td>小红书</td><td>蒲公英</td><td><b>1000 粉</b>（部分垂类 500）</td><td>1k-5k 粉 200-800/条</td></tr>
+    <tr><td>视频号</td><td>创作分成 / 变现任务</td><td><b>100 粉</b> / 1000 粉（任务）</td><td>千次播放 3-12 元</td></tr>
+    <tr><td>公众号</td><td>互选广告</td><td><b>500 粉</b></td><td>头条阅读 1000≈100-300 元</td></tr>
+    <tr><td>B站</td><td>花火</td><td><b>1 万粉</b></td><td>1 万粉 500-1000/条；10 万粉 1 万-5 万</td></tr>
+    <tr><td>抖音</td><td>巨量星图</td><td><b>1 万粉</b></td><td>单条 5-50 元/万粉</td></tr>
+    <tr><td>快手</td><td>磁力聚星</td><td><b>1 万粉</b></td><td>10 万粉垂类 500-3000/条</td></tr>
+  </table>
+  <p><b>洞察：</b>图文/文章类（小红书/公众号）1000 粉内就能接单，视频类（B站/抖音/快手）普遍要 1 万粉——这再次印证「文章是你最快变现的形态」。但广告植入频率建议每周≤1 次，否则掉粉、伤信任（与你的利他第一性原理冲突）。</p>
+</div>
+
+<h2>七、变现矩阵总表（所有平台 × 变现方式）</h2>
+<table>
+  <tr><th>平台</th><th>流量/分成</th><th>付费内容</th><th>商单广告门槛</th><th>带货/分销</th><th>打赏/赞赏</th></tr>
+  <tr><td><b>公众号</b></td><td>流量主 100 粉</td><td>付费阅读 800 粉</td><td>互选 500 粉</td><td>返佣 100 粉</td><td>赞赏 0 粉</td></tr>
+  <tr><td><b>掘金</b></td><td>矿石 0 粉</td><td>小册/签约</td><td>官方赞助对接</td><td>课程导流</td><td>—</td></tr>
+  <tr><td><b>CSDN</b></td><td>广告分成 0 粉</td><td>付费专栏 Lv4</td><td>博客专家</td><td>付费资源 Lv5</td><td>打赏</td></tr>
+  <tr><td><b>知乎</b></td><td>致知 Lv4</td><td>盐选签约</td><td>芝士/知+ 任务</td><td>好物 Lv3</td><td>赞赏/付费咨询</td></tr>
+  <tr><td><b>小红书</b></td><td>—</td><td>—</td><td>蒲公英 1000 粉</td><td>笔记带货 0 粉</td><td>—</td></tr>
+  <tr><td><b>视频号</b></td><td>分成 100 粉</td><td>付费合集/会员</td><td>变现任务 1000 粉</td><td>橱窗 0 粉</td><td>直播打赏 0 粉</td></tr>
+  <tr><td><b>B站</b></td><td>创作激励 1000 粉</td><td>知识付费 500 粉</td><td>花火 1 万粉</td><td>悬赏带货 1000 粉</td><td>充电 1000 粉</td></tr>
+  <tr><td><b>抖音</b></td><td>中视频/分成</td><td>—</td><td>星图 1 万粉</td><td>橱窗 200 粉</td><td>直播 0 粉</td></tr>
+  <tr><td><b>快手</b></td><td>激励 0 粉</td><td>快手课堂</td><td>磁力聚星 1 万粉</td><td>小店 0 粉</td><td>直播 0 粉</td></tr>
+  <tr><td><b>简书</b></td><td>简书钻 0 粉</td><td>付费文章</td><td>—</td><td>—</td><td>赞赏</td></tr>
+  <tr><td><b>知识星球</b></td><td colspan="5" style="text-align:center">私域社群：无门槛建星球，个人抽成 20%（超 10 万部分 10%），微信支付+iOS 税另计</td></tr>
+</table>
+
+<h2>八、对「行途」IP 的结论与推荐组合</h2>
+
+<div class="band">
+  <h3>8.1 阵地架构（1+3+N）</h3>
+  <ul>
+    <li><b>1 主阵地（信任中枢）：</b>公众号——低频重内容 + 搜一搜长尾，沉淀信任导向星球。</li>
+    <li><b>3 技术辅助（被认可/被搜到）：</b>掘金（首发认可）→ CSDN（百度长尾）→ 知乎（精准引流）。</li>
+    <li><b>1 破圈放大器：</b>视频号（PPT+真人录音，低成本补社交破圈）。</li>
+    <li><b>1 泛流量入口（可选）：</b>小红书 AI 工具种草图文 + 抖音工具实测短切片。</li>
+    <li><b>N 私域收口：</b>知识星球（年度社群）+ 个人号 + 社群。</li>
+  </ul>
+</div>
+
+<div class="band blue">
+  <h3>8.2 内容复用公式</h3>
+  <p>1 个核心选题 → 短视频/图文（视频号+小红书+抖音）→ 深度长文（公众号+掘金+CSDN+知乎）→ 星球专属深度/答疑。</p>
+  <p><b>差异化硬规则（避开同质化限流）：</b>每平台改标题/封面/开头结尾/语序；先在掘金首发拿原创，隔 6-24h 再分发；视频必须二次剪辑；正文埋 harness + 中文通俗同义词（AI 编程工具链/Agent 应用）双关键词。</p>
+</div>
+
+<div class="band green">
+  <h3>8.3 变现路径优先级（对你而言）</h3>
+  <ol>
+    <li><b>第 0 层（立刻）：</b>公众号赞赏（0 粉）+ 掘金矿石（0 粉）+ 视频号创作分成（100 粉）+ 知乎致知（养号 Lv4）。白赚被动收入。</li>
+    <li><b>第 1 层（1000 粉）：</b>小红书蒲公英 + 视频号变现任务 + 公众号互选。广告植入每周≤1 次。</li>
+    <li><b>第 2 层（1 万粉）：</b>B站花火 + 抖音星图 + 快手磁力聚星。视频商单大头。</li>
+    <li><b>第 3 层（信任收口）：</b>知识星球年度社群（199-599 元）+ 公众号付费阅读（深度报告/教程）。这是「利他→信任→变现」的终局。</li>
+  </ol>
+</div>
+
+<h2>九、起步顺序 Checklist（0 → 第一个 1000 粉）</h2>
+<ol class="steps">
+  <li>注册并完善：公众号（实名）、掘金、CSDN、知乎、视频号、小红书——一次性铺完 6 个阵地。</li>
+  <li>公众号先发 3 篇原创 → 开通赞赏；掘金发 1 篇 400 字+ → 拿 10000 新人矿石；视频号发 10 条原创 → 开创作分成。</li>
+  <li>选定 1 个 harness 细分选题（如「终端 coding agent 选型」），在掘金首发深度文，隔天同步 CSDN + 知乎回答同主题。</li>
+  <li>把该文裂变成：视频号 1 条 PPT+录音短视频 + 小红书 1 篇图文笔记（改标题封面）。</li>
+  <li>每篇埋关键词（harness / AI 编程工具链 / Claude Code 怎么用）+ 文章设置里加话题标签，攻搜一搜长尾。</li>
+  <li>涨到 1000 粉后：开通小红书蒲公英 + 视频号变现任务，开始接轻度商单；同步筹备知识星球（先免费社群攒口碑）。</li>
+  <li>持续 3 个月：公众号周更 1-2 篇深度 + 公域日更轻内容，用 CSDN sync 插件降分发成本。</li>
+</ol>
+
+<div class="foot">
+  <p>本报告基于 2026-08 公开聚合数据整理，平台规则变动频繁，正式发布/投入前请复核各平台官方最新规则。</p>
+  <p>适用定位：行途（XingTu）/ Justin Li · AI 工具链实战派（harness）。策略内核：利他=信任成本=变现前提。</p>
+</div>
+
+</div>
+</body>
+</html>

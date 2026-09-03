@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行途工作空间 · 仓库规划与知识编译方案</title>
+<style>
+  :root{
+    --bg:#f7f8fa; --card:#ffffff; --ink:#1d2129; --sub:#5c6670; --line:#e5e6eb;
+    --brand:#2f54eb; --brand-bg:#eaf0ff;
+    --red:#e5484d; --redbg:#fdecec;
+    --amber:#d97706; --amberbg:#fdf3e7;
+    --ok:#0e9f6e; --okbg:#e7f7f0;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.7}
+  header{background:linear-gradient(135deg,#1d2129,#2f54eb);color:#fff;padding:32px 28px 26px}
+  header h1{margin:0 0 6px;font-size:23px}
+  header p{margin:0;opacity:.85;font-size:13.5px}
+  nav{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line);display:flex;gap:4px;flex-wrap:wrap;padding:10px 16px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+  nav a{font-size:12.5px;color:var(--sub);text-decoration:none;padding:6px 11px;border-radius:8px;white-space:nowrap}
+  nav a:hover{background:var(--brand-bg);color:var(--brand)}
+  main{max-width:1120px;margin:0 auto;padding:22px 18px 70px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:16px 0;scroll-margin-top:60px}
+  h2{font-size:18px;margin:0 0 4px;display:flex;align-items:center;gap:9px}
+  h2 .n{font-family:var(--mono);font-size:11px;background:var(--brand-bg);color:var(--brand);padding:2px 8px;border-radius:6px}
+  h3{font-size:14.5px;margin:18px 0 7px;border-left:4px solid var(--brand);padding-left:10px}
+  p,li{font-size:13.5px;color:var(--sub)}
+  .lead{color:var(--ink);font-size:14px}
+  .chip{display:inline-block;font-size:11.5px;font-family:var(--mono);background:#f0f2f5;color:#39424d;padding:2px 8px;border-radius:6px;margin:2px 4px 2px 0}
+  .chip.ok{background:var(--okbg);color:var(--ok);font-weight:600}
+  .chip.warn{background:var(--amberbg);color:var(--amber);font-weight:600}
+  .chip.bad{background:var(--redbg);color:var(--red);font-weight:600}
+  table{width:100%;border-collapse:collapse;margin:11px 0;font-size:12.8px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+  th{background:#fafbfc;color:var(--ink);font-weight:600}
+  td code{font-family:var(--mono);background:#f0f2f5;padding:1px 5px;border-radius:4px;font-size:11.5px}
+  .note{border:1px dashed var(--brand);background:var(--brand-bg);border-radius:10px;padding:11px 14px;font-size:13px;color:#1d3a8a;margin:11px 0}
+  .rednote{border:1px dashed var(--red);background:var(--redbg);color:#8a1f23}
+  .oknote{border:1px dashed var(--ok);background:var(--okbg);color:#0b6b4a}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:12px 0}
+  .kcard{border:1px solid var(--line);border-radius:11px;padding:13px 15px;background:#fcfcfd}
+  .kcard h4{margin:0 0 5px;font-size:13.5px;color:var(--ink)}
+  .kcard p{margin:0;font-size:12.5px}
+  .flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin:14px 0}
+  .flow .node{flex:1;min-width:120px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px;text-align:center;margin:5px}
+  .flow .node b{display:block;font-size:13px;color:var(--ink)}
+  .flow .node span{font-size:11px;color:var(--sub)}
+  .flow .arrow{display:flex;align-items:center;color:var(--brand);font-size:18px;padding:0 3px}
+  .todo{list-style:none;padding:0;margin:10px 0}
+  .todo li{padding:8px 12px;border:1px solid var(--line);border-radius:9px;margin:6px 0;background:#fcfcfd;font-size:13px;color:var(--ink)}
+  .todo li b{color:var(--brand)}
+  .footer{font-size:12px;color:#9aa1ab;text-align:center;padding:16px}
+  pre{background:#f6f8fa;border:1px solid var(--line);border-radius:10px;padding:13px 15px;font-family:var(--mono);font-size:12px;overflow-x:auto;color:#39424d;line-height:1.6}
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<header>
+  <h1>行途工作空间 · 仓库规划与知识编译方案</h1>
+  <p>Git 关联诊断（1 项目 1 仓库）· 散乱文件归位 · LLM Wiki 知识编译层（Raw→Wiki→Schema）· 2026-08-19</p>
+</header>
+
+<nav>
+  <a href="#git">① Git 现状诊断</a>
+  <a href="#plan">② 仓库规划（1项目1仓库）</a>
+  <a href="#mess">③ 散乱文件归位</a>
+  <a href="#wiki">④ LLM Wiki 知识编译层</a>
+  <a href="#todo">⑤ 待确认执行清单</a>
+</nav>
+
+<main>
+
+<!-- ① git 诊断 -->
+<section id="git">
+  <h2><span class="n">01</span>Git 关联现状诊断</h2>
+  <p class="lead">你问"不应该是 1 个项目 1 个内容么"——完全正确，但目前只有 xingtu-site 做到了。现状如下：</p>
+  <table>
+    <tr><th>位置</th><th>git 现状</th><th>GitHub 关联</th><th>判定</th></tr>
+    <tr><td><code>xingtu-site/</code>（个人站点）</td><td>✅ 独立 .git（今天 14:46 创建）</td><td>✅ <code>***@***:xingtu1996/xingtu-site.git</code>（已 push）</td><td><span class="chip ok">✅ 正确形态</span></td></tr>
+    <tr><td><code>xingtu/</code>（工作区根）</td><td>❌ 无独立 .git，<b>嵌套在家目录大仓库</b>（git root = <code>~</code>）</td><td>❌ 无 remote</td><td><span class="chip bad">⚠ 混乱根源</span></td></tr>
+    <tr><td><code>08_开源与作品集/tokenhub_bench/</code></td><td>❌ 未建 git</td><td>❌ 无远程仓库</td><td><span class="chip warn">待规划</span></td></tr>
+  </table>
+  <div class="rednote note"><b>混乱根源：</b>xingtu 所有文件都在家目录仓库（<code>~</code>）的跟踪范围内，但没有自己的提交历史 / remote / 版本线。之前 <code>git status</code> 显示 547 项未跟踪（含 中台工程仓 等无关项目），就是这个原因——<b>工作区与家目录互相污染</b>。</div>
+  <div class="note"><b>你的直觉是对的：</b>1 个项目 = 1 个独立 git 仓库（含 GitHub remote）。xingtu 工作区、xingtu-site、每个开源项目都应各自独立。</div>
+</section>
+
+<!-- ② 仓库规划 -->
+<section id="plan">
+  <h2><span class="n">02</span>仓库规划：1 项目 1 仓库映射表</h2>
+  <table>
+    <tr><th>仓库</th><th>本地路径</th><th>GitHub 建议</th><th>用途</th><th>优先级</th></tr>
+    <tr><td><b>xingtu 工作区</b></td><td><code>~/工作室/xingtu</code></td><td><code>xingtu1996/xingtu-workspace</code>（私有）</td><td>自媒体运营工作区：内容/运营/台账/素材/规则/SOP——<b>独立 git init + 私有远程</b></td><td><span class="chip bad">P0 立刻</span></td></tr>
+    <tr><td><b>xingtu-site</b></td><td><code>…/xingtu/xingtu-site</code></td><td>✅ 已关联 <code>xingtu1996/xingtu-site</code></td><td>个人独立站（Cloudflare Pages 部署）</td><td><span class="chip ok">已完成</span></td></tr>
+    <tr><td><b>开源项目</b>（每项目 1 仓库）</td><td><code>08_开源与作品集/&lt;项目&gt;/</code></td><td><code>xingtu1996/&lt;项目&gt;</code>（公开）</td><td>tokenhub_bench 等——发布才建仓库（走 04_开源SOP）</td><td><span class="chip warn">按需</span></td></tr>
+    <tr><td><b>知识库</b>（可选独立）</td><td><code>06_个人知识库_Obsidian/</code></td><td><code>xingtu1996/kb-wiki</code>（私有）</td><td>LLM Wiki 知识库（见④）——也可并入工作区仓库</td><td><span class="chip warn">二选一</span></td></tr>
+  </table>
+  <div class="oknote note"><b>核心动作：</b>给 xingtu 工作区 <code>git init</code> 独立成库（.gitignore 已就位，敏感文件已忽略，可安全入私有仓库），解除与家目录大仓库的嵌套。之后 <code>git status</code> 在家目录层面不再出现 547 项噪音。</div>
+</section>
+
+<!-- ③ 散乱文件归位 -->
+<section id="mess">
+  <h2><span class="n">03</span>散乱文件归位方案</h2>
+  <p class="lead">根目录 26 个非目录文件，按"锚点留根 / 内容进 02 / 运营进 03 / 调研进 07 / 灵感进 02 池"分组归位（全部 <code>mv</code>，先备份，等你确认后执行）：</p>
+  <table>
+    <tr><th style="width:16%">目标位置</th><th>文件</th><th>说明</th></tr>
+    <tr><td><b>留根（锚点）</b></td><td><code>README.md</code> <code>HARNESS.md</code> <code>DIRECTORY.md</code> <code>行途Harness控制台</code> <code>工作看板Canvas</code></td><td>路标/说明书/注册中心/可视化入口</td></tr>
+    <tr><td><b>02_内容仓库 (Content Hub)</b></td><td>行途系列内容文档：体系手册 / 可视化看板 / 目录树 / 四大空间设计 / 经历素材库设计 / 防弹工作法 / 域名系列×3 / 会话沟通记录 / 白盒教程 / 域名建站实战手记</td><td>内容成品与教程类</td></tr>
+    <tr><td><b>03_运营工具箱</b></td><td><code>CodeMax_DS选型</code> <code>CodingPlan_全网选型</code> <code>CodingPlan_用量对照</code> <code>AI编程订阅选型</code> <code>benchmark_*.csv</code> <code>codemax_usage_queries.sql</code> <code>个人工作台_知识可视化看板</code> <code>全平台自动发布方案</code> <code>GitHub改名决策复盘</code></td><td>运营/选型/工具分析类</td></tr>
+    <tr><td><b>02 灵感池</b></td><td><code>矩阵想法.txt</code></td><td>灵感素材</td></tr>
+    <tr><td><b>07_调研与情报工作台</b></td><td><code>行途个人站从0到1白盒教程_2026-08.html</code>（内容成品则归 02）</td><td>教程/调研产物二选一</td></tr>
+  </table>
+  <div class="note"><b>撞名目录清理：</b><code>02_内容仓库</code>（44K 空壳）含 <code>AI进化时间线与内容体系/</code>（3 个 md），Content Hub 内也有同名子目录——先 diff 两处内容，空壳目录整体 <code>safe-delete</code>（可还原）。</div>
+  <div class="note"><b>根目录收口目标：</b>只留「README / HARNESS / DIRECTORY / 控制台 / 工作看板」5 个锚点 + 待执行提案文档，其余全部下沉到对应目录。</div>
+</section>
+
+<!-- ④ LLM Wiki -->
+<section id="wiki">
+  <h2><span class="n">04</span>LLM Wiki 知识编译层（融合你的实践）</h2>
+  <p class="lead">你给的 LLM Wiki 理念（Raw→Wiki→Schema 三层 + AI 知识编译）正好把 xingtu 的"素材→知识→内容"链路升级为<b>可生长的结构化知识网络</b>——比临时翻书（RAG）高效的本质：AI 摄入时即编译，查询时直接命中结构化页。</p>
+
+  <h3>三层架构 ↔ xingtu 现有目录映射</h3>
+  <table>
+    <tr><th style="width:12%">层</th><th style="width:26%">理念</th><th>xingtu 载体</th><th>AI 职责</th></tr>
+    <tr><td><b>Raw 层</b></td><td>原始不可变资料</td><td><code>05_竞品参考</code> · <code>04_会话与复盘</code> · <code>07_调研素材库</code> · <code>02_灵感与选题池</code> · Web Clipper 剪藏</td><td>只存不改，留原始证据</td></tr>
+    <tr><td><b>Wiki 层</b></td><td>AI 编译的结构化知识</td><td><code>06_Obsidian</code>（主题页/摘要/对比）· <code>11_素材卡</code>（结构化）· <code>02_文章成品</code></td><td>按 Schema 自动生成 md 页、双向链接、矛盾标注、增量更新（像 Git 版本演进）</td></tr>
+    <tr><td><b>Schema 层</b></td><td>知识加工规则</td><td><code>rules/RULES.md</code> · <code>workflows/</code> · <code>specs/_TEMPLATE/</code> · 各空间模板 · <b>待建 <code>06_Obsidian/AGENTS.md</code></b></td><td>定义"怎么加工"的规则，AI 按规则编译</td></tr>
+  </table>
+
+  <h3>🔧 待建：06_Obsidian/AGENTS.md（知识编译规则，Schema 层落地）</h3>
+  <pre># kb-wiki · 知识编译规则（AGENTS.md）
+> 本文件是知识库的「加工宪法」：AI 按此规则把 Raw 素材编译成 Wiki 结构化页。
+
+## 三层目录
+raw/    原始不可变（剪藏/会话/调研素材）——只存不改
+wiki/   AI 编译页（实体页/主题页/对比页）——双向链接 + 矛盾标注
+templates/ 页面模板
+
+## 编译规则（AI 执行）
+1. 实体/概念页：一页一主题（如 "LLM原理"、"Harness"），标题即实体名
+2. 双向链接：页内用 [[双链]] 关联相关页，新概念自动建页
+3. 矛盾标注：两源冲突时保留双方 + 标注 ⚠冲突（来源A vs 来源B）
+4. 增量更新：编译是编辑已有页，不重复建页（像 Git commit，非覆盖重写）
+5. 来源必录：每页底部挂来源 + 验证程度（BUL-003：实测/引用/估算）
+
+## 治理（健康检查）
+- 孤儿页 / 断链 / 30 天未更新页 → 周度清单
+- 采集来源：Web Clipper → raw/；会话 → 04_；WorkBuddy 定时同步 → 编译</pre>
+
+  <h3>🔧 知识编译工作流（WorkBuddy 自动化）</h3>
+  <div class="flow">
+    <div class="node"><b>采集</b><span>Web Clipper / 会话 / IMA → Raw</span></div>
+    <div class="arrow">→</div>
+    <div class="node"><b>编译</b><span>AI 按 AGENTS.md → Wiki 页</span></div>
+    <div class="arrow">→</div>
+    <div class="node"><b>查询</b><span>优先检索结构化 Wiki</span></div>
+    <div class="arrow">→</div>
+    <div class="node"><b>治理</b><span>健康检查 / 矛盾标注</span></div>
+  </div>
+
+  <div class="oknote note"><b>与 xingtu 的咬合点：</b>07 调研结论 → 编译进 wiki（主题页）；11 素材卡 → 成为 wiki 实体页的"证据锚"；02 文章成品 → 从 wiki 主题页"生长"出来。这样"素材→知识→内容"是同一个网络，不再是三个孤立文件夹。<b>适用建议采纳：从 AI 工具链这一个垂直领域起步（12 研究室天然是原料源）。</b></div>
+</section>
+
+<!-- ⑤ 待确认 -->
+<section id="todo">
+  <h2><span class="n">05</span>待确认执行清单（全部等你点头才动）</h2>
+  <ul class="todo">
+    <li><b>① git init xingtu 工作区</b> —— 独立成库（私有 remote <code>xingtu1996/xingtu-workspace</code>），解除家目录嵌套；gitignore 已就位，敏感文件已忽略</li>
+    <li><b>② 散乱文件归位</b> —— 按③分组 <code>mv</code> 下沉（先 backup-before-op 快照），撞名 <code>02_内容仓库</code> 空壳 diff 后 safe-delete</li>
+    <li><b>③ 建 06_Obsidian/AGENTS.md</b> —— Schema 层落地 + <code>raw/wiki/templates</code> 目录（纯新增，零风险）</li>
+    <li><b>④ 知识库仓库二选一</b> —— kb-wiki 独立私有仓 vs 并入工作区仓库（建议先并入，轻量起步）</li>
+    <li><b>⑤ xingtu-site 后续</b> —— 已正确，无需动；页面内容填真实链接即可</li>
+  </ul>
+  <div class="note">安全承诺不变：所有移动用 <code>mv</code>、绝不 <code>rm -rf</code>、改动前 <code>backup-before-op.sh</code>、删除走 <code>safe-delete.sh</code> 可还原。你说"动手"我按 ①→②→③ 顺序执行。</div>
+</section>
+
+<div class="footer">行途工作空间 · 仓库规划与知识编译方案 · 单文件零依赖 · 与 DIRECTORY.md / 整理提案 同源 · 2026-08-19</div>
+</main>
+</body>
+</html>

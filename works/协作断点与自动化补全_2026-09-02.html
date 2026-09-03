@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="7sw6uvPj2ZP8XIdbmSKP7h">
+<head data-page-node-id="KX5iMQBShRHuDo6DKXagU3">
+<meta charset="UTF-8" data-page-node-id="UCVn1m3obXSvDaqvExH7dV">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="nNCjgYNCIByrS5bCWqYutY">
+<title>协作断点与自动化补全 · 行途 2026-09-02</title>
+<style>
+  :root{
+    --blue:#056DE8; --blue2:#4A9EFF; --cyan:#00D4FF; --orange:#FF6B35;
+    --bg:#f5f8fc; --card:#ffffff; --ink:#16233a; --sub:#5a6b85; --line:#e2e9f3;
+    --ok:#1f9d55; --warn:#e8a317; --bad:#e2453a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;padding:28px}
+  .wrap{max-width:1080px;margin:0 auto}
+  h1{font-size:26px;margin-bottom:6px}
+  h2{font-size:19px;margin:30px 0 12px;padding-left:11px;border-left:5px solid var(--blue)}
+  h3{font-size:15px;margin:16px 0 6px;color:var(--blue)}
+  .sub{color:var(--sub);font-size:13px;margin-bottom:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:14px 0;box-shadow:0 1px 3px rgba(20,40,80,.04)}
+  .fix{background:#fff4f2;border:1px solid #ffd2cc;border-left:6px solid var(--bad);border-radius:10px;padding:16px 18px;margin:16px 0}
+  .fix b{color:var(--bad)}
+  .row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:12px 0}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .kpi .n{font-size:24px;font-weight:700;color:var(--blue)}
+  .kpi .t{font-size:12px;color:var(--sub);margin-top:3px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#eef4fd;color:var(--ink);font-weight:600}
+  tr:nth-child(even) td{background:#fafcff}
+  .tag{display:inline-block;padding:1px 9px;border-radius:20px;font-size:11.5px;font-weight:600}
+  .t-bad{background:#ffe6e2;color:var(--bad)}
+  .t-warn{background:#fff3da;color:#b9790b}
+  .t-ok{background:#e3f7ec;color:var(--ok)}
+  .t-blue{background:#e6f1ff;color:var(--blue)}
+  .chain{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0;font-size:13px}
+  .step{background:#eef4fd;border:1px solid #cfe0fb;border-radius:8px;padding:7px 12px}
+  .step.brk{background:#fff4f2;border-color:#ffc4bb;color:var(--bad)}
+  .arrow{color:var(--sub)}
+  code{background:#eef2f8;padding:1px 6px;border-radius:5px;font-size:12.5px;color:#244}
+  .pri{font-weight:700}
+  .P0{color:var(--bad)} .P1{color:var(--blue)} .P2{color:var(--sub)}
+  ul{margin:8px 0 8px 20px} li{margin:5px 0}
+  .note{font-size:12.5px;color:var(--sub);margin-top:6px}
+  .footer{margin-top:26px;font-size:12px;color:var(--sub);border-top:1px dashed var(--line);padding-top:12px}
+</style>
+</head>
+<body data-page-node-id="FT2e94ICoB8wgQplm7ZizM"><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap" data-page-node-id="jHZQdar5iZOdvbyMNIcSqt">
+
+<h1 data-page-node-id="E6XyG04BzCK4uBzzePzhQJ">协作断点与自动化补全诊断</h1>
+<div class="sub" data-page-node-id="EIhfTgWuxScIcKSq6Gdhlq">行途 · 2026-09-02 · 基于 4 篇已读成稿 + 资产台账 + 9 次协作会话综合 · 单文件零依赖</div>
+
+<div class="fix" data-page-node-id="dOgb0sX2wuZsFlNvs92oau">
+  <b data-page-node-id="7fPOrNQq7UorNdFINJ4xJE">⚠️ 先纠正一个我之前的错误判断。</b> 前两份看板里我写「成稿→发布 0%」「产能出口堵塞」。
+  但你明确说公众号「编辑素材 / 制作封面 / 定时发布 / 微信贴图」已跑通——说明文章<strong data-page-node-id="Numy8ZuxfIw9DlHupuvYcr">真实发出去了</strong>。
+  所以真相不是「没发」，而是：<strong data-page-node-id="1WryC9IZHfLCAgbwry8Idv">发了，但发出去的内容没有回流到我们的协作闭环里</strong>。
+  本地成稿无「已发布」标记、台账「最近活跃」为空、全仓搜不到任何 mp.weixin 链接。
+  「0%」是我用本地文件当真实发布率的误判，特此更正。
+</div>
+
+<h2 data-page-node-id="ulHKNMQW0wWVREwZIiP8lI">一、协作闭环：跑通 vs 断点</h2>
+<div class="chain" data-page-node-id="NQHHAO6IrB9I1bHAz439An">
+  <span class="step" data-page-node-id="AGoa5m5od4IuWJg2R7nEkE">① 选题挖掘（素材卡 1161）</span><span class="arrow" data-page-node-id="oQJjA9QWORRyVSe33RZxL5">→</span>
+  <span class="step" data-page-node-id="Dhs0vv070kgnSt8Aw4fgvi">② 成稿（4 篇，质量高）</span><span class="arrow" data-page-node-id="gxLFFcc7eVerZBMYyta45v">→</span>
+  <span class="step brk" data-page-node-id="XkAB60bxNAHEocKrGJeL93">③ 成稿→发布稿定稿</span><span class="arrow" data-page-node-id="HXtNd2XnOyVdvtyeW51kWL">→</span>
+  <span class="step brk" data-page-node-id="UEhVEm4Vsf5RDUykHHuPmF">④ 推送公众号</span><span class="arrow" data-page-node-id="VVkUd1dQpNEE3Z2fH3OMCz">→</span>
+  <span class="step brk" data-page-node-id="GqweUODiNwHNiTq8Q3HNXB">⑤ 发布回流 / 复盘</span>
+</div>
+<div class="row" data-page-node-id="Yo1ZS2R6qMTKj9gCFgMuBK">
+  <div class="kpi" data-page-node-id="gFf91D41PD6hdbchkdyBGz"><div class="n t-ok" data-page-node-id="RjnsCAvZdB7Ye1zPuNsmXD">✅</div><div class="t" data-page-node-id="prf2pRUZVLWYEHrGXvNomh">① 选题挖掘 — 已跑通且超额（1161 卡）</div></div>
+  <div class="kpi" data-page-node-id="fEcyJJebr6H1GSMGoGcsLz"><div class="n t-ok" data-page-node-id="GlP6OQEUn4i6oGonKzsVrm">✅</div><div class="t" data-page-node-id="hQnvqKEZcLsuERCNCVSFI7">② 成稿 — 4 篇均为产品级（带大纲/配图建议/平台微调/脱敏）</div></div>
+  <div class="kpi" data-page-node-id="oqtqjLif7fr56r7Dli2ihX"><div class="n t-bad" data-page-node-id="oYcyOIqAQMDJSFLKIg6Lzd">⛔</div><div class="t" data-page-node-id="XW6JGF1VvcohsvGrYozeyg">③ 定稿 — 成稿≠发布稿，配图未产出、数字未同步</div></div>
+  <div class="kpi" data-page-node-id="XCj6ZZjbAId7zPwXF6ZS33"><div class="n t-bad" data-page-node-id="FMv41QxnSHPYMr1L5BNTS4">⛔</div><div class="t" data-page-node-id="5LI98ECWnh8KnRgCY60VGy">④ 推送 — API 权限未实调，路线未定</div></div>
+  <div class="kpi" data-page-node-id="O1UFPKUhtbD48z0dpVoObp"><div class="n t-bad" data-page-node-id="aiLFooCw4acPevyZuQqRWX">⛔</div><div class="t" data-page-node-id="YJpvylYZ9E2iJrKSNTJx5G">⑤ 回流 — 发了没回来，闭环断在此</div></div>
+</div>
+<p class="sub" data-page-node-id="nJ0NxIgNwl7Jg1gQ7lb254">结论：我们的瓶颈不在「生产」，在「生产之后到发布」和「发布之后回环」两段。这两段恰恰是<strong data-page-node-id="JejDNrfRq5CKgEaQH80lyY">自动化最容易补、且不需要 n8n 这类重编排</strong>的地方（见第四节）。</p>
+
+<h2 data-page-node-id="xHYHuQx4AhFkIUK9RxVa50">二、5 个协作断点（均来自实读证据）</h2>
+
+<h3 data-page-node-id="sqVDRBZgTDQfyUQgYexcAK">断点 1 · 成稿数字与素材库脱节（实锤）</h3>
+<table data-page-node-id="QzBG2bjEr7RrPLZdQtkG4z">
+  <tr data-page-node-id="yCDGDGO7MxEIvJIH2Rd33w"><th data-page-node-id="fhiAxcumtBX1NwuVFrjbZM">出处</th><th data-page-node-id="TPHAy9EaAKORokby3CAHRz">原文</th><th data-page-node-id="A4kYCQAPwx1jckXxn1f4SO">真实值</th><th data-page-node-id="enZTt33yWyyjAGeNaXgSba">性质</th></tr>
+  <tr data-page-node-id="rEdnHo6pwhkvsRymp8IRoM"><td data-page-node-id="yzv9zDjW0idrJBXQs6FXXw">B11 第48行</td><td data-page-node-id="Cbvax88tAjI22JyiYGXCYG">「现在有 <b data-page-node-id="HW1UNmtXzuyxVBA0bWBNUd">76</b> 张卡，覆盖 12 个分类」</td><td rowspan="3" data-page-node-id="nHG4vIFpV5voaFQV60KJBN">素材库 JSON = <b data-page-node-id="7NsaAmmFZ6Yp7MWw917ZfK">1161</b> 张（实测）</td><td data-page-node-id="XCnxDGFiQhR8GeiHkdBA53"><span class="tag t-bad" data-page-node-id="J2zEzZVHjrf0BwbWtUo9wM">过期</span></td></tr>
+  <tr data-page-node-id="Hc9Dha3TZM5pdFnUdfM7HS"><td data-page-node-id="nZjHvGuEbVBMBAjMxX2ycY">M01 第24行</td><td data-page-node-id="VeTkFx0xcuqBSTr8m99UuU">「沉淀出 <b data-page-node-id="3AWu0KgCAEnEABtlIbK59m">1100+</b> 张可发布素材卡」</td><td data-page-node-id="Waoks4BDhk9nVGyWoodpfE"><span class="tag t-warn" data-page-node-id="mwBwrDFm3jKGAcsknY9EEW">约数</span></td></tr>
+  <tr data-page-node-id="icAqcfD37wAxWPqSxfyEEJ"><td data-page-node-id="syFfgCm0giKYUvPEjN0Go2">能力模型看板</td><td data-page-node-id="EcwLrvYKzBUYQUmsN4mgwm">「1161 张素材卡」</td><td data-page-node-id="etRE4xCt8G4KvBC1COyEuB"><span class="tag t-ok" data-page-node-id="LDGi9ttHHoKQrb4D9xaBP6">准确</span></td></tr>
+</table>
+<p class="note" data-page-node-id="paWPg3IE0qvnRpmyl58Q6G">同一批成稿出现 76 / 1100+ / 1161 三数——铁证：成稿写完后素材库在涨，成稿的数字没同步。违反「单一事实源」原则。这是纯本地问题，<strong data-page-node-id="oua0LL1zxJMpCJH3Kgo3bi">立刻可修</strong>。</p>
+
+<h3 data-page-node-id="xhxCvgFGLSiSy0WE3VLuyl">断点 2 · 成稿 ≠ 发布稿</h3>
+<p data-page-node-id="50D5wKcQwm8Fezhs1jAm7q">4 篇成稿结构一致：<code data-page-node-id="9JEiKFchTnRxji35s5eoRO">大纲 + 配图建议 + 平台微调 + 脱敏确认</code>。这是<strong data-page-node-id="VORtqCPpVRHi8NshwueLql">创作稿</strong>，不是<strong data-page-node-id="FvpJFegDnWtLZVqJoDFs66">发布稿</strong>。中间缺一道「定稿」工序：把大纲展开成正文、把长标题压到 ≤15 字防折叠、按平台微调拆版。目前这道工序靠你在公众号后台手动做。</p>
+
+<h3 data-page-node-id="HdstwNTBHW6siJrKPHRuW5">断点 3 · 配图 / 图解未产出</h3>
+<p data-page-node-id="2pC6u7nOESWAffenUtADjk">每篇都写「配图建议（XXX 图）」——图<strong data-page-node-id="x41iRq9ltjaH2pYZA5eRQ5">还不存在</strong>。你的 <code data-page-node-id="SqLrOXv3Wkx4NTcYWcQPE1">render_wechat.js</code> 截图链路已跑通，但这些成稿的图没接上。B11 直接嵌 <code data-page-node-id="KlhvBvp0b210KCrQPK6WvG">mermaid</code>（第52行），而 RULES 铁律是「mermaid 必须转图」——<strong data-page-node-id="8noJBYapPpqkQjtyEIklgl">成稿阶段铁律未执行</strong>。</p>
+
+<h3 data-page-node-id="4qaJEjDJkVfi6rxcihxiU7">断点 4 · 已发布无回流（最致命）</h3>
+<p data-page-node-id="hzFo8NNVkopAjlCQtl5E3e">文章发出去后，<strong data-page-node-id="JbfgDAH7gNNBoGuy6oipfV">链接 / 发布时间 / 阅读·转发·完读数据 / 复盘</strong> 全没回到本地。后果：① 我无法基于真实数据优化下一篇；② 能力模型看板「外显率」只能估；③ 你发得越多，本地越「瞎」。这是闭环断在最后一环。</p>
+
+<h3 data-page-node-id="zrJTghBTbaUAWqQ0ESAP0r">断点 5 · 微信贴图线零留痕</h3>
+<p data-page-node-id="cw6j3Jz3hPZvYtU1v3FIHv">你说「微信贴图已跑通」——但全仓搜不到任何贴图/表情资产记录。这条产品线（微信表情开放平台）同样没有回流档案，与断点 4 同构。</p>
+
+<h2 data-page-node-id="VShy4JAeVG9Qp6RNgxEA84">三、已发布文章，我能看什么 / 不能看什么</h2>
+<div class="card" data-page-node-id="jEcNc2X9PtC9WwIH2h3yPj">
+  <h3 data-page-node-id="Vov4PxeiheEvY2e8ieVfwU">我能直接观察的（本地）</h3>
+  <ul data-page-node-id="6j1dZyHVBhL17zAJgWnPDz">
+    <li data-page-node-id="rEQk3SWPzRZYnv9czCIifO"><b data-page-node-id="iShgImUbaG6B2bFnvSZdjH">4 篇成稿</b>：形态、SEO 埋词、平台微调、脱敏等级——已读完，质量高。</li>
+    <li data-page-node-id="cbpdYL8pMiImaM0iqDgHey"><b data-page-node-id="p7qZ6kli2zU4YE1OSWwMNt">选题矩阵</b>：M01/B02/B11 构成「方法+实证+理念」三角，设计是对的。</li>
+    <li data-page-node-id="kLW6pZwh0PZPmwKBDIhQ8A"><b data-page-node-id="lmE3UVbSDDeCBADC7WnVeB">协作脉络</b>：9 次会话从变现路径→对标→能力模型→素材接收→工作流选型，方法论已成型。</li>
+  </ul>
+  <h3 data-page-node-id="Ci3mdAEo6z1qZG3EBP4EJ6">我看不到的（需你回流）</h3>
+  <ul data-page-node-id="PldEy0tq3sapTIGtk92Htb">
+    <li data-page-node-id="cxrEK92pFkutuyaDiHYwJc">公众号后台真实文章（mp.weixin 链接抓不到）、阅读/转发/完读/常读数据。</li>
+    <li data-page-node-id="5ohLi79aZ6TQyFLrwTCako">哪些成稿真发了、哪些没发、读者反馈。</li>
+  </ul>
+  <p class="note" data-page-node-id="wEuMGGalGrvhbkfLOVmwI1"><b data-page-node-id="XNJpw7ApFpIRYFS4ykp0GD">解法</b>：你发完把链接 + 日期丢给我（或直接导出公众号文章备份），我建「已发布文章档案」回填台账并做复盘。模板见 <code data-page-node-id="sUBGUU5d2GKdfaiOBSl87A">xingtu-vault/09_个人台账/03_已发布文章档案/</code>。</p>
+</div>
+
+<h2 data-page-node-id="WjxMTe0w5WTQtZpXeXKLe8">四、自动化补全方案（轻量本地优先，呼应「不上 n8n」结论）</h2>
+<table data-page-node-id="rUP3nvyxaCJ8wnrXm2JYcg">
+  <tr data-page-node-id="D09jGax9bjQgFsxZ9ksELA"><th data-page-node-id="bf8ENOGRLvai67nABwQV0E">优先级</th><th data-page-node-id="Ry8IajuBSyFsY02fvsm4WP">动作</th><th data-page-node-id="ie7HPGTyNCHPK3XxMvdfXD">解决断点</th><th data-page-node-id="O6en2q3ZJBiRofK7q1GOUt">依赖</th><th data-page-node-id="vhvfpqeFmRk5JRym0y8glB">工作量</th></tr>
+  <tr data-page-node-id="jBowRh4bR8FUHegKf8k9Dy"><td class="P0 pri" data-page-node-id="AaY9CB6o9aNMwyOZUH0nxA">P0</td><td data-page-node-id="y9pW1jpwR3c3Fj6LAQksKs"><b data-page-node-id="yimMJrCY0j30n9Bhv2K8tA">成稿数字同步</b>：成稿里 <code data-page-node-id="RyItgfiKHAMtU5biNpGUF6">{{card_count}}</code> 等占位符，渲染时从素材库 JSON 注入最新值</td><td data-page-node-id="Ldi8djjzZ1D8LJKyQB3080">断点1</td><td data-page-node-id="4zvSBZeGoHU22DXCo1Fn29">纯本地</td><td data-page-node-id="GPpdX3cyDwSjNOhB6lglDa">~30 行</td></tr>
+  <tr data-page-node-id="dKz8nu18j9iqcaMHH2hS0h"><td class="P0 pri" data-page-node-id="lSvZelRbkzA834ZNygs3MR">P0</td><td data-page-node-id="Dbbcdid8dDKGNo5PIolIDq"><b data-page-node-id="hQrDoEu28BcNawmBtCAlwB">发布回流档案</b>：每篇发完回填链接/时间/数据/复盘，自动更新台账「最近活跃」</td><td data-page-node-id="lhEwyYZ6RI6gvSzbKb648s">断点4/5</td><td data-page-node-id="TjeynEeztDeNqqPeeYzXgI">你丢链接</td><td data-page-node-id="oxBjUtcv4b5WzWOWryXaL0">模板已建</td></tr>
+  <tr data-page-node-id="wDxZiCAKAFVQD8Shdhfm4K"><td class="P1 pri" data-page-node-id="0NEUpttd5eK0fyCHpqN8JU">P1</td><td data-page-node-id="W4otghQIlnC0R0Qc1UXPPw"><b data-page-node-id="P01A8LskOU5YqfWWDZrnNW">成稿→发布稿定稿脚本</b>：render_wechat.js 展开正文 + mermaid 转图 + 配图截图 + 标题压 ≤15 字</td><td data-page-node-id="e7v13Jtj9Imhu9rGSQ0f5B">断点2/3</td><td data-page-node-id="zExba4pODUMXJC2Oljcr67">本地脚本</td><td data-page-node-id="pg4RKxhBwlCWqZy4HFD10W">~80 行</td></tr>
+  <tr data-page-node-id="BFAH7B9qTwFuiPgMB1tWLp"><td class="P1 pri" data-page-node-id="T15NxKM7WICUrEHRcpcErE">P1</td><td data-page-node-id="hRbiCW4rA58Nm31d7ZRpvI"><b data-page-node-id="ao7S9CFfqWk4ElQAFU2a6G">API 权限实调</b>：跑 curl 定 draft/add 是否 48001，决定发布路线（API vs Playwright）</td><td data-page-node-id="VU0bg4gCdQLNvNdeEAuZj0">断点4</td><td data-page-node-id="AHm9WjPNbV9SgMNDk2idHS">AppSecret</td><td data-page-node-id="ji8blQ0CGLaZTYLFLlW8uY">1 命令</td></tr>
+  <tr data-page-node-id="LTjZT3Y6HqDr27OGGuUfLM"><td class="P2 pri" data-page-node-id="kCdH7YVQeC95s6YWVOthcD">P2</td><td data-page-node-id="RBgtn8411y7rd3ZatmeEfX"><b data-page-node-id="XvspMp4nmWN50IZZljUrW3">定时任务心跳巡检</b>：15 行脚本 + 飞书 bot，超 48h 无心跳告警（治「失效不可见」）</td><td data-page-node-id="PMYunUPA3nWjRBFwGZIfLe">全局</td><td data-page-node-id="m5VlMPGIiR1QGDmjedljaE">feishu_bot</td><td data-page-node-id="UvEatQzbnB4mk0l5AutNV9">~50 行</td></tr>
+</table>
+<p class="note" data-page-node-id="bMv4roi9kXxOSoTB2XyFNh">原则：只把<strong data-page-node-id="sw6tQG8Af0nG8EHnr6yl9j">确定性</strong>环节脚本化（定稿、同步、回流、巡检），<strong data-page-node-id="IjPbxpVHimBn1D0mbYGJZQ">判断性</strong>环节（蒸馏脱敏、选题立项）保持人+AI 协作，不塞进固定编排。这是昨天「不上 n8n」结论的延续。</p>
+
+<h2 data-page-node-id="lDLxXPksy7h7bi6D7IUD4g">五、今天就能做的 2 件事</h2>
+<div class="card" data-page-node-id="isSSZEUEvZSyjgzrmHISar">
+  <h3 data-page-node-id="KDKFj1Fo8qnvzloz7l1DBr">① 你把已发布文章丢给我</h3>
+  <p data-page-node-id="NcPr79G2MXCVdOABELGemj">方式任选：a) 公众号文章链接直接粘贴；b) 公众号后台「导出」的 HTML/MD；c) 告诉我标题，我对照成稿建档案。<br data-page-node-id="xZKOXpBBmDsAMx9iCpPs0q">我接到后回填 <code data-page-node-id="kTu8462SGCHtiO1f9SbRaC">03_已发布文章档案/</code> + 更新台账「最近活跃」+ 跑一次复盘（哪篇数据好→反推下一篇选题）。</p>
+  <h3 data-page-node-id="01jWp8iOCSjGEslEpFPluz">② 我立刻修断点 1</h3>
+  <p data-page-node-id="XPkQfPRlRGng9DE3EqRuJW">给成稿加占位符 + 写一个注入脚本，让「素材卡数量」永远等于素材库实时值，根除 76/1100+/1161 这类不一致。<br data-page-node-id="zyxnBKnktA9DI4UEjdF67T">你点头我就改 M01/B02/B11 三篇 + 写同步脚本。</p>
+</div>
+
+<h2 data-page-node-id="3Nbqe8NYPkGarrb5P6s7h0">六、待拍板</h2>
+<table data-page-node-id="OjVGfXAKkO5srblezahEkD">
+  <tr data-page-node-id="7GAO30B37STsijXkpCeFn4"><th data-page-node-id="rWn02vnjGGlKmRvmGz1x00">#</th><th data-page-node-id="ZpOYYkkhjz7S6x45EDLDN1">问题</th><th data-page-node-id="DMfVgmujUBct2S90s1TS5L">推荐</th></tr>
+  <tr data-page-node-id="fYWisM2j3CRcwKpvlCnj0E"><td data-page-node-id="ElCGJcjFYXcy6Mo5exaJvx">Q1</td><td data-page-node-id="jV15RlDc4FtJfLC2xtdXOD">已发布文章怎么回流给我？</td><td data-page-node-id="rRaoFVZX1ljunXzQTQHnu5">先粘贴 3-5 篇链接，我建档案模板后你习惯化</td></tr>
+  <tr data-page-node-id="L47An67eGpjXUWI2nK9yiO"><td data-page-node-id="mg96YDHqdfTkTLLvY0ni4v">Q2</td><td data-page-node-id="mmd6u0t4UOdDv1cgJniDkg">断点 1（数字同步）现在改吗？</td><td data-page-node-id="XG2X5PfV7QRvf00kkfEd1k">改，纯本地零风险</td></tr>
+  <tr data-page-node-id="onehiym7eZRBdGdEGQjQ3s"><td data-page-node-id="4y45xKlLdZMf5sNfnpswI7">Q3</td><td data-page-node-id="wB8xGoqPoVk5pummy0fJ0X">成稿→发布稿定稿脚本现在写吗？</td><td data-page-node-id="wPu9lNWWlDq9tBA71whhea">等 API 实调定路线后一并做</td></tr>
+  <tr data-page-node-id="3sYO7ekJdFjltvWjLqgWIO"><td data-page-node-id="wYIdRwykVETI5BljMLAwZI">Q4</td><td data-page-node-id="WQ6ZFbxWkVKd6ekZT5ukIs">微信贴图线要不要也建档案？</td><td data-page-node-id="wDKgXPoxHtEP4QM5H95e2i">要，同断点 4 处理</td></tr>
+</table>
+
+<div class="footer" data-page-node-id="wfCx2m8jBL2rkD6zHDHAQF">
+  数据来源：素材库/materials_library.json（1161 卡）· 素材库/成稿/（4 篇）· 自媒体账号台账.md · 9 次协作会话。
+  与本系列前 5 份看板（变现路径 / 对标账号 / 能力模型 / 素材接收站 / 工作流选型）同构，均为单文件零依赖。
+</div>
+
+</div>
+
+  <footer style="margin-top:36px;border-top:2px solid #056DE8;padding:16px 20px;background:#f5f9ff;border-radius:10px;font-size:13px;color:#1a1a1a;line-height:1.9">
+    <div style="font-weight:700;color:#056DE8;margin-bottom:8px">📎 权威锚点 / 引用来源</div>
+    <ul style="margin:0;padding-left:18px">
+      <li>已发布文章档案（回流钩子，文章链接待补）：<code style="background:#eef4ff;padding:1px 6px;border-radius:4px;color:#0a3d7a">xingtu-vault/09_个人台账/03_已发布文章档案/已发布文章档案.md</code></li>
+      <li>微信公众平台·发布能力官方文档（freepublish 回收确认）：<a href="https://developers.weixin.qq.com/doc/service/guide/product/publish.html" target="_blank" rel="noopener" style="color:#056DE8;text-decoration:underline">https://developers.weixin.qq.com/doc/service/guide/product/publish.html</a></li>
+      <li>断点根因：成稿未同步素材库计数 → 方案 P0 占位符 {{card_count}} + 注入脚本</li>
+    </ul>
+    <div style="margin-top:8px;color:#555">完整引用索引：<code style="background:#eef4ff;padding:1px 6px;border-radius:4px;color:#0a3d7a">specs/20260902-断点续传与集中提示词/05_权威锚点与引用来源.md</code></div>
+  </footer>
+
+</body>
+</html>

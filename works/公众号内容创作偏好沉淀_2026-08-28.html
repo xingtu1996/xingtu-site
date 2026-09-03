@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行途 · 公众号内容创作偏好沉淀（2026-08-28）</title>
+<style>
+  :root {
+    --bg: #f5f7fa; --card: #ffffff; --text: #1f2329; --text-2: #4e5969; --text-3: #86909c;
+    --brand: #056DE8; --brand-2: #0A84FF; --cyan: #00D4FF; --orange: #FF6B35;
+    --green: #00b42a; --amber: #d97706; --red: #cf2424; --border: #e5e6eb;
+    --code-bg: #f0f4fb;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; line-height: 1.7; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 32px 20px 80px; }
+
+  header.hero { background: linear-gradient(135deg, #0a3d91 0%, #056DE8 60%, #0A84FF 100%); border-radius: 16px; padding: 34px 30px; color: #fff; margin-bottom: 22px; }
+  header.hero h1 { margin: 0 0 8px; font-size: 26px; line-height: 1.3; }
+  header.hero .sub { font-size: 14px; opacity: .92; }
+  header.hero .meta { margin-top: 14px; font-size: 12.5px; opacity: .85; }
+
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 22px; }
+  .kpi { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; }
+  .kpi .num { font-size: 24px; font-weight: 800; color: var(--brand); }
+  .kpi .lbl { font-size: 12.5px; color: var(--text-2); margin-top: 2px; }
+
+  .section { margin-bottom: 26px; }
+  .section > h2 { font-size: 19px; margin: 0 0 4px; padding-left: 12px; border-left: 4px solid var(--brand); }
+  .section > .desc { font-size: 13px; color: var(--text-3); margin: 0 0 14px 16px; }
+
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; margin-bottom: 12px; }
+  .card h3 { margin: 0 0 10px; font-size: 15px; color: var(--text); }
+  .card h3 .tag { font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: 4px; margin-left: 8px; vertical-align: 2px; }
+  .tag.core { background: #e8f1ff; color: var(--brand); }
+  .tag.fix { background: #fff4e8; color: var(--amber); }
+  .tag.rule { background: #ffe8e8; color: var(--red); }
+
+  ul.clean { margin: 0; padding-left: 0; list-style: none; }
+  ul.clean li { padding: 5px 0 5px 22px; position: relative; font-size: 14px; color: var(--text-2); }
+  ul.clean li::before { content: "▸"; position: absolute; left: 4px; color: var(--brand); font-weight: 700; }
+  ul.clean li b { color: var(--text); }
+  ul.clean li .kw { color: var(--brand); font-weight: 600; }
+
+  .flow { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+  .flow .step { background: var(--code-bg); border: 1px solid #d6e4f7; border-radius: 8px; padding: 6px 12px; font-size: 13px; color: var(--text-2); }
+  .flow .step b { color: var(--brand); }
+  .flow .arrow { color: var(--text-3); font-weight: 700; }
+
+  table.mini { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+  table.mini th, table.mini td { border: 1px solid var(--border); padding: 7px 10px; text-align: left; }
+  table.mini th { background: #f0f6ff; color: var(--brand); font-weight: 600; }
+  table.mini td { color: var(--text-2); }
+
+  .swatch { display: inline-block; width: 14px; height: 14px; border-radius: 3px; vertical-align: -2px; margin-right: 5px; border: 1px solid rgba(0,0,0,.08); }
+
+  .before-after { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; }
+  .ba { border-radius: 8px; padding: 10px 14px; font-size: 13px; }
+  .ba.before { background: #fff5f5; border-left: 3px solid #f87171; color: #9f1239; }
+  .ba.after { background: #f0fdf4; border-left: 3px solid #22c55e; color: #14532d; }
+  .ba .lbl { display: block; font-size: 11px; font-weight: 700; margin-bottom: 2px; }
+
+  .note { background: #fffbe6; border: 1px solid #ffe58f; border-radius: 8px; padding: 10px 14px; font-size: 13px; color: #875800; margin-top: 10px; }
+  .note b { color: #5a3a00; }
+
+  .iter { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+  .iter .it { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 5px 13px; font-size: 12.5px; color: var(--text-2); }
+  .iter .it.win { border-color: var(--brand); color: var(--brand); font-weight: 700; background: #f0f6ff; }
+  .iter .it.dropped { opacity: .5; text-decoration: line-through; }
+
+  footer { text-align: center; font-size: 12.5px; color: var(--text-3); margin-top: 30px; line-height: 1.9; }
+  footer b { color: var(--brand); }
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>行途 · 公众号内容创作偏好沉淀</h1>
+    <div class="sub">从 A0《省 token 的第一性原理》+ B09《改 1 个配置，账单瘦了》两篇深度文的全过程（含封面 13 版迭代、多 Agent 对抗审查、去 AI 味改写）提炼出的四类可复用偏好</div>
+    <div class="meta">沉淀日期：2026-08-28 · 依据：.workbuddy/memory 工作日志（08-27 / 08-28）+ outputs/a0_省token总纲、b09_imgs 全套过程产物</div>
+  </header>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="num">2 篇</div><div class="lbl">深度文（A0 总纲 + B09 落地）</div></div>
+    <div class="kpi"><div class="num">13 版</div><div class="lbl">封面迭代（V-A → G3）</div></div>
+    <div class="kpi"><div class="num">4 类</div><div class="lbl">偏好（图片/内容/提示词/纠偏）</div></div>
+    <div class="kpi"><div class="num">5+7</div><div class="lbl">去 AI 味 5 处 + 审查纠偏 7 处</div></div>
+  </div>
+
+  <!-- ============ 篇目概览 ============ -->
+  <div class="section">
+    <h2>分析样本</h2>
+    <p class="desc">两篇核心深度文 + 一篇已发布的时效新闻稿（作图片制作与发布流程参照）</p>
+    <div class="card">
+      <table class="mini">
+        <tr><th style="width:22%">篇目</th><th style="width:30%">标题</th><th>定位 / 关键产物</th></tr>
+        <tr><td><b>A0</b>（总纲）</td><td>省 token 的第一性原理：把「不用推理的活」，从模型手里拿回来</td><td>省 token 系列第 1 篇 · 六层架构 · 封面迭代 13 版 · SignalDistilled 哲学 · 去 AI 味对照文档</td></tr>
+        <tr><td><b>B09</b>（落地）</td><td>改 1 个配置，账单瘦了</td><td>六层「散文层」落地 · outputStyle Concise · 自绘 4 图 + 4 张实测截图</td></tr>
+        <tr><td><b>GLM</b>（参照）</td><td>智谱「牛来（Ox Alpha）」GLM-5.3 Flash 正式开源…</td><td>8-27 已发布 · 官方图直链 + PIL 自绘 · 封面 v1→v2→v3 三版迭代</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ============ 一、图片制作偏好 ============ -->
+  <div class="section">
+    <h2>一、图片制作偏好</h2>
+    <p class="desc">封面 / 配图 / 海报的生产方式、配色、尺寸、审美</p>
+
+    <div class="card">
+      <h3>生产方式（方法论已定稿）<span class="tag core">核心</span></h3>
+      <ul class="clean">
+        <li><b>封面 / 配图 / 海报一律用 HTML/CSS 排版 → Chrome headless 截图成 PNG</b>，<span class="kw">禁止 PIL 手排坐标</span>（PIL 算坐标容易「乱」、无法精确控制对齐/字号/留白/层次）。</li>
+        <li><b>数据图 / 信息图 → 代码精确排版</b>（matplotlib / HTML+CSS），零 AI 味、最专业。</li>
+        <li><b>文生图（ImageGen）→ 只在需要「照片 / 插画感」时用</b>；注意右下角有内置水印需裁剪（B09 封面中心裁剪 1536×1024→900×383 消水印）。</li>
+        <li><b>canvas-design skill</b> 用于「视觉艺术」类（封面 v2 Geometric Silence / v3 SignalDistilled）。</li>
+      </ul>
+      <div class="note"><b>关键跃迁（永久规则）</b>：B09 阶段用 PIL 手排 → A0 阶段 boss 反馈「乱、格式不对」→ 改 HTML/CSS + Chrome 截图。截图命令模板：<code>--headless --no-sandbox --force-device-scale-factor=2 --window-size=W,H --screenshot=out.png</code>；Bash 需 <code>dangerouslyDisableSandbox:true</code>；HTML class 名不能带连字符（否则 CSS 选择器不匹配）。</div>
+    </div>
+
+    <div class="card">
+      <h3>配色系统（行途蓝主题）</h3>
+      <ul class="clean">
+        <li><span class="swatch" style="background:#056DE8"></span>主品牌色 <b>行途蓝 #056DE8</b> · <span class="swatch" style="background:#4A9EFF"></span>亮蓝提亮 #4A9EFF · <span class="swatch" style="background:#00D4FF"></span>青色辅色 #00D4FF · <span class="swatch" style="background:#FF6B35"></span>对比橙 #FF6B35（次要/警示）。</li>
+        <li>封面 SignalDistilled 用 <b>深空近黑底 + 单一主色</b>（亮蓝数字）——「暗室里一束被校准过的光」。</li>
+        <li><b>层级图要多色「跳色」</b>（①深蓝②亮蓝发光③紫④橙⑤青⑥绿），<span class="kw">禁同色系微渐变</span>（区分度低）。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>尺寸规范</h3>
+      <table class="mini">
+        <tr><th>用途</th><th>尺寸</th><th>说明</th></tr>
+        <tr><td>公众号头条封面</td><td><b>900 × 383</b>（2.35:1）</td><td>最终 PNG 常为 1800×766（@2x）</td></tr>
+        <tr><td>图片消息 / 贴图</td><td><b>900 × 900</b>（1:1 方形）</td><td>缩略图裁方形，横版会被裁变形</td></tr>
+        <tr><td>正文配图</td><td>900 × 580 / 470 / 560</td><td>按内容定，900 宽统一</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>封面审美（SignalDistilled · 信号蒸馏）</h3>
+      <ul class="clean">
+        <li>哲学：<b>剥离冗余、只留信号</b>——压倒性负空间 + 一个超大数字承载全部信息 + 文字压到最小只做锚点。</li>
+        <li>落地：超大「97.7%」（亮蓝、左对齐重量感）+ 微小「0.4%」（右下暗色注解，形成悬殊对比）+ 极细基线 + 克制标题副题。</li>
+        <li>通用规则：<b>大字号大留白、小图可读</b>；参考量子位/机器之心风格（大标题主导 + 深色纹理 + 单一图形焦点）。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============ 二、内容偏好 ============ -->
+  <div class="section">
+    <h2>二、内容偏好</h2>
+    <p class="desc">写作铁律 + 结构 + 标题 + 诚实与合规</p>
+
+    <div class="card">
+      <h3>写作铁律（6 条，长期有效）</h3>
+      <ul class="clean">
+        <li><b>真实为本</b>：核心差异化 = 一线工程实践 + 真实账单/数据，不追黑科技，胜在可信。</li>
+        <li><b>权威锚点</b>：用可查证的业内共识背书（Rich Sutton 2019 / Anthropic 2025 / Karpathy），<span class="kw">严禁编造大佬名言</span>。</li>
+        <li><b>思想经久</b>：卖「思想」不卖「配置/工具」——工具会变（Claude/Codex/WorkBuddy/豆包），思想跨工具成立。</li>
+        <li><b>SEO + AI 友好</b>：标题前 13 字含核心词、开头 100 字埋词、小标题含词、密度 2–4%、「一句话结论」做 GEO 锚点。</li>
+        <li><b>出书预备</b>：每篇攒「真实数据 + 可复现提示词 + 思想」，长期结集出书。</li>
+        <li><b>实践性强</b>：给能直接抄的清单/代码/配置，落「利他」。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>结构：3 段法（思想锚点 → 工具实现 → 思想升华）</h3>
+      <div class="flow">
+        <span class="step"><b>思想锚点</b>（开篇立理念）</span><span class="arrow">→</span>
+        <span class="step"><b>工具实现</b>（真实配置/实测）</span><span class="arrow">→</span>
+        <span class="step"><b>思想升华</b>（结尾金句呼应）</span>
+      </div>
+      <ul class="clean">
+        <li>每篇 <b>保 1 个「理念型」金句</b>（可引用记忆锚点），如「模型贵在想，不贵在搬」「省 token 不是让 AI 少说，是让 AI 少看」。</li>
+        <li>思想层 vs 工具层要分明，<b>「术」不混「道」</b>（方法论段压脚注，不占正文）。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>标题 & 诚实 & 合规</h3>
+      <ul class="clean">
+        <li><b>标题「讲道」</b>：要第一性原理感、一眼专业不明觉厉，不要纯数据钩子（boss 纠正过：数据钩子版 → 第一性原理版）。</li>
+        <li><b>诚实差异点</b>：不吹单边，如实写（如 GLM 缓存命中场景 DeepSeek 更便宜，照写）。</li>
+        <li><b>数据口径声明</b>：数量口径 vs 费用口径必须写清（0.4% 是数量，费用口径约 14.6%）。</li>
+        <li><b>数据脱敏</b>：公司/团队账单公开只留量级（上百亿 token / 几十个人），精确值 + 费用金额不公开。</li>
+        <li><b>私域钩子无条件</b>（公众号回复「六层」自取，无在看门槛，避诱导红线）。</li>
+        <li><b>返利邀请链接分平台</b>（公众号原文链接可放，掘金删，避「诱导交易」红线）。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============ 三、提示词偏好 ============ -->
+  <div class="section">
+    <h2>三、提示词偏好（人 + AI 协作方法论）</h2>
+    <p class="desc">跟 AI 协作产出内容时的提示词/工作流约定</p>
+
+    <div class="card">
+      <h3>写作协作提示词流水线</h3>
+      <div class="flow">
+        <span class="step"><b>AI 扒数据</b>（WebSearch 多源交叉）</span><span class="arrow">→</span>
+        <span class="step"><b>结构化提示词拆骨架</b></span><span class="arrow">→</span>
+        <span class="step"><b>人工定调补引用</b>（去 AI 味 / 定标题 / 补权威锚点）</span>
+      </div>
+      <ul class="clean">
+        <li><b>数据先问 boss 拿真实值</b>，不凭印象估（教训：曾把「195 亿 token」低估 100 倍写成「大几千万」）。</li>
+        <li><b>权威引用 WebSearch 核实</b>，严禁编造；<b>工具给 GitHub 链接 + 实时 star</b>（GitHub API 实时拉取，非猜非转述）。</li>
+        <li><b>图片用代码/HTML 精确排版</b>，不写文生图提示词（文生图只留照片/插画感场景）。</li>
+        <li><b>多 Agent 对抗审查</b>（adversarial-review，5 专家并行：IP/harness/token/UI 视觉/SEO 合规）交叉验证。</li>
+      </ul>
+      <div class="note"><b>提示词框架模板</b>已作为私域钩子资产（公众号回复「六层」自取）：六层落地清单 + token 踩坑卡 + 提示词框架模板——是「真实数据 + 可复现提示词 + 思想」出书预埋的一环。</div>
+    </div>
+  </div>
+
+  <!-- ============ 四、纠偏调优偏好 ============ -->
+  <div class="section">
+    <h2>四、纠偏调优偏好</h2>
+    <p class="desc">从「初稿 → 定稿」反复打磨中的纠偏轨迹与铁律</p>
+
+    <div class="card">
+      <h3>封面迭代链（13 版，纠偏轨迹）</h3>
+      <div class="iter">
+        <span class="it dropped">v1 朴素</span>
+        <span class="it dropped">v2 Geometric Silence</span>
+        <span class="it dropped">v3 SignalDistilled（"乱、格式不对"）</span>
+        <span class="it dropped">V-A 环形图</span>
+        <span class="it dropped">V-B 大数字</span>
+        <span class="it dropped">V-C 六层</span>
+        <span class="it dropped">V-D 金句</span>
+        <span class="it dropped">V-动漫</span>
+        <span class="it dropped">M1 左图右文</span>
+        <span class="it dropped">M2 动漫底浮层</span>
+        <span class="it dropped">G1 黄金比例</span>
+        <span class="it dropped">G2 主体优先</span>
+        <span class="it win">G3 内容展开 ✅ 最终</span>
+      </div>
+      <div class="note"><b>纠偏路径</b>：PIL 手排「乱」→ boss 要「亮堂点、科技点」→ 4 版亮色科技风 → 回归 SignalDistilled「信号蒸馏」深色大数字。教训沉淀为「HTML/CSS 排版 + Chrome 截图」永久规则。</div>
+    </div>
+
+    <div class="card">
+      <h3>多 Agent 审查真发现（7 处已修）</h3>
+      <ul class="clean">
+        <li><span class="kw">命令错误</span>：rtk 安装命令 `brew install rtk-ai/tap/rtk` → 实为 `brew install rtk`；`rtk init --global` → `rtk init -g`。</li>
+        <li><span class="kw">数据口径缺声明</span>：0.4%/97.7% 补「数量 vs 费用」blockquote。</li>
+        <li><span class="kw">实测口径</span>：Headroom「实测 20-95%」→「开源项目实测…随任务类型波动」。</li>
+        <li><span class="kw">概念窄化</span>：缓存读「常驻前缀」→ 扩为「对话历史/工具结果/系统提示词」。</li>
+        <li><span class="kw">图 1 视觉硬伤</span>：金句与 X 轴重叠、无网格 → 重做（Y 轴刻度 + 网格 + 金句移出）。</li>
+        <li><span class="kw">数字口径</span>：80% vs 94% 补「CodeGraph 官方另有 94% 口径」。</li>
+        <li><span class="kw">无出处数据</span>：遵从率 70-90% 补「随任务与表达方式波动，非精确值」。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>去 AI 味（de-ai-flavor，5 处改写 + 2 处保留）</h3>
+      <div class="before-after">
+        <div class="ba before"><span class="lbl">改写前（AI 味）</span>「工具会变，思想不变」「省 token 要依靠机制，不依靠嘱咐」「少而精胜于多而杂」「真正的杠杆是思想不是配置」「攒够了就是一本书」</div>
+        <div class="ba after"><span class="lbl">改写后（具体 + 数字 + 代价）</span>「同一套 hook，从 Claude Code 拆下来装到 Codex 照用不误」「20 条规矩实测只执行七到九成，不如上 hook」「128K 塞七成噪音不如 32K 干净」「配置三个月过期，思想今天还能用」「一周 1-2 篇，下篇拆检索层」</div>
+      </div>
+      <div class="note"><b>保留 2 处思想锚点</b>（有信息量、可引用）：「模型贵在想，不贵在搬」「省 token 不是让 AI 少说，是让 AI 少看」——对仗但信息密度高，是系列记忆锚点，不改。</div>
+    </div>
+
+    <div class="card">
+      <h3>其他纠偏铁律</h3>
+      <ul class="clean">
+        <li><b>标题纠偏</b>：数据钩子版 → 第一性原理「讲道」版（boss 明确「要讲道」）。</li>
+        <li><b>术不混道</b>：「附：我们怎么跟 AI 写这篇」整段删，压成文末脚注。</li>
+        <li><b>mermaid 必须转图</b>：公众号不显示 mermaid，用 PIL/HTML 自绘等价 PNG（比 mermaid.live 更可控）。</li>
+        <li><b>发布节奏</b>：双锚点（早 8:15 轻内容贴图 + 晚 20:00 深度长文），停凌晨 3 点发文习惯。</li>
+        <li><b>私域钩子去门槛</b>：「点在看后私信」→ 无条件回复（避诱导边缘）。</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <b>沉淀来源</b>：.workbuddy/memory/2026-08-27.md · 2026-08-28.md 工作日志；outputs/a0_省token总纲/（封面迭代 / 去 AI 味对照 / 发布描述包 / 正文）；outputs/b09_imgs/；outputs/glm53flash_imgs/<br>
+    本看板为「分析沉淀」交付物 · 四大类偏好已同步写入项目长期记忆 MEMORY.md §12
+  </footer>
+
+</div>
+</body>
+</html>

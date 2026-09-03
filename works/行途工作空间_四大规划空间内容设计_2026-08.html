@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行途工作空间 · 四大规划空间内容设计（自媒体专家视角）</title>
+<style>
+  :root{
+    --bg:#f7f8fa; --card:#ffffff; --ink:#1d2129; --sub:#5c6670; --line:#e5e6eb;
+    --brand:#2f54eb; --brand-bg:#eaf0ff;
+    --c07:#7c3aed; --c07bg:#f3edff;
+    --c08:#0e9f6e; --c08bg:#e7f7f0;
+    --c09:#d97706; --c09bg:#fdf3e7;
+    --c10:#0ea5e9; --c10bg:#e7f6fe;
+    --red:#e5484d; --redbg:#fdecec;
+    --ok:#0e9f6e;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.7}
+  header{background:linear-gradient(135deg,#1d2129,#2f54eb);color:#fff;padding:34px 28px 28px}
+  header h1{margin:0 0 6px;font-size:24px;letter-spacing:.5px}
+  header p{margin:0;opacity:.85;font-size:14px}
+  nav{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line);display:flex;gap:4px;flex-wrap:wrap;padding:10px 16px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+  nav a{font-size:12.5px;color:var(--sub);text-decoration:none;padding:6px 11px;border-radius:8px;white-space:nowrap}
+  nav a:hover{background:var(--brand-bg);color:var(--brand)}
+  main{max-width:1100px;margin:0 auto;padding:24px 18px 80px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin:18px 0;scroll-margin-top:60px}
+  h2{font-size:20px;margin:0 0 4px;display:flex;align-items:center;gap:10px}
+  h2 .tag{font-size:12px;font-weight:600;padding:3px 10px;border-radius:20px;color:#fff}
+  h3{font-size:15.5px;margin:20px 0 8px;color:var(--ink);border-left:4px solid var(--brand);padding-left:10px}
+  p,li{font-size:14px;color:var(--sub)}
+  .lead{color:var(--ink);font-size:14.5px}
+  .chip{display:inline-block;font-size:11.5px;font-family:var(--mono);background:#f0f2f5;color:#39424d;padding:2px 8px;border-radius:6px;margin:2px 4px 2px 0}
+  .chip.rule{background:var(--redbg);color:var(--red);font-weight:600}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:#fafbfc;color:var(--ink);font-weight:600}
+  td code{font-family:var(--mono);background:#f0f2f5;padding:1px 5px;border-radius:4px;font-size:12px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:14px 0}
+  .kcard{border:1px solid var(--line);border-radius:11px;padding:14px 16px;background:#fcfcfd}
+  .kcard h4{margin:0 0 6px;font-size:14px;color:var(--ink)}
+  .kcard p{margin:0;font-size:12.8px}
+  .wrap07{border-top:4px solid var(--c07)} .wrap08{border-top:4px solid var(--c08)}
+  .wrap09{border-top:4px solid var(--c09)} .wrap10{border-top:4px solid var(--c10)}
+  .tag07{background:var(--c07)} .tag08{background:var(--c08)} .tag09{background:var(--c09)} .tag10{background:var(--c10)}
+  .note{border:1px dashed var(--brand);background:var(--brand-bg);border-radius:10px;padding:12px 14px;font-size:13px;color:#1d3a8a;margin:12px 0}
+  .rednote{border:1px dashed var(--red);background:var(--redbg);color:#8a1f23}
+  .flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin:18px 0}
+  .flow .node{flex:1;min-width:140px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px;text-align:center;position:relative;margin:6px}
+  .flow .node b{display:block;font-size:13px;color:var(--ink)}
+  .flow .node span{font-size:11.5px;color:var(--sub)}
+  .flow .arrow{display:flex;align-items:center;color:var(--brand);font-size:20px;padding:0 4px}
+  .footer{font-size:12px;color:#9aa1ab;text-align:center;padding:20px}
+  .pill{font-size:12px;background:#f0f2f5;border-radius:6px;padding:2px 8px;color:#39424d}
+  ul.tight li{margin:3px 0}
+  .ok{color:var(--ok);font-weight:600}
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<header>
+  <h1>行途工作空间 · 四大规划空间内容设计</h1>
+  <p>资深自媒体专家视角 · 补充 07 调研 / 08 开源 / 09 台账 / 10 站点 的字段、SOP 与全链路闭环 · 2026-08</p>
+</header>
+
+<nav>
+  <a href="#expert">① 专家总论</a>
+  <a href="#s07">② 07 调研工作台</a>
+  <a href="#s08">③ 08 开源作品集</a>
+  <a href="#s09">④ 09 个人台账</a>
+  <a href="#s10">⑤ 10 个人站点</a>
+  <a href="#flow">⑥ 全链路闭环</a>
+  <a href="#redline">⑦ 红线与落地</a>
+</nav>
+
+<main>
+
+<!-- ① 专家总论 -->
+<section id="expert">
+  <h2>① 专家总论：四个空间不是文件夹，是自媒体资产运营中枢</h2>
+  <p class="lead">你现在的体系解决了"内容怎么生产"（02 仓库 / 03 工具箱 / workflows SOP）。但缺的是把<b>生产前置（调研）</b>、<b>生产外溢（开源）</b>、<b>资产沉淀（台账）</b>、<b>资产自有化（独立站）</b>这四块收口。补上 07–10，xingtu 才从"内容文件夹"升级成"自媒体资产运营系统"。</p>
+
+  <div class="grid">
+    <div class="kcard"><h4>🟣 07 调研 — 给生产供料</h4><p>解决"选题拍脑袋、热点追不上、工具链看不清"。每条调研必须落"可发选题"，喂给 02 灵感池。</p></div>
+    <div class="kcard"><h4>🟢 08 开源 — 给 IP 背书</h4><p>解决"作品集空泛"。开源是信任锚 + 反向引流钩子 + B2B 顾问背书（FEN-006）。</p></div>
+    <div class="kcard"><h4>🟠 09 台账 — 给资产体检</h4><p>解决"账号散、到期忘、收入糊"。账号/域名/收入/凭据全部台账化，每月盘点。</p></div>
+    <div class="kcard"><h4>🔵 10 站点 — 给自己留地</h4><p>解决"平台绑架焦虑"。公众号是租的地，独立站是自己的地，做内容永生 + 出海载体。</p></div>
+  </div>
+
+  <div class="note"><b>专家洞察：</b>四个空间的核心逻辑是 <b>"利他→信任→资产"</b>（FEN-001 信任成本铁律）的实体化。调研产出对准用户的内容，开源/站点沉淀可信作品，台账量化信任变现——它们共同把"行途"从一个写作者，运营成一个<b>可评估、可传承、抗风险的自媒体资产</b>。</div>
+</section>
+
+<!-- ② 07 调研工作台 -->
+<section id="s07" class="wrap07">
+  <h2><span class="tag tag07">07</span> 调研与情报工作台 · L0 沉淀 + L4 调研 SOP</h2>
+  <p class="lead">定位：所有"还没决定写不写"的情报先在这里加工，验证利他价值（FEN-001）后再进 <code>02_内容仓库</code> 灵感池。与 <code>05_竞品参考</code> 的区别：05 是被动剪藏的外部素材，07 是主动调研的<b>产出</b>。</p>
+
+  <h3>子结构规划</h3>
+  <table>
+    <tr><th>目录</th><th>用途</th><th>关键产物</th></tr>
+    <tr><td><code>选题调研/</code></td><td>选题可行性验证</td><td>选题卡（见下模板）、搜一搜可行性判断</td></tr>
+    <tr><td><code>工具链测评/</code></td><td>AI coding 工具实测</td><td>测评卡、推荐清单链接</td></tr>
+    <tr><td><code>市场竞品情报/</code></td><td>对标账号/赛道扫描</td><td>竞品情报表、差距分析</td></tr>
+    <tr><td><code>调研素材库/</code></td><td>网页剪藏/截图/数据</td><td>原始证据（防污染内容库）</td></tr>
+    <tr><td><code>调研任务模板/</code></td><td>可复用调研骨架</td><td>_TEMPLATE 选题卡 / 测评卡 / 情报表</td></tr>
+  </table>
+
+  <h3>🔧 选题调研卡模板（落地字段）</h3>
+  <table>
+    <tr><th style="width:22%">字段</th><th>说明 / 填写要点</th><th>关联规则</th></tr>
+    <tr><td>选题名</td><td>一句话痛点式标题（先不写标题，写"解决什么"）</td><td>—</td></tr>
+    <tr><td>目标平台</td><td>公众号 / 掘金 / CSDN / 小红书 / 知乎（单选主，多选辅）</td><td><code>PUB-004</code> 差异化</td></tr>
+    <tr><td>核心关键词</td><td>1 个，用于搜一搜长尾</td><td><code>PUB-001/002</code></td></tr>
+    <tr><td>长尾词 (2–3)</td><td>用户真实会搜的组合词</td><td><code>PUB-002</code></td></tr>
+    <tr><td>搜一搜可行性</td><td>已发竞品数 / 我的差异化角度是否唯一</td><td><code>PUB-003</code></td></tr>
+    <tr><td>对标账号</td><td>谁写过、写得怎样、差距在哪</td><td><code>05_竞品参考</code></td></tr>
+    <tr><td>差异化角度</td><td>我比他们多什么（一线实战 / 源码 / 踩坑）</td><td><code>IP-001</code></td></tr>
+    <tr><td>利他价值点</td><td><b>必须写清</b>：读者看完能抄什么作业</td><td><code>FEN-001</code> 信任成本</td></tr>
+    <tr><td>预估产出形式</td><td>文章 / 图文 / 视频 / 开源</td><td>—</td></tr>
+    <tr><td>优先级</td><td>P0 立刻写 / P1 本周 / P2 储备</td><td><code>STR-003</code> 排期</td></tr>
+    <tr><td>关联 STR 主线</td><td>挂靠 ≥70% 技术实战主线（STR-001）</td><td><code>STR-001</code></td></tr>
+  </table>
+
+  <h3>🔧 工具链测评卡模板</h3>
+  <table>
+    <tr><th style="width:20%">字段</th><th>说明</th></tr>
+    <tr><td>工具 / 版本</td><td>名称 + 版本号（AI coding 工具迭代快，版本必录）</td></tr>
+    <tr><td>场景</td><td>解决什么具体工作流（如"终端 Agent 代码生成"）</td></tr>
+    <tr><td>成本</td><td>免费 / 订阅价 / 按量（关联 09 资源台账）</td></tr>
+    <tr><td>优劣</td><td>实测结论，禁空谈，附截图证据</td></tr>
+    <tr><td>适用人群</td><td>新手 / 进阶 / 团队——对准目标用户（FEN-001）</td></tr>
+    <tr><td>是否进推荐清单</td><td>是→链接到发布内容；否→注明原因</td></tr>
+  </table>
+
+  <div class="note"><b>SOP 衔接：</b>调研任务走 <code>workflows/02_调研任务.md</code>。纪律底线——<b>每条调研必须落到至少 1 个"可发选题"</b>，否则只是收藏癖。可对接 <code>tools/ai_collab_miner.py</code> 的哲学：从你的实操会话里反向挖选题，而不是纯外部搜。</div>
+</section>
+
+<!-- ③ 08 开源与作品集 -->
+<section id="s08" class="wrap08">
+  <h2><span class="tag tag08">08</span> 开源与作品集 · L3 执行 + L4 开源 SOP</h2>
+  <p class="lead">定位：开源不是炫技，是 <b>IP 信任背书 + 反向引流钩子 + B2B 作品集</b>（FEN-006"专业内容即作品集"）。每个项目都是一篇天然选题。</p>
+
+  <h3>子结构规划</h3>
+  <table>
+    <tr><th>目录</th><th>用途</th></tr>
+    <tr><td><code>&lt;项目名&gt;/</code></td><td>每项目一子目录：源码 + README.md + 发布记录.md + 引流话术.md</td></tr>
+    <tr><td><code>仓库映射表.md</code></td><td>项目 ↔ 仓库 URL ↔ 解读文章 ↔ 引流入口 ↔ Star 目标</td></tr>
+  </table>
+
+  <h3>🔧 项目子目录模板</h3>
+  <ul class="tight">
+    <li><b>源码</b>：正式仓库（GitHub 等），此处放说明性副本或子模块引用</li>
+    <li><b>README.md</b>：开头一行定位 → 使用说明 → <b>结尾埋钩子</b>（"更多一线 AI 工程化实践见公众号「行途」/ 知识星球"）</li>
+    <li><b>发布记录.md</b>：版本 / 日期 / 更新点 / 对应发布文章</li>
+    <li><b>引流话术.md</b>：README 钩子文案、社媒发布文案、各平台差异化摘要（复用 PUB-004）</li>
+  </ul>
+
+  <h3>🔧 仓库映射表字段</h3>
+  <table>
+    <tr><th style="width:18%">字段</th><th>说明</th></tr>
+    <tr><td>项目名</td><td>与目录同名</td></tr>
+    <tr><td>仓库 URL</td><td>GitHub / Gitee 等</td></tr>
+    <tr><td>对应解读文章</td><td>发布后 24h 内必发"为什么做这个"（开源即选题）</td></tr>
+    <tr><td>引流入口</td><td>README 钩子 / 文末 CTA</td></tr>
+    <tr><td>Star 目标</td><td>量化里程碑（如 100 / 500 / 1k）</td></tr>
+    <tr><td>关联 STR</td><td>挂靠技术实战主线</td></tr>
+  </table>
+
+  <div class="rednote note"><b>红线（发前必查）：</b><span class="chip rule">SAF-006</span> 商业机密——<b>绝不提交任何任职公司代码、内部架构、未公开数据</b>。开源内容须"通用化改造"。<span class="chip rule">SAF-004</span> 不碰现雇主、不写可定位细节。</div>
+  <div class="note"><b>专家洞察：</b>开源项目 README 是<b>零成本获客入口</b>。一个被 Star 的工具，会在开发者搜相关词时反复曝光你——这是比公众号更"被动且精准"的流量。把它和 10 独立站、02 内容互相导流，形成"工具吸开发者→文章建信任→星球收口"的链路。</div>
+</section>
+
+<!-- ④ 09 个人台账 -->
+<section id="s09" class="wrap09">
+  <h2><span class="tag tag09">09</span> 个人台账 · L1 资产登记中心</h2>
+  <p class="lead">定位：把 <code>03_运营工具箱</code> 里零散的"账号资产台账"升级为<b>独立资产登记中心</b>。粉丝、域名、收入、凭据——一切会流失的资产，先登记再运营。</p>
+
+  <h3>子结构规划</h3>
+  <table>
+    <tr><th>台账</th><th>核心字段</th><th>盘点频率</th></tr>
+    <tr><td><code>自媒体账号台账.md</code></td><td>见下</td><td>每月</td></tr>
+    <tr><td><code>资源台账.md</code></td><td>域名(到期) / 服务器 / API Key(位置) / 订阅</td><td>每月 + 到期前提醒</td></tr>
+    <tr><td><code>资产与收入台账.md</code></td><td>各平台月度收入 / 星球 / 微信豆 / 合计</td><td>每月</td></tr>
+    <tr><td><code>凭据备忘.md</code></td><td><b>仅登记位置</b>，绝不存明文</td><td>变更即更</td></tr>
+    <tr><td><code>维护SOP.md</code></td><td>每月盘点步骤 + 应急（SAF-011）</td><td>—</td></tr>
+  </table>
+
+  <h3>🔧 自媒体账号台账字段（核心）</h3>
+  <table>
+    <tr><th style="width:20%">字段</th><th>说明</th><th>关联</th></tr>
+    <tr><td>平台 / 账号</td><td>平台名 + @昵称 + 账号 ID</td><td><code>PUB-009</code> 阵地</td></tr>
+    <tr><td>绑定位置</td><td>手机/邮箱<b>只记"在哪个号/哪个密码管理器"</b>，不记明文</td><td><code>SAF-003/011</code></td></tr>
+    <tr><td>粉丝数</td><td>月度记录，算增长曲线</td><td><code>FEN-005</code> 分层</td></tr>
+    <tr><td>认证状态</td><td>未认证 / 黄 V / 职业认证</td><td>—</td></tr>
+    <tr><td>变现权限</td><td>互选 / 蒲公英 / 花火 / 星图 / 赞赏</td><td><code>FEN-002</code></td></tr>
+    <tr><td>更新频率</td><td>实际发布节奏，对照 STR-003 排期</td><td><code>STR-003</code></td></tr>
+    <tr><td>最近活跃</td><td>日期，防"养废"账号</td><td>—</td></tr>
+    <tr><td>风险等级</td><td>高(主阵地)/中/低，指导精力分配</td><td><code>PUB-009</code></td></tr>
+    <tr><td>2FA 状态</td><td>是否开启双重验证（SAF-011）</td><td><code>SAF-011</code></td></tr>
+  </table>
+
+  <h3>🔧 资源台账要点</h3>
+  <ul class="tight">
+    <li><b>域名</b>：注册商 / 到期日 / 自动续费开关（域名过期 = IP 资产瞬间清零，最高危）</li>
+    <li><b>服务器/VPS</b>：厂商 / 配置 / 到期 / 用途（独立站 10 依赖）</li>
+    <li><b>API Key</b>：<b>只记"在哪个环境变量/密码管理器/哪条记录"</b>，正文绝不出现明文</li>
+    <li><b>订阅/会员</b>：飞书、各类 AI 工具订阅、CloudStudio 等，算月度成本</li>
+  </ul>
+
+  <div class="rednote note"><b>安全铁律：</b><code>09_个人台账/凭据备忘.md</code> 只能写"<b>位置</b>"（如"1Password 条目：xingtu-公众号-主邮箱"），<b>任何明文密码 / Token / 身份证号都禁止写入</b>。这与 SAF-003 安全第一、SAF-011 账号安全一致。台账文件建议 gitignore 或仅本地。</div>
+  <div class="note"><b>专家洞察：</b>把粉丝当"<b>可变现资产</b>"而非虚荣指标。台账的真正价值是算清<b>信任成本转化率</b>——多少粉丝、多少进了星球、多少产生收入。没有这个表，你永远不知道哪个平台值得加注。</div>
+</section>
+
+<!-- ⑤ 10 个人站点 -->
+<section id="s10" class="wrap10">
+  <h2><span class="tag tag10">10</span> 个人站点 · L3 执行 + L4 编排（网站即产品）</h2>
+  <p class="lead">定位：公众号是"租的地"（规则随时变、封号归零），独立站是"自己的地"。核心价值：<b>SEO 长尾永生 + 不被平台绑架 + 出海载体</b>（Dev.to / Substack）。</p>
+
+  <h3>子结构规划</h3>
+  <table>
+    <tr><th>目录</th><th>用途</th></tr>
+    <tr><td><code>site-source/</code></td><td>站点源码（静态框架，零成本优先）</td></tr>
+    <tr><td><code>domain-dns/</code></td><td>域名 / DNS / HTTPS 证书配置</td></tr>
+    <tr><td><code>deploy/</code></td><td>CI 自动部署配置（GitHub Pages / CloudStudio / Vercel）</td></tr>
+    <tr><td><code>content-sync/</code></td><td>公众号↔站点↔出海 同步 SOP + 脚本</td></tr>
+    <tr><td><code>monitoring/</code></td><td>uptime / SEO 排名 / 流量（umami 隐私友好）</td></tr>
+    <tr><td><code>运营笔记.md</code></td><td>联动策略、防封备份、迭代记录</td></tr>
+  </table>
+
+  <h3>🔧 技术栈建议（专家视角）</h3>
+  <div class="grid">
+    <div class="kcard"><h4>框架：静态优先</h4><p>Astro / Hugo / Next 静态导出。零服务器成本、易维护、SEO 友好。别一上来上重后端。</p></div>
+    <div class="kcard"><h4>部署：白嫖 CI</h4><p>GitHub Pages / CloudStudio / Vercel 自动构建。push 即上线，无需运维。</p></div>
+    <div class="kcard"><h4>统计：隐私友好</h4><p>umami 自托管 / Plausible，别用满屏追踪的 GA，符合 SAF-003 安全基调。</p></div>
+    <div class="kcard"><h4>搜索：自带 + RSS</h4><p>内置全文搜索 + RSS 订阅，把读者沉淀到站自有渠道。</p></div>
+  </div>
+
+  <h3>🔧 内容同步策略（核心 SOP）</h3>
+  <table>
+    <tr><th style="width:24%">步骤</th><th>动作</th><th>规则</th></tr>
+    <tr><td>① 公众号首发</td><td>拿原创、养搜一搜（PUB-003）</td><td><code>PUB-003</code></td></tr>
+    <tr><td>② 独立站全文</td><td>隔 6–24h 同步全文到站点，吃 SEO 长尾</td><td><code>PUB-003</code></td></tr>
+    <tr><td>③ 出海改写</td><td>精华改写英文发 Dev.to / Substack（记忆出海战略）</td><td>—</td></tr>
+    <tr><td>④ 站反哺号</td><td>站点文末挂公众号搜索词，把 SEO 流量导回搜一搜</td><td><code>PUB-009</code></td></tr>
+  </table>
+
+  <div class="note"><b>专家洞察（诺亚方舟逻辑）：</b>独立站最大的价值不是流量，是<b>抗风险</b>。哪天某个平台改算法 / 封号 / 限流，你的核心内容仍在自己地里。把公众号爆款同步到站，等于给每篇内容买了"永生保险"。同时它是出海（Dev.to/Substack）的统一母舰。</div>
+</section>
+
+<!-- ⑥ 全链路闭环 -->
+<section id="flow">
+  <h2>⑥ 全链路闭环：四个空间如何咬合</h2>
+  <p class="lead">它们不是并列文件夹，而是一条<b>资产增值流水线</b>。每个箭头都是一次"利他→信任→资产"的转化。</p>
+  <div class="flow">
+    <div class="node"><b>07 调研</b><span>供料：可发选题</span></div>
+    <div class="arrow">→</div>
+    <div class="node"><b>02 内容</b><span>生产：文章/图文</span></div>
+    <div class="arrow">→</div>
+    <div class="node"><b>03 分发</b><span>运营：多平台</span></div>
+    <div class="arrow">→</div>
+    <div class="node"><b>09 台账</b><span>量化：粉丝/收入</span></div>
+  </div>
+  <div class="flow">
+    <div class="node"><b>08 开源</b><span>背书：信任锚</span></div>
+    <div class="arrow">→</div>
+    <div class="node"><b>10 站点</b><span>自有：内容永生</span></div>
+    <div class="arrow">→</div>
+    <div class="node"><b>出海</b><span>Dev.to/Substack</span></div>
+    <div class="arrow">→</div>
+    <div class="node"><b>星球</b><span>收口：FEN-003</span></div>
+  </div>
+  <div class="note"><b>循环说明：</b>调研（07）喂内容（02）→ 分发（03）积累信任 → 台账（09）量化资产 → 开源（08）与站点（10）沉淀可信作品并反向引流 → 最终在知识星球（FEN-003）收口变现。开源和站点同时是 02/03 的<b>放大器</b>。整条链受 <code>rules/RULES.md</code> 的 SAF/PUB/FEN 编号约束。</div>
+</section>
+
+<!-- ⑦ 红线与落地 -->
+<section id="redline">
+  <h2>⑦ 红线提醒与落地建议</h2>
+  <h3>贯穿四个空间的红线（发前必查）</h3>
+  <table>
+    <tr><th>规则</th><th>在四个空间的具体体现</th></tr>
+    <tr><td><span class="chip rule">SAF-004</span> 四条红线</td><td>调研/开源/站点/台账所有对外内容，不碰雇主、不诉纠纷、不写可定位细节、不把情绪当主线</td></tr>
+    <tr><td><span class="chip rule">SAF-006</span> 商业机密</td><td>08 开源绝不提交公司代码；10 站点不泄露内部架构</td></tr>
+    <tr><td><span class="chip rule">SAF-003/011</span> 安全</td><td>09 台账凭据仅记位置；所有账号开 2FA</td></tr>
+    <tr><td><span class="chip rule">FEN-001</span> 信任成本</td><td>每条调研/开源/站点内容先问"对准谁、利他什么"</td></tr>
+    <tr><td><span class="chip rule">PUB-004</span> 差异化</td><td>同一内容跨平台（含站点/出海）必须改写，禁通稿</td></tr>
+  </table>
+
+  <h3>专家落地建议（优先级）</h3>
+  <ul class="tight">
+    <li><span class="ok">先建 09</span>：台账零成本、立刻防资产流失，且能为 10 站点/08 开源提供"成本-收入"数据底座。</li>
+    <li><span class="ok">再建 07</span>：调研模板直接提升 02 内容库的"可发选题"供给质量，短期 ROI 最高。</li>
+    <li><span class="ok">然后 08 / 10</span>：开源与站点需要持续投入，建议在有 1–2 个成熟工具/系列文章后再启动，避免烂尾。</li>
+    <li>所有新建仍走 <code>tools/safety/backup-before-op.sh</code> 先快照、<code>safe-delete.sh</code> 替代 rm，遵守你"不 rm -rf + 先备份"铁律。</li>
+  </ul>
+  <div class="note"><b>当前状态：</b>07–10 仍为<b>规划占位</b>（仅在 DIRECTORY.md 第九节登记），尚未创建目录。确认后我按上方优先级 + 安全承诺建骨架，并落地各空间的 <code>_TEMPLATE</code> 模板文件。</div>
+</section>
+
+<div class="footer">行途工作空间 · 四大规划空间内容设计（自媒体专家视角） · 单文件零依赖 · 与 HARNESS.md / RULES.md / 体系手册 同源 · 2026-08</div>
+</main>
+</body>
+</html>

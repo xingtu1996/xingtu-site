@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>个人 IP 出海与海外平台调研 · 2026-08</title>
+<style>
+  :root{
+    --bg:#f7f8fa; --card:#ffffff; --ink:#1f2329; --sub:#5b6470;
+    --line:#e6e9ef; --brand:#2f6df0; --brand2:#13b58a; --warn:#e8743b;
+    --gold:#e0a93b; --soft:#eef3ff; --soft2:#eafaf3; --soft3:#fff5ec;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.75;font-size:15px}
+  .wrap{max-width:1080px;margin:0 auto;padding:32px 20px 80px}
+  header{background:linear-gradient(135deg,#2f6df0,#13b58a);color:#fff;
+    border-radius:18px;padding:34px 32px;margin-bottom:26px}
+  header h1{font-size:27px;letter-spacing:.5px;margin-bottom:10px}
+  header p{opacity:.92;font-size:14.5px;max-width:780px}
+  .tag{display:inline-block;background:rgba(255,255,255,.2);border-radius:20px;
+    padding:3px 12px;font-size:12.5px;margin:8px 8px 0 0}
+  h2{font-size:21px;margin:38px 0 14px;padding-left:12px;border-left:5px solid var(--brand)}
+  h3{font-size:17px;margin:22px 0 10px;color:#2b3340}
+  h4{font-size:15px;margin:14px 0 6px;color:var(--brand)}
+  p{margin:8px 0}
+  .lead{background:var(--soft);border-radius:12px;padding:16px 20px;margin:14px 0;
+    border:1px solid #d7e3ff}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;margin:16px 0}
+  .pcard{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:18px 18px 16px;box-shadow:0 2px 10px rgba(20,40,80,.04)}
+  .pcard .ph{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+  .pcard h3{margin:0 0 2px;font-size:18px}
+  .ptype{font-size:12px;color:var(--sub);background:var(--soft);padding:2px 9px;border-radius:8px;white-space:nowrap}
+  .scores{display:flex;gap:14px;margin:10px 0 6px;font-size:12.5px}
+  .score{display:flex;align-items:center;gap:5px}
+  .bar{width:60px;height:7px;background:#e9edf3;border-radius:5px;overflow:hidden}
+  .bar i{display:block;height:100%;border-radius:5px}
+  .s-adapt i{background:var(--brand)} .s-feas i{background:var(--brand2)}
+  .kv{font-size:13.5px;margin:4px 0}
+  .kv b{color:#33405a}
+  .mono{background:var(--soft3);border-left:3px solid var(--gold);padding:8px 12px;
+    border-radius:0 8px 8px 0;margin:8px 0;font-size:13.5px}
+  ul{margin:8px 0 8px 20px} li{margin:4px 0}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;
+    background:var(--card);border-radius:10px;overflow:hidden;box-shadow:0 1px 6px rgba(20,40,80,.05)}
+  th,td{border:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
+  th{background:#eef2f8;color:#2b3340;font-weight:600}
+  tr:nth-child(even) td{background:#fafbfd}
+  .pill{display:inline-block;padding:1px 8px;border-radius:20px;font-size:11.5px;font-weight:600}
+  .p-hi{background:#eafaf3;color:#0f8f63} .p-mid{background:#fff5ec;color:#c4742a}
+  .p-lo{background:#fdecec;color:#c0392b} .p-must{background:#eef3ff;color:#2f6df0}
+  .band{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:14px 0}
+  .band.blue{background:var(--soft);border-color:#d7e3ff}
+  .band.green{background:var(--soft2);border-color:#cdeee0}
+  .band.gold{background:var(--soft3);border-color:#f3dcae}
+  .steps{counter-reset:s;list-style:none;margin:10px 0;padding:0}
+  .steps li{counter-increment:s;position:relative;padding:10px 12px 10px 44px;margin:8px 0;
+    background:#fff;border:1px solid var(--line);border-radius:10px}
+  .steps li::before{content:counter(s);position:absolute;left:12px;top:10px;width:24px;height:24px;
+    background:var(--brand);color:#fff;border-radius:50%;text-align:center;line-height:24px;font-size:13px;font-weight:700}
+  .note{background:#fbfaff;border:1px dashed #c4b8f0;color:#5a4b9c;border-radius:10px;
+    padding:12px 16px;margin:16px 0;font-size:13px}
+  .foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);color:var(--sub);font-size:12.5px}
+  .legend{display:flex;flex-wrap:wrap;gap:10px;font-size:12.5px;margin:8px 0 4px}
+  .legend span{display:flex;align-items:center;gap:5px}
+  .dot{width:11px;height:11px;border-radius:50%}
+  .flag{font-size:12px;color:var(--sub);margin:2px 0 6px}
+  @media(max-width:640px){.grid{grid-template-columns:1fr}header{padding:24px 18px}}
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap">
+
+<header>
+  <h1>个人 IP 出海与海外平台调研</h1>
+  <p>承接《个人IP平台全景与变现调研》——把视野扩展到<b>海外 / 出海</b>：YouTube、TikTok、X、Substack、Medium、Dev.to / Hashnode、LinkedIn、GitHub、独立站（AdSense + 联盟）、Patreon / Ko-fi。评估对「行途 / AI harness 实战派」IP 的适配性与可行性，并单列<b>出海收款与税务合规</b>专题。数据截至 2026-08。</p>
+  <div>
+    <span class="tag">视频：YouTube · TikTok</span>
+    <span class="tag">社交：X · LinkedIn</span>
+    <span class="tag">文章订阅：Substack · Medium · Dev.to · Hashnode</span>
+    <span class="tag">独立站：AdSense · 联盟营销</span>
+    <span class="tag">会员：Patreon · Ko-fi</span>
+  </div>
+</header>
+
+<div class="note">
+  <b>作者内部备注（发布前可删除）：</b>本文是出海战略底稿，不是直接发布稿。建议拆成 2 篇（海外平台横评 / 出海收款税务避坑），每篇保留「30% 独家数据与踩坑」过原创度。所有价格均为 2026-08 公开聚合数据，<b>上线前务必再核一遍官方页</b>——平台规则和美国税务条款月月变，W-8BEN / 预扣率尤其容易过时。
+</div>
+
+<h2>一、怎么读这份调研</h2>
+<div class="lead">
+  <p><b>适配性评分（蓝条）</b>：该平台的英文技术受众是否精准、能否沉淀信任、是否利于 harness / CLI 工具方向建立「国际实战派」人设。满分 5。</p>
+  <p><b>可行性评分（绿条）</b>：从 0 起步的门槛高低、是否需要硬粉丝门槛、内容制作与语言成本、能否被中国创作者直接运营。满分 5。</p>
+  <p>两个分都高 = 优先打；适配高可行低 = 值得投入但需沉淀；适配低 = 辅助或放弃。海外平台普遍<b>粉丝门槛高于国内</b>，且天然叠加「语言 + 收款 + 税务」三层成本。</p>
+</div>
+<div class="legend">
+  <span><i class="dot" style="background:#2f6df0"></i>适配性</span>
+  <span><i class="dot" style="background:#13b58a"></i>可行性</span>
+  <span><i class="pill p-hi">高</i>强烈推荐</span>
+  <span><i class="pill p-mid">中</i>可用/辅助</span>
+  <span><i class="pill p-lo">低</i>慎入/放弃</span>
+</div>
+
+<h2>二、海外平台全景速览（按适配性排序）</h2>
+<table>
+  <tr><th>平台</th><th>类型</th><th>适配性</th><th>可行性</th><th>对 harness IP 的一句话定位</th></tr>
+  <tr><td><b>GitHub</b></td><td>代码/影响力</td><td><span class="pill p-hi">5.0</span></td><td><span class="pill p-hi">5.0</span></td><td>开源工具即简历，国际同行信任的硬通货</td></tr>
+  <tr><td><b>Dev.to / Hashnode</b></td><td>技术文章</td><td><span class="pill p-hi">4.5</span></td><td><span class="pill p-hi">4.5</span></td><td>英文技术长尾 SEO，零门槛起号，被 Google 收录</td></tr>
+  <tr><td><b>YouTube</b></td><td>视频</td><td><span class="pill p-hi">4.5</span></td><td><span class="pill p-mid">3.0</span></td><td>全球最大技术视频池，AI 教程 RPM 高但 1000 粉门槛</td></tr>
+  <tr><td><b>Substack</b></td><td>邮件订阅</td><td><span class="pill p-hi">4.0</span></td><td><span class="pill p-mid">3.5</span></td><td>自有邮件列表自主变现，最适合做「出海版知识星球」</td></tr>
+  <tr><td><b>LinkedIn</b></td><td>职业社交</td><td><span class="pill p-hi">4.0</span></td><td><span class="pill p-hi">4.5</span></td><td>长文无需粉丝也能破圈，B2B / 招聘 / 咨询入口</td></tr>
+  <tr><td><b>X（Twitter）</b></td><td>社交/实时</td><td><span class="pill p-mid">3.5</span></td><td><span class="pill p-mid">3.5</span></td><td>AI 从业者实时舆论场，广告分成需 Premium</td></tr>
+  <tr><td><b>TikTok</b></td><td>短视频</td><td><span class="pill p-mid">3.0</span></td><td><span class="pill p-mid">3.0</span></td><td>破圈快但技术深度弱，适合 AI 工具「神操作」切片</td></tr>
+  <tr><td><b>Medium</b></td><td>文章聚合</td><td><span class="pill p-mid">3.0</span></td><td><span class="pill p-mid">3.5</span></td><td>算法分发被动流量，付费墙分成但归属平台</td></tr>
+  <tr><td><b>独立站</b></td><td>自有资产</td><td><span class="pill p-mid">3.5</span></td><td><span class="pill p-lo">2.5</span></td><td>AdSense + 联盟最长尾，但需自引流，冷启动难</td></tr>
+  <tr><td><b>Patreon / Ko-fi</b></td><td>会员打赏</td><td><span class="pill p-mid">3.5</span></td><td><span class="pill p-mid">3.0</span></td><td>出海版「付费社群」，靠前述流量收口，非获客入口</td></tr>
+</table>
+
+<h2>三、海外视频类</h2>
+<div class="flag">⚠️ 视频类天然叠加「英文配音/字幕 + 脚本打磨 + 剪辑」成本，对 harness 技术 IP 而言 ROI 不如图文，但 YouTube 是长尾复利之王。</div>
+
+<div class="grid">
+
+  <div class="pcard">
+    <div class="ph"><h3>YouTube</h3><span class="ptype">视频 · 全球</span></div>
+    <div class="scores">
+      <div class="score s-adapt">适配 <div class="bar"><i style="width:90%"></i></div></div>
+      <div class="score s-feas">可行 <div class="bar"><i style="width:60%"></i></div></div>
+    </div>
+    <div class="kv"><b>变现门槛（YPP）：</b>1000 订阅 + 4000 小时观看 / 或 1000 订阅 + 1000 万 Shorts 播放（90 天内）。</div>
+    <div class="kv"><b>广告分成（RPM）：</b>科技/编程类 RPM 约 $8–20（远高于娱乐类 $1–4），是 YouTube 变现最肥的赛道之一。</div>
+    <div class="kv"><b>频道会员：</b>$1.99–49.99/月；品牌合作 10K 粉约 $200–500/条（硬广更高）。</div>
+    <div class="mono"><b>对 harness IP 点评：</b>「Claude Code / Codex CLI 实战」「终端配置」「Agent 工作流」类长视频在 YouTube 有巨大长尾——一条爆款能持续 Months 带来订阅。但起号需先跨 1000 粉硬门槛，建议<b>先用 Dev.to / LinkedIn 沉淀内容，再搬运成视频</b>降低制作成本。</div>
+  </div>
+
+  <div class="pcard">
+    <div class="ph"><h3>TikTok</h3><span class="ptype">短视频 · 8 国</span></div>
+    <div class="scores">
+      <div class="score s-adapt">适配 <div class="bar"><i style="width:60%"></i></div></div>
+      <div class="score s-feas">可行 <div class="bar"><i style="width:60%"></i></div></div>
+    </div>
+    <div class="kv"><b>变现门槛（Creator Rewards）：</b>1 万粉 + 近 30 天 10 万合格播放（仅美/英/日/韩/巴/德/法/印尼等开通）。</div>
+    <div class="kv"><b>分成：</b>$0.4–1.2 / 1000 合格播放，远低于长视频 RPM。</div>
+    <div class="kv"><b>特点：</b>破圈极快但技术深度弱，算法偏爱「爽点前置」的 15–60s 切片。</div>
+    <div class="mono"><b>对 harness IP 点评：</b>适合把「一个命令搞定 X」「CC 接入 TokenHub 避坑」做成<b>神操作切片</b>引流到 YouTube / 独立站，本身变现弱。注意 TikTok 美国政策波动大，别把鸡蛋放这。</div>
+  </div>
+
+</div>
+
+<h2>四、海外社交与职业类</h2>
+
+<div class="grid">
+
+  <div class="pcard">
+    <div class="ph"><h3>X（Twitter）</h3><span class="ptype">实时社交</span></div>
+    <div class="scores">
+      <div class="score s-adapt">适配 <div class="bar"><i style="width:70%"></i></div></div>
+      <div class="score s-feas">可行 <div class="bar"><i style="width:70%"></i></div></div>
+    </div>
+    <div class="kv"><b>广告分成：</b>需订阅 X Premium（$8/月）+ 500 粉 + 近 3 月 500 万展现，分成比例约 50%（按广告曝光）。</div>
+    <div class="kv"><b>订阅（Subscriptions）：</b>X 抽约 20%；外部 Patreon 链接收 8–12% 平台费另算。</div>
+    <div class="kv"><b>生态位：</b>AI 从业者、实验室、工具作者的实时舆论场，发布快、讨论热。</div>
+    <div class="mono"><b>对 harness IP 点评：</b>作为「日更快讯 + 观点输出」阵地极合适——一条优质 thread 能引流到 Newsletter / GitHub。但纯靠 X 分成难养活，定位为<b>流量入口而非变现场</b>。</div>
+  </div>
+
+  <div class="pcard">
+    <div class="ph"><h3>LinkedIn</h3><span class="ptype">职业社交</span></div>
+    <div class="scores">
+      <div class="score s-adapt">适配 <div class="bar"><i style="width:80%"></i></div></div>
+      <div class="score s-feas">可行 <div class="bar"><i style="width:90%"></i></div></div>
+    </div>
+    <div class="kv"><b>门槛：</b>长文（Articles）/ 动态<b>无需粉丝也能被算法推给同行</b>，冷启动友好。</div>
+    <div class="kv"><b>变现：</b>不直接分成，但承接 B2B 咨询、招聘、出海合作、课程分销的天然入口。</div>
+    <div class="kv"><b>受众：</b>技术管理者、工程师、创业者——与「行途」双重身份（技术经理+写代码）高度同源。</div>
+    <div class="mono"><b>对 harness IP 点评：</b>几乎零成本、零门槛、且账号可信度极高。建议<b>每篇国内图文同步发一条英文 LinkedIn 长文摘要</b>，顺手吃国际曝光，是出海性价比最高的起步动作。</div>
+  </div>
+
+</div>
+
+<h2>五、文章 / 订阅类（出海版）</h2>
+
+<div class="grid">
+
+  <div class="pcard">
+    <div class="ph"><h3>Dev.to / Hashnode</h3><span class="ptype">技术文章 · 零门槛</span></div>
+    <div class="scores">
+      <div class="score s-adapt">适配 <div class="bar"><i style="width:90%"></i></div></div>
+      <div class="score s-feas">可行 <div class="bar"><i style="width:90%"></i></div></div>
+    </div>
+    <div class="kv"><b>门槛：</b>零粉丝即可发布，内容被 Google 收录，自带技术社区流量。</div>
+    <div class="kv"><b>变现：</b>平台本身不分成（Dev.to 靠社区），Hashnode 可绑定自定义域名 + 接 Newsletter。</div>
+    <div class="kv"><b>受众：</b>全球开发者，搜索「claude code tips」「aider workflow」等长尾词命中率高。</div>
+    <div class="mono"><b>对 harness IP 点评：</b>出海图文<b>第一站</b>。把国内掘金/CSDN 的精华重写成英文即可，几乎零额外成本，且能反哺 GitHub 星标与 Newsletter 订阅。Hashnode 还能当「出海版个人博客」用。</div>
+  </div>
+
+  <div class="pcard">
+    <div class="ph"><h3>Substack</h3><span class="ptype">邮件订阅 · 自主</span></div>
+    <div class="scores">
+      <div class="score s-adapt">适配 <div class="bar"><i style="width:80%"></i></div></div>
+      <div class="score s-feas">可行 <div class="bar"><i style="width:70%"></i></div></div>
+    </div>
+    <div class="kv"><b>抽成：</b>付费订阅抽 10%（走 Stripe / Apple 另算手续费）。</div>
+    <div class="kv"><b>核心资产：</b><b>自有邮件列表</b>——粉丝直接进你邮箱，不受平台算法绑架，是「出海版知识星球」。</div>
+    <div class="kv"><b>分发：</b>站内推荐 + 邮件送达，可同步发到 X / LinkedIn 引流。</div>
+    <div class="mono"><b>对 harness IP 点评：</b>最适合做海外私域收口。免费层养订阅者，付费层（$5–10/月）放「深度实战 SOP / 源码 / 榜单原始数据」，对标国内知识星球。<b>但 Stripe 2026 Q2 已关中国大陆个人主体</b>（见合规专题），需用海外主体或替代收款。</div>
+  </div>
+
+  <div class="pcard">
+    <div class="ph"><h3>Medium</h3><span class="ptype">文章聚合</span></div>
+    <div class="scores">
+      <div class="score s-adapt">适配 <div class="bar"><i style="width:60%"></i></div></div>
+      <div class="score s-feas">可行 <div class="bar"><i style="width:70%"></i></div></div>
+    </div>
+    <div class="kv"><b>变现：</b>Medium Partner Program 按阅读时长分成（需 Stripe 收款，同样受大陆主体限制）。</div>
+    <div class="kv"><b>分发：</b>算法 + 出版物（Publication）推荐，被动流量强但<b>归属平台</b>，读者不是你的。</div>
+    <div class="kv"><b>门槛：</b>写作门槛低，但中文作者英文文笔是隐性成本。</div>
+    <div class="mono"><b>对 harness IP 点评：</b>可当「被动流量试水」，但<b>不推荐作为主阵地</b>——订阅者不归你、分成受 Stripe 限制。更适合把 Medium 当 SEO 外链，引流到 Dev.to / Substack / 独立站。</div>
+  </div>
+
+</div>
+
+<h2>六、代码影响力与独立站</h2>
+
+<div class="grid">
+
+  <div class="pcard">
+    <div class="ph"><h3>GitHub</h3><span class="ptype">代码 · 硬通货</span></div>
+    <div class="scores">
+      <div class="score s-adapt">适配 <div class="bar"><i style="width:100%"></i></div></div>
+      <div class="score s-feas">可行 <div class="bar"><i style="width:100%"></i></div></div>
+    </div>
+    <div class="kv"><b>门槛：</b>零成本，开源项目即「国际简历」。</div>
+    <div class="kv"><b>变现：</b>GitHub Sponsors（直接赞助）+ 引流到课程/咨询/付费工具。</div>
+    <div class="kv"><b>杠杆：</b>把「project_indexer / tokenhub_bench」这类自研工具开源，星标即信任背书。</div>
+    <div class="mono"><b>对 harness IP 点评：</b>出海信任的<b>最强地基</b>。国际同行看你 GitHub 比看简历靠谱。建议把自研 harness 工具（索引器、榜单引擎）开源并写 README + 实战博文，形成「代码→文章→订阅」飞轮。</div>
+  </div>
+
+  <div class="pcard">
+    <div class="ph"><h3>独立站（AdSense + 联盟）</h3><span class="ptype">自有资产</span></div>
+    <div class="scores">
+      <div class="score s-adapt">适配 <div class="bar"><i style="width:70%"></i></div></div>
+      <div class="score s-feas">可行 <div class="bar"><i style="width:50%"></i></div></div>
+    </div>
+    <div class="kv"><b>AdSense：</b>CPM 约 $1–5（科技类偏高），靠自然搜索长尾流量变现，平台抽大头。</div>
+    <div class="kv"><b>联盟营销：</b>接 AI 工具分销（API 中转、云 GPU、海外订阅返佣），佣金优于广告。</div>
+    <div class="kv"><b>成本：</b>需自引流（SEO/社媒），冷启动最难，但资产 100% 归你。</div>
+    <div class="mono"><b>对 harness IP 点评：</b>长期主义选项。建议用 Hashnode / Astro 搭轻量站，前期靠 Dev.to + GitHub 引流，成熟后接联盟分佣。别一上来就砸独立站——<b>没有流量，AdSense 一分不赚</b>。</div>
+  </div>
+
+</div>
+
+<h2>七、出海会员 / 打赏（收口层）</h2>
+
+<div class="grid">
+
+  <div class="pcard">
+    <div class="ph"><h3>Ko-fi</h3><span class="ptype">打赏/会员</span></div>
+    <div class="scores">
+      <div class="score s-adapt">适配 <div class="bar"><i style="width:70%"></i></div></div>
+      <div class="score s-feas">可行 <div class="bar"><i style="width:60%"></i></div></div>
+    </div>
+    <div class="kv"><b>抽成：</b>免费档仅抽 5%；Gold 档 $6/年，<b>0% 抽成</b>。</div>
+    <div class="kv"><b>收款：</b>支持 PayPal（对中国创作者友好），一次买断/月捐/会员三模式。</div>
+    <div class="kv"><b>优势：</b>无粉丝硬门槛，网页即开即用，适合「请我喝杯咖啡」式轻打赏。</div>
+    <div class="mono"><b>对 harness IP 点评：</b>对比 Patreon 更适配中国创作者——<b>PayPal 可用 + 低抽成</b>。作为出海版「微信豆/知识星球」轻量收口，承接 YouTube / GitHub 的粉丝小额支持。</div>
+  </div>
+
+  <div class="pcard">
+    <div class="ph"><h3>Patreon</h3><span class="ptype">付费会员</span></div>
+    <div class="scores">
+      <div class="score s-adapt">适配 <div class="bar"><i style="width:70%"></i></div></div>
+      <div class="score s-feas">可行 <div class="bar"><i style="width:60%"></i></div></div>
+    </div>
+    <div class="kv"><b>抽成：</b>新创作者约抽 10%（Pro 档 12% / 高阶 15%），阶梯越高功能越多。</div>
+    <div class="kv"><b>门槛：</b>需先有流量（YouTube / Newsletter 粉丝）才有订阅者，本身不是获客入口。</div>
+    <div class="kv"><b>定位：</b>分层会员（免费资讯 → $5 源码 → $15 1v1），适合重度内容创作者。</div>
+    <div class="mono"><b>对 harness IP 点评：</b>比 Ko-fi 重、抽成略高，但会员分层更专业。建议<b>Ko-fi 做轻量打赏、Patreon 做深度会员</b>二选一即可，别两个都铺——分散订阅者反而稀释。</div>
+  </div>
+
+</div>
+
+<h2>八、出海合规专题（收款 · 税务 · 主体）</h2>
+<div class="band gold">
+  <h3>⚠️ 这块是出海的「隐形门槛」，比做内容更难也更关键</h3>
+  <p>海外平台给你美元，但钱回国要过三关：<b>平台收款主体 → 跨境税务 → 资金落地</b>。中国创作者最常见的坑是：内容做好了，钱收不回来，或因为没报税被预扣 30%。</p>
+</div>
+
+<h3>8.1 税务身份：W-8BEN 是必填项</h3>
+<table>
+  <tr><th>表格</th><th>适用对象</th><th>作用</th><th>不填的代价</th></tr>
+  <tr><td><b>W-8BEN</b></td><td>非美国个人创作者</td><td>声明「我是外国个人」，享受中美税收协定优惠（部分收入预扣降至 10%，股息/利息等可 0%）</td><td><span class="pill p-lo">预扣 30%</span></td></tr>
+  <tr><td><b>W-8BEN-E</b></td><td>外国公司主体（如 LLC / Pte Ltd）</td><td>公司身份享受协定优惠</td><td><span class="pill p-lo">预扣 30%</span></td></tr>
+  <tr><td><b>W-9</b></td><td>美国税务居民/身份</td><td>申报美国税务身份（中国创作者基本用不到）</td><td>—</td></tr>
+</table>
+<div class="band blue">
+  <p><b>关键提醒：</b>如果没有美国 ITIN（个人税号），平台通常会按<b> 24%–30% 预扣</b>。填好 W-8BEN 后，多数内容类收入（广告分成、订阅）可按中美协定降到 <b>10%</b> 甚至部分 0%。W-8BEN 每 3 年需更新，过期会自动恢复高预扣。</p>
+</div>
+
+<h3>8.2 关键盲区：平台预扣 ≠ 完税（两国双重申报）</h3>
+<div class="band gold">
+  <p><b>❌ 常见误解：</b>"平台扣了税，我的税就交完了。"——错。平台扣的是<b>付款国（主要是美国）的源头预扣税</b>，而你作为<b>中国税务居民，境外所得还要在中国申报一遍</b>，两国靠「税收抵免」衔接，不是平台替你包圆。</p>
+</div>
+<table>
+  <tr><th>层</th><th>谁扣 / 谁收</th><th>性质</th><th>对 boss 的含义</th></tr>
+  <tr><td><b>① 平台源头预扣</b></td><td>美国平台（YouTube / AdSense / TikTok / Substack US / Medium）</td><td>付款国联邦税，硬性的、自动的</td><td>没填 W-8BEN 预扣 30%；填了按中美协定降到 10%（部分 0%）</td></tr>
+  <tr><td><b>② 中国境内申报</b></td><td>中国税务机关</td><td>居民全球所得申报，主动的</td><td>用「境外已纳税额抵免」冲抵美国已缴部分（财政部 税务总局 2020 第3号公告）；超限额可 5 年内结转</td></tr>
+  <tr><td><b>③ 非美通道无预扣</b></td><td>Ko-fi(PayPal/Payoneer) / 直客咨询 / 欧盟联盟</td><td>可能无源头预扣</td><td>但中国申报义务仍在——没被美国扣 ≠ 不用在中国申报</td></tr>
+</table>
+<div class="mono"><b>一句话：</b>平台只代扣「付款国」的源头税，不是替你在本国完税。美国来源填了 W-8BEN 扣 10%（没填 30%）；钱回中国还要自行申报境外所得、用已缴税额抵免；非美通道连源头预扣都没有，全靠你主动申报。</div>
+
+<h3>8.3 收款通道：Stripe 关门，PayPal / 海外主体补位</h3>
+<div class="grid">
+  <div class="pcard">
+    <div class="ph"><h3>Stripe</h3><span class="ptype">⚠️ 大陆个人已关</span></div>
+    <div class="kv"><b>现状：</b>2026 Q2 起 Stripe 关闭<b>中国大陆个人主体</b>开户（企业主体仍可，但需合规资质）。</div>
+    <div class="kv"><b>影响：</b>Substack / Medium Partner / 很多 SaaS 收款默认走 Stripe——大陆个人创作者直接被卡。</div>
+    <div class="mono"><b>解法：</b>注册海外主体（见 8.3）用其 Stripe；或改用支持 PayPal 的平台（Ko-fi）/ 海外银行（如 Wise 企业户）。</div>
+  </div>
+  <div class="pcard">
+    <div class="ph"><h3>PayPal</h3><span class="ptype">✅ 中国可用</span></div>
+    <div class="kv"><b>优势：</b>中国个人可注册，是 Ko-fi / 直捐 / 联盟分佣最稳的落地通道。</div>
+    <div class="kv"><b>成本：</b>跨境收款手续费约 4.4% + 固定费，提现到国内银行有额度与申报要求。</div>
+    <div class="kv"><b>注意：</b>大额频繁入账需做「服务贸易外汇」申报，保留合同/平台流水备查。</div>
+    <div class="mono"><b>解法：</b>小额打赏/联盟用 PayPal 最省心；大额订阅收入建议走海外主体对公账户更合规。</div>
+  </div>
+</div>
+
+<h3>8.5 海外主体：把个人账户升级成「公司户」</h3>
+<table>
+  <tr><th>方案</th><th>成本/复杂度</th><th>适合谁</th><th>优点</th></tr>
+  <tr><td><b>爱沙尼亚 e-Residency</b></td><td>中（约 €100 申请 + 公司维护）</td><td>想合规开 EU 公司、用 Stripe</td><td>全线上、英语友好、欧盟数字公司</td></tr>
+  <tr><td><b>新加坡 Pte Ltd</b></td><td>较高（秘书 + 地址 + 年审）</td><td>计划做重资产配置</td><td>亚洲枢纽、税率低、银行体系成熟</td></tr>
+  <tr><td><b>美国怀俄明 LLC</b></td><td>低–中（注册便宜、无州税）</td><td>主攻英美市场、用 Stripe/美企服务</td><td>注册快、隐私好、可开美国银行户</td></tr>
+</table>
+<div class="band green">
+  <p><b>实操建议（按阶段）：</b>① 起步期（0–1 年）：用 <b>Ko-fi + PayPal</b> 轻量收小额，GitHub Sponsors 直接到账，暂不碰重税务；② 成长期（有稳定 $500+/月）：注册 <b>怀俄明 LLC 或爱沙尼亚 e-Residency</b> 开 Stripe，把 Substack / 会员迁移过去；③ 始终保留 <b>W-8BEN 有效</b>，收入来源国与居住地税务双合规。<b>具体落地请咨询持牌跨境税务顾问，本文不构成税务建议。</b></p>
+</div>
+
+<h3>8.4 银行卡与结汇落地（万事达卡定位 + 分阶段）</h3>
+<div class="band blue">
+  <p><b>先厘清：</b>「国际万事达储蓄卡 / 借记卡」处在钱流第③层（持卡消费 / 取现），<b>不是收款卡</b>。钱回国的主线是「平台收款 → 连连 / PingPong / Payoneer 机构结汇 → 国内银联卡」，国内普通银行卡（开个外币账户）就能接，<b>不强制需要万事达卡</b>。</p>
+</div>
+<table>
+  <tr><th>阶段</th><th>收款 / 落地方式</th><th>要不要办卡</th><th>关键费率 / 红利</th></tr>
+  <tr><td><b>0（现在）</b></td><td>PayPal + 国内银行卡（开外币账户）+ 连连 / PingPong 结汇</td><td>不办，国内卡即可</td><td>PayPal 中国直提人民币 2026 优惠期 0.5%（1/15–12/31）；连连 / PingPong 0.25%–3%</td></tr>
+  <tr><td><b>1（月 $100–1000）</b></td><td>办 Payoneer（中国个人可注册），收 AdSense / TikTok / 平台美元，提现国内卡</td><td>Payoneer 自带 Mastercard 预付卡（付海外订阅 / ATM 取现）</td><td>Payoneer 提现国内卡 ~1.2%</td></tr>
+  <tr><td><b>2（月 $500+ 或要 Stripe）</b></td><td>海外主体 + Mercury / Wise 美国账户</td><td>Wise 卡（功能受限：无美国 USD 账户）；Mercury 需美国 LLC</td><td>机构结汇不占个人 5 万美元额度</td></tr>
+</table>
+<div class="mono"><b>关键红利：</b>走 Payoneer / 万里汇 / PingPong / 连连等持牌机构「机构结汇通道<b>不占个人 5 万美元年度便利化额度</b>」（外管局 2020 指引 2026 重申：服务贸易凭交易电子信息不占额度）。创作者收入属服务贸易，保留平台流水作证明即可。想付 OpenAI / Copilot 等海外订阅 → Payoneer 卡或国内银行 Mastercard 多币种卡就够了，不用单独办海外万事达储蓄卡。</div>
+
+<h2>九、国内版 + 海外版组合建议</h2>
+<div class="lead">
+  <p>出海不是「放弃国内」，而是<b>把同一份实战内容做中英双语复利</b>。国内做信任与私域变现，海外做国际影响力与美元收入，两条线互不冲突、互相背书。</p>
+</div>
+<table>
+  <tr><th>层级</th><th>国内（信任+私域）</th><th>海外（影响+美元）</th><th>协同动作</th></tr>
+  <tr><td><b>内容生产</b></td><td>掘金 / CSDN / 公众号 深度图文</td><td>Dev.to / Hashnode 英文改写</td><td>一篇中文 → 一篇英文，双语沉淀</td></tr>
+  <tr><td><b>视频</b></td><td>视频号 / B站（中文）</td><td>YouTube（英文长视频）</td><td>国内切片先验证，爆款再搬 YouTube</td></tr>
+  <tr><td><b>社交引流</b></td><td>小红书种草</td><td>X + LinkedIn 实时观点</td><td>LinkedIn 同步摘要，零成本吃国际曝光</td></tr>
+  <tr><td><b>代码地基</b></td><td>—</td><td>GitHub 开源自研工具</td><td>星标反哺国内外信任背书</td></tr>
+  <tr><td><b>私域收口</b></td><td>知识星球 + 微信豆</td><td>Substack + Ko-fi</td><td>国内付人民币、海外付美元，双轨闭环</td></tr>
+</table>
+
+<h2>十、出海起步 Checklist</h2>
+<ul class="steps">
+  <li><b>第 0 步（今天可做）：</b>注册 GitHub、Dev.to、LinkedIn、Ko-fi——四个平台零门槛零成本，先把「行途」英文 profile 立起来。</li>
+  <li><b>第 1 步（内容复用）：</b>挑 3 篇国内最火的 harness 图文，改写成英文发 Dev.to + LinkedIn，验证英文受众反馈。</li>
+  <li><b>第 2 步（开源杠杆）：</b>把自研工具（project_indexer / tokenhub_bench）整理开源，写 README + 实战博文，启动星标飞轮。</li>
+  <li><b>第 3 步（视频试水）：</b>选 1 条国内验证过的爆款，做英文 YouTube 长视频 + TikTok 切片，跨 1000 粉 YPP 门槛。</li>
+  <li><b>第 4 步（订阅收口）：</b>开 Substack 免费 Newsletter 养订阅者；小额打赏走 Ko-fi + PayPal。</li>
+  <li><b>第 5 步（合规升级）：</b>月入稳定 $500+ 时，注册海外主体开 Stripe，迁移会员收入，并保持 W-8BEN 有效。</li>
+</ul>
+
+<div class="note">
+  <b>风险提示：</b>① 海外平台规则 / 美国税务条款变动频繁，本文数据截至 2026-08，上线前请复核官方页；② 跨境收款与税务涉及合规红线，<b>重大收入结构务必咨询持牌跨境税务顾问</b>；③ TikTok 美国等政策不确定性高，勿做单一依赖；④ 英文文笔是隐性门槛，可先用 AI 辅助翻译+人工润色，但核心观点须原创。
+</div>
+
+<div class="foot">
+  <p>本文档由「行途 / XingTu」内容战略内部调研生成 · 配套《免费大模型全景》《个人IP平台全景与变现调研》· 数据截至 2026-08，供战略参考，非发布稿。</p>
+  <p>引用来源：各平台 2026 官方创作者计划页、YouTube Partner Program、TikTok Creator Rewards、X Revenue Sharing、Substack / Medium / Dev.to / Hashnode 帮助中心、Stripe 主体政策更新、IRS W-8BEN 指引、爱沙尼亚 e-Residency / 怀俄明 LLC 公开资料。</p>
+</div>
+
+</div>
+</body>
+</html>

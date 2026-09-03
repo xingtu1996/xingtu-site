@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="jTy0Ab3NnAPuqQfGPSTsQr">
+<head data-page-node-id="fMI4dbB6npeQ6OcdGjZ058">
+<meta charset="UTF-8" data-page-node-id="QyQWOkzT87ejX5ze8jkBlD">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="DL6gcEyh0XW99YHXCP7U5M">
+<title>「六层」三件套 · 建仓与公众号配置规划</title>
+<style>
+  :root{
+    --blue:#056DE8; --lblue:#4A9EFF; --cyan:#00D4FF; --orange:#FF6B35;
+    --bg:#f5f7fa; --card:#ffffff; --ink:#1a2333; --sub:#5b6b83; --line:#e3e9f2;
+    --ok:#0a9e6b; --warn:#e8a200; --bad:#e5484d;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;padding:32px 20px}
+  .wrap{max-width:1080px;margin:0 auto}
+  .topbar{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--sub);margin-bottom:14px;flex-wrap:wrap;gap:6px}
+  .topbar .badge{background:var(--blue);color:#fff;padding:2px 10px;border-radius:20px;font-weight:600}
+  h1{font-size:26px;margin-bottom:6px;letter-spacing:.5px}
+  .subtitle{color:var(--sub);font-size:14px;margin-bottom:24px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-bottom:26px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:0 1px 3px rgba(20,40,80,.05)}
+  .stat .num{font-size:24px;font-weight:700;color:var(--blue)}
+  .stat .lbl{font-size:13px;color:var(--sub);margin-top:2px}
+  .sec{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:20px;box-shadow:0 1px 3px rgba(20,40,80,.05)}
+  .sec h2{font-size:18px;margin-bottom:14px;padding-left:11px;border-left:4px solid var(--blue)}
+  .sec h3{font-size:15px;margin:14px 0 8px;color:var(--ink)}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;margin:10px 0}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#f0f4fb;font-weight:600;white-space:nowrap}
+  .tag{display:inline-block;padding:1px 9px;border-radius:12px;font-size:12px;font-weight:600;white-space:nowrap}
+  .tag.ok{background:#e6f7f0;color:var(--ok)} .tag.warn{background:#fdf3e0;color:var(--warn)} .tag.bad{background:#fdeaea;color:var(--bad)}
+  .tag.blue{background:#e8f1fe;color:var(--blue)} .tag.orange{background:#fdeee6;color:var(--orange)}
+  .opt{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0}
+  .opt .box{flex:1;min-width:280px;border:1.5px solid var(--line);border-radius:12px;padding:14px 16px;cursor:default}
+  .opt .box.rec{border-color:var(--blue);background:#f5f9ff}
+  .opt .box h4{font-size:14px;margin-bottom:6px}
+  .opt .box.rec h4{color:var(--blue)}
+  .opt .box ul{margin:6px 0 0 18px;font-size:13px;color:var(--sub)}
+  .opt .box li{margin:3px 0}
+  .rec-mark{background:var(--blue);color:#fff;font-size:11px;padding:1px 8px;border-radius:10px;margin-left:6px;vertical-align:2px}
+  code{background:#eef2f8;padding:1px 6px;border-radius:5px;font-family:"SF Mono",Menlo,monospace;font-size:12.5px;color:#0b3d91}
+  pre{background:#f6f8fc;border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow-x:auto;font-size:12.5px;font-family:"SF Mono",Menlo,monospace;white-space:pre-wrap;margin:10px 0}
+  .quote{background:#f5f9ff;border-left:3px solid var(--lblue);padding:10px 14px;border-radius:0 8px 8px 0;font-size:13.5px;margin:10px 0}
+  .warnbox{background:#fdf3e0;border:1px solid #f2ddb0;border-radius:10px;padding:12px 16px;font-size:13.5px;margin:12px 0}
+  .flow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;font-size:13px;margin:10px 0}
+  .flow .step{background:#e8f1fe;color:var(--blue);padding:4px 12px;border-radius:18px;font-weight:600}
+  .flow .arr{color:#9aa9bd;font-weight:700}
+  .check li{margin:6px 0;font-size:13.5px;list-style:none}
+  .check li:before{content:"✔ ";color:var(--ok);font-weight:700}
+  .stepnum{display:inline-flex;width:22px;height:22px;background:var(--blue);color:#fff;border-radius:50%;align-items:center;justify-content:center;font-size:12px;font-weight:700;margin-right:6px}
+  .foot{color:#9aa9bd;font-size:12px;text-align:center;margin-top:10px}
+  .files{margin:10px 0}
+  .files .f{display:flex;align-items:center;gap:8px;padding:7px 12px;background:#f6f8fc;border:1px solid var(--line);border-radius:8px;margin:5px 0;font-size:13px}
+  .files .f .n{font-family:Menlo,monospace;font-size:12.5px;color:#0b3d91;font-weight:600}
+  .files .f .d{color:var(--sub);font-size:12px}
+  .dot{color:var(--orange);font-weight:700}
+</style>
+</head>
+<body data-page-node-id="ZDBO38eFJqbCenostKUAxb"><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap" data-page-node-id="tq2WRfr9Owy7EXuTj0OAqu">
+  <div class="topbar" data-page-node-id="xkEbbvSbZbUVIOzgWuYVM3"><span class="badge" data-page-node-id="M6aWQh8PBx3VxV66RVVCGt">行途 · 内容工厂</span><span data-page-node-id="Qc3zNWUv5iAtBagBC3FJoI">2026-09-02 · 状态：✅ 已拍板并落地（方案 A）</span></div>
+  <h1 data-page-node-id="CVhaUxeEH6ejBRiluCXMUF">「六层」三件套 · GitHub 建仓 + 公众号配置规划</h1>
+  <div class="subtitle" data-page-node-id="XSngBbAhUmHBvUktIeFNud">文章承诺「回复六层自取」→ 三件套已产齐 → 缺「载体 + 分发链路」。本规划定：放哪个仓、怎么欢迎 star、公众号怎么配。</div>
+
+  <div class="cards" data-page-node-id="jY4mK0q5PaeT9WiozVketS">
+    <div class="stat" data-page-node-id="bQJgpfLG22kOziHIHuorZP"><div class="num" data-page-node-id="YyCdXN9buFlMv02hU9Irif">15</div><div class="lbl" data-page-node-id="oxWcFuzfRPO1ODUGKavuUQ">文章承诺「回复六层」</div></div>
+    <div class="stat" data-page-node-id="syHgLXTCOmmVIVDwpJHmyN"><div class="num" data-page-node-id="vIBpQej7FFHlbfpA61dwDj">3</div><div class="lbl" data-page-node-id="QbfXrlxEgR05y1HMa7fffK">三件套文件（已产齐）</div></div>
+    <div class="stat" data-page-node-id="tiP45oIDKHyPJiHCZcx671"><div class="num" data-page-node-id="u21THMu30QAHMgdnpRRUNd">19</div><div class="lbl" data-page-node-id="SUmhcUY1kn52KnAhyff3mu">本地 Git 仓（18 干净待推送）</div></div>
+    <div class="stat" data-page-node-id="YSAfz7ephefbIl1fxWDG2S"><div class="num" data-page-node-id="QpuRV8sD04UwSLeQyQpC4t">300字</div><div class="lbl" data-page-node-id="K5uENz913VkYBiXtRClDED">公众号关键词回复上限（已核实）</div></div>
+  </div>
+
+  <!-- ① 现状 -->
+  <div class="sec" data-page-node-id="FrrGq9wQel2UihoPZym5FP">
+    <h2 data-page-node-id="nydP4CFUmdvjmKw1K7QAh6">① 现状：钩子已承诺，交付物缺口已补齐</h2>
+    <p style="font-size:14px" data-page-node-id="Vdiuj2DF1V5vpnf9bZFVIH">15 篇文章文末统一承诺：<b data-page-node-id="lkuSuoq5dmx8O2GqJMUbmY">「六层落地清单、token 优化踩坑卡、提示词框架模板都整理好了——公众号回复「六层」自取」</b>。此前三件套<b data-page-node-id="gJG1KypUZeDvvvsojiHUij">并不存在</b>——本次已按六层框架 + 真实工程素材（重构工程/中台工程 两个工程的 specs 与 session）产齐：</p>
+    <div class="files" data-page-node-id="ozyyl9hD4Iybn1S5PidBRH">
+      <div class="f" data-page-node-id="xS387bh6wTrpCLD8eB6Ek0"><span class="n" data-page-node-id="qv1DOlOnwoppFNKS9jkoyj">01_六层落地清单.md</span><span class="d" data-page-node-id="lLbUwrjPDRFNMhzI8VJDHn">8.9KB · 六层逐层「装什么/怎么配/怎么验证」+ 实测数字口径 + 先做哪层</span></div>
+      <div class="f" data-page-node-id="OvINC9sjEBK4XR6YchnPOl"><span class="n" data-page-node-id="YgMgO3atOECp7t1zgOpVuX">02_token优化踩坑卡.md</span><span class="d" data-page-node-id="uTtl3DmBrdKZUM4hKnJFo1">7.9KB · 17 条踩坑：现象→根因→解法，按层索引可检索</span></div>
+      <div class="f" data-page-node-id="c1H4Ou4OXW7mH2NyChYrKX"><span class="n" data-page-node-id="PgG4GjKbjlQ7bsozE8SQVw">03_提示词框架模板.md</span><span class="d" data-page-node-id="FchjVJwf7V7GTC6dACe4Dl">6.5KB · 六层规则模板全部可直接复制 + 附赠规则体检模板</span></div>
+    </div>
+    <div class="quote" data-page-node-id="Uj4E6gnCpqVKPI3ypCaRtS">三件套口径已对齐系列：每处数字标「实测 / 估算 / 引用」；含 8.5x→1.09x 自打脸案例；star 全部可核验（当日 API 实拉）。</div>
+    <div class="warnbox" data-page-node-id="LWUZEKVcrZ9yECTFIHe42z"><b data-page-node-id="FURXgEodGDg3vIlKVKilsl">⚠️ 内容风险自检通过</b>：全文无公司名 / 客户代号（某零售供应链·重构工程 / 某海事工程集团 / 某零售客户均未出现）/ 无内部架构细节 / 无真实账号。可公开。</div>
+  </div>
+
+  <!-- ② 载体 -->
+  <div class="sec" data-page-node-id="9WCDM9tttlonpAIRUP2MKD">
+    <h2 data-page-node-id="1XKaqIZRrG7m6iRwI2Fr5Y">② 载体方案：已拍板 = 方案 A（并入 xingtu-articles）✅</h2>
+    <div class="warnbox" style="background:#e6f7f0;border-color:#bfe8d8" data-page-node-id="viweEozmFfyb2ZmgwyTtQL">✅ <b data-page-node-id="e84XVIHeSBiQM8vuyGDHQP">2026-09-03 已落地</b>：`toolchain-practice/token-saving/` 目录已建（README + 3 份资料），commit `961b737` 已 push 至 GitHub 公开仓；直达页 HTTP 200 实测可达。<br data-page-node-id="b7xBQ2J09a2BAcDaW9uyvT">📎 公众号回复 URL：<code data-page-node-id="rh6L0bARddaNSOrnqTpLmo">github.com/xingtu1996/xingtu-articles/tree/main/toolchain-practice/token-saving</code></div>
+    <div class="opt" data-page-node-id="XoHgTTOCFSb5TDP5shBMPZ">
+      <div class="box rec" data-page-node-id="PGp8FDrCAfSuLAIq5utOgl">
+        <h4 data-page-node-id="EBVhoFBxqfmRQBqVuWJEC7">方案 A：并入 <code data-page-node-id="YntVXt1RT76wiUb6rDHh09">xingtu-articles</code> 文章仓 <span class="rec-mark" data-page-node-id="yB4BcPWgEjgACiDpF7vzGE">推荐</span></h4>
+        <ul data-page-node-id="rZ5IB1ptpJGj8pljCV0dJj">
+          <li data-page-node-id="l5yYcu1blD67UnLAo9jUvR">该仓已公开（9/2 转 public），定位「文章资产仓」，B02/B09 两篇省 token 文已在内</li>
+          <li data-page-node-id="FG3Wu04td5lZ5Q3u0EjCKX">三件套是文章的「配套资源」，同仓同主题，读者从文章跳转自然</li>
+          <li data-page-node-id="J99BfgZn6jjwcXICl8kalP">不新增仓库——本地 19 仓已够多，少一个要维护的对象</li>
+          <li data-page-node-id="LY9tWOb1FVN1IBXytg9pi8">新增 <code data-page-node-id="cvHZdFmm1dspKUCOrHWGAZ">token-saving/</code> 目录 + 仓内 README 加「欢迎 ⭐」引导</li>
+        </ul>
+      </div>
+      <div class="box" data-page-node-id="pR92AaGyc3rf5EzPLLf5T9">
+        <h4 data-page-node-id="DbRa0BpoV6neeGHpSSfxp4">方案 B：新建独立仓 <code data-page-node-id="v4YKjtUio1ncwcixFISVEb">xingtu-sheng-token</code></h4>
+        <ul data-page-node-id="v778QAScVLIATuHz603SF3">
+          <li data-page-node-id="wqW3r3sBSuW46SQGGkNdZc">1 项目 1 仓库铁律：系列文章 + 三件套自成一体，SEO 关键词更聚焦</li>
+          <li data-page-node-id="Af53PVREe5Q0UmR3TAhOsr">代价：又新增一个本地仓，与 boss「仓库已多、都要跟得上」的顾虑相悖</li>
+          <li data-page-node-id="5o1U2TwDCvnQ5dvPcrs0qg">适合未来要做独立开源产品（如把五关流水线开源）时再拆</li>
+        </ul>
+      </div>
+    </div>
+    <table data-page-node-id="DvdMyC6kYe1nWFsTLKFfLx">
+      <tr data-page-node-id="jC7FpyOtfIFmHzhodBBT1p"><th data-page-node-id="gCg4J1dCB9Uv0KCa2LOpSC">维度</th><th data-page-node-id="SUMDDKTglBNLZd6dwb5EcM">A：并入 xingtu-articles</th><th data-page-node-id="RLpawE9BHLyBbU7Fyr3ppq">B：新建独立仓</th></tr>
+      <tr data-page-node-id="NYBG0NroTj3SWGyruFN9jC"><td data-page-node-id="usV3uWRgq9jiLZhW4pnNkS">仓库数负担</td><td data-page-node-id="NLvnPhiCGDlOOpRZZ88hsc"><span class="tag ok" data-page-node-id="kbM0qElRZGsIJ6gypKuuu2">不加</span> 维持 19 仓</td><td data-page-node-id="IyQBRyJF6ndB6Xd7l3t5pZ"><span class="tag warn" data-page-node-id="FfBrTNac4wWVKIllD324Eg">+1</span> 本地+远程各多一仓</td></tr>
+      <tr data-page-node-id="LgKiN2WFKBY2MHuGJw3tzG"><td data-page-node-id="CnCXadXXWWvEoNAypwq1dM">读者路径</td><td data-page-node-id="ygvNQV9bjAHspdZKAzJvbF">文章 → 回复六层 → GitHub 仓内目录，主题相关文章可顺带逛</td><td data-page-node-id="WRM4rGKN7stB5X4d93M35N">单一三件套 landing，聚焦但孤立</td></tr>
+      <tr data-page-node-id="1qQ4gGUi1myT4U99PHqpZn"><td data-page-node-id="UTnQuKZp7HSTIcAzQhZ8Cn">SEO / 搜一搜</td><td data-page-node-id="O0zX0upjcYv6RsfQXQ1QI8">借文章仓既有收录权重</td><td data-page-node-id="R3GbYXXgCESHsByT3PiLQT">新仓需从 0 攒</td></tr>
+      <tr data-page-node-id="MEKt6WNa1yDhHtHdaKTGZj"><td data-page-node-id="uS9Yd2fvJL9afV1QIJ80qy">与「系列」定位</td><td data-page-node-id="d58lrSam9RDYJqnKkirwte">文章资产仓 = 天然归宿</td><td data-page-node-id="EO0ivG4nBoqKcKfn7t2WW1">更像产品仓</td></tr>
+      <tr data-page-node-id="JkbhX4OmWamhj0J12YHXbC"><td data-page-node-id="haOcipkDYsIxbT8G2F97dc">落地成本</td><td data-page-node-id="i032eS58Jm2tzO2iDSJZHT">建目录 + 移文件 + push（<b data-page-node-id="CESL45bDQJOyEAaB7jwRB9">低</b>）</td><td data-page-node-id="fMe4rISsWmfCpzyjsONH9b">gh repo create + README + push（低但多一步）</td></tr>
+    </table>
+    <div class="quote" data-page-node-id="SlcIWrH2Fs9oa8HmucoujR">倾向 <b data-page-node-id="sAqF77SpLe6xhhBiLSvdlJ">A</b>：三件套本质是「文章的配套资料」，放进文章仓天经地义；且 boss 强调本地仓要跟得上——少建仓 = 少维护。若未来做「独立开源产品」再拆仓不迟。</div>
+  </div>
+
+  <!-- ③ 公众号配置 -->
+  <div class="sec" data-page-node-id="fiDpIG5c4Uyvqhgk6BzoWZ">
+    <h2 data-page-node-id="UnKz469NfY8ljbSQ2le8dw">③ 公众号自动回复配置（关键词「六层」）</h2>
+    <h3 data-page-node-id="1EMUshoHndFIxSeogGPHOZ">已核实口径（2026-09-02 多源）</h3>
+    <table data-page-node-id="amPpvKYLl3h4LpCEGk8zR5">
+      <tr data-page-node-id="kgh3qhBiwAm3QSYX9pgB1m"><th data-page-node-id="VTWQ4aP6cBbDLCxp0wnOGp">项</th><th data-page-node-id="H1BKDDryIg4gL82M0Dr7Cu">结论</th><th data-page-node-id="MDk3S4nwlMo3a1R5PBsWHa">备注</th></tr>
+      <tr data-page-node-id="nlDyhomgqtVj5ch8FPF35p"><td data-page-node-id="NUdrvgzFUpYKnfjSk7ym94">关键词自动回复</td><td data-page-node-id="oruKHju8pum50OCdN4doYG"><span class="tag ok" data-page-node-id="xTynuH4iVyqX3UwFdCcEsE">未认证个人号可用</span></td><td data-page-node-id="c9g4semZrEIfkMIETzS6iv">认证/未认证均可设置，非接口权限</td></tr>
+      <tr data-page-node-id="Sjj8kzQmI7gsKIP10idAoJ"><td data-page-node-id="aO4EYVOjyMWbqxTp9VFrhO">单条文本上限</td><td data-page-node-id="vVmgx9K4rlqxevaceV4s23"><b data-page-node-id="cuTThGfDjma0WzJRZh41Kj">300 汉字</b></td><td data-page-node-id="8yEHPm6hfEu6a6Imz2YtIi">每条回复 ≤300 字（多源一致）</td></tr>
+      <tr data-page-node-id="GXG54ehEBdBUfWkIlRXNe8"><td data-page-node-id="DnNSlsryBPZHYSespxyJLc">文字可带 URL</td><td data-page-node-id="B05b0Sk4wqI4GYCyMBmzmu"><span class="tag ok" data-page-node-id="FO6po3jKDy4XhiuP5KFOxp">可放裸链接</span></td><td data-page-node-id="nAxZOHQU5CviFWccN9uXdz">微信自动识别 http(s) 为可点击；<b data-page-node-id="Dk1gVTLEh6H1dcOztAN0ED">不支持锚文本超链接</b></td></tr>
+      <tr data-page-node-id="s7UcJo2DFp0hqAiTtnKSK2"><td data-page-node-id="vNxPD0OBvjywxa41Y1JZns">规则数 / 关键词数</td><td data-page-node-id="HfQ6hLGgngJ3oAkGLKA34o">200 规则 × 每规则 10 关键词 × 5 回复</td><td data-page-node-id="DjGrT2oJOwGJHCXjo6Fidb">本文案 1 规则 1 关键词 1 回复即可</td></tr>
+      <tr data-page-node-id="haawbPoUCceBpHC6XQefUl"><td data-page-node-id="fJBsSLoyTUcOSlgZxMvUnS">匹配方式</td><td data-page-node-id="PTzuOodhqL2Bs2AGiLjpFk">建议「半匹配」</td><td data-page-node-id="Vc83HYaHtdEEdLsyOtcUSW">读者发「六层」「六层三件套」均触发</td></tr>
+      <tr data-page-node-id="7OyVzA8RKjDXBcMW3oVD4C"><td data-page-node-id="usMlevypPOBSQE1PVHAy2y">回复素材类型</td><td data-page-node-id="20eYeAtG6CNApTAffvdW2l">文字 / 图文消息均可</td><td data-page-node-id="8zTRJDUaJIoz3f5Okw4hiV">图文卡片体验更佳，但需先建图文素材</td></tr>
+    </table>
+
+    <h3 data-page-node-id="bpEPQyvBsGeuG0eavultvX">建议配置（文字回复，够用且最快落地）</h3>
+    <p style="font-size:13px;color:var(--sub);margin-bottom:4px" data-page-node-id="xui0Iw1sifjHUAOB2MktUg">回复文案成稿（约 110 字，含换行，复制即用）：</p>
+    <pre data-page-node-id="EGNjky1NB5P3kN6xvNkUgm">六层三件套来啦 👇
+① 六层落地清单（装什么 · 怎么配 · 怎么验证）
+② token 优化踩坑卡（17 条真实踩坑，可检索）
+③ 提示词框架模板（六层规则，直接复制）
+
+👉 GitHub 仓库自取（欢迎 ⭐ Star，行途持续更新）：
+https://github.com/xingtu1996/xingtu-articles</pre>
+    <div class="warnbox" data-page-node-id="S18beEEtY8KER4rzSvZsqQ">⚠️ 补一句：URL 建议指向<b data-page-node-id="XJexKSEPCLPIFCGGZSefvh">三件套目录直达页</b>而非仓首页（见下「目录建议」），读者少点一层。若未来上线资料库/域名，可换更短链接。</div>
+
+    <h3 data-page-node-id="NdxB1jTjWeJzdR6tfCg6FC">后台操作路径（人工一步，约 3 分钟）</h3>
+    <p style="font-size:14px" data-page-node-id="cAPMGoXYmc9IeZ3GRvVEwX">
+      <span class="stepnum" data-page-node-id="zDTGmbGt0q4TvpBlDHSDLp">1</span>登录 mp.weixin.qq.com → 左侧「功能」→「自动回复」<br data-page-node-id="rLcNozlGittzAyKMoxSRAX">
+      <span class="stepnum" data-page-node-id="hRvbXOLO8JIxbLUqWHQmgn">2</span>切「关键词自动回复」→「添加规则」<br data-page-node-id="pEMMIJhkEUPSgBpl8GuKA9">
+      <span class="stepnum" data-page-node-id="620zQ2oH684v6yte7UATs4">3</span>规则名：<code data-page-node-id="HVVqKYk6AJlUGvPyhvXxGw">六层三件套</code>；关键词：<code data-page-node-id="Eaxe7jkqnRGp0P2utSIa3J">六层</code>（回车分隔可加 <code data-page-node-id="J4E8r4QqZWAoi2zf5P2lxv">六层三件套</code>）<br data-page-node-id="QPdl3y4ZvcFFqi0mqpoKWk">
+      <span class="stepnum" data-page-node-id="ehR4Ge8MqSYQhxvuSiacpU">4</span>匹配方式：<b data-page-node-id="Fh6qeUuzFMmUXvBOLClBU8">半匹配</b>（未全匹配）<br data-page-node-id="UsDcwS6uyXzEK4ypyyl1Om">
+      <span class="stepnum" data-page-node-id="IsoUfNwaDqMtrQIzH83xCt">5</span>回复：选「文字」，粘贴上方文案 → 保存<br data-page-node-id="HaEhCesXS9fmVsqesXVhhY">
+      <span class="stepnum" data-page-node-id="CamaImzlsBNfohz7ibyY46">6</span>用另一个微信发「六层」实测（约 5 秒延迟属正常）
+    </p>
+  </div>
+
+  <!-- ④ 目录与本地同步 -->
+  <div class="sec" data-page-node-id="3K0q7fhFx2NXgLSD5NGUcH">
+    <h2 data-page-node-id="QawiKNQJtTCPdd5uDHOREg">④ 仓库目录建议 + 本地同步清单</h2>
+    <h3 data-page-node-id="vZ0DKwopDEPBj37cf248jZ">xingtu-articles 仓内新增结构（方案 A）</h3>
+    <pre data-page-node-id="ORO5rRaBGEdadTb9H4NYF3">toolchain-practice/
+├── B02-ponytail-73-percent-less-code.md   （已有）
+├── B09-claude-code-token-saving.md        （已有）
+└── token-saving/                          ← 新增目录（三件套）★
+    ├── README.md                          ← 目录入口：三件套简介 + 公众号钩子 + ⭐引导
+    ├── 01_六层落地清单.md
+    ├── 02_token优化踩坑卡.md
+    └── 03_提示词框架模板.md</pre>
+    <p style="font-size:13.5px" data-page-node-id="zgZzeGjKY3CRj9BaITn2JI">自动回复 URL 建议用：<code data-page-node-id="3JMW44GVdwN4yn48dTQvVD">github.com/xingtu1996/xingtu-articles/tree/main/toolchain-practice/token-saving</code></p>
+
+    <h3 data-page-node-id="VGruGI0vxHDbDQZjc5L6JC">本地 19 仓同步体检（2026-09-02 实测）</h3>
+    <table data-page-node-id="xGLfyv9upKDmPjgZMSKOBs">
+      <tr data-page-node-id="OLkUMbg93VgL8RnEpgPdIK"><th data-page-node-id="6ByB8A11KLp05RMwd7nc0u">状态</th><th data-page-node-id="a0RZcv6IPRdjQ6hqyuBGIO">数量</th><th data-page-node-id="jYBuc4S1VT8tlwLVXARd3V">仓库</th></tr>
+      <tr data-page-node-id="AlSYqy5A2bV6C73Slo45fs"><td data-page-node-id="XtKAaDvgBgvN3yGx53Vw1m"><span class="tag ok" data-page-node-id="k2cGXCqOScXBisBYEHY0r0">已干净 · remote 正常</span></td><td data-page-node-id="pibQUaXqDr848HMJZe90sb">18</td><td style="font-size:12px;word-break:break-all" data-page-node-id="4Vl5OKEeWx2cdIcgxJ2uaj">dsh-xingtu-skills / tokenhub-bench / xingtu-ai-engineering / xingtu-articles / xingtu-book / xingtu-cli / xingtu-github-io / xingtu-harness / xingtu-hooks / xingtu-mcps / xingtu-rules / xingtu-sdd / xingtu-site / xingtu-skills / xingtu-tools / xingtu-video / xingtu1996 / xingtu-github-io</td></tr>
+      <tr data-page-node-id="MTWL3H20BRFZA2I01gXw57"><td data-page-node-id="IUEM2gGM8WkvokdcC21Oud"><span class="tag bad" data-page-node-id="eK3E2Q7qrO73lU6DZLdM2Q">dirty=788 未提交</span></td><td data-page-node-id="awh2eg39CYpgBoR0gpvZ9j">1</td><td data-page-node-id="tNpjyaQ7SNuEMseCyt1XZg">xingtu-vault（私有知识库，常态未提交——内容在本地持续增长，按需提交即可，<b data-page-node-id="0jUBXxpVjtTiDZU8YpKVGx">不阻塞本任务</b>）</td></tr>
+      <tr data-page-node-id="7ajbnQHVrDBS8o5HZNV0fi"><td data-page-node-id="CMWQMdI1tS4qTsCTHIjPGr"><span class="tag warn" data-page-node-id="PNtA3Edg4NQ4rzmHyklVBy">非 Git 仓</span></td><td data-page-node-id="f3ZhTnEux50NYkWpBaOFdj">1</td><td data-page-node-id="loa3f6RwqMWh8WWUaTBXWr">books（本地书目，无需同步）</td></tr>
+    </table>
+    <div class="quote" data-page-node-id="ZA21VzLlQb4N7R9RWaYCuO">结论：本地 18 仓 remote 齐全且工作区干净——「跟得上」的唯一动作 = 本次改动 push 一次。xingtu-vault 的 788 个未提交项属知识库常态，需 boss 另行决定提交策略。</div>
+  </div>
+
+  <!-- ⑤ 执行序 -->
+  <div class="sec" data-page-node-id="flycda8BNSsaNQaqUcg1kh">
+    <h2 data-page-node-id="jJIJA1eLE1mbI6VNeqUnrb">⑤ 执行序（拍板后一次跑完）</h2>
+    <div class="flow" data-page-node-id="rZHyUFVpghjTjir19O3m4S">
+      <span class="step" data-page-node-id="7xAgynrHxpuGQ4MlEO1Vhr">1 建目录 + README</span><span class="arr" data-page-node-id="4b7Ls9aK2J3ODSKA1yFUhW">→</span>
+      <span class="step" data-page-node-id="d0exszUZLL1h74cq8KvRgV">2 移入三件套</span><span class="arr" data-page-node-id="h4ovaobF5DmUR9lqXISMrD">→</span>
+      <span class="step" data-page-node-id="I0lrE6FPIdJj1WLSNJp1Cc">3 仓 README 加钩子</span><span class="arr" data-page-node-id="AWd9broG0msxLI0jXj3jO1">→</span>
+      <span class="step" data-page-node-id="IDy75vFFzxFko39saJumOH">4 commit + push</span><span class="arr" data-page-node-id="0oCF8ZRVWG32Bg8YgladeH">→</span>
+      <span class="step" data-page-node-id="u0GnDjzMwteH1dWasTWjy9">5 核对 GitHub 直达页</span><span class="arr" data-page-node-id="GmLKICjEyp1rSd6XiBEoEl">→</span>
+      <span class="step" data-page-node-id="PWBGEeXpi1Nzws7eobNn4n">6 给 boss 配置文案</span><span class="arr" data-page-node-id="MdLdLEbIS2Y4LxrL6aZmA1">→</span>
+      <span class="step" data-page-node-id="EXpoEYnKqZBlWhq7EEfPSK">7 boss 后台配自动回复</span>
+    </div>
+    <div class="warnbox" data-page-node-id="iJM8VJJjANYSGQYlJgSABn">🕐 定时提醒：发布动作（push / 公众号群发）按惯例排非工作时间；配置好后建议在「六层」相关文章（最早 S09 · 9/5 首发）上线前完成，避免读者回复无响应。</div>
+  </div>
+
+  <div class="foot" data-page-node-id="cIm0hD3MTMgkhNuBBhLacI">行途 · 内容工厂规划看板 ｜ 数据口径与 star 可核验 ｜ 三件套文件路径：outputs/a1_省token产线/六层三件套/</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="F1hAfa4dZSKheq7f0m2dPE">
+<head data-page-node-id="VmLhPENmNMGepOLAyDaDQX">
+<meta charset="UTF-8" data-page-node-id="Pv5lWzfWThS8D6AyRfMnIz">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="MQETpj5MJnCyOlAhxJ3ZCU">
+<title>发布作战台 · 日更版 ｜ 行途 2026-09-02</title>
+<style>
+:root{
+  --blue:#056DE8; --blue-l:#4A9EFF; --cyan:#00D4FF; --orange:#FF6B35;
+  --ink:#1a1d21; --ink2:#3d4450; --ink3:#6b7480; --ink4:#98a1ad;
+  --line:#e4e8ee; --line2:#eef1f5;
+  --bg:#ffffff; --bg2:#f7f9fc; --bg3:#fbfcfe;
+  --red:#d93025; --amber:#e8890c; --green:#0f9d58;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background:var(--bg2); color:var(--ink); line-height:1.75; font-size:15px;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px 80px}
+
+/* ── header ── */
+header{
+  background:linear-gradient(135deg,#056DE8 0%,#0d4fa8 60%,#083c82 100%);
+  color:#fff;padding:44px 0 38px;margin-bottom:32px;position:relative;overflow:hidden;
+}
+header::after{
+  content:"";position:absolute;right:-80px;top:-80px;width:340px;height:340px;
+  background:radial-gradient(circle,rgba(0,212,255,.28) 0%,transparent 68%);
+}
+.hd{max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+.eyebrow{font-size:12.5px;letter-spacing:2.5px;opacity:.82;font-weight:600;margin-bottom:12px}
+h1{font-size:31px;font-weight:800;letter-spacing:-.4px;line-height:1.3;margin-bottom:12px}
+.sub{font-size:15px;opacity:.9;max-width:840px}
+.hd-meta{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap}
+.chip{
+  background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.26);
+  padding:5px 13px;border-radius:20px;font-size:12.5px;font-weight:600;backdrop-filter:blur(4px);
+}
+
+/* ── section ── */
+section{margin-bottom:38px}
+h2{
+  font-size:21px;font-weight:800;color:var(--ink);margin-bottom:6px;
+  display:flex;align-items:center;gap:11px;letter-spacing:-.2px;
+}
+h2 .num{
+  background:var(--blue);color:#fff;width:27px;height:27px;border-radius:7px;
+  display:inline-flex;align-items:center;justify-content:center;font-size:13.5px;flex-shrink:0;
+}
+.lead{color:var(--ink3);font-size:13.5px;margin-bottom:18px;padding-left:38px}
+
+.card{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:22px 24px}
+.card + .card{margin-top:14px}
+h3{font-size:15.5px;font-weight:700;margin-bottom:12px;color:var(--ink);display:flex;align-items:center;gap:8px}
+h3 .dot{width:7px;height:7px;border-radius:50%;background:var(--blue);flex-shrink:0}
+
+/* ── table ── */
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:#fff}
+th{
+  background:var(--bg2);text-align:left;padding:11px 13px;font-weight:700;
+  color:var(--ink2);border-bottom:2px solid var(--line);font-size:12.5px;white-space:nowrap;
+}
+td{padding:11px 13px;border-bottom:1px solid var(--line2);vertical-align:top;color:var(--ink2)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--bg3)}
+td strong{color:var(--ink)}
+.tbl-wrap{border:1px solid var(--line);border-radius:10px;overflow:hidden}
+
+/* ── badges ── */
+.b{display:inline-block;padding:2px 9px;border-radius:5px;font-size:11.5px;font-weight:700;white-space:nowrap;line-height:1.7}
+.b-red{background:#fdecea;color:#b3261e}
+.b-amber{background:#fef3e2;color:#a35a06}
+.b-green{background:#e6f4ea;color:#0b6b3a}
+.b-blue{background:#e8f2fe;color:#0452b0}
+.b-gray{background:#f1f3f6;color:#5b6371}
+.b-cyan{background:#e0f7fb;color:#036b7d}
+
+/* ── callout ── */
+.callout{border-radius:10px;padding:16px 20px;margin:14px 0;font-size:13.5px;line-height:1.72}
+.c-red{background:#fdf2f1;border-left:4px solid var(--red);color:#7d1f18}
+.c-amber{background:#fffaf0;border-left:4px solid var(--amber);color:#7a4a06}
+.c-blue{background:#f0f6fe;border-left:4px solid var(--blue);color:#083c82}
+.c-green{background:#f0faf3;border-left:4px solid var(--green);color:#0b5136}
+.callout b{font-weight:800}
+.callout .ct{display:block;font-weight:800;margin-bottom:6px;font-size:14px}
+
+/* ── fix banner ── */
+.fixbar{
+  background:#fff;border:2px solid var(--red);border-radius:12px;padding:0;overflow:hidden;margin-bottom:30px;
+}
+.fixbar .fh{background:var(--red);color:#fff;padding:11px 20px;font-weight:800;font-size:14.5px;display:flex;align-items:center;gap:9px}
+.fixbar .fb{padding:18px 22px}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+.vs-col{border:1px solid var(--line);border-radius:9px;padding:14px 16px;background:var(--bg2)}
+.vs-col.wrong{background:#fdf2f1;border-color:#f5c6c2}
+.vs-col.right{background:#f0faf3;border-color:#b7e1c4}
+.vs-col .vh{font-weight:800;font-size:13px;margin-bottom:8px;display:flex;align-items:center;gap:7px}
+.vs-col.wrong .vh{color:#b3261e}
+.vs-col.right .vh{color:#0b6b3a}
+.vs-col ul{margin-left:17px;font-size:12.8px;color:var(--ink2);line-height:1.85}
+
+/* ── grid ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+
+/* ── stat ── */
+.stat{background:#fff;border:1px solid var(--line);border-radius:11px;padding:17px 19px}
+.stat .lbl{font-size:12px;color:var(--ink3);font-weight:600;margin-bottom:7px}
+.stat .val{font-size:27px;font-weight:800;color:var(--blue);line-height:1.15;letter-spacing:-.5px}
+.stat .val.red{color:var(--red)} .stat .val.amber{color:var(--amber)} .stat .val.green{color:var(--green)}
+.stat .note{font-size:11.8px;color:var(--ink4);margin-top:6px;line-height:1.6}
+
+/* ── tier ── */
+.tier{border:1px solid var(--line);border-radius:11px;padding:17px 19px;background:#fff;position:relative;overflow:hidden}
+.tier::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px}
+.tier.a::before{background:var(--blue)}
+.tier.b::before{background:var(--blue-l)}
+.tier.c::before{background:var(--cyan)}
+.tier .tn{font-weight:800;font-size:14.5px;margin-bottom:3px;display:flex;align-items:center;gap:8px}
+.tier .tm{font-size:11.8px;color:var(--ink4);margin-bottom:11px}
+.tier ul{margin-left:16px;font-size:12.8px;color:var(--ink2);line-height:1.8}
+
+/* ── flow ── */
+.flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin:16px 0}
+.fstep{
+  flex:1;min-width:150px;background:#fff;border:1px solid var(--line);padding:15px 16px;position:relative;
+}
+.fstep:first-child{border-radius:10px 0 0 10px}
+.fstep:last-child{border-radius:0 10px 10px 0}
+.fstep + .fstep{border-left:none}
+.fstep .fsn{font-size:11px;font-weight:800;color:var(--blue);letter-spacing:1px;margin-bottom:6px}
+.fstep .fst{font-weight:700;font-size:13.5px;margin-bottom:5px}
+.fstep .fsd{font-size:12px;color:var(--ink3);line-height:1.65}
+.fstep.ai{background:#f0f6fe}
+.fstep.human{background:#fffaf0}
+
+/* ── timeline ── */
+.tl{position:relative;padding-left:26px}
+.tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl-item{position:relative;margin-bottom:19px}
+.tl-item::before{
+  content:"";position:absolute;left:-23px;top:5px;width:11px;height:11px;border-radius:50%;
+  background:#fff;border:2.5px solid var(--blue);
+}
+.tl-item.done::before{background:var(--green);border-color:var(--green)}
+.tl-item.warn::before{background:var(--amber);border-color:var(--amber)}
+.tl-item .tlt{font-weight:700;font-size:13.8px;margin-bottom:4px}
+.tl-item .tld{font-size:12.8px;color:var(--ink3);line-height:1.7}
+
+/* ── misc ── */
+ul.plain{margin-left:18px;font-size:13.5px;color:var(--ink2);line-height:1.85}
+ul.plain li{margin-bottom:4px}
+code{
+  background:var(--bg2);padding:1.5px 6px;border-radius:4px;font-size:12.5px;
+  font-family:"SF Mono",Menlo,Consolas,monospace;color:#0452b0;border:1px solid var(--line);
+}
+.mono{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:12.3px}
+footer{
+  margin-top:46px;padding-top:22px;border-top:1px solid var(--line);
+  color:var(--ink4);font-size:12.3px;text-align:center;line-height:1.85;
+}
+@media(max-width:900px){
+  .g2,.g3,.g4,.vs{grid-template-columns:1fr}
+  .fstep{border-radius:10px!important;border-left:1px solid var(--line)!important;margin-bottom:8px}
+}
+</style>
+</head>
+<body data-page-node-id="haGN97Bm0iOPNHka8j7m7s"><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+
+<header data-page-node-id="4YzXrDTsZdrgcFbjlDaIFH">
+  <div class="hd" data-page-node-id="pXHKplq3dPHqS2JkZP67tq">
+    <div class="eyebrow" data-page-node-id="nLtq5kFCRI2TAUlWYRxiwe">行途 · 发布作战台</div>
+    <h1 data-page-node-id="e1LcrYFLTBQDo9vYBJ7DAY">日更版发布体系 v2</h1>
+    <div class="sub" data-page-node-id="Cv2r8AUrCiopAZ13xSa3jD">
+      公众号每日 1 篇 · 草稿箱囤稿 · 定期发布 —— 把「创作」与「发布」两个动作彻底解耦。
+      本版同时纠正 v1 中<b data-page-node-id="yxIfHOI2536UBeGzRSIHVX">一处会直接伤到长尾流量</b>的错误建议。
+    </div>
+    <div class="hd-meta" data-page-node-id="bbEdBNuPnmHx6k3KdI5xwe">
+      <span class="chip" data-page-node-id="DzNLu5Wrd2hQtIK8uXVRys">建立 2026-09-02</span>
+      <span class="chip" data-page-node-id="EU2e3j7v61ERXoz20K0dLO">节奏：公众号日更 1 篇</span>
+      <span class="chip" data-page-node-id="mJ5MOb99rXj5qRzmV60lQB">主赛道：搜一搜长尾</span>
+      <span class="chip" data-page-node-id="UkzwrDit9FKEWvPsnutTk8">视频号：阶段 2</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap" data-page-node-id="oLAAv26CB2ZDCcRLzrz27M">
+
+<!-- ══ 0 纠错 ══ -->
+<div class="fixbar" data-page-node-id="xxobvhCm5wudqtC2TD8wjT">
+  <div class="fh" data-page-node-id="ApBkTL7y98hvqltNhYbEiF">⚠️ 先纠错：v1 里「用发布不群发，进搜一搜」这条建议是错的</div>
+  <div class="fb" data-page-node-id="s3zuu3XZRQrgEbCgYuqGNI">
+    <div style="font-size:13.8px;color:var(--ink2);margin-bottom:4px" data-page-node-id="GX8Q4VBYMhkPmqga1OnmWD">
+      昨天我在 W1 发布卡里写「用『发布』而非群发，不占每日 1 次额度且进搜一搜」。
+      <strong data-page-node-id="lU7ssmW5YOEHzg0DCB2Xvt">前半句对，后半句错。</strong>多源交叉核实结果如下：
+    </div>
+    <div class="vs" data-page-node-id="W0nPJ4MKx4PHH5myfZfkVS">
+      <div class="vs-col wrong" data-page-node-id="0B1s8VBc3JpdLwHLlcm0N8">
+        <div class="vh" data-page-node-id="3UiASiACeBkuCRorm8qbgY">✗ 我昨天的说法</div>
+        <ul data-page-node-id="KoNHaLbVI5owzOacURivHW">
+          <li data-page-node-id="t8aREhMAxToBr4x84iUSL8">「只发表（关通知）」不占额度</li>
+          <li data-page-node-id="DtyGsikIkpLNfGwWGmlR1f"><b data-page-node-id="P8Mav4zlFYshsOHq3N9QiJ">「且进搜一搜」← 这句错了</b></li>
+          <li data-page-node-id="ypKKv0AuVCtFPVxIta0sol">隐含结论：库存靠发布陈列消化</li>
+        </ul>
+      </div>
+      <div class="vs-col right" data-page-node-id="4r2jL84po74kLqQBHisKGB">
+        <div class="vh" data-page-node-id="s1fVafnDZFJRsadmCjvH6j">✓ 多源核实后的事实</div>
+        <ul data-page-node-id="YL900eG3ntXAqsfzDBsdmA">
+          <li data-page-node-id="nmhREi2UohyqlZjmGhCrEL">不占额度：<b data-page-node-id="YOUI0PeCbMl1qL4YDC5303">对</b>，每日不限次</li>
+          <li data-page-node-id="wf9EVOXLeWyMfoDEbOp8y6">搜一搜：早期确定<b data-page-node-id="PKmpQpdFpFyNaRHNBoipoW">不收录</b>；后期有个案实证称可收录，但多数实测（搜标题/搜链接均搜不到）仍指向<b data-page-node-id="eOnL7E0DUKUGSJ63BuowpG">收录概率远低于群发</b></li>
+          <li data-page-node-id="ZeZKPCZVwfzuVMkXbL85Ww">官方 FAQ 称「关闭群发通知的文章也会被推荐、搜一搜能搜到」，但与大量实测冲突 → <b data-page-node-id="px2HQSM5h1KjiFW2otRxcy">口径冲突，按保守口径执行</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout c-red" style="margin-bottom:0" data-page-node-id="T2mZ7fIGd9njjCV9LRrcHZ">
+      <span class="ct" data-page-node-id="YB4g4kavctEUBcuGhToJpZ">为什么这条纠正很关键</span>
+      你的变现底层是「<b data-page-node-id="pV8tvw9fbxGbvIlpJDNKWK">搜一搜 = 公域长尾</b>」。如果主推文章走「只发表」，长尾流量大概率归零，
+      等于用每天一篇的产能去换一堆搜不到的陈列品。<b data-page-node-id="UFFXZNfbg2EzOZbf0BOGyw">结论：能群发的必须群发。</b>
+      「只发表」降级为菜单 / 自动回复 / 资料存档用途。
+    </div>
+  </div>
+</div>
+
+<!-- ══ 1 发布方式 ══ -->
+<section data-page-node-id="dGtNE88g6i74aE5UT7y4k0">
+  <h2 data-page-node-id="EByF7NkW7DzasbpAKWtn07"><span class="num" data-page-node-id="RCTr3iKkUt1OVMUlioXJFU">1</span>发布方式：日更 1 篇，正好吃满每日 1 次群发额度</h2>
+  <div class="lead" data-page-node-id="fYRi9JrYRlHtwUNfjwt4Mj">订阅号群发 1 次/天（0 点重置、不累计），单次最多 8 篇图文。日更 1 篇 = 额度刚好用满，无冗余。</div>
+
+  <div class="tbl-wrap" data-page-node-id="cT5zHNEoIaCztB7kKB8Mkm">
+    <table data-page-node-id="lI96znoW9DZ98ztNQhrVNX">
+      <thead data-page-node-id="2TIZJEWjFYPDUrsCsB7Bsf">
+        <tr data-page-node-id="S2CLI8dB9FtB4sWMwuJL4R"><th style="width:15%" data-page-node-id="WC4pbzxsLOCDFPDKvmdgLN">方式</th><th style="width:13%" data-page-node-id="2IKjk5KNSyBzAB6iZCqpEs">额度</th><th style="width:11%" data-page-node-id="PweuXvfIeQTXSq7MQLBA3Z">推送粉丝</th><th style="width:20%" data-page-node-id="zwuRgFW8rr2AdikH54mZAP">搜一搜收录</th><th style="width:12%" data-page-node-id="OcjgkQ90gE7nj2YBuUakIZ">数据</th><th style="width:29%" data-page-node-id="hOoPcRkzs16mivC1NCmTB6">定位</th></tr>
+      </thead>
+      <tbody data-page-node-id="qjtBGXvNcxfUDV8R5jBTzl">
+        <tr data-page-node-id="CcKr1uVo6gZnlE8eaSSfbP">
+          <td data-page-node-id="sxOqzfPtHrekmooyzU9ofX"><strong data-page-node-id="MwRJ0DA8WHJHCyBtMmlEWb">群发</strong><br data-page-node-id="kCj53D0hQPtyh9ynBBOK4R"><span class="mono" style="color:var(--ink4)" data-page-node-id="LzkIMu16vLuHecowu4liKa">开启群发通知</span></td>
+          <td data-page-node-id="NHZJjbozm44bIiRGEJoE2G"><span class="b b-red" data-page-node-id="3j9UXqmnswxFDSdzmBEUYy">1 次/天</span><br data-page-node-id="LVpzTDtj4bMD9G07KjB55F"><span style="font-size:11.5px;color:var(--ink4)" data-page-node-id="kC50VktUk14Iffo6Bs1y9R">单次≤8 篇</span></td>
+          <td data-page-node-id="vVLYOadzDjGUn2UZWoChqy">✅ 是</td>
+          <td data-page-node-id="2tlA7LIBjC5WIHPSTbg7Gx"><span class="b b-green" data-page-node-id="OFUu0TK2bZDF0kreHEeZgT">收录确定性高</span><br data-page-node-id="ySI5XdBVutrfFWDHaxB7Ja"><span style="font-size:11.5px;color:var(--ink4)" data-page-node-id="9DG50HuARu5sVoeKZgx6zP">多源一致</span></td>
+          <td data-page-node-id="ezLsK9gFPkSKHZd1C15zPh">完整</td>
+          <td data-page-node-id="P8SV1mhEU73lpHGP4URIjp"><strong data-page-node-id="q7Lv9yQhRXdSh11gkdfsa9">日更主推通道</strong>。每天 1 篇走这里，定时到 20:00。</td>
+        </tr>
+        <tr data-page-node-id="wxpi3g26XLqr4mFdozlCfG">
+          <td data-page-node-id="F6NhjLk6VRDx9rwLtVXetv"><strong data-page-node-id="IKhi2qoqDsFEuzbeE7Me3r">只发表</strong><br data-page-node-id="c8xDluQWTtRHDIsS0GDjqY"><span class="mono" style="color:var(--ink4)" data-page-node-id="2D2yoiekwAV1o2hkHSeWGx">关闭群发通知</span></td>
+          <td data-page-node-id="38WLZioRo42GkZnZ889U6n"><span class="b b-green" data-page-node-id="krGZxI8qglDgMIF2XCGDFa">不限次数</span></td>
+          <td data-page-node-id="GrBi2Uwf7LUnC1r1V2rJrf">❌ 否</td>
+          <td data-page-node-id="3VMAkTMw0jJNzQ4FOm0Y6q"><span class="b b-amber" data-page-node-id="HPqSDwVFtoOXDSChgpuQPA">不确定 / 概率低</span><br data-page-node-id="VLAEbAUl9HTKGcaH6ppgTn"><span style="font-size:11.5px;color:var(--ink4)" data-page-node-id="hafEwp7eSSn6qOLu1VZley">口径冲突</span></td>
+          <td data-page-node-id="hC5QYPOEkaDpvw2T8WXOrE">基础</td>
+          <td data-page-node-id="4g8bWyfNNMiCm8JKgpcWkU">仅用于：自定义菜单 / 自动回复 / 页面模板 / 资料存档。<b data-page-node-id="YvH9zw3GfH0iUNKhs39lJ0">不承担流量任务。</b></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout c-amber" data-page-node-id="JXZcCGK8FMoONl3xmDCkkf">
+    <span class="ct" data-page-node-id="k4y6FxofAT8cIRX2ti1BBP">额度用满的后果（日更必须知道的边界）</span>
+    每天 1 次群发用完 → <b data-page-node-id="VstQZLZd0TZ7YnrArGRyLc">当天无法再群发第二篇</b>，补发只能走「只发表」（不推送、大概率不收录）。
+    所以：<b data-page-node-id="75VzrM14CpZ4XwJjmUFpFp">一天只有一次「有效发布」机会，发错或稿子有硬伤 = 当天长尾机会作废。</b>
+    缓解手段就是下一节的<b data-page-node-id="OQd1Ts0Fxthyyv87Kawrz4">草稿箱水位线</b>——永远有备选稿在库里，坏稿直接换，不留空档。
+  </div>
+
+  <div class="callout c-blue" data-page-node-id="UZMxuXvL5W2RUfjpCgDIHZ">
+    <span class="ct" data-page-node-id="3BdFKKEkBtAY2zunJNkNwN">API 自动化的现实（与个人号权限对齐）</span>
+    官方原文：<b data-page-node-id="EiAs0jx8UgvLjHuiCEKEls">2025 年 7 月起，个人主体账号的 freepublish（发布）接口权限已被回收。</b>
+    这意味着——<b data-page-node-id="9D4xDo7S7slH6IHMn1kf8u">任何 API 都发不出去，只能到草稿箱为止</b>。
+    所以「优先进草稿、你定期发布」不是权宜之计，而是<b data-page-node-id="K2J4HEja8GdLfQkCIEFj1h">个人订阅号在现有权限下唯一可行的路径</b>。
+    剩余待实测项只有 <code data-page-node-id="K0ieQcDSeG4RDdTQCGmK3Y">draft/add</code>（建草稿）：文档标 ✔ 但社区实测未认证个人号返 <code data-page-node-id="sqiJlDYDbgABS38rAyW2GL">48001</code>。
+    <b data-page-node-id="9DRiMAjA5BTr7QGAKC1hYc">用一条 curl 定论，别信文档。</b>
+  </div>
+</section>
+
+<!-- ══ 2 原创首发铁律 ══ -->
+<section data-page-node-id="Ovz40gxh1xn1waDENnQ7OC">
+  <h2 data-page-node-id="gJD2rigCrsVUmAOknDBe7A"><span class="num" data-page-node-id="EKdNN5U69mUGScbAlCDzmq">2</span>原创首发铁律：重复分发的第一约束</h2>
+  <div class="lead" data-page-node-id="aEmkcYDGKDpHYWWTF8FzGX">你问的「重复需不需要考虑各平台原创限制」——需要，而且约束方向和你直觉相反。</div>
+
+  <div class="callout c-red" data-page-node-id="mEY8TlnCFAMYbB4vKBJ8Us">
+    <span class="ct" data-page-node-id="ysXF1ssuFxhQ0L4EE9ogTu">微信官方规则（原文要点）</span>
+    「声明原创的文章必须满足<b data-page-node-id="w56tygn1DErHniBhZ8rkfb">全网首发原则</b>，即<b data-page-node-id="ACtdohJZWg1TZDwXo0bYob">微信平台发布时间需早于其他所有渠道</b>。」
+    系统会通过内容比对校验首发时间，若发现其他平台存在更早的发布记录，可能导致：
+    <b data-page-node-id="uYwhaOgfrZlLS6mv3BBDdf">① 原创标识被取消　② 群发失败（错误码 53503）</b>。
+  </div>
+
+  <div class="g2" data-page-node-id="J8aumM1QKaAEtVOkbOL1gu">
+    <div class="card" data-page-node-id="NlpZ0ODi3fXQo88SRhDjno">
+      <h3 data-page-node-id="ReI67XKI4lwEhdIWAopwVx"><span class="dot" data-page-node-id="aVRCDzbM1BNBE6t0IvFKs2"></span>方向容易搞反的一点</h3>
+      <ul class="plain" data-page-node-id="ooYbr1bwNL2A7mLJTwXozG">
+        <li data-page-node-id="A0YkNAhod8CZq3QRvKfQkU"><strong data-page-node-id="7X6iyC27yrMufALAnVvLdE">掘金 / CSDN / 知乎的「原创标」是平台内判定</strong>，不跨平台比对 → 你把公众号文章搬过去，它们照样给原创。</li>
+        <li data-page-node-id="lBe4qJEmAARJQp5oLjEzYx"><strong data-page-node-id="sK7pIKWHVAC3FptOO8VijZ">反过来不成立</strong>：先发掘金再发公众号 → 公众号原创有被取消的风险。</li>
+        <li data-page-node-id="8NoGSTcZW0cFRYn3Gu82og">所以约束只有一句话：<strong data-page-node-id="QgfFWiiykgVC6JgJpeLsD6">公众号必须全网最早。</strong></li>
+      </ul>
+    </div>
+    <div class="card" data-page-node-id="7cpBF5jihb0t7SvTmpRUOZ">
+      <h3 data-page-node-id="D7vznVy7w4TzJ3A80EF6xS"><span class="dot" style="background:var(--orange)" data-page-node-id="GrYf6ORgKalaYrbhwg0WnV"></span>万一已经在别处发过了</h3>
+      <ul class="plain" data-page-node-id="p5IEAAoXj8pdRv9ItcdXtb">
+        <li data-page-node-id="XNgi43nqz1AxfCZ8cO11cm">官方口径：其他平台首发的内容<b data-page-node-id="J3OC1v4t6jewzwFrPskZg7">仍可标原创</b>，但建议在该平台简介处标明与公众号的关联，减少投诉。</li>
+        <li data-page-node-id="2XbePWWCYIxNMHD4ptO7J4">被判「滥用原创」时，提交<b data-page-node-id="cuLjI77MvYoILP8bZ9SOot">首发平台链接 + 该平台后台账号截图</b>可申诉恢复。</li>
+        <li data-page-node-id="7Rfr0y5g8CN4aEgyK92Jd6">更省事的做法：<strong data-page-node-id="7LNHSTlPFJNOVXiMDwK4Z0">那篇就别勾原创</strong>，不值得为此赌一次处罚。</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="margin-top:20px" data-page-node-id="Uk904xQSDKfIm0yI1YAcOu">分发时序铁律（三档）</h3>
+  <div class="tbl-wrap" data-page-node-id="kgRmLq3A1RwVd3DrYvLKEl">
+    <table data-page-node-id="ZOey64EoJu5u0CBNE8dgE8">
+      <thead data-page-node-id="4FfWxwLANZoNfyN2eFutkr">
+        <tr data-page-node-id="DuB8ZW2zmQVVOuGfdKtrzV"><th style="width:16%" data-page-node-id="jlgxximBj8bLyfIL8ZdhjD">场景</th><th style="width:20%" data-page-node-id="I6aSPGvMmgzgLu2z6SppBC">时序</th><th style="width:32%" data-page-node-id="QaC2sIoWn7XcY3ijMagasH">改写要求</th><th style="width:32%" data-page-node-id="7bcoHpDhw7rsLDpsjQzYNB">原创标</th></tr>
+      </thead>
+      <tbody data-page-node-id="GDVhGH8l9w8O8iCVQuSLRk">
+        <tr data-page-node-id="rRbme43yql63MWbVf8CvlZ">
+          <td data-page-node-id="x9mFoMImPVMAAfwjU1Cnlg"><strong data-page-node-id="321eZxBeEUtI2QAsbFcFB1">公众号 → 掘金/CSDN/知乎</strong><br data-page-node-id="kqUvcThN6kDMjQUzGdjowI"><span class="b b-green" data-page-node-id="64lYYfO2MT129HSH8APldq">推荐</span></td>
+          <td data-page-node-id="7vFNVVFoUa3RuJXOXAhPgh">公众号首发 → <b data-page-node-id="COGMmdeskrijhKFcMlzQsN">间隔 ≥24h</b> 再分发</td>
+          <td data-page-node-id="oLZl89CCngGyEKCTDMcte1"><b data-page-node-id="rsYMWaK42PgAnILJDHCTNS">必须差异化改写</b>：换标题、换开头、按平台口味重排结构。既防原创比对，也防 SEO 撞库</td>
+          <td data-page-node-id="3dR84nd2ciMfdW9Z4BLK8E">公众号勾原创 ✅；其他平台按各自规则勾（不冲突）</td>
+        </tr>
+        <tr data-page-node-id="VkThtBlEh1wNPZak9Zid0o">
+          <td data-page-node-id="e4oNTHD7iRmYlreQHv2W0Y"><strong data-page-node-id="zJ7ChZLLW26n9Jfmz8Setm">同一篇多平台同时发</strong><br data-page-node-id="QYGHHW5a60KWzW77U8ZWrO"><span class="b b-red" data-page-node-id="OQ7Q1bH7PmneQbEmQbxhGF">禁止</span></td>
+          <td data-page-node-id="7vZ6WuGpBC2kpD63SYXZhV">—</td>
+          <td data-page-node-id="JJoGvPXWjveATNWPqmNR10">时间戳无法证明公众号最早 → 原创直接悬了</td>
+          <td data-page-node-id="Yltb6pHhpy9eYgNDZAA3DT">公众号原创 ❌ 高风险</td>
+        </tr>
+        <tr data-page-node-id="gS6HjAz1k2NdwstmP9CuWD">
+          <td data-page-node-id="JF4TNcQvHaT9ppnggDc8kq"><strong data-page-node-id="RZRpRj0cp0QEOSCYEwfEqj">已发在掘金 → 回公众号</strong><br data-page-node-id="c5Yc5E6e5pJEyXx9hSkIS9"><span class="b b-amber" data-page-node-id="JjrnZzzM5RzxAnUh0bpzKk">谨慎</span></td>
+          <td data-page-node-id="rm5mr0uM6mSOCqocKj81rA">无解（时间不可逆）</td>
+          <td data-page-node-id="iw6CcZKxit8kkGlOuYDb1g">需大幅改写，且做好不勾原创的准备</td>
+          <td data-page-node-id="J7eCzhJTHctQ7cygPhEP0x">建议 <b data-page-node-id="LYtOJHCFF6yesqgh3F3jB0">不勾原创</b>，或备好首发证据</td>
+        </tr>
+        <tr data-page-node-id="kQy8iMxVR3XIn24J7LOSOO">
+          <td data-page-node-id="mIMgMaPGp7LFGClxfzlu9c"><strong data-page-node-id="uel47Grq1c9QeaNB98omgV">公众号 → 视频号</strong><br data-page-node-id="PAQWPUl4w4FCRn3ibCufJF"><span class="b b-cyan" data-page-node-id="aXofvwhmTYllnZNWrNTtRh">安全</span></td>
+          <td data-page-node-id="wvk9e1KlCq4S7oNdhDUQU0">无限制</td>
+          <td data-page-node-id="y6FWpIemE71iaiOGJp7HX9">同属微信生态，<b data-page-node-id="Y3iHSVgrqy0eqAye1No3P6">不触发跨平台原创比对</b></td>
+          <td data-page-node-id="Ae82ZbPNBCf5uY6igoMGMU">互不影响 ✅</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout c-green" data-page-node-id="Z7W8pmDXJ9oO2yyAc8PGtS">
+    <span class="ct" data-page-node-id="hSRdBK64di3ojzieLdzeQB">顺带解决一个隐患</span>
+    你现有已发布内容里，若有已在其他平台发过的，回公众号时<b data-page-node-id="wZARFnGjVDJR6Ag20FpuYD">先查时间戳</b>——
+    把「已在别处发过」的稿子在台账里标出来，发布时跳过原创勾选。别等被取消原创才回溯。
+  </div>
+</section>
+
+<!-- ══ 3 产能模型 ══ -->
+<section data-page-node-id="KlntGgMHaupjlfDWZJNxeG">
+  <h2 data-page-node-id="e5T6YpEVpAe2TENXbAp4xE"><span class="num" data-page-node-id="VrVTeCwVnqK1HHZELcXBZc">3</span>日更产能模型：每天 1 篇，靠什么不崩</h2>
+  <div class="lead" data-page-node-id="kFAFiImltBHwkIpGJXOtDq">日更的头号死因不是没素材，是<strong data-page-node-id="xMssFkvbEGWJCT1SNQfANu">质量稀释</strong>——为了凑数把 C 档写成注水长文。解法是先分档，再定配比。</div>
+
+  <div class="g3" style="margin-bottom:16px" data-page-node-id="REYwkRdiY8osBbKfGkrdzA">
+    <div class="tier a" data-page-node-id="Q76mz9d8Yczwzid2ogzff3">
+      <div class="tn" data-page-node-id="cgEYpAWV7rWEdb9WddQOdp">A 档 · 深度长文 <span class="b b-blue" data-page-node-id="7AnKS4Jt2rGza9S9S3RR79">4 篇/月</span></div>
+      <div class="tm" data-page-node-id="HnA67IXcL762TFy0WWjGnc">2500–3500 字 ｜ 周日 20:00</div>
+      <ul data-page-node-id="gFwnhSeZSib8a4tvWw7K2n">
+        <li data-page-node-id="WKn8ibqKVa9qjTeBE0THF6">有真实实践 + 账单/数据</li>
+        <li data-page-node-id="98HNmTcHHEH8ji5UgYFKZM">结构完整，能撑起合集骨架</li>
+        <li data-page-node-id="YfyTBG0RpZHM8zAC7c4jU2">优先配封面图 + 2–3 张内文图</li>
+        <li data-page-node-id="GJMGY7IDLzRC2i4lmpz9XE">是视频号改编的<b data-page-node-id="ezFWrFHFQCgEzU7Oe3ccdw">唯二素材来源</b></li>
+      </ul>
+    </div>
+    <div class="tier b" data-page-node-id="bJdNzH1OIrTu4MI043nBgT">
+      <div class="tn" data-page-node-id="WJkUiECTqpmiW2KZ0Ch6Hj">B 档 · 中篇干货 <span class="b b-cyan" data-page-node-id="59tZGfeiQ7oRwoGbkS5Doe">12 篇/月</span></div>
+      <div class="tm" data-page-node-id="YIgtbSA0Mj4oWrDGdWguAH">1200–1800 字 ｜ 工作日主力</div>
+      <ul data-page-node-id="hyVTCVrT1ShlvOJCIbAAoi">
+        <li data-page-node-id="3p4R8YZfGOevQXO1DqKobG">单一问题 → 单一解法</li>
+        <li data-page-node-id="GbtuAtAeKNqtT49GEKVBDw">素材卡蒸馏成文的主力档位</li>
+        <li data-page-node-id="85UqQxDHAx2QoUbagCEv2p">1 张封面即可，内文图可选</li>
+        <li data-page-node-id="NoKLBY1MBPV2bSix24fWZ1">可改编视频号</li>
+      </ul>
+    </div>
+    <div class="tier c" data-page-node-id="xwjTogZThImdCKNtUIYKFz">
+      <div class="tn" data-page-node-id="nqUwTW9ASl5vDTTrxalJQp">C 档 · 短闪速评 <span class="b b-gray" data-page-node-id="NgnHW2CieHKeWbpCyhUgQb">14 篇/月</span></div>
+      <div class="tm" data-page-node-id="WDzsm83eUiBCMJYtH4RYqS">600–900 字 ｜ 补位 / 时效</div>
+      <ul data-page-node-id="MvMOwxgglPuckHosnRgnmF">
+        <li data-page-node-id="XQJVGuA7LfC76yGcNc6lo2">模型速评、一句话洞察、工具实测</li>
+        <li data-page-node-id="SwexIZhlWPsi4ZtwSLKLOd"><b data-page-node-id="wJVyev1lLjqlCBIrSH6f9K">宁可短，不可水</b>——这是硬约束</li>
+        <li data-page-node-id="C8NVLPXJ4hsmHXNNSslxXt">时效性强，过了窗口就作废</li>
+        <li data-page-node-id="LqSGQUOuUyhGOCBjFvjO2O">不做视频化</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout c-blue" data-page-node-id="EGTvBsNgh5l9g4inOpZwEb">
+    <span class="ct" data-page-node-id="9bp5ltnDw485Xf5zgjinDy">配比为什么是 4 : 12 : 14</span>
+    一个月 30 篇里，<b data-page-node-id="rw4vJflzr3xf7oiMrEymkQ">只有 4 篇需要真正的深度投入</b>（约每周 1 篇，可持续）。
+    12 篇中篇是素材卡的蒸馏产物，14 篇短闪是时效与补位。
+    这个配比把每日创作压力压到「<b data-page-node-id="ByLmuEVKoBhxtS7WvYW4D7">平均每天不到 1 篇中篇的投入</b>」，日更才撑得住 3 个月以上。
+  </div>
+
+  <div class="g4" style="margin-top:16px" data-page-node-id="60PVqZZBxdvWYAu5daEsnl">
+    <div class="stat" data-page-node-id="L2DDL6iplUswGwaAJYBZHu">
+      <div class="lbl" data-page-node-id="WczF6CNENMpenvSTZARTye">已成稿库存</div>
+      <div class="val amber" data-page-node-id="tEftVBm8upHQc6F1uo1Qcy">6</div>
+      <div class="note" data-page-node-id="ZMWkWJU6aEhQhFkzAVfI7Z">仅够撑 6 天<br data-page-node-id="pp8SfBE7zH4QgYeiUSk8Dx">B02/B09/B11/B12/M01/速评01</div>
+    </div>
+    <div class="stat" data-page-node-id="GTrzea6ImVOn3LT8vFuXgp">
+      <div class="lbl" data-page-node-id="AZfRtSXBWots6zm6LFe1CW">素材卡可蒸馏</div>
+      <div class="val" data-page-node-id="xGiIlV0IpBFYpYFc4EkR5R">1161</div>
+      <div class="note" data-page-node-id="QCTMJscnPIjK2YT9sYLojy">理论充足<br data-page-node-id="6YJP4PpBRRzHYMhJ5EysRh">瓶颈在加工产能，不在素材</div>
+    </div>
+    <div class="stat" data-page-node-id="hUGSID0He57Kc8rlqSTVDm">
+      <div class="lbl" data-page-node-id="65MUC8XF902xPQohOJFABf">9 月需产出</div>
+      <div class="val red" data-page-node-id="QRpkcqV1hZC8vW7Zw8w8bp">22</div>
+      <div class="note" data-page-node-id="82Sm9SCuRPDgp3N2JHkCSP">9/3–9/30 共 28 天<br data-page-node-id="EHJGglpkOXiudmUbHgpEEz">减去 6 篇成稿</div>
+    </div>
+    <div class="stat" data-page-node-id="vpc9W569UYaDZ6ml4dkzMm">
+      <div class="lbl" data-page-node-id="XuY3dxzitsMKr9h7rgNzMY">草稿安全水位</div>
+      <div class="val green" data-page-node-id="TcVyKG2pSZPROXr9RJBdut">7</div>
+      <div class="note" data-page-node-id="5J99xcpa9XAYnM4ovWg4TG">低于 4 告警<br data-page-node-id="LjITldILRQCSgcno0AOfCi">低于 2 停产补稿</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 4 工作流 ══ -->
+<section data-page-node-id="6vwhstFjAnXXyWFUJ7pI5y">
+  <h2 data-page-node-id="5OfsOA0weFx6guFJuD5g99"><span class="num" data-page-node-id="uNsB05wZbbWItfSFnyOpJ7">4</span>工作流：创作与发布解耦，你每天只做一件事</h2>
+  <div class="lead" data-page-node-id="GYdlJ0BFZBPt9S6gADwPBV">核心设计：<strong data-page-node-id="y1YRGgPzVBM8XY6l6ODk1V">AI 批量产稿 → 草稿箱囤积 → 你集中审 → 每日定时群发</strong>。日更不占用你的每日时间。</div>
+
+  <div class="flow" data-page-node-id="v6MR5kcn5l6iDuvuhFaLLG">
+    <div class="fstep ai" data-page-node-id="NXwgSng89VZwfPb85FXptd">
+      <div class="fsn" data-page-node-id="fxNAkHwvZZ0dK5fsPm7xcr">STEP 1 · AI</div>
+      <div class="fst" data-page-node-id="G9o7fEBFC1QNPAfKiW3kk4">批量产稿</div>
+      <div class="fsd" data-page-node-id="s9aP2Q2XA6wndE1EvEItI5">一次出 7 篇（一周量）。素材卡 → 定稿：标题≤15 字、平台版、配图、数字同步</div>
+    </div>
+    <div class="fstep ai" data-page-node-id="jJaOHjHzTH1MHggnS7Epke">
+      <div class="fsn" data-page-node-id="0dOHlyE7qTAUlPrzZ6zrzT">STEP 2 · API</div>
+      <div class="fst" data-page-node-id="AvenEBwKmaRRoJbj7QFQtq">推入草稿箱</div>
+      <div class="fsd" data-page-node-id="z8pT655r4VSRyEteGDtths"><code data-page-node-id="ehXS9lNBnyxvtiVQ2gj0gO">draft/add</code>（待实测）。不通则本地生成 HTML，你批量粘贴</div>
+    </div>
+    <div class="fstep human" data-page-node-id="AsCXTQEK3q1BEBBvMFB2aL">
+      <div class="fsn" data-page-node-id="nNQ88ip2lt0mRSY3AWP7As">STEP 3 · 你</div>
+      <div class="fst" data-page-node-id="Om9nXjoBP0FPydeRknD38Q">周日集中审</div>
+      <div class="fsd" data-page-node-id="uhEp3kdCJfIM1kmNtNTMYY">花一次时间审完下周 7 篇，通过的直接排定时</div>
+    </div>
+    <div class="fstep human" data-page-node-id="EDv5Dx1JGfFeJOGuuzu3cr">
+      <div class="fsn" data-page-node-id="6oO3CyEJIguVywcEEta2Vt">STEP 4 · 系统</div>
+      <div class="fst" data-page-node-id="u2p2Y5HJ2cspECaefJwbva">每日 20:00 群发</div>
+      <div class="fsd" data-page-node-id="ruVuXdl9HGchrlmDlBkUYW">定时群发自动执行。你当天<b data-page-node-id="jqDpEf8urtVFCkbg0gp1FO">零操作</b></div>
+    </div>
+    <div class="fstep ai" data-page-node-id="cBRu361onAsCGFxRCd4E7Z">
+      <div class="fsn" data-page-node-id="C7SbmwIR6YE4eGE58sEbla">STEP 5 · AI</div>
+      <div class="fst" data-page-node-id="vqIMM48rGqEsSYtCcO5oyu">24h 回填链接</div>
+      <div class="fsd" data-page-node-id="ezPa7uV4rPzwtgr46JBIx1">发完把链接丢给我 → 回填发布日志，闭环</div>
+    </div>
+  </div>
+
+  <div class="g2" data-page-node-id="LxfB9ZtppupiZmRwiqp19q">
+    <div class="card" data-page-node-id="S2fGGVGFrp0uLCGPlq8y8a">
+      <h3 data-page-node-id="5BumFt0mZTTJPGnsp9rUQ3"><span class="dot" data-page-node-id="TBOgPOsUNwHDfE1BJadt8P"></span>囤稿水位线机制</h3>
+      <div class="tl" data-page-node-id="1CLXsdqnP4EwukY0VMzypO">
+        <div class="tl-item" data-page-node-id="bHUisKZqFQonpDzCFfKkI8">
+          <div class="tlt" data-page-node-id="TCp3YYbSxKvfVPFUOAgHJd">水位 ≥ 7 篇 <span class="b b-green" data-page-node-id="l374PRmGW6iN4RClHx9Tm6">健康</span></div>
+          <div class="tld" data-page-node-id="gmouFbTc31oncPuVm8Ynau">正常节奏。AI 按周补稿，维持水位</div>
+        </div>
+        <div class="tl-item warn" data-page-node-id="WyqZFzsPn0i3EP9xw5753F">
+          <div class="tlt" data-page-node-id="FOige9asGLkApHVyQYRIl3">水位 3–6 篇 <span class="b b-amber" data-page-node-id="BgwlICvUvSLniTlg4Slig4">告警</span></div>
+          <div class="tld" data-page-node-id="MVpt3VrO5AZN9iBFLEfcBt">触发补稿。优先把 C 档短闪补上来，成本低、速度快</div>
+        </div>
+        <div class="tl-item" data-page-node-id="GVuWy5EYlHjjOS32sAfzeu">
+          <div class="tlt" data-page-node-id="XJ0H7svtGedv7FDzuXrK9a">水位 ≤ 2 篇 <span class="b b-red" data-page-node-id="0Gv6tC9EVfuwx5xAnJYTNn">停产补稿</span></div>
+          <div class="tld" data-page-node-id="k3HA7TfglFAJSkAEjnbBuj">暂停一切分发动作，产能全部回补公众号。<b data-page-node-id="rF0XKKzjj5CVtD5IgJLqvA">宁可断一天，不可发水稿</b></div>
+        </div>
+      </div>
+    </div>
+    <div class="card" data-page-node-id="G6E8f8i3XqyXxjdwDQsTOh">
+      <h3 data-page-node-id="g2MpBcMphTDm1T00fnefx2"><span class="dot" style="background:var(--orange)" data-page-node-id="Ez4OWm3m1dEIndolQPz8Cc"></span>为什么必须囤稿而不是现写现发</h3>
+      <ul class="plain" data-page-node-id="rWsoACxI7Ewkpuv3LqDgu6">
+        <li data-page-node-id="kAVIBitT3QgUR2gm9yH44T">现写现发 = 每天都要占用你的判断力 → <b data-page-node-id="Y7pjNZl6Frzm7BEiQ74D2A">日更两周后必崩</b>。</li>
+        <li data-page-node-id="hqBrajM03QbjYlBuH9CLCQ">囤稿后你的工作变成<b data-page-node-id="fotTvxFpWxma5OxvShkI3R">每周一次的批处理</b>，边际成本随篇数递减。</li>
+        <li data-page-node-id="SNOEYsxxwM5MwvymMQijMV">坏稿可替换不留空档 —— 这直接对冲了「群发额度用完无法补发」的风险。</li>
+        <li data-page-node-id="XAillIlcfRy13XXgM1Mft9">囤稿还能跨周调度：强时效的往前插， evergreen 的往后挪。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 5 分发 ══ -->
+<section data-page-node-id="2IvyRQHFmqY10DELgqpLHd">
+  <h2 data-page-node-id="oNbrJyrQJhL8ZdPjC4CpFN"><span class="num" data-page-node-id="kPH9qgR4C3Q1icsHdDxok9">5</span>多平台分发：降级为「有空再做」，但规则先钉死</h2>
+  <div class="lead" data-page-node-id="HVDk73zF33ZLzDque1BHrb">你的定调是对的——分发不是每日任务。但它有两条不可违反的约束，先写下来免得日后踩坑。</div>
+
+  <div class="tbl-wrap" data-page-node-id="9Ms3GnrdSnUFGm5zM6b2Qd">
+    <table data-page-node-id="3uKCXJj8VzOfhEvRAmtigO">
+      <thead data-page-node-id="xGHyQAoe5waumv8Nz2mFKH">
+        <tr data-page-node-id="q7inO2nTW9R08MLAl2Owvn"><th style="width:13%" data-page-node-id="MBJOwGDNYlzoXFRI67D5hc">平台</th><th style="width:9%" data-page-node-id="dfLzN1dcCwcZem05Rqhiej">适配度</th><th style="width:20%" data-page-node-id="EPblAYYddJZYGSNbNZM2Hc">角色</th><th style="width:28%" data-page-node-id="XvscARX26rixwHqDxk2iNq">改写口味</th><th style="width:30%" data-page-node-id="ICNr3kNDkU62Ngau3qZzma">红线</th></tr>
+      </thead>
+      <tbody data-page-node-id="uEozZuAlYyi7jnbcX5zGeD">
+        <tr data-page-node-id="w4uwvOmRdYjoZnmzcV2qzz">
+          <td data-page-node-id="BtYtiAhnFnSucXYCuebTTt"><strong data-page-node-id="HN91CPcmVqIZVdDOT1qGpw">公众号</strong></td>
+          <td data-page-node-id="wGC5tl2SKna4qjYckDH4NW"><span class="b b-blue" data-page-node-id="4Ko03LfAvPBnTOEtGSEct6">9.5</span></td>
+          <td data-page-node-id="DHx3nB0fMD7QkEkfqYmL6M"><strong data-page-node-id="okGdwb6Z1o7MXaV0hULAIS">主阵地 · 日更</strong><br data-page-node-id="GRhYvfMcpmNSzBf96kTLGK">原创首发 / 搜一搜 / 变现收口</td>
+          <td data-page-node-id="IXZbZJHKk05ACyIKQVtn7G">情绪 + 故事；标题前 13–15 字含核心词（防折叠）</td>
+          <td data-page-node-id="wUW3nmZZGmpAyJgCOebmFl">必须全网首发；单篇仅入 1 个合集；合集 ≥3 篇才展示</td>
+        </tr>
+        <tr data-page-node-id="1ybXJytBDXQtazhPqaUtv3">
+          <td data-page-node-id="C9kFC7J1aJzM20WBAK0bPw"><strong data-page-node-id="94Hfq8COEFR3RNgeSqVLmT">掘金</strong></td>
+          <td data-page-node-id="p8yHH1dsLdpxh3Kd0Jipqb"><span class="b b-blue" data-page-node-id="h4KTALSZ1NoU4F54Q7sbCM">8.8</span></td>
+          <td data-page-node-id="TYgF7jI0vkrFfhqE9H7Fcg">工程深度<br data-page-node-id="FIS57Bz40BZd5CEMS5WV0i">从 A/B 档改写</td>
+          <td data-page-node-id="FVaTJdwPzn0KlDQQxaD3zs">开头直给结论，<b data-page-node-id="DyC2iDb6xOsLadH2esgcU4">禁寒暄</b>；颗粒度最细</td>
+          <td data-page-node-id="qBQjEH2JPaBHz5kHu8J4Gd"><b data-page-node-id="nQNSnH2ngoQxP70ctjg7bg">禁一切引流</b>（不放公众号名/二维码）；需在公众号首发 24h 后</td>
+        </tr>
+        <tr data-page-node-id="9p8etGvs36GCxO0DBCN211">
+          <td data-page-node-id="ZrryX3tFe3mSx3DnBTjBUX"><strong data-page-node-id="udD7OAFXqPnljAdQoeLoAN">知乎</strong></td>
+          <td data-page-node-id="eJJrDG3LxVcxyl6rFwUjue"><span class="b b-cyan" data-page-node-id="G2F2oe9pEZL7l7wjBdClk3">8.2</span></td>
+          <td data-page-node-id="hzBpUgLPgJyQSpS3pxHMiI">问题化<br data-page-node-id="PnOovJf9birpxkhDl5ov09">挑最像「一个问题」的稿</td>
+          <td data-page-node-id="B9z1dgZGnoHXdGQA79O9qw">回答体；开头亮身份 + 立场；结论先行</td>
+          <td data-page-node-id="Ay0YJvEDQDikaTP3zKf51C"><b data-page-node-id="sjhJMMZP9FeMPkkDXBKEx9">禁导流</b>；知乎对营销容忍度极低</td>
+        </tr>
+        <tr data-page-node-id="27S4sFrODvTeLSH7pJcd2o">
+          <td data-page-node-id="ype9sOIHkx6ko2jFRDH5xb"><strong data-page-node-id="FlMEuASWKHqbFrFob2SxOs">CSDN</strong></td>
+          <td data-page-node-id="Xf3xFz27G6RUX4uCk1IFDE"><span class="b b-gray" data-page-node-id="8SqRP7cv1WExc2YizPWXp6">7.8</span></td>
+          <td data-page-node-id="hBNwkr4DEcczN0pt75BYzB">教程 SEO<br data-page-node-id="lslz2bVD4gIgMYtKEdoSiq">吃百度长尾</td>
+          <td data-page-node-id="ZISeu0ljE0iLRbL9cAnNaB">教程型；代码块给全</td>
+          <td data-page-node-id="X2jCqWA40ZDQPX0tZBcNuW">引流<b data-page-node-id="OpjZlODBm7XTJgw85oHXsI">只能走官方「推广管理」推广卡</b>，文内放链接会被限流</td>
+        </tr>
+        <tr data-page-node-id="S8O0wQStrhaxqIbd9rTgqP">
+          <td data-page-node-id="mPGp7ClZX7HHPK9VAqNkAh"><strong data-page-node-id="OlMfoEdEKOxcuV5nBtMRhj">小红书</strong></td>
+          <td data-page-node-id="XtmRmDZAZmg9AYsVTD7lNk"><span class="b b-gray" data-page-node-id="K1U8Tnbo9aZXJrkF7OxlqW">5.5</span></td>
+          <td data-page-node-id="VCZdcvbdHxpupCUsW9skPN">竖图短文<br data-page-node-id="mn3eQnykmLZZy8GDs3V5jG">最易截图传播的稿</td>
+          <td data-page-node-id="4zKm3Bgo5GaoZO7KCmzLNh">首图定生死；正文短</td>
+          <td data-page-node-id="2B4wCdBx0pmEzot3A5L7Co"><b data-page-node-id="vDNkhyvm5VhsxQE3yQouwB">禁一切外链 / 二维码</b>；仅简介可挂名</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout c-blue" data-page-node-id="s92GoxRwbEcbUsTw9f4VNy">
+    <span class="ct" data-page-node-id="xhONTI201N8TOK6KonU0x4">分发的唯一正确姿势</span>
+    <b data-page-node-id="eMwvQbUHaA2jBAq8p6Ufu7">不是「每天同步」，而是「从已发存量里挑」。</b>
+    公众号发满一周后，回头挑 1–2 篇 A/B 档做平台化改写。
+    这样分发永远吃的是<b data-page-node-id="9baXTDiUqxV957q34R7KD2">已验证过的存量</b>，而不是新增你的工作负担，也不影响日更节奏。
+    一次分发 ≈ 1.5 小时，一周 1–2 次即可。<b data-page-node-id="yPHzNbHFQpMlYvsSSSD7xe">断更分发可以接受，断更公众号不行。</b>
+  </div>
+</section>
+
+<!-- ══ 6 合集 ══ -->
+<section data-page-node-id="pTsSFf8CYiE3wLpFVFmEp7">
+  <h2 data-page-node-id="lSBHI891waEfEKbHD5qRKW"><span class="num" data-page-node-id="DgFTXDEtBno8CsZpfvmO16">6</span>合集：日更 28 篇正好一次性解决「3 篇才生效」</h2>
+  <div class="lead" data-page-node-id="NCGTfBcFuU4Rj03IdFQZcB">微信硬规则：单篇仅入 1 个合集（2024-04-28 起从 5 降为 1）· <strong data-page-node-id="SgAMIJ3NaeRUPZ8wwTdivh">≥3 篇才在前端展示</strong> · 改名间隔 24h · 主页上限 10 个。</div>
+
+  <div class="g3" data-page-node-id="4duZHxnQXvxkTpxumHxINh">
+    <div class="card" data-page-node-id="dqfuCRVle4MCVSxFCPS2Bg">
+      <h3 data-page-node-id="N8ggW333kl0g2N6rOOgzyI"><span class="dot" data-page-node-id="9PcSCO0rFLWrFKC2mTS6zJ"></span>国产大模型速评 <span class="b b-amber" data-page-node-id="2j5d8cQPPfu2t7qw4qDrIR">现 2 篇</span></h3>
+      <ul class="plain" data-page-node-id="toPZ51CWs5LYIFjJyVnRTM">
+        <li data-page-node-id="v5FdHDbphETBDRgLIFOy8O">现有：GLM 篇 + 速评01</li>
+        <li data-page-node-id="pmDPaiZqA3fTQceovANJUZ"><b data-page-node-id="bA8Sf4thBxHkuYz8eNQE08">再 1 篇即生效</b>（速评02，9 月上旬）</li>
+        <li data-page-node-id="BZkV5BGXSA7oQePCmPrRNK">唯一被数据验证过的选题：GLM 篇阅读 134 / 搜一搜 103 / 分享 11</li>
+        <li data-page-node-id="W4vY479KiExASlHCIa3nGm">定位：时效 + 选型，C 档为主</li>
+      </ul>
+    </div>
+    <div class="card" data-page-node-id="7cnVmiHJcBJ1zpBOPzc9mC">
+      <h3 data-page-node-id="40Ta2VkGBJEqEIm6AH5VnV"><span class="dot" data-page-node-id="Ezi0HZUi1ou2J7xAfaUtjW"></span>AI 工程化实战 <span class="b b-green" data-page-node-id="2cmIrFlQyg3LzW8HRNj2r2">日更主力</span></h3>
+      <ul class="plain" data-page-node-id="2SM9pBb6pRFw3KGAQRAYyl">
+        <li data-page-node-id="UNniWOyQusddjhyqb113HR">C1 护城河 25 分主战场</li>
+        <li data-page-node-id="wl3kGuMSy099SDyIykmyKE">承接：harness 系列 / 六层 Token / 省 token / 多工具兼容 / Agent 框架</li>
+        <li data-page-node-id="7n3Mcf3yVz3Zmz7ppymKB5">预计 9 月进 12–15 篇 → <b data-page-node-id="jsXrNd5M2dgCnTDzcCJ1CD">远超生效线</b></li>
+        <li data-page-node-id="pJLcrWaNApP3DiNtFWzuhp">定位：A/B 档为主，立 IP 的核心合集</li>
+      </ul>
+    </div>
+    <div class="card" data-page-node-id="ujC3OhSAC65OVBk2nESO4J">
+      <h3 data-page-node-id="gp0XdNiAaDVCHXvGY45tIq"><span class="dot" data-page-node-id="1HRr9gXJLWGtCMmVJikFdJ"></span>技术人的复利 <span class="b b-red" data-page-node-id="B1XjNT9Dmezv0LjWRCl1Ei">现 1–2 篇</span></h3>
+      <ul class="plain" data-page-node-id="DTGEOPQhFlLo53FntXvbGT">
+        <li data-page-node-id="VF1v8lEx6apJ4rOjuVnPTy">成长线 / 认知线，最有人味</li>
+        <li data-page-node-id="DIQQS988wE6spfBZScg2xi">承接：复利 / 带资上班 / 高效执行 / 素材永动机</li>
+        <li data-page-node-id="0VS63CIpZWdHR5JnKhOm5d">9 月可进 5–7 篇 → <b data-page-node-id="oW8IqdnDhLcUrTleXQpGNC">生效</b></li>
+        <li data-page-node-id="KeGMuCRDlknlBG0ZwCLNj0">⚠️ 001/003 虚构学历叙事<b data-page-node-id="O3DnuGJ5wLUGLYSuDyDRgG">永久冷冻，不可解冻</b></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout c-amber" data-page-node-id="KZH8ezz1HG67XfZxzK6yOn">
+    <span class="ct" data-page-node-id="OOKFJUbESJp59sGdStC7Gj">建集纪律（因为单篇只能入 1 集，且改名要等 24h）</span>
+    合集必须<b data-page-node-id="E2oqB9zYu7P27DPgX54Qbg">互斥分类、建集时一次定名</b>。日更开始后每天都要归集，
+    如果分类边界模糊，后续调整成本很高（要把文章移出再移入）。
+    <b data-page-node-id="R54sn7hhv0ScsPyXw6kbrH">建议：开跑前先把三个合集建好并定名，之后只做「入集」不做「改集」。</b>
+  </div>
+</section>
+
+<!-- ══ 7 视频号 ══ -->
+<section data-page-node-id="8gn5NX0tN5G4bS4r9RQTs5">
+  <h2 data-page-node-id="Xj8Ewc0h1mzYxaNyVZveSg"><span class="num" data-page-node-id="6GxB5U4ilZphDGcKmfHkOR">7</span>视频号：阶段 2，但素材从第一天就开始攒</h2>
+  <div class="lead" data-page-node-id="vq1ziiXEGIpxs9ClNBYW6m">视频号属于微信生态，<strong data-page-node-id="livCG7MnJnMHvEx908BAKI">不触发跨平台原创比对</strong>——这是它相对于掘金/CSDN 的最大优势。</div>
+
+  <div class="g2" data-page-node-id="M7JdCtcsnEE3KwP8s1puTH">
+    <div class="card" data-page-node-id="nr02iBTSeN7AgOc9Njd6dk">
+      <h3 data-page-node-id="IstvMRWfmBYEBirRCkqc7j"><span class="dot" data-page-node-id="9kJNmcM2xoSWrM03EbmSCb"></span>为什么现在不主力做，但要开始攒</h3>
+      <ul class="plain" data-page-node-id="2T0NofrTg6g6F12kC9r9pd">
+        <li data-page-node-id="HNMUudMsNNUND9dUSuW2Tn">低成本公式已有：<b data-page-node-id="l5pDRB8uX5rmQyDzGl50Ws">PPT + 真人录音</b>，无需出镜、无需剪辑特效。</li>
+        <li data-page-node-id="OeCwM19trR3970GUDQVFrP">素材来源就是 A/B 档文章 —— <b data-page-node-id="4Zyl8K0Ui7BHcBKbkWjEAb">每篇 A 档 = 1 条视频脚本</b>，现在写的每篇都在给未来攒弹药。</li>
+        <li data-page-node-id="z6qewrBUFG6AlflzugAqLo">视频号 100 粉即可开通分成，门槛低。</li>
+        <li data-page-node-id="pTBukpE5zKmVXNEmBadGox"><b data-page-node-id="yDRUT8HXDGT8zdcD3NjLVi">视频号内容进搜一搜</b>，是公众号之外的第二条长尾入口。</li>
+        <li data-page-node-id="gkldIkVPx6b7z3CZpY7CwM">日更文章先跑通，视频号在下个月（10 月）接上，节奏才不打架。</li>
+      </ul>
+    </div>
+    <div class="card" data-page-node-id="66H6PMc0yUlJFEaUz6qYlC">
+      <h3 data-page-node-id="yIS5Rm7zNdNhDzRxC5SlEk"><span class="dot" style="background:var(--orange)" data-page-node-id="3Nwo1Ssqd8k41VM3YfcRlR"></span>落地路径（10 月启动）</h3>
+      <div class="tl" data-page-node-id="YitpZS10QKBVeGHYpO3peH">
+        <div class="tl-item done" data-page-node-id="KYq4Yy9qqfzPZjONBD5kA0">
+          <div class="tlt" data-page-node-id="LsveHBeCmE6l64dV44ptsD">现在 · 攒素材</div>
+          <div class="tld" data-page-node-id="DuCgpqC8vBBGB86PXpsoBm">A/B 档文章产出时同步标记「可视频化」，脚本库 <code data-page-node-id="u3ACvs3kJOCV3Cezzsg33E">素材库/视频脚本库.md</code> 已存在，直接往里填</div>
+        </div>
+        <div class="tl-item" data-page-node-id="6t5ELTyrxYJTbomT6bLNTr">
+          <div class="tlt" data-page-node-id="SU39aFi8tbYznF6Vj1hf00">10 月 · 周更 1 条</div>
+          <div class="tld" data-page-node-id="M9CjoiorcINKyXGt18Xofu">从 9 月的 A 档里挑 4 条，PPT 录屏 + 真人录音，先跑一个月验证手感</div>
+        </div>
+        <div class="tl-item" data-page-node-id="YACuWBeFSsz46hcnPZssgv">
+          <div class="tlt" data-page-node-id="0vYSBkuGEexQuetDJQCvcb">验证后 · 提频</div>
+          <div class="tld" data-page-node-id="cS9JBf9bcNEyyKwnpnaOPM">看完成率与搜一搜来源占比，再决定要不要提到周更 2–3 条</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout c-green" data-page-node-id="iDRhJpzaBxD44CgmfmH1zi">
+    <span class="ct" data-page-node-id="iWJGPDEyPviyCpRKArEFIp">一条提醒</span>
+    视频号与公众号的<b data-page-node-id="zSRkHpc3VEMhEeXpz3ioPV">受众问题域一致</b>（都在微信生态、同为技术人），
+    所以视频不是「重写」，是<b data-page-node-id="Fv2t2D6ngs1yDloPTg5vMY">同内容的另一种载体</b> —— 这正是它比小红书/抖音省力的根本原因。
+    但画面质量有底线：字太小、念稿感太重会直接掉完成率，宁可一周只出 1 条。
+  </div>
+</section>
+
+<!-- ══ 8 风险 ══ -->
+<section data-page-node-id="o465i1XGA3yR0XqmJtUqCW">
+  <h2 data-page-node-id="bcinXn8B2qTm1QImG5AFe9"><span class="num" data-page-node-id="qWpLhQuJfu7dcTIuSwkgaF">8</span>日更的三个真实风险</h2>
+  <div class="tbl-wrap" data-page-node-id="XI71zA90dssW2CGoZf9gWf">
+    <table data-page-node-id="vnPZUdWZ2QlvcFDWVGoA0k">
+      <thead data-page-node-id="uEGwQck769RBfctjdl2SOm"><tr data-page-node-id="DNEjTioqzralPMdyCyepG6"><th style="width:16%" data-page-node-id="IzNCS4izIxrat8PZyUBq3W">风险</th><th style="width:34%" data-page-node-id="lvNXMN8bEEROJtg25dNj18">表现</th><th style="width:50%" data-page-node-id="UFT0V4pZ2S1NRDGNZvdII8">对冲手段</th></tr></thead>
+      <tbody data-page-node-id="Nuj9Nc7lNzij1vnQazibk9">
+        <tr data-page-node-id="97o9CKCtNNiwHZ5juB9B6r">
+          <td data-page-node-id="v9HQIcTroQCRfoCkJldsIO"><strong data-page-node-id="VPvb4kVmC7W3zh0Kp1QCNj">质量稀释</strong><br data-page-node-id="lBmKVVm984YCyKwn7vxAtx"><span class="b b-red" data-page-node-id="gzs9qvlH6011gRNMCJfUFI">最高</span></td>
+          <td data-page-node-id="JnqnMCbnd3CNeWpchVA8ye">为了凑数把 C 档写成注水长文；读者取关率上升；长期损害信任成本</td>
+          <td data-page-node-id="b5qY5JqKFte28qku7IzUr9">C 档<b data-page-node-id="R2eU09OHtvM1KNSo4hWFWX">宁可短不可水</b>（硬约束）；水位 ≤2 时宁可断更一天也不发水稿；每月复盘一次阅读中位数，掉头就调配比</td>
+        </tr>
+        <tr data-page-node-id="bDRrGMt8rZCZgNFSc2OMBQ">
+          <td data-page-node-id="d11RcIECIzPimrCzgB1qfP"><strong data-page-node-id="SjV7MsGmFs7qQ8S2gKBosm">群发额度用完</strong><br data-page-node-id="9e8h0OpTvSHIPcE58r1fUm"><span class="b b-amber" data-page-node-id="QsNwx0o7yO7SpKbfcxf7IH">中</span></td>
+          <td data-page-node-id="Ume9DIIMGgWcWtkxX8BElu">当天发错 / 稿子有硬伤 → 无法补发，当天长尾机会作废</td>
+          <td data-page-node-id="SnGEUdCXc2sx3ngDHlB7ZR">草稿箱水位 ≥7；坏稿直接换备选；发布前 Checklist 必过（尤其标题字数、配图、原创勾选）</td>
+        </tr>
+        <tr data-page-node-id="kwGP3ekXONt4LIKoJngpD4">
+          <td data-page-node-id="0p1UacoDFXg4CTCkjPJ8aC"><strong data-page-node-id="uGe22yqhYSYDKFbRPLgosD">原创冲突</strong><br data-page-node-id="kmBIMfitCkOzvc5HhFIzBi"><span class="b b-amber" data-page-node-id="9rIm7K8BttJF905xDv4Q9J">中</span></td>
+          <td data-page-node-id="KK5PA2Jv5KeP7jpjjQUfKg">先发其他平台 → 公众号原创被取消 / 群发失败 53503</td>
+          <td data-page-node-id="EEHhy0gulxY3TyGuLhlih5">公众号<b data-page-node-id="aiCD7dhPFbDD993aMsz85v">全网首发</b>铁律；已发别处的稿子台账标红、跳过原创勾选；分发强制间隔 ≥24h + 差异化改写</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══ 9 待你拍板 ══ -->
+<section data-page-node-id="ctsal1xIDXLmyeQGniaQQP">
+  <h2 data-page-node-id="p9fj30qHNQG5NTZCzOxkG4"><span class="num" data-page-node-id="GbnZEu1gKIPpZMwTeu5YRB">9</span>待拍板（4 项）</h2>
+  <div class="card" data-page-node-id="pzwZyg3telcY8cCsr8VK3j">
+    <div class="tbl-wrap" style="border:none" data-page-node-id="K1x5ZS6AilIMqT5FYCsdTy">
+      <table data-page-node-id="nvYxajz43QjEHtMlys2BRG">
+        <thead data-page-node-id="q54M9y2KtOAwG9HDpCo7aY"><tr data-page-node-id="42msnqFgyN225yLiGEMxpB"><th style="width:5%" data-page-node-id="iI2hESKvv1KL5tfqLW7CJz">#</th><th style="width:26%" data-page-node-id="7COe3ZdeXx8EdX0cqDtZ4v">决策点</th><th style="width:39%" data-page-node-id="NoAGs0NLqfLlKLm3st6zGm">选项</th><th style="width:30%" data-page-node-id="59MHy4lq41oSrActSenT4A">我的建议</th></tr></thead>
+        <tbody data-page-node-id="UzR8Bk4OZI8lPG2GIAGKH0">
+          <tr data-page-node-id="vTYCQLb5jMQTk837b4el4G">
+            <td data-page-node-id="fQtQdAogdSvYGUaN2OADfI"><strong data-page-node-id="HWCtNavq24VWV7dLiLJYqn">1</strong></td>
+            <td data-page-node-id="14D1tZOnisDCQBg54ApHdA">日更起跑日</td>
+            <td data-page-node-id="PMzx1hQUbHHZH7u92epTbJ">A. 9/3 立即起跑（先发 6 篇成稿垫底）<br data-page-node-id="ztSMtvRPCDOxEan1kTZOFt">B. 9/8 起跑（先囤够 7 篇水位）</td>
+            <td data-page-node-id="VLXCdvlm07qFOe8qH3wZAU"><b data-page-node-id="iQzGDFxRbFtvRmCI1X7PoF">B</b>。先囤 7 篇再起跑，日更不怕断。<br data-page-node-id="RmcAUAB1FQGzgFCTG69iox">但这周先把速评01 发了（时效在流失）</td>
+          </tr>
+          <tr data-page-node-id="kaZKMmoRRopx6zjCg6y8Jl">
+            <td data-page-node-id="M7RU2KLL33Hm8p0KgsfEHG"><strong data-page-node-id="d1qvZBuWuE19mHsPtzO4Zh">2</strong></td>
+            <td data-page-node-id="PdnkiRkIWK8NmvULCnTQIF">起跑前是否先实测 draft/add</td>
+            <td data-page-node-id="BicjsDjuP5wRSjjkb8SsFz">A. 先 curl 实测一次再定工作流<br data-page-node-id="ssadaywvQm1DFWMKCKGGR0">B. 不实测，直接本地 HTML 粘贴</td>
+            <td data-page-node-id="HEbB6RRUQEpQ8zJMVJsHmx"><b data-page-node-id="y9GJxs1pMoF9EgSxIRGh7G">A</b>。一条 curl 的事，能省掉后续大量手工粘贴。<br data-page-node-id="2rsYSqeWeiwBX4dBKTsKSv">不通也不影响，只是回到 B 方案</td>
+          </tr>
+          <tr data-page-node-id="KtbXPQfwF9iMhRgQA4vA3I">
+            <td data-page-node-id="iA3XpEdNZm0OGFMvVnudL8"><strong data-page-node-id="1XjX594ZNLX3e2TktFpN94">3</strong></td>
+            <td data-page-node-id="qb8AVfel2d8O7Cc27alRU9">合集：改名还是新建</td>
+            <td data-page-node-id="G4dCCyvEHxfsYUHFNm6rTZ">A. 「技术闪记」改名「国产大模型速评」<br data-page-node-id="e62zsyj0v6LawqsY7tvH1C">B. 新建并行，旧的留着</td>
+            <td data-page-node-id="aYIhtRP0zS0pUoC7Mw0oM6"><b data-page-node-id="Jy5eG5UiQ9RY4XcVSQdYtJ">A</b>。专集专用，且改名后立刻排第 3 篇凑够生效线。<br data-page-node-id="oCHw4xDiMzNEXijnFBpO3R">注意改名间隔 24h 限制</td>
+          </tr>
+          <tr data-page-node-id="BmroHc4euap6tw3l4MrisY">
+            <td data-page-node-id="SympsZtaH71HDfiB0wQ4pA"><strong data-page-node-id="lG3bXUWd1yHkbIvH4TRHDG">4</strong></td>
+            <td data-page-node-id="HlB36x3dArRfdxG6H5sykv">「技术人的复利」第 3 篇选题</td>
+            <td data-page-node-id="GdAvaEgaL9Op0EHgSDH2QF">A. 职业安全垫（对抗裁员）<br data-page-node-id="IZpCUNQNRRof7R7zrv9kH8">B. 带资上班 / 协资上班<br data-page-node-id="wz9csHrHg5MiEVo0lSSnFA">C. 行途高效执行实践</td>
+            <td data-page-node-id="OLW3EJ6HQ7i1gVCt9mK75S"><b data-page-node-id="ULMhyWmq8xNWHsPBrGSSEN">B</b>。带资上班是别人写不出的角度，最易爆。<br data-page-node-id="anpQQ4VakyOw1XuTfrkBIs">但需先确认脱敏口径（涉雇主）</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer data-page-node-id="rqGt2IFsTlmU6feT9yBkjS">
+  行途 · 发布作战台 日更版 v2 ｜ 建立 2026-09-02<br data-page-node-id="v4NrnYuANGD4JwSVA5EOeg">
+  配套：发布日历 <code data-page-node-id="rZpwCbEzpdMszyavPm4YIH">xingtu-vault/03_运营工具箱/00_全局发布日历_2026-09.md</code> ｜
+  发布日志 <code data-page-node-id="1qCub851KZrfrgRmjavehg">xingtu-vault/09_个人台账/03_已发布文章档案/发布日志_2026-09.md</code><br data-page-node-id="hKJoocsyJAWWkad449znFk">
+  核实来源：微信公众平台发布能力官方文档 · 腾讯客服群发规则 · 微信开放社区原创首发规则 · 多源实测交叉
+</footer>
+
+</div>
+</body>
+</html>

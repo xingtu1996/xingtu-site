@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行途 IP · 受众画像与内容盘点分析</title>
+<style>
+  :root{
+    --navy:#1B2A4A; --orange:#FF6B35; --ink:#22303f; --muted:#6b7a8d;
+    --line:#e4e9f0; --bg:#f6f8fb; --card:#ffffff; --green:#2e9e6b; --amber:#e0a32e; --red:#c0392b;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
+  .wrap{max-width:1080px;margin:0 auto;padding:32px 24px 64px}
+  header{background:linear-gradient(120deg,var(--navy),#27375c);color:#fff;border-radius:16px;padding:28px 30px;margin-bottom:24px}
+  header h1{margin:0 0 6px;font-size:24px;letter-spacing:.5px}
+  header .sub{opacity:.82;font-size:14px}
+  header .tag{display:inline-block;margin-top:12px;background:rgba(255,107,53,.18);border:1px solid rgba(255,107,53,.5);color:#ffd2bf;padding:3px 10px;border-radius:20px;font-size:12px}
+  h2{font-size:19px;margin:36px 0 14px;padding-left:12px;border-left:4px solid var(--orange);color:var(--navy)}
+  h3{font-size:15px;margin:18px 0 8px;color:var(--navy)}
+  p{margin:8px 0}
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .card .n{font-size:26px;font-weight:700;color:var(--orange)}
+  .card .l{font-size:12px;color:var(--muted);margin-top:2px}
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13.5px;margin:10px 0}
+  th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:#eef2f8;color:var(--navy);font-weight:600}
+  tr:last-child td{border-bottom:none}
+  .yes{color:var(--green);font-weight:600}
+  .no{color:var(--red);font-weight:600}
+  .part{color:var(--amber);font-weight:600}
+  code{background:#eef2f8;padding:1px 6px;border-radius:5px;font-size:12.5px;color:#234}
+  .bar{height:18px;background:var(--navy);border-radius:4px;color:#fff;font-size:11px;line-height:18px;padding-left:6px;white-space:nowrap;margin:3px 0}
+  .bar.orange{background:var(--orange)}
+  .bar.amber{background:var(--amber)}
+  .pill{display:inline-block;background:#eef2f8;border:1px solid var(--line);border-radius:14px;padding:2px 9px;font-size:12px;margin:2px 4px 2px 0;color:#33485f}
+  .note{background:#fff7ef;border:1px solid #ffd9c2;border-radius:10px;padding:12px 14px;font-size:13px;color:#7a4a2c;margin:12px 0}
+  .okbox{background:#eafaf1;border:1px solid #bfe9cf;border-radius:10px;padding:12px 14px;font-size:13px;color:#1f6b45;margin:12px 0}
+  .warnbox{background:#fff4f2;border:1px solid #f3c9c2;border-radius:10px;padding:12px 14px;font-size:13px;color:#a23a2c;margin:12px 0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  ul{margin:8px 0;padding-left:20px}
+  li{margin:4px 0}
+  .foot{margin-top:30px;color:var(--muted);font-size:12px;text-align:center}
+  @media(max-width:760px){.cards{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap">
+
+<header>
+  <h1>行途 IP · 受众画像与内容盘点分析</h1>
+  <div class="sub">从「已发布 + 在产管线 + 视频脚本」反推粉丝人员画像，判断受众是否过窄。</div>
+  <span class="tag">生成于 2026-08-25 · 推断画像（非后台实测）</span>
+</header>
+
+<div class="warnbox">
+  <b>⚠️ 数据前提：</b>当前公众号 / 知乎 / 掘金等平台连接器均为 disconnected，<b>无法获取后台真实粉丝数据</b>。本看板的「粉丝人员画像」是从<b>内容主题分布 + 战略看板自述定位</b>反推的<b>推断画像</b>，用于战略自检。要拿到实测结论，需先接入后台数据（粉丝性别/地域/关注来源/读完率）。
+</div>
+
+<!-- 概览 -->
+<h2>一、内容资产盘点（实盘）</h2>
+<div class="cards">
+  <div class="card"><div class="n">≈12</div><div class="l">已发布核心主题簇</div></div>
+  <div class="card"><div class="n">12</div><div class="l">在产博文骨架 B01–B12</div></div>
+  <div class="card"><div class="n">6</div><div class="l">视频脚本 V01–V06</div></div>
+  <div class="card"><div class="n">0</div><div class="l">故事线在产（⚠️ 停更）</div></div>
+</div>
+
+<h3>已发布主题分布</h3>
+<div>
+  <div class="bar orange" style="width:50%">建站/品牌/运营基建 6</div>
+  <div class="bar" style="width:42%">AI 工具链/模型硬核 4–5</div>
+  <div class="bar" style="width:17%">故事线（逆袭）2</div>
+  <div class="bar" style="width:9%">出海/变现 1</div>
+  <div class="bar amber" style="width:9%">技术实战（AI 查 bug）1</div>
+</div>
+
+<h3>在产管线 B01–B12 主题分布</h3>
+<div>
+  <div class="bar" style="width:100%">硬核/原理（横评·注入·全景·省token·GraphRAG）5</div>
+  <div class="bar" style="width:60%">工程方法/理念（Ponytail·CleanCode·方法论·复利·对抗）5</div>
+  <div class="bar amber" style="width:40%">变现/商业（账单·定价）2</div>
+  <div class="bar" style="width:0%">故事线 0 ⚠️</div>
+</div>
+<p class="mono" style="font-size:12.5px;color:var(--muted)">注：视频脚本 V01–V06 同样无一条"真人逆袭故事"，全部为工程方法/原理/观点。</p>
+
+<!-- 画像 -->
+<h2>二、推断受众画像（5 层）</h2>
+<table>
+  <thead><tr><th>层级</th><th>人群</th><th>对应内容</th><th>现状</th></tr></thead>
+  <tbody>
+    <tr><td><b>L0</b> 普通人/泛职场</td><td>起点不高的奋斗者、职场迷茫者</td><td>仅"16年逆袭"故事线</td><td><span class="no">✗ 故事线停更，基本流失</span></td></tr>
+    <tr><td><b>L1</b> 入门小白/非技术</td><td>想用 AI 提效但不写代码的人</td><td>几乎没有</td><td><span class="no">✗ 缺口最大</span></td></tr>
+    <tr><td><b>L2</b> 开发者/技术人</td><td>AI coding 重度用户</td><td>主力覆盖（硬核+工程方法）</td><td><span class="yes">✓ 吃饱</span></td></tr>
+    <tr><td><b>L3</b> 技术经理/决策者</td><td>带团队、看 ROI 的人</td><td>B03 账单、B06 定价部分覆盖</td><td><span class="part">△ 弱覆盖</span></td></tr>
+    <tr><td><b>L4</b> 想做 IP 的技术人</td><td>关心复盘/复利/方法论</td><td>B10/B11 部分覆盖</td><td><span class="part">△ 弱覆盖</span></td></tr>
+  </tbody>
+</table>
+<div class="note">战略看板自述定位："精准野生程序员 + 30–35 岁迷茫期程序员/初入大厂新兵 + 起点不高的奋斗者"。三条里<b>实际持续产出的只有第一条</b>，后两条靠吃老本。</div>
+
+<!-- 诊断 -->
+<h2>三、窄化诊断</h2>
+<div class="warnbox">
+  <b>结论：是，但窄得不均匀——「横向人群窄 + 破圈钩子弱」，而「纵向技术深度」反而过深。</b>
+</div>
+<table>
+  <thead><tr><th>病灶</th><th>表现</th><th>影响</th></tr></thead>
+  <tbody>
+    <tr><td><b>破圈钩子停摆</b></td><td>"16年逆袭"故事线已发布仅 2 篇、长期不产，在产管线 = 0</td><td>失去跨人群穿透力，非技术人群触达不到</td></tr>
+    <tr><td><b>人群单一锁定程序员</b></td><td>内容 90%+ 写给写代码的人；产品/运营/学生/老板视角全部缺位</td><td>涨粉慢、天花板低、抗风险弱</td></tr>
+    <tr><td><b>变现错配（最该补）</b></td><td>重变现=30–35 迷茫程序员面辅/简历营，但几乎不产"职业/求职/面辅"内容</td><td>产出的内容和变现目标人群错位</td></tr>
+    <tr><td><b>纵向过深</b></td><td>harness/token/模型接入极客向，泛化难</td><td>信任强但涨粉慢、破圈难</td></tr>
+  </tbody>
+</table>
+<div class="okbox">公道话：战略铁律"利他→信任→变现"下，窄=精准=信任强；现处信任积累期，纵向扎深没问题。<b>问题不在"窄"，在于"最该破圈的钩子 + 最该对齐变现的内容都没在生产"。</b></div>
+
+<!-- 建议 -->
+<h2>四、扩圈建议（不动核心、低成本）</h2>
+<div class="grid2">
+  <div>
+    <h4 style="margin:6px 0;color:var(--navy)">1) 重启发故事线（最低成本破圈）</h4>
+    <p>电脑城/外卖/水暖/带团队真实经历是金矿，做成稳定周更"普通人破局"系列，视频号/小红书主推。一篇顶十篇硬核的涨粉。</p>
+    <h4 style="margin:6px 0;color:var(--navy)">2) 加一档"大众向"</h4>
+    <p>把硬核降维成"非技术也能懂的 AI 提效"（给产品/运营/老板看），放大 V06"AI越强人越值钱"观点文。</p>
+  </div>
+  <div>
+    <h4 style="margin:6px 0;color:var(--navy)">3) 补"职业/求职/面辅"内容</h4>
+    <p>直接对齐重变现人群（30–35 迷茫程序员），这是当前最大缺口。</p>
+    <h4 style="margin:6px 0;color:var(--navy)">4) 一鱼多吃</h4>
+    <p>每篇硬核文配"小白版/老板版"摘要卡，同一素材服务多层受众，不增产能但扩触达。</p>
+  </div>
+</div>
+
+<!-- 下一步 -->
+<h2>五、下一步（待 Boss 决策）</h2>
+<ul>
+  <li><b>先接后台数据</b>：把公众号/知乎/掘金连接器接上，拿真实粉丝性别/地域/来源/读完率，把"推断画像"升级为"实测画像"。</li>
+  <li><b>故事线复产</b>：从已发布 2 篇 + 素材库真实经历，排 3–5 篇故事线进库存。</li>
+  <li><b>补职业/面辅内容</b>：对齐重变现人群，缩小"内容产出 vs 变现目标"错配。</li>
+</ul>
+
+<div class="foot">行途 IP · 受众画像与内容盘点分析 · 单文件离线可用 · 2026-08-25</div>
+
+</div>
+</body>
+</html>

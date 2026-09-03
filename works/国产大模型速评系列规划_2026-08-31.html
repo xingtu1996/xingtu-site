@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>国产大模型速评系列规划 · 行途</title>
+<style>
+  :root{
+    --blue:#056DE8; --lblue:#4A9EFF; --cyan:#00D4FF; --orange:#FF6B35;
+    --bg:#0f1626; --card:#182236; --line:#2a3a55; --text:#e8eef7; --muted:#93a4bd;
+    --green:#2E8B57; --red:#e05555;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;line-height:1.65;padding:32px 20px}
+  .wrap{max-width:1080px;margin:0 auto}
+  .hero{background:linear-gradient(135deg,#0c1a33 0%,#12325c 60%,#0e2748 100%);border:1px solid var(--line);border-radius:16px;padding:36px 40px;margin-bottom:28px}
+  .tag{display:inline-block;background:rgba(0,212,255,.12);color:var(--cyan);border:1px solid rgba(0,212,255,.35);border-radius:20px;padding:3px 14px;font-size:13px;margin-bottom:14px}
+  h1{font-size:30px;font-weight:800;letter-spacing:.5px;margin-bottom:10px}
+  .hero p{color:var(--muted);font-size:15px;max-width:820px}
+  .verdict{display:flex;gap:14px;margin-top:20px;background:rgba(46,139,87,.12);border:1px solid rgba(46,139,87,.4);border-radius:12px;padding:16px 20px}
+  .verdict .big{font-size:17px;font-weight:700;color:#5fdc9a}
+  .verdict .sub{font-size:13.5px;color:var(--muted)}
+  h2{font-size:22px;font-weight:800;margin:38px 0 16px;display:flex;align-items:center;gap:10px}
+  h2 .no{background:var(--blue);color:#fff;width:30px;height:30px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 24px;margin-bottom:14px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:760px){.grid2{grid-template-columns:1fr}}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  th{background:rgba(74,158,255,.14);color:var(--lblue);text-align:left;padding:9px 12px;font-weight:600;white-space:nowrap}
+  td{padding:9px 12px;border-top:1px solid var(--line);color:var(--text);vertical-align:top}
+  tr:hover td{background:rgba(74,158,255,.05)}
+  .hl{color:var(--cyan);font-weight:600}
+  .hl2{color:var(--orange);font-weight:600}
+  .hook{background:rgba(255,107,53,.1);border:1px solid rgba(255,107,53,.35);border-radius:10px;padding:14px 18px;margin:8px 0}
+  .pill{display:inline-block;background:rgba(74,158,255,.15);color:var(--lblue);border-radius:14px;padding:2px 12px;font-size:12.5px;margin:2px 4px 2px 0}
+  .pill.o{background:rgba(255,107,53,.14);color:var(--orange)}
+  .pill.g{background:rgba(46,139,87,.16);color:#5fdc9a}
+  .topic{display:flex;gap:14px;padding:18px 0;border-bottom:1px dashed var(--line)}
+  .topic:last-child{border-bottom:none}
+  .topic .id{background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff;font-weight:800;border-radius:10px;min-width:52px;height:52px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+  .topic h3{font-size:16.5px;font-weight:700;margin-bottom:6px}
+  .topic .meta{font-size:12.5px;color:var(--muted);margin-bottom:8px}
+  .topic p{font-size:13.5px;color:var(--text)}
+  .timeline{position:relative;padding-left:22px}
+  .timeline:before{content:'';position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--blue),var(--cyan))}
+  .tl-item{position:relative;margin-bottom:16px}
+  .tl-item:before{content:'';position:absolute;left:-22px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--cyan);border:3px solid var(--bg)}
+  .tl-item.done:before{background:var(--green)}
+  .tl-item .date{font-size:12.5px;color:var(--orange);font-weight:700}
+  .tl-item .name{font-size:14.5px;font-weight:600}
+  .tl-item .desc{font-size:13px;color:var(--muted)}
+  .foot{margin-top:32px;color:var(--muted);font-size:12.5px;text-align:center;border-top:1px solid var(--line);padding-top:16px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  @media(max-width:760px){.grid3{grid-template-columns:1fr}}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;text-align:center}
+  .kpi .n{font-size:24px;font-weight:800;color:var(--cyan)}
+  .kpi .t{font-size:12.5px;color:var(--muted);margin-top:2px}
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="tag">行途 · 双系列统筹规划 · 2026-08-31</span>
+    <h1>国产大模型速评 + 省 Token 双系列规划</h1>
+    <p>速评系列（时效/选模型）+ 省 Token 系列（长效/降本）双线统筹。速评基于已发的 GLM-5.3 Flash 爆文（阅读134/搜一搜103/分享11）+ 8 月模型密集发布窗口；省 Token 基于六层 Token 素材底座（已写 B09/B02，余 9 篇待成稿）。</p>
+    <div class="verdict">
+      <div>
+        <div class="big">结论：能做，且是最佳时机</div>
+        <div class="sub">① 你唯一有流量的内容是模型速评型；② 8 月国产模型密集发布（GLM/Qwen/DeepSeek/K3 全上新）；③ 完整 SOP 已沉淀，可流水线复制；④ 这是天然"连载感"题材，正好治搜一搜"用完即走"。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 既有内容钩子盘点 -->
+  <h2><span class="no">1</span>既有内容钩子盘点（你手里已经有的）</h2>
+  <div class="card">
+    <table>
+      <tr><th style="width:22%">钩子</th><th style="width:44%">现状</th><th>价值判断</th></tr>
+      <tr>
+        <td class="hl">公众号合集</td>
+        <td>「技术闪记：一线实战与AI提效」已建，但目前只有 GLM-5.3 Flash 一篇</td>
+        <td><span class="pill g">现成钩子</span>合集是搜一搜用户"关注理由"的第一承接物，内容一多就有系列感</td>
+      </tr>
+      <tr>
+        <td class="hl">GLM-5.3 速评 SOP</td>
+        <td>8-27 完整沉淀：官方一手→价格表→性能对比→SEO埋词→封面→合集→邀请链接</td>
+        <td><span class="pill g">可复制</span>已有流水线，每篇新模型照跑一遍即可</td>
+      </tr>
+      <tr>
+        <td class="hl">中英文昵称双命中标题</td>
+        <td>「牛来（Ox Alpha）」同时吃中英文搜索</td>
+        <td><span class="pill g">已验证</span>搜一搜 103 阅读的引擎，可复制到每个模型</td>
+      </tr>
+      <tr>
+        <td class="hl">真实工程实践背书</td>
+        <td>你日常主力 DeepSeek V4-Pro、禁 K3、真实 token 账单、省 token 实测</td>
+        <td><span class="pill g">护城河</span>大厂 KOL 没有的"一线抠成本"视角，差异化核心</td>
+      </tr>
+      <tr>
+        <td class="hl">文末互推/预告</td>
+        <td>B09 预告 T18 的互推逻辑已验证</td>
+        <td><span class="pill o">待放大</span>升级为"系列下期预告"，制造追更感</td>
+      </tr>
+      <tr>
+        <td class="hl">搜一搜 SEO 埋词</td>
+        <td>标题前15字核心词 + 开头埋词 + 长尾词</td>
+        <td><span class="pill g">已验证</span>模型名+对比+价格是最强搜索词组合</td>
+      </tr>
+    </table>
+    <div class="hook" style="margin-top:14px">
+      <b>一句话</b>：你缺的不是钩子，是"内容密度"——钩子（合集/SOP/SEO）全都在，只是只有 1 篇文章在撑。系列 = 把已跑通的单篇，复制成 N 篇，让合集活起来。
+    </div>
+  </div>
+
+  <!-- 8月模型发布窗口 -->
+  <h2><span class="no">2</span>8 月国产模型发布窗口（系列素材盘确认）</h2>
+  <div class="card">
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="date">07-16</div>
+        <div class="name">月之暗面 Kimi K3 发布并开源</div>
+        <div class="desc">2.8 万亿 MoE、原生 100 万 token、KDA 混合线性注意力，SuperCLUE 国产第一（与 GLM-5.3 并列 T1）</div>
+      </div>
+      <div class="tl-item">
+        <div class="date">08-03</div>
+        <div class="name">阿里 Qwen3.8-Max 发布</div>
+        <div class="desc">2.4 万亿参数、100 万 token，首个开源 Max 级旗舰，编程/Cowork 大幅提升（下周开源权重）</div>
+      </div>
+      <div class="tl-item">
+        <div class="date">08-13</div>
+        <div class="name">DeepSeek V4-Pro 转正式版（0813）</div>
+        <div class="desc">预览版 4 月上线，8 月转正，Agent 能力跃升，双协议兼容——<b>你的写作主力模型</b></div>
+      </div>
+      <div class="tl-item">
+        <div class="date">08-14</div>
+        <div class="name">智谱 GLM-5.3 发布</div>
+        <div class="desc">7430 亿参数基座不变，纯后训练 Scaling：编程较 5.2 提升 50%、开源编程 SOTA、网络安全能力涌现</div>
+      </div>
+      <div class="tl-item">
+        <div class="date">08-21</div>
+        <div class="name">DeepSeek V4-Flash-Vision-Exp 上线</div>
+        <div class="desc">多模态视觉理解实验模型，Terminal Bench 2.1 达 83.9</div>
+      </div>
+      <div class="tl-item done">
+        <div class="date">08-26（已发 ✅）</div>
+        <div class="name">智谱 GLM-5.3-Flash 开源 + 阿里 Qwen3.8-Flash 开源（同一天）</div>
+        <div class="desc">GLM-5.3-Flash：320B/18B 原生多模态，0.4/1.4 元（5折）；Qwen3.8-Flash：下一代架构，千亿总参/6B 激活打平 Opus 4.6，训练成本降 90%——你已发前者</div>
+      </div>
+    </div>
+    <div class="hook" style="margin-top:10px">
+      <b>判断</b>：8 月正好是国产大模型的"期中考试"（Kimi K3 与 GLM-5.3 并列 T1）。仅 8 月就至少有 <b>5 个未写</b>的模型发布点 + 1 个已写，题材连续不断——系列素材盘完全够，且天然自带"更新节奏"。
+    </div>
+  </div>
+
+  <!-- 系列方案 -->
+  <h2><span class="no">3</span>系列方案（定位 / 结构 / 节奏）</h2>
+  <div class="grid2">
+    <div class="card">
+      <b>系列定位</b>
+      <p style="margin-top:8px;font-size:13.5px">「国产大模型速评」= <span class="hl">小厂技术人视角的第一手模型测评</span>：官方一手数据 + 真实成本账 + 编程/写作实测。不转发新闻，只做"帮你省钱/选型"的内容。</p>
+      <p style="margin-top:8px;font-size:13.5px">挂靠合集：<span class="hl">技术闪记：一线实战与AI提效</span>（现有）或新建「国产大模型速评」子合集。建议挂现有合集，蹭已有搜一搜权重。</p>
+      <p style="margin-top:8px;font-size:13.5px">一句话 slogan：<b>模型会换代，我的测评帮你省钱。</b></p>
+    </div>
+    <div class="card">
+      <b>每篇固定结构（3 段法）</b>
+      <p style="margin-top:8px;font-size:13.5px">① <span class="hl">思想锚点</span>：模型迭代快到工具会变，选型逻辑不变（一句话定调）</p>
+      <p style="font-size:13.5px">② <span class="hl">工具实现</span>：官方参数 + 价格对比表 + 真实使用/横评数据 + 上手三步</p>
+      <p style="font-size:13.5px">③ <span class="hl">思想升华</span>：我该怎么选/什么时候用哪个，给"能直接抄"的结论</p>
+      <p style="margin-top:8px;font-size:13.5px">结尾固定三件套：<b>下期系列预告 + 合集引导 + 邀请链接</b></p>
+    </div>
+  </div>
+  <div class="card">
+    <b>发布节奏（双锚点 + 时效抢发）</b>
+    <p style="margin-top:8px;font-size:13.5px"><span class="pill g">常规</span>一周 2 篇（周一/周四 20:00 深度长文）　<span class="pill o">突发</span>模型发布 24h 内插队抢发（跟 GLM-5.3-Flash 同款打法）　<span class="pill">SEO</span>每篇首发放公众号拿原创，6-24h 后差异化分发掘金/CSDN/知乎</p>
+    <p style="margin-top:8px;font-size:13.5px">系列目标：<b>4 篇起形成合集密度 → 搜一搜用户点进合集看到"这是个追新系列" → 关注动机成立</b>。这正好补上周报里"搜一搜 103 阅读只换来 1 关注"的缺口。</p>
+  </div>
+
+  <!-- 选题清单 -->
+  <h2><span class="no">4</span>系列选题清单（8 篇）</h2>
+  <div class="card">
+    <div class="topic">
+      <div class="id">1</div>
+      <div>
+        <h3>智谱 GLM-5.3：不改基座的"后训练奇迹"</h3>
+        <div class="meta">发布 08-14 · 姊妹篇承接 GLM-5.3 Flash 爆文流量 · 官方博客 + IT之家已核实</div>
+        <p>核心卖点：7430 亿参数基座没动，纯后训练让编程 +50%、开源编程 SOTA、网络安全能力涌现——"同样的模型，还能更聪明"的悬念叙事。<b>这是你爆文的"旗舰版补全"</b>，搜 GLM 的用户两篇都能吃满。</p>
+        <div><span class="pill">GLM-5.3</span><span class="pill">智谱 GLM</span><span class="pill">开源编程模型</span><span class="pill o">优先级：最高（承接爆文）</span></div>
+      </div>
+    </div>
+    <div class="topic">
+      <div class="id">2</div>
+      <div>
+        <h3>阿里千问 Qwen3.8-Flash：6B 激活打平 Opus 4.6，训练成本降 90%</h3>
+        <div class="meta">发布 08-26（与 GLM-5.3-Flash 同天）· 36氪/南都已核实 · 天然对比稿</div>
+        <p>核心卖点：与你的 GLM 爆文同一天发布——<b>"同一天两个 Flash，谁更能打"</b> 是最现成的对比钩子。下一代架构、千亿总参/6B 激活的效率新基准，价格对比表直接复用 SOP。</p>
+        <div><span class="pill">Qwen3.8</span><span class="pill">千问 Flash</span><span class="pill">模型效率</span><span class="pill o">优先级：最高（时效）</span></div>
+      </div>
+    </div>
+    <div class="topic">
+      <div class="id">3</div>
+      <div>
+        <h3>DeepSeek V4-Pro 正式版：我用它写了半个月稿的真实账</h3>
+        <div class="meta">发布 08-13 · <b>你的写作主力模型</b> · 第一手素材完全够</div>
+        <p>核心卖点：别人写参数，你写"真用"。V4-Pro 是你 WorkBuddy 主力（0.51x 性价比），Agent 能力跃升 + 中文写作实测 + 真实 token 成本账。这是全网少有的一手体验稿。</p>
+        <div><span class="pill">DeepSeek V4 Pro</span><span class="pill">中文大模型</span><span class="pill">真实体验</span><span class="pill g">差异化：亲测</span></div>
+      </div>
+    </div>
+    <div class="topic">
+      <div class="id">4</div>
+      <div>
+        <h3>Kimi K3：2.8 万亿的"规模宣言"，我为什么不用它写稿</h3>
+        <div class="meta">发布 07-16 · 国产第一/与 GLM-5.3 并列 T1 · 你的"禁 K3"梗</div>
+        <p>核心卖点：反差选题最容易爆。K3 是国产第一（2.8 万亿、SuperCLUE 第一），但你实测性价比不高（贵 + bench 只 50 分，且 1.62x 双重陷阱）。"别人吹第一，我说说为什么不选"——诚实人设的极佳载体。</p>
+        <div><span class="pill">Kimi K3</span><span class="pill">月之暗面</span><span class="pill">模型选型</span><span class="pill o">反差爆点</span></div>
+      </div>
+    </div>
+    <div class="topic">
+      <div class="id">5</div>
+      <div>
+        <h3>国产大模型期中考试：四家旗舰一张表横评</h3>
+        <div class="meta">系列总纲 · SuperCLUE/多家横评汇总 · 放在第 5 篇（攒够 4 篇素材后）</div>
+        <p>核心卖点：GLM-5.3 / K3 / Qwen3.8-Max / DeepSeek V4-Pro 四家旗舰同台。这是 <b>SEO 大词</b>（"国产大模型横评"搜一搜需求量最大），一篇文章承接所有搜索流量，也是系列"门面"。配一张你自己做的对比表图（PIL 自绘）。</p>
+        <div><span class="pill">国产大模型横评</span><span class="pill">大模型对比</span><span class="pill">总纲</span><span class="pill g">SEO 大词</span></div>
+      </div>
+    </div>
+    <div class="topic">
+      <div class="id">6</div>
+      <div>
+        <h3>国产模型编程实测：同一段代码，谁更省 token</h3>
+        <div class="meta">差异化实测 · 复用你 B09/省 token/真实账单资产 · 护城河题材</div>
+        <p>核心卖点：把"省钱"人设和模型速评合流。用你真实的 token 用量数据（如 97.7% 缓存读、省 token 配置）实测各家模型跑同一段代码的成本差异。全网少有"从账单角度横评模型"的内容。</p>
+        <div><span class="pill">AI 编程成本</span><span class="pill">token 对比</span><span class="pill">实测</span><span class="pill g">护城河</span></div>
+      </div>
+    </div>
+    <div class="topic">
+      <div class="id">7</div>
+      <div>
+        <h3>2026 年 8 月国产大模型发布月报</h3>
+        <div class="meta">月度连载 · 制造"追更感" · 系列粘性内容</div>
+        <p>核心卖点：把当月所有发布整理成"一图流月报"，下期预告"9 月有什么可期待"。这类内容不追求单篇爆，追求<b>让读者习惯性回来</b>——直接补订阅转化短板。</p>
+        <div><span class="pill">大模型月报</span><span class="pill">发布日历</span><span class="pill g">连载感</span></div>
+      </div>
+    </div>
+    <div class="topic">
+      <div class="id">8</div>
+      <div>
+        <h3>DeepSeek V4-Flash-Vision-Exp：多模态视觉实测</h3>
+        <div class="meta">发布 08-21 · 跟进新发布 · 储备选题</div>
+        <p>核心卖点：多模态视觉理解（Terminal Bench 2.1 达 83.9），可以跟 GLM-5.3-Flash 的原生多模态做"谁的眼睛更利"实测。作为系列跟进突发发布的模板。</p>
+        <div><span class="pill">DeepSeek 多模态</span><span class="pill">视觉模型</span><span class="pill">储备</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 排期 -->
+  <h2><span class="no">5</span>发布排期建议（前 6 篇）</h2>
+  <div class="card">
+    <table>
+      <tr><th>序</th><th>选题</th><th>建议时间</th><th>定位</th></tr>
+      <tr><td>1</td><td>Qwen3.8-Flash（同天对比稿）</td><td>本周内（时效抢发）</td><td class="hl">趁 GLM-5.3 Flash 余温，同天双 Flash 对比</td></tr>
+      <tr><td>2</td><td>GLM-5.3 旗舰版（爆文姊妹篇）</td><td>下周</td><td class="hl">承接爆文搜一搜流量，补旗舰拼图</td></tr>
+      <tr><td>3</td><td>DeepSeek V4-Pro 真实体验稿</td><td>再下周</td><td>第一手体验，立"亲测"人设</td></tr>
+      <tr><td>4</td><td>Kimi K3 反差选题</td><td>间隔 1 篇</td><td>反差爆点，冲分享率</td></tr>
+      <tr><td>5</td><td>四家旗舰横评总纲</td><td>攒够素材后</td><td class="hl">SEO 大词，系列门面</td></tr>
+      <tr><td>6</td><td>编程实测省 token 横评</td><td>穿插</td><td>护城河，与 B09 互推</td></tr>
+    </table>
+    <div class="hook" style="margin-top:12px">
+      <b>节奏心法</b>：前 4 篇尽快（1-2 周内）把合集密度堆起来，让"技术闪记"合集从 1 篇变 5 篇；第 5 篇总纲再收大词流量。每月固定一篇月报做粘性。<b>目标不是单篇爆，是让搜一搜用户点进合集后产生"这是个追新系列，值得关注"的动机</b>——这才能把 103 阅读的流量沉淀成关注。
+    </div>
+  </div>
+
+  <!-- 复用SOP -->
+  <h2><span class="no">6</span>每篇复用 SOP（GLM-5.3 已验证）</h2>
+  <div class="card">
+    <div class="grid3">
+      <div class="kpi"><div class="n">6 步</div><div class="t">官方一手 → 价格表 → 性能对比 → SEO埋词 → 合集 → 邀请链接</div></div>
+      <div class="kpi"><div class="n">24h</div><div class="t">时效抢发：发布即写，24h 内公众号首发拿原创</div></div>
+      <div class="kpi"><div class="n">1+3</div><div class="t">标题 1 核心词 + 3 长尾词，前 15 字含核心词</div></div>
+    </div>
+    <table style="margin-top:14px">
+      <tr><th style="width:30%">环节</th><th>要点</th></tr>
+      <tr><td class="hl">数据核验</td><td>WebSearch 多源交叉 + WebFetch 官方一手（定价页/官方博客），数字钉死来源，不做转发稿</td></tr>
+      <tr><td class="hl">标题</td><td>模型名 + 中文昵称（如"牛来（Ox Alpha）"式双命中）+ 价格/对比卖点，前 15 字含核心词</td></tr>
+      <tr><td class="hl">对比表</td><td>价格对比表（元/百万 tokens）必做，PIL 自绘 PNG（避免 mermaid 复制失效）</td></tr>
+      <tr><td class="hl">配图</td><td>官方图（标来源）+ 自绘性能对比图 + 封面 900×383，行途蓝配色</td></tr>
+      <tr><td class="hl">SEO</td><td>标题/开头 100-200 字/小标题埋词；摘要手填含核心词</td></tr>
+      <tr><td class="hl">转化</td><td>文末固定三件套：下期预告 + 合集引导 + 邀请链接（透明"你我各得"）</td></tr>
+      <tr><td class="hl">合规</td><td>创作来源标"内容由AI生成"；分发平台差异化改写（禁通稿）</td></tr>
+    </table>
+  </div>
+
+  <!-- 省Token系列 -->
+  <h2><span class="no">7</span>省 Token 系列综合分析（你的第二根内容支柱）</h2>
+  <div class="card">
+    <b>现状盘点：框架已完整，已写 2 篇，余 9 篇待成稿</b>
+    <table style="margin-top:10px">
+      <tr><th style="width:16%">层</th><th style="width:34%">落地篇</th><th style="width:18%">状态</th><th>核心数据</th></tr>
+      <tr><td>框架总纲</td><td>H3《五层 Token 首篇》</td><td><span class="pill o">已发 CSDN，需升六层</span></td><td>五层 → 六层（新增 Headroom）</td></tr>
+      <tr><td>⑥ 生成层</td><td><b>B02《代码量砍 73%》</b>（Ponytail）</td><td><span class="pill g">✅ 成稿</span></td><td>代码 -73%</td></tr>
+      <tr><td>⑤ 散文层</td><td><b>B09《改 1 个配置，账单瘦了》</b>（Concise）</td><td><span class="pill g">✅ 已发</span></td><td>Concise 系统级精简</td></tr>
+      <tr><td>⑤ 散文层</td><td>Caveman 独立成文</td><td><span class="pill o">🔴 未写（B09 已埋伏笔）</span></td><td>输出 -30~50%（诚实口径）</td></tr>
+      <tr><td>② 检索层</td><td>CBM / CodeGraph（省 token 大头）</td><td><span class="pill o">🔴 未写</span></td><td>-80% 工具调用 / 99.2% 节省</td></tr>
+      <tr><td>③ 协议层</td><td>rtk 命令输出压缩</td><td><span class="pill o">🔴 未写</span></td><td>-93.6% / 累计省 67.1M token</td></tr>
+      <tr><td>④ 输入压缩层</td><td>Headroom（新热点）</td><td><span class="pill o">🔴 未写</span></td><td>省 20-95%</td></tr>
+      <tr><td>① 需求层</td><td>No Spec No Code（spec 体系）</td><td><span class="pill o">🔴 未写</span></td><td>铁律层</td></tr>
+      <tr><td>哲学 ×4</td><td>SubAgent 分工 / 注意力稀释 / 数据搬运 / 成本陷阱</td><td><span class="pill o">🔴 未写</span></td><td>理念型，呼应"工具可变概念不变"</td></tr>
+    </table>
+    <div class="hook" style="margin-top:12px">
+      <b>核心判断</b>：省 Token 系列是你的<b>护城河内容</b>（真实账单 + 一手实测，全网少有人写），但它是"长效慢热"型——不追时效、靠搜一搜长尾（"省 token""AI 编程成本"）持续进人。<b>它不需要抢发布，适合周末精工、每周固定 1 篇。</b>选题优先级：Caveman（B09 伏笔承接）→ 检索层 CBM（省 token 大头）→ 5 种回复风格（截图现成）→ 协议层 rtk → 输入压缩层 Headroom → prompt caching 科普 → 4 篇哲学。
+    </div>
+  </div>
+
+  <!-- 双系列统筹 -->
+  <h2><span class="no">8</span>双系列统筹：一个快消、一个长效，不冲突</h2>
+  <div class="card">
+    <table>
+      <tr><th style="width:14%">维度</th><th style="width:38%">速评系列（选模型）</th><th>省 Token 系列（降本）</th></tr>
+      <tr><td class="hl">定位</td><td>时效抢发，跟发布节奏走</td><td>长效精工，跟工程实践走</td></tr>
+      <tr><td class="hl">流量逻辑</td><td>搜"模型名/价格/对比"，短期爆</td><td>搜"省token/成本/配置"，长期长尾</td></tr>
+      <tr><td class="hl">发布节奏</td><td>模型发布 24h 内插队抢发</td><td>每周固定 1 篇（周末精工）</td></tr>
+      <tr><td class="hl">素材</td><td>官方一手 + 价格表</td><td>真实账单 + 六层实测</td></tr>
+      <tr><td class="hl">桥梁</td><td colspan="2">速评第 6 篇《编程实测谁更省 token》= 两系列交汇点：用省 token 实测数据横评模型</td></tr>
+      <tr><td class="hl">互推</td><td colspan="2">速评讲"选哪个模型"→ 引省 token"怎么用更省"；省 token 讲"降本"→ 引速评"哪家便宜"</td></tr>
+    </table>
+    <div class="hook" style="margin-top:12px">
+      <b>排期建议</b>：两条线并行——速评占"新闻位"（有发布就插队），省 Token 占"专栏位"（每周固定）。<b>本周动作</b>：① 速评第 1 篇 Qwen3.8-Flash vs GLM-5.3 Flash 已出稿（可审）② 省 Token 补 Caveman（承接 B09 伏笔，优先级最高）。
+    </div>
+  </div>
+
+  <div class="foot">行途 · 双系列统筹规划 · 2026-08-31 ｜ 数据来源：智谱官方 / 阿里官方 / DeepSeek API 官方 / 36氪 / 科技日报 / SuperCLUE ｜ 速评系列素材可全部本地落地 ｜ 省 Token 系列基于六层 Token 素材卡 + 扩展知识全景</div>
+</div>
+</body>
+</html>

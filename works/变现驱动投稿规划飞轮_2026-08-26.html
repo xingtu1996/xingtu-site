@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行途 IP · 变现驱动投稿规划飞轮</title>
+<style>
+  :root{
+    --navy:#1B2A4A; --orange:#FF6B35; --ink:#22303f; --muted:#6b7a8d;
+    --line:#e4e9f0; --bg:#f6f8fb; --card:#ffffff; --green:#2e9e6b; --amber:#e0a32e; --red:#c0392b;
+    --blue:#2f6fb3;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
+  .wrap{max-width:1180px;margin:0 auto;padding:32px 24px 72px}
+  header{background:linear-gradient(120deg,var(--navy),#27375c);color:#fff;border-radius:16px;padding:28px 30px;margin-bottom:24px}
+  header h1{margin:0 0 6px;font-size:25px;letter-spacing:.5px}
+  header .sub{opacity:.82;font-size:14px}
+  header .tag{display:inline-block;margin-top:12px;background:rgba(255,107,53,.18);border:1px solid rgba(255,107,53,.5);color:#ffd2bf;padding:3px 10px;border-radius:20px;font-size:12px}
+  h2{font-size:20px;margin:38px 0 14px;padding-left:12px;border-left:4px solid var(--orange);color:var(--navy)}
+  h3{font-size:15px;margin:18px 0 8px;color:var(--navy)}
+  p{margin:8px 0}
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .card .n{font-size:26px;font-weight:700;color:var(--orange)}
+  .card .l{font-size:12px;color:var(--muted);margin-top:2px}
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13px;margin:10px 0}
+  th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:#eef2f8;color:var(--navy);font-weight:600}
+  tr:last-child td{border-bottom:none}
+  .yes{color:var(--green);font-weight:600}
+  .no{color:var(--red);font-weight:600}
+  .part{color:var(--amber);font-weight:600}
+  code{background:#eef2f8;padding:1px 6px;border-radius:5px;font-size:12px;color:#234}
+  .note{background:#fff7ef;border:1px solid #ffd9c2;border-radius:10px;padding:12px 14px;font-size:13px;color:#7a4a2c;margin:12px 0}
+  .okbox{background:#eafaf1;border:1px solid #bfe9cf;border-radius:10px;padding:12px 14px;font-size:13px;color:#1f6b45;margin:12px 0}
+  .warnbox{background:#fff4f2;border:1px solid #f3c9c2;border-radius:10px;padding:12px 14px;font-size:13px;color:#a23a2c;margin:12px 0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  ul{margin:8px 0;padding-left:20px}
+  li{margin:4px 0}
+  .pill{display:inline-block;background:#eef2f8;border:1px solid var(--line);border-radius:14px;padding:2px 9px;font-size:12px;margin:2px 4px 2px 0;color:#33485f}
+  .bar{height:18px;background:var(--navy);border-radius:4px;color:#fff;font-size:11px;line-height:18px;padding-left:6px;white-space:nowrap;margin:3px 0}
+  .bar.orange{background:var(--orange)}
+  .bar.amber{background:var(--amber)}
+  .bar.green{background:var(--green)}
+  .phase{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:16px 0}
+  .pbox{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px;font-size:12.5px}
+  .pbox .ph{font-weight:700;color:var(--navy);font-size:13px;margin-bottom:4px}
+  .pbox .st{font-size:11px;margin-top:6px}
+  .st.done{color:var(--green);font-weight:600}
+  .st.half{color:var(--amber);font-weight:600}
+  .st.miss{color:var(--red);font-weight:600}
+  .foot{margin-top:30px;color:var(--muted);font-size:12px;text-align:center}
+  .seq td:first-child{font-weight:700;color:var(--orange)}
+  @media(max-width:880px){.cards{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.phase{grid-template-columns:1fr}}
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap">
+
+<header>
+  <h1>行途 IP · 变现驱动投稿规划飞轮</h1>
+  <div class="sub">先想好变现，再发布内容 —— 用既有素材库 + 平台变现规则 + 受众分层，反推发布优先级与自动化飞轮。</div>
+  <span class="tag">综合 4 份并行分析 · 生成于 2026-08-26 · 单文件离线可用</span>
+</header>
+
+<div class="warnbox">
+  <b>核心结论（给 Boss 的一句话）：</b>行途不缺"写什么"——主库 <b>1120 张结构化素材卡</b> + 6 张 GOLDEN 增量 + 4 篇已就绪成稿，底盘极厚。真正的堵点是 <b>「成稿转化率 0.09%」</b> 与 <b>「内容产出和变现目标错配」</b>。本飞轮的设计原则 = 不为"攒素材"服务，为"按变现优先级把金卡转成稿、用系列化放大复利"服务。
+</div>
+
+<!-- 一、资产底盘 -->
+<h2>一、素材资产底盘（实盘盘点）</h2>
+<div class="cards">
+  <div class="card"><div class="n">1120</div><div class="l">主库结构化素材卡 / 16 类</div></div>
+  <div class="card"><div class="n">6</div><div class="l">GOLDEN 黄金增量选题（G1–G6）</div></div>
+  <div class="card"><div class="n">4</div><div class="l">已就绪/已发成稿（B02已发·B09·B11·M01）</div></div>
+  <div class="card"><div class="n">0.09%</div><div class="l">主库成稿转化率（仅 1 张 M014 标记已产出）</div></div>
+</div>
+<table>
+  <thead><tr><th>成熟度</th><th>数量</th><th>说明</th></tr></thead>
+  <tbody>
+    <tr><td><span class="yes">✅ 可直接发布</span></td><td>4 成稿 + 1 主库卡 = 5</td><td>B02(已发)/B09/B11/M01 立即可发，且天然构成「方法(M01)+实证(B02)+理念(B11)」人设三角</td></tr>
+    <tr><td><span class="part">🟡 需轻度加工</span></td><td>~1153</td><td>1119 主库在架 + 12 博文骨架 + 6 G + 6 T + 10 S，需成稿产能</td></tr>
+    <tr><td><span class="no">⚪ 原始素材</span></td><td>私聊/群聊 Raw</td><td>已脱敏沉淀在 md，待萃取（S01–S10/T12–T17）</td></tr>
+  </tbody>
+</table>
+<div class="note">主题分布失衡：主库 99.6% 集中在「AI 工具链/工程实践/踩坑」，<b>企业 AI、职场成长、变现/商业三类极稀缺</b>（变现仅 1 张）。而这三类恰恰是星球引流/付费阅读的入口。解决方向 = 把 GOLDEN 六连击 + B06 变现文前置，并补职业/面辅/故事线。</div>
+
+<!-- 二、变现规则底座 -->
+<h2>二、平台变现规则底座（取自战略记忆 + 连接器清单）</h2>
+<table>
+  <thead><tr><th>平台</th><th>起量门槛</th><th>变现方式</th><th>内容形态偏好</th><th>分发时序</th><th>契合度</th><th>变现层级</th></tr></thead>
+  <tbody>
+    <tr><td><b>公众号</b></td><td>赞赏0粉 / 互选500 / 付费阅读800粉+3原创</td><td>赞赏·流量主·互选·付费阅读·商品返佣</td><td>长文(情绪+故事,标题≤15字)</td><td>主阵地·首发拿原创</td><td><span class="yes">高</span></td><td>0/1/3层</td></tr>
+    <tr><td><b>掘金</b></td><td>矿石0粉·新人400字得1万矿石</td><td>矿石·签约·付费小册</td><td>硬核长文·标题10–20字禁寒暄</td><td>技术首发→隔1–2天CSDN</td><td><span class="yes">高</span></td><td>0层(矿石0粉)</td></tr>
+    <tr><td><b>CSDN</b></td><td>广告分成0粉(实名)</td><td>广告分成·付费专栏</td><td>教程+SEO·标题15–25字</td><td>掘金首发隔1–2天同步</td><td><span class="yes">高</span></td><td>0层</td></tr>
+    <tr><td><b>知乎</b></td><td>致知Lv4+100粉·好物Lv3</td><td>致知·好物·付费咨询</td><td>问题化+结论先行·禁引流</td><td>隔6–24h分发</td><td><span class="part">中</span></td><td>0/1层</td></tr>
+    <tr><td><b>小红书</b></td><td>蒲公英1000粉</td><td>蒲公英·笔记带货·直播</td><td>图文9图·种草·封面精致</td><td>午+晚</td><td><span class="part">中</span></td><td>1层</td></tr>
+    <tr><td><b>视频号</b></td><td>创作分成100粉+10原创</td><td>分成·会员专区·直播打赏</td><td>PPT+真人录音低成本</td><td>公众号裂变</td><td><span class="yes">高</span></td><td>0/1层</td></tr>
+    <tr><td><b>B站</b></td><td>激励1000粉·花火1万粉</td><td>激励·充电·花火·知识付费</td><td>中长技术视频</td><td>阶段2起</td><td><span class="part">中</span></td><td>0/2层</td></tr>
+    <tr><td><b>知识星球</b></td><td>无门槛建</td><td>年度社群·付费会员</td><td>完整配置/答疑/深度延伸</td><td>信任后开(FEN-001)</td><td><span class="yes">高(收口)</span></td><td>3层</td></tr>
+    <tr><td><b>海外</b></td><td>X订阅0粉 / Dev.to 0粉 / Ko-fi 0粉</td><td>订阅·Sponsors·打赏月捐</td><td>英文改写·LinkedIn长文零成本</td><td>阶段2/3出海</td><td><span class="part">中</span></td><td>0/3层</td></tr>
+  </tbody>
+</table>
+<div class="okbox">最快起量路径 = <b>文章三件套（公众号赞赏+掘金矿石+CSDN分成）0 层即可拿被动收入</b>；文章类 1000 粉内接单，视频类要 1 万粉。→ 投稿形态<b>以文章为主、视频为放大器</b>。变现终局 = 知识星球(人民币)+Substack/Ko-fi(美元) 双轨收口。</div>
+
+<!-- 三、受众与错配诊断 -->
+<h2>三、受众分层与「变现目标错配」诊断</h2>
+<table>
+  <thead><tr><th>层级</th><th>人群</th><th>规模感</th><th>变现钩子</th><th>现有素材覆盖</th></tr></thead>
+  <tbody>
+    <tr><td><b>L0</b> 泛职场普通人</td><td>逆袭向往者</td><td>实际极小(故事线断供)·潜在最大</td><td>赞赏(情绪)·弱星球</td><td><span class="no">✗ 断供</span></td></tr>
+    <tr><td><b>L1</b> 入门小白/非技术</td><td>产品/运营/学生/行政</td><td>实际小·潜在远大于程序员</td><td>涨粉蓄水·广告(泛流量)</td><td><span class="no">✗ 缺口最大(仅7/30沾边)</span></td></tr>
+    <tr><td><b>L2</b> 开发者/技术人</td><td>AI coding 重度用户</td><td>实际最大(~50–65%)</td><td>赞赏最稳·星球引流主力</td><td><span class="yes">✓ 溢出</span></td></tr>
+    <tr><td><b>L3</b> 技术经理/决策者</td><td>带团队·看ROI</td><td>实际中等</td><td>付费咨询最强·广告最高(2B)</td><td><span class="part">△ 弱覆盖</span></td></tr>
+    <tr><td><b>L4</b> 想做IP的技术人</td><td>关心复盘/复利</td><td>实际小·付费意愿高</td><td>星球+付费咨询核心盘</td><td><span class="part">△ 弱覆盖</span></td></tr>
+  </tbody>
+</table>
+<div class="warnbox">三大病灶：①<b>错配</b>——重变现=30–35迷茫程序员(面辅/简历营)，但 G1–G6/B01–B12 无一直接对齐职业/面辅，仅 S05 间接戳中；②<b>故事线停更</b>——在产=0，破圈钩子空转；③<b>L1 缺口最大</b>——潜在盘最大却供给最薄。→ 变现驱动重排要解决这三点。</div>
+
+<!-- 四、变现驱动重排序列 -->
+<h2>四、变现驱动发布序列（推翻原"价值分级优先"）</h2>
+<table class="seq">
+  <thead><tr><th>顺位</th><th>选题</th><th>变现驱动理由</th><th>对应病灶</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><b>B06</b> AI工程化付费咨询定价</td><td>全池唯一把变现讲透的文，自带 L0–L4 分档框架，可直接植入星球/咨询入口</td><td>解①错配(直变现)</td></tr>
+    <tr><td>2</td><td><b>S05</b> PMP 对管 AI 有用</td><td>少数直接戳 30–35 迷茫程序员职业痛点(考证=职业安全垫)，小红书可破圈</td><td>解①错配</td></tr>
+    <tr><td>3</td><td><b>G6</b> 2B收费横评(50人/年10万)</td><td>广告变现潜力最高(工具横评天然投)，知乎/公众号泛人群可读，起量快</td><td>补L3+广告</td></tr>
+    <tr><td>4</td><td><b>B02</b> Ponytail -73%</td><td>入门友好+数据炸裂，小红书/公众号涨粉破圈最快，为变现蓄水</td><td>补③L1缺口</td></tr>
+    <tr><td>5</td><td><b>B09</b> 省 token 配置</td><td>全平台省钱实操，收藏率高涨粉稳，兼接工具广告</td><td>补③L1+广告</td></tr>
+    <tr><td>6</td><td><b>G3</b> 某零售供应链 Harness 体系</td><td>IP护城河，星球引流招牌文，把第1批流量沉淀进星球</td><td>养L2/L4星球</td></tr>
+    <tr><td>7</td><td><b>G2</b> 模型直连 400vs4000</td><td>硬数据+机制，赞赏稳、接云厂商广告，强化技术信任</td><td>养L2/L3</td></tr>
+    <tr><td>8</td><td><b>B03</b> 账单 97.7%缓存读</td><td>L3 成本治理视角，赞赏+云厂商广告，补足管理者内容</td><td>补L3</td></tr>
+    <tr><td>9</td><td><b>T17</b> 行政岗 AI 选型</td><td>全池唯一直接服务 L1 非技术人群，破圈涨粉，为泛流量变现铺路</td><td>解③L1缺口</td></tr>
+    <tr><td>10</td><td><b>B11</b> 技术人的复利</td><td>理念灵魂文，L1/L4 破圈+星球，长期信任锚</td><td>补L1/L4</td></tr>
+    <tr><td>11–14</td><td>G1/B01/B04/B05/B08/B10/B12/G4/G5/T12/T15/T16/S04/S06/S08</td><td>纵深养信任与星球；认知升级/教程/补充广告与 L1 触达</td><td>养L2/L3/L4</td></tr>
+  </tbody>
+</table>
+<div class="note">原排序把 G1–G6 全技术硬核前置，对齐的是「内容稀缺度」；本重排对齐的是「变现目标人群 + 快速起量」。关键修正：把直变现文 B06、对齐职业人群 S05、广告文 G6、破圈蓄水 B02/B09/T17 前置，纯 L2 纵深后移。</div>
+
+<!-- 五、飞轮工作流 -->
+<h2>五、内容飞轮工作流（自动化编排）</h2>
+<div class="phase">
+  <div class="pbox"><div class="ph">① 摄取</div>扫描 AI 会话/项目实践/私聊，按价值评分挑 Top 候选<div class="st done">✓ 已自动化</div></div>
+  <div class="pbox"><div class="ph">② 蒸馏</div>源目录→结构化素材卡+看板(三级脱敏)<div class="st done">✓ 已自动化</div></div>
+  <div class="pbox"><div class="ph">③ 选题</div>结合变现规则+受众分层，反推 P0 发布序列<div class="st half">△ 本规划落地</div></div>
+  <div class="pbox"><div class="ph">④ 发布</div>差异化微调(PUB-004禁通稿)+定时发布<div class="st miss">✗ 半人工</div></div>
+  <div class="pbox"><div class="ph">⑤ 反哺</div>公众号实测粉丝画像→修正选题/受众假设<div class="st half">△ 待密钥</div></div>
+</div>
+<div class="okbox"><b>已有自动化积木（18 件可复用）：</b>摄取层 <code>ai_collab_miner</code>/<code>sessions_analyzer</code>/<code>ai_history_indexer</code>/<code>project_indexer</code>；蒸馏层 <code>materials_library_gen</code>(1116卡)/<code>materials_indexer</code>；合规 Gate <code>desensitize.py</code>+<code>safety/*.sh</code>；反哺层 <code>wechat_audience_puller</code>(需 AppID/Secret)。<br><b>缺口：</b>发布分发环仍半人工（CSDN 同步靠手动差异化改写），但内容量 &lt;20篇/月前不做发布自动化是正确取舍。</div>
+
+<!-- 六、系列放大 -->
+<h2>六、系列化放大（组合优先于单发）</h2>
+<div class="grid2">
+  <div>
+    <h4 style="margin:6px 0;color:var(--navy)">① 方法-实证-理念三角（首发双引擎）</h4>
+    <p>M01(方法)+B02(实证)+B11(理念) 一周内连发互引，立"真实+利他+长期主义"人设闭环。</p>
+    <h4 style="margin:6px 0;color:var(--navy)">② GOLDEN 六连击（本周主轴）</h4>
+    <p>G1–G6 一手独家+现成配图+双源验证，统一栏头"行途·黄金会话"。</p>
+    <h4 style="margin:6px 0;color:var(--navy)">③ 模型成本三连</h4>
+    <p>B09+G2+B03+T14 四次触达"AI编程怎么省钱"，小红书做省钱合集。</p>
+  </div>
+  <div>
+    <h4 style="margin:6px 0;color:var(--navy)">④ 企业 AI 落地决策链</h4>
+    <p>G4(Palantir)+G6(收费)+T12(分野)+T16(连接器)+T17(行政) 面向 L3 承接广告/培训。</p>
+    <h4 style="margin:6px 0;color:var(--navy)">⑤ 视频号破圈系列</h4>
+    <p>V03(复利)→V01(-73%)→V02(上下文)→V06(人贵)→V04(横评)→V05(对抗)，PPT+真人录音零成本。</p>
+    <h4 style="margin:6px 0;color:var(--navy)">⑥ 考证/职场成长破圈</h4>
+    <p>B11+S05+S06+S08 触达更广 L0/L1，扩星球漏斗口。</p>
+  </div>
+</div>
+
+<!-- 七、待补与下一步 -->
+<h2>七、仍待补的两块内容（不在现有素材池）</h2>
+<ul>
+  <li><b>故事线复产(L0)</b>：从已发布 2 篇 + 真实经历(电脑城/外卖/带团队)排 3–5 篇，视频号/小红书主推。最低成本破圈钩子，当前断供。</li>
+  <li><b>职业/面辅/简历内容(对齐重变现人群)</b>：现有池仅 S05 间接相关，缺"30–35迷茫程序员面辅/简历营"直击内容。建议从信息员历史会话(某零售客户带团队、CTO招聘截图)蒸馏 2–3 篇。</li>
+</ul>
+<h3>本周执行清单（变现启动）</h3>
+<ul>
+  <li>合并增量卡：<code>materials_library_increment_2026-08-26.json</code> 6 张 GOLDEN 并入主库(1120→1126)，同步看板。</li>
+  <li>发布第1批：B06→S05→G6→B02→B09（直变现+职业人群+破圈蓄水）。</li>
+  <li>设硬指标：每周成稿 ≥3 篇，库存 &lt;3 补货；周末批量产 3–5 篇→定时发布排一周。</li>
+  <li>合规红线：广告植入每周 ≤1 次；付费文章与流量主互斥；发布严格 SAF-003 下班后、禁上班时间操作。</li>
+</ul>
+
+<div class="foot">行途 IP · 变现驱动投稿规划飞轮 · 综合自 01素材盘点 / 02深度资产积木 / 03变现分发策略 / 04受众匹配分析 · 单文件离线可用 · 2026-08-26</div>
+
+</div>
+</body>
+</html>
