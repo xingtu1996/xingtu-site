@@ -1,317 +1,468 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-page-node-id="jBZRte493TI2D3qfe6zgaY">
-<head data-page-node-id="YBV68gKHN8Dbs0sbhDxyyo">
-<meta charset="UTF-8" data-page-node-id="FORYr3jEuqH3pTzXdRGYzL" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="RpCToQuxkQG7KYhSbngfEP" />
-<link rel="icon" type="image/png" href="favicon.png" data-page-node-id="CHzZwz3MOtx7bczmYFpI1u" />
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/png" href="favicon.png" />
 <title>行途 XingTu · AI 工程化一线实践</title>
-<meta name="description" content="行途（XingTu）个人作品集 —— 11 年 Java 后端，技术经理兼一线开发，近两年把 AI 当研发引擎：1 人 + AI 52 天交付全栈平台，生产问题排查 8-10x 提效。" data-page-node-id="Wm9Tpa2QiGzaYWBwqqOvYN" />
-<meta property="og:title" content="行途 XingTu · AI 工程化一线实践" data-page-node-id="Zq1iUTJF9SB0q3VLAmQ9Ov" />
-<meta property="og:description" content="跑过生产、有数字、能抄作业的 AI 工程化实践。" data-page-node-id="GRhOdTzL8kUumNiLHE4byT" />
-<meta property="og:type" content="website" data-page-node-id="m16Pvx5xEiuQ4JewDGIGac" />
-<meta property="og:url" content="https://xingtu1996.pages.dev" data-page-node-id="whV6SyPdBusjnLDd5Vq9GE" />
+<meta name="description" content="行途（XingTu）个人作品集 —— 11 年 Java 后端，技术经理兼一线开发，近两年把 AI 当研发引擎：1 人 + AI 52 天交付全栈平台，生产问题排查 8-10x 提效。" />
+<meta property="og:title" content="行途 XingTu · AI 工程化一线实践" />
+<meta property="og:description" content="跑过生产、有数字、能抄作业的 AI 工程化实践。" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://xingtu1996.pages.dev" />
+<meta name="color-scheme" content="light dark" />
 <style>
-  :root{
-    --bg:#0f1220; --bg2:#161a2e; --card:#1c2138; --line:#2a3050;
-    --txt:#e8ebf5; --muted:#9aa3c0; --brand:#6d7bff; --brand2:#a78bfa;
-    --accent:#f5b14c; --ok:#3ddc97; --radius:16px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-    background:radial-gradient(1200px 600px at 80% -10%, #20264a 0%, var(--bg) 55%) ,var(--bg);
-    color:var(--txt); line-height:1.65; -webkit-font-smoothing:antialiased;
-  }
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:980px;margin:0 auto;padding:0 22px}
-  /* nav */
-  nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(10px);
-    background:rgba(15,18,32,.72);border-bottom:1px solid var(--line)}
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
-  .logo{font-weight:800;letter-spacing:.5px;display:flex;align-items:center;gap:8px}
-  .logo .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand2))}
-  .nav-links{display:flex;gap:20px;font-size:14px;color:var(--muted)}
-  .nav-links a:hover{color:var(--txt)}
-  /* hero */
-  header{padding:78px 0 56px}
-  .badge{display:inline-block;font-size:12px;color:var(--brand2);
-    border:1px solid var(--line);padding:5px 12px;border-radius:999px;margin-bottom:18px;
-    background:rgba(167,139,250,.08)}
-  h1{font-size:clamp(34px,6vw,56px);line-height:1.1;font-weight:800;
-    background:linear-gradient(135deg,#fff 30%,var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .sub{margin-top:14px;font-size:18px;color:var(--muted);max-width:640px}
-  .cta{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap}
-  .btn{padding:12px 22px;border-radius:12px;font-weight:700;font-size:15px;transition:.2s}
-  .btn.p{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#0b0e1a}
-  .btn.s{border:1px solid var(--line);color:var(--txt)}
-  .btn:hover{transform:translateY(-2px);opacity:.95}
-  /* sections */
-  section{padding:46px 0;border-top:1px solid var(--line)}
-  .eyebrow{font-size:13px;color:var(--accent);font-weight:700;letter-spacing:1px;text-transform:uppercase}
-  h2{font-size:26px;margin:6px 0 8px}
-  .lead{color:var(--muted);max-width:680px;margin-bottom:22px}
-  /* about */
-  .about p{color:#cdd3ea;max-width:720px}
-  /* career */
-  .career-line{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;font-size:15px;color:#cdd3ea;margin-bottom:20px}
-  .career-line span{color:var(--accent);font-weight:800;font-size:16px}
-  .career-line b{font-weight:600}
-  .career-line i{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--line);flex:0 0 5px}
-  h3.sec{font-size:17px;margin:26px 0 14px;color:var(--txt)}
-  .tags{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
-  .tag{font-size:13px;color:var(--brand2);background:rgba(109,123,255,.1);
-    border:1px solid var(--line);padding:6px 12px;border-radius:999px}
-  /* grid cards */
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;transition:.2s}
-  .card:hover{border-color:var(--brand);transform:translateY(-3px)}
-  .card h3{font-size:17px;margin-bottom:6px}
-  .card p{font-size:14px;color:var(--muted);min-height:42px}
-  .card .meta{margin-top:12px;font-size:12px;color:var(--brand2);display:flex;justify-content:space-between;align-items:center}
-  .card .kicker{font-size:11px;color:var(--accent);font-weight:700}
-  .empty{color:var(--muted);font-size:14px;border:1px dashed var(--line);border-radius:12px;padding:16px}
-  /* follow */
-  .follow{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
-  .ch{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center}
-  .ch b{display:block;font-size:15px;margin-bottom:2px}
-  .ch span{font-size:12px;color:var(--muted)}
-  /* footer */
-  footer{padding:34px 0 50px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
-  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-  .host{color:var(--ok)}
-  @media(max-width:560px){.nav-links{display:none}}
+/* ============================================================
+   行途 Design System v2 · Apple-inspired
+   tokens → 组件 → 布局。全站单源变量，改色只需动这里。
+   规范参考: xingtu-vault/02_素材库/可复用资产/设计系统参考/apple.md
+   品牌色: 行途蓝 #056DE8（唯一强调色，仅用于交互元素）
+   ============================================================ */
+:root{
+  /* 行途品牌 tokens（亮色默认，暗色在 [data-theme=dark] 覆盖） */
+  --brand:#056DE8;            /* 主强调 · 行途蓝 */
+  --brand-strong:#0066CC;     /* 深蓝 hover/按压 */
+  --brand-weak:rgba(5,109,232,.10);
+  --on-brand:#ffffff;
+  --ok:#34C759;
+  /* 表面 & 文本 */
+  --bg:#f5f5f7;               /* 页面底 · Apple light gray */
+  --surface:#ffffff;          /* 卡片 */
+  --surface-2:#fbfbfd;        /* 微差面 */
+  --txt:#1d1d1f;              /* 主文本 · near black */
+  --txt-2:rgba(0,0,0,.72);    /* 次级 */
+  --txt-3:rgba(0,0,0,.48);    /* 弱 */
+  --line:rgba(0,0,0,.10);     /* 分隔 */
+  --line-2:rgba(0,0,0,.05);
+  /* 导航玻璃 */
+  --nav-bg:rgba(251,251,253,.74);
+  /* 阴影：Apple 单层柔和 */
+  --shadow:0 4px 24px rgba(0,0,0,.06);
+  /* 圆角刻度 */
+  --r-s:8px; --r-m:12px; --r-l:16px; --pill:999px;
+  /* 排版 */
+  --ls-head:-.015em; --ls-body:-.011em;
+}
+:root[data-theme="dark"]{
+  --bg:#000000; --surface:#1d1d1f; --surface-2:#242426;
+  --txt:#f5f5f7; --txt-2:rgba(255,255,255,.72); --txt-3:rgba(255,255,255,.48);
+  --line:rgba(255,255,255,.14); --line-2:rgba(255,255,255,.06);
+  --brand:#2997ff; --brand-strong:#4aa5ff; --brand-weak:rgba(41,151,255,.16);
+  --nav-bg:rgba(0,0,0,.72);
+  --shadow:0 4px 24px rgba(0,0,0,.4);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background:var(--bg);color:var(--txt);
+  line-height:1.6;letter-spacing:var(--ls-body);
+  -webkit-font-smoothing:antialiased;transition:background .3s,color .3s;
+}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:980px;margin:0 auto;padding:0 22px}
+
+/* ---------- 组件：按钮 ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  padding:9px 22px;border-radius:var(--pill);font-size:15px;font-weight:400;
+  border:1px solid transparent;cursor:pointer;transition:transform .15s,background .2s,opacity .2s;
+  -webkit-tap-highlight-color:transparent}
+.btn:active{transform:scale(.97)}
+.btn.p{background:var(--brand);color:var(--on-brand)}
+.btn.p:hover{background:var(--brand-strong);text-decoration:none}
+.btn.s{background:transparent;color:var(--txt);border-color:rgba(0,0,0,.18)}
+[data-theme="dark"] .btn.s{border-color:rgba(255,255,255,.3)}
+.btn.s:hover{border-color:var(--brand);text-decoration:none}
+
+/* ---------- 组件：徽章 / 标签 ---------- */
+.badge{display:inline-block;font-size:12px;color:var(--brand);
+  border:1px solid var(--brand-weak);background:var(--brand-weak);
+  padding:4px 12px;border-radius:var(--pill);margin-bottom:16px}
+.chip{display:inline-flex;align-items:center;font-size:13px;color:var(--txt-2);
+  background:var(--surface);border:1px solid var(--line);
+  padding:6px 14px;border-radius:var(--pill)}
+
+/* ---------- 导航（玻璃态） ---------- */
+nav{position:sticky;top:0;z-index:20;
+  background:var(--nav-bg);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:52px}
+.logo{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:var(--txt);letter-spacing:0}
+.logo:hover{text-decoration:none}
+.logo .dot{width:9px;height:9px;border-radius:3px;background:var(--brand)}
+.nav-links{display:flex;align-items:center;gap:26px;font-size:14px}
+.nav-links a{color:var(--txt-2)}
+.nav-links a:hover{color:var(--txt)}
+.nav-links .hl{color:var(--brand);font-weight:600}
+.tools{display:flex;align-items:center;gap:10px}
+.icon-btn{width:30px;height:30px;border-radius:var(--pill);border:1px solid var(--line);
+  background:transparent;color:var(--txt-2);cursor:pointer;font-size:14px;line-height:1;
+  display:inline-flex;align-items:center;justify-content:center;transition:.2s}
+.icon-btn:hover{color:var(--brand);border-color:var(--brand)}
+.lang-btn{font-size:12px;padding:0 10px;height:28px;border-radius:var(--pill);border:1px solid var(--line);
+  background:transparent;color:var(--txt-2);cursor:pointer;letter-spacing:.02em;transition:.2s}
+.lang-btn:hover{color:var(--brand);border-color:var(--brand)}
+
+/* ---------- Hero ---------- */
+header{padding:84px 0 60px;text-align:center}
+h1{font-family:-apple-system,"SF Pro Display","PingFang SC",sans-serif;
+  font-size:clamp(40px,7vw,64px);font-weight:700;line-height:1.06;letter-spacing:var(--ls-head);
+  margin:8px auto 0;max-width:820px}
+.sub{margin:20px auto 0;font-size:19px;color:var(--txt-2);max-width:640px;font-weight:400}
+.cta{margin-top:32px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* ---------- Section ---------- */
+section{padding:56px 0;border-top:1px solid var(--line)}
+.eyebrow{font-size:13px;color:var(--brand);font-weight:600;letter-spacing:.02em}
+h2{font-family:-apple-system,"SF Pro Display","PingFang SC",sans-serif;
+  font-size:34px;font-weight:700;line-height:1.14;letter-spacing:var(--ls-head);margin:6px 0 10px}
+.lead{color:var(--txt-2);max-width:680px;margin-bottom:28px;font-size:16px}
+h3.sec{font-size:19px;margin:30px 0 16px;font-weight:600}
+
+/* ---------- 履历线 ---------- */
+.career-line{display:flex;flex-wrap:wrap;gap:8px 26px;align-items:center;font-size:15px;color:var(--txt-2);margin-bottom:22px}
+.career-line span{color:var(--brand);font-weight:600}
+.career-line b{font-weight:600;color:var(--txt)}
+.career-line i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--txt-3);flex:0 0 6px}
+.tags{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+
+/* ---------- 卡片网格 ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-l);
+  padding:22px;transition:transform .2s,border-color .2s;display:flex;flex-direction:column}
+.card:hover{border-color:var(--brand);transform:translateY(-3px);text-decoration:none;box-shadow:var(--shadow)}
+.card h3{font-size:17px;font-weight:600;margin:4px 0 8px;color:var(--txt)}
+.card p{font-size:14px;color:var(--txt-2);flex:1;line-height:1.55}
+.card .meta{margin-top:14px;font-size:13px;color:var(--txt-3);display:flex;justify-content:space-between;align-items:center}
+.card .kicker{font-size:12px;color:var(--brand);font-weight:600}
+.empty{color:var(--txt-3);font-size:14px;border:1px dashed var(--line-2);border-radius:var(--r-m);padding:18px;text-align:center}
+
+/* ---------- Follow ---------- */
+.follow{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.ch{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);padding:14px;text-align:center;transition:.2s;color:var(--txt)}
+.ch:hover{border-color:var(--brand);transform:translateY(-2px);text-decoration:none}
+.ch b{display:block;font-size:15px;margin-bottom:2px}
+.ch span{font-size:12px;color:var(--txt-2)}
+.cta-box{margin-top:24px;padding:18px 22px;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r-l);font-size:14px;line-height:1.9;color:var(--txt-2)}
+.cta-box b{color:var(--txt)}
+.cta-box .w{font-weight:700;color:var(--ok)}
+
+/* ---------- Footer ---------- */
+footer{padding:36px 0 48px;border-top:1px solid var(--line);color:var(--txt-3);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.host{color:var(--ok)}
+
+/* ---------- 响应式 ---------- */
+@media(max-width:640px){
+  .nav-links{display:none}
+  header{padding:64px 0 44px}
+  h2{font-size:28px}
+  section{padding:44px 0}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
-<body data-page-node-id="XvEmdIWd4brtLopLRKSz40">
+<body>
 
-<nav data-page-node-id="zDariseK8xBq1ckNmpP1kC">
-  <div class="wrap" data-page-node-id="wzLPB0rHqUqchhYCBRomCU">
-    <div class="logo" data-page-node-id="490QqPQ9aUght6ILYabHSV"><span class="dot" data-page-node-id="EEDVOSiDnyWnJKbFAmssZt"></span>行途 · XingTu</div>
-    <div class="nav-links" data-page-node-id="mkpUEDfRoBxTpumqPIalRh">
-      <a href="#about" data-page-node-id="W9bHE06shLsVaC14TF2IEQ">关于</a>
-      <a href="#career" data-page-node-id="aCUIdPKuFz2TT5bHWhxTOf">履历</a>
-      <a href="#articles" data-page-node-id="YdNJFUPBgI1szeJpYCmePq">文章</a>
-      <a href="#videos" data-page-node-id="VCM8ixmHkKrbvFzPnU53IP">视频</a>
-      <a href="#opensource" data-page-node-id="ewoqFvUU2XtJEBKWINMlSN">开源</a>
-      <a href="#follow" data-page-node-id="3Qh6yryGOu1JfEEmbGE68E">关注</a>
-      <a href="works/index.html" style="color:var(--acc)" data-page-node-id="eFwTGrEDJw2mUMneQNPITG">作品库 99</a>
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top"><span class="dot"></span><span data-i18n="nav.brand">行途 · XingTu</span></a>
+    <div class="nav-links">
+      <a href="#about" data-i18n="nav.about">关于</a>
+      <a href="#career" data-i18n="nav.career">履历</a>
+      <a href="#articles" data-i18n="nav.articles">文章</a>
+      <a href="#videos" data-i18n="nav.videos">视频</a>
+      <a href="#opensource" data-i18n="nav.opensource">开源</a>
+      <a href="#follow" data-i18n="nav.follow">关注</a>
+      <a class="hl" href="works/index.html" data-i18n="nav.works">作品库 99</a>
+    </div>
+    <div class="tools">
+      <button class="icon-btn" id="themeBtn" title="切换主题" aria-label="toggle theme" style="font-size:15px">☾</button>
+      <button class="lang-btn" id="langBtn" aria-label="switch language">EN</button>
     </div>
   </div>
 </nav>
 
-<header data-page-node-id="JqzoVvmTYpobRJh4ERq33C">
-  <div class="wrap" data-page-node-id="HEsTvfFIHdsqRibTKY8wJu">
-    <span class="badge" data-page-node-id="CRfUIgT2d7jAvvglnIH1Ze">11 年 Java 后端 · 技术经理 + 一线开发</span>
-    <h1 data-page-node-id="7wsFA38HhSIO1BpCgujLFu">行途 XingTu</h1>
-    <p class="sub" data-page-node-id="Shd9BBPYSXG2nTdarCkfLf">11 年 Java 后端，近两年把 AI 当作研发底层引擎——一个人 + AI，顶一支传统团队。这里记的是跑过生产、有数字、能抄作业的实践。</p>
-    <div class="cta" data-page-node-id="k5KYBj3eghhcu5PZwi4Ae4">
-      <a class="btn p" href="#career" data-page-node-id="enS1De4HI1GCZsWqIWi2In">看履历</a>
-      <a class="btn s" href="#articles" data-page-node-id="jYNcL0SqbZ5ENPWoXltDWe">读文章</a>
-      <a class="btn s" href="works/index.html" data-page-node-id="LVNYcOLczyh0wv43z5ykCP">作品与证据库 · 99 件 →</a>
+<header id="top">
+  <div class="wrap">
+    <span class="badge" data-i18n="hero.badge">11 年 Java 后端 · 技术经理 + 一线开发</span>
+    <h1 data-i18n="hero.title">行途 XingTu</h1>
+    <p class="sub" data-i18n="hero.sub">11 年 Java 后端，近两年把 AI 当作研发底层引擎——一个人 + AI，顶一支传统团队。这里记的是跑过生产、有数字、能抄作业的实践。</p>
+    <div class="cta">
+      <a class="btn p" href="#career" data-i18n="hero.cta1">看履历</a>
+      <a class="btn s" href="#articles" data-i18n="hero.cta2">读文章</a>
+      <a class="btn s" href="works/index.html" data-i18n="hero.cta3">作品与证据库 · 99 件 →</a>
     </div>
   </div>
 </header>
 
-<section id="about" data-page-node-id="R4hgm3eestxOIhlrMxK6EQ">
-  <div class="wrap" data-page-node-id="85KOIiSyqDBTdEaKrSXtt4">
-    <div class="eyebrow" data-page-node-id="44NYpLJPrFvnxcJW3JXE1w">About</div>
-    <h2 data-page-node-id="81kEDXBnyw4R9Xru3fbFCC">关于行途</h2>
-    <div class="about" data-page-node-id="Q33Ap0igGey1cJ6JQnhRTt">
-      <p data-page-node-id="0SSeHMFQ1TFNX2iQGB9qiH">我是李嘉成（Justin Li），既带团队又写代码的技术经理。2023 年起在团队里推 AI，完整经历了 ChatGPT → Cursor → Kiro → Claude Code → WorkBuddy 的工具链演进。这里写的东西都从真实项目里来——跑过生产、有数字、能直接抄。</p>
-      <p style="margin-top:12px" data-page-node-id="aGlUfTFt9AGYCWBpolFa7F">站点只收两种内容：<strong data-page-node-id="HRlnHQWnl1019sMYvwwigP">踩过的坑、跑通的路</strong>。AI 迭代太快，今天有用的实践下个月就过时，所以我跑通一个就记一个。</p>
-      <div class="tags" data-page-node-id="8OimuS3rrvBw9Pdq8ZCsvA">
-        <span class="tag" data-page-node-id="Zx9FGCuFhfRPTNGQEVV7Ss">AI 编程工具链</span>
-        <span class="tag" data-page-node-id="t2APFzG3V0ji3Pz7XLmqwT">Agent / Harness 应用</span>
-        <span class="tag" data-page-node-id="0rvtVhswSuGWdLqAjXRNM5">终端 coding agent</span>
-        <span class="tag" data-page-node-id="wBZmqX2Rk9p8H4F4ugBxbF">多 harness 协作</span>
-        <span class="tag" data-page-node-id="Uu9KFRvESPOhAC2UgSRwtU">AI Native 开发循环</span>
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="about.eyebrow">About</div>
+    <h2 data-i18n="about.title">关于行途</h2>
+    <div class="about">
+      <p data-i18n="about.p1">我是李嘉成（Justin Li），既带团队又写代码的技术经理。2023 年起在团队里推 AI，完整经历了 ChatGPT → Cursor → Kiro → Claude Code → WorkBuddy 的工具链演进。这里写的东西都从真实项目里来——跑过生产、有数字、能直接抄。</p>
+      <p style="margin-top:12px" data-i18n="about.p2">站点只收两种内容：<strong>踩过的坑、跑通的路</strong>。AI 迭代太快，今天有用的实践下个月就过时，所以我跑通一个就记一个。</p>
+      <div class="tags">
+        <span class="chip">AI 编程工具链</span>
+        <span class="chip">Agent / Harness 应用</span>
+        <span class="chip">终端 coding agent</span>
+        <span class="chip">多 harness 协作</span>
+        <span class="chip">AI Native 开发循环</span>
       </div>
     </div>
   </div>
 </section>
 
-<section id="career" data-page-node-id="5EfGtWFK9XsdGjqK7toF9E">
-  <div class="wrap" data-page-node-id="yiPZ5xloUDDL6ADbUfXAOx">
-    <div class="eyebrow" data-page-node-id="0TObXwH1efBqnsbav9O5FT">Career</div>
-    <h2 data-page-node-id="Wlw6M5TSi10f2gzd1pnfYP">履历与实战</h2>
-    <p class="lead" data-page-node-id="qmAjhFr8Fbf6PEdgRcn8tq">11 年技术生涯：从一线 Java 工程师到技术经理。近两年把 AI 当作研发底层引擎——一个人 + AI，顶一支传统团队。</p>
+<section id="career">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="career.eyebrow">Career</div>
+    <h2 data-i18n="career.title">履历与实战</h2>
+    <p class="lead" data-i18n="career.lead">11 年技术生涯：从一线 Java 工程师到技术经理。近两年把 AI 当作研发底层引擎——一个人 + AI，顶一支传统团队。</p>
 
-    <div class="career-line" data-page-node-id="dBQSjdUg4wJQqPriiD8goC">
-      <span data-page-node-id="960F6sigqFnoj3etD5vTsH">2015</span><b data-page-node-id="2JuLCJ9rh4Q33xWYCbvmcn">太原 · Java 工程师</b>
-      <i data-page-node-id="AkCm1Me5IhUml6EDa2ONlf"></i><span data-page-node-id="NbwWvAmyyEmkz1wMEJ1W8k">2018</span><b data-page-node-id="zNAzgwrba0dFLx53tnqSUU">北京 · 开发工程师</b>
-      <i data-page-node-id="DBDWyFnO8ZTCK9elh4Fzjl"></i><span data-page-node-id="gkH52Ndb2QwrjcnGhaqKxw">2018.11</span><b data-page-node-id="fLzGRcBnC3yx9Qa617vUp5">某电商中台服务商 · P5→P7 技术经理 · PMP</b>
-      <i data-page-node-id="IhlfX0OMOi0wMHuStSIWay"></i><span data-page-node-id="yFUluZdDXxELI7kCKnvhQy">2024+</span><b data-page-node-id="dHkgYRIbfaW5LgEbZZzupG">AI 工程化布道者</b>
+    <div class="career-line">
+      <span>2015</span><b>太原 · Java 工程师</b>
+      <i></i><span>2018</span><b>北京 · 开发工程师</b>
+      <i></i><span>2018.11</span><b>某电商中台服务商 · P5→P7 技术经理 · PMP</b>
+      <i></i><span>2024+</span><b>AI 工程化布道者</b>
     </div>
 
-    <div class="tags" data-page-node-id="tBiskKA1AzZKEbfcvpxCPQ">
-      <span class="tag" data-page-node-id="afoOMMMeEMPyRkNcUJpqwT">52,605 次 AI 请求 · 全平台第 1</span>
-      <span class="tag" data-page-node-id="V3XJLErLyLkrQSXIkEs2n2">1 人 + AI · 52 天交付全栈平台</span>
-      <span class="tag" data-page-node-id="BbOaE98piAH34F5D98NcqI">生产问题排查 8-10x 提效</span>
-      <span class="tag" data-page-node-id="gpGf8zyJN9hS5KmHvUSRkP">197M Token · ¥1,043</span>
-      <span class="tag" data-page-node-id="EJefnUpkQF9NYDLq25JBP8">SonarQube 0 Issue</span>
-      <span class="tag" data-page-node-id="aEct8lO37vMF4MslrtJOwL">CI 一次通过率 &gt;90%</span>
+    <div class="tags">
+      <span class="chip">52,605 次 AI 请求 · 全平台第 1</span>
+      <span class="chip">1 人 + AI · 52 天交付全栈平台</span>
+      <span class="chip">生产问题排查 8-10x 提效</span>
+      <span class="chip">197M Token · ¥1,043</span>
+      <span class="chip">SonarQube 0 Issue</span>
+      <span class="chip">CI 一次通过率 &gt;90%</span>
     </div>
 
-    <h3 class="sec" data-page-node-id="XOmoMn4MSrrdluBIoAV9QH">代表项目（实战交付记录）</h3>
-    <div class="grid" data-page-node-id="4GRPRyfFqCMkgCPk6RLXFC">
-      <div class="card" data-page-node-id="JwmHiIsvBSOgRAQRDXjgrv">
-        <div class="kicker" data-page-node-id="17gMSscUxeOtFP0rABfTUT">2026 · ⭐ 主力项目</div>
-        <h3 data-page-node-id="ifa2UBRKCsB022B8QhgT5s">多租户营销管理平台</h3>
-        <p data-page-node-id="Wlzx0i6ndRwHIJGtXzRQMk">1 人 + AI 52 天从 0 交付 16 万行：后端 14,421 行独立完成，SonarQube 0 Issue，提前 2 周。</p>
-        <div class="meta" data-page-node-id="MW6vfwUpnu4JedmG8xZ77w"><span data-page-node-id="lwEpmSGEAsQEnG1Czp6MEe">某全球快消巨头</span><span data-page-node-id="tdDyiFfxkUZDKjKj7SHyme">★</span></div>
+    <h3 class="sec" data-i18n="career.projects">代表项目（实战交付记录）</h3>
+    <div class="grid" id="projGrid">
+      <div class="card">
+        <div class="kicker">2026 · ⭐ 主力项目</div>
+        <h3>多租户营销管理平台</h3>
+        <p>1 人 + AI 52 天从 0 交付 16 万行：后端 14,421 行独立完成，SonarQube 0 Issue，提前 2 周。</p>
+        <div class="meta"><span>某全球快消巨头</span><span>★</span></div>
       </div>
-      <div class="card" data-page-node-id="HyGGeYeaHJjJnV30qcSWA2">
-        <div class="kicker" data-page-node-id="B3pfEiRFQHmJTGGbtgjS3E">2019-2026 · ⭐ 核心代表作</div>
-        <h3 data-page-node-id="nhhu85UknPtrFBTy74vMKE">供应链 OMS 中台</h3>
-        <p data-page-node-id="xbyBF0cGejao8KPsCJ5rdx">订单团队负责人，116+ 微服务，主导赠品/物料/履约域（650+ Java 文件全生命周期）。</p>
-        <div class="meta" data-page-node-id="0fKpJbEUqCSH6ytxZIAhxy"><span data-page-node-id="g1pE2KCTYFcKsRBfKVKHrg">某珠宝零售集团</span><span data-page-node-id="teTubfhTjP6mHNGj8EJy0w">★</span></div>
+      <div class="card">
+        <div class="kicker">2019-2026 · ⭐ 核心代表作</div>
+        <h3>供应链 OMS 中台</h3>
+        <p>订单团队负责人，116+ 微服务，主导赠品/物料/履约域（650+ Java 文件全生命周期）。</p>
+        <div class="meta"><span>某珠宝零售集团</span><span>★</span></div>
       </div>
-      <div class="card" data-page-node-id="PmSECTcSaUSRMyTmANCjro">
-        <div class="kicker" data-page-node-id="9cpq1HZNNrio0RVdjTK7Ce">2021-2026 · ⭐ 技术负责人</div>
-        <h3 data-page-node-id="dvPC7uaUEHnxOGf5Gns5zf">双品牌 APP 电商中台</h3>
-        <p data-page-node-id="70LOfRTqVVBY2IUrebenlI">140 微服务融合重构，购物车/订单原子服务化 + BFF 聚合，40+ 业务域，鸿蒙触点。</p>
-        <div class="meta" data-page-node-id="OK54KPM12HavZ7NCc7JyLR"><span data-page-node-id="wSMCbYFrJqAL5oCBigbvDV">某大型零售集团</span><span data-page-node-id="dFb6MC239Fqu4Xptf9zacY">★</span></div>
+      <div class="card">
+        <div class="kicker">2021-2026 · ⭐ 技术负责人</div>
+        <h3>双品牌 APP 电商中台</h3>
+        <p>140 微服务融合重构，购物车/订单原子服务化 + BFF 聚合，40+ 业务域，鸿蒙触点。</p>
+        <div class="meta"><span>某大型零售集团</span><span>★</span></div>
       </div>
-      <div class="card" data-page-node-id="fOyJ1Ii0XqmNTaG2shiMcU">
-        <div class="kicker" data-page-node-id="ZZpZUAgfCICCXM9H4ak6Wg">2022-2023 · ⭐ 产品+技术管理</div>
-        <h3 data-page-node-id="byeogKG2sH0MBFxH1xw8YB">电商 OMS SaaS（多租户）</h3>
-        <p data-page-node-id="7DkFuVWGhWUKW95BqC5DSC">40+ 微服务，自研多租户套件（9 类 starter）业务零侵入隔离，分布式 ID 生成器（56 万行 Java）。</p>
-        <div class="meta" data-page-node-id="pzUKYp74WtOxSSbmaILSKv"><span data-page-node-id="pVsOQgxXfg3GGExmD4YzWZ">电商 SaaS</span><span data-page-node-id="FHIeEtkkERnnDu37R84TnJ">★</span></div>
+      <div class="card">
+        <div class="kicker">2022-2023 · ⭐ 产品+技术管理</div>
+        <h3>电商 OMS SaaS（多租户）</h3>
+        <p>40+ 微服务，自研多租户套件（9 类 starter）业务零侵入隔离，分布式 ID 生成器（56 万行 Java）。</p>
+        <div class="meta"><span>电商 SaaS</span><span>★</span></div>
       </div>
-      <div class="card" data-page-node-id="AC2uw8NZoW4jj1grIaGd0I">
-        <div class="kicker" data-page-node-id="G3yAz5wGdTGtgw6603TwCJ">2019-2024 · 技术负责人</div>
-        <h3 data-page-node-id="0DU63Wwi7m7q9wqvOtU2Zv">O2O 多渠道到家中台</h3>
-        <p data-page-node-id="iIfZO5vvsBngdnSumxoTn0">115 微服务，6+ 外部到家平台渠道适配层，订单/价格/库存/商品全链路打通。</p>
-        <div class="meta" data-page-node-id="mUbaNHQ6Z0yHfBj6jc3e9w"><span data-page-node-id="d0Y6aOx76GS30kggovMaAk">某大型零售集团</span><span data-page-node-id="xAur7KSY32TCK4KoULn297">→</span></div>
+      <div class="card">
+        <div class="kicker">2019-2024 · 技术负责人</div>
+        <h3>O2O 多渠道到家中台</h3>
+        <p>115 微服务，6+ 外部到家平台渠道适配层，订单/价格/库存/商品全链路打通。</p>
+        <div class="meta"><span>某大型零售集团</span><span>→</span></div>
       </div>
-      <div class="card" data-page-node-id="OGNyMsfEWfZbJ3NrLUaX1B">
-        <div class="kicker" data-page-node-id="eJpRMkV1Ux9FXH2uBVikVJ">2020-2025 · 技术负责人</div>
-        <h3 data-page-node-id="aHNNQtuaMxz8fHq8UB2GJ1">精品超市 APP 与到企 B2B</h3>
-        <p data-page-node-id="rfgEuBhkApeTvXdr3uUGcK">高端业态完整交易链路（购物车/订单/售后/优惠券/预售）+ 到企 B2B 平台双管理后台。</p>
-        <div class="meta" data-page-node-id="JkxYrGo4JIJvHsWY6LCqSA"><span data-page-node-id="ZJfNwXzkVDSMceY09sKBuJ">某大型零售集团</span><span data-page-node-id="Ge4g3ueQQSHCtjVGB1yajE">→</span></div>
+      <div class="card">
+        <div class="kicker">2020-2025 · 技术负责人</div>
+        <h3>精品超市 APP 与到企 B2B</h3>
+        <p>高端业态完整交易链路（购物车/订单/售后/优惠券/预售）+ 到企 B2B 平台双管理后台。</p>
+        <div class="meta"><span>某大型零售集团</span><span>→</span></div>
       </div>
-      <div class="card" data-page-node-id="Fvg1YVmU8gXqDKQAYTRd02">
-        <div class="kicker" data-page-node-id="wGUAZtrwNTPn1uCbrfjPo6">2019-2026 · GitOps 运维</div>
-        <h3 data-page-node-id="icikq1uULZfyQz1zDN2fp9">微服务基础设施（GitOps）</h3>
-        <p data-page-node-id="tVPSWls5XJpQvD1clX51CT">96 个微服务 ArgoCD 声明式部署，四环境配置隔离一键发布（0 Java，零代码运维）。</p>
-        <div class="meta" data-page-node-id="RKOGqEfGMCnLrlAtiJA9kJ"><span data-page-node-id="j4Gncp1eZsEFO3evvWGuwL">某珠宝零售集团</span><span data-page-node-id="7WlzVtuhHmtFnDYivAVWBK">→</span></div>
+      <div class="card">
+        <div class="kicker">2019-2026 · GitOps 运维</div>
+        <h3>微服务基础设施（GitOps）</h3>
+        <p>96 个微服务 ArgoCD 声明式部署，四环境配置隔离一键发布（0 Java，零代码运维）。</p>
+        <div class="meta"><span>某珠宝零售集团</span><span>→</span></div>
       </div>
-      <div class="card" data-page-node-id="1ztmbd4Z7Kd2Vfm0dcXpTM">
-        <div class="kicker" data-page-node-id="doZlov88EU1LB1CFWpyOxB">2026 · 售前评估</div>
-        <h3 data-page-node-id="eH6kFkFqb00WFJ1HX4qMB3">海事集团系统重构评估</h3>
-        <p data-page-node-id="1GF5EChNUAaGux9xaKKwSl">12 份 Spec 专项评估，AI 辅助重构提效 41%（162→96 人天），交付周期约减半。</p>
-        <div class="meta" data-page-node-id="IMQS0G9uwlvgkzSXVgXMQU"><span data-page-node-id="UlBbPzGT89qiije5H5gSVe">某海事工程集团</span><span data-page-node-id="FQqr0vxf6YrRor86QdebHk">→</span></div>
+      <div class="card">
+        <div class="kicker">2026 · 售前评估</div>
+        <h3>海事集团系统重构评估</h3>
+        <p>12 份 Spec 专项评估，AI 辅助重构提效 41%（162→96 人天），交付周期约减半。</p>
+        <div class="meta"><span>某海事工程集团</span><span>→</span></div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="articles" data-page-node-id="ngrUAxJpRhZJcoRXQDawHt">
-  <div class="wrap" data-page-node-id="kixKNDJs5bUE5mnbhLC9ZU">
-    <div class="eyebrow" data-page-node-id="AJuoCStUt8NEj1HU892er7">Writing</div>
-    <h2 data-page-node-id="ZZCdafUUr0SGLq2bCM7iCi">文章 / 图文</h2>
-    <p class="lead" data-page-node-id="OUB1qnwTNwtnY3Bbyefmmf">围绕 AI 工具链的实战手记。下面是内容入口，点击直达对应平台原文。</p>
-    <div class="grid" id="articleGrid" data-page-node-id="ojxXbjato39E2O1htpT9Vb"></div>
-  </div>
-</section>
-
-<section id="videos" data-page-node-id="jVnKUPZ1C8nfOvJznAWKNn">
-  <div class="wrap" data-page-node-id="AGAuaRz4ChXwxqi5bHwtU1">
-    <div class="eyebrow" data-page-node-id="j3uLvOt9EEK3BAfCCN1guc">Video</div>
-    <h2 data-page-node-id="szOfGbYrucudFt51NebSFJ">视频</h2>
-    <p class="lead" data-page-node-id="JdslIYz94jeDZbWCC56GKk">视频号破圈 + 公众号留存联动，低成本起步（PPT + 真人录音）。</p>
-    <div class="grid" id="videoGrid" data-page-node-id="mecgWu3Ue1wqOeQQWncvEz"></div>
-  </div>
-</section>
-
-<section id="opensource" data-page-node-id="ymaQLdoA1BWUDl2ZAfBqKN">
-  <div class="wrap" data-page-node-id="gnbTHmD50vxE0Wu3mCxHj0">
-    <div class="eyebrow" data-page-node-id="yDgS7PfCSscTKChefhJkom">Open Source</div>
-    <h2 data-page-node-id="awu2bA7EricEn0LmHsgU4u">开源 / 工具</h2>
-    <p class="lead" data-page-node-id="B2USvQapTaB24okfnpOhLG">用过的重复劳动做成小工具开源，别人直接抄。仓库见 GitHub。</p>
-    <div class="grid" id="repoGrid" data-page-node-id="759fb671v3hn53NLs5WhiR"></div>
-  </div>
-</section>
-
-<section id="follow" data-page-node-id="JZ1AzLRfJZygdDynDbStvR">
-  <div class="wrap" data-page-node-id="HR975mCmFwleTOfd8X6cH6">
-    <div class="eyebrow" data-page-node-id="53kNHLQxZmQGA4I1qee9A3">Follow</div>
-    <h2 data-page-node-id="Tso0OhJCBovYfMtW05EohF">关注行途</h2>
-    <p class="lead" data-page-node-id="JJJOfjp4GzHH8AGZQc8YV2">全平台统一品牌「行途 / XingTu」。主阵地公众号，技术辅助掘金 / CSDN，泛流量小红书 / 知乎，私域知识星球。</p>
-    <div class="follow" id="followGrid" data-page-node-id="fivjVEmQD5EjSgrzxKJ0cf"></div>
-    <div style="margin-top:18px;padding:16px 18px;background:linear-gradient(135deg,rgba(7,193,96,.08),rgba(5,109,232,.08));border:1px dashed var(--brand);border-radius:var(--radius);font-size:14px;line-height:1.9;" data-page-node-id="VnlVAeIBBmtsVGTLTbzg8i">
-      📮 公众号「<b data-page-node-id="XdbObIaUN3pMXl3cBnIlJ4">行途技术手记</b>」回复关键词【<b data-page-node-id="IR1AkPxckU7jVYmBTcsSJ9">交流</b>】→ 获取我的私人微信（<b style="color:#07c160" data-page-node-id="jmYdmIhw3HKBkGvjKMMv2E">xingtu_note</b>，备注"公众号"优先通过）。AI 工程化 / 省 token / 职业破局，微信见。
     </div>
   </div>
 </section>
 
-<footer data-page-node-id="Ry7mKKGxuW7SBhbFuRat1v">
-  <div class="wrap" data-page-node-id="IsrutF2b4A1YrHTA6wyuET">
-    <div data-page-node-id="wn0L9bd2SBp218eEvAiTtv">© <span id="year" data-page-node-id="ewA4g6BFthrRmHIJ96vvOP"></span> 行途 XingTu · AI 工程化一线实践</div>
-    <div class="host" data-page-node-id="ifGUBP7DV3yexfu3EFeqp1">本站在 Cloudflare Pages 免费托管 · 自动 HTTPS · 免备案</div>
+<section id="articles">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="articles.eyebrow">Writing</div>
+    <h2 data-i18n="articles.title">文章 / 图文</h2>
+    <p class="lead" data-i18n="articles.lead">围绕 AI 工具链的实战手记。下面是内容入口，点击直达对应平台原文。</p>
+    <div class="grid" id="articleGrid"></div>
+  </div>
+</section>
+
+<section id="videos">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="videos.eyebrow">Video</div>
+    <h2 data-i18n="videos.title">视频</h2>
+    <p class="lead" data-i18n="videos.lead">视频号破圈 + 公众号留存联动，低成本起步（PPT + 真人录音）。10 月启动周更，素材取自 9 月深度长文。</p>
+    <div class="empty" data-i18n="videos.empty">视频号 10 月启动周更，素材取自 9 月深度长文。</div>
+  </div>
+</section>
+
+<section id="opensource">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="opensource.eyebrow">Open Source</div>
+    <h2 data-i18n="opensource.title">开源 / 工具</h2>
+    <p class="lead" data-i18n="opensource.lead">用过的重复劳动做成小工具开源，别人直接抄。仓库见 GitHub。</p>
+    <div class="grid" id="repoGrid"></div>
+  </div>
+</section>
+
+<section id="follow">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="follow.eyebrow">Follow</div>
+    <h2 data-i18n="follow.title">关注行途</h2>
+    <p class="lead" data-i18n="follow.lead">全平台统一品牌「行途 / XingTu」。主阵地公众号，技术辅助掘金 / CSDN，泛流量小红书 / 知乎，私域知识星球。</p>
+    <div class="follow" id="followGrid"></div>
+    <div class="cta-box">
+      📮 公众号「<b>行途技术手记</b>」回复关键词【<b>交流</b>】→ 获取我的私人微信（<span class="w">xingtu_note</span>，备注"公众号"优先通过）。AI 工程化 / 省 token / 职业破局，微信见。
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© <span id="year"></span> 行途 XingTu · AI 工程化一线实践</div>
+    <div class="host">Cloudflare Pages · 自动 HTTPS · 免备案</div>
   </div>
 </footer>
 
 <script>
-  // ====== TODO：把下面的占位数据替换成你的真实内容即可（无需改任何样式） ======
-  // url 指向本地脱敏副本（works/）；公众号首发稿只展目录，全文留给首发
-  const ARTICLES = [
-    { kicker:"AI 工程化", title:"五层 Token 首篇", desc:"从 197M Token / ¥1,043 真实账单拆出五层成本结构，AI 花销一次看明白。", url:"works/H3.html", tag:"公众号已发" },
-    { kicker:"工具箱", title:"行途个人站从 0 到 1 白盒教程", desc:"本站即白盒样例：单文件 HTML、零框架、两小时上线，附结构改造清单。", url:"works/行途个人站从0到1白盒教程_2026-08.html", tag:"公众号已发" },
-    { kicker:"省 token 系列", title:"省 token 的第一性原理", desc:"把「不用推理的活」从模型手里拿回来。省 token 全系列总纲。", url:"works/A0-_成品浏览_带图版.html", tag:"公众号已发" },
-    { kicker:"出海", title:"出海收款与税务实操手册", desc:"个人出海的收款通道、税务合规与成本测算，全流程实操。", url:"works/出海收款与税务实操手册_2026-08.html", tag:"全文" },
-    { kicker:"模型选型", title:"国内外免费便宜大模型全景", desc:"主流免费 / 低价模型的上下文、速率、价格横向对照。", url:"works/国内外免费便宜大模型全景_2026-08.html", tag:"全文" },
-    { kicker:"排障实录", title:"把 4 小时排查压到 75 分钟（微服务超卖悬案）", desc:"线上库存超卖事故，从 4 小时压到 75 分钟定位根因，附链路回溯步骤与复盘清单。", url:"works/index.html", tag:"见作品库" },
-  ];
-  // 视频尚未开拍（10 月启动周更），先不摆占位卡片
-  const VIDEOS = [];
-  const REPOS = [
-    { kicker:"方法论", title:"xingtu-ai-engineering", desc:"五大工程（上下文 / 提示词 / 驾驭 / 图 / 循环）+ 哲学 / 方法 / 治理。", url:"https://github.com/xingtu1996/xingtu-ai-engineering", tag:"MIT" },
-    { kicker:"Skills", title:"xingtu-skills", desc:"AI Agent 技能聚合仓，29 个 skill，可直接检索安装。", url:"https://github.com/xingtu1996/xingtu-skills", tag:"MIT" },
-    { kicker:"Bench", title:"tokenhub-bench", desc:"可复现 LLM 模型榜单评测：评测引擎 + 真实数据。", url:"https://github.com/xingtu1996/tokenhub-bench", tag:"MIT" },
-  ];
-  // 只填确认存在的主页；未知的一律留空（不编造链接），渲染为不可点标签
-  const FOLLOW = [
-    { b:"公众号", s:"行途技术手记", url:"" },
-    { b:"掘金", s:"行途", url:"" },
-    { b:"CSDN", s:"行途 thinkgame", url:"" },
-    { b:"知乎", s:"行途", url:"" },
-    { b:"小红书", s:"行途", url:"" },
-    { b:"B 站", s:"行途", url:"" },
-    { b:"视频号", s:"行途", url:"" },
-    { b:"X", s:"@xingtu1996", url:"https://x.com/xingtu1996" },
-    { b:"GitHub", s:"xingtu1996", url:"https://github.com/xingtu1996" },
-    { b:"知识星球", s:"行途年度社群", url:"" },
-  ];
+/* ===== 数据层（url 指向本地脱敏副本 works/；公众号首发稿只展目录）===== */
+const ARTICLES = [
+  { kicker:"AI 工程化", title:"五层 Token 首篇", desc:"从 197M Token / ¥1,043 真实账单拆出五层成本结构，AI 花销一次看明白。", url:"works/H3.html", tag:"公众号已发" },
+  { kicker:"工具箱", title:"行途个人站从 0 到 1 白盒教程", desc:"本站即白盒样例：单文件 HTML、零框架、两小时上线，附结构改造清单。", url:"works/行途个人站从0到1白盒教程_2026-08.html", tag:"公众号已发" },
+  { kicker:"省 token 系列", title:"省 token 的第一性原理", desc:"把「不用推理的活」从模型手里拿回来。省 token 全系列总纲。", url:"works/A0-_成品浏览_带图版.html", tag:"公众号已发" },
+  { kicker:"出海", title:"出海收款与税务实操手册", desc:"个人出海的收款通道、税务合规与成本测算，全流程实操。", url:"works/出海收款与税务实操手册_2026-08.html", tag:"全文" },
+  { kicker:"模型选型", title:"国内外免费便宜大模型全景", desc:"主流免费 / 低价模型的上下文、速率、价格横向对照。", url:"works/国内外免费便宜大模型全景_2026-08.html", tag:"全文" },
+  { kicker:"排障实录", title:"把 4 小时排查压到 75 分钟（微服务超卖悬案）", desc:"线上库存超卖事故，从 4 小时压到 75 分钟定位根因，附链路回溯步骤与复盘清单。", url:"works/index.html", tag:"见作品库" },
+];
+const REPOS = [
+  { kicker:"方法论", title:"xingtu-ai-engineering", desc:"五大工程（上下文 / 提示词 / 驾驭 / 图 / 循环）+ 哲学 / 方法 / 治理。", url:"https://github.com/xingtu1996/xingtu-ai-engineering", tag:"MIT" },
+  { kicker:"Skills", title:"xingtu-skills", desc:"AI Agent 技能聚合仓，29 个 skill，可直接检索安装。", url:"https://github.com/xingtu1996/xingtu-skills", tag:"MIT" },
+  { kicker:"Bench", title:"tokenhub-bench", desc:"可复现 LLM 模型榜单评测：评测引擎 + 真实数据。", url:"https://github.com/xingtu1996/tokenhub-bench", tag:"MIT" },
+];
+const FOLLOW = [
+  { b:"公众号", s:"行途技术手记", url:"" },
+  { b:"掘金", s:"行途", url:"" },
+  { b:"CSDN", s:"行途 thinkgame", url:"" },
+  { b:"知乎", s:"行途", url:"" },
+  { b:"小红书", s:"行途", url:"" },
+  { b:"X", s:"@xingtu1996", url:"https://x.com/xingtu1996" },
+  { b:"GitHub", s:"xingtu1996", url:"https://github.com/xingtu1996" },
+  { b:"知识星球", s:"行途年度社群", url:"" },
+];
 
-  const render = (id, data, withKicker) => {
-    const el = document.getElementById(id);
-    if(!data.length){ el.innerHTML = '<div class="empty">内容筹备中，敬请期待。</div>'; return; }
-    el.innerHTML = data.map(d => `
-      <a class="card" href="${d.url}" target="_blank" rel="noopener">
-        ${withKicker ? `<div class="kicker">${d.kicker}</div>` : ''}
-        <h3>${d.title}</h3>
-        <p>${d.desc}</p>
-        <div class="meta"><span>${d.tag||''}</span><span>→</span></div>
-      </a>`).join('');
-  };
-  render('articleGrid', ARTICLES, true);
-  render('videoGrid', VIDEOS, true);
-  render('repoGrid', REPOS, true);
-  if(!VIDEOS.length){
-    document.getElementById('videoGrid').innerHTML =
-      '<div class="empty">视频号 10 月启动周更，素材取自 9 月深度长文。</div>';
+/* ===== i18n 词典（内容区中文为主，界面层双语）===== */
+const I18N = {
+  zh: {
+    "nav.brand":"行途 · XingTu", "nav.about":"关于", "nav.career":"履历", "nav.articles":"文章", "nav.videos":"视频",
+    "nav.opensource":"开源", "nav.follow":"关注", "nav.works":"作品库 99",
+    "hero.badge":"11 年 Java 后端 · 技术经理 + 一线开发", "hero.title":"行途 XingTu",
+    "hero.sub":"11 年 Java 后端，近两年把 AI 当作研发底层引擎——一个人 + AI，顶一支传统团队。这里记的是跑过生产、有数字、能抄作业的实践。",
+    "hero.cta1":"看履历", "hero.cta2":"读文章", "hero.cta3":"作品与证据库 · 99 件 →",
+    "about.eyebrow":"About", "about.title":"关于行途",
+    "about.p1":"我是李嘉成（Justin Li），既带团队又写代码的技术经理。2023 年起在团队里推 AI，完整经历了 ChatGPT → Cursor → Kiro → Claude Code → WorkBuddy 的工具链演进。这里写的东西都从真实项目里来——跑过生产、有数字、能直接抄。",
+    "about.p2":"站点只收两种内容：踩过的坑、跑通的路。AI 迭代太快，今天有用的实践下个月就过时，所以我跑通一个就记一个。",
+    "career.eyebrow":"Career", "career.title":"履历与实战", "career.lead":"11 年技术生涯：从一线 Java 工程师到技术经理。近两年把 AI 当作研发底层引擎——一个人 + AI，顶一支传统团队。",
+    "career.projects":"代表项目（实战交付记录）",
+    "articles.eyebrow":"Writing", "articles.title":"文章 / 图文", "articles.lead":"围绕 AI 工具链的实战手记。下面是内容入口，点击直达对应平台原文。",
+    "videos.eyebrow":"Video", "videos.title":"视频", "videos.lead":"视频号破圈 + 公众号留存联动，低成本起步（PPT + 真人录音）。10 月启动周更，素材取自 9 月深度长文。", "videos.empty":"视频号 10 月启动周更，素材取自 9 月深度长文。",
+    "opensource.eyebrow":"Open Source", "opensource.title":"开源 / 工具", "opensource.lead":"用过的重复劳动做成小工具开源，别人直接抄。仓库见 GitHub。",
+    "follow.eyebrow":"Follow", "follow.title":"关注行途", "follow.lead":"全平台统一品牌「行途 / XingTu」。主阵地公众号，技术辅助掘金 / CSDN，泛流量小红书 / 知乎，私域知识星球。",
+  },
+  en: {
+    "nav.brand":"XingTu", "nav.about":"About", "nav.career":"Career", "nav.articles":"Writing", "nav.videos":"Video",
+    "nav.opensource":"Open Source", "nav.follow":"Follow", "nav.works":"Works 99",
+    "hero.badge":"11y Java Backend · Eng Manager + Hands-on Dev", "hero.title":"XingTu",
+    "hero.sub":"11 years of Java backend; for the last two, AI has been my engineering engine — one person + AI doing the work of a team. Notes from production, with numbers you can copy.",
+    "hero.cta1":"Career", "hero.cta2":"Articles", "hero.cta3":"Works & Evidence · 99 →",
+    "about.eyebrow":"About", "about.title":"About XingTu",
+    "about.p1":"I'm 李嘉成 (Justin Li) — an engineering manager who still writes code. Since 2023 I've pushed AI inside teams through the full toolchain shift: ChatGPT → Cursor → Kiro → Claude Code → WorkBuddy. Everything here comes from real projects — in production, with numbers, copy-ready.",
+    "about.p2":"This site keeps only two kinds of content: pits I fell into, and paths that worked. AI moves too fast — today's practice is obsolete next month, so I record each one as I prove it.",
+    "career.eyebrow":"Career", "career.title":"Career & Practice", "career.lead":"11-year technical path: from Java engineer to engineering manager. For the last two years AI has been the underlying engine — one person + AI doing the work of a traditional team.",
+    "career.projects":"Signature Projects (delivered, in production)",
+    "articles.eyebrow":"Writing", "articles.title":"Articles", "articles.lead":"Hands-on notes on the AI toolchain. Click through to the original post on each platform.",
+    "videos.eyebrow":"Video", "videos.title":"Video", "videos.lead":"WeChat Channels as reach amplifier + official account for retention. Low-cost start (slides + voiceover). Weekly from October, sourced from September's deep dives.", "videos.empty":"Weekly videos start October, sourced from September deep-dive articles.",
+    "opensource.eyebrow":"Open Source", "opensource.title":"Open Source", "opensource.lead":"Boring repetition turned into small open-source tools — take them and use them. Repos on GitHub.",
+    "follow.eyebrow":"Follow", "follow.title":"Follow XingTu", "follow.lead":"One brand across platforms: 行途 / XingTu. WeChat official account as home base, 掘金 / CSDN for engineering, 小红书 / 知乎 for reach, and a private community for depth.",
   }
-  document.getElementById('articleGrid').insertAdjacentHTML('afterend',
-    '<div style="margin-top:20px"><a class="btn s" href="works/index.html">' +
-    '浏览全部 99 件作品与证据（含 15 篇待首发成稿）→</a></div>');
-  document.getElementById('followGrid').innerHTML = FOLLOW.map(f =>
-    f.url
-      ? `<a class="ch" href="${f.url}" target="_blank" rel="noopener"><b>${f.b}</b><span>${f.s}</span></a>`
-      : `<span class="ch" style="cursor:default;opacity:.62"><b>${f.b}</b><span>${f.s}</span></span>`
-  ).join('');
-  document.getElementById('year').textContent = new Date().getFullYear();
+};
+
+/* ===== 主题系统（亮/暗，记忆偏好，跟随系统默认）===== */
+const root = document.documentElement;
+const themeBtn = document.getElementById('themeBtn');
+function initTheme(){
+  const saved = localStorage.getItem('xt-theme');
+  if(saved){ root.setAttribute('data-theme', saved); return; }
+  const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+  root.setAttribute('data-theme', dark ? 'dark' : 'light');
+}
+function paintTheme(){
+  const cur = root.getAttribute('data-theme');
+  themeBtn.textContent = cur === 'dark' ? '☀' : '☾';
+  themeBtn.title = cur === 'dark' ? 'Switch to light' : 'Switch to dark';
+}
+themeBtn.addEventListener('click', () => {
+  const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  root.setAttribute('data-theme', next);
+  localStorage.setItem('xt-theme', next);
+  paintTheme();
+});
+
+/* ===== 语言切换 ===== */
+let lang = localStorage.getItem('xt-lang') || 'zh';
+const langBtn = document.getElementById('langBtn');
+function applyLang(){
+  document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+  langBtn.textContent = lang === 'zh' ? 'EN' : '中';
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if(I18N[lang] && I18N[lang][k]) el.innerHTML = I18N[lang][k];
+  });
+}
+langBtn.addEventListener('click', () => {
+  lang = lang === 'zh' ? 'en' : 'zh';
+  localStorage.setItem('xt-lang', lang);
+  applyLang();
+});
+
+/* ===== 渲染 ===== */
+function render(id, data){
+  const el = document.getElementById(id);
+  if(!data.length){ el.innerHTML = '<div class="empty">内容筹备中，敬请期待。</div>'; return; }
+  el.innerHTML = data.map(d => `
+    <a class="card" href="${d.url}" target="_blank" rel="noopener">
+      <div class="kicker">${d.kicker}</div>
+      <h3>${d.title}</h3>
+      <p>${d.desc}</p>
+      <div class="meta"><span>${d.tag||''}</span><span>→</span></div>
+    </a>`).join('');
+}
+render('articleGrid', ARTICLES);
+render('repoGrid', REPOS);
+document.getElementById('articleGrid').insertAdjacentHTML('afterend',
+  '<div style="margin-top:20px;text-align:center"><a class="btn s" href="works/index.html">' +
+  '浏览全部 99 件作品与证据（含 15 篇待首发成稿）→</a></div>');
+document.getElementById('followGrid').innerHTML = FOLLOW.map(f =>
+  f.url
+    ? `<a class="ch" href="${f.url}" target="_blank" rel="noopener"><b>${f.b}</b><span>${f.s}</span></a>`
+    : `<span class="ch" style="cursor:default;opacity:.6"><b>${f.b}</b><span>${f.s}</span></span>`
+).join('');
+document.getElementById('year').textContent = new Date().getFullYear();
+
+initTheme(); paintTheme(); applyLang();
 </script>
 </body>
 </html>
