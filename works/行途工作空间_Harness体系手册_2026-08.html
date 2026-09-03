@@ -65,7 +65,7 @@
   <h1>行途工作空间 · Harness 体系手册</h1>
   <p>把「自媒体复利工程」也当作一套 Harness 来经营 —— 内容创作、调研、开发、开源，全部在受控轨道上运行。</p>
   <div class="meta">
-    <span>版本 V1.0</span><span>2026-08-19</span><span>基于 磐石/Ctf / TFM-NG / Haiting 三套 CC Harness 蒸馏</span><span>面向 WorkBuddy 兼容</span>
+    <span>版本 V1.0</span><span>2026-08-19</span><span>基于 某零售供应链/Ctf / TFM-NG / Haiting 三套 CC Harness 蒸馏</span><span>面向 WorkBuddy 兼容</span>
   </div>
 </header>
 
@@ -85,7 +85,7 @@
 <!-- ========== 1 ========== -->
 <section id="t1">
   <h2>一、Harness 是什么 <span class="tag">理论</span></h2>
-  <p class="lead">你在 ctf-gitlab 的 <code>HARNESS.md</code> 里已经定调：「将 Harness 视为产品，而非配置文件集合」「磐石 Harness = AI 编码的操作系统」。</p>
+  <p class="lead">你在 重构工程仓 的 <code>HARNESS.md</code> 里已经定调：「将 Harness 视为产品，而非配置文件集合」「某零售供应链 Harness = AI 编码的操作系统」。</p>
   <p>把这句话从「编码」泛化到「工作空间」就是本手册的核心命题：</p>
   <div class="key">
     <strong>Harness = 把一个人的工程纪律、方法论、工具链、记忆，沉淀成 AI 可读、可强制执行、可跨项目复用的资产库。</strong><br>
@@ -103,7 +103,7 @@
 <!-- ========== 2 ========== -->
 <section id="t2">
   <h2>二、六层架构模型 <span class="tag">框架</span></h2>
-  <p class="lead">直接复用你 ctf-gitlab 的 L0–L5 分层（已在 Haiting 的 HARNESS.md 验证可移植），并补上「路标层 / 锚点」两个横向角色。xingtu 的现有目录会被映射到这些层（见第四节）。</p>
+  <p class="lead">直接复用你 重构工程仓 的 L0–L5 分层（已在 Haiting 的 HARNESS.md 验证可移植），并补上「路标层 / 锚点」两个横向角色。xingtu 的现有目录会被映射到这些层（见第四节）。</p>
   <div class="stack">
     <div class="layer l5"><div class="lv">L5 产品层</div><div class="nm">HARNESS.md / 工作看板</div><div class="ds">愿景、路线图、进化机制、防腐规则。本手册即 xingtu 的 L5。</div></div>
     <div class="layer l4"><div class="lv">L4 编排层</div><div class="nm">workflows/</div><div class="ds">任务类型的流水线 SOP：内容生命周期、调研、开发、开源。</div></div>
@@ -125,7 +125,7 @@
 <!-- ========== 3 ========== -->
 <section id="t3">
   <h2>三、八大核心机制 <span class="tag">原则</span></h2>
-  <p class="lead">这些是「磐石 / Haiting」验证过的、可迁移到内容空间的机制。每条都标注了 xingtu 现成载体。</p>
+  <p class="lead">这些是「某零售供应链 / Haiting」验证过的、可迁移到内容空间的机制。每条都标注了 xingtu 现成载体。</p>
   <table>
     <tr><th style="width:18%">机制</th><th style="width:38%">含义</th><th style="width:44%">xingtu 落地载体（已存在 / 待建）</th></tr>
     <tr><td><strong>① 渐进式披露</strong></td><td>分层按需加载，省 Token；Caveman 压缩输出（直接结论+证据，不客套）。</td><td>已有：DIRECTORY.md（待建索引）、SOUL.md 注入。待建：L1 索引 / L2 规则正文分离。</td></tr>
@@ -311,16 +311,16 @@
   </table>
   <h3>引用来源（你已有的资产）</h3>
   <ul>
-    <li><code>ctf-gitlab/.claude/HARNESS.md</code> — 磐石 6 层架构 + 进化/防腐/回流机制（本手册 L0–L5 来源）。</li>
-    <li><code>ctf-gitlab/.claude/CLAUDE.md</code> — 路由机制、进度可见性铁律、Ultracode 并行编排（第四节/第五节参考）。</li>
-    <li><code>tfm-ng/haiting/.claude/HARNESS.md</code> + <code>CLAUDE.md</code> — 6 层产品说明书、Hard Gate、对抗审查三角色（第三节/第六节参考）。</li>
-    <li><code>tfm-ng/haiting/.harness/</code> — 共享资产层 + 渐进式披露三层（第二节参考）。</li>
+    <li><code>重构工程仓/.claude/HARNESS.md</code> — 某零售供应链 6 层架构 + 进化/防腐/回流机制（本手册 L0–L5 来源）。</li>
+    <li><code>重构工程仓/.claude/CLAUDE.md</code> — 路由机制、进度可见性铁律、Ultracode 并行编排（第四节/第五节参考）。</li>
+    <li><code>中台工程仓/海事工程仓/.claude/HARNESS.md</code> + <code>CLAUDE.md</code> — 6 层产品说明书、Hard Gate、对抗审查三角色（第三节/第六节参考）。</li>
+    <li><code>中台工程仓/海事工程仓/.harness/</code> — 共享资产层 + 渐进式披露三层（第二节参考）。</li>
     <li><code>.workbuddy/memory/MEMORY.md</code> — xingtu IP 战略 / 分发 / 出海（L2 护栏来源）。</li>
     <li><code>tools/ai_collab_miner.py</code>、<code>ai_history_indexer.py</code> — xingtu 原生知识回流+记忆（第七节复用清单）。</li>
   </ul>
 </section>
 
-<div class="foot">行途工作空间 · Harness 体系手册 V1.0 · 2026-08-19 · 由 WorkBuddy（小研）整理，蒸馏自磐石/Ctf、TFM-NG、Haiting 三套 Claude Code Harness</div>
+<div class="foot">行途工作空间 · Harness 体系手册 V1.0 · 2026-08-19 · 由 WorkBuddy（小研）整理，蒸馏自某零售供应链/Ctf、TFM-NG、Haiting 三套 Claude Code Harness</div>
 
 </div>
 </body>
