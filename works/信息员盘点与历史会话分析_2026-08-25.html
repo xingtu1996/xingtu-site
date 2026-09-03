@@ -97,7 +97,7 @@
       <td><b>素材库索引器</b><br><span class="mono">materials_indexer</span></td>
       <td><code>tools/materials_indexer.py</code></td>
       <td>扫描素材源（对话挖掘 / harness specs / 实践产出 / 会话索引 / 已发布内容），生成可检索素材库，标记「可蒸馏点」，驱动内容循环飞轮（找素材→蒸馏→反哺）。</td>
-      <td>vault 素材库 + ctf/tfm/haiting specs + WorkBuddy 会话</td>
+      <td>vault 素材库 + 重构工程/中台工程/海事工程仓 specs + WorkBuddy 会话</td>
       <td><code>materials_index.json</code><br><code>materials_index.db</code>（800 条）</td>
       <td><span class="part">无自动时间戳</span><br>（需手动/定期跑）</td>
     </tr>
@@ -110,7 +110,7 @@
 <table>
   <thead><tr><th>索引文件</th><th>大小</th><th>关键量</th><th>状态</th></tr></thead>
   <tbody>
-    <tr><td><code>projects_index.db</code></td><td>167 MB</td><td>441,719 文件 · ctf-gitlab 34k / tfm-ng 79k / crv 161k</td><td><span class="yes">已建</span></td></tr>
+    <tr><td><code>projects_index.db</code></td><td>167 MB</td><td>441,719 文件 · 重构工程仓 34k / 中台工程仓 79k / 工程C 161k</td><td><span class="yes">已建</span></td></tr>
     <tr><td><code>ai_history_index.db</code></td><td>16 MB</td><td>1,136 会话 · 27,491 消息 · 覆盖 2025-07 ~ 2026-08-25</td><td><span class="yes">已建·今日刷新</span></td></tr>
     <tr><td><code>collab_miner_candidates.json</code></td><td>47 KB</td><td>今日 8 个候选 · 扫描 57 文件 / 56 会话</td><td><span class="yes">已建·今日</span></td></tr>
     <tr><td><code>materials_index.db</code></td><td>143 KB</td><td>800 条素材 · 主题 SDD/Spec 388 / AI工具链 253</td><td><span class="yes">已建</span></td></tr>
@@ -119,17 +119,17 @@
 
 <!-- 覆盖矩阵 -->
 <h2>四、你列出的 6 个路径 × 4 信息员 覆盖矩阵</h2>
-<p>关键机制：<code>ctf-gitlab/.claude</code> 是指向 <code>~/.claude</code> 的<strong>软链</strong>，所以所有项目的会话 jsonl 实际都收在 <code>~/.claude/projects</code>，
+<p>关键机制：<code>重构工程仓/.claude</code> 是指向 <code>~/.claude</code> 的<strong>软链</strong>，所以所有项目的会话 jsonl 实际都收在 <code>~/.claude/projects</code>，
   这正是 <code>ai_collab_miner</code> 与 <code>ai_history_indexer</code> 扫描的位置——你点的项目路径因此都能被「会话级」捕获。</p>
 <table>
   <thead><tr><th>你列出的路径</th><th>project_indexer</th><th>ai_collab_miner</th><th>ai_history_indexer</th><th>materials_indexer</th></tr></thead>
   <tbody>
-    <tr><td class="mono">ctf-gitlab/.claude</td><td class="yes">✓ 34k 文件</td><td class="yes">✓ 近期改动+会话</td><td class="yes">✓ 481 会话</td><td class="yes">✓ specs+research</td></tr>
-    <tr><td class="mono">tfm-ng/.claude</td><td class="yes">✓ 79k 文件</td><td class="yes">✓</td><td class="yes">✓ 24 会话</td><td class="yes">✓ harness-文档</td></tr>
-    <tr><td class="mono">tfm-ng/haiting/.claude</td><td class="yes">✓ 在 tfm-ng 树内</td><td class="yes">✓</td><td class="yes">✓ 2 会话</td><td class="yes">✓ haiting/specs</td></tr>
-    <tr><td class="mono">haiting/specs/.../to-luo</td><td class="yes">✓ md 文件</td><td class="yes">✓ 近期</td><td class="part">△ 经生产它的会话间接覆盖</td><td class="yes">✓ harness-specs 递归扫</td></tr>
-    <tr><td class="mono">tfm-ng/haiting/AI工程化实践</td><td class="yes">✓ tfm-ng 项目树内</td><td class="yes">✓ 近期改动</td><td class="part">△ 经 tfm-ng 会话间接覆盖</td><td class="no">✗ 非直扫目录（主题可命中）</td></tr>
-    <tr><td class="mono">tfm-ng/AI探索</td><td class="yes">✓ tfm-ng 项目树内</td><td class="yes">✓ 近期改动</td><td class="part">△ 经 tfm-ng 会话间接覆盖</td><td class="no">✗ 非直扫目录（主题可命中）</td></tr>
+    <tr><td class="mono">重构工程仓/.claude</td><td class="yes">✓ 34k 文件</td><td class="yes">✓ 近期改动+会话</td><td class="yes">✓ 481 会话</td><td class="yes">✓ specs+research</td></tr>
+    <tr><td class="mono">中台工程仓/.claude</td><td class="yes">✓ 79k 文件</td><td class="yes">✓</td><td class="yes">✓ 24 会话</td><td class="yes">✓ harness-文档</td></tr>
+    <tr><td class="mono">中台工程仓/海事工程仓/.claude</td><td class="yes">✓ 在 中台工程仓 树内</td><td class="yes">✓</td><td class="yes">✓ 2 会话</td><td class="yes">✓ 海事工程仓/specs</td></tr>
+    <tr><td class="mono">海事工程仓/specs/.../to-luo</td><td class="yes">✓ md 文件</td><td class="yes">✓ 近期</td><td class="part">△ 经生产它的会话间接覆盖</td><td class="yes">✓ harness-specs 递归扫</td></tr>
+    <tr><td class="mono">中台工程仓/海事工程仓/AI工程化实践</td><td class="yes">✓ 中台工程仓 项目树内</td><td class="yes">✓ 近期改动</td><td class="part">△ 经 中台工程仓 会话间接覆盖</td><td class="no">✗ 非直扫目录（主题可命中）</td></tr>
+    <tr><td class="mono">中台工程仓/AI探索</td><td class="yes">✓ 中台工程仓 项目树内</td><td class="yes">✓ 近期改动</td><td class="part">△ 经 中台工程仓 会话间接覆盖</td><td class="no">✗ 非直扫目录（主题可命中）</td></tr>
   </tbody>
 </table>
 <div class="note">说明：<code>AI工程化实践</code> 与 <code>AI探索</code> 两个目录不在 <code>materials_indexer</code> 的直扫清单里，但已被 <code>project_indexer</code>（整项目树）与 <code>ai_collab_miner</code>（近期改动）覆盖；若想让素材库直接收录，可在 <code>materials_indexer.SOURCES</code> 补两行。</div>
@@ -153,13 +153,13 @@
 <table>
   <thead><tr><th>项目</th><th>会话数</th><th>备注</th></tr></thead>
   <tbody>
-    <tr><td class="mono">ctf-gitlab</td><td>481</td><td>某零售客户重构，信息量最大</td></tr>
+    <tr><td class="mono">重构工程仓</td><td>481</td><td>某珠宝零售集团重构，信息量最大</td></tr>
     <tr><td class="mono">subagents</td><td>340</td><td>多 Agent 子会话聚合</td></tr>
-    <tr><td class="mono">crv</td><td>146</td><td>CRV 项目</td></tr>
-    <tr><td class="mono">tfm-ng</td><td>24</td><td>你列出的路径之一</td></tr>
+    <tr><td class="mono">工程C</td><td>146</td><td>CRV 项目</td></tr>
+    <tr><td class="mono">中台工程仓</td><td>24</td><td>你列出的路径之一</td></tr>
     <tr><td class="mono">行途(xingtu)</td><td>15</td><td>自媒体工作室自身</td></tr>
-    <tr><td class="mono">ctf物料项目/系统设计</td><td>11</td><td>某零售客户物料</td></tr>
-    <tr><td class="mono">tfm-ng-haiting</td><td>2</td><td>海庭 iShop / AVD 工具套件</td></tr>
+    <tr><td class="mono">重构工程物料项目/系统设计</td><td>11</td><td>某珠宝零售集团物料</td></tr>
+    <tr><td class="mono">中台海事仓</td><td>2</td><td>某海事工程集团 iShop / AVD 工具套件</td></tr>
   </tbody>
 </table>
 
@@ -170,7 +170,7 @@
 <h3>4) 高频关键词（已过滤部分噪声）</h3>
 <div>
   <span class="pill">claude 5462</span><span class="pill">java 4824</span><span class="pill">agent 3423</span>
-  <span class="pill">spec 3088</span><span class="pill">ctf-gitlab 2772</span><span class="pill">harness 2106</span>
+  <span class="pill">spec 3088</span><span class="pill">重构工程仓 2772</span><span class="pill">harness 2106</span>
   <span class="pill">specs 1942</span><span class="pill">sql 1827</span><span class="pill">token 1801</span>
   <span class="pill">codemax 1524</span>
 </div>
@@ -179,7 +179,7 @@
 <h3>5) 你列出的路径——可挖掘的具体会话样本</h3>
 <div class="grid2">
   <div>
-    <h4 style="margin:6px 0;color:var(--navy)">ctf-gitlab（最近）</h4>
+    <h4 style="margin:6px 0;color:var(--navy)">重构工程仓（最近）</h4>
     <ul class="mono">
       <li>08-25 · 模板系统分析（162 轮）</li>
       <li>08-25 · FS-T5326 完结原因（66 轮）</li>
@@ -189,11 +189,11 @@
     </ul>
   </div>
   <div>
-    <h4 style="margin:6px 0;color:var(--navy)">tfm-ng / haiting</h4>
+    <h4 style="margin:6px 0;color:var(--navy)">中台工程仓 / 海事工程仓</h4>
     <ul class="mono">
       <li>08-17 · 分享 MTP 的 PRD 与 mockup 实践（111 轮）</li>
       <li>08-14 · 准备 8/14 工作汇报材料（602 轮）</li>
-      <li>08-03 · 分析 haiting/specs 目录</li>
+      <li>08-03 · 分析 海事工程仓/specs 目录</li>
       <li>08-13 · 整理 AVD 工具套件清单（842 轮）← to-luo 出处</li>
       <li>08-07 · 评估华为云私有化部署 DeepSeek V4</li>
     </ul>
@@ -206,14 +206,14 @@
 <table>
   <thead><tr><th>评分</th><th>来源项目</th><th>候选会话</th></tr></thead>
   <tbody>
-    <tr><td>118</td><td class="mono">ctf-gitlab</td><td>京东订单API升级</td></tr>
-    <tr><td>118</td><td class="mono">ctf-gitlab</td><td>rename-specs-timestamp-prefix</td></tr>
-    <tr><td>118</td><td class="mono">ctf-gitlab</td><td>模板系统分析</td></tr>
-    <tr><td>118</td><td class="mono">ctf-gitlab</td><td>harness-reduction-plan</td></tr>
+    <tr><td>118</td><td class="mono">重构工程仓</td><td>京东订单API升级</td></tr>
+    <tr><td>118</td><td class="mono">重构工程仓</td><td>rename-specs-timestamp-prefix</td></tr>
+    <tr><td>118</td><td class="mono">重构工程仓</td><td>模板系统分析</td></tr>
+    <tr><td>118</td><td class="mono">重构工程仓</td><td>harness-reduction-plan</td></tr>
     <tr><td>118</td><td class="mono">xingtu</td><td>token-5layer-experiment 与 .claude 体系</td></tr>
     <tr><td>112</td><td class="mono">cae</td><td>mcps 仓库克隆</td></tr>
-    <tr><td>112</td><td class="mono">ctf-gitlab</td><td>dc-promotion subStock SQL 冲突</td></tr>
-    <tr><td>104</td><td class="mono">ctf-gitlab</td><td>FS-T5326 COMPLETED_OPERATION 完结原因</td></tr>
+    <tr><td>112</td><td class="mono">重构工程仓</td><td>dc-promotion subStock SQL 冲突</td></tr>
+    <tr><td>104</td><td class="mono">重构工程仓</td><td>FS-T5326 COMPLETED_OPERATION 完结原因</td></tr>
   </tbody>
 </table>
 
@@ -252,7 +252,7 @@
 <ul>
   <li><b>立即补一个每日自动化</b>：把 <code>project_indexer scan</code> + <code>ai_collab_miner</code> + <code>materials_indexer</code> 串成每日定时任务（<code>ai_history_indexer</code> 较重可每周/隔日跑，今天已手动刷新）。</li>
   <li><b>把 AI工程化实践 / AI探索 纳入素材库直扫</b>：在 <code>materials_indexer.SOURCES</code> 补两行，让这两个你重点维护的目录也进飞轮。</li>
-  <li><b>从今日候选出第一篇</b>：8 个候选里 ctf-gitlab 占 6 个，建议挑 <code>harness-reduction-plan</code> 或 <code>京东订单API升级</code> 蒸馏成「技术经理带团队落地 AI」方向的实战稿（契合行途人设）。</li>
+  <li><b>从今日候选出第一篇</b>：8 个候选里 重构工程仓 占 6 个，建议挑 <code>harness-reduction-plan</code> 或 <code>京东订单API升级</code> 蒸馏成「技术经理带团队落地 AI」方向的实战稿（契合行途人设）。</li>
 </ul>
 
 <div class="foot">行途工作室 · 信息员盘点看板 · 单文件离线可用 · 2026-08-25</div>
