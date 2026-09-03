@@ -188,7 +188,7 @@
 
   <!-- ARCHITECTURE -->
   <section id="arch">
-    <div class="sec-head"><span class="n">01</span><h2>六层架构</h2><span class="desc">沿用某零售供应链/Ctf + Haiting 验证过的分层模型，映射到 xingtu 载体</span></div>
+    <div class="sec-head"><span class="n">01</span><h2>六层架构</h2><span class="desc">沿用磐石/Ctf + Haiting 验证过的分层模型，映射到 xingtu 载体</span></div>
     <div class="panel">
       <div class="stack">
         <div class="layer"><div class="lv l5">L5</div><div class="body"><div class="t">产品层 · Product</div><div class="c">愿景/分层/纪律/进化 — <code>HARNESS.md</code> + <code>00_自媒体复利工作看板_Canvas.md</code></div></div></div>
@@ -297,7 +297,7 @@
       <div class="script"><div class="nm">safe-delete.sh <span class="chk">✓ 冒烟通过</span></div><div class="dsc">mv 进工作区本地 <code>.trash</code>，带禁区越界防护，可 <code>--restore</code> 还原、<code>--list</code> 查看、<code>--clean N</code> 清 N 天前。直接对抗「不要 rm -rf」。</div></div>
       <div class="script"><div class="nm">backup-before-op.sh <span class="chk">✓ 冒烟通过</span></div><div class="dsc">操作前打包带时间戳 tar.gz 快照到 <code>.backups</code>，落地「做好备份」诉求。用法：<code>bash backup-before-op.sh '说明' &lt;路径&gt;</code></div></div>
       <div class="script"><div class="nm">env-check.sh <span class="chk">✓ 17 PASS</span></div><div class="dsc">为 xingtu 重写的环境自检：磁盘/工具链/锚点/六层/安全脚本就位与否。进空间先跑一遍。</div></div>
-      <div class="script"><div class="nm">gate.sh <span class="chk">✓ 自检 PASS</span></div><div class="dsc">海事工程仓 spec Hard Gate 参考副本，发布/交付前结构校验（specs 缺失仅为 WARN，符合 xingtu 现状）。</div></div>
+      <div class="script"><div class="nm">gate.sh <span class="chk">✓ 自检 PASS</span></div><div class="dsc">haiting spec Hard Gate 参考副本，发布/交付前结构校验（specs 缺失仅为 WARN，符合 xingtu 现状）。</div></div>
     </div>
     <div class="note">路径已中文化改造：原 CC 版回收站写死 <code>~/.claude/trash</code>，现改为工作区本地 <code>.trash</code>/<code>.backups</code>，让 xingtu 自带安全机制、跨平台可跑。配套 <code>README.md</code> 说明用法与跨平台注意点。</div>
   </section>
