@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行途 · 发布节奏与素材供给战略（2026-08-28）</title>
+<style>
+  :root{
+    --blue:#056DE8; --ink:#1f2329; --sub:#5b6470; --bg:#ffffff; --card:#f5f7fa;
+    --line:#e3e8ef; --red:#d6322b; --green:#16a34a; --amber:#f59e0b;
+  }
+  *{box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+    margin:0;background:var(--bg);color:var(--ink);line-height:1.7;padding:32px;}
+  .wrap{max-width:920px;margin:0 auto;}
+  h1{font-size:26px;color:var(--blue);border-bottom:3px solid var(--blue);padding-bottom:10px;}
+  h2{font-size:19px;margin-top:34px;color:var(--ink);border-left:4px solid var(--blue);padding-left:10px;}
+  h3{font-size:15px;color:var(--sub);margin-bottom:6px;}
+  p{font-size:14px;color:var(--ink);}
+  .lead{background:var(--card);border-radius:10px;padding:16px 20px;margin:16px 0;border:1px solid var(--line);}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
+  th,td{border:1px solid var(--line);padding:10px 12px;vertical-align:top;text-align:left;}
+  th{background:var(--card);color:var(--sub);font-weight:600;}
+  .tag{display:inline-block;background:var(--blue);color:#fff;border-radius:5px;padding:1px 8px;font-size:12px;margin-right:4px;}
+  .card{background:var(--card);border-radius:10px;padding:14px 18px;margin:12px 0;border:1px solid var(--line);}
+  .card b{color:var(--blue);}
+  .warn{background:#fff7e6;border-left:4px solid var(--amber);padding:10px 14px;border-radius:6px;font-size:13px;}
+  .ok{color:var(--green);font-weight:600;}
+  .no{color:var(--red);font-weight:600;}
+  code{background:#eef2f7;padding:2px 6px;border-radius:4px;font-size:12px;}
+  .foot{color:var(--sub);font-size:12px;margin-top:30px;border-top:1px solid var(--line);padding-top:12px;}
+  ul{font-size:14px;}
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap">
+  <h1>行途 · 发布节奏与素材供给战略</h1>
+  <div class="lead">
+    <b>核心结论：公众号首发 + 多平台异步分发，是最稳的组合。</b>
+    控制 1 个主战场（公众号）把「深度 + 互动 + 变现」做厚；其余平台（掘金 / CSDN / GitHub / X）作为<b>异步分发烟囱</b>，按各自流量逻辑错峰发布，降低多平台同步维护成本。内容供给则完全建立在<b>真实工程会话</b>上——从 重构工程仓 等项目的 601 个真实会话里挖「意图 vs 证据」落差，做到可追溯、可复现、可出书。
+  </div>
+
+  <h2>一、多平台分发节奏（首发 → 分发）</h2>
+  <p>原则：<b>一篇成文，分层复用</b>。公众号首发拿原创与互动，其他平台隔 6–72h 按形态改写，避免「通稿」被限流（PUB-004）。</p>
+  <table>
+    <tr><th>平台</th><th>角色</th><th>时间窗</th><th>改写要求</th><th>关键注意</th></tr>
+    <tr>
+      <td><b>公众号</b></td><td>主阵地·首发</td>
+      <td><b>T 日 20:00</b> 黄金档</td>
+      <td>原创·深度·带互动钩子；合集「AI 编程提效」</td>
+      <td>变现收口（赞赏/付费阅读/星球）</td>
+    </tr>
+    <tr>
+      <td>掘金</td><td>技术延展</td>
+      <td>首发后 <b>6–24h</b>（T+1 午间）</td>
+      <td>去故事化、补工程深度、加 3–4 技术标签、绑「 AI 用量排行榜」话题</td>
+      <td>不放返利/福利链接（诱导交易红线）</td>
+    </tr>
+    <tr>
+      <td>CSDN</td><td>搜索长尾</td>
+      <td>首发后 <b>2–3 天</b>（优先周四/周五）</td>
+      <td>教程化（FAQ/步骤/参数）；文尾走官方推广卡放公众号</td>
+      <td>吃「Claude Code 配置」类搜索词，时效不敏感</td>
+    </tr>
+    <tr>
+      <td>GitHub</td><td>工具/代码沉淀</td>
+      <td>有 repo 再发（不强行）</td>
+      <td>英文 README + 源码；六层方法论可单独建 repo</td>
+      <td>适合工具型/工程化产出，非纯图文</td>
+    </tr>
+    <tr>
+      <td>X (Twitter)</td><td>海外破圈</td>
+      <td>首发后 1–2 天</td>
+      <td>英文短推 + 关键图，挂博客/公众号链接</td>
+      <td>海外受众，标题用「The Bitter Lesson」式引用</td>
+    </tr>
+    <tr>
+      <td>小红书/知乎</td><td>泛流量占位</td>
+      <td>灵活穿插</td>
+      <td>图文卡 + 结论先行；不放外链</td>
+      <td>知乎禁导流但知识引用可放；小红书限链</td>
+    </tr>
+  </table>
+  <div class="warn">⚠️ 不连续日更同一专题（读者疲劳 + 长尾词单一）。省 Token 系列按<b>每周 1–2 篇</b>穿插，中间用 GLM/电脑城/BUG 实录调剂。</div>
+
+  <h2>二、内容供给：真实会话 → 可发布内容（已验证）</h2>
+  <p>从 <code>~/.claude/projects/-home-projects-重构工程仓</code> 等真实会话（601 个，单会话最大 32MB）按「意图层 vs 证据层」落差法挖掘。以下 4 个片段已锁定，全部可追溯：</p>
+
+  <div class="card">
+    <h3>① 检索层案例（A0 的「20 次 grep → 3 次查询」真实出处）</h3>
+    <p>会话 <code>765198f2</code>（CodeGraph 技术解析）：用户明确提出「传统 AI 编程存在『探索税』——平均 40+ 次 grep/glob/read 消耗大量 token」。这正是 A0 检索层「Just-in-time 图查询省 80% 工具调用」的来源。<br>
+    <b>可成文</b>：《AI 编程的「探索税」：我用图查询把 40 次 grep 打到 3 次》——真实数据 + 可复现步骤。</p>
+  </div>
+
+  <div class="card">
+    <h3>② 生产 BUG 实录（真实调试，可脱敏公开）</h3>
+    <p>会话 <code>c595f666</code>（生产工单排查）：真实换货 SKU 双 key 修复——「只用 split(',') 解不了换货 SKU 不一致，改成双 key：xcode 兜底 + channelSkuCode 拆解」。这是「真实一线踩坑」型内容，自带悬念与解决方案。<br>
+    <b>可成文</b>：《一次换货单超卖排查：模型给的修复，我先不信，直到…》</p>
+  </div>
+
+  <div class="card">
+    <h3>③ 工具封装方法论（教别人「捕鱼」）</h3>
+    <p>会话 <code>9f45bb7b</code>：用户想把散乱脚本封装成 skills/cli，「教其他项目组如何封装工具脚本、封装 CLI、封装 skill」——「授人以渔」。直接对应行途「系统性 workflow 自动化」价值。<br>
+    <b>可成文</b>：《把你的脚本封装成 AI 能用的 CLI：一套可复制的 harness 方法论》</p>
+  </div>
+
+  <div class="card">
+    <h3>④ AI 驾驭技巧沉淀（会话压缩/规格化）</h3>
+    <p>会话 <code>b771897d</code>：用户对「会话压缩会不会丢掉 specs 里的 AI 协作机制」的担忧，以及把协作规则写进 specs 沉淀——这正是「规则是愿望、钩子是墙」与「Spec 先文档」思想的真实场景。<br>
+    <b>可成文</b>：《我和 AI 协作的 8 个月：哪些规则它真的听，哪些必须写成钩子》</p>
+  </div>
+
+  <h2>三、既有资产盘点（可直接复用）</h2>
+  <ul>
+    <li><b>素材库</b>：<code>素材库/materials_library.json</code>（193 万字符，1116+ 卡）+ <code>素材看板.html</code>（离线检索）</li>
+    <li><b>会话索引</b>：<code>tools/sessions_analysis.json</code> + <code>ai_history_index.db</code>（601 会话潜力分）</li>
+    <li><b>已成形专题</b>：A0《省 token，90% 的人都省反了》（明早首发）+ GLM 文（已发）+ B09/B02 草稿</li>
+    <li><b>真实数据源</b>：重构工程仓/.claude/{research,incidents,specs,skills}（脱敏后均为一手素材）</li>
+  </ul>
+
+  <h2>四、建议的下一步</h2>
+  <ol>
+    <li><b>明早 08:15</b>：A0 公众号首发（已备好全套，标题「省 token，90% 的人都省反了」）</li>
+    <li><b>T+1 午间</b>：A0 掘金版（去故事化 + 技术标签）</li>
+    <li><b>本周内</b>：把 ① 检索层案例 写成 A2，作为系列第 2 篇</li>
+    <li><b>持续</b>：每次会话结束，把「意图→证据」片段标记进素材库，为出书积累章节</li>
+  </ol>
+
+  <div class="foot">
+    数据来源：本地 ~/.claude/projects 真实会话（已脱敏）、行途素材库、A0 正文实测数据。本文档由 WorkBuddy 基于真实工程痕迹整理，非营销稿。
+  </div>
+</div>
+</body>
+</html>

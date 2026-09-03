@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行途素材库 · 汲取×排序×保鲜期作战规划（2026-08-27）</title>
+<style>
+  :root{
+    --blue:#056DE8; --blue-dark:#044EA6; --blue-light:#E8F1FD; --blue-mist:#F4F8FE;
+    --ink:#1A2433; --ink2:#44536B; --ink3:#7A879C;
+    --line:#E3E9F2; --card:#FFFFFF; --bg:#F5F7FA;
+    --green:#0A9C6E; --green-light:#E6F6F0;
+    --amber:#C97B12; --amber-light:#FBF1E0;
+    --red:#D64545; --red-light:#FCEBEB;
+    --purple:#6D4FC4; --purple-light:#F0EBFB;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.7;font-size:15px;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:32px 20px 80px;}
+  /* Header */
+  header.hero{
+    background:linear-gradient(135deg,#056DE8 0%,#044EA6 60%,#053C7A 100%);
+    border-radius:18px;color:#fff;padding:40px 44px;position:relative;overflow:hidden;
+  }
+  header.hero::after{
+    content:"";position:absolute;right:-80px;top:-80px;width:320px;height:320px;
+    border-radius:50%;background:rgba(255,255,255,.07);
+  }
+  header.hero h1{font-size:28px;font-weight:800;letter-spacing:.5px;}
+  header.hero .sub{margin-top:8px;font-size:15px;opacity:.9;}
+  header.hero .meta{margin-top:16px;font-size:12.5px;opacity:.75;display:flex;gap:18px;flex-wrap:wrap;}
+  .tag{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);
+    border-radius:999px;padding:2px 12px;font-size:12px;margin:0 6px 0 0;}
+  /* Section */
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:28px 32px;margin-top:22px;box-shadow:0 1px 3px rgba(16,32,64,.05);}
+  h2.sec{font-size:20px;font-weight:800;display:flex;align-items:center;gap:10px;margin-bottom:4px;}
+  h2.sec .no{
+    background:var(--blue);color:#fff;width:30px;height:30px;border-radius:8px;
+    display:inline-flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;
+  }
+  .sec-desc{color:var(--ink2);font-size:13.5px;margin:4px 0 18px 40px;}
+  .lead{
+    background:var(--blue-mist);border-left:4px solid var(--blue);border-radius:8px;
+    padding:14px 18px;margin-bottom:20px;font-size:14.5px;
+  }
+  .lead b{color:var(--blue-dark);}
+  /* Numbers band */
+  .band{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:18px 0 8px;}
+  .numcard{background:var(--blue-mist);border:1px solid var(--line);border-radius:12px;padding:16px 14px;text-align:center;}
+  .numcard .n{font-size:26px;font-weight:800;color:var(--blue);}
+  .numcard .l{font-size:12px;color:var(--ink2);margin-top:2px;}
+  .numcard.warn{background:var(--red-light);border-color:#F3CACA;}
+  .numcard.warn .n{color:var(--red);}
+  .numcard.ok{background:var(--green-light);border-color:#BEE8D7;}
+  .numcard.ok .n{color:var(--green);}
+  /* Tables */
+  table{width:100%;border-collapse:collapse;font-size:13.5px;margin:12px 0;}
+  th{background:var(--blue-mist);color:var(--blue-dark);text-align:left;font-weight:700;
+    padding:9px 12px;border-bottom:2px solid var(--line);white-space:nowrap;}
+  td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink);}
+  tr:last-child td{border-bottom:none;}
+  td.b,th.b{font-weight:700;}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:var(--blue-dark);background:var(--blue-mist);padding:1px 6px;border-radius:5px;}
+  /* Grid cards */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:14px;}
+  .lvl{border-radius:12px;padding:18px 18px;border:1px solid var(--line);position:relative;}
+  .lvl h4{font-size:16px;font-weight:800;display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+  .lvl .pill{font-size:11px;border-radius:999px;padding:1px 10px;font-weight:600;}
+  .lvl .q{font-size:13px;font-weight:700;margin:6px 0 8px;}
+  .lvl p{font-size:12.8px;color:var(--ink2);}
+  .lvl .tags{margin-top:10px;display:flex;flex-wrap:wrap;gap:5px;}
+  .lvl .tags span{background:var(--blue-mist);border:1px solid var(--line);border-radius:6px;font-size:11px;padding:1px 7px;color:var(--ink2);}
+  .lvl .stats{margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);font-size:12px;color:var(--ink3);}
+  .L0{border-top:4px solid var(--blue);} .L1{border-top:4px solid var(--green);}
+  .L2{border-top:4px solid var(--amber);} .L3{border-top:4px solid var(--purple);}
+  /* Timeline */
+  .tl{position:relative;margin:16px 0 0 8px;padding-left:28px;}
+  .tl::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:var(--line);}
+  .tl .item{position:relative;margin-bottom:14px;}
+  .tl .item::before{content:"";position:absolute;left:-27px;top:8px;width:10px;height:10px;border-radius:50%;background:var(--blue);border:2px solid #fff;box-shadow:0 0 0 2px var(--blue-light);}
+  .tl .wk{font-size:12px;font-weight:800;color:var(--blue);letter-spacing:.5px;}
+  .tl .ttl{font-size:14.5px;font-weight:700;}
+  .tl .ttl .plat{font-size:11px;font-weight:600;border-radius:5px;padding:1px 7px;margin-left:6px;vertical-align:2px;}
+  .tl .desc{font-size:12.8px;color:var(--ink2);margin-top:2px;}
+  .p-gzh{background:var(--red-light);color:var(--red);}
+  .p-jue{background:var(--blue-light);color:var(--blue-dark);}
+  .p-zh{background:var(--purple-light);color:var(--purple);}
+  .p-xhs{background:#FDEEF3;color:#D6336C;}
+  .p-csdn{background:#E9F5EF;color:var(--green);}
+  /* Bars */
+  .bar-row{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:12.8px;}
+  .bar-row .lb{width:90px;text-align:right;color:var(--ink2);flex-shrink:0;}
+  .bar{flex:1;height:18px;background:var(--blue-mist);border-radius:5px;overflow:hidden;position:relative;}
+  .bar i{display:block;height:100%;border-radius:5px;background:linear-gradient(90deg,var(--blue),#4D9BEF);}
+  .bar i.amber{background:linear-gradient(90deg,#C97B12,#E8A23B);}
+  .bar i.green{background:linear-gradient(90deg,#0A9C6E,#3CC896);}
+  .bar i.red{background:linear-gradient(90deg,#D64545,#EF7B7B);}
+  .bar i.purple{background:linear-gradient(90deg,#6D4FC4,#9A82E0);}
+  .bar-row .v{width:46px;font-weight:700;color:var(--ink);flex-shrink:0;}
+  /* Formula */
+  .formula{background:var(--blue-mist);border:1px dashed var(--blue);border-radius:10px;padding:16px 18px;margin:14px 0;font-size:13.5px;}
+  .formula .f{font-size:14px;font-weight:700;color:var(--blue-dark);margin-bottom:6px;}
+  .formula .f .mono{font-size:13px;}
+  /* Check list */
+  .todo{list-style:none;margin-top:10px;}
+  .todo li{padding:10px 14px;border:1px solid var(--line);border-radius:10px;margin-bottom:8px;font-size:13.5px;
+    display:flex;align-items:flex-start;gap:10px;background:#fff;}
+  .todo li .box{width:18px;height:18px;border:2px solid var(--blue);border-radius:5px;flex-shrink:0;margin-top:3px;}
+  .todo li b{color:var(--ink);}
+  .todo li .why{color:var(--ink3);font-size:12px;display:block;margin-top:2px;}
+  /* Model cards */
+  .mcard{display:flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px;background:#fff;}
+  .mcard .m{font-size:15px;font-weight:800;color:var(--blue-dark);min-width:150px;}
+  .mcard .r{font-size:12.5px;color:var(--ink2);flex:1;}
+  .mcard .px{font-size:12px;font-weight:800;border-radius:6px;padding:2px 10px;white-space:nowrap;}
+  .px-lock{background:var(--blue);color:#fff;}
+  .px-sub{background:var(--green);color:#fff;}
+  .px-free{background:var(--amber);color:#fff;}
+  .px-no{background:var(--red);color:#fff;}
+  .px-night{background:var(--purple);color:#fff;}
+  .warnbox{background:var(--red-light);border:1px solid #F3CACA;border-radius:10px;padding:14px 18px;margin:12px 0;font-size:13.5px;}
+  .warnbox b{color:var(--red);}
+  .okbox{background:var(--green-light);border:1px solid #BEE8D7;border-radius:10px;padding:14px 18px;margin:12px 0;font-size:13.5px;}
+  .okbox b{color:var(--green);}
+  .quote{border-left:3px solid var(--blue);background:var(--blue-mist);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;font-size:13.5px;color:var(--ink2);}
+  footer{margin-top:34px;text-align:center;color:var(--ink3);font-size:12px;}
+  .pill-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--ink2);margin:8px 0 4px;}
+  @media (max-width:720px){
+    header.hero{padding:28px 22px;} header.hero h1{font-size:22px;}
+    section{padding:20px 18px;} .wrap{padding:16px 12px 60px;}
+  }
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap">
+
+<header class="hero">
+  <h1>行途素材库 ·「汲取 × 排序 × 保鲜期」作战规划</h1>
+  <div class="sub">从「概念启蒙」到「理念哲思」的深入浅出内容阶梯 · 8 周排期 · 首发平台矩阵 · WorkBuddy 模型选型</div>
+  <div class="meta">
+    <span>📅 2026-08-27（草案，待 boss 拍板）</span>
+    <span><span class="tag">数据源</span>materials_library.json 全量 1125 卡</span>
+    <span><span class="tag">配套</span>博文骨架库 · 发布决策 · 六层Token系列卡 · model_assignment.json</span>
+  </div>
+</header>
+
+<!-- 一句话结论 -->
+<section>
+  <h2 class="sec"><span class="no">0</span>一句话结论</h2>
+  <div class="lead" style="margin-left:40px;">
+    <b>你的素材库不缺料，缺的是「难度阶梯 + 保鲜分层 + 成稿漏斗」。</b>
+    1125 张卡里 95% 是「中」难度、保鲜期全部压在 180–540 天、知乎/小红书几乎空白、在架 1124 张却只有 5 篇成稿——
+    「想先发概念初级内容」没货可发，不是没素材，是入门层只有 15 张卡、且没人把它们从「中」难度里降维挖出来。
+    解法一句话：<b>建 L0–L3 内容阶梯 + 四层保鲜期 + 五维排序 + 8 周排期，概念篇打头，逐步深入。</b>
+  </div>
+  <div class="band">
+    <div class="numcard"><div class="n">1125</div><div class="l">素材卡总量</div></div>
+    <div class="numcard warn"><div class="n">15</div><div class="l">入门卡（1.3%，断层）</div></div>
+    <div class="numcard"><div class="n">1074</div><div class="l">「中」难度卡（95.5%）</div></div>
+    <div class="numcard warn"><div class="n">0</div><div class="l">快消类保鲜期（缺失）</div></div>
+    <div class="numcard ok"><div class="n">5</div><div class="l">成稿（转化率极低）</div></div>
+    <div class="numcard warn"><div class="n">14</div><div class="l">小红书素材卡（空白）</div></div>
+  </div>
+</section>
+
+<!-- 1 现状诊断 -->
+<section>
+  <h2 class="sec"><span class="no">1</span>现状诊断：四个结构性失衡</h2>
+  <div class="sec-desc">1125 卡全量统计（2026-08-26 生成主库）</div>
+
+  <h3 style="font-size:15px;font-weight:800;margin:6px 0 10px;">① 难度金字塔倒挂 —— 「概念初级」断层</h3>
+  <div class="bar-row"><span class="lb">入门（L0）</span><div class="bar"><i style="width:1.3%" class="green"></i></div><span class="v">15</span></div>
+  <div class="bar-row"><span class="lb">中（L1–L2）</span><div class="bar"><i style="width:95.5%"></i></div><span class="v">1074</span></div>
+  <div class="bar-row"><span class="lb">进阶（L3）</span><div class="bar"><i style="width:3.2%" class="amber"></i></div><span class="v">36</span></div>
+  <div class="quote">95% 的素材默认打「中」难度 → 任何一篇都能发，任何一篇都没有明确的「入口位」。受众分布同样倒挂：一线开发 991 / 技术管理者 107 / <b>入门小白仅 27</b>。</div>
+
+  <h3 style="font-size:15px;font-weight:800;margin:18px 0 10px;">② 保鲜期一刀切 —— 没有快消层</h3>
+  <div class="bar-row"><span class="lb">91–365 天</span><div class="bar"><i style="width:97%" class="red"></i></div><span class="v">1091</span></div>
+  <div class="bar-row"><span class="lb">365 天+</span><div class="bar"><i style="width:3%" class="purple"></i></div><span class="v">34</span></div>
+  <div class="bar-row"><span class="lb">≤90 天</span><div class="bar"><i style="width:0.5%" class="amber"></i></div><span class="v">0</span></div>
+  <div class="quote">全部素材保鲜期落在 <span class="mono">180–540 天（均值 360）</span>。但横评/榜单/版本评测（如 9 Agent 横评、模型峰谷定价）3 个月后就过期——<b>横评被误判成长效文，是时效性内容最大的浪费点</b>。</div>
+
+  <h3 style="font-size:15px;font-weight:800;margin:18px 0 10px;">③ 平台分配失衡 —— 知乎/小红书空白</h3>
+  <div class="bar-row"><span class="lb">公众号</span><div class="bar"><i style="width:100%" class="red"></i></div><span class="v">1125</span></div>
+  <div class="bar-row"><span class="lb">掘金</span><div class="bar"><i style="width:98.5%"></i></div><span class="v">1108</span></div>
+  <div class="bar-row"><span class="lb">CSDN</span><div class="bar"><i style="width:74.7%" class="amber"></i></div><span class="v">840</span></div>
+  <div class="bar-row"><span class="lb">知乎</span><div class="bar"><i style="width:6.3%" class="purple"></i></div><span class="v">71</span></div>
+  <div class="bar-row"><span class="lb">小红书</span><div class="bar"><i style="width:1.2%" class="green"></i></div><span class="v">14</span></div>
+  <div class="quote">公众号/掘金/CSDN 已全覆盖；但<b>知乎（理念讨论向）只有 71 张、小红书（泛流量入口）只有 14 张</b>——概念篇和理念篇恰好是这两个平台的强项，平台分配要跟着内容阶梯走。</div>
+
+  <h3 style="font-size:15px;font-weight:800;margin:18px 0 10px;">④ 成稿漏斗最细的一环是「素材 → 成稿」，不是采集</h3>
+  <table>
+    <tr><th>环节</th><th>数量</th><th>说明</th></tr>
+    <tr><td class="b">在架素材卡</td><td>1124</td><td>采集已过剩，飞轮每日还在加</td></tr>
+    <tr><td class="b">选题池（已脱敏可写）</td><td>B01–B12 + T12–T18 + G1–G6</td><td>骨架/选题卡齐全，部分配图就位</td></tr>
+    <tr><td class="b">成稿</td><td>5（B02 / B09 / B11 / M01 / B09 发布包）</td><td>B09 已定为首篇公开发布（8-26）</td></tr>
+    <tr><td class="b">状态回写</td><td>1/1125 标「已产出」</td><td>成稿未回写卡片状态 → 看板失真，飞轮会重复推已写完的卡</td></tr>
+  </table>
+  <div class="warnbox"><b>结论：</b>「汲取」的真瓶颈不是输入（采集/萃取已很成熟：四级价值分级 GOLDEN/KEY/FOCUS/INSIGHT），而是<b>「消化输出」——素材 → 成稿 → 回写</b>这一段。本规划就是给这一段装上游标。</div>
+</section>
+
+<!-- 2 内容阶梯 -->
+<section>
+  <h2 class="sec"><span class="no">2</span>内容阶梯模型：L0–L3 深入浅出</h2>
+  <div class="sec-desc">「优先概念初级 → 逐步深入」的结构化落地 · 每层定素材来源 / 代表选题 / 首发平台 / 保鲜期</div>
+  <div class="grid">
+    <div class="lvl L0">
+      <h4>L0 概念启蒙 <span class="pill" style="background:var(--blue-light);color:var(--blue-dark)">本体论 · 是什么</span></h4>
+      <div class="q">先讲清楚「这是什么」—— 概念、理念、全景地图</div>
+      <p>17 张理念卡（第一性原理 / 简单即真 / 复利进化 / 测试左移 / 协作即对抗…）+ B08 harness 全景 + 六层 Token 总纲。你点名的「哲学理念本体论、harness、五层 token」全部从这里起手。</p>
+      <div class="tags"><span>素材：15 入门卡 + 17 理念卡 + 全景类</span><span>首发：公众号</span><span>保鲜：365 天+</span></div>
+      <div class="stats">受众：入门小白 + 一线开发 · 篇幅 800–1500 字 · 每周 1 篇打底</div>
+    </div>
+    <div class="lvl L1">
+      <h4>L1 入门实操 <span class="pill" style="background:var(--green-light);color:var(--green)">怎么开始</span></h4>
+      <div class="q">「照着做就能跑起来」—— 配置、教程、清单</div>
+      <p>B09（改 1 个配置省钱）、CC 5 分钟入门 MVP、零基础 AI 办公（S11–S17）、Excel 精度与 AI 平权。把「中」难度素材降维重写，是填补入门缺口的现成路径。</p>
+      <div class="tags"><span>素材：B09 系 + S 系列 + 教程化改写</span><span>首发：公众号 / 小红书</span><span>保鲜：90–180 天</span></div>
+      <div class="stats">受众：入门小白 + 一线开发 · 清单体/图文 · 小红书高收藏</div>
+    </div>
+    <div class="lvl L2">
+      <h4>L2 进阶工程 <span class="pill" style="background:var(--amber-light);color:var(--amber)">怎么用深</span></h4>
+      <div class="q">有实测数据的工程方法 —— 六层 Token 落地、harness 机制</div>
+      <p>六层 Token 逐层落地（CBM 检索 -80% / rtk 协议 -93.6% / Headroom / caveman）、T18 三模式装抓手、harness 注入机制实测（B04）、4 Agent 横评（B01）。</p>
+      <div class="tags"><span>素材：六层系列卡 + 横评 + T18</span><span>首发：掘金</span><span>保鲜：90–365 天</span></div>
+      <div class="stats">受众：一线开发（主力盘）· 数据/表格/机制图 · 掘金 + CSDN 长尾</div>
+    </div>
+    <div class="lvl L3">
+      <h4>L3 理念哲思 <span class="pill" style="background:var(--purple-light);color:var(--purple)">为什么 · 道</span></h4>
+      <div class="q">把工程经验提炼成可迁移的认知 —— 四篇工程哲学 + 管理视角</div>
+      <p>注意力稀释效应、数据搬运谬误、「能写 bash 就别让 Agent 跑」、Palantir 本体论（从看报表到做决策）、技术人复利（B11）。这是 IP 护城河层，也是「技术经理 + 仍写代码」人设的独有素材。</p>
+      <div class="tags"><span>素材：六层哲学 4 篇 + 理念库 + G4</span><span>首发：公众号 → 知乎</span><span>保鲜：365 天+</span></div>
+      <div class="stats">受众：技术管理者 + 一线开发 · 观点文 · 知乎讨论度高</div>
+    </div>
+  </div>
+  <div class="okbox" style="margin-top:16px;"><b>关键动作：</b>从 1074 张「中」难度卡里<b>降维挖 L0</b>——按「3 分钟内能讲清是什么吗」筛一遍，能讲清的（如 B02 Ponytail、B09 配置、理念卡）直接标 L0。目标：L0 从 32 张扩到 60+ 张，凑足 8 周概念篇弹药。</div>
+</section>
+
+<!-- 3 三大主题线 -->
+<section>
+  <h2 class="sec"><span class="no">3</span>三大主题线：你点名的三块料</h2>
+  <div class="sec-desc">哲学理念本体论 / harness / 五层 Token —— 各自可闭环成专栏</div>
+  <table>
+    <tr><th>主题线</th><th>系列结构</th><th>篇数</th><th>首发顺序</th><th>已就位</th></tr>
+    <tr>
+      <td class="b">🧭 哲学理念本体论</td>
+      <td>17 个理念卡逐篇短文（第一性原理/简单即真/复利进化/测试左移/协作即对抗…）+ 金句库 I1–I11 做短内容</td>
+      <td>17+</td>
+      <td>公众号首发 → 知乎问题化 → 小红书短卡（1 理念 3 形态）</td>
+      <td>✅ 17 卡 + 11 金句</td>
+    </tr>
+    <tr>
+      <td class="b">🔧 Harness</td>
+      <td>B08 全景（开栏）→ 注入机制实测（B04）→ 治理减法 → 4 Agent 横评（B01）→ 9 Agent 省 token 横评</td>
+      <td>5–6</td>
+      <td>公众号开栏 → 掘金纵深</td>
+      <td>✅ 骨架 4 篇</td>
+    </tr>
+    <tr>
+      <td class="b">🧮 五层 → 六层 Token</td>
+      <td>H3 总纲（升六层）→ 6 层各 1 篇落地 → 4 篇工程哲学 = 11 篇闭环「工具可变，概念不变」</td>
+      <td>11</td>
+      <td>H3 升版 → 检索层（大头）→ 各层落地 → 哲学收口</td>
+      <td>✅ B09（⑤散文）B02（⑥生成）已写</td>
+    </tr>
+  </table>
+  <div class="lead">三线交叉点：<b>六层 Token 的 4 篇哲学 = 理念线的一部分；harness 全景 = 六层 Token 的母框架</b>。发一篇顶三条线，专栏之间互链互推，就是「复利账户」的实盘。</div>
+</section>
+
+<!-- 4 保鲜期 -->
+<section>
+  <h2 class="sec"><span class="no">4</span>保鲜期分层模型：四层质保</h2>
+  <div class="sec-desc">现状是一刀切 180–540 天 → 改为按内容类型映射保鲜期，让时效性素材「抢发」、理念性素材「慢炖」</div>
+  <table>
+    <tr><th>层</th><th>质保期</th><th>内容类型</th><th>处置规则</th><th>当前存量</th></tr>
+    <tr>
+      <td class="b" style="color:var(--red)">快消层</td><td>7–30 天</td>
+      <td>工具横评 / 榜单 / 版本发布 / 定价变动 / 新闻钩子</td>
+      <td><b>抢发优先</b>：入库即排期，7 天内成稿；过期价值归零（如 9 Agent 横评需发文时重拉数据）</td>
+      <td style="color:var(--red)" class="b">0（需补标）</td>
+    </tr>
+    <tr>
+      <td class="b" style="color:var(--amber)">常规层</td><td>30–90 天</td>
+      <td>实操教程 / 踩坑复盘 / 配置清单</td>
+      <td>滚动排期：进每日飞轮基线，随发随补</td>
+      <td class="b">0（需补标）</td>
+    </tr>
+    <tr>
+      <td class="b" style="color:var(--blue)">长效层</td><td>90–365 天</td>
+      <td>工程实践 / 方法论 / 六层 Token 落地 / 横评精修版</td>
+      <td>常规轮转：深度精工周末投入，可攒系列</td>
+      <td class="b">1091</td>
+    </tr>
+    <tr>
+      <td class="b" style="color:var(--purple)">理念层</td><td>365 天+</td>
+      <td>理念 / 本体论 / 认知升级 / 管理视角</td>
+      <td>慢炖：不追时效，攒专栏，周末精工，知乎长期吃流量</td>
+      <td class="b">34</td>
+    </tr>
+  </table>
+  <div class="quote"><b>判断口诀：</b>问一句「3 个月后这条还新吗？」——不新 = 快消，新 = 长效。横评/榜单/版本号类直接打快消，别让它伪装成长效文占着不发的坑。</div>
+</section>
+
+<!-- 5 排序模型 -->
+<section>
+  <h2 class="sec"><span class="no">5</span>排序模型：从三分公式升级到「五维汲取分」</h2>
+  <div class="sec-desc">现有公式已埋好骨架（0.5×时效 + 0.3×长尾 + 0.2×价值），缺「阶梯缺口」这一维</div>
+  <div class="formula">
+    <div class="f">现有：publish_priority = <span class="mono">0.5×时效紧迫 + 0.3×长尾SEO + 0.2×工具价值</span>（0–100）</div>
+    <div style="font-size:12.8px;color:var(--ink2);">问题：入门概念卡价值分不高（如「理念-复利进化」34.6 分），永远排在 60.7 分的 agent 卡后面 —— <b>「缺什么发什么」没有被编码进公式</b>。</div>
+  </div>
+  <div class="formula">
+    <div class="f">建议升级：汲取分 = <span class="mono">时效紧迫 30% + 阶梯缺口 25% + 长尾SEO 20% + 价值密度 15% + 破圈力 10%</span></div>
+    <div style="font-size:12.8px;color:var(--ink2);">阶梯缺口 = 当前 L0 缺口最大 → 概念/理念卡加权（当前阶段该权重自动顶到 25%）；破圈力 = 可发知乎/小红书泛流量的加分。等 L0 补足后，权重向 L2 倾斜 —— <b>权重跟着阶梯缺口走，而不是永远静态</b>。</div>
+  </div>
+  <table>
+    <tr><th>维度</th><th>权重</th><th>取值</th><th>当前该盯什么</th></tr>
+    <tr><td class="b">时效紧迫</td><td>30%</td><td>days_left 越小越高（现 urgency 已算）</td><td>给横评类素材补标快消保鲜期，让 urgency 真正动起来</td></tr>
+    <tr><td class="b" style="color:var(--blue)">阶梯缺口</td><td>25%（新增）</td><td>按当前内容阶梯缺口加权</td><td>现在缺口 = L0 概念层 → 理念卡/入门卡自动上浮</td></tr>
+    <tr><td class="b">长尾 SEO</td><td>20%</td><td>tail_score（搜一搜/掘金搜索潜力）</td><td>「Claude Code 入门」「省 token」「harness 是什么」都是好长尾</td></tr>
+    <tr><td class="b">价值密度</td><td>15%</td><td>value_score（GOLDEN/KEY/FOCUS/INSIGHT）</td><td>黄金级 G1–G6 优先成稿</td></tr>
+    <tr><td class="b">破圈力</td><td>10%（新增）</td><td>可否发知乎/小红书泛流量</td><td>清单体、截图教程、争议观点 → 加分</td></tr>
+  </table>
+  <div class="okbox"><b>落地动作：</b>① 给快消类素材重标 freshness_days（7–30 天）→ ② 卡片补「ladder」字段（L0–L3）→ ③ 公式加阶梯缺口 + 破圈力两维 → ④ 每日飞轮按新分推卡。</div>
+</section>
+
+<!-- 6 排期 -->
+<section>
+  <h2 class="sec"><span class="no">6</span>8 周排期路线图：概念打头，逐步深入</h2>
+  <div class="sec-desc">融合既有发布队列（B09 8-26 首篇已定）+ 阶梯逻辑 · 周六/周二节奏（工作日绝不动，SAF-003）</div>
+  <div class="tl">
+    <div class="item"><div class="wk">W1 · 8/28–9/3</div>
+      <div class="ttl">概念启蒙开篇：数据 + 理念双发<span class="plat p-gzh">公众号</span><span class="plat p-zh">知乎</span></div>
+      <div class="desc">B02《代码量砍 73%》（数据位，成稿现成）→ B11《技术人的复利》（理念位）→ 小红书发 1 条理念短卡（复利进化）试水。人设三角「数据/省钱/理念」落地。</div></div>
+    <div class="item"><div class="wk">W2 · 9/4–9/10</div>
+      <div class="ttl">故事线复产 + harness 周开栏<span class="plat p-gzh">公众号</span><span class="plat p-jue">掘金</span></div>
+      <div class="desc">电脑城实录（脱敏后，故事线第一枪）→ T18《给 AI 装抓手·三模式》（回链 B09，harness 开栏）。L1 入门向。</div></div>
+    <div class="item"><div class="wk">W3 · 9/11–9/17</div>
+      <div class="ttl">L0 全景概念篇：harness 与六层 Token 总纲<span class="plat p-gzh">公众号</span><span class="plat p-zh">知乎</span></div>
+      <div class="desc">B08《一张图讲清 harness 全景》开栏 → H3《五层 Token》升六层版（已发 CSDN 的升级总纲）。你点名的「本体论/harness/五层 token」三条线全部起头。</div></div>
+    <div class="item"><div class="wk">W4 · 9/18–9/24</div>
+      <div class="ttl">L1 入门实操：教程 + 零基础<span class="plat p-gzh">公众号</span><span class="plat p-xhs">小红书</span><span class="plat p-csdn">CSDN</span></div>
+      <div class="desc">《5 分钟跑起 Claude Code》（MVP，截图现成）→ 零基础 AI 办公方案（S11–S17 选 1）。吃「Claude Code 教程」长尾 SEO，CSDN 教程化跟发。</div></div>
+    <div class="item"><div class="wk">W5 · 9/25–10/1</div>
+      <div class="ttl">L2 进阶工程①：检索层（省 Token 大头）<span class="plat p-jue">掘金</span><span class="plat p-gzh">公众号</span></div>
+      <div class="desc">《20 次 grep 变 1 次图查询》（CBM/CodeGraph，-80% 工具调用）→ 六层 Token 落地篇②。数据炸裂 + 工程深度。</div></div>
+    <div class="item"><div class="wk">W6 · 10/2–10/8</div>
+      <div class="ttl">L2 进阶工程②：协议层 + 散文层<span class="plat p-jue">掘金</span><span class="plat p-gzh">公众号</span></div>
+      <div class="desc">rtk《命令输出压缩 93.6%》→ caveman 独立成文（回链 B09 伏笔，诚实标注 30–50% 而非宣传 75%）。</div></div>
+    <div class="item"><div class="wk">W7 · 10/9–10/15</div>
+      <div class="ttl">L3 理念哲思：工程哲学两篇<span class="plat p-gzh">公众号</span><span class="plat p-zh">知乎</span><span class="plat p-xhs">小红书</span></div>
+      <div class="desc">《注意力稀释效应：128K 塞 70% 噪音，不如 32K》→《数据搬运谬误》。理念文知乎问题化 + 小红书观点卡。</div></div>
+    <div class="item"><div class="wk">W8 · 10/16–10/22</div>
+      <div class="ttl">L3 收口 + 复盘：Palantir 本体论<span class="plat p-gzh">公众号</span><span class="plat p-zh">知乎</span></div>
+      <div class="desc">《从本体论看企业 AI：从告诉你库存不够到帮你把单下了》（G4，技术经理视角稀缺认知）→ W8 复盘：搜一搜收录词 + 各平台数据，决定第 9 周起加注方向。</div></div>
+  </div>
+  <div class="quote"><b>节奏铁律：</b>周末批量产 3–5 篇 → 定时发布排一周 → 库存 &lt;3 即补货（SAF-003 绝不在上班时间发）。每周 2 篇发布位：1 篇阶梯主篇 + 1 篇滚动长尾。</div>
+</section>
+
+<!-- 7 平台矩阵 -->
+<section>
+  <h2 class="sec"><span class="no">7</span>首发平台矩阵：内容类型 → 首发 → 分发</h2>
+  <div class="sec-desc">铁律：首发拿原创 → 隔 6–24h 差异化分发（PUB-004 禁通稿）· 公众号是主阵地，掘金承接工程向</div>
+  <table>
+    <tr><th>内容层 / 类型</th><th>首发</th><th>6–24h 分发</th><th>为什么</th></tr>
+    <tr><td class="b">L0 概念 / 理念</td><td><span class="plat p-gzh" style="padding:2px 10px">公众号</span></td><td>知乎（问题化）+ 小红书（短卡）</td><td>概念科普吃搜一搜长尾 + 知乎理念讨论盘 + 小红书泛流量</td></tr>
+    <tr><td class="b">L1 入门教程</td><td><span class="plat p-gzh" style="padding:2px 10px">公众号</span> / 小红书</td><td>CSDN（教程化）+ 掘金</td><td>清单体/截图小红书高收藏；CSDN 吃「教程/入门」长尾 SEO</td></tr>
+    <tr><td class="b">L2 工程深度</td><td><span class="plat p-jue" style="padding:2px 10px">掘金</span></td><td>公众号 + CSDN</td><td>掘金调性最合工程实测；CSDN 标题 15–25 字教程向改写</td></tr>
+    <tr><td class="b">L3 理念哲思 / 管理视角</td><td><span class="plat p-gzh" style="padding:2px 10px">公众号</span></td><td>知乎（观点文）+ 小红书（金句卡）</td><td>技术经理视角知乎讨论度高；金句 I 系列做短内容</td></tr>
+    <tr><td class="b">快消横评 / 榜单</td><td><span class="plat p-gzh" style="padding:2px 10px">公众号</span></td><td>掘金 + CSDN 同步（抢时效）</td><td>横评抢发，6h 内多平台铺开吃搜索流量红利</td></tr>
+    <tr><td class="b">故事线实录</td><td><span class="plat p-gzh" style="padding:2px 10px">公众号</span></td><td>知乎（问题化）+ B 站视频方向</td><td>故事文公众号最稳；视频是放大器（PPT+真人录音起步）</td></tr>
+  </table>
+  <div class="lead">账号开通顺序沿用既定节奏：公众号 ✅ → 掘金（本周 P0）→ 知乎/小红书（P1）→ CSDN（P2，周四五才轮到）。<b>平台跟着内容阶梯逐步点亮，不一次性铺 5 个孤儿号。</b></div>
+</section>
+
+<!-- 8 模型选型 -->
+<section>
+  <h2 class="sec"><span class="no">8</span>WorkBuddy 模型选型：Auto 模式深度拆解</h2>
+  <div class="sec-desc">你现在是 Auto 模式 —— 直接结论：<b>本次这类「深度分析 + 规划」任务，Auto 是错配，应锁 deepseek-v4-pro</b>（依据 tools/model_assignment.json）</div>
+
+  <h3 style="font-size:15px;font-weight:800;margin:6px 0 10px;">① Auto 模式的真相：它不是「最好」，是「最省心」</h3>
+  <div class="warnbox"><b>Auto 的代价：</b>模型由系统按任务路由，对内容创作是「<b>质量盲盒</b>」——文风漂移（这篇像 Pro、下篇像 Flash）、精细指令丢失（「分层结论+待议」「禁 AI 味」这类规则不会被严格执行）、跨篇一致性无法保证。素材库的既有规则（模型分配 json 的 auto_mode 条款）写得很明确：<span class="mono">「错配代价低的任务用 Auto，错配代价高的任务锁死 V4-Pro。默认锁 V4-Pro 而非 Auto（防懒切换）」</span>。</div>
+
+  <h3 style="font-size:15px;font-weight:800;margin:18px 0 10px;">② 当前工作（素材库分析 / 内容生产）推荐矩阵</h3>
+  <div class="mcard"><div class="m">deepseek-v4-pro</div><div class="r">素材库深度分析、规划看板、公众号主稿、长文整稿、六层 Token 系列主笔 —— 中文强 + 0.51x 性价比 + 你 8.6 万次历史主力（94% DeepSeek 系）</div><span class="px px-lock">默认 · 锁死</span></div>
+  <div class="mcard"><div class="m">deepseek-v4-flash</div><div class="r">批量素材蒸馏、跨平台改写（掘金/CSDN/小红书/知乎）、标题与 SEO 词提取、卡片字段批量回写 —— 0.17x 便宜大碗</div><span class="px px-sub">副手主力</span></div>
+  <div class="mcard"><div class="m">glm-5v-turbo</div><div class="r">读截图（19 张私聊截图、Cherry Studio 后台、横评榜单截图识别）—— 唯一带视觉，0.71x 按需切</div><span class="px px-sub">看图专用</span></div>
+  <div class="mcard"><div class="m">hy3（夜间版）</div><div class="r">周末批量生产 3–5 篇 → 定时排一周 —— 0.00x 白嫖额度，错配代价低（成稿后你还会人工终检）</div><span class="px px-night">夜间批量</span></div>
+  <div class="mcard"><div class="m">kimi-k2.6</div><div class="r">超长素材蒸馏 / 信息员长会话整本分析（单请求烧 token 场景）—— 0.52x 不当主力</div><span class="px px-sub">长文专用</span></div>
+  <div class="mcard"><div class="m">glm-5.3</div><div class="r">金句润色 / 需要更地道中文的疑难稿 —— 0.79x，仅 V4-Pro 写不动时备胎</div><span class="px px-sub">备胎</span></div>
+  <div class="mcard"><div class="m" style="color:var(--red)">kimi-k3</div><div class="r"><b>永不碰</b>：1.62x 全场最贵 + tokenhub_bench 实测编码仅 50 分，性价比双输</div><span class="px px-no">黑名单</span></div>
+
+  <h3 style="font-size:15px;font-weight:800;margin:18px 0 10px;">③ Auto 的合法使用边界</h3>
+  <table>
+    <tr><th>✅ 放心用 Auto</th><th>🚫 必须锁模型</th></tr>
+    <tr><td>查资料 / 日常问答 / 读文件 / 整理表格 / 简单脚本 / 数据统计</td><td>写稿 / 深度分析 / 规划类长文 / 跨篇风格统一的系列文（六层 Token 系列每篇都该同一个人格写）</td></tr>
+  </table>
+  <div class="quote"><b>实操口诀（沿用 model_assignment.json）：</b>「写稿锁 Pro，看图切 5v，夜间抢 Hy3，杂活丢 Auto，K3 永不碰」。本会话属于深度分析 → <b>现在就该切 V4-Pro，别让 Auto 兜底</b>。</div>
+</section>
+
+<!-- 9 待议 -->
+<section>
+  <h2 class="sec"><span class="no">9</span>待 boss 拍板（5 项）</h2>
+  <div class="sec-desc">草案不直接当定稿 —— 先过你的判断</div>
+  <ul class="todo">
+    <li><span class="box"></span><span><b>① 内容阶梯 L0–L3 是否采纳？</b>采纳的话我先做「降维挖 L0」：从 1074 张中难度卡筛出 30+ 张可概念化的，把 L0 弹药补到 60 张。<span class="why">这是本规划的总开关，其余 4 项都挂在它下面</span></span></li>
+    <li><span class="box"></span><span><b>② 保鲜期四层是否回写主库？</b>给横评/榜单/版本类素材重标 7–30 天快消期，让 urgency 真正动起来（现在 100% 卡在 180–540 天，快消素材会烂在库里）。<span class="why">回写 = 改 materials_library.json 的 freshness_days/expiry_date 字段，可批量脚本化</span></span></li>
+    <li><span class="box"></span><span><b>③ 排序公式是否升级为五维？</b>加「阶梯缺口 25% + 破圈力 10%」，当前阶段让概念/理念卡上浮。<span class="why">公式升级前先确认 ①②，否则权重缺输入</span></span></li>
+    <li><span class="box"></span><span><b>④ 8 周排期顺序认不认？</b>特别是：W2 电脑城实录（故事线）vs W3 全景概念篇（B08）谁先谁后；六层 Token 检索层篇排 W5 是否太晚。<span class="why">既有队列 B09→B02→B11 不变，此表是之后的延伸</span></span></li>
+    <li><span class="box"></span><span><b>⑤ 当前会话是否切 V4-Pro？</b>本次分析已在 Auto 下完成（质量还过得去），但后续六层系列成稿建议锁 Pro。<span class="why">Auto 用于深度创作 = 文风漂移风险，跨篇一致性是专栏的命</span></span></li>
+  </ul>
+</section>
+
+<footer>行途 · 素材库作战规划 v0.1（草案） ｜ 生成 2026-08-27 ｜ 数据源：materials_library.json（1125 卡全量）+ 博文骨架库 + 发布决策综合判断 + model_assignment.json</footer>
+</div>
+</body>
+</html>

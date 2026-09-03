@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行途 · 省 Token 专题规划看板</title>
+<style>
+  :root{
+    --blue:#056DE8; --blue-light:#E8F1FD; --blue-mid:#4D94F0;
+    --ink:#1F2937; --ink-2:#4B5563; --ink-3:#9CA3AF;
+    --bg:#F5F7FA; --card:#FFF; --line:#E5E7EB;
+    --green:#16A34A; --green-bg:#EAF7EF;
+    --amber:#D97706; --amber-bg:#FEF4E6;
+    --purple:#7C3AED; --purple-bg:#F1EBFD;
+    --teal:#0D9488; --teal-bg:#E6F6F5;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;line-height:1.6;padding:32px 20px 60px;}
+  .wrap{max-width:1080px;margin:0 auto;}
+  header{background:linear-gradient(135deg,#056DE8,#2F80ED 60%,#56CCF2);border-radius:16px;padding:28px 32px;color:#fff;margin-bottom:22px;}
+  header h1{font-size:24px;font-weight:800;}
+  header p{margin-top:8px;font-size:14px;opacity:.94;}
+  header .slogan{margin-top:14px;padding:12px 16px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:10px;font-size:14px;font-weight:600;}
+  .sec-title{font-size:17px;font-weight:700;margin:26px 0 12px;padding-left:11px;border-left:4px solid var(--blue);}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:14px;}
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  th{background:var(--gray-bg, #F3F4F6);text-align:left;padding:8px 9px;font-weight:600;color:var(--ink-2);font-size:12px;white-space:nowrap;}
+  td{padding:8px 9px;border-bottom:1px solid var(--line);vertical-align:top;}
+  tr:last-child td{border-bottom:none;}
+  .tag{display:inline-block;padding:1px 9px;border-radius:999px;font-size:11px;font-weight:600;white-space:nowrap;}
+  .t-blue{background:var(--blue-light);color:var(--blue);}
+  .t-purple{background:var(--purple-bg);color:var(--purple);}
+  .t-teal{background:var(--teal-bg);color:var(--teal);}
+  .t-green{background:var(--green-bg);color:var(--green);}
+  .t-amber{background:var(--amber-bg);color:var(--amber);}
+  .t-gray{background:#F3F4F6;color:var(--ink-3);}
+  .line-hd{display:flex;align-items:center;gap:10px;margin-bottom:4px;}
+  .line-dot{width:10px;height:10px;border-radius:50%;}
+  .dot-blue{background:var(--blue);} .dot-purple{background:var(--purple);} .dot-teal{background:var(--teal);}
+  .line-sub{font-size:12.5px;color:var(--ink-2);margin-bottom:10px;}
+  .wave{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:10px;}
+  .wave-card{flex:1;min-width:200px;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#fff;}
+  .wave-card h4{font-size:13px;font-weight:700;margin-bottom:6px;color:var(--blue);}
+  .wave-card p{font-size:12.5px;color:var(--ink-2);}
+  .note{background:var(--blue-light);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:10px 14px;font-size:13px;color:#0B3B7A;margin:10px 0;}
+  .foot{margin-top:24px;text-align:center;font-size:12px;color:var(--ink-3);}
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap">
+
+<header>
+  <h1>行途 · 省 Token 专题规划</h1>
+  <p>单一主题「省 token」拆成系列专题，分三线阶段性发布 · 数据截至 2026-08-28</p>
+  <div class="slogan">一句话立意：<b>省 token 的本质不是"让 AI 少说话"，而是"把不用推理的活，从模型手里拿回来交给系统"</b>——工具会换，思想不变。</div>
+</header>
+
+<div class="sec-title">专题总览（三线 · 约 16 篇）</div>
+<div class="card">
+  <table>
+    <tr><th>线</th><th>定位</th><th>篇数</th><th>价值</th><th>角色</th></tr>
+    <tr>
+      <td><span class="tag t-blue">A · harness 思想</span></td>
+      <td>六层 Token 模型 + 工程哲学（核心主线）</td>
+      <td>11 篇</td>
+      <td>立人设「有思想的技术人」</td>
+      <td>主阵地公众号深度 + 掘金工程版</td>
+    </tr>
+    <tr>
+      <td><span class="tag t-purple">B · 工具（coding agent）</span></td>
+      <td>主流 agent 省 token 配置横评（9 家）</td>
+      <td>1–2 篇</td>
+      <td>吸收藏 + 搜索长尾</td>
+      <td>掘金 / CSDN 教程向</td>
+    </tr>
+    <tr>
+      <td><span class="tag t-teal">C · 模型平台</span></td>
+      <td>模型分级 / 缓存命中 / 低价选型</td>
+      <td>2–3 篇</td>
+      <td>实用省钱 + 泛流量</td>
+      <td>公众号 + 知乎 / 小红书</td>
+    </tr>
+  </table>
+</div>
+
+<div class="sec-title">A 线 · harness 思想（六层 Token，11 篇）</div>
+<div class="card">
+  <div class="line-hd"><span class="line-dot dot-blue"></span><b>主线：把「六层 Token + 工程哲学」拆成思想级专题</b></div>
+  <div class="line-sub">源：重构工程仓 会话实测 + 六层 Token 素材卡 + harness-panorama-methodology V1.4</div>
+  <table>
+    <tr><th>#</th><th>篇目</th><th>对应层/主题</th><th>素材</th><th>状态</th></tr>
+    <tr><td><b>A0</b></td><td><b>省 token 第一性原理（总纲深度篇）</b></td><td>六层全景 + 0.4% 真相 + 两条律</td><td>97.7% 数据 + 六层框架</td><td><span class="tag t-amber">🔥 本轮写（替换 B09）</span></td></tr>
+    <tr><td>A1</td><td>No Spec No Code</td><td>① 需求层 spec</td><td>spec 体系</td><td><span class="tag t-gray">待写</span></td></tr>
+    <tr><td>A2</td><td>20 次 grep 变 1 次图查询</td><td>② 检索层 CBM/CodeGraph</td><td>六层卡 §三.1</td><td><span class="tag t-amber">待写（省 token 大头，高价值）</span></td></tr>
+    <tr><td>A3</td><td>命令输出压缩 93.6%</td><td>③ 协议层 rtk</td><td>六层卡</td><td><span class="tag t-gray">待写</span></td></tr>
+    <tr><td>A4</td><td>从源头压输入</td><td>④ 输入压缩 Headroom</td><td>六层卡</td><td><span class="tag t-gray">待写</span></td></tr>
+    <tr><td>A5</td><td>改 1 个配置 + Caveman</td><td>⑤ 散文层 Concise+Caveman</td><td>B09 已写</td><td><span class="tag t-green">🟡 半成（Caveman 待补）</span></td></tr>
+    <tr><td>A6</td><td>代码量砍 73%</td><td>⑥ 生成层 Ponytail</td><td>B02</td><td><span class="tag t-green">✅ 成稿</span></td></tr>
+    <tr><td>A7</td><td>注意力稀释效应</td><td>哲学</td><td>六层卡 §二.2</td><td><span class="tag t-gray">待写</span></td></tr>
+    <tr><td>A8</td><td>数据搬运谬误</td><td>哲学</td><td>六层卡 §二.3</td><td><span class="tag t-gray">待写</span></td></tr>
+    <tr><td>A9</td><td>能写 bash 就别让 Agent 跑</td><td>哲学（Sub Agent 分工）</td><td>六层卡 §二.1</td><td><span class="tag t-gray">待写</span></td></tr>
+    <tr><td>A10</td><td>AI 成本陷阱 + Spec 安全阀</td><td>哲学</td><td>六层卡 §二.4</td><td><span class="tag t-gray">待写</span></td></tr>
+  </table>
+</div>
+
+<div class="sec-title">B 线 · 工具（coding agent 横评）</div>
+<div class="card">
+  <div class="line-hd"><span class="line-dot dot-purple"></span><b>副线：主流 agent 省 token 配置横评</b></div>
+  <div class="line-sub">源：artificialanalysis.ai 第 35 周榜单 + 横评素材卡（9 个 agent 去重清单）</div>
+  <table>
+    <tr><th>#</th><th>篇目</th><th>覆盖</th><th>状态</th></tr>
+    <tr><td>B1</td><td>主流 coding agent 省 token 配置横评</td><td>Claude Code / Codex / Grok Build / Muse / Opencode / Cursor / Kimi / Gemini CLI 等 9 家</td><td><span class="tag t-gray">待写（顺位 3–4 周）</span></td></tr>
+    <tr><td>B2</td><td>5 分钟跑起 Claude Code（快速入门）</td><td>零基础同事（第 6 受众层）</td><td><span class="tag t-gray">待写（MVP 先行）</span></td></tr>
+  </table>
+</div>
+
+<div class="sec-title">C 线 · 模型平台（省钱选型）</div>
+<div class="card">
+  <div class="line-hd"><span class="line-dot dot-teal"></span><b>副线：从平台层省钱的三个杠杆</b></div>
+  <div class="line-sub">源：97.7% 缓存数据 + 8-17 低价模型选型 + model-tiering 决策</div>
+  <table>
+    <tr><th>#</th><th>篇目</th><th>主题</th><th>状态</th></tr>
+    <tr><td>C1</td><td>模型分级省钱（pro/flash 2x 价差）</td><td>任务分级路由，简单活别用贵模型</td><td><span class="tag t-gray">待写</span></td></tr>
+    <tr><td>C2</td><td>缓存命中省钱（prompt caching）</td><td>97.7% 缓存读的真相与利用</td><td><span class="tag t-gray">待写（与 A0 共用数据）</span></td></tr>
+    <tr><td>C3</td><td>免费 / 低价模型选型横评</td><td>GPT-5.6 Luna / Gemini CLI / Codex 等</td><td><span class="tag t-gray">待写（8-17 素材现成）</span></td></tr>
+  </table>
+</div>
+
+<div class="sec-title">阶段性发布顺序（4 波）</div>
+<div class="card">
+  <div class="wave">
+    <div class="wave-card"><h4>波 1 · 思想定调（本周）</h4><p><b>A0 总纲深度篇</b>——公众号首发，立「有思想」人设，Concise 降级为散文层例子</p></div>
+    <div class="wave-card"><h4>波 2 · 六层落地（第 2–4 周）</h4><p>A6(B02✅)→A2 检索层→A5 散文层→A3 协议层，按省 token 价值排序</p></div>
+    <div class="wave-card"><h4>波 3 · 副线（第 4–6 周）</h4><p>B1 工具横评 → C1 模型分级 → C2 缓存，掘金/CSDN 吃搜索长尾</p></div>
+    <div class="wave-card"><h4>波 4 · 哲学收尾（第 6–8 周）</h4><p>A7–A10 哲学 4 篇，收束到「工具可变、思想不变」理念库</p></div>
+  </div>
+  <div class="note">⚠️ 系列纪律：A0 是「总纲」，后续每篇都要回链 A0（省 token 专题索引），形成专栏闭环；每篇只讲一层，不贪多，符合「篇幅可控 + 深入浅出」。</div>
+</div>
+
+<div class="sec-title">待拍板</div>
+<div class="card">
+  <table>
+    <tr><th>#</th><th>决策点</th><th>我的建议</th></tr>
+    <tr><td>1</td><td>A0 总纲篇是否替换 B09 明晚首发？</td><td>✅ 替换（首篇自有实操文上深度，立人设）</td></tr>
+    <tr><td>2</td><td>A0 标题走哪个方向？</td><td>反直觉数字钩子（「97.7% 藏在另一个地方」）</td></tr>
+    <tr><td>3</td><td>三线结构 + 4 波顺序认不认？</td><td>✅ 建议认（思想主线 + 工具/模型平台副线）</td></tr>
+    <tr><td>4</td><td>B 线横评是否 9 家全写还是挑 4–5 家？</td><td>挑 4–5 家主力（CC/Codex/Cursor/Kimi），省篇幅</td></tr>
+  </table>
+</div>
+
+<div class="foot">行途 · 省 Token 专题规划 · 生成 2026-08-28 01:03 · 行途蓝 #056DE8</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行途工作空间 · 防弹工作法（AI）· 理念与落地</title>
+<style>
+  :root{
+    --bg:#f7f8fa; --card:#ffffff; --ink:#1d2129; --sub:#5c6670; --line:#e5e6eb;
+    --brand:#2f54eb; --brand-bg:#eaf0ff;
+    --red:#e5484d; --redbg:#fdecec;
+    --amber:#d97706; --amberbg:#fdf3e7;
+    --ok:#0e9f6e; --okbg:#e7f7f0;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.7}
+  header{background:linear-gradient(135deg,#1d2129,#2f54eb);color:#fff;padding:34px 28px 28px}
+  header h1{margin:0 0 6px;font-size:24px;letter-spacing:.5px}
+  header p{margin:0;opacity:.85;font-size:14px}
+  nav{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line);display:flex;gap:4px;flex-wrap:wrap;padding:10px 16px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+  nav a{font-size:12.5px;color:var(--sub);text-decoration:none;padding:6px 11px;border-radius:8px;white-space:nowrap}
+  nav a:hover{background:var(--brand-bg);color:var(--brand)}
+  main{max-width:1100px;margin:0 auto;padding:24px 18px 80px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin:18px 0;scroll-margin-top:60px}
+  h2{font-size:20px;margin:0 0 4px;display:flex;align-items:center;gap:10px}
+  h3{font-size:15.5px;margin:20px 0 8px;color:var(--ink);border-left:4px solid var(--brand);padding-left:10px}
+  p,li{font-size:14px;color:var(--sub)}
+  .lead{color:var(--ink);font-size:14.5px}
+  .chip{display:inline-block;font-size:11.5px;font-family:var(--mono);background:#f0f2f5;color:#39424d;padding:2px 8px;border-radius:6px;margin:2px 4px 2px 0}
+  .chip.rule{background:var(--redbg);color:var(--red);font-weight:600}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:#fafbfc;color:var(--ink);font-weight:600}
+  td code{font-family:var(--mono);background:#f0f2f5;padding:1px 5px;border-radius:4px;font-size:12px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:14px 0}
+  .kcard{border:1px solid var(--line);border-radius:11px;padding:14px 16px;background:#fcfcfd}
+  .kcard h4{margin:0 0 6px;font-size:14px;color:var(--ink)}
+  .kcard p{margin:0;font-size:12.8px}
+  .note{border:1px dashed var(--brand);background:var(--brand-bg);border-radius:10px;padding:12px 14px;font-size:13px;color:#1d3a8a;margin:12px 0}
+  .rednote{border:1px dashed var(--red);background:var(--redbg);color:#8a1f23}
+  .oknote{border:1px dashed var(--ok);background:var(--okbg);color:#0b6b4a}
+  .fcard{border-radius:12px;padding:16px 18px;margin:12px 0;border:1px solid var(--line)}
+  .fcard .fnum{font-family:var(--mono);font-weight:700;font-size:13px;background:var(--brand);color:#fff;border-radius:6px;padding:2px 8px;display:inline-block;margin-bottom:6px}
+  .footer{font-size:12px;color:#9aa1ab;text-align:center;padding:20px}
+  ul.tight li{margin:3px 0}
+  .ok{color:var(--ok);font-weight:600}
+  .steps{counter-reset:st;margin:12px 0}
+  .steps li{list-style:none;position:relative;padding:0 0 14px 34px;border-left:2px solid var(--line);margin-left:14px}
+  .steps li::before{counter-increment:st;content:counter(st);position:absolute;left:-14px;top:0;width:26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center;font-weight:600}
+  .steps li:last-child{border-left-color:transparent}
+  blockquote{border-left:4px solid var(--brand);margin:14px 0;padding:10px 16px;background:var(--brand-bg);border-radius:0 10px 10px 0;font-size:14px;color:#1d3a8a}
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<header>
+  <h1>行途工作空间 · 防弹工作法（AI）· 理念与落地</h1>
+  <p>源自某海事工程集团 2026-08-07 复盘沉淀 · 核心：留痕 + 边界 + 依据 + 对齐 · 让工作自带可解释性 · 2026-08</p>
+</header>
+
+<nav>
+  <a href="#origin">① 来源与复盘</a>
+  <a href="#core">② 核心理念</a>
+  <a href="#f14">③ F1–F4 详解</a>
+  <a href="#map">④ xingtu 落地映射</a>
+  <a href="#check">⑤ 内容域防弹检查清单</a>
+  <a href="#rules">⑥ 规则族 BUL-*</a>
+</nav>
+
+<main>
+
+<!-- ① 来源 -->
+<section id="origin">
+  <h2>① 来源：某海事工程集团 2026-08-07 深夜复盘</h2>
+  <p class="lead">这个理念不是理论推演，是<b>一次真实事故的教训沉淀</b>。Boss 在某海事工程集团项目中：执行层产出方案 → 被绕开 → 被拦截 → 责任回流 → 最终靠华为云认领部署才收口。</p>
+  <div class="grid">
+    <div class="kcard"><h4>😤 最痛教训</h4><p><b>专业正确但不被看见</b>——嘉成的判断（8 卡 Flash 部署可行性）后续被华为云内部确认正确，但过程中方案却被绕开、被拦截。</p></div>
+    <div class="kcard"><h4>🤖 AI 的局限</h4><p>AI 无法预判人性动机（被绕开、被误解、搬弄是非）——这些要靠个人成长和机制，不是靠提示词。</p></div>
+    <div class="kcard"><h4>🛡️ AI 能做的</h4><p>让工作"自带防弹衣"：留痕、边界、依据、对齐四件事做扎实，即使被绕开/误解，也有据可查、有责可界。</p></div>
+  </div>
+  <blockquote>「AI 不能预判人性，但能让你的工作自带防弹衣——留痕、边界、依据、对齐四件事做扎实，即使遇到被绕开、被误解，也有据可查、有责可界。」</blockquote>
+  <div class="note"><b>一句话本质：</b>防弹工作法 = <b>工作自带可解释性（Explainability）</b>。每一步产出都能回答三个问题：<b>谁提的？依据是什么？验证到什么程度？</b></div>
+</section>
+
+<!-- ② 核心理念 -->
+<section id="core">
+  <h2>② 核心理念：四件套</h2>
+  <div class="grid">
+    <div class="kcard"><h4>📝 留痕</h4><p>关键决策/产出自动记录"谁提出/谁确认/谁审核/依据来源"——口头确认不算数，书面才算（F1）</p></div>
+    <div class="kcard"><h4>🚧 边界</h4><p>不承担超出本分的职责，任务推进中一旦越界立即"确认边界"（F2）</p></div>
+    <div class="kcard"><h4>🧾 依据</h4><p>每个数字/结论标注"来源 + 验证程度（实测/引用/估算）+ 确认人"——未实测如实声明反而免责（F3）</p></div>
+    <div class="kcard"><h4>🔄 对齐</h4><p>检测到方向/口径反复、参与度下降时，主动向上对齐，不闷头推进（F4）</p></div>
+  </div>
+  <div class="oknote"><b>可解释性三问（每条产出过这三问）：</b>① 谁提出、谁确认？ ② 依据来源是什么？ ③ 验证程度：实测 / 引用 / 估算？</div>
+</section>
+
+<!-- ③ F1-F4 -->
+<section id="f14">
+  <h2>③ F1–F4 详解（AI 怎么帮）</h2>
+  <div class="fcard">
+    <span class="fnum">F1</span><b>关键决策留痕</b>
+    <p>每次方案/内容/配置产出，自动记录「谁提出 / 谁确认 / 谁审核 / 依据来源」。<br><span class="chip">AI 帮法</span> 产出模板内置留痕字段；发布/交付前检查是否缺失确认人。</p>
+  </div>
+  <div class="fcard">
+    <span class="fnum">F2</span><b>责任边界预警</b>
+    <p>任务推进中若开始承担「超出本分」的职责，主动提示"确认边界"。<br><span class="chip">AI 帮法</span> 检测到承诺性表述（"我方负责/我方部署"）时提示复核边界；内容侧对应"不承诺、不揽责"。</p>
+  </div>
+  <div class="fcard">
+    <span class="fnum">F3</span><b>产出自带依据链</b>
+    <p>每个数字/结论标注「来源 + 验证程度（实测/引用/估算）+ 确认人」。<br><span class="chip">AI 帮法</span> 写作/方案时强制给数据挂来源；<b>未实测如实声明，反而免责</b>（某海事工程集团实证：如实声明"待实测"避免了责任误判）。</p>
+  </div>
+  <div class="fcard">
+    <span class="fnum">F4</span><b>被绕开时主动对齐</b>
+    <p>检测到决策层参与度下降 / 口径反复 / 方向摇摆时，提醒执行者向上对齐。<br><span class="chip">AI 帮法</span> 复盘发现"方向变更频次高 / 关键人缺席"时触发对齐提醒。</p>
+  </div>
+  <div class="note"><b>要成长的是判断力：</b>什么时候该书面确认、什么时候该向上对齐、什么时候该说"这个边界我要确认一下"——机制兜底，判断力才是天花板。</div>
+</section>
+
+<!-- ④ xingtu 落地映射 -->
+<section id="map">
+  <h2>④ xingtu 内容工作空间落地映射</h2>
+  <p class="lead">把某海事工程集团的企业场景（方案/部署/责任）翻译成自媒体场景（选题/内容/发布），四件套同样适用：</p>
+  <table>
+    <tr><th style="width:14%">机制</th><th style="width:34%">某海事工程集团场景（原）</th><th>xingtu 内容场景（映射）</th><th>落点</th></tr>
+    <tr><td><b>F1 留痕</b></td><td>方案记录谁提出/确认/审核</td><td>选题卡记来源（对标账号/搜一搜数据/灵感触发点）；发布记录记平台/时间/版本</td><td>07 选题调研卡 · workflows 发布记录 · <code>.workbuddy/memory/</code> 日志</td></tr>
+    <tr><td><b>F2 边界</b></td><td>不揽超出本分的部署责任</td><td>内容不越界：不承诺（疗效/收益）、不揽责、不碰红线（SAF-004）；合作/带货明确边界</td><td><code>SAF-004</code> 四红线 · 内容合规检查</td></tr>
+    <tr><td><b>F3 依据链</b></td><td>数字标注来源+验证程度</td><td>内容数据引用规范：每个数据标"来源+验证程度+日期"；AI 生成内容标注；未验证结论如实声明</td><td>写作规范 · 视频双标注（已落地）· 07 测评卡</td></tr>
+    <tr><td><b>F4 对齐</b></td><td>决策层参与度下降时向上对齐</td><td>内容方向与战略主线对齐（STR-001 ≥70% 技术实战）；口径反复时复盘对齐；发布节奏与 90 天排期对齐（STR-003）</td><td><code>STR-001/003</code> · 月度复盘（04_会话与复盘）</td></tr>
+  </table>
+  <div class="oknote"><b>直接复用红利：</b>xingtu 已有天然留痕载体——<code>.workbuddy/memory/</code> 每日日志（append-only）、<code>04_会话与复盘/</code>、<code>workflows/</code> 发布记录、07 调研卡。防弹工作法不是新增负担，是<b>把这些已有动作升级为"必做纪律"</b>。</div>
+</section>
+
+<!-- ⑤ 检查清单 -->
+<section id="check">
+  <h2>⑤ 内容域防弹检查清单（发布/交付前自查）</h2>
+  <table>
+    <tr><th style="width:30%">检查项</th><th>通过标准</th><th>对应</th></tr>
+    <tr><td>选题有来源吗？</td><td>选题卡记录了触发点/对标/搜索数据，不是拍脑袋</td><td>F1 · 07 调研卡</td></tr>
+    <tr><td>有没有承诺性表述？</td><td>无"保证收益/必然有效"类承诺；带货/合作边界写明</td><td>F2 · SAF-004</td></tr>
+    <tr><td>每个数据有依据吗？</td><td>数字/结论标了来源+验证程度+日期；估算的标注"估算"</td><td>F3 · 写作规范</td></tr>
+    <tr><td>AI 内容标注了吗？</td><td>AI 生成/辅助内容按平台规则标注（如带货双标注）</td><td>F3 · 平台合规</td></tr>
+    <tr><td>脱敏过了吗？</td><td>过 SAF-004~009：公司脱敏/化名/无定位细节</td><td>F2 · SAF 族</td></tr>
+    <tr><td>与战略主线一致吗？</td><td>技术实战≥70%；方向未偏离 STR-001</td><td>F4 · STR-001</td></tr>
+    <tr><td>发布留痕了吗？</td><td>发布记录写了平台/时间/版本/数据（阅读/反馈）</td><td>F1 · workflows</td></tr>
+  </table>
+  <div class="note"><b>用法：</b>粘贴到 <code>workflows/</code> 各 SOP 的"发布前 Gate"步骤，与 <code>adversarial-review</code>（对抗审查）配合——对抗审查查"好不好"，防弹检查查"稳不稳/有没有据"。</div>
+</section>
+
+<!-- ⑥ 规则族 -->
+<section id="rules">
+  <h2>⑥ 规则族 BUL-*（已并入 rules/RULES.md）</h2>
+  <p class="lead">为让 CC/WB 可直接引用，防弹工作法提炼为 <code>BUL-*</code> 编号规则族：</p>
+  <table>
+    <tr><th style="width:22%">ID</th><th>规则（一句话）</th><th>严重度</th></tr>
+    <tr><td><code>BUL-001</code></td><td>决策留痕：关键决策/内容/方案产出，记录「谁提出/谁确认/谁审核/依据来源」</td><td>高</td></tr>
+    <tr><td><code>BUL-002</code></td><td>边界预警：不承担超出本分职责；对外内容不承诺、不揽责，越界先确认</td><td>高</td></tr>
+    <tr><td><code>BUL-003</code></td><td>依据链：每个数字/结论标注「来源 + 验证程度（实测/引用/估算）+ 确认人」；未验证如实声明</td><td>🔴 高</td></tr>
+    <tr><td><code>BUL-004</code></td><td>主动对齐：方向/口径反复或关键人参与度下降时，主动向上对齐，不闷头推进</td><td>中</td></tr>
+    <tr><td><code>BUL-005</code></td><td>留痕载体：工作日志（memory/ 每日）、会话复盘（04_）、发布记录为强制留痕位，append-only</td><td>中</td></tr>
+  </table>
+  <div class="rednote"><b>与 SAF 的关系：</b>SAF-* 管"什么不能写"（红线），BUL-* 管"怎么写才有据可查"（防弹）。两条族配合使用：<code>SAF-004</code> 拦截违规，<code>BUL-003</code> 保证数据可信。</div>
+</section>
+
+<div class="footer">行途工作空间 · 防弹工作法（AI）· 理念与落地 · 源自 海事工程仓 CHANGELOG 2026-08-07 复盘 · 单文件零依赖 · 2026-08</div>
+</main>
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>行途 · 素材白盒浏览器</title>
+<style>
+  :root{
+    --bg:#f3f4f9; --card:#ffffff; --border:#e7e9f0;
+    --primary:#6d5ce7; --primary-soft:#efebfd;
+    --green:#10b981; --green-soft:#e5f8f0;
+    --orange:#f59e0b; --orange-soft:#fdf3e0;
+    --red:#ef4444; --red-soft:#fdeaea;
+    --blue:#3b82f6; --blue-soft:#e8f1fe;
+    --purple:#8b5cf6; --purple-soft:#f1ecfe;
+    --text:#1f2430; --text2:#6b7280; --text3:#9aa1b0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;padding:20px 16px 40px}
+  .wrap{max-width:1000px;margin:0 auto}
+
+  header{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+  .brand{display:flex;align-items:center;gap:11px}
+  .logo{width:42px;height:42px;border-radius:11px;background:linear-gradient(135deg,#6d5ce7,#a78bfa);
+    display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:18px;box-shadow:0 6px 16px rgba(109,92,231,.26)}
+  h1{font-size:22px;font-weight:800}
+  .sub{color:var(--text2);font-size:12.5px;margin-top:2px}
+  .stat{font-size:13px;color:var(--text2);background:var(--card);border:1px solid var(--border);border-radius:999px;padding:5px 14px}
+  .stat b{color:var(--primary);font-size:15px}
+
+  /* 筛选栏 */
+  .filters{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;margin-bottom:16px}
+  .f-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:10px}
+  .f-row:last-child{margin-bottom:0}
+  .search{flex:1;min-width:220px;display:flex;align-items:center;gap:8px;border:1px solid var(--border);border-radius:10px;padding:8px 12px;background:#fafbfe}
+  .search input{border:none;outline:none;background:transparent;flex:1;font-size:14px;color:var(--text)}
+  .search .ic{color:var(--text3);font-size:14px}
+  select{border:1px solid var(--border);border-radius:9px;padding:7px 10px;font-size:13px;color:var(--text);background:#fff;outline:none;cursor:pointer;max-width:150px}
+  select:focus{border-color:var(--primary)}
+  .chip{border:1px solid var(--border);border-radius:999px;padding:6px 13px;font-size:12.5px;cursor:pointer;user-select:none;background:#fff;color:var(--text2);transition:all .15s}
+  .chip.on{background:var(--primary-soft);border-color:var(--primary);color:var(--primary);font-weight:600}
+  .sortbtn{border:1px solid var(--border);border-radius:9px;padding:7px 13px;font-size:13px;cursor:pointer;background:#fff;color:var(--text2)}
+  .sortbtn.on{background:var(--primary-soft);border-color:var(--primary);color:var(--primary);font-weight:600}
+  .clear{border:none;background:transparent;color:var(--red);font-size:13px;cursor:pointer;padding:6px 10px}
+  .clear:hover{text-decoration:underline}
+  .lbl{font-size:12px;color:var(--text3);font-weight:600;letter-spacing:.5px}
+
+  /* 列表 */
+  .list-info{font-size:13px;color:var(--text2);margin:0 2px 10px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-bottom:10px;border-left:3px solid var(--primary)}
+  .card:hover{border-color:#c9bff5;box-shadow:0 4px 14px rgba(109,92,231,.08)}
+  .card .ttl{font-size:14.5px;font-weight:700;line-height:1.5}
+  .card .meta{font-size:12.5px;color:var(--text2);margin-top:4px}
+  .card .meta b{color:var(--text)}
+  .card .tags{margin-top:7px}
+  .card .foot{display:flex;align-items:center;justify-content:space-between;margin-top:7px;font-size:11.5px;color:var(--text3)}
+  .tag{display:inline-block;font-size:11px;font-weight:600;border-radius:6px;padding:2px 8px;margin:2px 4px 2px 0;line-height:1.5}
+  .tag.green{background:var(--green-soft);color:#0a9168}
+  .tag.orange{background:var(--orange-soft);color:#b97a06}
+  .tag.red{background:var(--red-soft);color:#dc2626}
+  .tag.blue{background:var(--blue-soft);color:#2563eb}
+  .tag.purple{background:var(--purple-soft);color:#7c3aed}
+  .tag.gray{background:#f0f1f5;color:#6b7280}
+  .prio{display:inline-block;background:var(--primary-soft);color:var(--primary);font-weight:800;font-size:12px;border-radius:7px;padding:1px 8px}
+
+  /* 分页 */
+  .pager{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:6px}
+  .pager button{border:1px solid var(--border);border-radius:9px;padding:8px 16px;font-size:13px;cursor:pointer;background:#fff;color:var(--text)}
+  .pager button:disabled{opacity:.4;cursor:not-allowed}
+  .pager .pg{font-size:13px;color:var(--text2)}
+  .empty{color:var(--text3);font-size:13px;text-align:center;padding:30px 0}
+  .loading{color:var(--text3);font-size:13px;text-align:center;padding:20px 0}
+  footer{margin-top:20px;text-align:center;color:var(--text3);font-size:12px}
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <div class="logo">素</div>
+      <div>
+        <h1>素材白盒浏览器</h1>
+        <div class="sub">逐条看清每一张素材卡 · 多维筛选 · 检索 · 排序 · 翻页</div>
+      </div>
+    </div>
+    <div class="stat">全库 <b>1125</b> 条素材卡</div>
+  </header>
+
+  <!-- 筛选栏 -->
+  <div class="filters">
+    <div class="f-row">
+      <div class="search">
+        <span class="ic">🔍</span>
+        <input id="kw" type="text" placeholder="搜标题 / 主题关键词，回车或输入即筛" />
+      </div>
+      <button class="sortbtn" data-sort="priority" id="sort-p">优先级 ↓</button>
+      <button class="sortbtn" data-sort="expiry" id="sort-e">到期日 ↑</button>
+      <button class="clear" id="clear">清除全部筛选</button>
+    </div>
+    <div class="f-row">
+      <span class="lbl">分类</span>
+      <select id="f-cat"><option value="">全部</option></select>
+      <span class="lbl">难度</span>
+      <select id="f-diff"><option value="">全部</option></select>
+      <span class="lbl">脱敏</span>
+      <select id="f-desen"><option value="">全部</option></select>
+      <span class="lbl">状态</span>
+      <select id="f-status"><option value="">全部</option></select>
+      <span class="lbl">策略</span>
+      <select id="f-tier"><option value="">全部</option></select>
+      <span class="lbl">读者</span>
+      <select id="f-aud"><option value="">全部</option></select>
+    </div>
+    <div class="f-row">
+      <span class="lbl">平台</span>
+      <span id="f-plats"></span>
+    </div>
+  </div>
+
+  <div class="list-info" id="listinfo">加载中…</div>
+  <div id="list" data-sp-bindable="database" data-sp-database-id="BMu3OZgVvurFsZAUGxWVCp"><div class="loading">加载中…</div></div>
+
+  <div class="pager">
+    <button id="prev" disabled>← 上一页</button>
+    <span class="pg" id="pg">第 1 页</span>
+    <button id="next" disabled>下一页 →</button>
+  </div>
+
+  <footer>行途 XingTu · 素材白盒浏览器 ｜ 数据来自资料库「行途·素材卡」表，改表即刷新</footer>
+</div>
+
+<script>
+(function(){
+  var DATABASE_ID = 'BMu3OZgVvurFsZAUGxWVCp';
+  var db = (window.__SMART_PAGE__ && window.__SMART_PAGE__.database) || null;
+
+  var CATS = ['工程实践','模板/SOP','综合·踩坑','电商履约/库存·踩坑','工具/测试','实战复盘/SOP','方法/方法论','原理/机制','Harness治理','调研/笔记','理念/认知','后端/基础设施·踩坑','调研/横评','方法论/全景','数据/用量','变现/商业'];
+  var DIFFS = ['中','进阶','入门'];
+  var DESENS = ['高','低','中'];
+  var STATUS = ['在架','已产出'];
+  var TIERS = ['常规轮转','长尾常态','深度精工','时效抢发'];
+  var AUDS = ['一线开发','技术管理者','入门小白'];
+  var PLATS = ['公众号','掘金','CSDN','知乎','小红书'];
+
+  var PAGE = 40;
+  var state = {
+    kw:'', cat:'', diff:'', desen:'', status:'', tier:'', aud:'',
+    plats:[], sort:'priority',
+    cursors:[undefined], page:0, nextCursor:null
+  };
+
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
+  function dateShort(s){ if(!s) return ''; return String(s).slice(0,10); }
+  function color(v){
+    var map={'在架':'green','已产出':'gray','高':'red','中':'orange','低':'green','入门':'blue','进阶':'purple',
+      '时效抢发':'red','深度精工':'purple','长尾常态':'blue','常规轮转':'gray','一线开发':'blue','技术管理者':'purple','入门小白':'green',
+      '公众号':'purple','掘金':'blue','CSDN':'gray','知乎':'green','小红书':'red'};
+    return map[v]||'gray';
+  }
+  function tag(v){ return v? '<span class="tag '+color(v)+'">'+esc(v)+'</span>':''; }
+  function tags(arr){ return (arr||[]).map(function(t){return '<span class="tag '+color(t)+'">'+esc(t)+'</span>';}).join(''); }
+
+  // 填充下拉选项
+  function fill(sel, arr){ var s=document.getElementById(sel); arr.forEach(function(v){var o=document.createElement('option');o.value=v;o.textContent=v;s.appendChild(o);}); }
+  fill('f-cat',CATS); fill('f-diff',DIFFS); fill('f-desen',DESENS); fill('f-status',STATUS); fill('f-tier',TIERS); fill('f-aud',AUDS);
+  // 平台 chips
+  var platBox = document.getElementById('f-plats');
+  PLATS.forEach(function(p){
+    var c=document.createElement('span'); c.className='chip'; c.textContent=p; c.dataset.p=p;
+    c.onclick=function(){ c.classList.toggle('on'); var i=state.plats.indexOf(p); if(i>=0) state.plats.splice(i,1); else state.plats.push(p); reset(); };
+    platBox.appendChild(c);
+  });
+
+  function buildFilter(){
+    var conds=[];
+    if(state.kw){ conds.push({or:[
+      {property:{property:'标题',text:{contains:state.kw}}},
+      {property:{property:'主题',text:{contains:state.kw}}}
+    ]}); }
+    if(state.cat) conds.push({property:{property:'分类',select:{equals:state.cat}}});
+    if(state.diff) conds.push({property:{property:'难度',select:{equals:state.diff}}});
+    if(state.desen) conds.push({property:{property:'脱敏',select:{equals:state.desen}}});
+    if(state.status) conds.push({property:{property:'状态',select:{equals:state.status}}});
+    if(state.tier) conds.push({property:{property:'策略',select:{equals:state.tier}}});
+    if(state.aud) conds.push({property:{property:'读者',select:{equals:state.aud}}});
+    if(state.plats.length){ conds.push({or:state.plats.map(function(p){return {property:{property:'平台',select:{equals:p}}};})}); }
+    if(!conds.length) return undefined;
+    if(conds.length===1) return conds[0];
+    return {and:conds};
+  }
+  function buildSort(){
+    if(state.sort==='expiry') return [{property:'到期日',direction:'ascending'}];
+    return [{property:'优先级',direction:'descending'}];
+  }
+
+  function reset(){ state.cursors=[undefined]; state.page=0; load(); }
+  function load(){
+    var list=document.getElementById('list');
+    list.innerHTML='<div class="loading">加载中…</div>';
+    if(!db){ list.innerHTML='<div class="empty">需在资料库中查看动态数据</div>'; return; }
+    db.query({ databaseId: DATABASE_ID, filter: buildFilter(), sorts: buildSort(), pageSize: PAGE, startCursor: state.cursors[state.page] })
+      .then(function(res){
+        state.nextCursor = (res && res.nextCursor) || null;
+        var rows=(res&&res.results)||[];
+        var hasMore=!!(res&&res.hasMore);
+        render(rows, hasMore);
+      })
+      .catch(function(){ document.getElementById('list').innerHTML='<div class="empty">加载失败</div>'; });
+  }
+
+  function render(rows, hasMore){
+    var list=document.getElementById('list');
+    if(!rows.length){ list.innerHTML='<div class="empty">没有匹配的素材，换个筛选条件试试</div>'; updatePager(false,false); updateInfo(0); return; }
+    list.innerHTML = rows.map(function(r){
+      var meta=[];
+      if(r['分类']) meta.push(r['分类']);
+      if(r['主题']) meta.push(r['主题']);
+      var foot='';
+      if(r['到期日']) foot+='到期 '+dateShort(r['到期日']);
+      if(r['素材ID']) foot+=' · '+r['素材ID'];
+      return '<div class="card">'
+        + '<div class="ttl">'+esc(r['标题'])+'</div>'
+        + '<div class="meta">'+esc(meta.join(' · '))+'</div>'
+        + '<div class="tags">'+tag(r['难度'])+tag(r['脱敏'])+tag(r['读者'])+tag(r['策略'])+tags(r['平台'])+'</div>'
+        + '<div class="foot"><span>'+esc(foot)+'</span>'+(r['优先级']!=null?'<span class="prio">优先级 '+r['优先级']+'</span>':'')+'</div>'
+        + '</div>';
+    }).join('');
+    updatePager(state.page>0, hasMore);
+    updateInfo(rows.length, hasMore);
+  }
+  function updateInfo(n, hasMore){
+    var el=document.getElementById('listinfo');
+    var filtered = state.kw||state.cat||state.diff||state.desen||state.status||state.tier||state.aud||state.plats.length;
+    if(!filtered){ el.innerHTML='全部素材 · 已加载 '+(state.page*PAGE+n)+(hasMore?'+ 条':''); }
+    else { el.innerHTML='筛选结果 · 本页 '+n+' 条'+(hasMore?' · 还有更多':''); }
+  }
+  function updatePager(canPrev, canNext){
+    document.getElementById('prev').disabled=!canPrev;
+    document.getElementById('next').disabled=!canNext;
+    document.getElementById('pg').textContent='第 '+(state.page+1)+' 页';
+  }
+
+  // 事件绑定
+  var debounce=null;
+  document.getElementById('kw').addEventListener('input', function(){ var v=this.value.trim(); clearTimeout(debounce); debounce=setTimeout(function(){ state.kw=v; reset(); },300); });
+  ['f-cat','f-diff','f-desen','f-status','f-tier','f-aud'].forEach(function(id){
+    document.getElementById(id).addEventListener('change', function(){
+      var m={ 'f-cat':'cat','f-diff':'diff','f-desen':'desen','f-status':'status','f-tier':'tier','f-aud':'aud' };
+      state[m[id]]=this.value; reset();
+    });
+  });
+  document.getElementById('sort-p').onclick=function(){ state.sort='priority'; document.getElementById('sort-p').classList.add('on'); document.getElementById('sort-e').classList.remove('on'); reset(); };
+  document.getElementById('sort-e').onclick=function(){ state.sort='expiry'; document.getElementById('sort-e').classList.add('on'); document.getElementById('sort-p').classList.remove('on'); reset(); };
+  document.getElementById('prev').onclick=function(){ if(state.page>0){ state.page--; load(); } };
+  document.getElementById('next').onclick=function(){ if(state.nextCursor){ state.page++; state.cursors[state.page]=state.nextCursor; load(); } };
+  document.getElementById('clear').onclick=function(){
+    state.kw=''; state.cat=''; state.diff=''; state.desen=''; state.status=''; state.tier=''; state.aud=''; state.plats=[];
+    document.getElementById('kw').value='';
+    ['f-cat','f-diff','f-desen','f-status','f-tier','f-aud'].forEach(function(id){ document.getElementById(id).value=''; });
+    Array.prototype.forEach.call(document.querySelectorAll('#f-plats .chip'), function(c){ c.classList.remove('on'); });
+    reset();
+  };
+
+  // 初始加载
+  document.getElementById('sort-p').classList.add('on');
+  load();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新加坡 Starryblu 星空卡与海外账户调研 · 2026-08-24</title>
+<style>
+  :root {
+    --ink: #1a2233;
+    --ink-soft: #4a5568;
+    --ink-faint: #8a94a6;
+    --paper: #f7f8fa;
+    --card: #ffffff;
+    --navy: #16213e;
+    --navy-2: #1f2b4d;
+    --star: #7c8cf8;
+    --accent: #2b6cb0;
+    --gold: #b7791f;
+    --red: #c53030;
+    --red-bg: #fff5f5;
+    --green: #276749;
+    --green-bg: #f0fff4;
+    --line: #e2e8f0;
+    --radius: 14px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.75;
+    font-size: 16px;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px 80px; }
+
+  /* ===== 头部 ===== */
+  header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 55%, #2d3a6b 100%);
+    color: #fff;
+    padding: 56px 20px 48px;
+    margin-bottom: 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(1.5px 1.5px at 12% 30%, rgba(255,255,255,.8) 50%, transparent 51%),
+      radial-gradient(1px 1px at 30% 70%, rgba(255,255,255,.5) 50%, transparent 51%),
+      radial-gradient(2px 2px at 55% 25%, rgba(255,255,255,.6) 50%, transparent 51%),
+      radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,.4) 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 85% 35%, rgba(255,255,255,.7) 50%, transparent 51%),
+      radial-gradient(1px 1px at 45% 80%, rgba(255,255,255,.4) 50%, transparent 51%),
+      radial-gradient(1px 1px at 92% 75%, rgba(255,255,255,.5) 50%, transparent 51%);
+    pointer-events: none;
+  }
+  .head-inner { max-width: 880px; margin: 0 auto; position: relative; }
+  .head-tag {
+    display: inline-block; font-size: 13px; letter-spacing: .12em;
+    border: 1px solid rgba(255,255,255,.35); border-radius: 999px;
+    padding: 4px 14px; margin-bottom: 18px; color: #cdd6f4;
+  }
+  header h1 { font-size: 30px; font-weight: 700; letter-spacing: .02em; margin-bottom: 12px; }
+  header .sub { color: #b8c2e0; font-size: 15px; }
+  .head-meta { margin-top: 22px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .chip {
+    font-size: 12.5px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
+    border-radius: 6px; padding: 3px 10px; color: #dde4f5;
+  }
+
+  /* ===== 结论卡 ===== */
+  .tldr {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--star);
+    border-radius: var(--radius);
+    padding: 24px 26px;
+    margin-bottom: 36px;
+    box-shadow: 0 1px 3px rgba(22,33,62,.05);
+  }
+  .tldr h2 { font-size: 14px; letter-spacing: .15em; color: var(--star); margin-bottom: 10px; }
+  .tldr p { font-size: 16.5px; font-weight: 500; }
+  .tldr .note { font-size: 14px; color: var(--ink-soft); font-weight: 400; margin-top: 8px; }
+
+  /* ===== 章节 ===== */
+  section { margin-bottom: 44px; }
+  h2.sec {
+    font-size: 21px; font-weight: 700; margin-bottom: 6px;
+    display: flex; align-items: baseline; gap: 10px;
+  }
+  h2.sec .no {
+    font-size: 13px; color: var(--star); font-weight: 700; letter-spacing: .08em;
+  }
+  .sec-desc { color: var(--ink-faint); font-size: 14px; margin-bottom: 18px; }
+
+  /* ===== 卡片与表格 ===== */
+  .card {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: var(--radius); overflow: hidden;
+    box-shadow: 0 1px 3px rgba(22,33,62,.04);
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+  th {
+    text-align: left; padding: 12px 16px; background: #fafbfd;
+    color: var(--ink-soft); font-weight: 600; font-size: 13px;
+    border-bottom: 1px solid var(--line); white-space: nowrap;
+  }
+  td { padding: 12px 16px; border-bottom: 1px solid #eef1f6; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  td.k { color: var(--ink-soft); white-space: nowrap; font-weight: 500; width: 130px; }
+  .hl { color: var(--accent); font-weight: 600; }
+  .money { color: var(--gold); font-weight: 600; }
+
+  /* ===== 流程步骤 ===== */
+  .flow { display: flex; flex-direction: column; gap: 0; }
+  .step {
+    display: flex; gap: 16px; position: relative; padding-bottom: 26px;
+  }
+  .step:last-child { padding-bottom: 0; }
+  .step::before {
+    content: ""; position: absolute; left: 17px; top: 38px; bottom: 0;
+    width: 2px; background: var(--line);
+  }
+  .step:last-child::before { display: none; }
+  .step-no {
+    flex: none; width: 36px; height: 36px; border-radius: 50%;
+    background: var(--navy); color: #fff; font-size: 15px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; z-index: 1;
+  }
+  .step-body { flex: 1; }
+  .step-title { font-weight: 700; font-size: 15.5px; margin-bottom: 2px; }
+  .step-title .cost { color: var(--gold); font-weight: 600; font-size: 14px; margin-left: 8px; }
+  .step-desc { color: var(--ink-soft); font-size: 14.5px; }
+  .step-desc b { color: var(--ink); }
+
+  /* ===== 权益网格 ===== */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+  .benefit {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    padding: 16px; text-align: center;
+  }
+  .benefit .v { font-size: 22px; font-weight: 700; color: var(--navy); }
+  .benefit .v small { font-size: 13px; font-weight: 500; color: var(--ink-faint); }
+  .benefit .l { font-size: 13px; color: var(--ink-soft); margin-top: 2px; }
+
+  /* ===== 场景 ===== */
+  .scenes { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; }
+  .scene {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 18px;
+  }
+  .scene .ico { font-size: 22px; margin-bottom: 8px; }
+  .scene h4 { font-size: 15px; margin-bottom: 4px; }
+  .scene p { font-size: 13.5px; color: var(--ink-soft); }
+  .scene .warn-inline { color: var(--red); }
+
+  /* ===== 红线 ===== */
+  .risk {
+    background: var(--red-bg); border: 1px solid #fed7d7; border-radius: var(--radius);
+    padding: 22px 26px;
+  }
+  .risk h3 { font-size: 15.5px; color: var(--red); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .risk ol { padding-left: 20px; }
+  .risk li { margin-bottom: 10px; font-size: 14.5px; color: #742a2a; }
+  .risk li b { color: var(--red); }
+
+  .ok-note {
+    background: var(--green-bg); border: 1px solid #c6f6d5; border-radius: var(--radius);
+    padding: 18px 24px; margin-top: 16px; font-size: 14.5px; color: #22543d;
+  }
+
+  /* ===== 提示条 ===== */
+  .callout {
+    background: #fffbeb; border: 1px solid #f6e05e; border-radius: 12px;
+    padding: 14px 18px; font-size: 14px; color: #744210; margin-top: 16px;
+  }
+
+  footer {
+    margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--line);
+    font-size: 13px; color: var(--ink-faint);
+  }
+  footer ul { padding-left: 18px; }
+  footer li { margin-bottom: 4px; }
+  .foot-brand { margin-top: 20px; color: var(--ink-soft); }
+
+  @media print {
+    header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { background: #fff; }
+  }
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+
+<header>
+  <div class="head-inner">
+    <div class="head-tag">调研报告 · RESEARCH</div>
+    <h1>新加坡 Starryblu 星空卡<br>与海外账户办理路径</h1>
+    <div class="sub">护照办理 → 线上开户 → 实体卡回邮，全链路拆解与平替对比</div>
+    <div class="head-meta">
+      <span class="chip">📅 2026-08-24</span>
+      <span class="chip">🇸🇬 MAS 持牌 PS20200501</span>
+      <span class="chip">🏦 资金托管 OCBC</span>
+      <span class="chip">💳 万事达实体卡 10 USD</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- 结论先行 -->
+  <div class="tldr">
+    <h2>结论先行</h2>
+    <p><b>先办护照（120 元、7 个工作日、全国通办）→ Starryblu 线上开户 → 申请实体卡（10 USD）邮寄内地。</b></p>
+    <p class="note">它是支付机构钱包，不是银行——适合当「海外订阅 + 跨境资金中转」工具，不适合当主资产账户。印象里的「10 美金」= 实体卡费 10 USD + 星空 PLUS 会员 9.9 USD/月，两笔钱。</p>
+  </div>
+
+  <!-- 一、是什么 -->
+  <section>
+    <h2 class="sec"><span class="no">01</span>Starryblu 是什么</h2>
+    <p class="sec-desc">熊猫速汇母公司 WoTransfer 旗下产品，常被称作「Wise 平替」</p>
+    <div class="card">
+      <table>
+        <tr><td class="k">运营方</td><td>新加坡 WoTransfer（<span class="hl">熊猫速汇母公司</span>，姐妹品牌）</td></tr>
+        <tr><td class="k">牌照</td><td>新加坡金融管理局 MAS 大型支付机构牌照（MPI），编号 <span class="hl">PS20200501</span></td></tr>
+        <tr><td class="k">资金安全</td><td>用户资金独立隔离，托管于 <span class="hl">OCBC 华侨银行</span>监管账户</td></tr>
+        <tr><td class="k">投资方</td><td>红杉资本、光速创投等</td></tr>
+        <tr><td class="k">核心能力</td><td>多币种账户（CNY/SGD/USD/EUR/HKD/GBP）+ 万事达卡 + 跨境汇款 + 大陆扫码消费</td></tr>
+        <tr><td class="k">关键澄清</td><td>「免费拿 OCBC 账户」≠ 开了 OCBC 个人银行账户，只是资金由 OCBC 监管账户托管</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- 二、护照 -->
+  <section>
+    <h2 class="sec"><span class="no">02</span>护照办理（第一步）</h2>
+    <p class="sec-desc">大陆用户开户身份验证以中国护照为主——这就是「先办护照」的原因</p>
+    <div class="card">
+      <table>
+        <tr><td class="k">条件</td><td>旅游/探亲/学习/就业/商务等非公务原因，<b>凭身份证即可申请</b>，无需事由证明材料</td></tr>
+        <tr><td class="k">受理点</td><td>县级以上公安出入境管理机构，<span class="hl">全国通办</span>（不限户籍，任一窗口可办）</td></tr>
+        <tr><td class="k">材料</td><td>身份证原件 + 现场拍照 + 现场填表，采集指纹和签名</td></tr>
+        <tr><td class="k">预约</td><td>「移民局」APP / 微信支付宝小程序 / 国家移民管理局政务服务平台（s.nia.gov.cn）</td></tr>
+        <tr><td class="k">费用</td><td><span class="money">120 元</span> / 本</td></tr>
+        <tr><td class="k">时限</td><td><span class="hl">7 个工作日</span>，可选 EMS 邮寄到家</td></tr>
+        <tr><td class="k">有效期</td><td>16 岁以上 10 年</td></tr>
+        <tr><td class="k">注意</td><td>登记备案国家工作人员、现役军人需单位审批同意（民企普通员工一般不涉及）</td></tr>
+      </table>
+    </div>
+    <div class="callout">⏱️ 现场约 30 分钟办结申请，全程「只跑一次」——办了不亏，出国旅游也用得上。</div>
+    <div class="risk" style="margin-top:12px;">
+      <h3>⚠️ 重要提醒：护照 ≠ 港澳通行证</h3>
+      <ol>
+        <li>去香港/澳门要的是<b>「往来港澳通行证 + 有效签注」</b>，护照不管用（除非过境第三方国家）。</li>
+        <li>两证可在<b>同一出入境窗口、一次申请同时办理</b>，材料完全一样（身份证+现场拍照）；通行证 60 元/本，一次签注 15 元。</li>
+        <li>长期要办港卡的话，<b>强烈建议一次办俩</b>，免得跑第二趟。</li>
+      </ol>
+    </div>
+    <div class="ok-note" style="margin-top:12px;">
+      ✅ <b>为什么值得办（有备无患的账）</b>：120 元 ÷ 10 年 = <b>12 元/年</b>，零年费零维护、办时不问理由、不用无后果——极少数持有成本为零的「备」。且按当前规划它不是备用而是马上要用：Starryblu / Payoneer / 券商 KYC 都认护照；新加坡、泰国、马来西亚对中国护照免签，说走就走。
+    </div>
+  </section>
+
+  <!-- 三、路径 -->
+  <section>
+    <h2 class="sec"><span class="no">03</span>完整办理路径</h2>
+    <p class="sec-desc">从零到拿到实体卡，共 5 步</p>
+    <div class="card" style="padding: 26px;">
+      <div class="flow">
+        <div class="step">
+          <div class="step-no">1</div>
+          <div class="step-body">
+            <div class="step-title">办理护照 <span class="cost">120 元 · 7 个工作日</span></div>
+            <div class="step-desc">移民局 APP 预约 → 带身份证去出入境大厅 → EMS 到家</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-no">2</div>
+          <div class="step-body">
+            <div class="step-title">Starryblu 线上开户 <span class="cost">免费</span></div>
+            <div class="step-desc">下载 App → <b>护照 + 手机号 + 真实居住地址</b>注册 → 等身份与地址审核</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-no">3</div>
+          <div class="step-body">
+            <div class="step-title">获取开卡资格</div>
+            <div class="step-desc">公测期开卡需<b>白名单资格</b>——没进白名单，账户审核通过也开不了卡，只能排队。走邀请码注册通常带白名单资格</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-no">4</div>
+          <div class="step-body">
+            <div class="step-title">申请卡片 <span class="cost">实体卡 10 USD · 虚拟卡免费</span></div>
+            <div class="step-desc">实体卡可填<b>内地收件地址</b>邮寄回来；这就是印象里的「10 美金」</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-no">5</div>
+          <div class="step-body">
+            <div class="step-title">入金激活</div>
+            <div class="step-desc">有港卡走 <b>FPS 转数快</b>（0 手续费、接近秒到）；新加坡银行 SGD/CNH 入金亦可。必须<b>本人同名账户</b>，避免第三方代充触发风控</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 四、卡与费用 -->
+  <section>
+    <h2 class="sec"><span class="no">04</span>卡档位与星空 PLUS 权益</h2>
+    <p class="sec-desc">截图里的「星空 PLUS」是 9.9 美元/月的订阅制会员，先算账再买</p>
+    <div class="card">
+      <table>
+        <tr><th>档位</th><th>说明</th></tr>
+        <tr><td class="k">基础版星空卡</td><td>入门档，日常够用</td></tr>
+        <tr><td class="k">高级版星球卡</td><td>中档</td></tr>
+        <tr><td class="k">高端版主神卡</td><td>高档</td></tr>
+        <tr><td class="k">星空 PLUS 会员</td><td><span class="money">9.9 美元/月</span>，官方标称权益总价值 <span class="money">366 USD</span>（见下方明细）</td></tr>
+        <tr><td class="k">ATM 取现基础费率</td><td>交易金额 × 1.8%，最低 1.3 USD</td></tr>
+      </table>
+    </div>
+    <div style="margin-top: 14px;" class="grid">
+      <div class="benefit"><div class="v">S$100<small> /月</small></div><div class="l">消费券 S$20 × 5 张</div></div>
+      <div class="benefit"><div class="v">1 次<small> /月</small></div><div class="l">汇款券</div></div>
+      <div class="benefit"><div class="v">3 次<small> /月</small></div><div class="l">取款券（额度 S$750）</div></div>
+      <div class="benefit"><div class="v">+0.6%</div><div class="l">换汇汇率提升</div></div>
+    </div>
+    <div class="callout">🧮 <b>算账提醒</b>：每月用不满 5 张消费券 + 3 次取款券的话，别订阅 PLUS，基础卡就够。订阅前以 App 内实时条款为准。</div>
+  </section>
+
+  <!-- 五、用途 -->
+  <section>
+    <h2 class="sec"><span class="no">05</span>能干什么（实测场景）</h2>
+    <p class="sec-desc">它和 Wise 拉开差距的地方：大陆能花、资金能回国</p>
+    <div class="scenes">
+      <div class="scene">
+        <div class="ico">🤖</div>
+        <h4>海外订阅</h4>
+        <p>实测 OPENAI *CHATGPT 扣款成功，但拒付概率存在，不代表所有账号都过。纯订 AI 工具更稳的是 <b>Roogoo</b>（0 开卡费）。</p>
+      </div>
+      <div class="scene">
+        <div class="ico">🇨🇳</div>
+        <h4>大陆消费</h4>
+        <p>App 内扫微信/支付宝商家码，外币余额消费，可提现回支付宝——<b>Wise 大陆开实体卡基本走不通</b>，这是核心差异。</p>
+      </div>
+      <div class="scene">
+        <div class="ico">💳</div>
+        <h4>实体卡线下</h4>
+        <p>线下刷卡 + ATM 取现（注意 1.8% 费率，用取款券可省）。</p>
+      </div>
+      <div class="scene">
+        <div class="ico">📈</div>
+        <h4>券商入金</h4>
+        <p>SGD + FAST 给<b>本人同名</b>新加坡盈立 uSMART 账户入金 → 港美股。<span class="warn-inline">注意外汇红线（见 09）</span>。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 六、场景匹配 -->
+  <section>
+    <h2 class="sec"><span class="no">06</span>场景匹配：这张卡适不适合你</h2>
+    <p class="sec-desc">「要不要办这张卡」是伪问题，真问题是「我的场景各配什么工具」——四个场景，频率和工具完全不同</p>
+    <div class="card">
+      <table>
+        <tr><th>场景</th><th>频次</th><th>正解</th><th>Starryblu 的角色</th></tr>
+        <tr>
+          <td><b>AI 订阅</b><br><span style="font-size:12.5px;color:var(--ink-faint)">ChatGPT/Codex/Cursor/Claude</span></td>
+          <td>每月刚需</td>
+          <td>订阅优化的虚拟卡（Roogoo）起步，港卡长期最稳</td>
+          <td>能过但有小概率拒付，<span class="warn-inline">不是最优</span></td>
+        </tr>
+        <tr>
+          <td><b>土耳其区低价订阅</b></td>
+          <td>省钱驱动</td>
+          <td>Apple ID 切区 + iTunes 礼品卡</td>
+          <td><span class="warn-inline">帮不上，根本不需要卡</span></td>
+        </tr>
+        <tr>
+          <td><b>出海收款</b><br><span style="font-size:12.5px;color:var(--ink-faint)">YouTube / AdSense</span></td>
+          <td>未来</td>
+          <td>Payoneer（见 07）</td>
+          <td>无关，另一条链路</td>
+        </tr>
+        <tr>
+          <td><b>出境旅行消费</b></td>
+          <td>低频</td>
+          <td>实体卡（Starryblu 10 USD 或港卡）</td>
+          <td>有价值 ✅</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="card" style="margin-top:14px; padding: 22px 26px;">
+      <h3 style="font-size:15.5px; margin-bottom:10px;">🇹🇷 土耳其区订阅：红利已经没了</h3>
+      <ul style="padding-left:20px; font-size:14.5px; color:var(--ink-soft);">
+        <li style="margin-bottom:8px;">2026-06-11 起土区 ChatGPT Plus <b style="color:var(--red);">新用户从 ₺499.99 涨到 ₺999.99/月</b>（约 2 倍，不再 5 折）；老用户续订维持原价，但<b>千万别取消重订</b>，取消就变新用户价</li>
+        <li style="margin-bottom:8px;">关键认知：土区订阅走 <b>Apple ID 切区 + iTunes 礼品卡</b>（oyunfor 等渠道买里拉卡充值），支付靠礼品卡余额，银行卡用不上——「有海外卡」和「订土区」是两码事</li>
+        <li>低价区订阅本身违反 OpenAI ToS（地区伪装），有封号风险，账号资产越重越别折腾</li>
+      </ul>
+    </div>
+
+    <div style="margin-top:14px;" class="card">
+      <table>
+        <tr><th colspan="2">AI 订阅的卡点排序（2026 现状）</th></tr>
+        <tr><td class="k">1 · ChatGPT Plus / Codex</td><td>新加坡 BIN 可订（OpenAI 支持新加坡），Starryblu 实测成功过但有小概率拒付；Roogoo 这类订阅优化的虚拟卡更稳</td></tr>
+        <tr><td class="k">2 · Cursor / Midjourney</td><td>港卡可订，虚拟卡部分可订</td></tr>
+        <tr><td class="k">3 · Claude Pro / Max</td><td><span class="warn-inline">硬卡点</span>——Anthropic 不开放大陆和香港订阅，必须有美国支付链路（美卡+美国账单地址+美国 IP），新加坡卡救不了</td></tr>
+        <tr><td class="k">4 · 开发者替代</td><td>API key + 自部署 UI，按量付费、合规稳定，技术人首选</td></tr>
+      </table>
+    </div>
+
+    <div class="ok-note" style="margin-top:14px;">
+      ✅ <b>分层结论（一句话版）</b>：Starryblu 对你「有用但不急」——护照和 Roogoo 先行，Starryblu 免费账户开着占位，实体卡和会员等需求出现再买。<b>真正的长期解是港卡。</b>
+      <br><br>
+      <b>执行顺序</b>：① 护照马上办（120 元、10 年有效，出境+开户双用）→ ② Roogoo 解决订阅刚需（0 开卡费）→ ③ Starryblu 免费开户占位当备胎 → ④ 实体卡/PLUS 等出境或券商需求出现再买 → ⑤ 港卡作为长期正解（汇丰 One 门槛低 / OCBC 内地律所见证）→ ⑥ Claude 要订走美区链路，单独立项先评估真实需求
+    </div>
+  </section>
+
+  <!-- 七、出海收款 -->
+  <section>
+    <h2 class="sec"><span class="no">07</span>自媒体出海收款（YouTube / AdSense）</h2>
+    <p class="sec-desc">Starryblu 是「花钱的钱包」，不是「收钱的账户」——收款层和消费层必须分开</p>
+    <div class="callout" style="margin-top:0; margin-bottom:14px;">🚫 <b>先泼冷水</b>：Starryblu 收不了 YouTube 的钱。它的入金靠港卡 FPS / 新加坡 FAST 本地转账，没有对外美元电汇（SWIFT）收款信息，AdSense 的电汇打不进来。</div>
+    <div class="card">
+      <table>
+        <tr><th colspan="2">YouTube 收益发放机制</th></tr>
+        <tr><td class="k">结算方</td><td>Google AdSense，<span class="hl">每月 21 日左右</span>月结</td></tr>
+        <tr><td class="k">起付线</td><td><span class="money">$100</span>，不满滚存下月</td></tr>
+        <tr><td class="k">大陆付款方式</td><td>美元电汇（Wire Transfer / SWIFT）</td></tr>
+        <tr><td class="k">户名要求</td><td>必须与银行预留<b>拼音完全一致</b>（ZHANG SAN ≠ San Zhang）</td></tr>
+        <tr><td class="k">税务</td><td>必须先提交 <span class="hl">W-8BEN</span>（非美国税务居民声明），否则面临预扣</td></tr>
+      </table>
+    </div>
+    <div class="card" style="margin-top:14px;">
+      <table>
+        <tr><th>收款链路</th><th>门槛</th><th>实际情况</th></tr>
+        <tr>
+          <td><b>Payoneer</b>（主流推荐）</td>
+          <td>大陆个人<br>身份证/护照，1-3 天</td>
+          <td>美国本地收款账户，AdSense 直接支持；提现回国内卡 <span class="money">1.2-2%</span>，中文客服</td>
+        </tr>
+        <tr>
+          <td><b>Wise 个人</b></td>
+          <td>大陆部分支持（看运气）</td>
+          <td>费率最低：$1000 收款+提现总成本约 <span class="money">$10-15</span>，比 Payoneer 省 $15-25</td>
+        </tr>
+        <tr>
+          <td><b>国内银行美元子账户</b><br><span style="font-size:12.5px;color:var(--ink-faint)">招行最稳</span></td>
+          <td>一类卡柜台开通，免费</td>
+          <td>2026 外汇收紧，银行可能要求「交易凭证」；AdSense 分成无合同发票，<span class="warn-inline">有招行拒收退回的真实案例</span></td>
+        </tr>
+      </table>
+    </div>
+    <div style="margin-top:14px;" class="card">
+      <table>
+        <tr><th colspan="3">推荐架构：三层分工</th></tr>
+        <tr>
+          <td class="k">收款层</td>
+          <td><b>Payoneer</b> 起步（大陆最稳），Wise 能开则开当备胎</td>
+          <td style="width:90px; color:var(--ink-faint); font-size:13px;">收 AdSense / 联盟 / 赞助</td>
+        </tr>
+        <tr>
+          <td class="k">消费层</td>
+          <td><b>Starryblu</b>（订阅 AI 工具、大陆扫码）/ Roogoo（纯订阅）</td>
+          <td style="color:var(--ink-faint); font-size:13px;">把收到的钱花出去</td>
+        </tr>
+        <tr>
+          <td class="k">长期</td>
+          <td><b>港卡</b>当真银行账户，大额调度</td>
+          <td style="color:var(--ink-faint); font-size:13px;">资产沉淀</td>
+        </tr>
+      </table>
+    </div>
+    <div class="risk" style="margin-top:14px;">
+      <h3>⚠️ 收款合规三件事</h3>
+      <ol>
+        <li><b>结汇</b>：境外广告收益属劳务所得，年度 5 万美元额度内结汇没问题（月入 $800 ≈ 年 $1 万，额度充裕）。</li>
+        <li><b>个税</b>：境外所得并入年度个税汇算申报，有境外已纳税抵免。</li>
+        <li><b>公号红线</b>：YouTube 访问环境、收款链路话题不进公号文，私域可聊。</li>
+      </ol>
+    </div>
+    <div class="callout">💡 <b>顺带备忘</b>：AI 出海频道收益 = AdSense 广告分成（长视频 RPM 为主，英文区科技/AI 类 RPM 显著高于中文区）+ Shorts 分成 + 频道会员 + Super Thanks + 赞助 + 联盟链接。<b>语言市场选择对收益的影响大于内容质量本身。</b></div>
+  </section>
+
+  <!-- 八、平替 -->
+  <section>
+    <h2 class="sec"><span class="no">08</span>平替 / 同类方案对比</h2>
+    <p class="sec-desc">2026-08 大盘：远程开户渠道整体收紧，窗口期心态成立，但别为开而开</p>
+    <div class="card">
+      <table>
+        <tr><th>方案</th><th>门槛</th><th>优势</th><th>短板</th></tr>
+        <tr>
+          <td><b>Starryblu</b></td>
+          <td>护照 + 线上<br><span class="money">卡费 10 USD</span></td>
+          <td>MAS 持牌、大陆扫码消费、资金可回国</td>
+          <td>支付机构非银行、公测白名单限制</td>
+        </tr>
+        <tr>
+          <td><b>Roogoo</b></td>
+          <td>线上<br><span class="hl">0 开卡费</span></td>
+          <td>订阅 AI 工具稳</td>
+          <td>仅虚拟卡，无实体/ATM</td>
+        </tr>
+        <tr>
+          <td><b>Wise</b></td>
+          <td>大陆开卡基本走不通</td>
+          <td>全球通用</td>
+          <td>大陆实体卡无解</td>
+        </tr>
+        <tr>
+          <td><b>香港银行</b><br><span style="font-size:12.5px;color:var(--ink-faint)">汇丰 One / OCBC 见证 / ZA、Mox</span></td>
+          <td>赴港或内地见证</td>
+          <td>真银行账户、FPS 生态；汇丰 One 门槛低，OCBC 可内地律所见证、首年常免管理费</td>
+          <td>要跑一趟或有资金门槛，审核趋严</td>
+        </tr>
+        <tr>
+          <td><b>美国银行</b><br><span style="font-size:12.5px;color:var(--ink-faint)">华美 / 国泰银行</span></td>
+          <td>视频见证，无 ITIN 要求</td>
+          <td>建立美元体系，实体卡寄国内</td>
+          <td>管理费规则、合规表述需谨慎</td>
+        </tr>
+        <tr>
+          <td><b>收款类</b><br><span style="font-size:12.5px;color:var(--ink-faint)">Payoneer / Airwallex / 万里汇</span></td>
+          <td>线上</td>
+          <td>电商收款强</td>
+          <td>偏 B 端，个人日常消费不合适</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- 九、红线 -->
+  <section>
+    <h2 class="sec"><span class="no">09</span>红线与风险（必须看）</h2>
+    <p class="sec-desc">黑脸主编部分：这些不是吓唬，是真实边界</p>
+    <div class="risk">
+      <h3>⚠️ 四条硬边界</h3>
+      <ol>
+        <li><b>加密货币别碰</b>：大陆 2021 年起禁止加密交易业务，个人交易不受法律保护，人民币出入金环节有<b>冻卡风险</b>，新加坡账户不改变这个性质。</li>
+        <li><b>外汇红线</b>：个人年度 5 万美元便利化购汇额度<b>不得用于境外证券投资、买房、投资性保险</b>，购汇申报用途要真实。</li>
+        <li><b>它不是银行</b>：托管资金不是银行存款、不受存款保险覆盖，任何「收益」宣传都别当存款看；官网「AI 智能理财」宣传保持距离。</li>
+        <li><b>政策随时变</b>：白名单、公测、费率、可邮寄地区都以 App 实时页面为准，本文是 2026-08-24 快照。</li>
+      </ol>
+    </div>
+    <div class="ok-note">
+      ✅ <b>公号内容边界</b>：护照办理流程完全合规，可单独成文（如《护照 120 块钱，7 个工作日，全国通办》）；海外开户、资金出境、加密话题<b>不进公号文</b>，只留私域。
+    </div>
+  </section>
+
+  <footer>
+    <b>参考来源</b>
+    <ul>
+      <li>TT说卡：2026 年 Starryblu 开户攻略 / 实体卡申请教程（ttshuoka.com）</li>
+      <li>湾区阿瑟：Starryblu 开户教程 2026（bayase.com）</li>
+      <li>老范跨境：Starryblu 完整流程（fan-crossborder.com）</li>
+      <li>Starryblu 官方博客：多币种账户解析（blog.starryblu.com）</li>
+      <li>王小义笔记：Starryblu 注册使用教程（aizoos.com）</li>
+      <li>国家移民管理局：普通护照签发服务指南（s.nia.gov.cn）</li>
+      <li>ingstart：2026-08 海外远程开户名单</li>
+      <li>Google AdSense 帮助：通过电汇接收款项 / 添加收款方式（support.google.com）</li>
+      <li>Easton Dev：AdSense 海外收款完整指南（eastondev.com）</li>
+      <li>海外笔记：Payoneer vs Wise 2026 全对比（jichangcepi.com）</li>
+      <li>OSSLab：2026 土耳其 App Store 订阅 Codex/ChatGPT Plus 涨价更新（osslab.tv）</li>
+      <li>YoTrade：没有美卡也能订阅 ChatGPT/Claude/Cursor 的 4 种合规支付路径（yotradellc.com）</li>
+    </ul>
+    <p class="foot-brand">行途技术手记 · 小研调研 · 2026-08-24 · 数据为当日快照，办理前以官方实时条款为准</p>
+  </footer>
+
+</div>
+</body>
+</html>

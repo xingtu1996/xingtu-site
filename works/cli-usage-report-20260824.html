@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CLI 工具使用报告 · 2026-08-24</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; background:#f5f6f8; color:#2d3748; padding:32px 16px; }
+  .wrap { max-width:960px; margin:0 auto; }
+  h1 { font-size:26px; margin-bottom:4px; }
+  .sub { color:#718096; font-size:13px; margin-bottom:28px; }
+  h2 { font-size:17px; margin:32px 0 12px; padding-left:10px; border-left:4px solid #4f46e5; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; }
+  .card { background:#fff; border-radius:10px; padding:16px 18px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+  .card .num { font-size:26px; font-weight:700; color:#4f46e5; }
+  .card .lbl { font-size:12px; color:#718096; margin-top:4px; }
+  .panel { background:#fff; border-radius:10px; padding:18px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th { text-align:left; padding:8px 10px; background:#f7f8fa; color:#4a5568; border-bottom:2px solid #e2e8f0; }
+  td { padding:8px 10px; border-bottom:1px solid #edf0f3; }
+  tr:hover td { background:#f9fafc; }
+  .num-r { text-align:right; font-variant-numeric:tabular-nums; }
+  .bar-row { display:flex; align-items:center; margin:5px 0; font-size:12px; }
+  .bar-name { width:220px; color:#4a5568; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .bar-track { flex:1; background:#edf0f3; border-radius:4px; height:16px; }
+  .bar-fill { height:100%; border-radius:4px; background:linear-gradient(90deg,#6366f1,#8b5cf6); }
+  .bar-val { width:44px; text-align:right; color:#718096; }
+  .chart { display:flex; align-items:flex-end; gap:6px; height:130px; padding:8px 4px 0; }
+  .col { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; }
+  .col .stick { width:100%; max-width:26px; background:linear-gradient(180deg,#818cf8,#4f46e5); border-radius:4px 4px 0 0; min-height:2px; }
+  .col .d { font-size:9px; color:#a0aec0; margin-top:4px; transform:rotate(-45deg); }
+  .col .v { font-size:10px; color:#4f46e5; margin-bottom:2px; }
+  .tag { display:inline-block; padding:2px 8px; border-radius:99px; font-size:11px; margin-right:6px; }
+  .tag.g { background:#def7ec; color:#046c4e; } .tag.y { background:#fdf6b2; color:#8e4b10; } .tag.r { background:#fde8e8; color:#9b1c1c; }
+  .note { font-size:12px; color:#718096; margin-top:10px; line-height:1.7; }
+  code { background:#edf2f7; padding:2px 6px; border-radius:4px; font-size:12px; }
+  .win { border-left:4px solid #38a169; } .lose { border-left:4px solid #e53e3e; }
+  footer { margin-top:36px; font-size:11px; color:#a0aec0; text-align:center; }
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap">
+  <h1>CLI 编码工具使用报告</h1>
+  <div class="sub">生成于 2026-08-24 · 数据源：cc-switch 用量账本（2025-10 ~ 2026-07-17）+ 本机会话文件统计</div>
+
+  <div class="cards">
+    <div class="card win"><div class="num">403</div><div class="lbl">Claude Code 近 30 天会话数</div></div>
+    <div class="card lose"><div class="num">4</div><div class="lbl">Codex CLI 近 30 天会话数</div></div>
+    <div class="card"><div class="num">$126.72</div><div class="lbl">代理统计期总成本（49020 次请求）</div></div>
+    <div class="card"><div class="num">70.6 亿</div><div class="lbl">统计期总 token 消耗</div></div>
+  </div>
+
+  <h2>一、Claude Code 近 30 天每日活跃（会话文件数）</h2>
+  <div class="panel">
+    <div class="chart">
+      <div class="col"><div class="v">27</div><div class="stick" style="height:45%"></div><div class="d">8-05</div></div>
+      <div class="col"><div class="v">55</div><div class="stick" style="height:92%"></div><div class="d">8-06</div></div>
+      <div class="col"><div class="v">18</div><div class="stick" style="height:30%"></div><div class="d">8-07</div></div>
+      <div class="col"><div class="v">11</div><div class="stick" style="height:18%"></div><div class="d">8-10</div></div>
+      <div class="col"><div class="v">12</div><div class="stick" style="height:20%"></div><div class="d">8-11</div></div>
+      <div class="col"><div class="v">12</div><div class="stick" style="height:20%"></div><div class="d">8-12</div></div>
+      <div class="col"><div class="v">60</div><div class="stick" style="height:100%"></div><div class="d">8-13</div></div>
+      <div class="col"><div class="v">14</div><div class="stick" style="height:23%"></div><div class="d">8-14</div></div>
+      <div class="col"><div class="v">8</div><div class="stick" style="height:13%"></div><div class="d">8-16</div></div>
+      <div class="col"><div class="v">18</div><div class="stick" style="height:30%"></div><div class="d">8-17</div></div>
+      <div class="col"><div class="v">21</div><div class="stick" style="height:35%"></div><div class="d">8-18</div></div>
+      <div class="col"><div class="v">14</div><div class="stick" style="height:23%"></div><div class="d">8-19</div></div>
+      <div class="col"><div class="v">13</div><div class="stick" style="height:22%"></div><div class="d">8-20</div></div>
+      <div class="col"><div class="v">23</div><div class="stick" style="height:38%"></div><div class="d">8-21</div></div>
+      <div class="col"><div class="v">13</div><div class="stick" style="height:22%"></div><div class="d">8-24</div></div>
+    </div>
+    <div class="note">峰值：8-06（55）与 8-13（60）。8-08/09/15/22/23 零活动。</div>
+  </div>
+
+  <h2>二、Claude Code 项目分布（近 30 天会话）</h2>
+  <div class="panel">
+    <div class="bar-row"><div class="bar-name">projects/重构工程仓</div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><div class="bar-val">197</div></div>
+    <div class="bar-row"><div class="bar-name">projects/中台工程仓</div><div class="bar-track"><div class="bar-fill" style="width:31%"></div></div><div class="bar-val">62</div></div>
+    <div class="bar-row"><div class="bar-name">projects/中台海事仓</div><div class="bar-track"><div class="bar-fill" style="width:31%"></div></div><div class="bar-val">61</div></div>
+    <div class="bar-row"><div class="bar-name">工作室/xingtu</div><div class="bar-track"><div class="bar-fill" style="width:25%"></div></div><div class="bar-val">49</div></div>
+    <div class="bar-row"><div class="bar-name">projects/ada</div><div class="bar-track"><div class="bar-fill" style="width:12%"></div></div><div class="bar-val">23</div></div>
+    <div class="note">某零售供应链中台（重构工程 + 中台工程仓 系）合计 320 会话，占 79%；自媒体工作站 xingtu 占 12%。</div>
+  </div>
+
+  <h2>三、模型用量总账（cc-switch 代理统计期）</h2>
+  <div class="panel">
+    <table>
+      <tr><th>模型</th><th class="num-r">请求数</th><th class="num-r">输入(M tok)</th><th class="num-r">输出(K tok)</th><th class="num-r">成本($)</th><th class="num-r">单次成本($)</th></tr>
+      <tr><td>deepseek-v4-pro</td><td class="num-r">43,875</td><td class="num-r">6,628.3</td><td class="num-r">23,497.9</td><td class="num-r">89.27</td><td class="num-r">0.0020</td></tr>
+      <tr><td>deepseek-v4-flash</td><td class="num-r">3,755</td><td class="num-r">269.7</td><td class="num-r">3,087.5</td><td class="num-r">4.51</td><td class="num-r">0.0012</td></tr>
+      <tr><td><b>K3</b></td><td class="num-r">333</td><td class="num-r">54.1</td><td class="num-r">178.8</td><td class="num-r"><b>23.63</b></td><td class="num-r"><b>0.0710</b></td></tr>
+      <tr><td>mimo-v2.5-pro</td><td class="num-r">572</td><td class="num-r">56.0</td><td class="num-r">200.0</td><td class="num-r">2.05</td><td class="num-r">0.0036</td></tr>
+      <tr><td>gpt-5-codex</td><td class="num-r">130</td><td class="num-r">2.3</td><td class="num-r">46.2</td><td class="num-r">2.84</td><td class="num-r">0.0218</td></tr>
+      <tr><td>claude-sonnet-4-6</td><td class="num-r">60</td><td class="num-r">2.9</td><td class="num-r">36.1</td><td class="num-r">3.61</td><td class="num-r">0.0602</td></tr>
+      <tr><td>K2.6</td><td class="num-r">161</td><td class="num-r">13.8</td><td class="num-r">43.4</td><td class="num-r">0.00</td><td class="num-r">—</td></tr>
+      <tr><td>claude-opus-4-7</td><td class="num-r">6</td><td class="num-r">0.4</td><td class="num-r">1.8</td><td class="num-r">0.77</td><td class="num-r">0.1283</td></tr>
+    </table>
+    <div class="note">
+      ⚠️ 关键洞察：<b>K3 单次成本 $0.071，是 deepseek-v4-pro 的 35 倍</b>。7-17 单日烧掉 $24.53（其中 K3 占 $23.63）——当天一次 K3 重活抵得上平时 4 天总开销。统计期 7-17 截止（之后 cc-switch 本地代理关闭，账本停记）。<br>
+      💰 deepseek-v4-pro 承担了 89.5% 的请求量，是绝对性价比主力；claude-opus-4-7 单次 $0.128 最贵，仅用 6 次。
+    </div>
+  </div>
+
+  <h2>四、Claude Code vs Codex CLI：哪个更好用</h2>
+  <div class="panel">
+    <table>
+      <tr><th style="width:130px">维度</th><th>Claude Code（2.1.238）</th><th>Codex CLI（0.146.0 → 0.149.1）</th></tr>
+      <tr><td>你的实际使用</td><td class="win">近 30 天 403 会话，绝对主力</td><td class="lose">近 30 天 4 会话，边缘工具</td></tr>
+      <tr><td>生态</td><td class="win">Skills / MCP / Hooks / 子代理，你的 20+ 军规、15+ Skill 全在这条链上</td><td>生态在追，但你的资产沉淀为零迁移成本优势</td></tr>
+      <tr><td>模型</td><td>Anthropic 系 + 通过 cc-switch/OpenRouter 可接任意模型（DS-V4、K3、ox-alpha…）</td><td class="win">OpenAI 系（gpt-5-codex），部分推理场景有独特手感</td></tr>
+      <tr><td>成本表现</td><td>DS-V4-pro 路线单次 $0.002，极省</td><td>gpt-5-codex 单次 $0.022，贵 10 倍（7 月仅 130 次）</td></tr>
+      <tr><td>适合定位</td><td class="win">日常主力：业务开发、内容工程、SOP 自动化</td><td>第二意见 / 对照实验 / OpenAI 系模型尝鲜</td></tr>
+    </table>
+    <div class="note"><b>结论：主力留 Claude Code，Codex 当"会诊专家"。</b>你的工作流（军规、Skill、cc-switch 切换、会议纪要转 spec）全部长在 Claude Code 上，迁移无收益；Codex 的价值在于卡壳时换个模型系拿第二意见——7 月你只用了 130 次，这个定位刚好。</div>
+  </div>
+
+  <h2>五、Codex 更新指引（沙箱拦截，需手动执行）</h2>
+  <div class="panel">
+    <div class="note">
+      本地 0.146.0 → 最新 0.149.1。Claude Code 沙箱禁止全局 npm 写入，请在你的终端执行：<br><br>
+      <code>npm install -g @openai/codex@latest</code><br><br>
+      完成后 <code>codex --version</code> 验证。启动试用：<code>codex</code> 进入交互模式，或 <code>codex "解释这个报错"</code> 单发。
+    </div>
+  </div>
+
+  <footer>小研 · Justin Li 工作室 · 数据截至 2026-08-24</footer>
+</div>
+</body>
+</html>

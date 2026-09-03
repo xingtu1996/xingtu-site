@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="gl7BYCvAjxrEBFIG6mWbVe">
+<head data-page-node-id="LuG6vKB5XLVVI2fmcDHeZZ">
+<meta charset="UTF-8" data-page-node-id="NNeLY0cAMlv9DHcikL4E1F">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="eDeBkoRJfWRK7LxkJE5yul">
+<title>工作总结与仓库管理诊断 · 2026-08-31</title>
+<style>
+:root{
+  --blue:#056DE8; --blue-l:#4A9EFF; --cyan:#00D4FF; --orange:#FF6B35;
+  --bg:#FFFFFF; --soft:#F6F8FB; --soft2:#EDF2F9;
+  --tx:#1A1D21; --tx2:#5A6472; --tx3:#8A94A3;
+  --bd:#E3E8EF;
+  --red:#DC2626; --red-bg:#FEF2F2; --red-bd:#FECACA;
+  --amber:#D97706; --amber-bg:#FFFBEB; --amber-bd:#FDE68A;
+  --green:#059669; --green-bg:#ECFDF5; --green-bd:#A7F3D0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",Arial,sans-serif;
+  background:var(--soft); color:var(--tx); line-height:1.7; padding:32px 20px 80px;
+}
+.wrap{max-width:1180px;margin:0 auto}
+
+/* header */
+.hero{
+  background:linear-gradient(135deg,#056DE8 0%,#4A9EFF 55%,#00D4FF 100%);
+  border-radius:18px; padding:38px 40px; color:#fff; margin-bottom:28px;
+  box-shadow:0 10px 34px rgba(5,109,232,.22); position:relative; overflow:hidden;
+}
+.hero::after{
+  content:""; position:absolute; right:-70px; top:-70px; width:280px; height:280px;
+  background:radial-gradient(circle,rgba(255,255,255,.22),transparent 68%); border-radius:50%;
+}
+.hero h1{font-size:29px;font-weight:700;letter-spacing:-.4px;margin-bottom:10px}
+.hero .sub{font-size:15px;opacity:.94;max-width:760px}
+.hero .meta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+.chip{
+  background:rgba(255,255,255,.2); border:1px solid rgba(255,255,255,.34);
+  padding:5px 13px; border-radius:999px; font-size:12.5px; backdrop-filter:blur(4px);
+}
+
+/* section */
+section{background:var(--bg); border:1px solid var(--bd); border-radius:16px;
+  padding:30px 34px; margin-bottom:24px; box-shadow:0 2px 10px rgba(16,24,40,.04)}
+h2{font-size:20px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+h2 .n{
+  background:var(--blue); color:#fff; width:27px;height:27px;border-radius:8px;
+  display:inline-flex;align-items:center;justify-content:center;font-size:13px;flex:none;
+}
+.lead{color:var(--tx2);font-size:14px;margin-bottom:22px;padding-left:37px}
+h3{font-size:15.5px;font-weight:650;margin:26px 0 12px;color:var(--tx);
+  padding-left:10px;border-left:3px solid var(--blue)}
+h3:first-of-type{margin-top:6px}
+
+/* cards */
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.g2,.g3,.g4{grid-template-columns:1fr}}
+
+.card{background:var(--soft);border:1px solid var(--bd);border-radius:12px;padding:16px 18px}
+.card .t{font-weight:650;font-size:14.5px;margin-bottom:7px;display:flex;
+  align-items:center;gap:8px;justify-content:space-between}
+.card .d{font-size:13px;color:var(--tx2);line-height:1.62}
+.card .path{font-size:11.5px;color:var(--tx3);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  margin-top:9px;padding-top:9px;border-top:1px dashed var(--bd);word-break:break-all}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:8px}
+@media(max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{background:var(--soft);border:1px solid var(--bd);border-radius:12px;
+  padding:18px;text-align:center}
+.stat .v{font-size:30px;font-weight:750;color:var(--blue);line-height:1.15;letter-spacing:-1px}
+.stat .l{font-size:12.5px;color:var(--tx2);margin-top:5px}
+.stat.warn .v{color:var(--red)}
+.stat.ok .v{color:var(--green)}
+
+/* table */
+table{width:100%;border-collapse:collapse;font-size:13.2px;margin:6px 0 4px}
+th{background:var(--soft2);text-align:left;padding:11px 13px;font-weight:650;
+  border-bottom:2px solid var(--bd);color:var(--tx);white-space:nowrap}
+td{padding:11px 13px;border-bottom:1px solid var(--bd);vertical-align:top;color:var(--tx2)}
+tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--soft)}
+td strong{color:var(--tx);font-weight:600}
+code{background:var(--soft2);padding:2px 7px;border-radius:5px;font-size:12.2px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#0B4A9E}
+
+/* badges */
+.b{display:inline-block;padding:2.5px 9px;border-radius:6px;font-size:11.5px;
+  font-weight:650;white-space:nowrap;line-height:1.5}
+.b-done{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bd)}
+.b-wait{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bd)}
+.b-block{background:var(--red-bg);color:var(--red);border:1px solid var(--red-bd)}
+.b-info{background:#EFF6FF;color:var(--blue);border:1px solid #BFDBFE}
+.b-gray{background:var(--soft2);color:var(--tx2);border:1px solid var(--bd)}
+
+/* alert */
+.alert{border-radius:12px;padding:16px 18px;margin-bottom:14px;font-size:13.5px}
+.alert.r{background:var(--red-bg);border:1px solid var(--red-bd);border-left:4px solid var(--red)}
+.alert.a{background:var(--amber-bg);border:1px solid var(--amber-bd);border-left:4px solid var(--amber)}
+.alert.g{background:var(--green-bg);border:1px solid var(--green-bd);border-left:4px solid var(--green)}
+.alert .h{font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:8px;font-size:14px}
+.alert.r .h{color:#991B1B}.alert.a .h{color:#92400E}.alert.g .h{color:#065F46}
+.alert p{color:var(--tx2);margin:5px 0}
+.alert ul{margin:8px 0 2px 20px;color:var(--tx2)}
+.alert li{margin:4px 0}
+
+/* flow */
+.flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin:10px 0}
+.step{flex:1;min-width:150px;background:var(--soft);border:1px solid var(--bd);
+  padding:14px 16px;position:relative}
+.step:first-child{border-radius:11px 0 0 11px}
+.step:last-child{border-radius:0 11px 11px 0;border-right:1px solid var(--bd)}
+.step .no{font-size:11px;color:var(--blue);font-weight:750;letter-spacing:.5px}
+.step .nm{font-size:13.5px;font-weight:650;margin:3px 0 4px}
+.step .ds{font-size:12px;color:var(--tx2);line-height:1.55}
+@media(max-width:900px){.step{border-radius:11px!important;margin-bottom:8px;min-width:100%}}
+
+/* decision */
+.dec{background:var(--soft);border:1px solid var(--bd);border-radius:11px;
+  padding:14px 16px;margin-bottom:10px;display:flex;gap:14px;align-items:flex-start}
+.dec .q{flex:1}
+.dec .q .qt{font-weight:650;font-size:14px;margin-bottom:5px}
+.dec .q .qd{font-size:12.8px;color:var(--tx2)}
+.dec .rec{background:#EFF6FF;border:1px solid #BFDBFE;color:#0B4A9E;
+  padding:5px 11px;border-radius:8px;font-size:12.5px;font-weight:650;
+  white-space:nowrap;flex:none}
+
+ul.plain{margin:8px 0 4px 20px;font-size:13.4px;color:var(--tx2)}
+ul.plain li{margin:5px 0}
+ul.plain li strong{color:var(--tx)}
+
+.foot{text-align:center;color:var(--tx3);font-size:12.5px;padding:22px 0 0}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--tx2);
+  margin-top:14px;padding-top:14px;border-top:1px dashed var(--bd)}
+.legend span{display:flex;align-items:center;gap:6px}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+</style>
+</head>
+<body data-page-node-id="F0pUIxOZeC5Oo5kLOcEKWw"><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap" data-page-node-id="sXFVoTk4RhZ6GU94GwIPFJ">
+
+<div class="hero" data-page-node-id="nH1YPannuLVZMQoyIe0bGn">
+  <h1 data-page-node-id="hEcyMkIEivkB57Rk8PDqse">工作总结 &amp; 仓库管理诊断</h1>
+  <div class="sub" data-page-node-id="1ZLNEIBijIhoP4hZsClI2V">2026-08-31 · 行途工作区（~/xingtu）｜内容侧 6 项交付 + 工程侧开源矩阵搭建 · 附我实地核实出的 6 个真实阻塞点</div>
+  <div class="meta" data-page-node-id="8whUsHxzqkWnvjiVGy07r5">
+    <span class="chip" data-page-node-id="dXMkVkEvM7fkVDm9XvGZ0f">工作区迁移 1.6G 完成</span>
+    <span class="chip" data-page-node-id="jDBNdspjmvb3YEww4Cws5q">开源矩阵 11 仓骨架</span>
+    <span class="chip" data-page-node-id="pWTS02vhIWHcp2Z5RpHN3Y">⚠ 12:15 发布未执行</span>
+    <span class="chip" data-page-node-id="gLfHDCEsi5BPtOJlh5XKqI">⚠ 并发会话运行中</span>
+  </div>
+</div>
+
+<!-- 0 速览 -->
+<section data-page-node-id="BNBbpUJ25NLxZDAJjHU3iG">
+  <h2 data-page-node-id="qkwfeKoowiuFTscdRIWlCx"><span class="n" data-page-node-id="xBNCSipHw053lwvP20RkN9">0</span>一分钟速览</h2>
+  <div class="lead" data-page-node-id="GRlY7Tpxdwnq5jklhVq0c1">今天分两条线跑：白天做<strong data-page-node-id="Kgy5BLJgCsN7CNRFgK7l9A">自媒体内容资产</strong>，上午 10 点起切到<strong data-page-node-id="FSo1oHXAOuQVu7M4gV0g0r">开源工程资产</strong>。后者才是今天的重头，也是问题最集中的地方。</div>
+  <div class="stats" data-page-node-id="Ct8T4DqpfumDw57pLyK0vn">
+    <div class="stat" data-page-node-id="3Zlm2REGPUWXMiQL43YhcJ"><div class="v" data-page-node-id="q4U27BjF0GAbRPCPd5VP6W">6</div><div class="l" data-page-node-id="0kMKFggCm1v3KyTM18A3Ep">内容侧交付</div></div>
+    <div class="stat" data-page-node-id="n2Km5vainMDBcniC9fCM4Q"><div class="v" data-page-node-id="jeX3Q5E6CZTGRtqwjsCTg4">11</div><div class="l" data-page-node-id="OuMTmsYBiT6AxvXIFE8xn1">开源新仓（骨架）</div></div>
+    <div class="stat ok" data-page-node-id="rUvjbM7r0upXsmge5pdc7V"><div class="v" data-page-node-id="Go44DioQRHbHiTbXPiQVZm">4</div><div class="l" data-page-node-id="pHFiisJqZkp6iOYWb0bniF">已推 GitHub 仓</div></div>
+    <div class="stat warn" data-page-node-id="96bhCIzBVYu6VmBB28wf6A"><div class="v" data-page-node-id="dPWUWe9r6SrfGMytyVeJjs">6</div><div class="l" data-page-node-id="UsfHXtqpiFfUmFtTby5ilL">待处理阻塞点</div></div>
+  </div>
+  <div class="alert g" style="margin-top:18px" data-page-node-id="exjP1z3qUstTjJb7P1qS6X">
+    <div class="h" data-page-node-id="FzTaxHpbWoOGFJwHcdkwBp">✅ 已完成且无风险</div>
+    <p data-page-node-id="wM5IAKP3EUH3SBLLcIYlVY">工作区迁移（原 <code data-page-node-id="1DgmYHF9ZfDwH6ONxB7Vzm">~/工作室</code> → <code data-page-node-id="AKTWelQTMDBKrfmNJ7WmgG">~/xingtu</code>，1.6G 完整）已验证；元宝卡片解析器完成三轮迭代并通过真实链接端到端验证；快手调研、账号收敛、短视频规划三份报告已出。</p>
+  </div>
+  <div class="alert r" data-page-node-id="mqlydkYGCuqK0OVX0IaNAi">
+    <div class="h" data-page-node-id="esuRrW6a2TJPDrdqg86NQe">🔴 需要你先拍板，否则继续推进会积累技术债</div>
+    <p data-page-node-id="PduKeHL7jrqEDnx7Et6G30"><strong data-page-node-id="P1wxIDd3dEeQQaTkIfXrAu">提交身份目前是三套并存的</strong>：全局配置是 <code data-page-node-id="JbSDGoJZEqLydHB8vJeZiL">Justin Li + noreply</code>，但已推送的 32 个 commit 全部是 <code data-page-node-id="1LPxEezFagBsc2nXkfuhjk">xingtu1996 &lt;***@***&gt;</code>，而规划文档里记的却是"1 个公司邮箱"——三个说法对不上。这正是你最在意的"提交 a 又提交 b，其实是 1 个人"的问题源头，<strong data-page-node-id="VR42AC9BNZgNXNAuMxRAmh">越晚改，历史越难洗</strong>。</p>
+  </div>
+</section>
+
+<!-- 1 今日工作 -->
+<section data-page-node-id="8fnnSRvoEB5At0N4liReOW">
+  <h2 data-page-node-id="1KZ4fDq8EcdTFkgRpg8QX0"><span class="n" data-page-node-id="jNVecSfJdJ6QV9HxAzT9xP">1</span>今日工作全景</h2>
+  <div class="lead" data-page-node-id="CMcOEikkmLmq4jhACOBBlN">按时间顺序排列，标注状态与产物路径。</div>
+
+  <h3 data-page-node-id="W3VhP15EM4VZF3QBAslvwm">内容侧（自媒体资产）</h3>
+  <div class="grid g2" data-page-node-id="SukB4LPT0qgJmDJvYJBoBo">
+    <div class="card" data-page-node-id="bIP8tRtqEaZBc2qEtiGkGm">
+      <div class="t" data-page-node-id="TIYHLPYHF5CNYCckDNLHch">① 元宝卡片解析器 <span class="b b-done" data-page-node-id="ff6tE4GmXYjy08T8MC3fOv">已交付</span></div>
+      <div class="d" data-page-node-id="RX1wYBNSCSLzRJMnwc3MPt">单文件零依赖纯前端工具，支持分享页 HTML 源码与卡片文本两种输入，输出对话预览 / Markdown / JSON。经三轮迭代（帮助面板、URL 误粘检测、<code data-page-node-id="e1kDfnD7JJNMfiie0xzdtu">err_code</code> 识别），并用真实链接完成端到端验证——确认微信外抓取会被服务端拒绝，工具"不绕过限制"的边界成立。</div>
+      <div class="path" data-page-node-id="ddOkJddoklBPUGtMokrgCQ">tools/yuanbao-card-parser/</div>
+    </div>
+    <div class="card" data-page-node-id="WI7Dh0J2Hef1MdnOnVRBPc">
+      <div class="t" data-page-node-id="iBVOmAHI0yi9Iz4jOH0FSq">② 快手平台调研 <span class="b b-wait" data-page-node-id="KUyGUynfWkaSzMf8ttok1K">待审核</span></div>
+      <div class="d" data-page-node-id="ZKUt2mZ9kbTuKzrSxDAG7A">结论：快手对行途是<strong data-page-node-id="kgtoF1ik5AvA2gUTV6GyK1">结构性错配</strong>（3.3 分，不进第一梯队），理由是用户 / 形态 / 变现三层错配。但搜索端竞争密度低、扶持力度大，值得最低成本做<strong data-page-node-id="sbIWXg5ikWRFKRMCMpfO3F">搜索长尾占位</strong>。核心洞察：不是没 AI 受众，是<strong data-page-node-id="49Nis3uz2loJ7im1lKB79N">问题域不同</strong>。</div>
+      <div class="path" data-page-node-id="LAbH9pjoJHvYOMa4Marqwo">outputs/快手平台调研_行途适配度分析_2026-08-31.html</div>
+    </div>
+    <div class="card" data-page-node-id="P5hZmK30FnPjuzyMDqH9da">
+      <div class="t" data-page-node-id="05A6HBmTCjZFi7Vq8OlZJ9">③ 账号资产收敛 <span class="b b-done" data-page-node-id="W4FsSqqpOU1Y5rljVBbkJZ">方案已定</span></div>
+      <div class="d" data-page-node-id="zHs0lIf3lsN3DOZkGgLdmW">主号（151…728）「行途」为唯一主 IP；爱人副号（172…504）在<strong data-page-node-id="tmyMuXgRhG0AJSF5ZJLWHs">知乎、掘金</strong>注销，无内容无粉丝无需迁移。执行序列：立主号 → 副号匿名化 → 知乎注销 → 掘金注销（7 工作日）→ 验证 → 收口。</div>
+      <div class="path" data-page-node-id="Qy87hQUPR2HZHQOkfzxe9E">outputs/账号资产收敛与注销处置计划_2026-08-31.html</div>
+    </div>
+    <div class="card" data-page-node-id="7Rx7iYWYAGVrjWRCAF9n5Q">
+      <div class="t" data-page-node-id="bRU7YDmrkWuYAG448Y6kIJ">④ 掘金变现口径修正 <span class="b b-done" data-page-node-id="gkAE7758IjocFE4xWx4ozt">已修正</span></div>
+      <div class="d" data-page-node-id="iB35qn66Fzl0cuxTc7Ro4Z">你质疑"掘金无法变现"属实：矿石收益极微（约 20000 矿石 ≈ 60 元）。已修正报告三处标注，结论改为<strong data-page-node-id="vQ3k0qPzvWfUGFxN7LK8Zq">"门槛低 · 收益微"</strong>——价值在精准流量与影响力，不在现金。</div>
+      <div class="path" data-page-node-id="x1LptenMxMoDgN1TcsSAXT">outputs/快手平台调研_…html（三处口径）</div>
+    </div>
+    <div class="card" data-page-node-id="gxl3VHrEBz0IX1teCfk1Zp">
+      <div class="t" data-page-node-id="7OwY240WjDM7CmJoc0ydCX">⑤ 真人出镜短视频规划 <span class="b b-wait" data-page-node-id="12e6k7ptlteJbMYgIAKLj3">待审核</span></div>
+      <div class="d" data-page-node-id="6kKk9HqS0XY4SFZxgnHzTM">短视频定位为<strong data-page-node-id="7sMHzUB2ElGSUliyVxRtwn">流量入口</strong>而非变现端。建议从 L1 半出镜（屏幕+小窗+口播）起步，每周约 6 小时产 6–7 条，全部定时发布，上班时间零操作。装备预算 ≤300 元。</div>
+      <div class="path" data-page-node-id="KpO0BQfraJhgX0sU657939">outputs/真人出镜短视频启动规划_2026-08-31.html</div>
+    </div>
+    <div class="card" data-page-node-id="B0UZ12yauP9LZpDczFvBoy">
+      <div class="t" data-page-node-id="FhevsjZuZzZ6cXWbW0rvLZ">⑥ 工作空间迁移 <span class="b b-done" data-page-node-id="Bu0BCBDhmH3JwEmHAI0fTA">已验证</span></div>
+      <div class="d" data-page-node-id="rWpAJlTn24M3zE4Z7zL2yK">原 <code data-page-node-id="od0kdIH2wKIypUABw6wbeC">~/工作室</code> 全部迁入 <code data-page-node-id="e5VUv0BvGg4FciAdD73GlU">~/xingtu</code>（含 26 个 skills，软链已重建），1.6G 完整、3 个 git 仓无损。残留 <code data-page-node-id="eJwFMMfKJnnbClUNU8475y">.workbuddy_根目录备份/</code>、<code data-page-node-id="pFVM3IythbhruYExIA5yeI">tools_工作室根/</code> 等冲突副本待清理。</div>
+      <div class="path" data-page-node-id="dWSZ7Oa9e4f0rdC0Mx7E2O">~/xingtu/</div>
+    </div>
+  </div>
+
+  <h3 data-page-node-id="it6TLQLkYTeVJd02zNrIzP">工程侧（开源资产）</h3>
+  <div class="grid g2" data-page-node-id="W3FdB7nRfHvULuSRQlDeNs">
+    <div class="card" data-page-node-id="SLRV6YdKTak4nTiILeYr3y">
+      <div class="t" data-page-node-id="XWiQXNCKxxU2aplc6sTGE4">⑦ 开源矩阵 11 仓骨架 <span class="b b-wait" data-page-node-id="oIAg0JC8J6iMLkHXLUykXB">0 commit</span></div>
+      <div class="d" data-page-node-id="aac67rTUql9PUKasbLB2SN">xingtu1996 / harness / skills / hooks / rules / sdd / mcps / cli / tools / tokenhub-bench / ai-engineering，全部 MIT、<code data-page-node-id="i5tJqx1pUZwX1W2khYo3sc">git init -b main</code> 完成，<strong data-page-node-id="CCvFlLgMHMgcSVDmEyQhL7">但均只有骨架（README + LICENSE + .gitignore），资产内容为空</strong>。</div>
+      <div class="path" data-page-node-id="QbTWZxffpB2hi9hY57Rebe">opensource/xingtu-opensource/</div>
+    </div>
+    <div class="card" data-page-node-id="PpHTf8bpSxkqVjLtJkGBQN">
+      <div class="t" data-page-node-id="La2SGwT2wHZdVDfufnxnBC">⑧ Git 全纳管规划 <span class="b b-wait" data-page-node-id="rxRw4RUMLspu3ceAy3OD35">待决策</span></div>
+      <div class="d" data-page-node-id="t7HCLna9UKfEQslV3FyvTo">响应你的要求"该进 GitHub 的都管起来 + 提交身份提前想清楚"。已产出三层架构（公开层 / 私有层 / 排除层）、目录→仓库映射、身份统一方案与敏感清单。</div>
+      <div class="path" data-page-node-id="EG6TgffPdslr49dWnOBJoO">specs/20260831-工作空间Git全纳管规划/</div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 仓库管理调整 -->
+<section data-page-node-id="LGsimnXrYw2YkZ4Y0drMDI">
+  <h2 data-page-node-id="RFuvahEW3aQVGxtHbSqxrW"><span class="n" data-page-node-id="4edC4jTqLAbcAgHGRrKfeV">2</span>你这次的仓库管理调整 · 方案要点</h2>
+  <div class="lead" data-page-node-id="3ZtYLIyfuewJImwZvLfKB3">从豆包会话产出的 spec 中归纳。核心是两句话：<strong data-page-node-id="GGbFi4Ev5DgmwZH1GDd2xP">该纳管的全纳管</strong>，<strong data-page-node-id="u4UGB4XwuKHrEmNFJNDqKj">身份提前统一</strong>。</div>
+
+  <h3 data-page-node-id="yxiohDkLOOcQzjBkRhVqCa">2.1 三层架构</h3>
+  <table data-page-node-id="tBIoScM90Q4v1KEAdKYteG">
+    <thead data-page-node-id="tfHnBrx2MRbEapnAkV7yIF"><tr data-page-node-id="6IQE8eUkCrNa0a5lk0tRSb"><th style="width:88px" data-page-node-id="hBKZLTn06aBahcEhErCnHU">层级</th><th style="width:270px" data-page-node-id="imgSSAKBLdoAiYcKceErzi">内容</th><th data-page-node-id="r2u3azyylOtSD2NG905qWU">处理方式</th></tr></thead>
+    <tbody data-page-node-id="CsmLBZEhDxjhzkouQ5zR92">
+      <tr data-page-node-id="Kftug4gXDXsJcpAcuB76A0">
+        <td data-page-node-id="wGDVTtmzuqkbD6tFrY98qn"><span class="b b-info" data-page-node-id="7qWddXsqtA0Me03vhFXv2e">公开层</span></td>
+        <td data-page-node-id="0fszOKSan2tgUMmS35d9B9"><strong data-page-node-id="p1ufBC4g4VYzX4KCIfpRGQ">xingtu1996.github.io</strong>（Pages 名片）<br data-page-node-id="pqu80ksq9QWMwYvm1Fz4xa"><strong data-page-node-id="DkBRaEoRwHmhqFvf5QlJ6F">xingtu-site</strong>（个人站）<br data-page-node-id="n3TzxC2WytqiTAAS6grAfw"><strong data-page-node-id="lJUb22oNJteHtd9Xa3eL9M">xingtu-vault</strong>（知识库）<br data-page-node-id="alNM099iiVoLb1e0ruR1RW">+ 开源矩阵 11 仓</td>
+        <td data-page-node-id="6neMY1bD22w7Mmp9huNU5C">先私有 → 逐仓审阅 → 转公开。vault 需先审隐私再定是否公开。</td>
+      </tr>
+      <tr data-page-node-id="cXFwvfIeETTDUJPAQpKHRA">
+        <td data-page-node-id="GwClzmfkWaJEz7JhjBkcNK"><span class="b b-gray" data-page-node-id="1N8CE4QZoQHStd1zZU9ZQB">私有层</span></td>
+        <td data-page-node-id="MYZn9NdEtRhFkOuh5TyemE">research（186M）· tools（190M）· outputs（112M）· 素材库 · specs · feishu_bot · workflows/rules/publish</td>
+        <td data-page-node-id="VRo54AnEkt0FtLkrFd0mLr">候选分 4–5 个主题私有仓：<code data-page-node-id="tPWAK98LWy43N7N02bhCNZ">-content</code> / <code data-page-node-id="PC2V8f5lUIuWJ16l17ugB8">-research</code> / <code data-page-node-id="lTXyV9gEIq6O9In3B5soG7">-specs</code> / <code data-page-node-id="sLf3vcMH0K1Z2E3oxpkrP1">-bot</code> / <code data-page-node-id="t5lQFxK5IULPC2hgIt3ZdK">-toolbox</code>；或合并为 1–2 个 monorepo。</td>
+      </tr>
+      <tr data-page-node-id="rxAx7PJBUt9QQoKTHRxNIx">
+        <td data-page-node-id="UHDEUZP4JWFGB0J5tMtSI6"><span class="b b-block" data-page-node-id="BNkQbH58LUG0JdxcLA0vW2">排除层</span></td>
+        <td data-page-node-id="fptlBGfvAc1NZRSB8zrsn7"><code data-page-node-id="AoDcfn3UV4biI4Hqi1uH7j">.idea/</code> <code data-page-node-id="XkWAi8kJDJQve2SQLN3Otf">.trash/</code> <code data-page-node-id="GBxi0s9zU4sWHT90vWNsUF">.backups/</code>(180M) <code data-page-node-id="Rc06fWjFT53zT7sSC5w82Q">xingtu_backup_20260819/</code>(354M) <code data-page-node-id="ns9B9Aws3IEqRKJ1bET67v">usage-logs-*.xlsx</code> 等</td>
+        <td data-page-node-id="puTIqOMvdIMJKLYM0lED7V">永不进 git，写进 .gitignore。</td>
+      </tr>
+      <tr data-page-node-id="EcZRsWSBrJV7ClLRNvD6lj">
+        <td data-page-node-id="BfUcsL57ABDAeMQ1WUtUKS"><span class="b b-block" data-page-node-id="p8saBBiDivgKAGagLI1Y02">🔴 最高敏感</span></td>
+        <td data-page-node-id="XUhANMH0153xZne45Jd46t"><code data-page-node-id="foWlaBdi38h4fWIsLWGLz6">data/wechat_decrypted/</code>(427M) · <code data-page-node-id="320C60M4q8Iu5JPReozfc8">specs/微信数据库密钥_20260827.json</code> · <code data-page-node-id="Urc6MZmE3V7GSWdKjghBqk">research/wechat_decrypt.py</code> · 各类 API Key / token 配置</td>
+        <td data-page-node-id="2fMSCGjgLjfkS8hTrEwv5w"><strong data-page-node-id="JDTvwF1s3ayaDfejGyS4wp">禁止进任何仓</strong>，包括私有仓。这是 SAF-006 红线。</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 data-page-node-id="qxn3UAjGMxKrDlbPqTSAV4">2.2 身份统一方案（你最关心的一条）</h3>
+  <div class="alert a" data-page-node-id="F9fsZvKAFp3LQ9YQzsCzhz">
+    <div class="h" data-page-node-id="dF7HP3yG8MqRDQVE3yLDF9">⚠ 实地核实结果：现状比规划文档记录的更严重</div>
+    <p data-page-node-id="zsHjFcvgjfWdq1QFXR2U9Y">规划文档写的是"<code data-page-node-id="cHmP7qNqhy2QDvaPBH8Lhz">xingtu-site</code> 有 1 个公司邮箱 commit"。我逐仓核对实际历史，<strong data-page-node-id="uoEwAg3c6esRre0MF15yIQ">不是这样</strong>：</p>
+    <table style="margin-top:10px;background:#fff;border-radius:8px;overflow:hidden" data-page-node-id="sfiF4iLZvCMC8xpXEb18N3">
+      <thead data-page-node-id="8r4rEyRcFJUmGOHC1W5bBn"><tr data-page-node-id="PNmH7HZNjqGOXqhRXw8zei"><th data-page-node-id="PwI4JRPmNmmx4clAcHO9HZ">仓库</th><th style="width:110px" data-page-node-id="i4MpLRbbHDRpWNq1QWfLBk">commit 数</th><th data-page-node-id="AZ8x7FIY696Ke0BkNwKAe8">实际作者（全部）</th></tr></thead>
+      <tbody data-page-node-id="JoX8tQnowDy42HGwqkTMpJ">
+        <tr data-page-node-id="TCZLREiKk2aTq0EriONB58"><td data-page-node-id="lnNXnkiyEhtn10gilIJ32p"><strong data-page-node-id="sJ4iH8C8mfDI4OCuWLe3qs">xingtu-site</strong></td><td data-page-node-id="erUXuyQSgXukN75hXQdkHE">7</td><td data-page-node-id="KgdNqoqHjtBHYLdyGHEbu2"><code data-page-node-id="KGxJPg2JaPl25DeodKMVZC">xingtu1996 &lt;***@***&gt;</code></td></tr>
+        <tr data-page-node-id="K8mzGx8HHuFQf6Y8s3vXyj"><td data-page-node-id="Xgqvp4YVLHx6h5bTwDDzRz"><strong data-page-node-id="2V3GYBpS3LiQpsOHM0qh2D">xingtu-vault</strong></td><td data-page-node-id="pCeIjPFXehWMXJ29rPC4xd">22</td><td data-page-node-id="2kdIcSLTLbKDqc9DPuSAK4"><code data-page-node-id="Vrk8s644Ta1eA25dDZfdn9">xingtu1996 &lt;***@***&gt;</code></td></tr>
+        <tr data-page-node-id="ocjO0t8ASrbVEOvDMVDw4Z"><td data-page-node-id="aY5j6H4FFiH7ctPuNju1RG"><strong data-page-node-id="qiFob4iu9uUiAHfO3VOJmA">xingtu1996.github.io</strong></td><td data-page-node-id="wEe52kJDppHgszs8G7GTOT">3</td><td data-page-node-id="Pa3fbw9VVCx3QKniW7pXya"><code data-page-node-id="xqk1mp76baGdwj6pU8kKX1">xingtu1996 &lt;***@***&gt;</code></td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px" data-page-node-id="8B15x3lXP7ZHoACRmDNf0j"><strong data-page-node-id="TBOlvXGHIRB3SRNoiFop43">32 个 commit 全部使用 163 个人邮箱，零个 noreply。</strong>而当前全局配置却是 <code data-page-node-id="L5UojxAXRIOPT8MAS7wls5">Justin Li &lt;274853659+xingtu1996@users.noreply.github.com&gt;</code>。</p>
+    <ul data-page-node-id="SPkvbYy4VEqYJRYrWI6aOS">
+      <li data-page-node-id="DGJoSxn8Xa0W0cNXQJIXpO">若 <code data-page-node-id="XyuY6GO17mxovxSTk4Hpp5">***@***</code> 未在你的 GitHub 账号里验证绑定 → 这 32 个 commit 在 GitHub 上<strong data-page-node-id="cwDCVyFzU7nIQVmUhVJNBw">显示为灰色无头像的独立用户</strong>，不归入 xingtu1996。</li>
+      <li data-page-node-id="iEI8etQDPBkD1rvBj7EY62">更糟的是：未来新 commit 会用 <code data-page-node-id="axfuzyom4i5guDhn2RGSBX">Justin Li + noreply</code>，历史是 <code data-page-node-id="pO1njBIsNtufxb93D2r0F2">xingtu1996</code> → <strong data-page-node-id="VKlIoGA63slpWoTv8JQf4V">同一个人被切成两个贡献者</strong>，贡献图直接裂开。</li>
+      <li data-page-node-id="7kOs4hbRwM14ZWRChBqcEY">这里反而<strong data-page-node-id="H1IGtmkJBwEuxmEJjsFqK0">没有</strong>公司邮箱 <code data-page-node-id="T8RGIPfPt2yhDERvK5JvzG">某零售客户.com</code> 的 commit——规划文档那条记录有误，好消息是身份泄露风险不存在，坏消息是身份分裂问题比预想的大。</li>
+    </ul>
+  </div>
+  <table data-page-node-id="mjsOFANGqYUnJgAlfLBLlk">
+    <thead data-page-node-id="Trl0cN9yhuuCsmH0RYyPxC"><tr data-page-node-id="9uPciPRn6zii59XwF9F6El"><th style="width:130px" data-page-node-id="viLipJnIn4kRYbFl9WF4Iq">配置项</th><th style="width:300px" data-page-node-id="6RD8YJr3qd3QzbRK9XvMXv">推荐值</th><th data-page-node-id="wtK4XsLYQGWGeDfe1PrBDK">说明</th></tr></thead>
+    <tbody data-page-node-id="1HZEvQDvwKCCixOnQtdYDW">
+      <tr data-page-node-id="Y9BGBeXMYMXy8UR8KLB54H"><td data-page-node-id="GGuOdfTwvPyeB1IolEGz3c"><strong data-page-node-id="2ghyHgS0HeTaj0GH8sYtPM">user.name</strong></td><td data-page-node-id="28ENIQPoyhTwMT8uPrLo13"><code data-page-node-id="LsQI6JItA3iqw21cW98srk">xingtu1996</code>（推荐）<br data-page-node-id="nculAQT5ggJlbtvlcVEuAH"><span style="font-size:12px;color:var(--tx3)" data-page-node-id="siQtlBrb5F1pv75Q5NhM4A">备选 Justin Li / XingTu</span></td><td data-page-node-id="zyHppD52icOWCEH4KoHCo1">与账号、品牌一致，不暴露真名。<strong data-page-node-id="xn59h8ANtTM72wU8UeOm3m">建议与历史 name 保持一致以减少改动量。</strong></td></tr>
+      <tr data-page-node-id="fUiNxBFpT1rFSUZNlp5M7W"><td data-page-node-id="lIC1hVenWAIwks5Q24mEZJ"><strong data-page-node-id="cH2KFKGc42KIAovJtLdPOZ">user.email</strong></td><td data-page-node-id="wbzp3N3JAXDPmkFKBY9PFq"><code data-page-node-id="JiT3Frj4Gfkp9wCjNfcKxj">274853659+xingtu1996@users.noreply.github.com</code></td><td data-page-node-id="OtSHZbQTUl0Zq6P0arBczC">GitHub 官方 noreply，<strong data-page-node-id="aswrG7giTef6eYDFuKkVFQ">自动归并到账号，且永不泄露真实邮箱</strong>。全局已配，保持不变即可。</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 3 阻塞诊断 -->
+<section data-page-node-id="Au49sWPTkbyvYMXHoJeaVx">
+  <h2 data-page-node-id="FtzDTjC63uCRIGteMfNEGQ"><span class="n" data-page-node-id="FOLfAvAILkublnIIvcnExa">3</span>我核实出的 6 个真实阻塞点</h2>
+  <div class="lead" data-page-node-id="5kzHEEQy6uApkZA4PNYuVs">这些不是从文档抄的，是我逐条跑命令验证出来的。按严重度排序。</div>
+
+  <div class="alert r" data-page-node-id="uXAWX1dcDuwOJ2pkHHXFoI">
+    <div class="h" data-page-node-id="giaDHcGmavqvXt0lslWQJS">🔴 P0-1 · 12:15 定时发布没有执行，10 个新仓一个都没推上去</div>
+    <p data-page-node-id="HeVy9G3EZUuS5MmpqLbuvX">我查了 GitHub 实况，<code data-page-node-id="80kPj7vUp0oaV2HwkuCQXC">xingtu1996</code> 名下<strong data-page-node-id="Q5BaNitWHmHXfUYWc5w7ds">仍然只有 4 个旧仓</strong>，11 个新仓全部为 0 commit、无远程。规划里的定时任务 ID <code data-page-node-id="gaBxyqhiczp5FqUClOTqs5">11623840044290</code> 在当前环境<strong data-page-node-id="qN1VSwapHjf0ISg0oQumwK">不存在</strong>（它应该在豆包会话里建的，不会在这里触发）。</p>
+    <p style="margin-top:6px" data-page-node-id="cLVr3pFGjkfHkRAQB0o6wX"><strong data-page-node-id="A2IQkaGRr8tH81GpnNbWeL">影响</strong>：发布链路上游是空的，harness 用 submodule 聚合的 8 个资产仓目前也全是空壳——先发等于发 11 个空仓库，反而扣分。</p>
+  </div>
+
+  <div class="alert r" data-page-node-id="kzD1nxBc3bFfOYJpPVbTYz">
+    <div class="h" data-page-node-id="A9W3FIk1rHgK9dtASnECGE">🔴 P0-2 · 提交身份三套并存，32 个历史 commit 游离在账号外</div>
+    <p data-page-node-id="bxyp4De4ZAIbxTZnPPzCpw">见 §2.2。<strong data-page-node-id="6DeSWnuKJsKO9dOAX2BG29">这是唯一有"时间成本"的问题</strong>——每多推一个 commit，后续 <code data-page-node-id="6iFzjiHLKgdDIsYRXSF0sZ">filter-repo</code> 重写的范围就更大。建议在任何新发布动作之前先定死身份。</p>
+  </div>
+
+  <div class="alert a" data-page-node-id="GAeClvFPrM4MkFxs80Z16N">
+    <div class="h" data-page-node-id="rkBC8h7oDz43yCsH7A4883">🟠 P1-1 · gh 配了两个 host，失效的那个是「active」状态</div>
+    <ul data-page-node-id="An3BaeAy9bZdxBudw1zV7V">
+      <li data-page-node-id="TLEUq8RN5x0KWNssN3KWry"><code data-page-node-id="kIwzM1rECVdyaD0CweIs5j">github.cn-pgcloud.com</code> → 账号 <code data-page-node-id="kEyQdGxQXGG0w9HQCLTSto">li-jc-1</code>，<strong data-page-node-id="qbeb3OzAcXP1Hm1sJugpvl">token 已失效</strong>，但仍标记为 active 且排在第一位</li>
+      <li data-page-node-id="ChQ8M3EqtP8CsSHdIE3w8j"><code data-page-node-id="2fcfNdU5xIrUpVnSf1M2ba">github.com</code> → 账号 <code data-page-node-id="CrLJGpViYHNpIuA1wVrpCK">xingtu1996</code>，✅ 有效（SSH 协议）</li>
+    </ul>
+    <p style="margin-top:8px" data-page-node-id="bC6mGDkowGMNqqVoEqOmPG">好消息：<code data-page-node-id="vXAyHGP4nqGtmq1t8kCyzp">publish.sh</code> 里已经用 <code data-page-node-id="Uj3k8lgf94LpMrOsWVmf1O">HOST</code> 变量锁死了 github.com，<strong data-page-node-id="ylIjaE5GFrVhLrLOdDVXd0">脚本本身是安全的</strong>。风险在于<strong data-page-node-id="5FFcYGSafATjmrAOUCGrI1">手工执行</strong> <code data-page-node-id="z4oUAeelsvLTIvHjAbPwUR">gh repo create</code> 时不带 <code data-page-node-id="AiskxP12maRahmsEWAEO7a">--hostname github.com</code>，会打向失效的那个 host 并报错。建议：要么清理掉失效 host，要么全局设 <code data-page-node-id="GHcn8fBt3SS6mM8aTTmyV8">GH_HOST=github.com</code>。</p>
+  </div>
+
+  <div class="alert a" data-page-node-id="pcGqVGJVQaJoiQ3AizbBqa">
+    <div class="h" data-page-node-id="E0q7tqkuRNi6xQi2o3MJX8">🟠 P1-2 · 家目录本身是个 git 仓，且没有忽略 xingtu</div>
+    <p data-page-node-id="9T5zfUpJM5xV4kyq8LhRkd">现场核实：<code data-page-node-id="hafDO8Bz3CVDJL1lxust7S">~</code> 的 <code data-page-node-id="UcYdSLXfuhO3Q3ZEnbvF0Y">git rev-parse --show-toplevel</code> 返回家目录本身，已 tracked<br data-page-node-id="mCvzqroJCkFSbajwM0GF63"><strong data-page-node-id="cne5fxACGG3H2G0haaU3BM">170 个文件</strong>，而 <code data-page-node-id="HUS8WfGJ9cUl0IKX1I2ScV">git check-ignore xingtu</code> <strong data-page-node-id="YLNICRZAAF68U0FxoIZIVq">无任何输出 = 未被忽略</strong>。</p>
+    <p style="margin-top:6px" data-page-node-id="QYnT2QgZAFHGX303g0SUwv"><strong data-page-node-id="I6JSEMdmKl0tBexV9eT6Zs">风险场景</strong>：哪天在家目录随手敲一个 <code data-page-node-id="JR00JG203dEYK16zruHXAO">git add -A</code>，整个 xingtu 工作区（含 427M 微信解密数据、密钥文件）会被卷进这个仓。这是一颗哑弹，现在不响，但迟早响。</p>
+  </div>
+
+  <div class="alert a" data-page-node-id="NYil6mQzGepuNU4d1O6JZr">
+    <div class="h" data-page-node-id="o1sIMMxxHUcnSmkHo8xw5K">🟠 P1-3 · 有另一个会话正在实时改同一批文件</div>
+    <p data-page-node-id="zsCxpZAcjNgfG8j8zR0Cux">我在核对时抓到：<code data-page-node-id="3NIh0sb0GRD2IGg46UG6cz">xingtu-ai-engineering/README.md</code> 的最后修改时间是 <strong data-page-node-id="BsHLSFGM5eFDeSCBQBj6t2">13:04</strong>，<code data-page-node-id="sUK0xPjpSfmEytzRgMYVB8">LICENSE</code> 是 <strong data-page-node-id="7gPzzsQUEBc8jjBMzC66j1">13:03</strong>——就在几分钟前。说明<strong data-page-node-id="gCinZBguQafFfD4Ht4CHl1">豆包那边（或另一个会话）正在同步推进主线 B</strong>。</p>
+    <p style="margin-top:6px" data-page-node-id="9uxAg1o7UgbNZheyMJHwDk">该仓当前状态：6 个分类目录各 1 个占位文件（共 28 文件），<strong data-page-node-id="qPCYDT54p7Sra8cdG5tvUH">75 个源文件的实质内容还没有复制过来</strong>，脱敏尚未真正开始（敏感词扫描 0 命中，因为还没内容）。<br data-page-node-id="iahGS57J6OzdB8KVywKGpX"><strong data-page-node-id="POqtC8qgMzAz5JuSDSQKsM">建议：明确指定一个会话主导文件写入，否则两份产出会互相覆盖。</strong></p>
+  </div>
+
+  <div class="alert a" data-page-node-id="cxCtnPaEpJOeIdx2sRKxft">
+    <div class="h" data-page-node-id="D1GZVjMKAbWSxWMdFQNnWl">🟠 P1-4 · 规划文档里的可见性记错了（长期记忆反而是准的）</div>
+    <p data-page-node-id="8mRRaikDsXUNrVLTZwywfk">《工作空间 Git 全纳管规划》§2.1 把 <code data-page-node-id="tyaWzZcXnG6KWsB84V57jo">xingtu-site</code> 和 <code data-page-node-id="bJDoEjJ4NdrvIIEXGJMNKY">xingtu-vault</code> 都标注为<strong data-page-node-id="QCuRyNf7Y4mnocm0uoFhWp">"公开"</strong>。GitHub 实况是<strong data-page-node-id="TPsJLDAhYccOZLKQax3Pma">两者都是 PRIVATE</strong>，目前只有 <code data-page-node-id="L9kHo9l7GXrpUqeFhGnRc8">xingtu1996.github.io</code> 是 <strong data-page-node-id="G0r7FDk3IjGHV1nAfCTnM7">PUBLIC</strong>。</p>
+    <p style="margin-top:6px" data-page-node-id="gvIi9moPe9S2KkZ88CKQJz">对照之下，项目长期记忆（MEMORY.md §12.1）记的"site 私有 / vault 私有 / github.io 公开 / docs 私有"<strong data-page-node-id="GILwdr4WcO3teE4scHZ6rf">与实际完全一致，是准的</strong>。错的只是这份新 spec。<br data-page-node-id="kAt1EKrISI50sNlvUSvhCH">这条会误导"要不要转公开"的决策链，建议修正 spec；记忆文件<strong data-page-node-id="mdxtX2BMGX3bOYPgcvLDSb">无需改动</strong>。</p>
+  </div>
+</section>
+
+<!-- 4 待决策 -->
+<section data-page-node-id="FSEb7k6LZU9dxJUv8DjAmV">
+  <h2 data-page-node-id="eYZSAaSXXtpco3a5TZgzFN"><span class="n" data-page-node-id="d3iUeq3mCrHpg2DhRmDhne">4</span>等你拍板的 6 件事</h2>
+  <div class="lead" data-page-node-id="flbZQ7KmOlE7RoG8I8vOd4">按依赖顺序排列——前两条不定，后面的动作都先别做。</div>
+
+  <div class="dec" data-page-node-id="Dyf5aWlufuiYLMBbDmlCQA">
+    <div class="q" data-page-node-id="2qk2u9AxaEmMS7hR9MsBsT"><div class="qt" data-page-node-id="SAogmaWd5zC8dJWFytjMLH">1. 提交 author name 定哪个？</div>
+      <div class="qd" data-page-node-id="KJxNzP2ySyeYsihn3poJmH">目前历史是 <code data-page-node-id="ZL5stdwEDwnC0ODOkSIxWe">xingtu1996</code>，全局是 <code data-page-node-id="EQipCye2Z0uqwihFKtrLjm">Justin Li</code>。选 <code data-page-node-id="0kD8GtEGSNxOPfcwirruJA">xingtu1996</code> 则历史 name 无需改动，只需改邮箱。</div></div>
+    <div class="rec" data-page-node-id="RmFiqtvOKyiJJCC44HbUc9">建议 xingtu1996</div>
+  </div>
+
+  <div class="dec" data-page-node-id="fLlQ6x1aTsoeHIqu536rMM">
+    <div class="q" data-page-node-id="Pf3sE8qBp5dWEpAiYy5HGh"><div class="qt" data-page-node-id="LgdLW5S5UPdZAc0O2hC01Q">2. 是否重写 3 个已推仓的 32 个 commit？</div>
+      <div class="qd" data-page-node-id="mwBWxWCSPeJ7bqDz5AayWy">把 <code data-page-node-id="sXR4YwmY4FXmr5aszrvaUa">***@***</code> 统一改写为 noreply 邮箱，然后 force push。3 个仓都是个人仓、无协作者，风险低。<strong data-page-node-id="2YrzzlESYy9lYOuEJ4uuPb">建议做，且尽早做。</strong></div></div>
+    <div class="rec" data-page-node-id="Wt9ROsnEQUCMY1I7CTXFJ4">建议做</div>
+  </div>
+
+  <div class="dec" data-page-node-id="UBlFLrBPuCmG0ZpoaAjuqP">
+    <div class="q" data-page-node-id="QPGBVbfUGmJCpzOnytzDxA"><div class="qt" data-page-node-id="4JBkHXEwaI5X3s0ndjfC1D">3. 12:15 那次定时发布，要不要重跑？</div>
+      <div class="qd" data-page-node-id="QnFxHgwV1zIXXO3MlbsMPY">我倾向<strong data-page-node-id="8AJ2NEOFVubWhSQ2ZlM6bT">先不跑</strong>——11 个仓现在只有骨架，发出去是 11 个空壳。建议先填内容（Templates 75 文件 + 26 skills），再一次性发布。</div></div>
+    <div class="rec" data-page-node-id="TBs7ZSytfTP0hQ2Ji97eFe">建议推迟到内容填充后</div>
+  </div>
+
+  <div class="dec" data-page-node-id="TqBcKhE9FrpOakLhrKb6No">
+    <div class="q" data-page-node-id="ChL4RuPxJMtwea5DbrxwTI"><div class="qt" data-page-node-id="m6Zg5vA4xfjCvMG03hqUi3">4. 私有层工作资产怎么分组？</div>
+      <div class="qd" data-page-node-id="Vjq672osX5GPoGFhIYvyIT">按主题拆 4–5 个私有仓（content / research / specs / bot / toolbox），还是合并成 1–2 个 monorepo？考虑到 research 186M + tools 190M 的体积，拆分更利于后续单独脱敏转公开。</div></div>
+    <div class="rec" data-page-node-id="3srLDmB3WgzpBDWTP2gFa2">建议按主题拆</div>
+  </div>
+
+  <div class="dec" data-page-node-id="BzGoZlCMeZrarwsgUXQQDA">
+    <div class="q" data-page-node-id="26qSpAtTwjErJHVE2tK6KE"><div class="qt" data-page-node-id="aPf09EKyezjcOb4MgtdgDl">5. xingtu-vault 保持私有还是转公开？</div>
+      <div class="qd" data-page-node-id="bVb0TBPOAgxv5aG3DChdCf">它现在是 PRIVATE（不是规划文档里写的"公开"）。转公开前必须逐文件审隐私——里面有 216 个 md，含历史会话归档。</div></div>
+    <div class="rec" data-page-node-id="VzIAV4Bctl2q2u1lZfTET1">建议先审后定</div>
+  </div>
+
+  <div class="dec" data-page-node-id="dVM9U0Q35nxKaO2SQVDIMY">
+    <div class="q" data-page-node-id="gYY2bQr8oZRk7eQ6TgGCRf"><div class="qt" data-page-node-id="haBuiAyznopOytdIN2ABCn">6. 并发会话怎么收口？</div>
+      <div class="qd" data-page-node-id="LpYAxEej8ShrUDHj8Dgbpu">豆包侧正在改 ai-engineering。<strong data-page-node-id="myXF6CVOzYnrcmNawh3EoO">你希望由这边（WorkBuddy）主导文件写入，还是让豆包那边继续？</strong>两边同时写必然冲突。</div></div>
+    <div class="rec" data-page-node-id="AO8znTmvGnnUaZNFhIgLdi">需你指定主导方</div>
+  </div>
+</section>
+
+<!-- 5 路线 -->
+<section data-page-node-id="s0d829yc5qupnMtlEuADJS">
+  <h2 data-page-node-id="PetdcQtVdyQdocgNun5pKd"><span class="n" data-page-node-id="CcsWzxktR1vefsxlOIzBqT">5</span>建议执行序列</h2>
+  <div class="lead" data-page-node-id="QLpflFnlNe1UG6MSwbmJXn">每步做完暂停汇报，你确认再进下一步——这是你定的 Spec 驱动模式。</div>
+  <div class="flow" data-page-node-id="NsWB53boFHwXNcZocQ239n">
+    <div class="step" data-page-node-id="OJiBHJCNfczkjY2De8MjBd"><div class="no" data-page-node-id="ul3SqCN0ACY3rnmXHlGA6C">STEP 1</div><div class="nm" data-page-node-id="0GslBcKo7wem7C074yxXkf">身份定死</div>
+      <div class="ds" data-page-node-id="Lx71eTaCbqAmCLQSNpCMZy">全局锁 name+email → 重写 32 个历史 commit → force push 3 仓</div></div>
+    <div class="step" data-page-node-id="XgenOTPAZlAsOWOrFCjz86"><div class="no" data-page-node-id="vv9wmbzvgGEkFubkKAFT41">STEP 2</div><div class="nm" data-page-node-id="7nFTaWbdVoray6KMu6zoov">环境排雷</div>
+      <div class="ds" data-page-node-id="MuCorhECX8fpTquHnsYGlY">清理失效 gh host → 家目录 .gitignore 加 xingtu → 清理 180M+354M 备份</div></div>
+    <div class="step" data-page-node-id="b4BEN1O5rAoVswNFnQq6dS"><div class="no" data-page-node-id="JEc4IRgQr8QcSp7OxHW2qo">STEP 3</div><div class="nm" data-page-node-id="hPSiXYxaHStRnn6vF5pLlM">填内容</div>
+      <div class="ds" data-page-node-id="UKHsdzon0kIbsyRkGANM4V">Templates 75 文件脱敏归纳 → 26 skills 分发 → ai-engineering 旗舰仓成型</div></div>
+    <div class="step" data-page-node-id="zphdD1ECPFjbHtV9Vj1PXT"><div class="no" data-page-node-id="cCCSJHQqwvkTsvKBHziwQC">STEP 4</div><div class="nm" data-page-node-id="u1IxdZq97wKOmcBoXvYxwL">发布</div>
+      <div class="ds" data-page-node-id="YUyPBrlwLYr9m5WtLpWz3C">11 仓建远程 + topics → 定时发布（下班后）→ 24h 内解读文</div></div>
+    <div class="step" data-page-node-id="QOFWCXHOFUmaC153ibiLzo"><div class="no" data-page-node-id="ypEDSHg6chZW3U44yKT0Ff">STEP 5</div><div class="nm" data-page-node-id="B6Iw9UeCPEpl8FBhTFsPIz">全纳管</div>
+      <div class="ds" data-page-node-id="ECb9qinuJY1SKc1Kv0CNXN">私有层分组 push → 敏感扫描 → 全量验证对齐</div></div>
+  </div>
+  <div class="alert g" style="margin-top:18px" data-page-node-id="IdysMM8vPRnEGuhrDn5IWx">
+    <div class="h" data-page-node-id="Ir5VnvcaF9c4IlEqlERzde">💡 一个判断</div>
+    <p data-page-node-id="cMUfKnSGyPCjcN6Eq6OSzU">今天真正的瓶颈<strong data-page-node-id="3yPLR9FbiWHB9Ux0HACnnV">不是"要不要纳管"，而是"用什么身份纳管"</strong>。纳管是体力活，随时能补；身份一旦散出去，GitHub 贡献图和账号归属就裂了，且随时间放大。<strong data-page-node-id="9fLMo1W7tWa8WxuYW8Wh6I">建议今晚只做 Step 1，其余明天再说。</strong></p>
+  </div>
+</section>
+
+<div class="foot" data-page-node-id="wG5fp4xEzTNYiZ45828PTh">
+  生成于 2026-08-31 · 数据来源：本地 git 实况、gh CLI 查询、specs/20260831-* 四份规划文档、.workbuddy/memory 日志<br data-page-node-id="RvHKH8mATsUHKlRxJ9fNUy">
+  本报告结论均经命令核实，标注与文档不一致处已高亮 · 待你审核确认
+</div>
+
+</div>
+</body>
+</html>

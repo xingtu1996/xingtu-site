@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行途工作空间 · Harness 体系手册 (2026-08)</title>
+<style>
+  :root{
+    --bg:#f7f8fa; --panel:#ffffff; --ink:#1f2430; --sub:#5b6472; --line:#e6e9ef;
+    --brand:#2f6df0; --brand-soft:#eaf1ff; --teal:#0f9d8a; --amber:#d98a00; --red:#d9483b; --purple:#7a5af0;
+    --code-bg:#f1f3f7; --shadow:0 1px 3px rgba(20,30,60,.07),0 6px 24px rgba(20,30,60,.06);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.7 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;}
+  .wrap{max-width:1080px;margin:0 auto;padding:32px 24px 96px;}
+  header.hero{background:linear-gradient(135deg,#2f6df0,#0f9d8a);color:#fff;border-radius:16px;padding:32px 34px;box-shadow:var(--shadow);}
+  header.hero h1{margin:0 0 6px;font-size:26px;letter-spacing:.5px}
+  header.hero p{margin:4px 0 0;opacity:.92;font-size:14px}
+  .meta{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+  .meta span{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.25);padding:3px 10px;border-radius:999px;font-size:12px}
+  nav.toc{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin:24px 0;box-shadow:var(--shadow);}
+  nav.toc h3{margin:0 0 10px;font-size:14px;color:var(--sub)}
+  nav.toc a{display:inline-block;margin:4px 10px 4px 0;color:var(--brand);text-decoration:none;font-size:13.5px}
+  nav.toc a:hover{text-decoration:underline}
+  section{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px 30px;margin:22px 0;box-shadow:var(--shadow);}
+  section h2{margin:0 0 16px;font-size:20px;display:flex;align-items:center;gap:10px}
+  section h2 .tag{font-size:11px;background:var(--brand-soft);color:var(--brand);padding:2px 9px;border-radius:6px;font-weight:600}
+  h3{font-size:16px;margin:22px 0 8px;color:#2a3140}
+  p{margin:8px 0}
+  ul,ol{margin:8px 0;padding-left:22px}
+  li{margin:5px 0}
+  code{background:var(--code-bg);padding:1px 6px;border-radius:5px;font-size:13px;font-family:"SF Mono",Consolas,monospace;color:#27406b}
+  .lead{color:var(--sub);font-size:14.5px}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#f3f6fc;color:#33415c;font-weight:600}
+  tr:nth-child(even) td{background:#fafbfd}
+  .stack{display:flex;flex-direction:column;gap:8px;margin:16px 0}
+  .layer{border-radius:10px;padding:12px 16px;color:#fff;position:relative}
+  .layer .lv{font-weight:700;font-size:13px;opacity:.9}
+  .layer .nm{font-size:15px;font-weight:700;margin:2px 0}
+  .layer .ds{font-size:12.5px;opacity:.92}
+  .l5{background:#7a5af0}.l4{background:#2f6df0}.l3{background:#0f9d8a}.l2{background:#1f8f6b}.l1{background:#5a6b85}.l0{background:#3b4658}
+  .roadmap{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:14px 0}
+  .phase{border:1px solid var(--line);border-radius:12px;padding:16px;background:#fcfdff}
+  .phase h4{margin:0 0 8px;color:var(--brand);font-size:15px}
+  .phase .ph{font-size:11px;color:var(--sub);text-transform:uppercase;letter-spacing:1px}
+  .pill{display:inline-block;font-size:11px;padding:1px 8px;border-radius:6px;font-weight:600;margin-right:4px}
+  .p-safe{background:#e7f7ee;color:#117a4d}
+  .p-warn{background:#fff3e0;color:#a8650b}
+  .p-rec{background:#eaf1ff;color:#2f6df0}
+  .note{background:#fff8e8;border-left:4px solid var(--amber);padding:12px 16px;border-radius:8px;font-size:13.5px;margin:14px 0}
+  .key{background:#eef6ff;border-left:4px solid var(--brand);padding:12px 16px;border-radius:8px;font-size:13.5px;margin:14px 0}
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:760px){.twocol{grid-template-columns:1fr}}
+  .foot{color:var(--sub);font-size:12.5px;text-align:center;margin-top:30px}
+  a.inline{color:var(--brand)}
+  .hl{background:#fff3bf;padding:0 3px;border-radius:3px}
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap">
+
+<header class="hero">
+  <h1>行途工作空间 · Harness 体系手册</h1>
+  <p>把「自媒体复利工程」也当作一套 Harness 来经营 —— 内容创作、调研、开发、开源，全部在受控轨道上运行。</p>
+  <div class="meta">
+    <span>版本 V1.0</span><span>2026-08-19</span><span>基于 某零售供应链/Ctf / TFM-NG / Haiting 三套 CC Harness 蒸馏</span><span>面向 WorkBuddy 兼容</span>
+  </div>
+</header>
+
+<nav class="toc">
+  <h3>目录</h3>
+  <a href="#t1">一、Harness 是什么（理论）</a>
+  <a href="#t2">二、六层架构模型</a>
+  <a href="#t3">三、八大核心机制</a>
+  <a href="#t4">四、xingtu 工作空间 harness 化映射</a>
+  <a href="#t5">五、四类任务路由</a>
+  <a href="#t6">六、Claude Code ↔ WorkBuddy 兼容映射</a>
+  <a href="#t7">七、工具与脚本复用清单</a>
+  <a href="#t8">八、落地路线图</a>
+  <a href="#t9">附录：术语与引用</a>
+</nav>
+
+<!-- ========== 1 ========== -->
+<section id="t1">
+  <h2>一、Harness 是什么 <span class="tag">理论</span></h2>
+  <p class="lead">你在 重构工程仓 的 <code>HARNESS.md</code> 里已经定调：「将 Harness 视为产品，而非配置文件集合」「某零售供应链 Harness = AI 编码的操作系统」。</p>
+  <p>把这句话从「编码」泛化到「工作空间」就是本手册的核心命题：</p>
+  <div class="key">
+    <strong>Harness = 把一个人的工程纪律、方法论、工具链、记忆，沉淀成 AI 可读、可强制执行、可跨项目复用的资产库。</strong><br>
+    AI 是「选手」，在受控轨道上运行；人是「裁判」，负责审查与决策；同一套标准，人与 AI 共用。
+  </div>
+  <h3>为什么内容工作空间也需要 Harness</h3>
+  <ul>
+    <li><strong>你已经是双重身份</strong>：技术经理 + 仍写代码 + 自媒体 IP。三套上下文切换，靠记忆会漏。Harness 把「什么时候该做什么、用什么工具、产出放哪」固化下来。</li>
+    <li><strong>响应力是护城河</strong>：AI 进化快，必须靠 harness 把「一手前沿实践」快速转成内容。你的 <code>ai_collab_miner</code> / <code>ai_history_indexer</code> 本质就是 harness 的「知识回流 + 记忆」组件，只是还没被命名进体系。</li>
+    <li><strong>多载体并存</strong>：Claude Code（CLI）、WorkBuddy（GUI/IDE）都要能跑同一套资产。本手册第四节专门解决兼容。</li>
+  </ul>
+  <p class="lead">一句话：<span class="hl">Harness 不是把工作交给 AI，而是把「你如何把工作做对」交给 AI。</span></p>
+</section>
+
+<!-- ========== 2 ========== -->
+<section id="t2">
+  <h2>二、六层架构模型 <span class="tag">框架</span></h2>
+  <p class="lead">直接复用你 重构工程仓 的 L0–L5 分层（已在 Haiting 的 HARNESS.md 验证可移植），并补上「路标层 / 锚点」两个横向角色。xingtu 的现有目录会被映射到这些层（见第四节）。</p>
+  <div class="stack">
+    <div class="layer l5"><div class="lv">L5 产品层</div><div class="nm">HARNESS.md / 工作看板</div><div class="ds">愿景、路线图、进化机制、防腐规则。本手册即 xingtu 的 L5。</div></div>
+    <div class="layer l4"><div class="lv">L4 编排层</div><div class="nm">workflows/</div><div class="ds">任务类型的流水线 SOP：内容生命周期、调研、开发、开源。</div></div>
+    <div class="layer l3"><div class="lv">L3 执行层</div><div class="nm">skills/ + agents/</div><div class="ds">可复用的能力包（排版引擎、选题挖掘、对标拆解）与专家角色（调研/开发/审查）。</div></div>
+    <div class="layer l2"><div class="lv">L2 护栏层</div><div class="nm">rules/ + specs/</div><div class="ds">宪法级约束（SEO 红线、分发差异化、安全）与 Spec 驱动开发模板。</div></div>
+    <div class="layer l1"><div class="lv">L1 土壤层</div><div class="nm">config + scripts/</div><div class="ds">环境配置（models.json / mcp.json）+ 工具脚本（排版、索引、benchmark）。</div></div>
+    <div class="layer l0"><div class="lv">L0 记忆层</div><div class="nm">memory/ + incidents/</div><div class="ds">跨会话记忆、踩坑 BCI 库、复盘日志（你已有 .workbuddy/memory + 04_会话与复盘）。</div></div>
+  </div>
+  <div class="key">
+    <strong>三个横向角色（不属于某一层，贯穿所有层）：</strong>
+    <ul style="margin:6px 0">
+      <li><strong>路标层</strong>：<code>README.md</code> + <code>DIRECTORY.md</code> + 工作看板 —— 让 AI/新人 30 分钟上手，知道「资产在哪、该读哪个」。</li>
+      <li><strong>锚点</strong>：<code>CLAUDE.md</code>（CC）/ <code>SOUL.md</code>（WB）+ <code>config.yaml</code> —— 行为定位 + 单一事实源（SSoT）。</li>
+      <li><strong>渐进式披露</strong>：L1 只放索引（~50 token），命中才加载 L2 正文（<5000 token），引用才进 L3 资源。Token 经济是第一公民。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========== 3 ========== -->
+<section id="t3">
+  <h2>三、八大核心机制 <span class="tag">原则</span></h2>
+  <p class="lead">这些是「某零售供应链 / Haiting」验证过的、可迁移到内容空间的机制。每条都标注了 xingtu 现成载体。</p>
+  <table>
+    <tr><th style="width:18%">机制</th><th style="width:38%">含义</th><th style="width:44%">xingtu 落地载体（已存在 / 待建）</th></tr>
+    <tr><td><strong>① 渐进式披露</strong></td><td>分层按需加载，省 Token；Caveman 压缩输出（直接结论+证据，不客套）。</td><td>已有：DIRECTORY.md（待建索引）、SOUL.md 注入。待建：L1 索引 / L2 规则正文分离。</td></tr>
+    <tr><td><strong>② SSoT 单一事实源</strong></td><td>一个真相源，别处引用。避免多处矛盾。</td><td>已有：<code>config</code> 用 models.json/mcp.json；IP 战略以 <code>.workbuddy/memory/MEMORY.md</code> 为准。待建：资产注册中心 DIRECTORY.md。</td></tr>
+    <tr><td><strong>③ 强编号 / 强注册</strong></td><td>规则/资产带编号 + 注册表，引用可 deep-link，审查可溯源。</td><td>待建：把 01_战略与规章、rules 编号化（如 SEO-001、FEN-001）；DIRECTORY.md 做唯一注册。</td></tr>
+    <tr><td><strong>④ Spec 驱动 + Hard Gate</strong></td><td>「无 Spec 不写码」；门禁把承诺变运行时强制（写前必跑）。</td><td>开发/开源任务复用：CC 的 <code>gate.sh</code> 思路 → xingtu 的「发布前清单」。内容任务轻量版 Spec（选题卡→成稿→排版→分发）。</td></tr>
+    <tr><td><strong>⑤ 对抗性审查</strong></td><td>多视角围攻同一产物，不 dedup、不降级；脚本交叉验证替代 LLM 当法官。</td><td>内容复用：成稿后「三角色审查」（事实核对 / 利他性 / 平台适配）；可用 WB 子 Agent 并行。</td></tr>
+    <tr><td><strong>⑥ 写审分离 + 主会话协调</strong></td><td>写 agent 只产出，审 agent 只挑刺，主会话仲裁收口。</td><td>WB 天然支持：Agent 子代理写、主会话聚合；CC 同样用 Subagent 蜂群。</td></tr>
+    <tr><td><strong>⑦ 知识回流 + BCI</strong></td><td>踩坑沉淀反模式库，审查自动匹配；跨项目验证的通用资产回流共享池。</td><td><strong>已有强载体</strong>：<code>ai_collab_miner.py</code>、<code>ai_history_indexer.py</code>、<code>04_会话与复盘</code>、BCI 概念待建文件。</td></tr>
+    <tr><td><strong>⑧ 防腐 + 自包含</strong></td><td>活文档行数上限；超则拆分/归档；组件准入五问；产物可整体移植。</td><td>待建：对 02_内容仓库/03_运营工具箱 设保鲜期；对 tools/ 设「必要性五问」准入。</td></tr>
+  </table>
+  <div class="note"><strong>跨平台兼容原则（来自 Haiting §十一）：</strong>共享层（rules/config/specs/scripts）两平台同读；平台专属能力（CC 的 hooks/skills/agents，WB 的 Skills/Expert/自动化）各放各处，靠维护规则保证一致。这是第六节的基础。</div>
+</section>
+
+<!-- ========== 4 ========== -->
+<section id="t4">
+  <h2>四、xingtu 工作空间 harness 化映射 <span class="tag">落地</span></h2>
+  <p class="lead">不重命名你精心设计的 <code>01_~05_</code> 目录，而是「叠加 harness 视角」重新诠释它们属于哪一层，并补上缺失的锚点/路标文件。</p>
+  <table>
+    <tr><th style="width:14%">层</th><th style="width:34%">现有载体（xingtu）</th><th style="width:52%">harness 角色说明</th></tr>
+    <tr><td>L5 产品</td><td><code>README.md</code>、<code>00_自媒体复利工作看板_Canvas.md</code></td><td>已是路标+看板。补一个 <code>HARNESS.md</code>（本手册的轻量锚点版）即可。</td></tr>
+    <tr><td>L4 编排</td><td><code>03_运营工具箱</code>（排版规范/分发 SOP）</td><td>已是 workflow 雏形。待建 <code>workflows/</code>：内容生命周期、调研、开发、开源 4 条 SOP。</td></tr>
+    <tr><td>L3 执行</td><td><code>tools/</code>（排版引擎、索引器、benchmark）、WorkBuddy <code>Skills</code></td><td>排版/选题/对标 = skills；专家角色 = WB Expert 或 CC agents。</td></tr>
+    <tr><td>L2 护栏</td><td><code>01_战略与规章</code>（IP 战略/排期）、SEO 与分发规则</td><td>这是「内容宪法」。待编号化为 rules（SEO-001 等）。</td></tr>
+    <tr><td>L1 土壤</td><td><code>~/.workbuddy/models.json</code>、<code>mcp.json</code>、<code>tools/*.py/*.js</code></td><td>模型/连接器配置 + 可跨平台运行的脚本。</td></tr>
+    <tr><td>L0 记忆</td><td><code>.workbuddy/memory/</code>（日log+MEMORY.md）、<code>04_会话与复盘</code>、<code>06_Obsidian</code></td><td>已是记忆层主力。<code>ai_*_indexer</code> 提供跨会话检索。</td></tr>
+    <tr><td>路标</td><td><code>README.md</code>（已有）、<code>DIRECTORY.md</code>（待建）</td><td>资产唯一注册中心，告诉 AI「要找 X 去哪」。强烈建议建。</td></tr>
+    <tr><td>锚点</td><td><code>SOUL.md</code>/<code>USER.md</code>/<code>IDENTITY.md</code>（WB 已注入）</td><td>WB 侧身份锚点；CC 侧暂无项目级 CLAUDE.md（见第六节兼容）。</td></tr>
+  </table>
+  <div class="key"><strong>关键判断：</strong>你 xingtu 的「记忆层 + 工具层」已经比很多 CC 项目还完整（ai_collab_miner / ai_history_indexer 是 CC 想要却常缺的）。<span class="hl">真正缺的是 L2 规则编号化、L4 工作流 SOP、以及 L5/Directory 两个锚点文件</span>——这三件就是落地路线图的重点。</div>
+</section>
+
+<!-- ========== 5 ========== -->
+<section id="t5">
+  <h2>五、四类任务路由 <span class="tag">执行</span></h2>
+  <p class="lead">你点名要便于执行「指向性 / 调研 / 开发 / 开源」四类任务。下面给出每类的触发识别、走哪层、用什么能力、产出放哪。</p>
+
+  <h3>① 指向性任务（Directed）</h3>
+  <table>
+    <tr><th style="width:16%">维度</th><th>说明</th></tr>
+    <tr><td>识别信号</td><td>明确窄指令：「把这篇转公众号排版」「跑一下 ai_collab_miner」「生成 benchmark 图」。</td></tr>
+    <tr><td>路由</td><td>直接执行 + <strong>Task 系统拆步</strong>（&gt;2 步必拆）；静默执行、只报增量/异常（你 CC CLAUDE.md 的进度可见性铁律同样适用 WB）。</td></tr>
+    <tr><td>用到的层</td><td>L1 脚本（<code>tools/</code>）、L3 skill（排版引擎/索引器）、L0 记忆。</td></tr>
+    <tr><td>产出</td><td>落到对应目录：排版稿→<code>02_内容仓库/03_待审与排版</code>；索引结果→<code>tools/</code> 输出或 <code>outputs/</code>。</td></tr>
+  </table>
+
+  <h3>② 调研任务（Research）</h3>
+  <table>
+    <tr><th style="width:16%">维度</th><th>说明</th></tr>
+    <tr><td>识别信号</td><td>「调研 X 工具」「对比 Y 与 Z」「查 2026 最新方案」「竞品拆一下」。</td></tr>
+    <tr><td>路由</td><td>并行 <code>WebSearch</code>（不串行）→ 渐进式披露只载入相关 rules → 输出结构化报告。造轮子前先搜成熟方案（你 CC 铁律）。</td></tr>
+    <tr><td>用到的层</td><td>L2 护栏（调研规范）、L4 编排（research workflow）、L0 记忆（避免重复调研）。</td></tr>
+    <tr><td>产出</td><td>报告→<code>05_竞品参考与对标</code>（隔离区，防污染内容库）或 <code>02_内容仓库/01_灵感与选题池</code>（若成选题）。</td></tr>
+  </table>
+
+  <h3>③ 开发任务（Dev）</h3>
+  <table>
+    <tr><th style="width:16%">维度</th><th>说明</th></tr>
+    <tr><td>识别信号</td><td>「写个脚本/工具」「搭个站点」「给 xingtu 加个功能」。涉及代码产出。</td></tr>
+    <tr><td>路由</td><td><strong>Spec 驱动</strong>：先出方案（Plan）→ 轻量 Spec（需求/设计/任务/验收）→ 写码 → <strong>Hard Gate</strong>（测试/自测绿了才合）→ <strong>对抗审查</strong>。写审分离，主会话收口。</td></tr>
+    <tr><td>用到的层</td><td>L2 specs、L3 agents/skills、L1 scripts（env-check/gate）、L0 memory（BCI 防踩坑）。</td></tr>
+    <tr><td>产出</td><td>代码→<code>tools/</code> 或新仓库；Spec→<code>specs/</code>（待建）；复盘→<code>04_会话与复盘</code>。</td></tr>
+  </table>
+
+  <h3>④ 开源任务（Open Source）</h3>
+  <table>
+    <tr><th style="width:16%">维度</th><th>说明</th></tr>
+    <tr><td>识别信号</td><td>「整理成 GitHub 仓库发布」「把 X 工具开源」「出英文版出海」。</td></tr>
+    <tr><td>路由</td><td><strong>自包含检查</strong>（无外部本地路径依赖）→ 文档化（README+Spec 摘要+License）→ 多平台分发（国内 GitHub / 海外 Dev.to+LinkedIn）。知识回流标注来源。</td></tr>
+    <tr><td>用到的层</td><td>L5 产品（发布清单）、L2 specs、L1 scripts（打包/自包含校验）、出海规则（见 MEMORY.md §5）。</td></tr>
+    <tr><td>产出</td><td>仓库（GitHub publish 工作空间）；英文改写→海外阵地；结汇/收款走 PayPal+PingPong（MEMORY.md §5）。</td></tr>
+  </table>
+  <div class="note"><strong>冲突消解规则（沿用 CC）：</strong>多匹配时优先级 开发/开源 &gt; 调研 &gt; 指向性；消息无动作词→不路由，直接对话。避免「一句话触发重流程」。</div>
+</section>
+
+<!-- ========== 6 ========== -->
+<section id="t6">
+  <h2>六、Claude Code ↔ WorkBuddy 兼容映射 <span class="tag">关键</span></h2>
+  <p class="lead">你主阵地是 <strong>Claude Code CLI</strong> 搭的 harness，现在要跟 <strong>WorkBuddy</strong> 并存。好消息：你的 harness 资产大部分能双向复用。下表逐项给出映射与复用策略。</p>
+  <table>
+    <tr><th style="width:20%">CC Harness 概念</th><th style="width:24%">WorkBuddy 对应物</th><th style="width:32%">复用策略</th><th style="width:24%">兼容度</th></tr>
+    <tr><td><code>CLAUDE.md</code><br>(角色/铁律/路由)</td><td><code>SOUL.md</code>+<code>USER.md</code>+<code>IDENTITY.md</code>（已注入）；项目级靠 Skill / memory</td><td>角色/语言/铁律写进 SOUL.md（已做）。项目专属规则用 WB <strong>Skill</strong> 或 memory/MEMORY.md 承载，不要指望 WB 自动读 CLAUDE.md。</td><td><span class="pill p-rec">高（部分）</span></td></tr>
+    <tr><td><code>settings.json</code> / <code>settings.local.json</code><br>(权限白名单)</td><td>WB 工具审批机制（运行时用户批准）；连接器/自动化状态管理</td><td>无等价静态 allow/deny 文件。把「rm 永不授权」等偏好固化进 SOUL.md + 用 <code>safe-delete.sh</code> 行为约束，而非权限文件。</td><td><span class="pill p-warn">中（范式不同）</span></td></tr>
+    <tr><td><code>hooks/</code><br>(session-start/end, 提醒)</td><td>WB 无 hook 框架</td><td>替代：① <strong>automation_update</strong> 定时任务模拟 SessionStart 类动作；② agent_loop 内建「每日记忆追加」靠 Skill 约定；③ 提醒类用自动化。CC 的 cbm/ponytail 提醒可转成 WB 自动化。</td><td><span class="pill p-warn">中（需重构）</span></td></tr>
+    <tr><td><code>scheduled_tasks.json</code><br>(cron 定时)</td><td><code>automation_update</code><br>(rrule / once / scheduledAt)</td><td><strong>直接等价</strong>。你 CC 里的 HARNESS-WATCH 周检、dsh 更新检查，可 1:1 迁到 WB 自动化（rrule 周/日）。</td><td><span class="pill p-safe">高（等价）</span></td></tr>
+    <tr><td><code>agents/</code><br>(Subagent 定义)</td><td><code>Agent</code> 子代理 + <strong>Expert</strong> 系统（expert-manager）</td><td>CC agent 定义（如 architecture-expert）→ 转成 WB <strong>Expert 专家包</strong>，或作为 Agent 子代理 prompt 复用。写审分离模式通用。</td><td><span class="pill p-rec">高</span></td></tr>
+    <tr><td><code>skills/</code><br>(SKILL.md SOP)</td><td>WB <strong>Skills</strong>（Skill 工具 + <code>~/.workbuddy/skills</code>）</td><td><strong>最大红利</strong>：CC 的 <code>SKILL.md</code> 格式与 WB Skill 几乎一致，可直接迁移/共享。你的 adversarial-review / ponytail / tdd 等 skill 两边都能用。</td><td><span class="pill p-safe">高（红利）</span></td></tr>
+    <tr><td><code>commands/</code><br>(slash 命令)</td><td>WB 斜杠命令 / 用 Skill 承载</td><td>CC <code>/code-review</code> 等 → 注册为 WB Skill 即可调用。WB 没有独立 commands 目录，统一用 Skill。</td><td><span class="pill p-rec">高</span></td></tr>
+    <tr><td><code>specs/</code><br>(SDD 6 文件)</td><td>WB 无原生 spec，可用 Skill/Markdown 实现</td><td>开发/开源任务走 Spec：在 xingtu 建 <code>specs/</code> 目录复用 CC 的 <code>_TEMPLATE</code>。WB 侧用 Skill 引导 Spec 流程。</td><td><span class="pill p-rec">高</span></td></tr>
+    <tr><td><code>scripts/</code><br>(bash/sh/js)</td><td>WB <strong>Bash</strong> 工具直接运行</td><td><strong>完全共享</strong>：safe-delete.sh、env-check.sh、gate.sh、kb-server.js，以及 xingtu 的排版/索引脚本，两边同跑。这是最稳的跨平台纽带。</td><td><span class="pill p-safe">高（共享）</span></td></tr>
+    <tr><td><code>memory/</code><br>(MEMORY.md, BCI)</td><td>WB memory 体系（user MEMORY.md + workspace memory + <code>conversation_search</code>）</td><td>BCI 反模式库→转 WB memory 或 Skill；跨会话检索用 conversation_search。你 xingtu 的 ai_history_indexer 已是超集。</td><td><span class="pill p-rec">高</span></td></tr>
+    <tr><td><code>mcpServers</code></td><td>WB <strong>Connectors</strong>（<code>~/.workbuddy/mcp.json</code>）+ 已连接连接器</td><td>MCP 配置两平台共用 mcp.json 思路；WB 把外部能力包装为 Connector，CC 用 mcpServers。同一份网关/Key 可双挂。</td><td><span class="pill p-rec">高</span></td></tr>
+    <tr><td><code>config.yaml</code><br>(SSoT)</td><td>models.json / mcp.json + memory 承载</td><td>保留 <code>config.yaml</code> 作为跨平台 SSoT（技术栈/端口/脚本路径），WB 侧用 memory 引用它，不要双写。</td><td><span class="pill p-safe">高</span></td></tr>
+  </table>
+  <div class="key">
+    <strong>三条兼容铁律（建议写进 SOUL.md / CLAUDE.md）：</strong>
+    <ol style="margin:6px 0">
+      <li><strong>共享层不分裂</strong>：rules / config / specs / scripts 是 CC 与 WB 的共同资产，放中性位置（如 <code>tools/</code> 或独立 <code>.harness/</code>），两边同读。</li>
+      <li><strong>平台专属各归各家</strong>：CC 的 hooks/agents 留 CC；WB 的 Skills/Expert/自动化留 WB。别把 CC hook 脚本硬塞进 WB。</li>
+      <li><strong>Skill 是最大公约数</strong>：凡是可复用的能力包，优先写成 Skill 格式（SKILL.md），CC 当 skill 用、WB 当 Skill 用，一份资产双平台生效。</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ========== 7 ========== -->
+<section id="t7">
+  <h2>七、工具与脚本复用清单 <span class="tag">资产</span></h2>
+  <p class="lead">盘点你两边的脚本资产，标注哪些可跨平台直接复用、哪些值得双向移植。</p>
+  <h3>xingtu 原生工具（已在用，CC 侧可借）</h3>
+  <table>
+    <tr><th style="width:26%">脚本</th><th style="width:30%">作用</th><th style="width:44%">跨平台价值</th></tr>
+    <tr><td><code>ai_collab_miner.py</code></td><td>扫描 .claude 会话+项目改动，挑可成内容的协作片段</td><td>→ CC 侧的「知识回流」引擎；在 CC 项目里也能跑，反哺内容选题。</td></tr>
+    <tr><td><code>ai_history_indexer.py</code> + <code>ai_history_report.py</code></td><td>统一索引多 harness 历史会话，生成可检索看板</td><td>→ 替代 CC 的 sessions/journal.md 检索；WB 用 Bash 直接调。</td></tr>
+    <tr><td><code>project_indexer/</code></td><td>索引 /projects 实践痕迹，按关键词抓素材</td><td>→ 两平台共用的「素材供给」；给自媒体供料。</td></tr>
+    <tr><td><code>tokenhub_bench.py</code> / <code>tokenhub_minigate.py</code></td><td>模型榜单评测 / 网关</td><td>→ 模型评估 workflow；CC 与 WB 都可用，统一评测口径。</td></tr>
+    <tr><td><code>wechat-format/</code> 排版引擎、<code>render_wechat.js</code></td><td>公众号排版</td><td>→ 内容生产 skill 的核心；CLI 调，GUI 编排。</td></tr>
+    <tr><td><code>wechat_chat_analyzer/</code></td><td>聊天记录分析</td><td>→ 社群/私域洞察；可接 WB 自动化定期跑。</td></tr>
+    <tr><td><code>cc-switch-*.py</code></td><td>CC 配置文件/模型切换</td><td>→ CC 专属，但思路可给 WB 做模型切换参考。</td></tr>
+  </table>
+  <h3>CC Harness 脚本（值得迁到 xingtu）</h3>
+  <table>
+    <tr><th style="width:26%">脚本</th><th style="width:30%">作用</th><th style="width:44%">迁移到 xingtu 的用处</th></tr>
+    <tr><td><code>safe-delete.sh</code></td><td>mv 到回收站替代 rm，带 --restore</td><td><strong>必迁</strong>：你 SOUL/USER 已强调「删除前求确认」。xingtu 清理/归档用同一套安全删除。</td></tr>
+    <tr><td><code>env-check.sh</code></td><td>环境一键自检（凭据/工具链/连通性）</td><td>改编为 xingtu 版：检查 Python venv、node workspace、models.json、mcp.json 是否就绪。</td></tr>
+    <tr><td><code>gate.sh</code></td><td>Hard Gate G1-G3 前置检查</td><td>→ 内容「发布前清单」脚本：Spec 齐？自测过？合规过？不绿不准发。</td></tr>
+    <tr><td><code>kb-server.js</code> + <code>kb-viewer.html</code></td><td>本地知识浏览器（Mermaid+搜索）</td><td>→ 把 xingtu 的 06_Obsidian + 01_战略 变成可团队共享的网页看板。</td></tr>
+    <tr><td><code>spec-monitor.sh</code></td><td>多 Spec 并行状态监控</td><td>→ 开发/开源任务并行推进时的进度雷达。</td></tr>
+    <tr><td>cbm hooks（session-reminder 等）</td><td>会话提醒/复盘</td><td>→ 转 WB 自动化（每日/每周），模拟 SessionEnd 记 journal。</td></tr>
+  </table>
+  <div class="note"><strong>复用红线：</strong>脚本只放「中性位置」（<code>tools/</code> 或 <code>.harness/scripts/</code>），用相对路径/参数传参，<span class="hl">禁止硬编码绝对路径</span>，否则破坏「自包含」、无法在纯净环境（AVD/另一台机/WB 沙箱）跑。</div>
+</section>
+
+<!-- ========== 8 ========== -->
+<section id="t8">
+  <h2>八、落地路线图 <span class="tag">行动</span></h2>
+  <p class="lead">分四阶段，按「先补锚点 → 再固化规则 → 跑通路由 → 双向打通」推进。标注安全度：<span class="pill p-safe">可立即做</span> <span class="pill p-warn">需你确认</span> <span class="pill p-rec">建议做</span>。</p>
+  <div class="roadmap">
+    <div class="phase"><div class="ph">Phase 0</div><h4>补锚点与路标</h4>
+      <ul>
+        <li><span class="pill p-safe">安全</span> 建 <code>HARNESS.md</code>（轻量版，本手册浓缩）</li>
+        <li><span class="pill p-safe">安全</span> 建 <code>DIRECTORY.md</code>（资产注册中心）</li>
+        <li><span class="pill p-safe">安全</span> 把本节结论回填 SOUL.md 三条兼容铁律</li>
+      </ul>
+    </div>
+    <div class="phase"><div class="ph">Phase 1</div><h4>L2 规则编号化</h4>
+      <ul>
+        <li><span class="pill p-rec">建议</span> 把 01_战略与规章 提炼为编号 rules：SEO-001、FEN-001（分发）、SAF-001（安全）</li>
+        <li><span class="pill p-rec">建议</span> 建 <code>rules/</code> 目录，CC 与 WB 同读</li>
+        <li><span class="pill p-warn">确认</span> 是否把现有 100+ 内容文件重命名为 kebab-case</li>
+      </ul>
+    </div>
+    <div class="phase"><div class="ph">Phase 2</div><h4>L4 工作流 SOP</h4>
+      <ul>
+        <li><span class="pill p-rec">建议</span> 写 4 条 workflow：内容生命周期 / 调研 / 开发 / 开源</li>
+        <li><span class="pill p-rec">建议</span> 把排版引擎、选题挖掘、对标拆解封装成 WB Skills</li>
+        <li><span class="pill p-safe">安全</span> 迁 <code>safe-delete.sh</code> + 改编 <code>env-check.sh</code></li>
+      </ul>
+    </div>
+    <div class="phase"><div class="ph">Phase 3</div><h4>CC↔WB 双向打通</h4>
+      <ul>
+        <li><span class="pill p-rec">建议</span> CC scheduled_tasks → WB 自动化（HARNESS-WATCH 周检等）</li>
+        <li><span class="pill p-warn">确认</span> 是否把 CC 的 adversarial-review/ponytail skill 迁为 WB Skill</li>
+        <li><span class="pill p-rec">建议</span> 用 kb-server 把知识库网页化共享</li>
+      </ul>
+    </div>
+  </div>
+  <div class="key"><strong>最小可行第一步（建议本次就落）：</strong>只建 <code>HARNESS.md</code> + <code>DIRECTORY.md</code> 两个文件（已随本手册生成于 xingtu 根），其余 Phase 1–3 作为待办。这两个文件零风险、纯新增，立刻让任何 AI（CC 或 WB）进到 xingtu 时知道「这是什么空间、资产在哪、该守什么纪律」。</div>
+</section>
+
+<!-- ========== 9 ========== -->
+<section id="t9">
+  <h2>附录：术语与引用 <span class="tag">参考</span></h2>
+  <table>
+    <tr><th style="width:22%">术语</th><th>含义</th></tr>
+    <tr><td>Harness</td><td>把工程纪律/方法论/工具链/记忆沉淀为 AI 可读、可强制执行、可复用的资产库（你定义为「AI 的操作系统」）。</td></tr>
+    <tr><td>SSoT</td><td>Single Source of Truth，单一事实源。一处定义，处处引用。</td></tr>
+    <tr><td>渐进式披露</td><td>Progressive Disclosure，分层按需加载以省 Token。</td></tr>
+    <tr><td>SDD / Spec</td><td>Spec-Driven Development，规范驱动开发；标准 Spec = 6 文件（README+analysis/requirements/design/validator/tasks）。</td></tr>
+    <tr><td>Hard Gate</td><td>把「无 Spec 不写码 / 测试先于码 / 验收全绿」从 Markdown 承诺变成运行时强制（gate.sh）。</td></tr>
+    <tr><td>对抗性审查</td><td>Adversarial Review，多角色围攻同一产物，不 dedup、不降级，命中次数=致命度。</td></tr>
+    <tr><td>BCI</td><td>Bad-Case Index，反模式/踩坑库，审查时自动匹配。</td></tr>
+    <tr><td>防腐</td><td>Anti-bloat，活文档行数上限 + 组件准入五问 + 保鲜期归档。</td></tr>
+  </table>
+  <h3>引用来源（你已有的资产）</h3>
+  <ul>
+    <li><code>重构工程仓/.claude/HARNESS.md</code> — 某零售供应链 6 层架构 + 进化/防腐/回流机制（本手册 L0–L5 来源）。</li>
+    <li><code>重构工程仓/.claude/CLAUDE.md</code> — 路由机制、进度可见性铁律、Ultracode 并行编排（第四节/第五节参考）。</li>
+    <li><code>中台工程仓/海事工程仓/.claude/HARNESS.md</code> + <code>CLAUDE.md</code> — 6 层产品说明书、Hard Gate、对抗审查三角色（第三节/第六节参考）。</li>
+    <li><code>中台工程仓/海事工程仓/.harness/</code> — 共享资产层 + 渐进式披露三层（第二节参考）。</li>
+    <li><code>.workbuddy/memory/MEMORY.md</code> — xingtu IP 战略 / 分发 / 出海（L2 护栏来源）。</li>
+    <li><code>tools/ai_collab_miner.py</code>、<code>ai_history_indexer.py</code> — xingtu 原生知识回流+记忆（第七节复用清单）。</li>
+  </ul>
+</section>
+
+<div class="foot">行途工作空间 · Harness 体系手册 V1.0 · 2026-08-19 · 由 WorkBuddy（小研）整理，蒸馏自某零售供应链/Ctf、TFM-NG、Haiting 三套 Claude Code Harness</div>
+
+</div>
+</body>
+</html>

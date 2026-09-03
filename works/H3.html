@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>H3_五层Token首篇_CSDN_20260806_发布版 · 公众号排版预览</title>
+<style>
+ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#f0f2f5;margin:0;padding:20px;}
+ .bar{max-width:440px;margin:0 auto 16px;background:#fff;border-radius:8px;padding:12px 20px;box-shadow:0 2px 8px rgba(0,0,0,.05);display:flex;justify-content:space-between;align-items:center;box-sizing:border-box;}
+ button{background:#056DE8;color:#fff;border:none;border-radius:6px;padding:8px 18px;font-weight:bold;cursor:pointer;font-size:14px;}
+ .phone{max-width:440px;margin:0 auto;background:#fff;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.08);overflow:hidden;border:1px solid #eaeaea;}
+ .ph{height:54px;background:#f7f7f7;border-bottom:1px solid #eee;display:flex;align-items:center;justify-content:center;font-weight:bold;color:#111;}
+ .pc{padding:30px 20px 50px;}
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="bar"><span style="font-size:13px;color:#555;">H3_五层Token首篇_CSDN_20260806_发布版 · 行途专属排版</span><button onclick="copy()">复制到公众号</button></div>
+<div class="phone"><div class="ph">公众号文章预览</div><div class="pc"><div id="content"><section style="font-size: 16px; line-height: 1.8; color: #3f3f3f; letter-spacing: 0.8px; word-wrap: break-word; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;"><blockquote style="margin: 24px 0; padding: 18px 20px; color: #5a5a5a; background: #f5f7fa; font-size: 15px; line-height: 1.8; border-radius: 6px; border-left: 3px solid #056DE8;">作者：行途（Justin Li）· 资深技术经理 / AI 工程化实践者<br>首发：CSDN ｜ 转载请注明出处</blockquote>
+<hr style="border: none; border-top: 1px solid #e1e4e8; margin: 40px 0;">
+<p style="margin-top: 0; margin-bottom: 24px; text-align: justify;">很多人觉得「AI 编程贵」是因为模型贵。</p>
+<p style="margin-top: 0; margin-bottom: 24px; text-align: justify;">错了。<strong style="color: #056DE8; font-weight: 600;">大部分 Token 是被浪费掉的</strong>——重复读文件、啰嗦回复、无意义的工具调用。模型在认真干活的部分，其实只占一半。</p>
+<p style="margin-top: 0; margin-bottom: 24px; text-align: justify;">我带着团队做了一轮实测，结论很直接：日常编码里，<strong style="color: #056DE8; font-weight: 600;">50%–85% 的 Token 是可以砍掉的</strong>，而且不靠换更便宜的模型，靠「分层优化」。</p>
+<p style="margin-top: 0; margin-bottom: 24px; text-align: justify;">这篇文章只讲模型和实测量级，不讲具体配置（配置太干，留到后面再说）。</p>
+<hr style="border: none; border-top: 1px solid #e1e4e8; margin: 40px 0;">
+<h2 style="font-size: 18px; font-weight: bold; margin-top: 45px; margin-bottom: 20px; color: #222; padding-left: 12px; border-left: 4px solid #056DE8; line-height: 1.4;">一、AI 编程的 Token，烧在 5 个独立层</h2>
+<p style="margin-top: 0; margin-bottom: 24px; text-align: justify;">我们把一次 AI 编程会话的 Token 消耗拆成 5 层，每一层都能<strong style="color: #056DE8; font-weight: 600;">独立优化</strong>：</p>
+<table style="border-collapse: collapse; width: 100%; margin-bottom: 24px; font-size: 14px; line-height: 1.7; color: #3f3f3f;"><thead><tr><th style="background: #f5f7fa; padding: 8px 12px; border: 1px solid #eaedf0; font-weight: bold; color: #333; text-align: left;">层</th><th style="background: #f5f7fa; padding: 8px 12px; border: 1px solid #eaedf0; font-weight: bold; color: #333; text-align: left;">名称</th><th style="background: #f5f7fa; padding: 8px 12px; border: 1px solid #eaedf0; font-weight: bold; color: #333; text-align: left;">在烧什么</th><th style="background: #f5f7fa; padding: 8px 12px; border: 1px solid #eaedf0; font-weight: bold; color: #333; text-align: left;">优化方向</th></tr></thead><tbody><tr><td style="padding: 8px 12px; border: 1px solid #eaedf0; color: #3f3f3f; text-align: left;">1</td><td style="padding: 8px 12px; border: 1px solid #eaedf0; color: #3f3f3f; text-align: left;"><strong style="color: #056DE8; font-weight: 600;">检索层</strong></td><td style="padding: 8px 12px; border: 1px solid #eaedf0; color: #3f3f3f; text-align: left;">AI 人肉 grep 几十个服务再读文件，重复调用爆表</td><td style="padding: 8px 12px; border: 1px solid #eaedf0; color: #3f3f3f; text-align: left;">代码图谱一次查准</td></tr><tr><td style="padding: 8px 12px; border: 1px solid #eaedf0; color: #3f3f3f; text-align: left;">2</td><td style="padding: 8px 12px; border: 1px solid #eaedf0; color: #3f3f3f; text-align: left;"><strong style="color: #056DE8; font-weight: 600;">协议层</strong></td><td style="padding: 8px 12px; border: 1px solid #eaedf0; color: #3f3f3f; text-align: left;">一条命令返回几千行日志，全是 Token</td><td style="padding: 8px 12px; border: 1px solid #eaedf0; color: #3f3f3f; text-align: left;">命令输出压缩</td></tr><tr><td style="padding: 8px 12px; border: 1px solid #eaedf0; color: #3f3f3f; text-align: left;">3</td><td style="padding: 8px 12px; border: 1px solid #eaedf0; color: #3f3f3f; text-align: left;"><strong style="color: #056DE8; font-weight: 600;">散文层</strong></td><td style="padding: 8px 12px; border: 1px solid #eaedf0; color: #3f3f3f; text-align: left;">AI 回复又长又啰嗦，文风吃掉大量输出</td><td style="padding: 8px 12px; border: 1px solid #eaedf0; color: #3f3f3f; text-align: left;">文风极简压缩</td></tr><tr><td style="padding: 8px 12px; border: 1px solid #eaedf0; color: #3f3f3f; text-align: left;">4</td><td style="padding: 8px 12px; border: 1px solid #eaedf0; color: #3f3f3f; text-align: left;"><strong style="color: #056DE8; font-weight: 600;">生成层</strong></td><td style="padding: 8px 12px; border: 1px solid #eaedf0; color: #3f3f3f; text-align: left;">代码写得太多，YAGNI 失效</td><td style="padding: 8px 12px; border: 1px solid #eaedf0; color: #3f3f3f; text-align: left;">最少代码纪律</td></tr><tr><td style="padding: 8px 12px; border: 1px solid #eaedf0; color: #3f3f3f; text-align: left;">5</td><td style="padding: 8px 12px; border: 1px solid #eaedf0; color: #3f3f3f; text-align: left;"><strong style="color: #056DE8; font-weight: 600;">调度层</strong></td><td style="padding: 8px 12px; border: 1px solid #eaedf0; color: #3f3f3f; text-align: left;">确定性任务也丢给大模型跑，浪费判断额度</td><td style="padding: 8px 12px; border: 1px solid #eaedf0; color: #3f3f3f; text-align: left;">脚本做脏活，只留判断角色</td></tr></tbody></table>
+<p style="margin-top: 0; margin-bottom: 24px; text-align: justify;">关键点：<strong style="color: #056DE8; font-weight: 600;">这 5 层是乘法关系，不是加法</strong>。</p>
+<p style="margin-top: 0; margin-bottom: 24px; text-align: justify;">单层省 20%，五层叠起来不是省 100%，而是指数级的——前提是每层真的独立有效。</p>
+<hr style="border: none; border-top: 1px solid #e1e4e8; margin: 40px 0;">
+<h2 style="font-size: 18px; font-weight: bold; margin-top: 45px; margin-bottom: 20px; color: #222; padding-left: 12px; border-left: 4px solid #056DE8; line-height: 1.4;">二、我的实测量级（不剧透精确数据）</h2>
+<p style="margin-top: 0; margin-bottom: 24px; text-align: justify;">下面是我自己 harness 跑出来的聚合量级，仅供参考方向：</p>
+<ul style="padding-left: 22px; margin-top: 0; margin-bottom: 24px; list-style-type: disc; color: #3f3f3f;"><li style="margin-bottom: 10px;"><strong style="color: #056DE8; font-weight: 600;">检索层</strong>：用代码图谱替代人肉检索后，工具调用次数砍了 <strong style="color: #056DE8; font-weight: 600;">约 70%</strong>。这一层贡献最大，因为它直接减少了"AI 反复读文件"的次数。</li><li style="margin-bottom: 10px;"><strong style="color: #056DE8; font-weight: 600;">协议层</strong>：给命令输出加压缩后，命令返回体积压了 <strong style="color: #056DE8; font-weight: 600;">九成以上</strong>。原来一条命令动辄几千行日志，现在只回关键几行。</li><li style="margin-bottom: 10px;"><strong style="color: #056DE8; font-weight: 600;">散文层</strong>：把 AI 文风训成"极简模式"后，纯文字输出大幅压缩，啰嗦话基本消失。</li><li style="margin-bottom: 10px;"><strong style="color: #056DE8; font-weight: 600;">生成层</strong>：强制"最少代码"纪律（不需要就不写），代码和配套文档量压了 <strong style="color: #056DE8; font-weight: 600;">约 53%</strong>。</li><li style="margin-bottom: 10px;"><strong style="color: #056DE8; font-weight: 600;">调度层</strong>：能写成 bash 脚本跑的确定性任务，全部从 Agent 手里收回；最后只留了 <strong style="color: #056DE8; font-weight: 600;">4 个"判断型"角色</strong>，其余流程调度、跑门禁、提 MR 全是脚本。</li></ul>
+<p style="margin-top: 0; margin-bottom: 24px; text-align: justify;">注意：这些数字<strong style="color: #056DE8; font-weight: 600;">不能简单相乘算总账</strong>。诚实地说，端到端的精确节省率需要严格 A/B 实验才能定。但保守估计，日常编码省 <strong style="color: #056DE8; font-weight: 600;">50%–85%</strong> 是稳的——标题说的「80%」是个偏乐观的体感值，不是精确结论。</p>
+<hr style="border: none; border-top: 1px solid #e1e4e8; margin: 40px 0;">
+<h2 style="font-size: 18px; font-weight: bold; margin-top: 45px; margin-bottom: 20px; color: #222; padding-left: 12px; border-left: 4px solid #056DE8; line-height: 1.4;">三、最反直觉的一点</h2>
+<p style="margin-top: 0; margin-bottom: 24px; text-align: justify;">省 Token <strong style="color: #056DE8; font-weight: 600;">不是「让 AI 变笨」，是「让 AI 别干重复活」</strong>。</p>
+<p style="margin-top: 0; margin-bottom: 24px; text-align: justify;">举个例子，Sub-Agent 分工：</p>
+<ul style="padding-left: 22px; margin-top: 0; margin-bottom: 24px; list-style-type: disc; color: #3f3f3f;"><li style="margin-bottom: 10px;">能写成 bash 脚本跑的<strong style="color: #056DE8; font-weight: 600;">确定性任务</strong>（跑测试、提 MR、清缓存），就别让 Agent 跑；</li><li style="margin-bottom: 10px;">只有<strong style="color: #056DE8; font-weight: 600;">需要判断</strong>的（架构决策、代码评审、异常定位），才交给大模型。</li></ul>
+<p style="margin-top: 0; margin-bottom: 24px; text-align: justify;">我们最后只留了 4 个判断型角色，其余全部脚本化。这一招省下的不止是 Token，还有"Agent 跑偏"的调试时间。</p>
+<hr style="border: none; border-top: 1px solid #e1e4e8; margin: 40px 0;">
+<h2 style="font-size: 18px; font-weight: bold; margin-top: 45px; margin-bottom: 20px; color: #222; padding-left: 12px; border-left: 4px solid #056DE8; line-height: 1.4;">四、底层逻辑一句话</h2>
+<p style="margin-top: 0; margin-bottom: 24px; text-align: justify;">AI 编程的 Token，一半花在「理解你不熟悉的代码、设计架构」上——这部分省不了，那是它真在干活。</p>
+<p style="margin-top: 0; margin-bottom: 24px; text-align: justify;">另一半花在「重复检索、啰嗦表达、过度生成、确定性任务滥用大模型」上——这部分，分层优化能砍掉大半。</p>
+<p style="margin-top: 0; margin-bottom: 24px; text-align: justify;"><strong style="color: #056DE8; font-weight: 600;">所以记住这句话：AI 编程贵，八成是浪费，不是模型贵。</strong></p>
+<hr style="border: none; border-top: 1px solid #e1e4e8; margin: 40px 0;">
+<h2 style="font-size: 18px; font-weight: bold; margin-top: 45px; margin-bottom: 20px; color: #222; padding-left: 12px; border-left: 4px solid #056DE8; line-height: 1.4;">五、下一篇聊什么</h2>
+<p style="margin-top: 0; margin-bottom: 24px; text-align: justify;">下篇我会讲具体怎么搭这五层：检索层用哪个工具、协议层怎么压、散文层怎么训、生成层用什么纪律卡住 YAGNI。</p>
+<p style="margin-top: 0; margin-bottom: 24px; text-align: justify;">那部分太干，我会整理成<strong style="color: #056DE8; font-weight: 600;">可直接抄的配置清单 + 实测数据表</strong>，方便你照着落地。</p>
+<hr style="border: none; border-top: 1px solid #e1e4e8; margin: 40px 0;">
+<p style="margin-top: 0; margin-bottom: 24px; text-align: justify;">我是 <strong style="color: #056DE8; font-weight: 600;">行途（Justin Li）</strong>，一个既带团队又天天写代码的资深技术经理。只分享能直接上手的 AI 工程化实战，不整虚的。</p>
+<p style="margin-top: 0; margin-bottom: 24px; text-align: justify;">👉 想要这份「五层 Token 优化配置清单」模板？关注同名公众号 <strong style="color: #056DE8; font-weight: 600;">行途技术手记</strong>，后台回复「Token」直接领，后续更新也会第一时间同步。</p>
+<hr style="border: none; border-top: 1px solid #e1e4e8; margin: 40px 0;">
+<blockquote style="margin: 24px 0; padding: 18px 20px; color: #5a5a5a; background: #f5f7fa; font-size: 15px; line-height: 1.8; border-radius: 6px; border-left: 3px solid #056DE8;"><strong style="color: #056DE8; font-weight: 600;">AIGC 声明</strong>：本文由作者基于一线 AI 工程化实践撰写，部分内容借助 AI 辅助整理与校订，核心方法论与实测数据均来自本人团队真实项目。</blockquote></section></div></div></div>
+<script>
+function copy(){
+  const r=document.createRange();r.selectNodeContents(document.getElementById('content'));
+  const s=window.getSelection();s.removeAllRanges();s.addRange(r);
+  try{document.execCommand('copy');alert('✅ 已复制！去微信编辑器 Ctrl+V 粘贴');}catch(e){alert('请手动全选复制');}
+  s.removeAllRanges();
+}
+</script>
+</body>
+</html>

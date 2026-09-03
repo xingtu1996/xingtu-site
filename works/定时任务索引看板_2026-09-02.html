@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="S13qqNlBrDmxZuSbQ8qF04">
+<head data-page-node-id="KyEbHgyZYK1GQU3cMWjkxQ">
+<meta charset="UTF-8" data-page-node-id="dr5CFsvLDKB9Y8oFbX0jwA">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="Rgm4PKjmJHpUokSoNsIRLX">
+<title>行途·定时任务索引看板 2026-09-02</title>
+<style>
+:root{
+  --blue:#056DE8; --blue-l:#4A9EFF; --cyan:#00D4FF; --orange:#FF6B35;
+  --ok:#0F9D58; --warn:#F5A623; --err:#D93025;
+  --bg:#F7F9FC; --card:#FFFFFF; --line:#E3E9F2;
+  --t1:#1A1F2B; --t2:#4A5568; --t3:#8492A6;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Helvetica Neue",sans-serif;
+  background:var(--bg); color:var(--t1); line-height:1.65;
+  padding:32px 20px 64px; font-size:14px;
+}
+.wrap{max-width:1080px;margin:0 auto}
+
+/* header */
+.hd{border-left:5px solid var(--blue);padding:4px 0 4px 18px;margin-bottom:8px}
+.hd h1{font-size:26px;font-weight:700;letter-spacing:-.3px}
+.hd .sub{color:var(--t3);font-size:13px;margin-top:4px}
+.verdict{
+  background:linear-gradient(90deg,#FFF4EF 0%,#FFF9F6 100%);
+  border:1px solid #FFD9C9;border-left:4px solid var(--orange);
+  border-radius:8px;padding:14px 18px;margin:20px 0 28px;
+}
+.verdict b{color:var(--orange)}
+.verdict p{color:#7A3E22;font-size:14px}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px}
+.st{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.st .n{font-size:28px;font-weight:700;line-height:1.2}
+.st .l{font-size:12px;color:var(--t3);margin-top:2px}
+.st.ok .n{color:var(--ok)} .st.warn .n{color:var(--warn)}
+.st.err .n{color:var(--err)} .st.blue .n{color:var(--blue)}
+
+section{margin-bottom:32px}
+h2{
+  font-size:17px;font-weight:700;margin-bottom:14px;
+  padding-bottom:8px;border-bottom:2px solid var(--line);
+  display:flex;align-items:center;gap:8px;
+}
+h2::before{content:"";width:4px;height:15px;background:var(--blue);border-radius:2px}
+
+/* table */
+table{width:100%;border-collapse:collapse;background:var(--card);
+  border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:13px}
+th{background:#EEF3FA;color:var(--t2);font-weight:600;text-align:left;
+  padding:11px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:11px 12px;border-bottom:1px solid #F0F3F8;vertical-align:top}
+tr:last-child td{border-bottom:none}
+td.name{font-weight:600;min-width:190px}
+code{background:#EEF3FA;color:var(--blue);padding:1px 5px;border-radius:4px;
+  font-family:"SF Mono",Menlo,Consolas,monospace;font-size:12px}
+.path{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:11.5px;color:var(--t2);
+  word-break:break-all;display:block;margin-top:3px}
+
+/* badges */
+.b{display:inline-block;padding:2px 9px;border-radius:11px;font-size:11.5px;font-weight:600;white-space:nowrap}
+.b-ok{background:#E6F4EA;color:#0B6B3A}
+.b-warn{background:#FEF3E2;color:#9A6212}
+.b-err{background:#FCE8E6;color:#A52714}
+.b-idle{background:#EEF1F6;color:var(--t3)}
+
+/* finding box */
+.find{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--err);
+  border-radius:10px;padding:18px 20px;margin-bottom:16px}
+.find h3{font-size:15px;margin-bottom:10px;color:var(--err)}
+.find.blue{border-left-color:var(--blue)} .find.blue h3{color:var(--blue)}
+.find.warn{border-left-color:var(--warn)} .find.warn h3{color:var(--warn)}
+.find ul{margin-left:18px;color:var(--t2)} .find li{margin-bottom:6px}
+.find li b{color:var(--t1)}
+
+/* flow */
+.flow{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px}
+.frow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin-bottom:14px}
+.fbox{flex:1;min-width:150px;border:1px solid var(--line);border-radius:8px;
+  padding:12px 14px;background:#FBFCFE}
+.fbox.prod{border-color:#BFE0FF;background:#F5FAFF}
+.fbox.cons{border-color:#FFD9C9;background:#FFF8F5}
+.fbox .t{font-weight:600;font-size:13px;margin-bottom:3px}
+.fbox .m{font-size:11.5px;color:var(--t3)}
+.arrow{display:flex;align-items:center;padding:0 12px;color:var(--t3);font-size:18px}
+.arrow.broken{color:var(--err)}
+.break-note{background:#FCE8E6;border:1px dashed #F5B7B1;border-radius:8px;
+  padding:12px 16px;color:#8C2B1E;font-size:13px;margin-top:6px}
+.break-note b{color:#A52714}
+
+/* fixes */
+.fix{background:var(--card);border:1px solid var(--line);border-radius:10px;
+  padding:0;overflow:hidden}
+.fix-item{display:flex;gap:14px;padding:14px 18px;border-bottom:1px solid #F0F3F8}
+.fix-item:last-child{border-bottom:none}
+.pri{flex-shrink:0;width:44px;height:24px;border-radius:6px;display:flex;
+  align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff}
+.p0{background:var(--err)} .p1{background:var(--warn)} .p2{background:var(--t3)}
+.fix-body{flex:1}
+.fix-body .ti{font-weight:600;margin-bottom:3px}
+.fix-body .de{font-size:13px;color:var(--t2)}
+
+/* todo */
+.todo{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:4px 18px}
+.todo li{padding:11px 0;border-bottom:1px solid #F0F3F8;list-style:none;color:var(--t2)}
+.todo li:last-child{border-bottom:none}
+.todo li b{color:var(--t1)}
+
+.ft{margin-top:36px;padding-top:16px;border-top:1px solid var(--line);
+  color:var(--t3);font-size:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+@media(max-width:760px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  table{font-size:12px} th,td{padding:8px}
+  .arrow{padding:6px 0;transform:rotate(90deg)}
+}
+</style>
+</head>
+<body data-page-node-id="9X58BWTUvzPBDBWE7XsXiB"><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap" data-page-node-id="hLc6m1LCwM9hMIcjLMpdbW">
+
+  <div class="hd" data-page-node-id="82Azs9Ytsg7DBwd6VeY014">
+    <h1 data-page-node-id="vIiVNG1f8rqfCXGtyECQke">行途 · 定时任务索引看板</h1>
+    <div class="sub" data-page-node-id="ihCdvRy4FmBDZxg01SGaMr">盘点日期 2026-09-02（周三）｜ 共 5 个自动化任务 ｜ 数据源：WorkBuddy Automations + 本地文件系统核验</div>
+  </div>
+
+  <div class="verdict" data-page-node-id="phgzTlXDPgFiVxHlFXlWo1">
+    <p data-page-node-id="m4AnWuHtLG1JhGCcJJAAUj"><b data-page-node-id="utn9huXBt0zKPYDcoqqiKK">核心结论：</b>5 个定时任务<b data-page-node-id="3TjOIByWqnCnqXGVz6lLgY">全部指向一个孤儿目录</b> <code data-page-node-id="eXPqcQfwopjJ8xMqSOn2Un">~/工作室/xingtu</code>（仅 14 个文件），
+    而真正的主工作区是 <code data-page-node-id="0yeQzBTudcnWShs5IXLL0E">~/xingtu</code>（5288 个文件）。
+    结果是：2 个采集任务在跑但产物落错地方，3 个消费任务因依赖缺失<b data-page-node-id="blAOyLx9pptBz7B2ai2Dws">必然执行失败</b>。
+    根因只有一个 —— 路径分裂，修掉它 5 个任务一起活。</p>
+  </div>
+
+  <div class="stats" data-page-node-id="SEDrEu3G2G5sRv556AE8f4">
+    <div class="st blue" data-page-node-id="Z8iHkVgRhPMS8rPG8H9gcq"><div class="n" data-page-node-id="BuEbdQ6dBOTbUgvK9alq3B">5</div><div class="l" data-page-node-id="wA9YMt9QN85z3B8dxvHKN8">定时任务总数</div></div>
+    <div class="st warn" data-page-node-id="USMENu8MRdoBHuNTAcCSxH"><div class="n" data-page-node-id="YHoBTrEjMq5CbeVGDt90re">2</div><div class="l" data-page-node-id="s2ys7Y3Cea1TOpEO7TEUT0">能跑但产物异位</div></div>
+    <div class="st err" data-page-node-id="bhV5jPyZsRUjgDGEYTFIsQ"><div class="n" data-page-node-id="5cTC9ADClobTeZcKf8KV8A">3</div><div class="l" data-page-node-id="G6DzOkA2VZLtuGBtC98h2a">依赖缺失·必然失败</div></div>
+    <div class="st err" data-page-node-id="ARHkWukvAEI4WohFjaYTwt"><div class="n" data-page-node-id="XAOaarNbYq9TeYiUNrhomb">1</div><div class="l" data-page-node-id="WCjaGZVBl2FKX3MSyEDaRt">根因（路径分裂）</div></div>
+  </div>
+
+  <!-- 核心发现 -->
+  <section data-page-node-id="3b215zFKFGpeJLT8eaYHrf">
+    <h2 data-page-node-id="Vw1seFrHkmTNCmokW2ZBKu">核心发现：两个 xingtu 目录，任务全指错了</h2>
+
+    <div class="find" data-page-node-id="4ZNKSa04okksG6KKNgjYWM">
+      <h3 data-page-node-id="dLmFFt3O5L1n9wIyp9Z4AR">A 目录（任务指向）= 孤儿残留，B 目录（真正的家）= 主工作区</h3>
+      <ul data-page-node-id="rQVlqyfXJw0x2YrukVSsLk">
+        <li data-page-node-id="ZcnTn0FSdhztWARBQ7LANI"><b data-page-node-id="NpWLJAaexV0PDhqahyXAFv">A</b> <code data-page-node-id="uNxYQ407lLwqwcsKm4AZ3G">~/工作室/xingtu</code> —— 仅 <b data-page-node-id="Q9JpyGPFlKTUghGqm9AtZK">14 个文件</b>，tools 只有 7 项，且 <code data-page-node-id="oIfvqn3G4mqiczkb0ugCMQ">素材库/</code> 目录<b data-page-node-id="bFwEkKihWFYGO2wBVZZXBj">完全不存在</b>。是工作空间合并后遗留的孤岛。</li>
+        <li data-page-node-id="OTcVt2hb8rYbGIH6oEZPsE"><b data-page-node-id="YYUCqhS0zsegCag6TIcTyj">B</b> <code data-page-node-id="fNKndjxOQwu0BUO3rHyz7x">~/xingtu</code> —— <b data-page-node-id="HLjpzMrGxwWymxOlrk8uuU">5288 个文件</b>，tools 有 73 项，素材库 / 内容战略分析 / 全部脚本齐备。</li>
+        <li data-page-node-id="wx9cC17m1Lzl3smDh4rt76">两者 <code data-page-node-id="ATlGckYca79DLGjkoMwTpL">realpath</code> 各不相同，<b data-page-node-id="eEZTYLTJ4ZxlfbZJ43JUVy">不是软链接</b>，是物理上两个独立目录。</li>
+      </ul>
+    </div>
+
+    <div class="find warn" data-page-node-id="eeCHYYowBONXCKnT7bsYvj">
+      <h3 data-page-node-id="weTUeOkdIVzNT5WRkhlile">断更证据：主工作区已 4 天没有新数据</h3>
+      <ul data-page-node-id="q59XWfVP1yjxzTvE28s8p2">
+        <li data-page-node-id="Ek8TEU8hff7uLDkvDCV9If"><code data-page-node-id="CMAnBijAzDEHFC80ozuUzY">sessions_analysis.json</code>：B 侧停在 <b data-page-node-id="XWO166zWDVb1CGmxmslokR">2026-08-28 02:00</b>，A 侧已更新到 <b data-page-node-id="CSDvnREBRl4XNWvVvKOtLR">2026-09-02 11:24</b> —— L1 一直在跑，只是产物全进了 A。</li>
+        <li data-page-node-id="dEIQA8cAlPtkH9IJQ6Lqny">对话挖掘素材：B 侧停在 <b data-page-node-id="ntYtQFuo0c4ixfVPRC0685">2026-08-29</b>，A 侧新增了 <b data-page-node-id="b6YMBcTHBtZsloEwRO7nN4">08-31、09-02</b> 两份 —— L2 同理。</li>
+        <li data-page-node-id="MGhq3zQ6gKFmjeIR82nPhc"><code data-page-node-id="BQcR2rMlgnZFlcZvQktlRb">素材库/materials_library.json</code>：B 侧停在 <b data-page-node-id="oyYjJ8tb1ASISl0X18XVWA">2026-08-27 15:56</b>，已 6 天未刷新 —— 因为生成它的 L3 任务指向 A，而 A 里脚本不存在。</li>
+      </ul>
+    </div>
+
+    <div class="find blue" data-page-node-id="DmZi7c9bUBS9H7HCt5EpcN">
+      <h3 data-page-node-id="nBUJ4tRE4OPKDMfAxjeJIh">关键脚本在两个目录的分布差异</h3>
+      <ul data-page-node-id="3HUhhQOrK3EBuMZEAOvYnM">
+        <li data-page-node-id="nxaUSTeD6DNqEEJGapYAz2">A 侧存在：<code data-page-node-id="z9EX2a5g7luynkF3aJESuy">sessions_analyzer.py</code>、<code data-page-node-id="o5L9Liylgd39yRMqVRge6Y">ai_collab_miner.py</code>（所以 L1/L2 能跑）</li>
+        <li data-page-node-id="lxvNyHANfnXgo9tvFQro8r">A 侧<b data-page-node-id="namx4QBZtPHvIpduLwaksw">缺失</b>：<code data-page-node-id="2AmSjPxiWOo4oUxAw3sInb">materials_library_gen.py</code>、<code data-page-node-id="dH3IB6WVvpHZkieU1Qw1ms">flywheel_monitor.py</code>、<code data-page-node-id="B9E6ClrfbvWwvkQKHH7JlM">discover_ai_sources.py</code>、<code data-page-node-id="6eI1Bt7CGx0hXnjnfHhHEu">wechat_audience_puller.py</code>（所以 L3 与变现飞轮必挂）</li>
+        <li data-page-node-id="3VnZVBYgZyVK6PKcFzNoCZ">B 侧：上述 6 个脚本<b data-page-node-id="T3cRIzEPzUtv20BENopN7F">全部存在</b>，资产是完整的，只是没被任务指到。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 索引总表 -->
+  <section data-page-node-id="QEanzTILi0dtzfLY45R6g1">
+    <h2 data-page-node-id="4K1y8vcJg77XJgAFLvyyiU">任务索引总表</h2>
+    <table data-page-node-id="JMtzHHZdtNlkxh6okd5rPg">
+      <thead data-page-node-id="DPqh0zJsnhit2Mynd5cUoa">
+        <tr data-page-node-id="00W3t5equDBPXHETw4vMWL">
+          <th style="width:200px" data-page-node-id="AD1Q7jUUHapSONN1fnaBM0">任务名称</th>
+          <th style="width:110px" data-page-node-id="h8o0SCn7n2HEEZsP32z0CW">频率 / 时间</th>
+          <th style="width:120px" data-page-node-id="DcbH5698JHELEcSwLb0Kg7">工作目录</th>
+          <th data-page-node-id="2ypbxkAnG3gNwlP2Ezvxur">核心依赖（实测）</th>
+          <th style="width:96px" data-page-node-id="SfA84OqRtwP43rv4Jbmkrg">状态</th>
+        </tr>
+      </thead>
+      <tbody data-page-node-id="P97IHG1FDXAzHBWQGDHLHU">
+        <tr data-page-node-id="UAErC932UUTbJOXpf4McsI">
+          <td class="name" data-page-node-id="z1QzRcn0tqoVFgbvUDapiq">AI会话广撒网采集·主题与自媒体潜力分析
+            <span class="path" data-page-node-id="xih95IN7QZZ2ZKL2KxK6oG">id: automation-1786033319546</span></td>
+          <td data-page-node-id="qAR6QvMIiPhO31DSQU7VJT">每日<br data-page-node-id="D9qX5lqyPPeHGPY9HqAgS7">02:00</td>
+          <td data-page-node-id="PDmJ4QaJLMhSBeigywSCg9"><span class="b b-err" data-page-node-id="MJnVlDzNCyHnDHurZaSril">A 孤儿</span>
+            <span class="path" data-page-node-id="C2UTfz0FNFgDzFooNuDRpe">A/tools/project_indexer</span></td>
+          <td data-page-node-id="GvxktGjDd3fQ4ZFJWA6sLP"><code data-page-node-id="4ovr7Tp0Lw0egSt0diIz5r">sessions_analyzer.py</code> A 侧存在 → 脚本可跑；产物 <code data-page-node-id="DNn1Qft0gRucz79G5nhV9S">sessions_analysis.json</code> + 看板落 A 侧</td>
+          <td data-page-node-id="ZvFBRHx5YTkR5LG0YswKbf"><span class="b b-warn" data-page-node-id="okokcnK07BeBhu4Gl5eSnv">能跑·产物异位</span></td>
+        </tr>
+        <tr data-page-node-id="UNdD09ykAM0A3TzqTo66MU">
+          <td class="name" data-page-node-id="n81tVvtReu68KMiJK2uq2E">AI协作对话挖掘·每日1素材
+            <span class="path" data-page-node-id="F0ZUjj7CCwX9gpkwJMvigy">id: automation-1786945815343</span></td>
+          <td data-page-node-id="TUUHtbEt8MuVBGgrhnCJZ3">每日<br data-page-node-id="A7cbINvN1sHiBrBVAyEPxZ">14:30</td>
+          <td data-page-node-id="Hl186HH4qj6gniOI53dPk9"><span class="b b-err" data-page-node-id="cKHBXplWHCLZeBrvqSegFP">A 孤儿</span>
+            <span class="path" data-page-node-id="0LiFHnF0XPfD8CtvGgyusY">A/tools</span></td>
+          <td data-page-node-id="8hjFBGjWrTAgru0DnsaxWi"><code data-page-node-id="crnGBndOPCeJLpIU0K5u2U">ai_collab_miner.py</code> A 侧存在 → 脚本可跑；素材写 A/06_个人知识库_Obsidian/02_素材库/对话挖掘/</td>
+          <td data-page-node-id="aaRTlwPYFfC8WE7q5FKXVl"><span class="b b-warn" data-page-node-id="9NByqUK8J7FBP50qc8883f">能跑·产物异位</span></td>
+        </tr>
+        <tr data-page-node-id="pwucF1NOQ2avmP06hggIOn">
+          <td class="name" data-page-node-id="6JyEPJULXrPXb1I1kpJUec">行途每日发布飞轮·分层选题
+            <span class="path" data-page-node-id="ZCH5B0qCk2u8vPvGWclvcy">id: automation-1787754681498</span></td>
+          <td data-page-node-id="dTgj9dDPbsjiALGDf8Xoyd">每日<br data-page-node-id="fxo4zzpVVonqi52pqnoHhY">19:00</td>
+          <td data-page-node-id="dIKTJLa7vizCs9D4arc3SO"><span class="b b-err" data-page-node-id="2xgpd0NrehNlFaw0HV5cmG">A 孤儿</span>
+            <span class="path" data-page-node-id="EwOcnb3QiVhuJayV5xgio5">A（根）</span></td>
+          <td data-page-node-id="aAXMjUDnEtLXuIIrQzAp9i">读 <code data-page-node-id="kgTaSzG1jGijn0UKGgJBSQ">A/素材库/materials_library.json</code> → <b data-page-node-id="hV8bdhbWiyG8htyXxp4gb8">目录不存在，文件不存在</b></td>
+          <td data-page-node-id="yzIeWC3SQVIOxR15rpAz33"><span class="b b-err" data-page-node-id="CWgAQVcA8zE1lAW0Znhrna">必然失败</span></td>
+        </tr>
+        <tr data-page-node-id="WlkVEAdCU410CMbh76rgle">
+          <td class="name" data-page-node-id="cyeAYSiKCyMceZ4frRnOv1">行途素材库每周刷新（L3·素材挖掘Skill）
+            <span class="path" data-page-node-id="EmH2soK1CTDHGWv7jKoYFk">id: automation-1787646091698</span></td>
+          <td data-page-node-id="kDC9yAjuwg8Jaw3CMG7aSn">每周日<br data-page-node-id="NxiWJAhu0EsCcxZFrgKFvy">21:00</td>
+          <td data-page-node-id="3D0QEluvUrdEYj5UlJagm0"><span class="b b-err" data-page-node-id="RnJEoYTdkJY9Gc5E53Lfvv">A 孤儿</span>
+            <span class="path" data-page-node-id="2fTfJ6EuGXHWOwfKg3XF68">A（根）</span></td>
+          <td data-page-node-id="GB4bRmsTjD8FRHWy8Gjm9O">核心脚本 <code data-page-node-id="PidTLtnGnpQB24AJdJmgK0">A/tools/materials_library_gen.py</code> <b data-page-node-id="58tOR9GMV4Du8EeuxALfMU">缺失</b>；输出目录 <code data-page-node-id="GDOxqRI4FD7GfL8YyilXIV">A/素材库</code> <b data-page-node-id="n82o8u1N8wWm4ayrlCe8Dd">不存在</b></td>
+          <td data-page-node-id="5JFHkhnI6DJknhMh2lEQt2"><span class="b b-err" data-page-node-id="N4VM5gKLfzA2DYCtG68csf">必然失败</span></td>
+        </tr>
+        <tr data-page-node-id="kaAYj8wX8ANrR07bNztuFy">
+          <td class="name" data-page-node-id="Akg29GBMpbt5FOcg0Cos5p">行途·变现驱动内容飞轮
+            <span class="path" data-page-node-id="mFyJ3X2CnHHCtU1Hjf4OKK">id: automation-1787753469338</span></td>
+          <td data-page-node-id="7WmZyfHppM5Fu0mBrXIEKY">每周日<br data-page-node-id="1FVKcXaVGk0T8T2TVqjN5n">22:00</td>
+          <td data-page-node-id="Kz61lPsok61QmITthG3NUk"><span class="b b-err" data-page-node-id="IFJEexVpnJSVg3vOBTV0xc">A 孤儿</span>
+            <span class="path" data-page-node-id="pLoKKoKG8FYAtUTkSIgC7v">A（根）</span></td>
+          <td data-page-node-id="EGgZ8CT2sZ1y4mo2nvIho4">5 个依赖中 3 个缺失：<code data-page-node-id="FnieAtIsyQGPWXTYJ899ew">materials_library_gen.py</code>、<code data-page-node-id="w11flYAUyCHQ4tqfGm8X6C">flywheel_monitor.py</code>、<code data-page-node-id="AuxPSHH6Sp2ITNp98TK75h">A/素材库/*</code>（黄金会话萃取 / 博文骨架库）</td>
+          <td data-page-node-id="8X4k5w0dAcHZy0AYshjI3L"><span class="b b-err" data-page-node-id="SAHzWkq4nLb9RsqKlZv3Qf">大部分失败</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 数据流 -->
+  <section data-page-node-id="MeCXjEixsEQCT4MGikl7RH">
+    <h2 data-page-node-id="5YDsRI782hq1Y0GAoAyIKn">数据流拓扑：生产端与消费端物理隔离</h2>
+    <div class="flow" data-page-node-id="pBxW8Jp5SKJ3pba7W1U0tG">
+      <div class="frow" data-page-node-id="AbtnfSToazOdzXwS0C9OmZ">
+        <div class="fbox prod" data-page-node-id="ya6t3Mw7xqSNi0aOYRh7tq">
+          <div class="t" data-page-node-id="2JiHvnrFQJm5S4xSla97W1">L1 广撒网采集</div>
+          <div class="m" data-page-node-id="bx6eVOpEZj4Ml4F90dQrXs">每日 02:00 · sessions_analyzer</div>
+        </div>
+        <div class="arrow" data-page-node-id="gbWxajMdlb1MpXoZ1e2Km3">→</div>
+        <div class="fbox prod" data-page-node-id="sIoxeNf989K97l2JrCqs1d">
+          <div class="t" data-page-node-id="7KgawY1NgY7kYrPHMA4kR3">L2 每日 1 素材</div>
+          <div class="m" data-page-node-id="x48lW8raWwmvH7kkAlnerH">每日 14:30 · ai_collab_miner</div>
+        </div>
+        <div class="arrow broken" data-page-node-id="S8tMSQeR1zHHOT03N1kTsf">✕</div>
+        <div class="fbox cons" data-page-node-id="NmO4G7VY6RYahOKGoEY3CI">
+          <div class="t" data-page-node-id="PDJM7YtlitBAczuo4fBmXL">L3 素材库刷新</div>
+          <div class="m" data-page-node-id="Cq5PYDRnlOOppLWEFCYpkB">周日 21:00 · 脚本缺失</div>
+        </div>
+        <div class="arrow broken" data-page-node-id="DPPwskVFuevGizJemvpCub">✕</div>
+        <div class="fbox cons" data-page-node-id="iqqme4ZFBJKqHXGMnRoe4V">
+          <div class="t" data-page-node-id="nouIHmjv6vkKBx74em4WHU">发布飞轮 / 变现飞轮</div>
+          <div class="m" data-page-node-id="GE3sxOAkojUz8g7dPUJirl">每日 19:00 · 周日 22:00</div>
+        </div>
+      </div>
+      <div class="break-note" data-page-node-id="RSKw7gzzbcLGogkF8QYj8Q">
+        <b data-page-node-id="3B5lpxzDxbG7P2s406MhI0">断链点 1（致命）：</b>L1/L2 把素材写进孤儿目录 A，而 L3 之后的所有消费方读的是 <code data-page-node-id="SCbHGg9k7fe6pYwojh5r1H">A/素材库</code> —— 这个目录<b data-page-node-id="1TpqJj2D2SQbqBgJbCrKM1">从未被任何任务成功生产过</b>。
+        生产端在 A、消费端也在 A，看似一致，实则 L3 这座"加工厂"本身是坏的，<b data-page-node-id="W5FAUN9wkyTHF5MVs00Rsm">整条链路从未真正打通</b>。
+        <br data-page-node-id="g7q6O2UuP1LeuPdTNolHuA"><br data-page-node-id="b8NVG7X7dUdXrvDDiKhtIH">
+        <b data-page-node-id="SFJIiv6OizNjOqPayhZ4KW">断链点 2（时序）：</b>发布飞轮每天 19:00 要读素材库，但素材库只在周日 21:00 刷新 —— 即使修好路径，周一到周六读的也是<b data-page-node-id="dz5CRApkK6FqEffXIGwBIj">最多 6 天前</b>的快照，时效抢发类卡片会失真。
+      </div>
+    </div>
+  </section>
+
+  <!-- 冗余 -->
+  <section data-page-node-id="hdX86c0DL7GnKWRlpF9vx2">
+    <h2 data-page-node-id="e7MGE6FNLn8a3mSkt8nyZV">冗余判定：变现飞轮重复干了 L2 / L3 的活</h2>
+    <div class="find warn" data-page-node-id="IijZQdqdLsXDcVXr09pJpf">
+      <h3 data-page-node-id="B3eCJilTBzkByq0CIW8HV3">周日 21:00 与 22:00，一小时内重复执行同一批脚本</h3>
+      <ul data-page-node-id="UQZcSLPeONcRj5UYKWcWXf">
+        <li data-page-node-id="82pMdzE2QtKWXzt08weTN6">变现飞轮（22:00）内部又调用了 <code data-page-node-id="awTB4UB3xyoyNJAqj8MWYF">ai_collab_miner.py</code>（L2 每日已在跑）、<code data-page-node-id="yljXBd67RpBrnxGYRhK0JH">project_indexer</code>、<code data-page-node-id="A5lYDl78wtWzXu0kZeNJRI">materials_library_gen.py</code>（L3 21:00 刚跑完）。</li>
+        <li data-page-node-id="RdHQgJJ401w7OrBiTA6xt9"><b data-page-node-id="mXWySu1CfPmUL4couZDSFF">建议定位重构：</b>变现飞轮应只做「<b data-page-node-id="rkqvJaPdAF8FkEtHjFQ8TF">读取已有素材 + 变现导向排期 + 战略决策</b>」，把生产环节完全交给 L1/L2/L3。
+        它真正的稀缺价值是「变现驱动排序」这个判断，不是再跑一遍采集。</li>
+        <li data-page-node-id="Vy0qFXQas0zDCXH7EBeAn1">顺带：L3 里已写了「若发现 <code data-page-node-id="kdOzdFp7nlKlSZDffa5rnp">/projects/*/.claude</code> 盲区则提示可扩展」的衔接检查，说明这套 L1/L2/L3 分层设计本身是合理的，问题只出在执行路径。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 修复清单 -->
+  <section data-page-node-id="izs1zqrcg51Dkv3qxdTzkE">
+    <h2 data-page-node-id="PK4TUOC6Hl2b0uoekahCJ1">修复清单（按优先级）</h2>
+    <div class="fix" data-page-node-id="4ccmto8WqnaF71vOxALDB6">
+      <div class="fix-item" data-page-node-id="kRRHqR4gQ3nHDiwtE9pUac">
+        <div class="pri p0" data-page-node-id="e9AAStVgegmLF6at2ATabB">P0</div>
+        <div class="fix-body" data-page-node-id="nNc5WBooyQ2GyUBLp48DhX">
+          <div class="ti" data-page-node-id="YnzkyrM0b4m1PQ7ONakSoB">路径全量归一：5 个任务的 cwds + prompt 内绝对路径，A → B</div>
+          <div class="de" data-page-node-id="zfHJrqyBJaOvBazUYHUSho">把 <code data-page-node-id="JGYGdVCxCftRijUB8tem80">~/工作室/xingtu</code> 全部替换为 <code data-page-node-id="eBkDuQoPSgvitSB52hEc2u">~/xingtu</code>。
+          注意 prompt 正文里也写死了路径（不止 cwds 字段），两处都要改，否则任务会在 B 目录下又去读 A 的文件。</div>
+        </div>
+      </div>
+      <div class="fix-item" data-page-node-id="RQQSFblwA60fc2mobYoBQv">
+        <div class="pri p0" data-page-node-id="kV4ERHHwyt0unEEFWGjR8j">P0</div>
+        <div class="fix-body" data-page-node-id="uRcI3mKbuV7Z41S5KYItNJ">
+          <div class="ti" data-page-node-id="ioz1VqpNTaAXazDqPEIEw5">数据回流：把 A 侧 4 天的产出迁回主工作区（合并，不覆盖）</div>
+          <div class="de" data-page-node-id="s04sg5sawOG0cYOrG0BjWG">需迁移：<code data-page-node-id="rEDsjHEucLXHdKHLboVsPg">sessions_analysis.json</code>、<code data-page-node-id="CFTgEZ4VBQjjTFuoA6EXGh">sessions_dashboard.html</code>、
+          <code data-page-node-id="JomiCTq4GcPpku4FID051M">06_个人知识库_Obsidian/02_素材库/对话挖掘/</code> 下 08-31、09-02 两份素材。
+          B 侧已有同名文件，建议先 diff 再合并，<b data-page-node-id="qjloGAkGzl1xPMNBsUR8SH">不直接覆盖</b>。</div>
+        </div>
+      </div>
+      <div class="fix-item" data-page-node-id="Zb0CsD0vycIgQnDsP1BN9I">
+        <div class="pri p0" data-page-node-id="krT2ElLcyaZm4rt1pC7HZz">P0</div>
+        <div class="fix-body" data-page-node-id="UvIjCPOsIbtbaArICMQvAI">
+          <div class="ti" data-page-node-id="Q0hpRLX2GZ60wImogCxyGh">修完路径后补跑一次 L3，让发布飞轮有东西可读</div>
+          <div class="de" data-page-node-id="CGaC6akVi7Fl08sFv5BWhy">素材库已 6 天未更新（停在 08-27 15:56）。L3 跑通后，19:00 的发布飞轮才有真实素材可选。</div>
+        </div>
+      </div>
+      <div class="fix-item" data-page-node-id="AfCcPga5q5sr4WCJPJZdfM">
+        <div class="pri p1" data-page-node-id="AaFGwmQsnoAGnlGzz87jQO">P1</div>
+        <div class="fix-body" data-page-node-id="N6QaPv9kyW6QkoWtK2LF90">
+          <div class="ti" data-page-node-id="HheLbmHpe6E85CAJexLEpt">变现飞轮去重：删掉内部的脚本生产步骤</div>
+          <div class="de" data-page-node-id="0bb2mQebrn1ik9Yc6khatf">保留「变现驱动排序 + 本周 TOP5 排期 + 反哺校验 + 效率埋点」，删除 ai_collab_miner / project_indexer / materials_library_gen 的重复调用。</div>
+        </div>
+      </div>
+      <div class="fix-item" data-page-node-id="MYSeDTxN4HZwmm7DjxhlIF">
+        <div class="pri p1" data-page-node-id="Qe0EQ0TkgFgwmBBxI7fshg">P1</div>
+        <div class="fix-body" data-page-node-id="sfheigUJNb10BhmdCEUajj">
+          <div class="ti" data-page-node-id="5l9vTtmUvpIbsJHZCdr066">素材库刷新节奏：一周一次不够</div>
+          <div class="de" data-page-node-id="x1UWA4yXEzkwsItAcjPljT">建议改为 <b data-page-node-id="yTE5hYcKVG6mEpV85D5oJb">周日 21:00 + 周三 21:00</b> 两次；或在发布飞轮里加一句「若素材库距上次刷新 &gt;3 天则先刷新」。</div>
+        </div>
+      </div>
+      <div class="fix-item" data-page-node-id="x7eyt3yai6EPvIQ6WdlZ6k">
+        <div class="pri p2" data-page-node-id="EWosieTNVqbfNYSTygUAuk">P2</div>
+        <div class="fix-body" data-page-node-id="u2cmg1bymDZ2lV74GDS1y3">
+          <div class="ti" data-page-node-id="c3yOp5plxdnVo6oczNKLpE">孤儿目录 A 的处置</div>
+          <div class="de" data-page-node-id="10dZz8KiGEWLqmdSPqLBjq">迁移确认无误后归档（<b data-page-node-id="T9OVTNEjZeejRm8DVWxHLc">不建议直接删除</b>）。可移动到一个明确的归档位置并留一份 README 说明「此目录已于 2026-09-02 废弃」。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 待议 -->
+  <section data-page-node-id="LhBBHK3RjYsasWL9MAbqE9">
+    <h2 data-page-node-id="m2AHHmyHECF0KUfKRVCftB">待议（需你拍板）</h2>
+    <ul class="todo" data-page-node-id="nDtmXIVHJUaBMSc0VW0xEt">
+      <li data-page-node-id="o6H6soRcsH1mEFaz9oGCgv"><b data-page-node-id="sOG8HHMWLjRA0C1HcGLSEn">1.</b> 现在是否立刻执行 P0 的路径归一？（我可以一次性改完 5 个任务，你确认后我就动手）</li>
+      <li data-page-node-id="YkYvnoGKc6ncERk07E1vIP"><b data-page-node-id="KnC9k2LSmls1DpI4OgPCOu">2.</b> 在修好之前，要不要先<b data-page-node-id="zo9u2eGdPeqsP0Wk1RyQgP">暂停失效的 3 个任务</b>（发布飞轮 / L3 / 变现飞轮），避免每天空转消耗？</li>
+      <li data-page-node-id="k0Zig4D8Db1HrzOAQZ3pJH"><b data-page-node-id="lepPcnmwn6fc9gm5392fLH">3.</b> 变现飞轮去重你认不认？还是保留它「自采集自决策」的独立性作为冗余保险？</li>
+      <li data-page-node-id="uwkI8VUVGubHVdISyuHClH"><b data-page-node-id="HTlT2RhJDvSEqsv9jFCKpy">4.</b> 素材库刷新频率：一周两次（日+三）还是跟随发布飞轮按需刷新？</li>
+      <li data-page-node-id="0yzkVToVP26E8mKHX7CE6q"><b data-page-node-id="JIDUd9PLvPmeinjAfXMNf4">5.</b> 孤儿目录 A 归档位置定在哪？需要我出一份迁移 + 归档方案吗？</li>
+    </ul>
+  </section>
+
+  <div class="ft" data-page-node-id="yueuVW1AMtPkE3WAog96Ym">
+    <span data-page-node-id="E8EEg6ZFuJ1GE5BWAioWTW">行途 · 定时任务索引看板 ｜ 生成于 2026-09-02</span>
+    <span data-page-node-id="rrnwKHcpEyw2rK25gZdExD">核验方式：automation 元数据 + 文件系统实探（realpath / stat / ls）</span>
+  </div>
+
+</div>
+
+  <footer style="margin-top:36px;border-top:2px solid #056DE8;padding:16px 20px;background:#f5f9ff;border-radius:10px;font-size:13px;color:#1a1a1a;line-height:1.9">
+    <div style="font-weight:700;color:#056DE8;margin-bottom:8px">📎 权威锚点 / 引用来源</div>
+    <ul style="margin:0;padding-left:18px">
+      <li>微信公众平台·发布能力官方文档（确认 2025-07 起个人主体账号被回收 freepublish 权限）：<a href="https://developers.weixin.qq.com/doc/service/guide/product/publish.html" target="_blank" rel="noopener" style="color:#056DE8;text-decoration:underline">https://developers.weixin.qq.com/doc/service/guide/product/publish.html</a></li>
+      <li>微信公众平台·草稿箱官方文档（草稿管理归属服务号能力；个人号 draft/add 社区实测 48001，待 curl 实调定论）：<a href="https://developers.weixin.qq.com/doc/service/guide/product/draft.html" target="_blank" rel="noopener" style="color:#056DE8;text-decoration:underline">https://developers.weixin.qq.com/doc/service/guide/product/draft.html</a></li>
+      <li>心跳/失效告警方案：本工作区 feishu_bot 现成脚本 + 定时任务巡检：<code style="background:#eef4ff;padding:1px 6px;border-radius:4px;color:#0a3d7a">feishu_bot/</code></li>
+      <li>已发布文章档案（回流钩子）：<code style="background:#eef4ff;padding:1px 6px;border-radius:4px;color:#0a3d7a">xingtu-vault/09_个人台账/03_已发布文章档案/已发布文章档案.md</code></li>
+    </ul>
+    <div style="margin-top:8px;color:#555">完整引用索引：<code style="background:#eef4ff;padding:1px 6px;border-radius:4px;color:#0a3d7a">specs/20260902-断点续传与集中提示词/05_权威锚点与引用来源.md</code></div>
+  </footer>
+
+</body>
+</html>

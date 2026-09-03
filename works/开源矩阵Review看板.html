@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行途开源矩阵 · 逐仓 Review</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; background:#f7f9fc; color:#1e293b; padding:32px 20px; }
+  .wrap { max-width:960px; margin:0 auto; }
+  h1 { text-align:center; font-size:24px; color:#0f172a; margin-bottom:6px; }
+  .sub { text-align:center; color:#64748b; font-size:13px; margin-bottom:24px; }
+  .sum { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:22px; }
+  .sum .s { background:#fff; border-radius:12px; padding:16px; text-align:center; border:1px solid #eef2f7; }
+  .sum .n { font-size:26px; font-weight:700; }
+  .sum .l { font-size:12px; color:#64748b; margin-top:4px; }
+  .g { color:#2E8B57; } .w { color:#b45309; } .r { color:#dc2626; } .b { color:#0f172a; }
+  table { width:100%; border-collapse:collapse; background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,.05); }
+  th,td { padding:11px 14px; font-size:13px; text-align:left; border-bottom:1px solid #eef2f7; }
+  th { background:#f8fafc; color:#475569; font-weight:600; }
+  td .st { font-weight:600; }
+  .stg { display:inline-block; padding:2px 10px; border-radius:999px; font-size:12px; font-weight:600; }
+  .s-ok { background:#e8f5ee; color:#2E8B57; }
+  .s-warn { background:#fef3c7; color:#b45309; }
+  .s-bad { background:#fee2e2; color:#dc2626; }
+  .issue { background:#fff; border:1px solid #eef2f7; border-radius:12px; padding:20px 22px; margin-top:20px; box-shadow:0 1px 4px rgba(0,0,0,.05); }
+  .issue h2 { font-size:15px; color:#0f172a; margin-bottom:10px; }
+  .issue p { font-size:13px; color:#475569; line-height:1.8; }
+  .issue .hl { color:#dc2626; font-weight:600; }
+  .footer { text-align:center; color:#94a3b8; font-size:11.5px; margin-top:22px; }
+  @media (max-width:720px){ .sum{ grid-template-columns:1fr 1fr; } }
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap">
+  <h1>行途开源矩阵 · 逐仓 Review</h1>
+  <div class="sub">2026-09-02 · 11 仓发布后质量诊断</div>
+
+  <div class="sum">
+    <div class="s"><div class="n b">4</div><div class="l">完整可用</div></div>
+    <div class="s"><div class="n w">3</div><div class="l">有内容待补强</div></div>
+    <div class="s"><div class="n r">5</div><div class="l">空壳（仅 README）</div></div>
+    <div class="s"><div class="n g">11</div><div class="l">全部已发布</div></div>
+  </div>
+
+  <table>
+    <tr><th>仓</th><th>定位</th><th>内容量</th><th>状态</th><th>主要问题</th></tr>
+    <tr><td><b>xingtu1996</b></td><td>名片仓</td><td>3 文件</td><td><span class="stg s-warn">单薄</span></td><td>仅 README+LICENSE，建议加 dashboard/头像</td></tr>
+    <tr><td><b>xingtu-ai-engineering</b></td><td>方法论旗舰</td><td>86 文件</td><td><span class="stg s-ok">丰富</span></td><td>内部残留已全部修复（某海事工程集团/密码/真名/重构工程）</td></tr>
+    <tr><td><b>xingtu-harness</b></td><td>脚手架</td><td>107 文件</td><td><span class="stg s-ok">完整</span></td><td>含 8 个 submodule，正常</td></tr>
+    <tr><td><b>xingtu-skills</b></td><td>技能聚合</td><td>59 文件</td><td><span class="stg s-ok">完整</span></td><td>26 个 skill + marketplace，正常</td></tr>
+    <tr><td><b>xingtu-hooks</b></td><td>钩子集合</td><td>0 内容</td><td><span class="stg s-bad">空壳</span></td><td>hooks/ 只有 .gitkeep</td></tr>
+    <tr><td><b>xingtu-rules</b></td><td>规则工程化</td><td>7 文件</td><td><span class="stg s-warn">偏少</span></td><td>rules+rules-scoped，内容待充实</td></tr>
+    <tr><td><b>xingtu-sdd</b></td><td>SDD 方法论</td><td>6 文件</td><td><span class="stg s-warn">偏少</span></td><td>specs 目录，内容待充实</td></tr>
+    <tr><td><b>xingtu-mcps</b></td><td>MCP 服务</td><td>0 内容</td><td><span class="stg s-bad">空壳</span></td><td>servers/ 只有 .gitkeep</td></tr>
+    <tr><td><b>xingtu-cli</b></td><td>CLI 工具</td><td>0 内容</td><td><span class="stg s-bad">空壳</span></td><td>scripts/ 空目录</td></tr>
+    <tr><td><b>xingtu-tools</b></td><td>脚本工具集</td><td>0 内容</td><td><span class="stg s-bad">空壳</span></td><td>scripts/ 空目录</td></tr>
+    <tr><td><b>tokenhub-bench</b></td><td>LLM 评测</td><td>0 内容</td><td><span class="stg s-bad">空壳</span></td><td>bench/ results/ 空目录</td></tr>
+  </table>
+
+  <div class="issue">
+    <h2>关键问题（影响品牌）</h2>
+    <p><span class="hl">5 个仓是空壳</span>（hooks / mcps / cli / tools / bench）：README 声称"钩子集合 / MCP 服务 / CLI 工具 / 脚本工具集 / LLM 评测"，但实际零代码——外人打开仓库只见空目录，会严重损害「行途」技术可信度。</p>
+    <p style="margin-top:8px">建议处理（三选一）：<b>A.</b> 从本地实践填真实内容（效果好、工作量大）；<b>B.</b> 改 README 为"建设中 + 路线图"（诚实、快）；<b>C.</b> 保持私有不转公开，填好再转。</p>
+  </div>
+
+  <div class="footer">行途 · Review 2026-09-02 · 内部残留已清理，可安全公开内容仓</div>
+</div>
+</body>
+</html>

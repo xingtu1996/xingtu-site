@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="sBZNRA9PZfrrEJykNnj5i2">
+<head data-page-node-id="cRlTgTEg7QOtJDy4inFk8m">
+<meta charset="UTF-8" data-page-node-id="NYCrAaGJKmFXZOu6HmwFlM">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="PzJ1b4I2Yzg9Hm9kt2I6Mi">
+<title>行途 · 能力模型与作品集战略看板 2026-09-02</title>
+<style>
+:root{
+  --bg:#F7F9FC; --card:#FFFFFF; --border:#E3E8EF; --border2:#EEF2F7;
+  --text:#1A1F2B; --muted:#5B6577; --faint:#8A93A5;
+  --blue:#056DE8; --blue2:#4A9EFF; --cyan:#00D4FF; --orange:#FF6B35;
+  --red:#E5484D; --green:#12A150; --amber:#F5A524;
+  --shadow:0 1px 3px rgba(16,24,40,.06),0 6px 20px rgba(16,24,40,.05);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  line-height:1.75; font-size:15px; padding:32px 20px 80px;
+}
+.wrap{max-width:1120px;margin:0 auto}
+
+/* header */
+header{margin-bottom:36px;padding-bottom:28px;border-bottom:2px solid var(--border)}
+.kicker{display:inline-block;font-size:12px;letter-spacing:.14em;color:var(--blue);font-weight:700;margin-bottom:12px}
+h1{font-size:32px;line-height:1.3;font-weight:800;letter-spacing:-.01em}
+h1 .accent{color:var(--blue)}
+.sub{color:var(--muted);font-size:14px;margin-top:10px}
+
+/* section */
+section{margin-top:44px}
+h2{font-size:21px;font-weight:800;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:4px;height:20px;background:var(--blue);border-radius:2px;flex:none}
+.lead{color:var(--muted);font-size:14px;margin-bottom:20px;padding-left:14px}
+
+/* cards */
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;box-shadow:var(--shadow)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:900px){.grid2,.grid3,.grid4{grid-template-columns:1fr}}
+
+/* stat */
+.stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 16px;text-align:center}
+.stat .num{font-size:30px;font-weight:800;line-height:1.15;letter-spacing:-.02em}
+.stat .lbl{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.5}
+.stat .note{font-size:11px;color:var(--faint);margin-top:4px}
+
+/* callout */
+.callout{border-left:4px solid var(--orange);background:#FFF7F3;border-radius:0 10px 10px 0;padding:16px 20px;margin:18px 0}
+.callout .t{font-weight:800;font-size:15px;margin-bottom:6px;color:#B8431C}
+.callout.blue{border-left-color:var(--blue);background:#F0F7FF}
+.callout.blue .t{color:#044FA8}
+.callout.red{border-left-color:var(--red);background:#FFF1F1}
+.callout.red .t{color:#B42318}
+.callout.green{border-left-color:var(--green);background:#F0FBF5}
+.callout.green .t{color:#087443}
+.callout p{font-size:14px;color:#3A4354}
+
+/* table */
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--card)}
+th{background:#F4F7FB;text-align:left;padding:11px 12px;font-weight:700;font-size:12.5px;color:var(--muted);
+   border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:11px 12px;border-bottom:1px solid var(--border2);vertical-align:top;color:#2B3444}
+tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#FAFCFF}
+td.c,th.c{text-align:center}
+.tag{display:inline-block;padding:2px 8px;border-radius:5px;font-size:11.5px;font-weight:700;white-space:nowrap}
+.t-p0{background:#FFE9E4;color:#B42318}
+.t-p1{background:#FFF4E0;color:#B25E09}
+.t-p2{background:#E7F3FF;color:#044FA8}
+.t-p3{background:#EEF1F5;color:#5B6577}
+.t-ok{background:#E6F7EE;color:#087443}
+.t-warn{background:#FFF4E0;color:#B25E09}
+.t-bad{background:#FFECEC;color:#B42318}
+.t-blue{background:#E7F3FF;color:#044FA8}
+
+/* bars */
+.barrow{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;margin-bottom:11px}
+.barname{font-size:13px;font-weight:700;white-space:nowrap;min-width:130px}
+.bartrack{background:#EDF1F6;border-radius:6px;height:22px;position:relative;overflow:hidden}
+.barfill{height:100%;border-radius:6px;display:flex;align-items:center;justify-content:flex-end;padding-right:9px;
+         color:#fff;font-size:11.5px;font-weight:700}
+.barval{font-size:13px;font-weight:800;min-width:46px;text-align:right;font-variant-numeric:tabular-nums}
+
+/* pyramid */
+.pyr{display:flex;flex-direction:column;gap:10px;align-items:center;margin:8px 0 4px}
+.pyr-lvl{border-radius:10px;padding:16px 22px;text-align:center;color:#fff;position:relative}
+.pyr-lvl .n{font-size:12px;opacity:.85;letter-spacing:.1em;font-weight:700}
+.pyr-lvl .h{font-size:16px;font-weight:800;margin:3px 0 5px}
+.pyr-lvl .d{font-size:12.5px;opacity:.92;line-height:1.6}
+
+/* timeline */
+.tl{list-style:none;position:relative;padding-left:26px}
+.tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--border)}
+.tl li{position:relative;margin-bottom:18px}
+.tl li::before{content:"";position:absolute;left:-24px;top:6px;width:12px;height:12px;border-radius:50%;
+  background:#fff;border:3px solid var(--blue)}
+.tl li.p0::before{border-color:var(--red)}
+.tl li.p1::before{border-color:var(--amber)}
+.tl li.p2::before{border-color:var(--blue2)}
+.tl .h{font-weight:800;font-size:14.5px;margin-bottom:3px}
+.tl .d{font-size:13px;color:var(--muted)}
+
+/* misc */
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-top:12px;justify-content:center}
+.legend i{display:inline-block;width:14px;height:8px;border-radius:2px;margin-right:6px;vertical-align:middle}
+.mono{font-variant-numeric:tabular-nums}
+ul.clean{list-style:none}
+ul.clean li{padding:7px 0 7px 18px;position:relative;font-size:14px;color:#2B3444;border-bottom:1px solid var(--border2)}
+ul.clean li:last-child{border-bottom:none}
+ul.clean li::before{content:"▸";position:absolute;left:0;color:var(--blue);font-weight:700}
+footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--border);font-size:12.5px;color:var(--faint);line-height:1.8}
+code{background:#F0F3F8;padding:1.5px 6px;border-radius:4px;font-size:12.5px;
+     font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#044FA8}
+</style>
+</head>
+<body data-page-node-id="8If8ugoOKwBZl28LamjAcm"><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap" data-page-node-id="LuUmxpK4voNhMgCxFpgWqZ">
+
+<header data-page-node-id="QKXCv52dXhxsCLYb197sq0">
+  <div class="kicker" data-page-node-id="cAy5hoVHXvJiCfcgjaGHHu">CAPABILITY MODEL &amp; PORTFOLIO STRATEGY · 2026-09-02</div>
+  <h1 data-page-node-id="s81qFM5NUkh6b5LjMZZu7K">能力模型与<span class="accent" data-page-node-id="h0F0JJyAgeXhGdALdkrxj2">作品集战略</span>看板</h1>
+  <p class="sub" data-page-node-id="T5UTWCNfV8HulJiJSQ9CVW">六维能力打分 · 隐藏资产识别 · 能力→作品转化路线　|　数据源：<code data-page-node-id="pBZ4tDwwH8kUHPirp6ZdlO">xingtu-vault/06_运营资产/能力模型数据.json</code>（SSoT，全部锚定本地可核实证据）</p>
+</header>
+
+<!-- ============ 0. 核心诊断 ============ -->
+<section data-page-node-id="jJDo0pz9bjblvhCgnOtywq">
+  <h2 data-page-node-id="cAPtPCX3xCMebKmuxg2Pm4">核心诊断</h2>
+  <p class="lead" data-page-node-id="MqeCCzQRg4jizKcZXCsbZ0">先说结论：你的问题不是能力不够，是能力没有出口。</p>
+
+  <div class="grid4" style="margin-bottom:18px" data-page-node-id="YFxjAf4B9rzdVDXfyQ3xvY">
+    <div class="stat" data-page-node-id="BNYCPsRaPwhDadwkrxUqkp"><div class="num" style="color:var(--blue)" data-page-node-id="7EvGkSPOhbEf7dl9OSLOS9">1,161</div><div class="lbl" data-page-node-id="hrAGxa2cIZZQ3KM8hIU4hc">素材库卡片</div><div class="note" data-page-node-id="cFLFGyDNQn7CAs6y49XAtK">已蒸馏可复用资产</div></div>
+    <div class="stat" data-page-node-id="qFlAxjRYRJfWEapW9mQeMp"><div class="num" style="color:var(--blue)" data-page-node-id="cpAVfPy1HKXEm6l8R7a2lo">314</div><div class="lbl" data-page-node-id="ykzLzHyUYYxkdrO9f2dyss">工具文件</div><div class="note" data-page-node-id="2RTESEFwGVQr5WKWWqaIJc">27 py + 17 html</div></div>
+    <div class="stat" data-page-node-id="AOgqQIDIkEJfi87TfjS74U"><div class="num" style="color:var(--blue)" data-page-node-id="MY6ZZ71A1tUfmJTVNT2TnK">71</div><div class="lbl" data-page-node-id="d3oyYbQXW9eTfZojPQ1UHC">规格与策略文档</div><div class="note" data-page-node-id="zTqtx8IJQkesc3XzyOqt56">specs/</div></div>
+    <div class="stat" data-page-node-id="cfVAMhxoaOboKZuap93gfb"><div class="num" style="color:var(--red)" data-page-node-id="Zl0LV9iKw8vDtilAKMACXF">0</div><div class="lbl" data-page-node-id="wpp8phQQVhvlNv7a8Mw4Ah">对外已发布</div><div class="note" data-page-node-id="U4ytMgDNbDPzsWJNrb0xWZ">4 篇成稿滞留本地</div></div>
+  </div>
+
+  <div class="callout red" data-page-node-id="sVetOYW9PdRzau6XqobVcB">
+    <div class="t" data-page-node-id="peTvPjUsDKsnTgYxNjI6V5">能力存量与外显量严重倒挂</div>
+    <p data-page-node-id="RJVHEHfvkm5F6VZ3pccoWU">左侧三个数字（1,161 张卡 / 314 个工具 / 71 篇 spec）是<strong data-page-node-id="2n4DXJya4eZhqPJQa2rEqq">能力存量</strong>；右侧的 <strong data-page-node-id="OcyWSzapYH28ik0KnEKoMX">0</strong> 是<strong data-page-node-id="PTBDKk5ttiXMyoTEjHGgcZ">外显量</strong>。
+    外人和未来的雇主看不到任何一条可验证证据——<strong data-page-node-id="8m6oUrM0uFX3QVnXSNrByl">作品集对外是空的</strong>。
+    转化漏斗：素材 → 成稿 <strong data-page-node-id="yILCKP0m8jh9jWsUNsHPFw">0.34%</strong>（1161→4），成稿 → 已发布：真实已跑通但本地零回流（boss 明确定时发布已跑通，4 篇成稿均具备发布条件）。出口断在「发布回流」末环，非「没发」。</p>
+  </div>
+
+  <div class="grid2" data-page-node-id="sCtMRFLUSwpgvpRh97HY4m">
+    <div class="card" data-page-node-id="D3F5A8TfCXIGaSj91qIbs9">
+      <div style="font-weight:800;font-size:15px;margin-bottom:12px" data-page-node-id="77FYpmCid3UQqI1JSVVcWz">43.2% 的证据被脱敏红线锁死</div>
+      <div class="barrow" data-page-node-id="4GtGuoSxFDyipwIAs3iVxg"><span class="barname" data-page-node-id="JLAbxhbBE40ZLaRmpFz0VW">可直接外显</span><div class="bartrack" data-page-node-id="rVrX5yKD0QIIUTx1sWj6E0"><div class="barfill" style="width:56.9%;background:linear-gradient(90deg,#056DE8,#4A9EFF)" data-page-node-id="Z99n1QP8BtGs9RWgg25Eo6">660 张 · 56.9%</div></div><span class="barval" style="color:var(--blue)" data-page-node-id="E3oP4BHwYc6wRFoa2oHzts">660</span></div>
+      <div class="barrow" data-page-node-id="AdElIr8Q5IgLVKqJqefeLW"><span class="barname" data-page-node-id="bXYAURconyCfBdYvyKNwi8">高脱敏（SAF-006）</span><div class="bartrack" data-page-node-id="RCb4whf8P2GZiiGhD8FcBO"><div class="barfill" style="width:43.1%;background:linear-gradient(90deg,#E5484D,#FF8A7A)" data-page-node-id="9fSl7prDn3obVHYlkT9en3">501 张 · 43.2%</div></div><span class="barval" style="color:var(--red)" data-page-node-id="KXwyhA3XJtPfOH4KUb42uC">501</span></div>
+      <p style="font-size:13px;color:var(--muted);margin-top:12px" data-page-node-id="zHzEKCmwM7SGOPIT4tf92l">
+      高脱敏 = 项目记忆/实施计划 319 + 事故复盘 182。<strong data-page-node-id="cq7xBh1lKNoGq2xynOxi2t">这决定了不能靠「多发」解决，只能靠「蒸馏」</strong>——抽方法论，不抽案例。</p>
+    </div>
+    <div class="card" data-page-node-id="Xm5Vbvy5Gcno1NAJauiUSz">
+      <div style="font-weight:800;font-size:15px;margin-bottom:12px" data-page-node-id="CAzEPstlojudlZVImU4l5F">系统建设已过剩，出口能力为零</div>
+      <ul class="clean" data-page-node-id="8vjAyck6Qjobb9dnQmQ9Ft">
+        <li data-page-node-id="S8GsARSkAQRoCTZBx0ab0w">飞轮五环自动化 <strong data-page-node-id="KBNceDXVnYycNdZODgzJin">80% 就绪</strong>（摄取/蒸馏/索引/合规/反哺全有脚本）</li>
+        <li data-page-node-id="4fizhSbxkrTGxwgOGVneaq">素材 → 成稿 <strong style="color:var(--red)" data-page-node-id="rF7vE3uGiG0qaiziBBsgHJ">0.34%</strong></li>
+        <li data-page-node-id="jnjn0Yo7dw47duMHBX81KK">成稿 → 发布 <strong style="color:var(--red)" data-page-node-id="4rynFTzBE4ShsXGQAGkoh8">0%</strong></li>
+      </ul>
+      <p style="font-size:13px;color:var(--muted);margin-top:12px" data-page-node-id="4Um65buY4s4YEqLCTj3GIj">
+      继续建系统边际收益为零。<strong data-page-node-id="nFG63DcIGfFOiyzuCinPZd">唯一的增量在「推出去」这一个动作上。</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 1. 六维雷达 ============ -->
+<section data-page-node-id="PwHAru0nIjim8scYGhxdhb">
+  <h2 data-page-node-id="cZB1M6gbpuldlYvOrwaOjq">六维能力雷达：能力 vs 外显</h2>
+  <p class="lead" data-page-node-id="qEOzodwiwY2UMHawVbF8ea">外环＝能力综合实力（深度·证据·稀缺 三值均值）；内环＝外显度（SAF-006 脱敏后可对外展示程度）。两环之间的缺口，就是被埋没的部分。</p>
+
+  <div class="card" data-page-node-id="bxtvbJskbFkAX54FaGEXR0">
+    <div style="display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:center" data-page-node-id="933QTrKcSscNM3toHZ3q9c">
+      <div data-page-node-id="fdabQWm7Oml5dq7FfX3mJV">
+        <svg viewBox="0 0 560 450" style="width:100%;height:auto;max-width:560px" data-page-node-id="Gku0R9sEqWXhSAeE8SvIpT">
+          <!-- grid -->
+          <g fill="none" stroke="#E3E8EF" stroke-width="1" data-page-node-id="7JTrjeIdAxPQWdGm0bLGlF">
+            <polygon points="280,205 306.0,220 306.0,250 280,265 254.0,250 254.0,220" data-page-node-id="BkCXpIbA0iK47CAVKFrWm4"/>
+            <polygon points="280,175 332.0,205 332.0,265 280,295 208.0,265 208.0,205" data-page-node-id="D3mkDtumWbC8H2QCyskpLY"/>
+            <polygon points="280,145 357.9,190 357.9,280 280,325 202.1,280 202.1,190" data-page-node-id="6GfDrdgqP6WyglwtQYSMgH"/>
+            <polygon points="280,115 383.9,175 383.9,295 280,355 176.1,295 176.1,175" data-page-node-id="2mtAavV6vZBiWA1ZHwI5Hc"/>
+            <polygon points="280,85 409.9,160 409.9,310 280,385 150.1,310 150.1,160" stroke="#D5DCE6" data-page-node-id="oP8H02skwOYSpm6t5hWhey"/>
+          </g>
+          <!-- axes -->
+          <g stroke="#D5DCE6" stroke-width="1" data-page-node-id="XgcsAAb3Kl25YP12AJDuoo">
+            <line x1="280" y1="235" x2="280" y2="85" data-page-node-id="6elEuRJZwkfE7T0RRYEadn"/>
+            <line x1="280" y1="235" x2="409.9" y2="160" data-page-node-id="qXMXAQeEJ0lMRgyinxjwLi"/>
+            <line x1="280" y1="235" x2="409.9" y2="310" data-page-node-id="ZQWSQ783NQeExAsRucGecl"/>
+            <line x1="280" y1="235" x2="280" y2="385" data-page-node-id="BaYkRcQKUehGJfs0l8aDv9"/>
+            <line x1="280" y1="235" x2="150.1" y2="310" data-page-node-id="4a6PvIcesq9lErfKyMXgPs"/>
+            <line x1="280" y1="235" x2="150.1" y2="160" data-page-node-id="uWwQWxGoU47PATdABVV41m"/>
+          </g>
+          <!-- scale labels -->
+          <g font-size="10" fill="#A8B0C0" text-anchor="middle" font-family="monospace" data-page-node-id="bien6C1E6qSmTXIZfTjj9n">
+            <text x="283" y="208" data-page-node-id="ppt1NcMaqmofpyefKgG0Gq">1</text><text x="283" y="178" data-page-node-id="2tlMY2UvZxIo5TeyvDI2jZ">2</text><text x="283" y="148" data-page-node-id="CrvP29v8TEqRepYhnjjNSF">3</text>
+            <text x="283" y="118" data-page-node-id="d2pHoJo3Q7bvmRGnmqaID5">4</text><text x="283" y="88" data-page-node-id="lSn6tK86LwG9PbdSAWMMHP">5</text>
+          </g>
+
+          <!-- outer: capability strength (D+E+S)/3 -->
+          <polygon points="280,85 375.3,180 366.6,285 280,345 167.4,300 176.1,175"
+                   fill="rgba(5,109,232,.13)" stroke="#056DE8" stroke-width="2.5" stroke-linejoin="round" data-page-node-id="qv7hAUQSlUGAHWu0hFp66n"/>
+          <!-- inner: visibility V -->
+          <polygon points="280,85 332.0,205 332.0,265 280,325 176.1,295 176.1,175"
+                   fill="rgba(0,212,255,.20)" stroke="#00A8CC" stroke-width="2" stroke-linejoin="round" stroke-dasharray="5 3" data-page-node-id="87kFHOOjueT39iLCEEoBTr"/>
+
+          <!-- outer dots -->
+          <g fill="#056DE8" data-page-node-id="cDW04FqHHXIFG9MOPkb2aB">
+            <circle cx="280" cy="85" r="4.5" data-page-node-id="YtWqqNfHMz9NnxqCnbchFn"/><circle cx="375.3" cy="180" r="4.5" data-page-node-id="Lrzd0O0kAkZJoiZGHKUfas"/>
+            <circle cx="366.6" cy="285" r="4.5" data-page-node-id="NrUpUMjow5CYbbhLQhPpz7"/><circle cx="280" cy="345" r="4.5" data-page-node-id="5y52eTRPAIPq0C4qkqEN7U"/>
+            <circle cx="167.4" cy="300" r="4.5" data-page-node-id="ErmuiYGSz77McBnJPNGTJq"/><circle cx="176.1" cy="175" r="4.5" data-page-node-id="3IUH1cs8ltXjWUxJVIvAGr"/>
+          </g>
+          <!-- gap highlight on C2 C3 C4 -->
+          <g stroke="#FF6B35" stroke-width="2" stroke-dasharray="3 3" opacity=".85" data-page-node-id="qbArAlJ3XWN1KK1EBfCy7R">
+            <line x1="375.3" y1="180" x2="332.0" y2="205" data-page-node-id="BOFVaErsA2GJFVBRO5iiLO"/>
+            <line x1="366.6" y1="285" x2="332.0" y2="265" data-page-node-id="e7E733hciMxlKea3m1ee3l"/>
+            <line x1="280" y1="345" x2="280" y2="325" data-page-node-id="lG6rADQwhqwNGG4Wm2V6il"/>
+          </g>
+
+          <!-- labels -->
+          <g font-size="13" font-weight="700" fill="#1A1F2B" data-page-node-id="cGZOg8PtXjhWCsE9tpPPPx">
+            <text x="280" y="62" text-anchor="middle" data-page-node-id="Cp77LQMegOeeBWgrEdMYsi">C1 AI 工程化</text>
+            <text x="280" y="76" text-anchor="middle" font-size="10.5" font-weight="400" fill="#8A93A5" data-page-node-id="R4Blgz6IuyHBkoW8Ds6Vul">5.00 / 外显 5</text>
+            <text x="429" y="142" text-anchor="start" data-page-node-id="6cRUauSI3oqTrGQkUzPD4X">C2 工程交付</text>
+            <text x="429" y="156" text-anchor="start" font-size="10.5" font-weight="400" fill="#8A93A5" data-page-node-id="DfrD7mPimeFvoa8aBFxCDz">3.67 / 外显 2</text>
+            <text x="429" y="330" text-anchor="start" data-page-node-id="lVbCbrwWcdYXf6kfKDrY54">C3 生产排障</text>
+            <text x="429" y="344" text-anchor="start" font-size="10.5" font-weight="400" fill="#8A93A5" data-page-node-id="3Wf0gHO6BodJJJgVY8fDo1">3.33 / 外显 2</text>
+            <text x="280" y="408" text-anchor="middle" data-page-node-id="CNR5zaMR7m1Ep3VlCHWULI">C4 技术管理</text>
+            <text x="280" y="422" text-anchor="middle" font-size="10.5" font-weight="400" fill="#8A93A5" data-page-node-id="aL1AUygmAWsgEvg6H8gSW1">3.67 / 外显 3</text>
+            <text x="131" y="330" text-anchor="end" data-page-node-id="4RynRvZabBx7AzKaJgOKnG">C5 内容工程</text>
+            <text x="131" y="344" text-anchor="end" font-size="10.5" font-weight="400" fill="#8A93A5" data-page-node-id="eB6nGaVr7WbjqKBIkZOTqp">4.33 / 外显 4</text>
+            <text x="131" y="142" text-anchor="end" data-page-node-id="htLTiehcSQBLNEsMb0pXkx">C6 工具工程</text>
+            <text x="131" y="156" text-anchor="end" font-size="10.5" font-weight="400" fill="#8A93A5" data-page-node-id="b4m1gGdTU476xMshkEhTdA">4.00 / 外显 4</text>
+          </g>
+        </svg>
+      </div>
+
+      <div data-page-node-id="DGDtjdCnU1jASAXb4aCswI">
+        <div style="font-size:14px;font-weight:800;margin-bottom:10px" data-page-node-id="PQjylqBqPOgB2BN1bheQJA">怎么读这张图</div>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:14px" data-page-node-id="aEOFiUW6OamHB0pNCRElOr">
+        <strong style="color:var(--blue)" data-page-node-id="BhdNJ1ZLoBH2i18IT5lL1Y">蓝环</strong>是你真实拥有的能力，<strong style="color:#00A8CC" data-page-node-id="4mc3Xn2pPXuCG0GIuyCmRj">青环</strong>是外人能看见的部分。
+        <strong style="color:var(--orange)" data-page-node-id="D0KxyBvb4nyGn9d0shh6OK">橙色虚线</strong>标出的三处缺口（C2 / C3 / C4）就是埋在地下的资产。</p>
+        <div style="background:#F4F7FB;border-radius:10px;padding:14px;font-size:13px" data-page-node-id="D5hFJKn7PcUH9cA9SjG7Bi">
+          <div style="font-weight:800;margin-bottom:8px;font-size:13px" data-page-node-id="oNdxVMaLom5c44qT5ddoMK">四维度定义</div>
+          <div style="margin-bottom:5px" data-page-node-id="VoaEedBjXoUztwXTDdJYaf"><strong data-page-node-id="qRDSPsAIjGhuhmrbnH7CyL">D 深度</strong>　专业纵深 1–5</div>
+          <div style="margin-bottom:5px" data-page-node-id="snjNfBfITahciF6JrQtHDb"><strong data-page-node-id="3NBtiMBEraxqMh9b18jPeR">E 证据</strong>　可量化证据厚度 1–5</div>
+          <div style="margin-bottom:5px" data-page-node-id="eTB5YBmlZS1S1DfpUh8NdV"><strong data-page-node-id="zEthdalIbddF5EXQ4QsMyh">S 稀缺</strong>　市场供给稀缺度 1–5</div>
+          <div data-page-node-id="bESnMn1zXpeFj4OW2XRn1U"><strong data-page-node-id="zlz2ozbxrhkI938Ga0UVnk">V 外显</strong>　脱敏后可展示度 1–5</div>
+        </div>
+        <div class="legend" style="justify-content:flex-start" data-page-node-id="AojpOQDvCkr3ee7lXTXjjC">
+          <span data-page-node-id="AcG2OPWNZykA6Geq5MDJS9"><i style="background:rgba(5,109,232,.4);border:1px solid #056DE8" data-page-node-id="fNXlGWLIdUuSORWmvFcY3z"></i>能力综合实力</span>
+          <span data-page-node-id="XrCbgwQfZ4s7DAcF8Ov6KP"><i style="background:rgba(0,212,255,.5);border:1px solid #00A8CC" data-page-node-id="34he1BvGGCJswhSROVLYjc"></i>外显度</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. 隐藏资产 ============ -->
+<section data-page-node-id="s45xKmDQt6GHnIxvzrJC6m">
+  <h2 data-page-node-id="f6shFPGzisEUVbYrwqtMpq">隐藏资产指数：你最值钱的能力，最没被记录</h2>
+  <p class="lead" data-page-node-id="CxQ4kGCRAiBWUCf4W80ru9">隐藏指数 ＝ 护城河（深度 × 稀缺）× (1 − 外显率)。数值越高，说明这项能力越难被替代、却越不为外界所知。</p>
+
+  <div class="card" data-page-node-id="qAKoaQaCBWzKjGM6uLdwx0">
+    <div class="barrow" data-page-node-id="PU6i9q6EDFoyRy7H8v3yGv"><span class="barname" style="color:var(--red)" data-page-node-id="vY5JohlykxBobtf2bRWnbC">C4 技术管理</span><div class="bartrack" data-page-node-id="SgtDc5n4MuB6EDGn6i0ety"><div class="barfill" style="width:100%;background:linear-gradient(90deg,#E5484D,#FF8A7A)" data-page-node-id="KDMYuv6av72NjnLCgCh3wF">护城河 20 · 稀缺 5 · 证据 2</div></div><span class="barval" style="color:var(--red)" data-page-node-id="AAChdBcuPH067rtiyaHArT">8.0</span></div>
+    <div class="barrow" data-page-node-id="AxQI74Pg9y8pqBSCoWL205"><span class="barname" data-page-node-id="u3xqJyEClxodblKmxqt4HY">C2 工程交付</span><div class="bartrack" data-page-node-id="KB65NeGNuMhZZQop6uCHPA"><div class="barfill" style="width:90%;background:linear-gradient(90deg,#FF6B35,#FFA06B)" data-page-node-id="lOcmUhDApVkgOjWm4RRQ0F">护城河 12 · 稀缺 3 · 高脱敏</div></div><span class="barval" style="color:var(--orange)" data-page-node-id="6GE29M57NdPsSApZAbNzme">7.2</span></div>
+    <div class="barrow" data-page-node-id="27gj2dIAMyuccfyUMY8jnK"><span class="barname" data-page-node-id="C9otCnadz6YvgiLevcRbKP">C3 生产排障</span><div class="bartrack" data-page-node-id="zsTfGIUcam9kc6Yg2cBzBX"><div class="barfill" style="width:90%;background:linear-gradient(90deg,#FF6B35,#FFA06B)" data-page-node-id="JNfvNk9eluiFIFWUmtiC1C">护城河 12 · 稀缺 3 · 高脱敏</div></div><span class="barval" style="color:var(--orange)" data-page-node-id="ksgi5IEb8iZliM9wR7lLll">7.2</span></div>
+    <div class="barrow" data-page-node-id="aePhN8YBqoKLLH6PwyXL6A"><span class="barname" data-page-node-id="WQiOl7mrDMCiv8QJaGyZaF">C5 内容工程</span><div class="bartrack" data-page-node-id="AEirDqFe6kpFWyOT3YcUnP"><div class="barfill" style="width:40%;background:linear-gradient(90deg,#F5A524,#FFC766)" data-page-node-id="9E22zaYlkAGvrHfJ7cafFI">护城河 16 · 外显 4</div></div><span class="barval" style="color:var(--amber)" data-page-node-id="U3LkyhS713QJBApnxU0kGU">3.2</span></div>
+    <div class="barrow" data-page-node-id="YFaOLetJ1n60PdJJXqbvyn"><span class="barname" data-page-node-id="EO9aXEvynb4HONyNeEAXLh">C6 工具工程</span><div class="bartrack" data-page-node-id="NEIaLLPTRZKlu4x7QQU1Mq"><div class="barfill" style="width:30%;background:linear-gradient(90deg,#4A9EFF,#8CC4FF)" data-page-node-id="2sz9YTvfw81f00qFia6Znd">护城河 12 · 外显 4</div></div><span class="barval" style="color:var(--blue2)" data-page-node-id="6FG6EQf4oOTIdD3yvmVHS7">2.4</span></div>
+    <div class="barrow" data-page-node-id="PTctGFfgApwYAGpAwBqnUB"><span class="barname" data-page-node-id="OI9RUZegbvsYNd01lSMxN0">C1 AI 工程化</span><div class="bartrack" data-page-node-id="xGC1EqZGLfpiLxdgiGq5yC"><div class="barfill" style="width:2%;background:linear-gradient(90deg,#12A150,#4FD18A)" data-page-node-id="wsc9eY1zD9z1OvqFG4a0cS"></div></div><span class="barval" style="color:var(--green)" data-page-node-id="YQUoBQFQCoLkHCNJXcpvXl">0.0</span></div>
+
+    <div class="callout" style="margin-top:20px" data-page-node-id="FADvhoTlVjN6xuSZbA31cD">
+      <div class="t" data-page-node-id="8TsFqS4xZPkSbXDwx9tp5W">★ 核心发现：C4 技术管理是全模型的最大盲区</div>
+      <p data-page-node-id="6OCCls4boBgDECsSlkZjYU">稀缺度 <strong data-page-node-id="XOUpWCZBUYlXMjEnMQSBqV">5 分（全场最高）</strong>、护城河 <strong data-page-node-id="N2imdatcRuiPjqVfSYjBKZ">20 分（排名第二）</strong>，但证据密度只有 <strong data-page-node-id="BQQS2XiQXMv139g9OEvjxS">2 分（全场最低）</strong>——
+      全库仅 1 份经历卡（2026-07 面试官 AI 原生全栈交付岗）。<br data-page-node-id="K9F1NC7c1qr5q6xUCOs7kn"><br data-page-node-id="brmpn7lTtLLh9GHJ400aGH">
+      稀缺性来自「<strong data-page-node-id="PCF6ooS2Kh9MfsKY0rYeRA">既带团队又写代码</strong>」的双重身份：市面技术经理内容大多只管理不编码，这个位置几乎没人站，且需要真实经历支撑、无法靠学习速成。
+      <strong data-page-node-id="ReIYKZRkVDUewExMpFthNh">你最值钱的能力，恰恰是你记录最少的能力。</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. 三层金字塔 ============ -->
+<section data-page-node-id="t7KUn6oRKBSDDMRP0FMUdM">
+  <h2 data-page-node-id="114ZoteyMjQFZJTVoEao8J">能力模型三层结构</h2>
+  <p class="lead" data-page-node-id="lywmmpzb5vJIiPzlzjO5JQ">内核是身份资产，能力是六域打分，外显是作品集载体。三层之间的传导效率，决定作品集的成色。</p>
+
+  <div class="card" data-page-node-id="r1FUJbBFPLLEDBYPL5SZ8J">
+    <div class="pyr" data-page-node-id="ZEGp3i4Fh1lapAEkjdBYmb">
+      <div class="pyr-lvl" style="width:100%;background:linear-gradient(135deg,#056DE8,#0B84F3)" data-page-node-id="HaBmcOHHmxvhFG3y6JCjXy">
+        <div class="n" data-page-node-id="BTID7iACb2GY8Z9zNvM9BF">LAYER 1 · 内核</div>
+        <div class="h" data-page-node-id="voHfRRhBnPK2n1QuDHPvPJ">身份资产：资深技术经理 + 仍在写代码 + AI 工程化一线实践</div>
+        <div class="d" data-page-node-id="Z6BFeIVkdSb85qMcjcnVuF">市面技术经理内容大多「只管理不编码」，开发者内容大多「只编码不带团队」。双重身份交集极小，且需真实经历支撑，无法速成。<br data-page-node-id="TBU5jI9Rdo1ZZOK5iOZnwf">
+        <strong style="color:#FFE08A" data-page-node-id="ymeRLKTXlRDDU2YLehNTs3">一句话定位：既带团队又写代码的人，讲 AI 工程化怎么落地。</strong></div>
+      </div>
+      <div class="pyr-lvl" style="width:82%;background:linear-gradient(135deg,#1E7FD4,#4A9EFF)" data-page-node-id="fUI7XFC7IOvvW7V1ZdmtgR">
+        <div class="n" data-page-node-id="pgzpGt4NzJ1SPjAHbevskr">LAYER 2 · 能力</div>
+        <div class="h" data-page-node-id="b3VcaXc35D8rXaWa1GAxWi">六域：AI 工程化 / 工程交付 / 生产排障 / 技术管理 / 内容工程 / 工具工程</div>
+        <div class="d" data-page-node-id="q8M2HkgMwCCON9apVgkTiO">护城河 C1 25 · C4 20 · C5 16 · C2 12 · C3 12 · C6 12　|　外显率 C1 100% · C5/C6 80% · C4 60% · C2/C3 40%</div>
+      </div>
+      <div class="pyr-lvl" style="width:64%;background:linear-gradient(135deg,#00A8CC,#00D4FF);color:#06323D" data-page-node-id="9CztGieDkcvbUWsBfbd2ha">
+        <div class="n" style="opacity:.7" data-page-node-id="KwklvnfuIfFlzjx4EaUtuZ">LAYER 3 · 外显</div>
+        <div class="h" data-page-node-id="pGAUpXPlGoxPt9kAKLdoGN">作品集载体</div>
+        <div class="d" style="opacity:.85" data-page-node-id="JIuh37R0ZOqyGAXIkpUwNT">署名长文 <strong data-page-node-id="qsWX5hAy9dde2eT14SK4oo">0 篇已发布</strong>　·　开源项目 <strong data-page-node-id="z5IqyKtMR4t2rsXxtWyWPW">1 个公开仓</strong>（名片页）　·　个人站点 <strong data-page-node-id="HPDOyFlH8pZbEW9N9qAtKE">已上线</strong>　·　知识库 <strong data-page-node-id="D6EgcrlV5JNIc5kG2lR40l">1,161 卡全私有</strong>　·　书稿 <strong data-page-node-id="L535I8QwtBOejFQTgtZ78h">2 本立项未起稿</strong></div>
+      </div>
+    </div>
+    <p style="font-size:13px;color:var(--muted);text-align:center;margin-top:14px" data-page-node-id="Wb5A1CFXSkE6aMMn5VuJsp">
+    三层结构完整，但传导到第三层时几乎全部损失——<strong data-page-node-id="YN3D3boS5rZxCM1DDwzqQ7">这是唯一需要修的地方。</strong></p>
+  </div>
+</section>
+
+<!-- ============ 4. 能力-证据矩阵 ============ -->
+<section data-page-node-id="CxtICTOJal7u821bHcAeW2">
+  <h2 data-page-node-id="JkW9zmeD8to80IMhirv4TK">能力—证据矩阵</h2>
+  <p class="lead" data-page-node-id="ewk5UmUtHT5AJua2mYTdoJ">每一项打分都挂在本地可核实的证据上，不是自评。</p>
+
+  <div class="card" style="padding:0;overflow:hidden" data-page-node-id="H5Q9grwAScAhWYaE3ljpf4">
+    <table data-page-node-id="gQgJZ16jyad5Q0JUBHvevf">
+      <thead data-page-node-id="zAWEPqaTBkLkeAvxiRAAFZ"><tr data-page-node-id="Pfaym50bx5z3kKeGaRRNYh">
+        <th style="width:112px" data-page-node-id="tUK7ZcrqRXbiZv6rJvZBAu">能力域</th>
+        <th style="width:118px" data-page-node-id="gpbrmxHDwszDQZcxtuMiEL">定位</th>
+        <th class="c" style="width:34px" data-page-node-id="rfFGVUkxMJDga7bgycrIX3">D</th><th class="c" style="width:34px" data-page-node-id="o8TMlwg4wcMloYuhTupRaY">E</th>
+        <th class="c" style="width:34px" data-page-node-id="miGPtecc6QDBMIG5G0zCEQ">S</th><th class="c" style="width:34px" data-page-node-id="AAFAP7LQWdeipnKlJmPYkC">V</th>
+        <th class="c" style="width:56px" data-page-node-id="hdzdjmpdT1AcRzG1k04UF4">护城河</th>
+        <th style="width:300px" data-page-node-id="pbeBADOV2J8il8iebOryGb">核心证据（本地可核实）</th>
+        <th data-page-node-id="p6HZkePRbSMe4dmpItZd7M">判断与动作</th>
+      </tr></thead>
+      <tbody data-page-node-id="yizBBWuiUsxlmpGlFw0lzu">
+        <tr data-page-node-id="7S2w1t1kbEOf3Ej95zw2vU">
+          <td data-page-node-id="LjWAuFA9UFEFF1n1uOnfwz"><strong data-page-node-id="lpqzEiAj1yTbRyargFCeO8">C1</strong><br data-page-node-id="mwUYUcZkVVSNi7g5HboVp8"><span style="font-size:12.5px" data-page-node-id="z2A4p8x3Y6niUnrezvXZpv">AI 工程化<br data-page-node-id="8446zdQwjwykmDrg9x34y6">Harness 实战</span></td>
+          <td data-page-node-id="AMQfyxtrHwlO9JlBqGNXIs"><span class="tag t-ok" data-page-node-id="V4l5uAqCh0oMoc4BhsoRiF">主战能力</span></td>
+          <td class="c mono" data-page-node-id="Sxtbpgp0ap66dNzxnHGtz7"><strong data-page-node-id="aumciZhnGr3Cge7u9ONdZG">5</strong></td><td class="c mono" data-page-node-id="eMxrWmh7b27PYhHx8x0rFb"><strong data-page-node-id="ayewZNeSiyTt5M9300GYKT">5</strong></td>
+          <td class="c mono" data-page-node-id="ct2u5mCxeykRkRrBhi3SEi"><strong data-page-node-id="bkElEIgepDQoXMtkIFFDtd">5</strong></td><td class="c mono" data-page-node-id="xtYliVMd2De9HF4VyBPtIg"><strong data-page-node-id="CIWR1DiR4YnazGjeZoyBlZ">5</strong></td>
+          <td class="c" data-page-node-id="vJy1tIRDJnF5dmzfUCVIEj"><strong style="color:var(--green);font-size:16px" data-page-node-id="94rwuLIaVyYD4ZmrAheANa">25</strong></td>
+          <td style="font-size:12.5px" data-page-node-id="uYpYfDJkXd7LWa1ilwqCgT">651 张 Harness 素材卡（56.1%）· Harness 实践库 372 文件 · 6 类工具研究卡 · 五层 Token 节流体系 · 16 agent 并行编排 6 铁律 · 20+ 条 feedback 军规 · CodeGraph+CBM · AI 协作进化闭环</td>
+          <td style="font-size:12.5px" data-page-node-id="PDDvEOHAkRt180ryQIWXF9"><strong data-page-node-id="YU6gimRfht2UIKdxyIzxXx">唯一四维全满的域。</strong>作为一切对外标签的第一顺位，其余能力全部服务于它。</td>
+        </tr>
+        <tr data-page-node-id="BCNrLFUxWFn3hepOz9o3i9">
+          <td data-page-node-id="3mVpqAByrl0VCuRxtLc4C9"><strong data-page-node-id="lw9LqqJeX77qCFf9BEupMi">C2</strong><br data-page-node-id="abUUhjZFpesAOcw0YjxrLH"><span style="font-size:12.5px" data-page-node-id="L072n7DWuKZMNUqJDn6aXv">工程交付<br data-page-node-id="lYx6Qgi7p6TsOGE6zHJMnq">与架构</span></td>
+          <td data-page-node-id="a4XrUBYTIFqFuC9dzijNGE"><span class="tag t-warn" data-page-node-id="V6u3iMYXHAW1OGnSBb4CTq">高脱敏</span></td>
+          <td class="c mono" data-page-node-id="uNgiyZYycjBxqvITQJAaTE">4</td><td class="c mono" data-page-node-id="jTrvt7jiU0EFjcDENVaWwo">4</td><td class="c mono" data-page-node-id="1viNleYC4n91sUH7LZPfBK">3</td><td class="c mono" style="color:var(--red)" data-page-node-id="XngMZlcjufpcP4SGeFLGDa"><strong data-page-node-id="BiWjxAMP3smNoNRKPtY4X0">2</strong></td>
+          <td class="c" data-page-node-id="ndCyRv2RnwZHbdpqc4jyX5"><strong style="font-size:16px" data-page-node-id="doNBMBJZeqj8nT0p2QnFyg">12</strong></td>
+          <td style="font-size:12.5px" data-page-node-id="5PSoA5MC3K3F9WzXGnwCYR">项目记忆类 319 卡（27.5%）· 某零售中台 60+ 微服务 / 千级权限点 · 工作流引擎 三合一重构 · 5 条工程红线制度化 · 电商履约踩坑 60 卡</td>
+          <td style="font-size:12.5px" data-page-node-id="m2tYXkvRHQmA6cqwpOkRz5">证据厚但稀缺度只有 3——会 Java 供应链的人市场上有的是。<strong data-page-node-id="VeuECBhyWE8jfLAxOhR1rK">不做案例外显，做方法论蒸馏。</strong></td>
+        </tr>
+        <tr data-page-node-id="pUck7a0MAEVDPm9bIx3trp">
+          <td data-page-node-id="j4GQPXYN6b6u9wzStszRPg"><strong data-page-node-id="6Dj3cX084Em6NG4AG36TQu">C3</strong><br data-page-node-id="pBSCGmpgKlFQ86KVCKIq74"><span style="font-size:12.5px" data-page-node-id="cLHFkLuh9eE6cq2reoyC4Y">生产排障<br data-page-node-id="deirTR8i6VmMBH8Zu0D0bu">事故复盘</span></td>
+          <td data-page-node-id="sBPUlmji2DtWxOBQGZ7NIi"><span class="tag t-warn" data-page-node-id="yINHtCDB8ncSafWNLQFTmx">高脱敏</span></td>
+          <td class="c mono" data-page-node-id="g7MWUfugqsx9TWtisSWyG2">4</td><td class="c mono" data-page-node-id="CxL88Fi7BkFfCiQN5RexRG">3</td><td class="c mono" data-page-node-id="ur9VHtVtHuRC57XTI3ViA8">3</td><td class="c mono" style="color:var(--red)" data-page-node-id="8fROOWnT563IGg5pZXLJry"><strong data-page-node-id="fiyqGeTgoCczqvjSzAybeB">2</strong></td>
+          <td class="c" data-page-node-id="8cScP45F9kmqDCypIV0QRz"><strong style="font-size:16px" data-page-node-id="BHuPkJeELgJZQ2kCsCE8Xt">12</strong></td>
+          <td style="font-size:12.5px" data-page-node-id="ea170P1ETCgtTwnYQoUEa9">事故复盘类 182 卡（15.7%）· 综合踩坑 113 卡 · <strong data-page-node-id="a9rztcgCXqgC2ZtuTjyPm8">4h→75min AI 辅助排查实战</strong>（作品集索引列为代表作，链接待补）· bad-case-index</td>
+          <td style="font-size:12.5px" data-page-node-id="ZQhecbGIyWbxHEYQFFbtqK">排障是<strong data-page-node-id="F3Vwd4M4mMYn3IHfcRu1yh">可信度最强背书</strong>——读者判断你是否真干过就看这个。蒸馏成流程，不讲业务细节。</td>
+        </tr>
+        <tr style="background:#FFF7F3" data-page-node-id="nkBYsbxlELdYqhyzwWOpTt">
+          <td data-page-node-id="zN5ZTTqdUFF2JjfXF2PzPO"><strong data-page-node-id="u7jJha6AXy8UcXlrpduGWG">C4</strong><br data-page-node-id="zcXeH1LsXDwRYOzabqYfzL"><span style="font-size:12.5px" data-page-node-id="lWc0pGCdJIggub9VwwXSBX">技术管理<br data-page-node-id="yNIEP8xGojcIlkWrurrWil">与团队建设</span></td>
+          <td data-page-node-id="sshqoLM2SnQSeR2CgHRJF5"><span class="tag t-p0" data-page-node-id="OcJaU7dbMaB4mesUNI4JPv">最稀缺<br data-page-node-id="vHCPJI5n2Xzfmbe6F4TPz5">最被埋没</span></td>
+          <td class="c mono" data-page-node-id="f6n1poCWYiBUceZFyl3Q7N">4</td><td class="c mono" style="color:var(--red)" data-page-node-id="GRc5injGHgf9ky85kqQLKA"><strong data-page-node-id="JWuxEl0jHpWR2AKGRQO6KR">2</strong></td><td class="c mono" data-page-node-id="1XChTzygfXvfVRn7cdwyJ4"><strong data-page-node-id="o8W5AFmLQdzuEbtecGnArl">5</strong></td><td class="c mono" data-page-node-id="L2OBp3J9p4OsrGDC6KYiUD">3</td>
+          <td class="c" data-page-node-id="Qkwi6RKfolFCkSJcyYEL8O"><strong style="color:var(--orange);font-size:16px" data-page-node-id="bySm4kEFXgOlT186fGUe2f">20</strong></td>
+          <td style="font-size:12.5px" data-page-node-id="toKa9EpLMH6sd8AO6E5JIm">面试官经历卡：AI 原生全栈交付岗 4 人 3 轮 · 6 维考察体系 + 决策矩阵 + 岗位画像 V1.0→V1.1 · 2023 起团队 AI 布道 · 20+ 条军规治理</td>
+          <td style="font-size:12.5px" data-page-node-id="RZLyp4xThTYC5BvCDNCBUi"><strong data-page-node-id="MhvKDPijdYiKTHu3s4N7xH">★ 补强优先级第一。</strong>把 2023 至今的团队布道经历拆成 8–10 张经历卡——成本最低、回报最高。</td>
+        </tr>
+        <tr data-page-node-id="AYNvdO71LqqACBRX5v67Nf">
+          <td data-page-node-id="LkMY3AgxRYGha8PitrSTPK"><strong data-page-node-id="YzEpBAoU71nKHjAdHnQdpd">C5</strong><br data-page-node-id="g7lOuHtcnYSCGuWfGfTOWS"><span style="font-size:12.5px" data-page-node-id="2k4R9250xs4rSMFd4szUsF">内容工程<br data-page-node-id="uA7h2FVu9JaVZ8QGPONCdq">与 IP 运营</span></td>
+          <td data-page-node-id="VREHXOyy6eOekgyBqvvyYW"><span class="tag t-blue" data-page-node-id="UxX5fqzMGZhURUWEtjJ60v">出口堵塞</span></td>
+          <td class="c mono" data-page-node-id="5OiaHhtiA35y6CIrT0PQFh">4</td><td class="c mono" data-page-node-id="WJU4MRC0AIEtlW4dOIZWjb"><strong data-page-node-id="IUcYVc3NpEddIyz62RcHRY">5</strong></td><td class="c mono" data-page-node-id="KidbSrIC49P0au9uXPspgI">4</td><td class="c mono" data-page-node-id="GclUWUkzrvtE3cBdZkFpNx">4</td>
+          <td class="c" data-page-node-id="O0vG4l3sa9aBCjXHnMYE5U"><strong style="font-size:16px" data-page-node-id="K4a2nhb16TWANbIxCMlID5">16</strong></td>
+          <td style="font-size:12.5px" data-page-node-id="4yLoMWMkmKvEip6hZBwZB6">1,161 张素材卡 · 9 个对标账号系统（5 维打分 + SOP）· 9 篇工作流 SOP · 飞轮五环自动化积木 · 24 份 HTML 看板 · 11 平台台账 · 一人公司战略库 11 篇</td>
+          <td style="font-size:12.5px" data-page-node-id="GYmwaW8kcTaYNBlDQ6KMIs">建设能力 5 分，出口能力 0 分。<strong data-page-node-id="TZCz6y4dIkCwNbwkqp99si">停止建系统，转攻出口。</strong></td>
+        </tr>
+        <tr data-page-node-id="RlmaM4cqWlqj1hdFq8UGy6">
+          <td data-page-node-id="CDuFH02xCPEbkqSCTDyTHq"><strong data-page-node-id="v6S1SG0YQEK5GALsAyjBsz">C6</strong><br data-page-node-id="fGpESEYbgjDGg6WFGFmC3y"><span style="font-size:12.5px" data-page-node-id="9IodUM1JOWfBtTgpuS1GuC">工具工程<br data-page-node-id="AH8H4cFquRuiCsBqrL0vag">与自动化</span></td>
+          <td data-page-node-id="yTJ2ODrXEnOeIiuGcmSe1K"><span class="tag t-blue" data-page-node-id="0pUGWV8BWk3fiHYWN3E3ki">支撑能力</span></td>
+          <td class="c mono" data-page-node-id="qyCVeTtAtoSSX7GPibGyOo">4</td><td class="c mono" data-page-node-id="jA5krsUrU4yJ7Bmcpy5oWR"><strong data-page-node-id="arlkz4W29WLavUwOWdPygC">5</strong></td><td class="c mono" data-page-node-id="5QvIveRRJ4En5jWVePlq3g">3</td><td class="c mono" data-page-node-id="m8lUIlZxRfEFowKjnBtYwG">4</td>
+          <td class="c" data-page-node-id="GioW3zDdAVMH2VvDrw1B0R"><strong style="font-size:16px" data-page-node-id="CMaQ4s9Hmvooj5MIsCCOFz">12</strong></td>
+          <td style="font-size:12.5px" data-page-node-id="nN4uokmkCIlAGqC6mk7JHQ">工具总库 314 文件 · AI 会话统一索引器（8+ 工具→SQLite）· 素材库生成器（11 源→1,161 卡）· 去敏合规闸门 · 公众号排版引擎 · Token 成本路由</td>
+          <td style="font-size:12.5px" data-page-node-id="5cKZKz6bSlk340E54tRrJ8">价值不在脚本本身，而在它们构成的<strong data-page-node-id="SGBXZTGmBRo8v7uyZT3Gsf">「内容工程化」方法论</strong>——那才是稀缺的。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:12.5px;color:var(--faint);margin-top:10px" data-page-node-id="KoDrK1YLmXPXu77SvvaRic">
+  D=深度　E=证据密度　S=稀缺度　V=外显度　|　护城河 = D × S（满 25）　|　全表数字均为本地实测，见 SSoT 数据文件 evidence_base 段</p>
+</section>
+
+<!-- ============ 5. 象限策略 ============ -->
+<section data-page-node-id="1FGwNvJ7d1rKHqMTSYLkJU">
+  <h2 data-page-node-id="I3j14N5GzICod3EeVBdP5f">四象限处置策略</h2>
+  <p class="lead" data-page-node-id="xESLw6uwPqsVB449VfN8rb">按「护城河 × 外显率」把六域分到四个象限，每个象限的打法完全不同。</p>
+
+  <div class="grid2" data-page-node-id="l54lYfmryB6kjchyWm5wut">
+    <div class="card" style="border-top:3px solid var(--green)" data-page-node-id="GCjLfc9rMYHnFFgPeA0BHV">
+      <div style="font-weight:800;margin-bottom:4px" data-page-node-id="QM7FssybWE0oUsizUSGpGi">① 高护城河 · 高外显　→　<span style="color:var(--green)" data-page-node-id="HQIBWrB3fwmht3EkKD7PSB">主打</span></div>
+      <div style="font-size:12.5px;color:var(--muted);margin-bottom:10px" data-page-node-id="1zARnPJ7LDCBANitq6Y4gL">C1 AI 工程化（25 / 100%）</div>
+      <p style="font-size:13.5px" data-page-node-id="BQqBuPnXfn96ESMQbEFHq0">能力最强、最稀缺、还能直接讲。<strong data-page-node-id="neaOXIraRaBdOCGOsvqE1u">这就是你的主战场，所有对外标签都从这里长出来。</strong>
+      不犹豫，All in。</p>
+    </div>
+    <div class="card" style="border-top:3px solid var(--red)" data-page-node-id="hEDx1llKyTaLZR8yqTFI5W">
+      <div style="font-weight:800;margin-bottom:4px" data-page-node-id="8cF4Gav35jAjCcAjQkN5Pr">② 高护城河 · 低外显　→　<span style="color:var(--red)" data-page-node-id="agFq4EpY18hE2OFrUgInJG">补记录（最高 ROI）</span></div>
+      <div style="font-size:12.5px;color:var(--muted);margin-bottom:10px" data-page-node-id="n0G7wxZD68Z6wrjVb0GvDb">C4 技术管理（20 / 60%）· 隐藏指数 8.0</div>
+      <p style="font-size:13.5px" data-page-node-id="PxeODEfiGTfy9aq2VNEbGC">能力稀缺但没记录。<strong data-page-node-id="tdf1sHswSZUrJ0ZP9yGk6x">补强不是补能力，是补经历卡。</strong>
+      把 2023 至今的团队 AI 布道拆成 8–10 张卡，成本只是回忆，回报是唯一抄不走的能力。</p>
+    </div>
+    <div class="card" style="border-top:3px solid var(--orange)" data-page-node-id="Pf8FqtWnRduTByZxKU8INT">
+      <div style="font-weight:800;margin-bottom:4px" data-page-node-id="HLZeB0CmkWj6QrtNyAEpKg">③ 低护城河 · 低外显　→　<span style="color:var(--orange)" data-page-node-id="2XWZQILmdiv59HAvEyQRKC">蒸馏（抽方法论）</span></div>
+      <div style="font-size:12.5px;color:var(--muted);margin-bottom:10px" data-page-node-id="WnSAL0wTGODl3ed1M0nwCw">C2 工程交付（12 / 40%）· C3 生产排障（12 / 40%）</div>
+      <p style="font-size:13.5px" data-page-node-id="Qf8G3UCa00PxHwIroxCeNJ">受 SAF-006 锁死，案例不能发。<strong data-page-node-id="CDW1rTlfhIExEshAXHoCV8">解法不是放弃，是蒸馏</strong>：把 60+ 微服务重构抽象成《N 条铁律》，
+      把 4h→75min 讲成流程改造。<strong data-page-node-id="iWkmmmHeSYIZNCUQVIXfHE">讲规则，不讲架构。</strong></p>
+    </div>
+    <div class="card" style="border-top:3px solid var(--blue2)" data-page-node-id="QEjAB7PrBIwNKEy8AVEfJy">
+      <div style="font-weight:800;margin-bottom:4px" data-page-node-id="JJDKOUCWupH1XWG9acOdlf">④ 中护城河 · 高外显　→　<span style="color:var(--blue2)" data-page-node-id="H7Co5LBkfEgR3X79Wys0fe">支撑 + 配套</span></div>
+      <div style="font-size:12.5px;color:var(--muted);margin-bottom:10px" data-page-node-id="BbXmSxOOfA9yrjGHDYvChp">C5 内容工程（16 / 80%）· C6 工具工程（12 / 80%）</div>
+      <p style="font-size:13.5px" data-page-node-id="kILDKgRL5ZFJA7v5CIfKFM">能力可展示但不稀缺（会写脚本的人多）。<strong data-page-node-id="h8YmdPtv8isUsBcXRbZtpE">不作为主打标签，作为方法论文章的配套证据</strong>——
+      tokenhub_bench 开源打头阵，其余工具随文章 release。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. 能力→作品路线 ============ -->
+<section data-page-node-id="ZOE4hiElH63Jpv2J5Yjdfh">
+  <h2 data-page-node-id="rDSEzAmuyD43LaAwlpmhD7">能力 → 作品转化路线</h2>
+  <p class="lead" data-page-node-id="gurMKEheXfZGGFz9V6N4fD">每个能力域对应一个可验证的作品载体。左侧是能力，右侧是它能长出的作品。</p>
+
+  <div class="card" style="padding:0;overflow:hidden" data-page-node-id="jJDJBiP2NRMy1uTjkbMD8i">
+    <table data-page-node-id="6b6sCuWnycgKCcJ8yinWR9">
+      <thead data-page-node-id="LiQuGana3oKTBvQMwIPxBt"><tr data-page-node-id="TaMxjkoD4Givkob1GhMVUi">
+        <th class="c" style="width:52px" data-page-node-id="xiOeKmu6BSHS0dUD0aE8N2">能力</th><th style="width:230px" data-page-node-id="F0f6cxmzVvLoI6jda7yWoW">作品</th>
+        <th style="width:130px" data-page-node-id="E11LH0QKO25exTxBbWvTj0">载体形态</th><th style="width:180px" data-page-node-id="lwmm5G4tdcfsoZAJ9h50a6">就绪度</th>
+        <th class="c" style="width:52px" data-page-node-id="DjDVROdW5lURiNDTRYmH4k">优先级</th><th class="c" style="width:56px" data-page-node-id="pea6r06UfDmVJtQvZEZune">成本</th>
+      </tr></thead>
+      <tbody data-page-node-id="Kg52uRfNJvOwXz5tsttp0l">
+        <tr data-page-node-id="8CBRTYpbDhUQxOeyIdyzvo"><td class="c" data-page-node-id="xtE3WE9bleefreOXAS5ziQ"><strong data-page-node-id="vu7a9pVQjP7L0CjYOmMIpA">C1</strong></td>
+          <td data-page-node-id="ahUH2GLoBU93dCQBskIj6z"><strong data-page-node-id="voAoYCA0mPNo2FYjXmxkNF">tokenhub_bench 开源</strong> + 五层 Token 节流长文</td>
+          <td data-page-node-id="tFYMC1JAI4yr0k2U5Lyx28">GitHub 仓库 + 公众号</td>
+          <td data-page-node-id="fHjNmu2qArPelhmIDPDwxb"><span class="tag t-ok" data-page-node-id="TfBcbdVp93954VDqN8yD5S">资产已就位，只差推出去</span></td>
+          <td class="c" data-page-node-id="GaBpL4SHylKnQcKVZTOiEW"><span class="tag t-p0" data-page-node-id="6HCUDPGp9Tlvo4Mp0uOUdP">P0</span></td><td class="c" style="color:var(--green)" data-page-node-id="RBSY7MhDV8fjEQ7uI8HHrq">低</td></tr>
+        <tr data-page-node-id="pPdNyfbhwhqjHmN7wSMPVY"><td class="c" data-page-node-id="zM4aX60isHEC2j4IZCo6Tr"><strong data-page-node-id="spKUmbTGvggvDvFpVD7pEz">C1</strong></td>
+          <td data-page-node-id="jY9T7Vc4vkpVkk88nbwoSA">多 agent 并行编排 6 铁律</td>
+          <td data-page-node-id="FQ9FGoZOD27xGtd5sS0Wk7">公众号 + 掘金</td>
+          <td data-page-node-id="HEBDYDHZZ9N76anv547Nhl"><span class="tag t-ok" data-page-node-id="ArkUjSPpx2nk3nb0N5fXxa">specs 已完整（含三平台标题）</span></td>
+          <td class="c" data-page-node-id="rPYEGY15tJ0mGgkGg0XdUj"><span class="tag t-p0" data-page-node-id="Nb3F5CRqze7oj20aBTMjOE">P0</span></td><td class="c" style="color:var(--green)" data-page-node-id="OHdiAdSnLrogfH8aQU2hJf">低</td></tr>
+        <tr style="background:#FFF7F3" data-page-node-id="3Oo3zy2bd8mL2buDvwTuVP"><td class="c" data-page-node-id="MkbygFO3RMtxYSZanalBj7"><strong data-page-node-id="CMGp48EBqGkkKE4Ap8jZqn">C4</strong></td>
+          <td data-page-node-id="ij0FRFbDVZHCW2N6mzdF54"><strong data-page-node-id="k2xfsSOL0AJHwceafueWFZ">技术经理的 AI 布道三年</strong>（2023 至今）</td>
+          <td data-page-node-id="mpwbVwX6AjBbAsJEFCLDEK">公众号系列 + 简历经历块</td>
+          <td data-page-node-id="lq9CEozKKuiJvdjsBcZMCM"><span class="tag t-bad" data-page-node-id="wGk1VhrDxWGFkBIAgorB0G">需先补 8–10 张经历卡</span></td>
+          <td class="c" data-page-node-id="b5WlQoravwkAGjY0TnHldW"><span class="tag t-p0" data-page-node-id="19rlyevBpyCttk6wLVmoZ1">P0</span></td><td class="c" style="color:var(--amber)" data-page-node-id="QLkOmHtFCF7tnC4p9VPtp3">中</td></tr>
+        <tr data-page-node-id="LxIhQVhCmj2dKMCcO2qRj3"><td class="c" data-page-node-id="xr6p7UIlivNKaF1QYeKqD9"><strong data-page-node-id="tluEexE2wIy0VoG9OBg0cg">C3</strong></td>
+          <td data-page-node-id="7HaYshaFMHmaNWUVMcDCLo">4h→75min：AI 辅助排障的流程化改造</td>
+          <td data-page-node-id="BKAoLeePzxCPXM8qAVlDdj">公众号长文</td>
+          <td data-page-node-id="XEeQyq9aG4lNUkcFeMSABc"><span class="tag t-warn" data-page-node-id="GJtkH2DafdfJpg1OHPBD6G">已列为代表作，链接待补</span></td>
+          <td class="c" data-page-node-id="80D7BLAeemgw9O0qBeh2hb"><span class="tag t-p1" data-page-node-id="cshLZhqTPFxG5i5QvpSp3b">P1</span></td><td class="c" style="color:var(--amber)" data-page-node-id="g5Q3DioEcVQmRt6ohATvjG">中</td></tr>
+        <tr data-page-node-id="ItCBzsQ50lz7yhUqnYOOz1"><td class="c" data-page-node-id="37xU2eHpdMOxxPzcGsFQmC"><strong data-page-node-id="UrCA1eJqldDeiYfXuS38uV">C5</strong></td>
+          <td data-page-node-id="JgAuzv5U50pCkALbbULNAo">1,161 张素材卡：我把 AI 会话变成内容永动机</td>
+          <td data-page-node-id="FbrX6UJSxSm1UpNdNluNdq">公众号 + 掘金 + 知乎</td>
+          <td data-page-node-id="FDKb0BIalBk4OaOzD4x9A8"><span class="tag t-ok" data-page-node-id="RbXBBKwKaL5GHLVpXGeSzh">M01 方法论稿已成稿 2,555 字</span></td>
+          <td class="c" data-page-node-id="1GnB4EgCFtsYr4vCxlU1M1"><span class="tag t-p1" data-page-node-id="TEwhHRsH63MGjqXJ4ezWyM">P1</span></td><td class="c" style="color:var(--green)" data-page-node-id="43nSihtenvRB4ScZCwWmFU">低</td></tr>
+        <tr data-page-node-id="q85gVNBNb4x6sOENiBJcGQ"><td class="c" data-page-node-id="dsbkz0RuZjTPD6lr5ncmq2"><strong data-page-node-id="oO5fxUH6vsdHECyZqlHjeX">C2</strong></td>
+          <td data-page-node-id="EltAZUyK0Pf7MxtRUisRnk">60+ 微服务重构的 N 条铁律（蒸馏版）</td>
+          <td data-page-node-id="xMCrErfGUyVZnIVqBsXI6F">掘金 + 公众号</td>
+          <td data-page-node-id="7ECP656e3RpRJBp4YU0wwV"><span class="tag t-p2" data-page-node-id="8HFctZcTkufiuAVk8FGS40">需蒸馏，讲规则不讲架构</span></td>
+          <td class="c" data-page-node-id="2BGKUAxIR68TQgpA3QOCnw"><span class="tag t-p2" data-page-node-id="FOsHvCtBVxiSM5mrSxbpjM">P2</span></td><td class="c" style="color:var(--red)" data-page-node-id="EK4kF1EebEq6oBaxYciwFf">高</td></tr>
+        <tr data-page-node-id="YKf1Q6Te4jROdImCVFZQhc"><td class="c" data-page-node-id="FAOGqcJ3OQ1WSKeQf3Zel0"><strong data-page-node-id="p6CuU2fumw7GRHRhl0pXY9">C6</strong></td>
+          <td data-page-node-id="ejdYGGhNdnxLvO5K8KV047">内容合规闸门：让脚本替我把关</td>
+          <td data-page-node-id="GVVuD8HatRqT8hZZ7yUiyx">掘金工具教程</td>
+          <td data-page-node-id="mzY8cwCubgeaQnd9mGLzFK"><span class="tag t-p2" data-page-node-id="SE7qtfcmLUSJ0WUhFbejjU">desensitize.py + safety/*.sh 已可用</span></td>
+          <td class="c" data-page-node-id="jOeL8xILXjw1K0XBKjiKV2"><span class="tag t-p2" data-page-node-id="MHNMPCRVN3L6ePZEYPRdfG">P2</span></td><td class="c" style="color:var(--amber)" data-page-node-id="yVVSzc75DQiXoihJNB9glF">中</td></tr>
+        <tr data-page-node-id="USVvsGUKZ99yFCMzZyiF2a"><td class="c" data-page-node-id="4GKdsgBEJQRy19plVIRw48"><strong data-page-node-id="tXSrRD9ZyExXYgqP85SExQ">C1+C4</strong></td>
+          <td data-page-node-id="yDyZQ5cqR4hkmv3BDzkoWd">《AI 时代的技术经理实战手册》书稿</td>
+          <td data-page-node-id="vain79pBQ3wSBPPXMf89rh">books/01_ai-engineering</td>
+          <td data-page-node-id="jkPxrd9dn2ISidD1kFCNAU"><span class="tag t-p3" data-page-node-id="JHsiRECerBsoAbeItr9MGv">已立项未起稿</span></td>
+          <td class="c" data-page-node-id="hB3yGXjwfWnPZbruS098RH"><span class="tag t-p3" data-page-node-id="DXgp0gZ4Mt6HzDbiKvSjIt">P3</span></td><td class="c" style="color:var(--red)" data-page-node-id="Bom3KcaEPPfMD63xCaEbbD">高</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 7. 90 天 ============ -->
+<section data-page-node-id="bIPckQ22gvytnbK6KqjXjd">
+  <h2 data-page-node-id="EFcZlEUVf4zPyooXbup9XI">90 天作品集补强路线</h2>
+  <p class="lead" data-page-node-id="I4jgA39KmrJealS9u9wOt7">按「先出口、后补卡、再蒸馏」排序——成本从低到高，回报从即时到长期。</p>
+
+  <div class="card" data-page-node-id="8dGCuA8gYfg8lKo9hx0m23">
+    <ul class="tl" data-page-node-id="FWvf0B8blwkYh3ASfpKDrC">
+      <li class="p0" data-page-node-id="caJ7pzI2hb1eqxVtGicyXl">
+        <div class="h" data-page-node-id="J360ED0kCoRxFmCDJ3kEuW">D1–14　出口破零：把 4 篇成稿推出去</div>
+        <div class="d" data-page-node-id="knEJ5kcdhu8EbYRefBYYc2">B02（-73% 代码量）/ B09（省 token 配置）/ B11（技术人的复利）/ M01（素材永动机）合计 10,444 字，全部已完成脱敏标注。
+        <strong data-page-node-id="FHG28lGgQ1HiMXelQj9NH1">这是成本最低的一次突破——不用写，只用发。</strong>目标：公众号首发拿原创，隔 6–24h 分发掘金/CSDN。</div>
+      </li>
+      <li class="p0" data-page-node-id="dG1bHDaZpShb7q8U44Z6HO">
+        <div class="h" data-page-node-id="qJR1iGj6VbtcpeYLuWDkuB">D1–30　开源立信：tokenhub_bench 推出去</div>
+        <div class="d" data-page-node-id="BfGsgVxJWocxS2FdLDXCQH">全模型里唯一「资产已躺在硬盘、只差推出去」的动作。源码 <code data-page-node-id="PDiJ0Ubunk2fSmesLMr5Xe">tools/tokenhub_bench.py</code> + <code data-page-node-id="rjalG5DE55kq3RGtwbrIN2">tokenhub_minigate.py</code> 已可用，
+        开源 SOP（workflows/04）与仓库映射表都现成。<strong data-page-node-id="DcuoLnLukS4yxlMdeJUtYy">开源项目是可验证性最强的作品集载体——代码不会说谎。</strong></div>
+      </li>
+      <li class="p0" data-page-node-id="iNsQ8YXgf1wdluC6HXrvAC">
+        <div class="h" data-page-node-id="N52tYDUSchjza3VoSipO0Z">D15–45　补卡：C4 技术管理经历卡 8–10 张</div>
+        <div class="d" data-page-node-id="Q9FqOdmYqyddJKgKASv1eO">把 2023 年至今的团队 AI 布道、技术评估、工程纪律治理拆成经历卡。
+        <strong data-page-node-id="trPoBBz6PZBc6TeGLaMzCY">这是全模型 ROI 最高的一次补强</strong>——成本只是回忆与记录，回报是唯一无法被抄袭的能力证据。</div>
+      </li>
+      <li class="p1" data-page-node-id="o9itIRBDaiY7ERcEtM3R3N">
+        <div class="h" data-page-node-id="KcnMwMwXT9bzmpt8nR4p22">D30–60　蒸馏：C3 排障长文 + C5 方法论长文</div>
+        <div class="d" data-page-node-id="HkWX9euVRwvNoRRHJyDac1">《4h→75min》补完链接作为可信度锚点；M01 素材卡方法论同步分发。两篇都是「讲流程不讲业务细节」的蒸馏范式，可作为后续高脱敏素材的标准模板。</div>
+      </li>
+      <li class="p2" data-page-node-id="8oQtHIQZJQ7QHsMH3CrM4a">
+        <div class="h" data-page-node-id="T3yr3qc3uHKJthA7K1Mg30">D60–90　升级：作品集索引 v2</div>
+        <div class="d" data-page-node-id="iR44gTT72tLwcjf253HDll">把 <code data-page-node-id="m6DyiNPJUJfF4RJTwbZtFq">06_运营资产/作品集索引.md</code> 从 4 行占位（代表作链接全是「待补」）升级成<strong data-page-node-id="iTrFCCM1nIArXcbJoiHVaB">能力驱动的作品页</strong>：
+        六个能力域各挂可验证证据链接，一页讲清「我是谁 + 我能证明什么」。<strong data-page-node-id="9ppaVYGJdL8E6TRakB58cs">届时缺口不再是能力，而是链接——而链接已经在前 60 天补齐了。</strong></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 8. 待决 ============ -->
+<section data-page-node-id="iCOcvSJBEA8Dv8FexONon1">
+  <h2 data-page-node-id="XyQJUCHe76MEZIXfOxYMmU">待你拍板</h2>
+  <div class="card" data-page-node-id="6DSNNXVAcd8P5ewAzqYSsL">
+    <table data-page-node-id="Hj8n7jjbi6wZy4UvNwFc0G">
+      <thead data-page-node-id="y7mGUTSyIvOfrqwrsK0l6A"><tr data-page-node-id="aROZFjK83td4xNBBEDVR15"><th style="width:60px" data-page-node-id="JADEJfVzEOmwEDOqHX5l9U">编号</th><th style="width:210px" data-page-node-id="wZBDhhm9iH1ZUdbiZiOdAc">决策点</th><th data-page-node-id="SdtZsIblnWnu5kH1nd0dHn">我的建议</th></tr></thead>
+      <tbody data-page-node-id="hx7Bf5bER42JZp9uVpmM7Q">
+        <tr data-page-node-id="wTcbCATh58uLidFyERU4W2"><td data-page-node-id="8MTomQ0as05WMyPkkK2QCT"><strong data-page-node-id="UwwqZnQRI9iCvaWIw6rF5B">Q1</strong></td><td data-page-node-id="kCgr3AdtMQTushqFiEFp3R">4 篇成稿何时发布？</td>
+          <td data-page-node-id="kXCYNV1PrXhZ5Oa7G283pu"><strong data-page-node-id="GG2lsEu185zEaeBYzsJOYF">建议本周内首发 B09（省 token 配置）</strong>——纯公开能力、零脱敏风险、收藏属性强，适合作为破零第一篇。你点头我来走发布流程。</td></tr>
+        <tr data-page-node-id="u4KkVTW0alCEsVnHxLGFiw"><td data-page-node-id="SIwpeWjsHqqrYBnqaRt391"><strong data-page-node-id="kYhIc15QTduQYtRi1DBDYF">Q2</strong></td><td data-page-node-id="xdygdOu5GbfqM20CugjBab">tokenhub_bench 现在开源吗？</td>
+          <td data-page-node-id="NPxcXCbS2rmytrT6jnfFdU"><strong data-page-node-id="Itb6SXJG0qD1TMDGhxb2t3">建议提前到 D1–30。</strong>这是唯一「资产已就位、只差推出去」的动作，且可验证性最强。开源 SOP 和仓库映射表现成，不需要新决策。</td></tr>
+        <tr data-page-node-id="4LRf6AZKoDVaLcGnG6M19a"><td data-page-node-id="t7nOiYJ6MH0GAWBZG8zmzp"><strong data-page-node-id="NkL4Gqqee6YHViLX4k0exX">Q3</strong></td><td data-page-node-id="4EaFM8Ode6wBzUY8fVNHOh">C4 经历卡补多少张？</td>
+          <td data-page-node-id="2uzyfu2YQQfmsLtnY5aW1h"><strong data-page-node-id="LQO5LfDqOGKUfs3HVbGVFm">建议 8–10 张。</strong>覆盖：AI 布道起点 / 团队转型关键节点 / 面试体系设计 / 军规治理 / 典型冲突与解决。可以直接给我口述要点，我来做卡。</td></tr>
+        <tr data-page-node-id="ZcXS8t3peOiTVUVdUYnxss"><td data-page-node-id="xh3lhUgjIwaS9qKhJHDeNW"><strong data-page-node-id="EjOve4IhePB3vJWauG7Eo5">Q4</strong></td><td data-page-node-id="TajGJgfLC4kqZtgyUIkSRK">作品集索引 v2 对外尺度？</td>
+          <td data-page-node-id="GdHWJ30pGbJrOEqecPQHef"><strong data-page-node-id="omFmcTbfVDbqhlieVnVi2b">建议「能力 + 可验证链接」两层，不含履历细节。</strong>雇主视角看的是证据链，不是履历表；且履历式信息按现有约定绝不进对外仓库。</td></tr>
+        <tr data-page-node-id="G0qW2hhQU1YTzrSAlP8kpN"><td data-page-node-id="NYoGGrDrJ5eDndDAE6gd3r"><strong data-page-node-id="47MBXfeM1b2A9ZiIbGFfPa">Q5</strong></td><td data-page-node-id="GgdwPqcjvwembSoVpPY3d6">能力模型多久复评一次？</td>
+          <td data-page-node-id="auR1YMMXb1Hs4bJZpUVrf0"><strong data-page-node-id="bwRKcNHJiHsct5E9n1tRLE">建议季度复评，与对标账号系统同频。</strong>四个维度里「证据密度」和「外显度」变动最快，季度粒度足够捕捉。</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer data-page-node-id="CjOOqQfmJzX8wFyKUn2p70">
+  数据源（SSoT）：<code data-page-node-id="mTdS6ZWvGCBqDZWW9fACVG">xingtu-vault/06_运营资产/能力模型数据.json</code>　·　全部数字为 2026-09-02 本地实测，非估算<br data-page-node-id="LtDaOc2QuTq8AmY3iZM2yj">
+  打分方法：四维（深度 D / 证据密度 E / 稀缺度 S / 外显度 V），派生护城河 = D×S、外显率 = V/5、隐藏指数 = 护城河 ×(1−外显率)<br data-page-node-id="Td8QCXMtxUVWbaTjHoLjD1">
+  约束：遵守 SAF-006（公司代码 / 内部架构 / 未公开数据绝不外显）；高脱敏素材仅做方法论蒸馏<br data-page-node-id="Lta3b6US07IXCF26t55pIU">
+  行途 XingTu · Justin Li · 能力模型 v1.0 · 2026-09-02
+</footer>
+
+</div>
+
+  <footer style="margin-top:36px;border-top:2px solid #056DE8;padding:16px 20px;background:#f5f9ff;border-radius:10px;font-size:13px;color:#1a1a1a;line-height:1.9">
+    <div style="font-weight:700;color:#056DE8;margin-bottom:8px">📎 权威锚点 / 引用来源</div>
+    <ul style="margin:0;padding-left:18px">
+      <li>GitHub xingtu1996 账号（已落地 15 个仓库，可查）：<a href="https://github.com/xingtu1996" target="_blank" rel="noopener" style="color:#056DE8;text-decoration:underline">https://github.com/xingtu1996</a></li>
+      <li>公开名片页 xingtu1996.github.io：<a href="https://xingtu1996.github.io" target="_blank" rel="noopener" style="color:#056DE8;text-decoration:underline">https://xingtu1996.github.io</a></li>
+      <li>知识库 xingtu-vault / 作品集站 xingtu-site（私有，账号内可查）：<a href="https://github.com/xingtu1996" target="_blank" rel="noopener" style="color:#056DE8;text-decoration:underline">https://github.com/xingtu1996</a></li>
+      <li>能力模型数据（SSoT）：<code style="background:#eef4ff;padding:1px 6px;border-radius:4px;color:#0a3d7a">xingtu-vault/06_运营资产/能力模型数据.json</code></li>
+      <li>注：多数仓库为私有，对外公开证据以 xingtu1996.github.io 为准；C4 证据密度为全场最低，待补经历卡</li>
+    </ul>
+    <div style="margin-top:8px;color:#555">完整引用索引：<code style="background:#eef4ff;padding:1px 6px;border-radius:4px;color:#0a3d7a">specs/20260902-断点续传与集中提示词/05_权威锚点与引用来源.md</code></div>
+  </footer>
+
+</body>
+</html>

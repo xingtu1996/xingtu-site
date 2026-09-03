@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行途高效执行实践</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background:#0f172a; color:#e2e8f0; padding:40px 20px; }
+  .container { max-width:960px; margin:0 auto; }
+  h1 { text-align:center; font-size:32px; margin-bottom:8px; letter-spacing:2px; }
+  .sub { text-align:center; color:#94a3b8; margin-bottom:36px; font-size:14px; }
+  .hero { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:32px; }
+  .card { background:#1e293b; border-radius:12px; padding:24px; border-left:4px solid #2E8B57; }
+  .card.red { border-left-color:#f59e0b; }
+  .card h2 { font-size:20px; margin-bottom:12px; color:#fff; }
+  .card p { font-size:14px; line-height:1.8; color:#cbd5e1; }
+  .tag { display:inline-block; background:#2E8B57; color:#fff; border-radius:4px; padding:2px 8px; font-size:12px; margin-bottom:10px; }
+  .section-title { font-size:22px; margin:36px 0 16px; color:#fff; border-bottom:2px solid #334155; padding-bottom:8px; }
+  .grid4 { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  .method { background:#1e293b; border-radius:12px; padding:20px; }
+  .method .num { font-size:28px; font-weight:bold; color:#2E8B57; margin-bottom:8px; }
+  .method h3 { font-size:16px; margin-bottom:8px; color:#fff; }
+  .method p { font-size:13px; color:#94a3b8; line-height:1.7; }
+  .quality { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:32px; }
+  .qitem { background:#111c34; border:1px solid #334155; border-radius:8px; padding:14px; font-size:13px; color:#cbd5e1; }
+  .qitem b { color:#f59e0b; display:block; margin-bottom:4px; }
+  .summary { background:linear-gradient(135deg,#2E8B57,#1e6b42); border-radius:12px; padding:24px; text-align:center; font-size:16px; line-height:1.9; color:#fff; }
+  @media (max-width:768px){ .hero,.grid4,.quality{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="container">
+  <h1>🛠 行途高效执行实践</h1>
+  <div class="sub">不裸聊 · 人工把控 · 生成质量稳定可控可追溯</div>
+
+  <div class="hero">
+    <div class="card">
+      <span class="tag">铁律 1</span>
+      <h2>不裸聊 —— 用框架，不靠即兴</h2>
+      <p>不把 AI 当"即兴闲聊"，每次都带框架进场。<br>没有框架的对话 = 裸聊 = 产出不可控。</p>
+      <p style="margin-top:10px;font-size:13px;color:#94a3b8">五要素：角色 · 任务 · 背景 · 约束 · 输出</p>
+    </div>
+    <div class="card red">
+      <span class="tag" style="background:#f59e0b">铁律 2</span>
+      <h2>人工把控 —— 方向在"人"</h2>
+      <p>思考越多，结果越好。AI 给"建议"，方向/取舍/校正由你定。</p>
+      <p style="margin-top:10px;font-size:13px;color:#94a3b8">验收点前置 · 关键步骤人工校验 · 再让 AI 迭代</p>
+    </div>
+  </div>
+
+  <div class="section-title">四大执行方法</div>
+  <div class="grid4">
+    <div class="method"><div class="num">01</div><h3>Spec 先行</h3><p>复杂任务先写 spec（目标/步骤/验收），AI 按 spec 执行，可断点续传。</p></div>
+    <div class="method"><div class="num">02</div><h3>Execution-log</h3><p>每步落盘记录，中断可续、可复盘、可追溯。</p></div>
+    <div class="method"><div class="num">03</div><h3>内容矩阵</h3><p>1 知识点 = 1 文章 + 1 视频 + 书稿 1 节，一次产出多形态复用。</p></div>
+    <div class="method"><div class="num">04</div><h3>多 agent 并行</h3><p>无依赖的批量任务并行跑，快且互不干扰。</p></div>
+  </div>
+
+  <div class="section-title">生成质量控制</div>
+  <div class="quality">
+    <div class="qitem"><b>需求五要素</b>角色/任务/背景/约束/输出一次给全</div>
+    <div class="qitem"><b>给参考</b>附 1 个例子 &gt; 描述 100 字风格词</div>
+    <div class="qitem"><b>给边界</b>明确"不要 XX"，防泛泛而谈</div>
+    <div class="qitem"><b>给验收点</b>说清判断标准，AI 对着执行</div>
+    <div class="qitem"><b>多轮迭代</b>先粗后细 → 逐条精修 → 不推翻重来</div>
+    <div class="qitem"><b>脱敏先行</b>公司/隐私先替换再给 AI</div>
+  </div>
+
+  <div class="summary">
+    <b>一句话总结</b><br>
+    不裸聊 = 每次带框架进场；人工把控 = 方向你定、AI 执行<br>
+    → 生成质量稳定、可控、可追溯
+  </div>
+</div>
+</body>
+</html>

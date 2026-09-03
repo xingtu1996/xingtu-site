@@ -6,6 +6,11 @@
 
 生产地址：**https://xingtu1996.pages.dev** ｜ 名片备胎：https://xingtu1996.github.io
 
+![Deploy](https://img.shields.io/badge/deploy-Cloudflare%20Pages-orange.svg)
+![Site](https://img.shields.io/badge/site-xingtu1996.pages.dev-blue.svg)
+![Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen.svg)
+![HTTPS](https://img.shields.io/badge/HTTPS-enabled-brightgreen.svg)
+
 ---
 
 ## ✨ 这是什么

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>行途知识汇总 · 2026-08-19 扫描知识沉淀（域名/GitHub/Cloudflare/网络/工具/安全/品牌）</title>
+<style>
+  :root{--bg:#f7f8fb;--card:#fff;--line:#e3e6ef;--txt:#1a2333;--muted:#5b6b83;
+        --brand:#4f46e5;--brand2:#7c6cf0;--accent:#d97706;--ok:#059669;--warn:#dc2626;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+       background:var(--bg);color:var(--txt);line-height:1.7;padding:28px 14px}
+  .wrap{max-width:920px;margin:0 auto}
+  h1{font-size:23px;line-height:1.4}
+  .meta{color:var(--muted);font-size:13px;margin:8px 0 22px}
+  h2{font-size:17px;margin:30px 0 10px;padding-left:10px;border-left:4px solid var(--brand)}
+  table{width:100%;border-collapse:collapse;margin:8px 0;font-size:13px;background:var(--card)}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+  th{background:#eef0f8;font-weight:600}
+  code{background:#eef0f8;border-radius:5px;padding:1px 6px;font-size:12.5px;color:#4338ca}
+  .k{display:inline-block;font-size:11px;padding:1px 8px;border-radius:999px;margin-right:5px;background:#eae9fd;color:var(--brand)}
+  .k.r{background:#fdeaea;color:var(--warn)} .k.g{background:#e7f6ef;color:var(--ok)} .k.o{background:#fdf0e0;color:var(--accent)}
+  .foot{margin-top:30px;color:var(--muted);font-size:12.5px;border-top:1px solid var(--line);padding-top:12px}
+  p.lead{font-size:13.5px;color:var(--muted);margin-bottom:6px}
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap">
+  <h1>行途知识汇总 · 扫描知识沉淀</h1>
+  <div class="meta">来源：2026-08-19 会话全程扫描核实 ｜ 领域：域名 / GitHub / Cloudflare / 网络 / 工具链 / 安全 / 品牌 / 方法论 ｜ 每条 = 知识点 + 关键事实 + 用法/坑</div>
+
+  <h2>一、域名知识</h2>
+  <table>
+    <tr><th>#</th><th>知识点</th><th>关键事实 / 用法</th><th>标签</th></tr>
+    <tr><td>1</td><td>域名是租用非买断</td><td>标准后缀按年付费；「终身域名」=注册商代续费承诺（商倒即没）；区块链域名(.crypto/.eth)非标准 DNS，做 IP 阵地是死路</td><td><span class="k o">避坑</span></td></tr>
+    <tr><td>2</td><td>国内注册必须实名</td><td>国内注册商买的 .com 也要实名（15 天内否则暂停解析），不止 .cn</td><td><span class="k g">规则</span></td></tr>
+    <tr><td>3</td><td>续费刺客</td><td>.top/.xyz 首年 9.9 → 续费 60-80；.com 续费 69-89、.cn 35-45 元/年 稳定；买完开自动续费+年限拉满</td><td><span class="k o">避坑</span></td></tr>
+    <tr><td>4</td><td>隐私保护国内半多余</td><td>实名后 WHOIS 已脱敏且监管可见；真需隐私保护是海外注册商场景</td><td><span class="k o">避坑</span></td></tr>
+    <tr><td>5</td><td>撞名先于可用性</td><td>拼音 xingtu 撞 兴图/星途/星图（字节）→ 拥挤命名空间；品牌 collision 比域名被占更致命</td><td><span class="k r">风险</span></td></tr>
+    <tr><td>6</td><td>后缀选型</td><td>国内 SEO 选 .cn（可备案）；开发者向 .dev（Google、强制 HTTPS、~$12-15/年）；极客 .io（~$32-40/年）</td><td><span class="k g">决策</span></td></tr>
+    <tr><td>7</td><td>实测工具</td><td>whois 批量查占用；whois 服务器不通用 RDAP（ICANN HTTP 接口）；注册商「建议页」全是溢价 upsell</td><td><span class="k g">工具</span></td></tr>
+    <tr><td>8</td><td>免费方案</td><td>Cloudflare Pages `*.pages.dev`（永久免费/可商用/国内最快）；GitHub Pages 仓库必公开；Vercel/Netlify 免费禁商用</td><td><span class="k g">决策</span></td></tr>
+    <tr><td>9</td><td>Cloudflare Wallet Handle 抢注</td><td>2026-08-04 发布；cloudflare.pay 抢注 `名.cloudflare.pay`（3-32 字符），先到先得、一账号仅 1 个；身份预留券（非钱包/空投）；未来 AI Agent 收款身份（x402+USDC）</td><td><span class="k g">资产</span></td></tr>
+    <tr><td>10</td><td>Email Routing 品牌邮箱</td><td>买自定义域名后 CF 免费转发 `agent@域名` 等品牌邮箱到个人邮箱</td><td><span class="k g">资产</span></td></tr>
+  </table>
+
+  <h2>二、GitHub 知识</h2>
+  <table>
+    <tr><th>#</th><th>知识点</th><th>关键事实 / 用法</th><th>标签</th></tr>
+    <tr><td>1</td><td>改名规则</td><td>旧用户名立即释放可被抢注；仓库 URL 自动重定向；旧主页/gists 永久 404；本地 remote 要手动更新</td><td><span class="k g">规则</span></td></tr>
+    <tr><td>2</td><td>账号年龄</td><td>`curl -s https://api.github.com/users/名 | grep created_at`；年龄随账号不随用户名</td><td><span class="k g">工具</span></td></tr>
+    <tr><td>3</td><td>SSH key</td><td>公钥挂 Settings→SSH keys；本机走 443+ProxyCommand；`ssh -T ***@***` 验证</td><td><span class="k g">工具</span></td></tr>
+    <tr><td>4</td><td>gh CLI 授权</td><td>设备流需 POST github.com（本机直连不通→走代理或 PAT）；`GH_HOST=github.com` 强制个人主机；`--with-token` 存 PAT</td><td><span class="k o">避坑</span></td></tr>
+    <tr><td>5</td><td>commit 邮箱</td><td>用 noreply `ID+USERNAME@users.noreply.github.com`；禁止公司邮箱（全局已配 Justin Li）</td><td><span class="k g">规则</span></td></tr>
+    <tr><td>6</td><td>私有仓库+gitignore 双保险</td><td>敏感目录永不入库；vault .gitignore 已排除 素材库/运营资产</td><td><span class="k g">安全</span></td></tr>
+    <tr><td>7</td><td>招聘观感三层</td><td>Profile README（门面）+ Pinned 代表作（证据）+ resume 仓库（凭证）；空账号年龄救不了观感</td><td><span class="k g">决策</span></td></tr>
+    <tr><td>8</td><td>同名仓库特殊</td><td>仅 `用户名/用户名` 是 Profile README 特殊仓库；`docs` 等普通仓库无特殊</td><td><span class="k g">规则</span></td></tr>
+  </table>
+
+  <h2>三、Cloudflare / 部署知识</h2>
+  <table>
+    <tr><th>#</th><th>知识点</th><th>关键事实 / 用法</th><th>标签</th></tr>
+    <tr><td>1</td><td>Pages 原理</td><td>每次部署=不可变快照（类 git commit）；专属 URL 永久可访问；可 Rollback 秒恢复</td><td><span class="k g">原理</span></td></tr>
+    <tr><td>2</td><td>无服务器</td><td>文件存边缘存储、全球 300+ 节点分发；无进程→不会挂、免维护</td><td><span class="k g">原理</span></td></tr>
+    <tr><td>3</td><td>免费商业模式</td><td>免费层=获客漏斗；边际成本≈0；金主是企业 CDN/安全合同；个人站事实永久免费</td><td><span class="k g">原理</span></td></tr>
+    <tr><td>4</td><td>token 权限</td><td>部署需 Account:Cloudflare Pages:Edit + Account:Account Settings:Read（wrangler 要列账号）</td><td><span class="k o">避坑</span></td></tr>
+    <tr><td>5</td><td>wrangler 4 坑</td><td>无 --yes 标志；首次部署新项目非交互报错→先 API 建项目再 deploy</td><td><span class="k o">避坑</span></td></tr>
+    <tr><td>6</td><td>自定义域名</td><td>Custom domains 绑真域名（CNAME→pages.dev 或 CF 托管自动）；CF 免费管证书；免备案</td><td><span class="k g">决策</span></td></tr>
+    <tr><td>7</td><td>国内 SEO</td><td>免备案≠国内快；搜一搜 SEO 需 .cn + ICP 备案（7-20 天，需国内轻量服务器 ~60-100 元/年）</td><td><span class="k o">避坑</span></td></tr>
+  </table>
+
+  <h2>四、网络与环境知识</h2>
+  <table>
+    <tr><th>#</th><th>知识点</th><th>关键事实 / 用法</th><th>标签</th></tr>
+    <tr><td>1</td><td>本机连通性</td><td>直连 github.com 000；走 127.0.0.1:7897 代理 200；api.github.com / api.cloudflare.com 直连通；SSH 走 443+代理通</td><td><span class="k g">白盒</span></td></tr>
+    <tr><td>2</td><td>先测再猜</td><td>`curl -sI 目标 -o /dev/null -w "%{http_code}"`；000=不通，200=通</td><td><span class="k g">工具</span></td></tr>
+    <tr><td>3</td><td>agent-browser 沙箱限制</td><td>每命令结束回收后台进程；跨命令自动化不可行→登录/表单由本人操作，AI 做开页+验证</td><td><span class="k o">避坑</span></td></tr>
+    <tr><td>4</td><td>代理配置</td><td>浏览器/CLI 需显式 `--proxy http://127.0.0.1:7897` 或 `HTTPS_PROXY=`；gh 用 GH_HOST 切主机</td><td><span class="k g">工具</span></td></tr>
+  </table>
+
+  <h2>五、工具链速查</h2>
+  <table>
+    <tr><th>工具</th><th>用法要点</th></tr>
+    <tr><td>whois / RDAP</td><td>域名占用实测；`whois -h whois.nic.google 域名`；RDAP：`curl https://rdap.nic.google/domain/x`</td></tr>
+    <tr><td>WebSearch</td><td>最新事实/价格/规则，并行多路核实</td></tr>
+    <tr><td>WebFetch</td><td>抓页面身份（站点归属/商标），注意 15 分钟缓存（加 ?cachebust= 绕过）</td></tr>
+    <tr><td>gh CLI</td><td>`GH_HOST=github.com gh repo create owner/name --private`；`gh api user --jq .id`</td></tr>
+    <tr><td>git</td><td>`git branch -M main` 统一分支；SSH remote 走代理推送</td></tr>
+    <tr><td>wrangler</td><td>`CLOUDFLARE_API_TOKEN=... npx -y wrangler pages deploy . --project-name=x`</td></tr>
+    <tr><td>curl</td><td>API 验证/建项目/连通性；`-x http://127.0.0.1:7897` 代理</td></tr>
+    <tr><td>AskUserQuestion</td><td>需求有分支时澄清，不瞎猜</td></tr>
+  </table>
+
+  <h2>六、安全知识</h2>
+  <table>
+    <tr><th>#</th><th>知识点</th><th>关键事实 / 用法</th><th>标签</th></tr>
+    <tr><td>1</td><td>凭证不入聊天</td><td>密码/PAT/API Token 贴聊天=暴露；操作完必须 revoke/改密</td><td><span class="k r">红线</span></td></tr>
+    <tr><td>2</td><td>git 公司邮箱禁令</td><td>一律 noreply；公司仓库本地覆盖须 boss 同意</td><td><span class="k r">红线</span></td></tr>
+    <tr><td>3</td><td>2FA + 备用邮箱</td><td>账号单点恢复=单点风险；加独立备用邮箱 + TOTP + recovery codes</td><td><span class="k r">红线</span></td></tr>
+    <tr><td>4</td><td>凭据不存明文</td><td>台账只记位置不存值（SAF-003/011）</td><td><span class="k g">规则</span></td></tr>
+    <tr><td>5</td><td>登录不代操作</td><td>AI 不代登录/改绑定/申诉；只做模板与提醒</td><td><span class="k g">规则</span></td></tr>
+  </table>
+
+  <h2>七、品牌与命名知识</h2>
+  <table>
+    <tr><th>#</th><th>知识点</th><th>关键事实 / 用法</th><th>标签</th></tr>
+    <tr><td>1</td><td>两层命名规则</td><td>显示名全平台「行途/行途技术手记」不带数字；handle 层（能自定义的）统一 xingtu1996；CSDN 历史锚例外</td><td><span class="k g">规则</span></td></tr>
+    <tr><td>2</td><td>1996 = 时间戳资产</td><td>「出厂日期」叙事：年龄增长故事变厚；对标鱼皮（昵称梗）/玄离99（数字签名）</td><td><span class="k g">决策</span></td></tr>
+    <tr><td>3</td><td>资料统一标识</td><td>网盘/资料包/PDF 签名统一 xingtu1996；个人站开 /resources 资料页</td><td><span class="k g">规则</span></td></tr>
+    <tr><td>4</td><td>搜索截流应对</td><td>xingtu 词根被字节吸流是先天缺陷；用「行途」中文词+长尾突围，不换小厂</td><td><span class="k o">避坑</span></td></tr>
+  </table>
+
+  <h2>八、方法论</h2>
+  <table>
+    <tr><th>#</th><th>知识点</th><th>关键事实 / 用法</th></tr>
+    <tr><td>1</td><td>过程即内容</td><td>调研/踩坑/决策链路本身就是稀缺素材，比技巧文更利他</td></tr>
+    <tr><td>2</td><td>白盒化</td><td>每步工具/命令/提示词/原理摊开；教程=可复现 SOP+自媒体长文+星球付费三合一</td></tr>
+    <tr><td>3</td><td>AI 提效边界</td><td>脑力活（调研/写码/部署/复盘）提效 8-16 倍；身份活（注册/登录/授权）AI 做不了</td></tr>
+    <tr><td>4</td><td>先测再猜</td><td>网络/占用/权限先实测（curl/whois/API）再下结论，不靠猜</td></tr>
+  </table>
+
+  <h2>九、数据安全与存放论证（2026-08-19 收集）</h2>
+  <table>
+    <tr><th>主题</th><th>论证要点（来源标注）</th><th>结论</th></tr>
+    <tr><td>WorkBuddy 信任</td><td>① 模型层：腾讯云与模型厂商签协议——数据仅实时推理、不留存、不训练（官方公众号 2026-06）；② 产品层：习惯数据采集可关闭；自定义模型 API Key 仅存本地设备（腾讯隐私保护指引）；③ 平台层：文件处理本地化（Excel/PDF 原始数据不上传）、传输全加密、信通院 Claw 可信评估、操作可审计（腾讯云开发者手册）</td><td>可信度较高，但「操作记录/日志会记录」→ 敏感会话内容仍建议谨慎、不贴明文凭证</td></tr>
+    <tr><td>GitHub 私有仓库≠加密</td><td>① 私有仓库是「访问控制」不是「加密」，GitHub 端明文存储；账号被攻破/协作者/Fork/CI 日志均可泄露（CSDN 安全问答）；② GitHub Docs 官方建议：secrets 用密钥管理，绝不硬编码；App State 指南：GitHub 只放代码不放 PII/凭证</td><td>含手机号/邮箱的台账明文进 GitHub = 违反最佳实践</td></tr>
+    <tr><td>台账存放</td><td>本地金库（Obsidian）可读性好、无泄露面；加密后（age/gpg）再进私有仓库 = 备份+保密；本机 Time Machine = 不涉云备份</td><td><b>推荐：台账留本地金库；异地备份走加密文件</b>；遵守 SAF-003/011</td></tr>
+  </table>
+
+  <div class="foot">行途 / XingTu · 实战派技术深耕者 ｜ 2026-08-19 扫描知识汇总 ｜ 配套 MD 速查版：<code>02_内容仓库 (Content Hub)/行途知识汇总_扫描知识速查_2026-08.md</code></div>
+</div>
+</body>
+</html>

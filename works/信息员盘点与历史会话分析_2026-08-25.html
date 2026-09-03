@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行途工作室 · 信息员盘点与历史会话分析看板</title>
+<style>
+  :root{
+    --navy:#1B2A4A; --orange:#FF6B35; --ink:#22303f; --muted:#6b7a8d;
+    --line:#e4e9f0; --bg:#f6f8fb; --card:#ffffff; --green:#2e9e6b; --amber:#e0a32e;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+  .wrap{max-width:1080px;margin:0 auto;padding:32px 24px 64px}
+  header{background:linear-gradient(120deg,var(--navy),#27375c);color:#fff;border-radius:16px;padding:28px 30px;margin-bottom:24px}
+  header h1{margin:0 0 6px;font-size:24px;letter-spacing:.5px}
+  header .sub{opacity:.82;font-size:14px}
+  header .tag{display:inline-block;margin-top:12px;background:rgba(255,107,53,.18);border:1px solid rgba(255,107,53,.5);color:#ffd2bf;padding:3px 10px;border-radius:20px;font-size:12px}
+  h2{font-size:19px;margin:36px 0 14px;padding-left:12px;border-left:4px solid var(--orange);color:var(--navy)}
+  h3{font-size:15px;margin:18px 0 8px;color:var(--navy)}
+  p{margin:8px 0}
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .card .n{font-size:26px;font-weight:700;color:var(--orange)}
+  .card .l{font-size:12px;color:var(--muted);margin-top:2px}
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13.5px;margin:10px 0}
+  th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:#eef2f8;color:var(--navy);font-weight:600}
+  tr:last-child td{border-bottom:none}
+  .yes{color:var(--green);font-weight:600}
+  .no{color:#c0392b;font-weight:600}
+  .part{color:var(--amber);font-weight:600}
+  code{background:#eef2f8;padding:1px 6px;border-radius:5px;font-size:12.5px;color:#234}
+  .bar{height:18px;background:var(--navy);border-radius:4px;color:#fff;font-size:11px;line-height:18px;padding-left:6px;white-space:nowrap}
+  .pill{display:inline-block;background:#eef2f8;border:1px solid var(--line);border-radius:14px;padding:2px 9px;font-size:12px;margin:2px 4px 2px 0;color:#33485f}
+  .note{background:#fff7ef;border:1px solid #ffd9c2;border-radius:10px;padding:12px 14px;font-size:13px;color:#7a4a2c;margin:12px 0}
+  .okbox{background:#eafaf1;border:1px solid #bfe9cf;border-radius:10px;padding:12px 14px;font-size:13px;color:#1f6b45;margin:12px 0}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  ul{margin:8px 0;padding-left:20px}
+  li{margin:4px 0}
+  .foot{margin-top:30px;color:var(--muted);font-size:12px;text-align:center}
+  @media(max-width:760px){.cards{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap">
+
+<header>
+  <h1>行途工作室 · 信息员盘点与历史会话分析看板</h1>
+  <div class="sub">AI 协作痕迹 → 可检索素材 → 内容飞轮。把一手工程实践自动转成自媒体供料。</div>
+  <span class="tag">生成于 2026-08-25 · 已刷新历史会话索引</span>
+</header>
+
+<!-- 概览 -->
+<h2>一、什么是「信息员」</h2>
+<p>行途工作室有 <b>4 个本地只读的信息采集器（信息员）</b>，它们不碰源文件、不外发，只把本机 AI 编程/协作痕迹与工程实践沉淀成<strong>可检索索引</strong>，
+  供自媒体选题、复盘、知识沉淀调用。本质是给「行途 / XingTu」IP 建一个<strong>私有的 AI 使用旅程时间线</strong>——AI 进化快，早期实践易贬值，先把痕迹抓住。</p>
+
+<div class="cards">
+  <div class="card"><div class="n">4</div><div class="l">信息员（采集器）</div></div>
+  <div class="card"><div class="n">1136</div><div class="l">历史会话（已索引）</div></div>
+  <div class="card"><div class="n">44.2万</div><div class="l">项目文件（已索引）</div></div>
+  <div class="card"><div class="n">800</div><div class="l">素材库条目（已索引）</div></div>
+</div>
+
+<!-- 信息员清单 -->
+<h2>二、信息员清单</h2>
+<table>
+  <thead><tr><th>信息员</th><th>脚本</th><th>职能</th><th>核心数据源</th><th>产出索引</th><th>新鲜度</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><b>项目实践素材索引器</b><br><span class="mono">project_indexer</span></td>
+      <td><code>tools/project_indexer/indexer.py</code></td>
+      <td>扫 <code>~/projects</code> 全树（仅元数据：路径/大小/mtime/关键词命中），按 ai/spec/claude/mcp/harness 等关键词抓素材。支持 <code>scan --full</code> / <code>--days N</code> / <code>search</code> / <code>report</code>。</td>
+      <td>projects 全量文件树（跳过 node_modules/.git 等噪声）</td>
+      <td><code>projects_index.db</code>（167MB）<br><code>projects_index.html</code></td>
+      <td><span class="part">上次扫描 08-18</span><br>（增量，近期无新增）</td>
+    </tr>
+    <tr>
+      <td><b>AI 协作对话挖掘器</b><br><span class="mono">ai_collab_miner</span></td>
+      <td><code>tools/ai_collab_miner.py</code></td>
+      <td>每天扫 <code>~/.claude/projects/*.jsonl</code> + projects 近期改动，按内容价值评分挑出「最值得做成内容」的协作片段，输出候选供 AI 提炼成选题。</td>
+      <td>Claude Code 会话 jsonl + 项目近期改动</td>
+      <td><code>collab_miner_candidates.json</code><br>对话挖掘日志 .md</td>
+      <td><span class="yes">今日 14:30 已跑</span><br>8 个候选</td>
+    </tr>
+    <tr>
+      <td><b>多源历史会话统一索引器</b><br><span class="mono">ai_history_indexer</span></td>
+      <td><code>tools/ai_history_indexer.py</code><br>+ <code>ai_history_report.py</code></td>
+      <td>统一抽取 Claude Code / Kiro / Codex / Kimi / OpenCode / Gemini / VSCode 系历史会话为 (session,message) 两级结构，做统计 + 关键词，支撑历史会话分析。</td>
+      <td>8 类 AI 工具历史会话</td>
+      <td><code>ai_history_index.db</code>（16MB）<br><code>ai_history_stats.json</code></td>
+      <td><span class="yes">今日 15:05 已刷新</span><br>1136 会话 / 27491 消息</td>
+    </tr>
+    <tr>
+      <td><b>素材库索引器</b><br><span class="mono">materials_indexer</span></td>
+      <td><code>tools/materials_indexer.py</code></td>
+      <td>扫描素材源（对话挖掘 / harness specs / 实践产出 / 会话索引 / 已发布内容），生成可检索素材库，标记「可蒸馏点」，驱动内容循环飞轮（找素材→蒸馏→反哺）。</td>
+      <td>vault 素材库 + 重构工程/中台工程/海事工程仓 specs + WorkBuddy 会话</td>
+      <td><code>materials_index.json</code><br><code>materials_index.db</code>（800 条）</td>
+      <td><span class="part">无自动时间戳</span><br>（需手动/定期跑）</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 索引建成状态 -->
+<h2>三、索引文件建成状态（已验证）</h2>
+<div class="okbox">✅ 四个信息员的索引文件均已建立，且本次已实际读取验证。唯一缺口：<code>project_indexer</code> 与 <code>materials_indexer</code> 未自动定时刷新，需补一个每日自动化。</div>
+<table>
+  <thead><tr><th>索引文件</th><th>大小</th><th>关键量</th><th>状态</th></tr></thead>
+  <tbody>
+    <tr><td><code>projects_index.db</code></td><td>167 MB</td><td>441,719 文件 · 重构工程仓 34k / 中台工程仓 79k / 工程C 161k</td><td><span class="yes">已建</span></td></tr>
+    <tr><td><code>ai_history_index.db</code></td><td>16 MB</td><td>1,136 会话 · 27,491 消息 · 覆盖 2025-07 ~ 2026-08-25</td><td><span class="yes">已建·今日刷新</span></td></tr>
+    <tr><td><code>collab_miner_candidates.json</code></td><td>47 KB</td><td>今日 8 个候选 · 扫描 57 文件 / 56 会话</td><td><span class="yes">已建·今日</span></td></tr>
+    <tr><td><code>materials_index.db</code></td><td>143 KB</td><td>800 条素材 · 主题 SDD/Spec 388 / AI工具链 253</td><td><span class="yes">已建</span></td></tr>
+  </tbody>
+</table>
+
+<!-- 覆盖矩阵 -->
+<h2>四、你列出的 6 个路径 × 4 信息员 覆盖矩阵</h2>
+<p>关键机制：<code>重构工程仓/.claude</code> 是指向 <code>~/.claude</code> 的<strong>软链</strong>，所以所有项目的会话 jsonl 实际都收在 <code>~/.claude/projects</code>，
+  这正是 <code>ai_collab_miner</code> 与 <code>ai_history_indexer</code> 扫描的位置——你点的项目路径因此都能被「会话级」捕获。</p>
+<table>
+  <thead><tr><th>你列出的路径</th><th>project_indexer</th><th>ai_collab_miner</th><th>ai_history_indexer</th><th>materials_indexer</th></tr></thead>
+  <tbody>
+    <tr><td class="mono">重构工程仓/.claude</td><td class="yes">✓ 34k 文件</td><td class="yes">✓ 近期改动+会话</td><td class="yes">✓ 481 会话</td><td class="yes">✓ specs+research</td></tr>
+    <tr><td class="mono">中台工程仓/.claude</td><td class="yes">✓ 79k 文件</td><td class="yes">✓</td><td class="yes">✓ 24 会话</td><td class="yes">✓ harness-文档</td></tr>
+    <tr><td class="mono">中台工程仓/海事工程仓/.claude</td><td class="yes">✓ 在 中台工程仓 树内</td><td class="yes">✓</td><td class="yes">✓ 2 会话</td><td class="yes">✓ 海事工程仓/specs</td></tr>
+    <tr><td class="mono">海事工程仓/specs/.../to-luo</td><td class="yes">✓ md 文件</td><td class="yes">✓ 近期</td><td class="part">△ 经生产它的会话间接覆盖</td><td class="yes">✓ harness-specs 递归扫</td></tr>
+    <tr><td class="mono">中台工程仓/海事工程仓/AI工程化实践</td><td class="yes">✓ 中台工程仓 项目树内</td><td class="yes">✓ 近期改动</td><td class="part">△ 经 中台工程仓 会话间接覆盖</td><td class="no">✗ 非直扫目录（主题可命中）</td></tr>
+    <tr><td class="mono">中台工程仓/AI探索</td><td class="yes">✓ 中台工程仓 项目树内</td><td class="yes">✓ 近期改动</td><td class="part">△ 经 中台工程仓 会话间接覆盖</td><td class="no">✗ 非直扫目录（主题可命中）</td></tr>
+  </tbody>
+</table>
+<div class="note">说明：<code>AI工程化实践</code> 与 <code>AI探索</code> 两个目录不在 <code>materials_indexer</code> 的直扫清单里，但已被 <code>project_indexer</code>（整项目树）与 <code>ai_collab_miner</code>（近期改动）覆盖；若想让素材库直接收录，可在 <code>materials_indexer.SOURCES</code> 补两行。</div>
+
+<!-- 历史会话分析 -->
+<h2>五、历史会话分析能力演示</h2>
+<p>以下是 <code>ai_history_indexer</code> 从 8 类 AI 工具统一抽取的实时统计（刷新后）。证明「分析历史会话」已可落地。</p>
+
+<h3>1) 按工具分布（会话数）</h3>
+<div style="margin:10px 0">
+  <div class="bar" style="width:100%">Kiro 591</div>
+  <div class="bar" style="width:88%">Claude Code 522</div>
+  <div class="bar" style="width:8%">Codex 10</div>
+  <div class="bar" style="width:5%">Kimi 6</div>
+  <div class="bar" style="width:3%">Gemini 4</div>
+  <div class="bar" style="width:2%">OpenCode 1 · Mimocode 1 · CodeMoss 1</div>
+</div>
+<p class="mono">合计 1136 会话 / 27491 消息。Kiro 是 2025 年主力（已停更），Claude Code 是 2026 年主力且爆发式增长。</p>
+
+<h3>2) 按项目分布（Top）</h3>
+<table>
+  <thead><tr><th>项目</th><th>会话数</th><th>备注</th></tr></thead>
+  <tbody>
+    <tr><td class="mono">重构工程仓</td><td>481</td><td>某零售客户重构，信息量最大</td></tr>
+    <tr><td class="mono">subagents</td><td>340</td><td>多 Agent 子会话聚合</td></tr>
+    <tr><td class="mono">工程C</td><td>146</td><td>CRV 项目</td></tr>
+    <tr><td class="mono">中台工程仓</td><td>24</td><td>你列出的路径之一</td></tr>
+    <tr><td class="mono">行途(xingtu)</td><td>15</td><td>自媒体工作室自身</td></tr>
+    <tr><td class="mono">重构工程物料项目/系统设计</td><td>11</td><td>某零售客户物料</td></tr>
+    <tr><td class="mono">中台海事仓</td><td>2</td><td>某海事工程集团 iShop / AVD 工具套件</td></tr>
+  </tbody>
+</table>
+
+<h3>3) 时间线信号</h3>
+<p>Claude Code 月度消息量：<span class="pill">2026-06 ≈ 39</span> <span class="pill">2026-07 ≈ 5912</span> <span class="pill">2026-08 ≈ 17638</span>。
+仅 8 月一个月的会话量就超过此前所有月份总和——这就是「AI 进化快、实践要趁早转内容」的硬证据。</p>
+
+<h3>4) 高频关键词（已过滤部分噪声）</h3>
+<div>
+  <span class="pill">claude 5462</span><span class="pill">java 4824</span><span class="pill">agent 3423</span>
+  <span class="pill">spec 3088</span><span class="pill">重构工程仓 2772</span><span class="pill">harness 2106</span>
+  <span class="pill">specs 1942</span><span class="pill">sql 1827</span><span class="pill">token 1801</span>
+  <span class="pill">codemax 1524</span>
+</div>
+<p class="mono">注：lijiacheng / users / projects / com 等为路径噪声词，真实选题价值集中在 claude / agent / spec / harness / token / codemax。</p>
+
+<h3>5) 你列出的路径——可挖掘的具体会话样本</h3>
+<div class="grid2">
+  <div>
+    <h4 style="margin:6px 0;color:var(--navy)">重构工程仓（最近）</h4>
+    <ul class="mono">
+      <li>08-25 · 模板系统分析（162 轮）</li>
+      <li>08-25 · FS-T5326 完结原因（66 轮）</li>
+      <li>08-24 · dc-promotion subStock SQL 冲突（429 轮）</li>
+      <li>08-24 · 8.24 接受生产工单问题（877 轮）</li>
+      <li>08-21 · 京东订单API升级（756 轮）</li>
+    </ul>
+  </div>
+  <div>
+    <h4 style="margin:6px 0;color:var(--navy)">中台工程仓 / 海事工程仓</h4>
+    <ul class="mono">
+      <li>08-17 · 分享 MTP 的 PRD 与 mockup 实践（111 轮）</li>
+      <li>08-14 · 准备 8/14 工作汇报材料（602 轮）</li>
+      <li>08-03 · 分析 海事工程仓/specs 目录</li>
+      <li>08-13 · 整理 AVD 工具套件清单（842 轮）← to-luo 出处</li>
+      <li>08-07 · 评估华为云私有化部署 DeepSeek V4</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 今日挖掘候选 -->
+<h2>六、今日对话挖掘候选（ai_collab_miner · 08-25 14:30）</h2>
+<p>扫描 57 文件 / 56 会话，按内容价值评分挑出 8 个候选，可直接挑 Top1 蒸馏成选题：</p>
+<table>
+  <thead><tr><th>评分</th><th>来源项目</th><th>候选会话</th></tr></thead>
+  <tbody>
+    <tr><td>118</td><td class="mono">重构工程仓</td><td>京东订单API升级</td></tr>
+    <tr><td>118</td><td class="mono">重构工程仓</td><td>rename-specs-timestamp-prefix</td></tr>
+    <tr><td>118</td><td class="mono">重构工程仓</td><td>模板系统分析</td></tr>
+    <tr><td>118</td><td class="mono">重构工程仓</td><td>harness-reduction-plan</td></tr>
+    <tr><td>118</td><td class="mono">xingtu</td><td>token-5layer-experiment 与 .claude 体系</td></tr>
+    <tr><td>112</td><td class="mono">cae</td><td>mcps 仓库克隆</td></tr>
+    <tr><td>112</td><td class="mono">重构工程仓</td><td>dc-promotion subStock SQL 冲突</td></tr>
+    <tr><td>104</td><td class="mono">重构工程仓</td><td>FS-T5326 COMPLETED_OPERATION 完结原因</td></tr>
+  </tbody>
+</table>
+
+<!-- 素材飞轮 -->
+<h2>七、素材库飞轮（materials_indexer · 800 条）</h2>
+<div class="grid2">
+  <div>
+    <h4 style="margin:6px 0;color:var(--navy)">按来源</h4>
+    <ul class="mono">
+      <li>harness-specs 379</li>
+      <li>harness-文档 283</li>
+      <li>WorkBuddy会话 66</li>
+      <li>xingtu-specs 33</li>
+      <li>已发布内容 27</li>
+      <li>素材库-对话挖掘 12</li>
+    </ul>
+  </div>
+  <div>
+    <h4 style="margin:6px 0;color:var(--navy)">按可蒸馏主题</h4>
+    <ul class="mono">
+      <li>SDD/Spec 388</li>
+      <li>AI工具链 253</li>
+      <li>多Agent/并行 47</li>
+      <li>Token优化 26</li>
+      <li>内容/运营 25</li>
+      <li>排查/排障 8</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 结论 -->
+<h2>八、结论与下一步</h2>
+<div class="okbox">
+  <b>结论：</b>行途工作室的 4 个信息员已就绪，索引文件全部建成，且能做到「按项目 / 工具 / 时间 / 关键词」分析历史会话。你点名的 6 个路径中，4 个被会话级直接覆盖，2 个（AI工程化实践 / AI探索）被项目树级覆盖、仅素材库未直扫。
+</div>
+<ul>
+  <li><b>立即补一个每日自动化</b>：把 <code>project_indexer scan</code> + <code>ai_collab_miner</code> + <code>materials_indexer</code> 串成每日定时任务（<code>ai_history_indexer</code> 较重可每周/隔日跑，今天已手动刷新）。</li>
+  <li><b>把 AI工程化实践 / AI探索 纳入素材库直扫</b>：在 <code>materials_indexer.SOURCES</code> 补两行，让这两个你重点维护的目录也进飞轮。</li>
+  <li><b>从今日候选出第一篇</b>：8 个候选里 重构工程仓 占 6 个，建议挑 <code>harness-reduction-plan</code> 或 <code>京东订单API升级</code> 蒸馏成「技术经理带团队落地 AI」方向的实战稿（契合行途人设）。</li>
+</ul>
+
+<div class="foot">行途工作室 · 信息员盘点看板 · 单文件离线可用 · 2026-08-25</div>
+
+</div>
+</body>
+</html>

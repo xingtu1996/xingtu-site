@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行途内容商业化 · 分层规划</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; background:#f7f9fc; color:#1e293b; padding:32px 20px; }
+  .wrap { max-width:1000px; margin:0 auto; }
+  h1 { text-align:center; font-size:24px; color:#0f172a; margin-bottom:6px; }
+  .sub { text-align:center; color:#64748b; font-size:13px; margin-bottom:28px; }
+  .principle { text-align:center; font-size:14px; color:#2E8B57; font-weight:600; background:#e8f5ee; border:1px solid #cdeadd; border-radius:10px; padding:10px; margin-bottom:26px; }
+  .layers { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:28px; }
+  .layer { background:#fff; border-radius:14px; padding:20px 18px; border:1px solid #eef2f7; box-shadow:0 1px 4px rgba(0,0,0,.05); }
+  .layer .tag { font-size:11px; font-weight:700; letter-spacing:.5px; padding:3px 10px; border-radius:999px; display:inline-block; margin-bottom:10px; }
+  .l1 .tag { background:#e8f5ee; color:#2E8B57; }
+  .l2 .tag { background:#fef3c7; color:#b45309; }
+  .l3 .tag { background:#ede9fe; color:#6d28d9; }
+  .layer h2 { font-size:17px; margin-bottom:6px; }
+  .layer .role { font-size:12px; color:#64748b; margin-bottom:12px; }
+  .layer ul { list-style:none; }
+  .layer li { font-size:13px; color:#475569; line-height:1.9; padding-left:16px; position:relative; }
+  .layer li::before { content:"◆"; position:absolute; left:0; color:#94a3b8; font-size:10px; top:4px; }
+  table { width:100%; border-collapse:collapse; background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,.05); margin-bottom:28px; }
+  th,td { padding:10px 14px; font-size:13px; text-align:left; border-bottom:1px solid #eef2f7; }
+  th { background:#f8fafc; color:#475569; font-weight:600; }
+  .price { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:28px; }
+  .price .p { background:#fff; border:1px solid #eef2f7; border-radius:12px; padding:16px; text-align:center; }
+  .price .pt { font-size:14px; font-weight:600; color:#0f172a; }
+  .price .pv { font-size:22px; font-weight:700; color:#2E8B57; margin:8px 0 4px; }
+  .price .pd { font-size:12px; color:#64748b; }
+  .checks { background:#fff; border:1px solid #eef2f7; border-radius:12px; padding:18px 20px; }
+  .checks h2 { font-size:15px; margin-bottom:10px; }
+  .checks .row { display:flex; align-items:center; font-size:13px; color:#475569; padding:6px 0; border-bottom:1px dashed #eef2f7; }
+  .checks .row:last-child { border-bottom:none; }
+  .checks .idx { color:#94a3b8; font-family:monospace; margin-right:12px; width:24px; }
+  .checks .d { flex:1; }
+  .checks .wait { color:#b45309; font-size:12px; }
+  .footer { text-align:center; color:#94a3b8; font-size:11.5px; margin-top:24px; }
+  @media (max-width:760px){ .layers,.price{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap">
+  <h1>行途内容商业化 · 分层规划</h1>
+  <div class="sub">2026-09-02 · 开源 / 出书 / 付费咨询 三层制</div>
+  <div class="principle">核心原则：开源公开 ≠ 全盘托出 —— 公开层建信任，保留层出书，付费层变现</div>
+
+  <div class="layers">
+    <div class="layer l1">
+      <span class="tag">L1 公开层</span>
+      <h2>品牌信任</h2>
+      <div class="role">引流 · 建立权威 · 筛选用户</div>
+      <ul>
+        <li>通用工程工具 / 脚本</li>
+        <li>方法论摘要 + 框架图</li>
+        <li>可复现脚手架 / 开源代码</li>
+        <li>公开文章 / 已发视频</li>
+      </ul>
+    </div>
+    <div class="layer l2">
+      <span class="tag">L2 保留层</span>
+      <h2>出书储备</h2>
+      <div class="role">独家 · 系统化 · 未来出版</div>
+      <ul>
+        <li>深度方法论体系</li>
+        <li>系统框架 + 完整实战案例</li>
+        <li>书稿 / 章节大纲 / 素材库</li>
+        <li>独立私有 xingtu-book/ 仓</li>
+      </ul>
+    </div>
+    <div class="layer l3">
+      <span class="tag">L3 付费层</span>
+      <h2>直接变现</h2>
+      <div class="role">深度链接 · 营收</div>
+      <ul>
+        <li>1v1 咨询 / 答疑</li>
+        <li>个性化指导 + 陪跑</li>
+        <li>知识星球深度内容</li>
+        <li>独家模板 / 专属定制</li>
+      </ul>
+    </div>
+  </div>
+
+  <table>
+    <tr><th>项目</th><th>L1 公开</th><th>L2 保留（出书）</th><th>L3 付费</th></tr>
+    <tr><td><b>xingtu-ai-engineering</b></td><td>五大工程摘要 + 框架图</td><td>完整方法论深度篇 + 实战</td><td>深度答疑 + 陪跑</td></tr>
+    <tr><td><b>xingtu-harness</b></td><td>脚手架代码 + 安装脚本</td><td>harness 设计哲学 + 演进史</td><td>定制 harness 搭建</td></tr>
+    <tr><td><b>xingtu-skills</b></td><td>通用 skills</td><td>高级组合 + 调优经验</td><td>专属技能定制</td></tr>
+    <tr><td><b>xingtu1996 名片</b></td><td>全部（公开名片）</td><td>无</td><td>咨询入口</td></tr>
+    <tr><td><b>文章 / 书 / 视频</b></td><td>已发文章 + 公开视频</td><td>书稿 + 未发深度文</td><td>知识星球 + 付费课程</td></tr>
+    <tr><td><b>xingtu-vault 工作台</b></td><td>不公开（私密）</td><td>运营方法论提炼</td><td>运营陪跑</td></tr>
+  </table>
+
+  <div class="price">
+    <div class="p"><div class="pt">轻咨询</div><div class="pv">¥199-299</div><div class="pd">单次 60 分钟 · 方向诊断</div></div>
+    <div class="p"><div class="pt">深度咨询</div><div class="pv">¥499-699</div><div class="pd">单次 90-120 分钟 · 方案</div></div>
+    <div class="p"><div class="pt">知识星球</div><div class="pv">¥199-365/年</div><div class="pd">方法论 + 答疑 + 社群</div></div>
+    <div class="p"><div class="pt">陪跑/定制</div><div class="pv">¥2000-5000</div><div class="pd">项目制 · 定制方案</div></div>
+  </div>
+
+  <div class="checks">
+    <h2>执行清单（确认后执行）</h2>
+    <div class="row"><span class="idx">1</span><span class="d">建立 xingtu-book/ 私有仓骨架（书稿 L2 库）</span><span class="wait">待确认</span></div>
+    <div class="row"><span class="idx">2</span><span class="d">publish.sh 加 --public 分层镜像模式 + L1 白名单</span><span class="wait">待确认</span></div>
+    <div class="row"><span class="idx">3</span><span class="d">建"内容分层规范"规则约束后续公开发布</span><span class="wait">待确认</span></div>
+    <div class="row"><span class="idx">4</span><span class="d">起草付费咨询落地页（定价 / 免责 / 预约流程）</span><span class="wait">待确认</span></div>
+    <div class="row"><span class="idx">5</span><span class="d">公开仓 README 统一加付费入口钩子</span><span class="wait">待确认</span></div>
+  </div>
+
+  <div class="footer">行途 · 内容商业化分层规划 2026-09-02 · 定价与免责措辞待用户确认</div>
+</div>
+</body>
+</html>

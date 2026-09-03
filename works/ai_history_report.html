@@ -1,0 +1,267 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI 协作历史索引 · 行途 XingTu</title>
+<style>
+:root{--bg:#fafafa;--card:#fff;--ink:#2d3436;--mut:#888;--line:#eee;--accent:#d97757;}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+.wrap{max-width:1080px;margin:0 auto;padding:32px 20px}
+h1{font-size:26px;margin:0 0 4px}
+.sub{color:var(--mut);font-size:14px;margin-bottom:24px}
+.cards{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px}
+.card{flex:1;min-width:150px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.card .n{font-size:28px;font-weight:700;color:var(--accent)}
+.card .l{font-size:13px;color:var(--mut)}
+section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:22px}
+section h2{font-size:18px;margin:0 0 14px;display:flex;align-items:center;gap:8px}
+section h2::before{content:"";width:4px;height:18px;background:var(--accent);border-radius:2px}
+.bars{display:flex;flex-direction:column;gap:8px}
+.barrow{display:flex;align-items:center;gap:10px;font-size:13px}
+.barlabel{width:150px;text-align:right;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bartrack{flex:1;background:#f1f1f1;border-radius:5px;overflow:hidden}
+.barfill{height:18px;border-radius:5px}
+.barval{width:70px;color:var(--mut)}
+.chart{width:100%;height:auto}
+.grid{stroke:#eee;stroke-width:1}
+.axisy,.axisx{font-size:10px;fill:var(--mut)}
+.axisx{text-anchor:middle}
+.legend{margin-top:10px;display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--mut)}
+.lg{display:flex;align-items:center;gap:5px}
+.lg i{width:11px;height:11px;border-radius:3px;display:inline-block}
+.cloud{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;line-height:1.4}
+.wc{color:#2d3436}
+table.data{width:100%;border-collapse:collapse;font-size:13px}
+table.data th,table.data td{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left;vertical-align:top}
+table.data th{color:var(--mut);font-weight:600;background:#fafafa}
+tr.hit{background:#fff7f2}
+.snip{color:var(--mut);max-width:320px}
+.note{font-size:12px;color:var(--mut);background:#fafafa;border-left:3px solid var(--accent);padding:10px 14px;border-radius:6px}
+.tag{display:inline-block;background:#f1f1f1;border-radius:4px;padding:1px 7px;font-size:12px;margin:2px}
+</style></head><body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div><div class="wrap">
+<h1>AI 协作历史 · 统一索引分析</h1>
+<div class="sub">行途 XingTu · 数据源覆盖 Claude Code / Kiro / Codex / Kimi / OpenCode / Mimocode 等 · 生成于 2026-08-17T14:58:44</div>
+
+<div class="cards">
+  <div class="card"><div class="n">1,056</div><div class="l">会话总数</div></div>
+  <div class="card"><div class="n">24,446</div><div class="l">消息总数</div></div>
+  <div class="card"><div class="n">6</div><div class="l">覆盖工具数</div></div>
+  <div class="card"><div class="n" style="font-size:16px;padding-top:8px">2025-08-19 ～ 2026-08-17</div><div class="l">时间跨度</div></div>
+</div>
+
+<section><h2>各工具分布</h2><div class='bars'><div class="barrow">
+          <div class="barlabel" title="kiro">kiro</div>
+          <div class="bartrack"><div class="barfill" style="width:620px;background:#6c5ce7"></div></div>
+          <div class="barval">591</div></div><div class="barrow">
+          <div class="barlabel" title="claude_code">claude_code</div>
+          <div class="bartrack"><div class="barfill" style="width:468px;background:#d97757"></div></div>
+          <div class="barval">447</div></div><div class="barrow">
+          <div class="barlabel" title="codex">codex</div>
+          <div class="bartrack"><div class="barfill" style="width:10px;background:#2d98da"></div></div>
+          <div class="barval">10</div></div><div class="barrow">
+          <div class="barlabel" title="kimi">kimi</div>
+          <div class="bartrack"><div class="barfill" style="width:6px;background:#e84393"></div></div>
+          <div class="barval">6</div></div><div class="barrow">
+          <div class="barlabel" title="mimocode">mimocode</div>
+          <div class="bartrack"><div class="barfill" style="width:1px;background:#0984e3"></div></div>
+          <div class="barval">1</div></div><div class="barrow">
+          <div class="barlabel" title="opencode">opencode</div>
+          <div class="bartrack"><div class="barfill" style="width:1px;background:#00b894"></div></div>
+          <div class="barval">1</div></div></div>
+<div class="note">说明：Claude Code 体量最大（逐轮 jsonl）；Kiro 为早期主力（按项目组织的完整对话）；Codex/Kimi 为 CLI 会话；OpenCode/Mimocode 仅记录你的<b>提问轨迹</b>（无 AI 回复，故 assistant 字数为 0）。</div></section>
+
+<section><h2>消息时间线（按月 · 堆叠各工具）</h2><svg viewBox="0 0 940 340" class="chart"><line x1="40" y1="320" x2="930" y2="320" class="grid"/><text x="34" y="324" class="axisy">0</text><line x1="40" y1="250" x2="930" y2="250" class="grid"/><text x="34" y="254" class="axisy">3027</text><line x1="40" y1="180" x2="930" y2="180" class="grid"/><text x="34" y="184" class="axisy">6055</text><line x1="40" y1="110" x2="930" y2="110" class="grid"/><text x="34" y="114" class="axisy">9083</text><line x1="40" y1="40" x2="930" y2="40" class="grid"/><text x="34" y="44" class="axisy">12111</text><rect x="42.0" y="320.0" width="64.5" height="0.0" fill="#6c5ce7"><title>2025-08 · kiro: 4</title></rect><text x="74.2" y="322" class="axisx">25-08</text><rect x="110.5" y="318.0" width="64.5" height="2.0" fill="#6c5ce7"><title>2025-09 · kiro: 128</title></rect><text x="142.7" y="322" class="axisx">25-09</text><rect x="178.9" y="320.0" width="64.5" height="0.0" fill="#2d98da"><title>2025-10 · codex: 22</title></rect><text x="211.2" y="322" class="axisx">25-10</text><rect x="247.4" y="296.0" width="64.5" height="24.0" fill="#6c5ce7"><title>2025-11 · kiro: 1039</title></rect><text x="279.6" y="322" class="axisx">25-11</text><rect x="315.8" y="305.0" width="64.5" height="15.0" fill="#6c5ce7"><title>2025-12 · kiro: 674</title></rect><text x="348.1" y="322" class="axisx">25-12</text><rect x="384.3" y="303.0" width="64.5" height="17.0" fill="#6c5ce7"><title>2026-01 · kiro: 752</title></rect><text x="416.5" y="322" class="axisx">26-01</text><rect x="452.8" y="320.0" width="64.5" height="0.0" fill="#2d98da"><title>2026-02 · codex: 3</title></rect><rect x="452.8" y="307.0" width="64.5" height="13.0" fill="#6c5ce7"><title>2026-02 · kiro: 582</title></rect><text x="485.0" y="322" class="axisx">26-02</text><rect x="521.2" y="298.0" width="64.5" height="22.0" fill="#6c5ce7"><title>2026-03 · kiro: 982</title></rect><text x="553.5" y="322" class="axisx">26-03</text><rect x="589.7" y="290.0" width="64.5" height="30.0" fill="#6c5ce7"><title>2026-04 · kiro: 1305</title></rect><text x="621.9" y="322" class="axisx">26-04</text><rect x="658.2" y="307.0" width="64.5" height="13.0" fill="#6c5ce7"><title>2026-05 · kiro: 570</title></rect><text x="690.4" y="322" class="axisx">26-05</text><rect x="726.6" y="320.0" width="64.5" height="0.0" fill="#d97757"><title>2026-06 · claude_code: 39</title></rect><text x="758.8" y="322" class="axisx">26-06</text><rect x="795.1" y="184.0" width="64.5" height="136.0" fill="#d97757"><title>2026-07 · claude_code: 5912</title></rect><rect x="795.1" y="184.0" width="64.5" height="0.0" fill="#2d98da"><title>2026-07 · codex: 8</title></rect><text x="827.3" y="322" class="axisx">26-07</text><rect x="863.5" y="41.0" width="64.5" height="279.0" fill="#d97757"><title>2026-08 · claude_code: 12109</title></rect><rect x="863.5" y="41.0" width="64.5" height="0.0" fill="#2d98da"><title>2026-08 · codex: 2</title></rect><text x="895.8" y="322" class="axisx">26-08</text></svg><div class="legend"><span class="lg"><i style="background:#d97757"></i>claude_code</span><span class="lg"><i style="background:#2d98da"></i>codex</span><span class="lg"><i style="background:#6c5ce7"></i>kiro</span></div>
+<div class="note">会话按月分布（按会话开始时间）：2025-08:1, 2025-09:11, 2025-10:5, 2025-11:199, 2025-12:84, 2026-01:71, 2026-02:65, 2026-03:95, 2026-04:54, 2026-05:12, 2026-06:2, 2026-07:185, 2026-08:264</div></section>
+
+<section><h2>高频项目 / 工作区 Top</h2><div class='bars'><div class="barrow">
+          <div class="barlabel" title="重构工程仓">重构工程仓</div>
+          <div class="bartrack"><div class="barfill" style="width:620px;background:#74b9ff"></div></div>
+          <div class="barval">476</div></div><div class="barrow">
+          <div class="barlabel" title="Claude子代理(内部)">Claude子代理(内部)</div>
+          <div class="bartrack"><div class="barfill" style="width:316px;background:#74b9ff"></div></div>
+          <div class="barval">243</div></div><div class="barrow">
+          <div class="barlabel" title="工程C">工程C</div>
+          <div class="bartrack"><div class="barfill" style="width:190px;background:#74b9ff"></div></div>
+          <div class="barval">146</div></div><div class="barrow">
+          <div class="barlabel" title="Claude工作流(内部)">Claude工作流(内部)</div>
+          <div class="bartrack"><div class="barfill" style="width:112px;background:#74b9ff"></div></div>
+          <div class="barval">86</div></div><div class="barrow">
+          <div class="barlabel" title="中台工程仓">中台工程仓</div>
+          <div class="bartrack"><div class="barfill" style="width:45px;background:#74b9ff"></div></div>
+          <div class="barval">35</div></div><div class="barrow">
+          <div class="barlabel" title="行途(xingtu)">行途(xingtu)</div>
+          <div class="bartrack"><div class="barfill" style="width:16px;background:#74b9ff"></div></div>
+          <div class="barval">13</div></div><div class="barrow">
+          <div class="barlabel" title="中台海事仓">中台海事仓</div>
+          <div class="bartrack"><div class="barfill" style="width:16px;background:#74b9ff"></div></div>
+          <div class="barval">13</div></div><div class="barrow">
+          <div class="barlabel" title="重构工程物料项目/系统设计">重构工程物料项目/系统设计</div>
+          <div class="bartrack"><div class="barfill" style="width:14px;background:#74b9ff"></div></div>
+          <div class="barval">11</div></div><div class="barrow">
+          <div class="barlabel" title="ada">ada</div>
+          <div class="bartrack"><div class="barfill" style="width:10px;background:#74b9ff"></div></div>
+          <div class="barval">8</div></div><div class="barrow">
+          <div class="barlabel" title="kimi-code">kimi-code</div>
+          <div class="bartrack"><div class="barfill" style="width:7px;background:#74b9ff"></div></div>
+          <div class="barval">6</div></div><div class="barrow">
+          <div class="barlabel" title="lijiacheng/AI研究室">lijiacheng/AI研究室</div>
+          <div class="bartrack"><div class="barfill" style="width:5px;background:#74b9ff"></div></div>
+          <div class="barval">4</div></div><div class="barrow">
+          <div class="barlabel" title="行途-xingtu-tools">行途-xingtu-tools</div>
+          <div class="bartrack"><div class="barfill" style="width:3px;background:#74b9ff"></div></div>
+          <div class="barval">3</div></div><div class="barrow">
+          <div class="barlabel" title="工程C仓">工程C仓</div>
+          <div class="bartrack"><div class="barfill" style="width:3px;background:#74b9ff"></div></div>
+          <div class="barval">3</div></div><div class="barrow">
+          <div class="barlabel" title="tokenhub-test">tokenhub-test</div>
+          <div class="bartrack"><div class="barfill" style="width:2px;background:#74b9ff"></div></div>
+          <div class="barval">2</div></div><div class="barrow">
+          <div class="barlabel" title="xingtu">xingtu</div>
+          <div class="bartrack"><div class="barfill" style="width:1px;background:#74b9ff"></div></div>
+          <div class="barval">1</div></div></div></section>
+
+<section><h2>关键词热词（jieba 分词 · 去停用词）</h2><div class='cloud'><span class="wc" style="font-size:37px" title="7774">md</span><span class="wc" style="font-size:29px" title="5647">重构工程</span><span class="wc" style="font-size:27px" title="5157">lijiacheng</span><span class="wc" style="font-size:26px" title="5093">java</span><span class="wc" style="font-size:26px" title="4995">users</span><span class="wc" style="font-size:25px" title="4691">claude</span><span class="wc" style="font-size:24px" title="4631">fs</span><span class="wc" style="font-size:24px" title="4559">文档</span><span class="wc" style="font-size:24px" title="4544">文件</span><span class="wc" style="font-size:24px" title="4527">spec</span><span class="wc" style="font-size:24px" title="4514">确认</span><span class="wc" style="font-size:24px" title="4460">id</span><span class="wc" style="font-size:23px" title="4411">ai</span><span class="wc" style="font-size:22px" title="4188">projects</span><span class="wc" style="font-size:22px" title="4176">##</span><span class="wc" style="font-size:21px" title="3808">com</span><span class="wc" style="font-size:20px" title="3695">数据</span><span class="wc" style="font-size:19px" title="3454">order</span><span class="wc" style="font-size:19px" title="3372">物料</span><span class="wc" style="font-size:18px" title="3205">gitlab</span><span class="wc" style="font-size:18px" title="3150">测试</span><span class="wc" style="font-size:18px" title="3144">配置</span><span class="wc" style="font-size:18px" title="3114">验证</span><span class="wc" style="font-size:17px" title="2968">代码</span><span class="wc" style="font-size:17px" title="2961">项目</span><span class="wc" style="font-size:17px" title="2927">完成</span><span class="wc" style="font-size:17px" title="2847">gortex</span><span class="wc" style="font-size:17px" title="2831">更新</span><span class="wc" style="font-size:16px" title="2748">agent</span><span class="wc" style="font-size:16px" title="2734">###</span><span class="wc" style="font-size:16px" title="2732">赠品</span><span class="wc" style="font-size:16px" title="2565">工具</span><span class="wc" style="font-size:16px" title="2554">方案</span><span class="wc" style="font-size:16px" title="2523">接口</span><span class="wc" style="font-size:15px" title="2468">清单</span><span class="wc" style="font-size:15px" title="2435">qa</span><span class="wc" style="font-size:15px" title="2339">直接</span><span class="wc" style="font-size:14px" title="2269">状态</span><span class="wc" style="font-size:14px" title="2218">sit</span><span class="wc" style="font-size:14px" title="2166">活动</span><span class="wc" style="font-size:14px" title="2130">giveaway</span><span class="wc" style="font-size:14px" title="2091">订单</span><span class="wc" style="font-size:14px" title="2075">商品</span><span class="wc" style="font-size:14px" title="2055">ng</span><span class="wc" style="font-size:14px" title="2050">goods</span><span class="wc" style="font-size:13px" title="2037">执行</span><span class="wc" style="font-size:13px" title="1992">harness</span><span class="wc" style="font-size:13px" title="1957">内容</span><span class="wc" style="font-size:13px" title="1951">中台工程</span><span class="wc" style="font-size:13px" title="1941">需求</span><span class="wc" style="font-size:13px" title="1936">逻辑</span><span class="wc" style="font-size:13px" title="1909">服务</span><span class="wc" style="font-size:13px" title="1879">部署</span><span class="wc" style="font-size:13px" title="1860">提交</span><span class="wc" style="font-size:13px" title="1815">某零售客户</span><span class="wc" style="font-size:13px" title="1808">当前</span><span class="wc" style="font-size:12px" title="1783">分析</span><span class="wc" style="font-size:12px" title="1762">完整</span><span class="wc" style="font-size:12px" title="1759">用户</span><span class="wc" style="font-size:12px" title="1741">token</span><span class="wc" style="font-size:12px" title="1731">脚本</span><span class="wc" style="font-size:12px" title="1722">使用</span><span class="wc" style="font-size:12px" title="1710">本地</span><span class="wc" style="font-size:12px" title="1677">记录</span><span class="wc" style="font-size:12px" title="1657">null</span><span class="wc" style="font-size:12px" title="1656">任务</span><span class="wc" style="font-size:12px" title="1648">sql</span><span class="wc" style="font-size:12px" title="1635">codemax</span><span class="wc" style="font-size:12px" title="1635">出库</span><span class="wc" style="font-size:12px" title="1631">新增</span><span class="wc" style="font-size:12px" title="1625">设计</span><span class="wc" style="font-size:12px" title="1615">关键</span><span class="wc" style="font-size:12px" title="1597">索引</span><span class="wc" style="font-size:12px" title="1596">报告</span><span class="wc" style="font-size:12px" title="1591">task</span><span class="wc" style="font-size:12px" title="1586">核心</span><span class="wc" style="font-size:12px" title="1582">创建</span><span class="wc" style="font-size:12px" title="1581">api</span><span class="wc" style="font-size:12px" title="1574">同步</span><span class="wc" style="font-size:12px" title="1566">全部</span></div>
+<div class="note">热词反映你与 AI 协作的重心：编码实战、harness/工具链、Agent/MCP、治理与自动化等。</div></section>
+
+<section><h2>内容素材候选（高互动 + harness 主题命中优先）</h2>
+<div class="note">高亮行 = 命中 harness/Agent/MCP/治理/自动化等行途 IP 核心主题，优先转化为选题素材。完整文本见本地索引库 <code>ai_history_index.db</code>（messages 表可检索）。</div>
+<table class="data"><thead><tr>
+      <th>工具</th><th>会话标题</th><th>项目</th><th>日期</th><th>轮次</th><th>字数</th><th>首段</th></tr></thead>
+      <tbody><tr class="hit">
+          <td>claude_code</td><td>整理 AVD 工具套件清单</td>
+          <td>中台海事仓</td><td>2026-08-13</td>
+          <td>842</td><td>168,120</td>
+          <td class="snip">今天有最新的工作要求：动力吧就是对拉了一个那个语音会议 ，然后讲一下昨天他跟客户沟通了一个结果吧。嗯嗯然后客户就决定这个项目这种往下推 ，但是我觉得最好推的有点慢了所以他们他昨天那个结论主要是有两个事情要跟进。一个是那个我看看啊。一个是他需要因为他之前说了嘛 ，他要把咱们那个 CoMax那个平台部署到他们跑友云上嘛坐在</td></tr><tr class="hit">
+          <td>claude_code</td><td>验证 tencent-docs MCP 是否生效</td>
+          <td>重构工程仓</td><td>2026-08-06</td>
+          <td>586</td><td>110,993</td>
+          <td class="snip">▎ 继续 AI 测试 Harness Phase 0：验证 tencent-docs MCP 是否生效</td></tr><tr class="hit">
+          <td>claude_code</td><td>分析物料二期需求并推进</td>
+          <td>重构工程仓</td><td>2026-08-03</td>
+          <td>712</td><td>94,277</td>
+          <td class="snip">~/projects/重构工程仓/物料二期-开发提示词 0803.txt 分析我相关的去求，通过 specs 的模型进行推进吧。  感觉都是基于既有代码的增量型的二期需求。</td></tr><tr class="hit">
+          <td>claude_code</td><td>材料WMS BUG修复</td>
+          <td>重构工程仓</td><td>2026-07-16</td>
+          <td>412</td><td>90,452</td>
+          <td class="snip">~/projects/重构工程仓/.claude/specs/FS-T5236-material-wms-fix--20260715 BUG可以先修复，我看看。</td></tr><tr class="hit">
+          <td>claude_code</td><td>FS-1911 客需随礼 SIT E2E 测试</td>
+          <td>重构工程仓</td><td>2026-08-12</td>
+          <td>964</td><td>48,697</td>
+          <td class="snip">继续 FS-1911 客需随礼工作。先读这些恢复上下文： 1. 用户级 memory: session-record-20260811-FS1911-guest-gift-e2e.md（本次会话改动/决策/待办） 2. 工程 memory: .claude/memory/unified-dev-commands.md（</td></tr><tr class="hit">
+          <td>claude_code</td><td>Token优化与测试自动化</td>
+          <td>中台工程仓</td><td>2026-07-29</td>
+          <td>204</td><td>45,114</td>
+          <td class="snip">&lt;local-command-caveat&gt;Caveat: The messages below were generated by the user while running local commands. DO NOT respond to these messages or otherwise consider</td></tr><tr class="hit">
+          <td>claude_code</td><td>排查赠品物料生产工单问题</td>
+          <td>重构工程仓</td><td>2026-08-11</td>
+          <td>580</td><td>44,631</td>
+          <td class="snip">出现了 2 个生产工单，我们要开始进行分析了。 ~/projects/重构工程仓/.claude/incidents 注意这块的一个留存  https://pingcode.重构工程.com.cn/ship/tickets/7skGtm1J? #FS-T5294  赠品物料-物料</td></tr><tr class="hit">
+          <td>claude_code</td><td>评估华为云私有化部署DeepSeek V4可行性</td>
+          <td>中台海事仓</td><td>2026-08-07</td>
+          <td>521</td><td>36,717</td>
+          <td class="snip">最新商务消息，今天华为云想强推私有化部署的大模型的一个方案。 by 许译同步消息。 1.2GPU资源需求(华为昇腾) 配置 芯片 CPU 内存 存储 推理框架 模型 MVP阶段(2试点，3-4人) 8X昇腾910B ≥32核 &gt;256GB NVMe SSD &gt;1TB VLLM Ascend + CANN 8.0 Dee</td></tr><tr class="hit">
+          <td>claude_code</td><td>ada 产品索引建立与人天评估</td>
+          <td>ada</td><td>2026-08-04</td>
+          <td>420</td><td>35,100</td>
+          <td class="snip">~/projects/ada/AI 探索 建立一下索引，参考一下  ~/projects/重构工程仓/.claude/specs/token-5layer-experiment--20260724 这 5 层给 ada 这个产品建立好索引，然后我</td></tr><tr class="hit">
+          <td>kiro</td><td>~/projects/重构工程仓/赠品</td>
+          <td>重构工程仓</td><td>2026-05-08</td>
+          <td>176</td><td>24,627</td>
+          <td class="snip">~/projects/重构工程仓/赠品数据没写入排查 0508/赠品数据没写入问题：-提示词.txt 根据提示词帮助我排查问题 ， 相关日志文件。~/projects/重构工程仓/赠品数据没写入排查 0508/赠品数据没写入.txt</td></tr><tr class="hit">
+          <td>claude_code</td><td>(未命名)</td>
+          <td>ada</td><td>2026-07-06</td>
+          <td>90</td><td>16,802</td>
+          <td class="snip">cae-utils-uid-generator 时间戳Bit溢出风险标准化修复方案  文档用途  1. 纳入团队 cloud.md 全局技术规范，作为UID组件统一治理标准；  2. 可直接输入自动化AI模型，用于全仓库批量扫描、识别风险项目、自动修复校验；  3. 作为研发角色操作规范文档，统一各业务组整改执行标准。</td></tr><tr class="hit">
+          <td>kiro</td><td>2.后端相关接口-PUT /admin/b2b_orders/{id}/refr</td>
+          <td>重构工程仓</td><td>2025-11-20</td>
+          <td>36</td><td>16,339</td>
+          <td class="snip">4.10.05.08 移库订单与赠品物料 - 开发提示词 # 涉及栏目界面 ## 订单中心 / 移库订单管理/审核 https://fs-sit.chowtaifook.sz/#/transfer-order/audit/8376774987169374209 ## 订单中心 / 移库订单管理/详情 https://f</td></tr><tr class="hit">
+          <td>claude_code</td><td>Ghostty 半透明背景下的灰色文字可见性问题</td>
+          <td>中台工程仓</td><td>2026-07-24</td>
+          <td>187</td><td>14,647</td>
+          <td class="snip">看看我本地的 # ============================================================= # Ghostty 终端配置文件 # 热重载快捷键：Cmd+Shift+,  （修改后无需重启应用） # 适用版本：Ghostty 1.3.1 # ===============</td></tr><tr class="hit">
+          <td>claude_code</td><td>Ghostty 半透明背景下的灰色文字可见性问题</td>
+          <td>中台工程仓</td><td>2026-07-24</td>
+          <td>140</td><td>13,246</td>
+          <td class="snip">看看我本地的 # ============================================================= # Ghostty 终端配置文件 # 热重载快捷键：Cmd+Shift+,  （修改后无需重启应用） # 适用版本：Ghostty 1.3.1 # ===============</td></tr><tr class="hit">
+          <td>claude_code</td><td>FS-1911 客需随货送礼功能开发</td>
+          <td>重构工程仓</td><td>2026-08-04</td>
+          <td>41</td><td>12,984</td>
+          <td class="snip">Read .claude/specs/FS-1911-giveaway-guest-gift--20260803/00_README.md   Read .claude/specs/FS-1911-giveaway-guest-gift--20260803/04_tasks.md    cd ~/projects/ct</td></tr><tr class="hit">
+          <td>claude_code</td><td>查看token-harness-bdd规范文件</td>
+          <td>中台工程仓</td><td>2026-07-29</td>
+          <td>84</td><td>12,704</td>
+          <td class="snip">&lt;local-command-caveat&gt;Caveat: The messages below were generated by the user while running local commands. DO NOT respond to these messages or otherwise consider</td></tr><tr class="hit">
+          <td>claude_code</td><td>搜索腾讯文档 MCP 支持输出测试用例</td>
+          <td>重构工程仓</td><td>2026-08-06</td>
+          <td>102</td><td>12,166</td>
+          <td class="snip">协助我搜索一下是否有 腾讯文档的 mcp 或者是 skills，能帮让我的 claude code 的 cli coding agent，输出测试用例啥的。</td></tr><tr class="hit">
+          <td>claude_code</td><td>调研 coding agent 升级与 harness 适配改造</td>
+          <td>重构工程仓</td><td>2026-08-11</td>
+          <td>217</td><td>11,733</td>
+          <td class="snip">❯ 我还有 1 个想法就是关于 claude code 一些升级啥的，例如最新的版本支持跨会话的 1 个交流沟通了，你可以通过网络的 1 个信息进行论证完善一些。做个深入的调研，主要目的就是有一个常态化一些流程，我们能够知道最新的 claude code 或者就是 其他的 coding agnet 的一个升级，对于我们</td></tr><tr class="hit">
+          <td>kiro</td><td>现在是需求梳理的任务拆分排期的阶段。</td>
+          <td>工程C</td><td>2026-05-13</td>
+          <td>86</td><td>11,053</td>
+          <td class="snip">读取：~/projects/工程C/工程C仓/daoqi-po-workspace/任务拆解排期/任务排期提示词：.txt 基于：~/projects/工程C/工程C仓/daoqi-po-workspace/任务拆解排期/企业活动相关任务排期.xlsx</td></tr><tr class="hit">
+          <td>claude_code</td><td>排查组合条件配置未命中问题</td>
+          <td>重构工程仓</td><td>2026-08-17</td>
+          <td>184</td><td>9,593</td>
+          <td class="snip">~/projects/重构工程仓/.claude/specs/FS-1908-giveaway-category-group--20260803 问题记录：  按组合条件配置详情  基础信息  类型  状态  生效店铺：  口  配置名称：PT测试  生效日期：2026-08-</td></tr><tr class="hit">
+          <td>claude_code</td><td>继续 ishop 现代化规格工作</td>
+          <td>中台海事仓</td><td>2026-07-20</td>
+          <td>31</td><td>9,263</td>
+          <td class="snip">&lt;local-command-caveat&gt;Caveat: The messages below were generated by the user while running local commands. DO NOT respond to these messages or otherwise consider</td></tr><tr class="hit">
+          <td>kiro</td><td>~/projects/工程C/vgdt/vgdt</td>
+          <td>工程C</td><td>2026-02-06</td>
+          <td>10</td><td>8,171</td>
+          <td class="snip">~/projects/工程C/工程C仓/.kiro/steering/work-rule.md 关注到DDD规范有些问题，参考标准服务的ddd时间进行调整 ~/projects/工程C/vgdt/vgdt-fea-online/vgdt-fea-onli</td></tr><tr class="hit">
+          <td>kiro</td><td>这种问题，请帮助我解决此问题。</td>
+          <td>重构工程仓</td><td>2026-03-23</td>
+          <td>18</td><td>8,104</td>
+          <td class="snip">我的终端突然出现了 没有直接进入命令行，而且idea打开也出现了 Shell Environment Loading On macOS, applications launched via a GUI (such as Finder, Dock, or Spotlight) inherit a relatively e</td></tr><tr class="hit">
+          <td>kiro</td><td>主要要在订单匹配礼赠活动的时候，如果非平台赠，需要实现售完即止的功能实现。根据提</td>
+          <td>重构工程仓</td><td>2026-04-23</td>
+          <td>40</td><td>7,649</td>
+          <td class="snip">代码索引： 分析一下com/某零售客户/重构工程/activity/domain/service/OrderGiveawayMatchService.java:63 ~/projects/重构工程仓/dc-promotion/src/main/java/com/某零售客户/c</td></tr><tr class="hit">
+          <td>claude_code</td><td>Claude Code v2.1.220 更新差异</td>
+          <td>重构工程仓</td><td>2026-07-27</td>
+          <td>22</td><td>6,775</td>
+          <td class="snip">&lt;local-command-caveat&gt;Caveat: The messages below were generated by the user while running local commands. DO NOT respond to these messages or otherwise consider</td></tr><tr class="hit">
+          <td>kiro</td><td>New Session (Continued) (Continued) (Con</td>
+          <td>重构工程仓</td><td>2026-03-23</td>
+          <td>20</td><td>6,599</td>
+          <td class="snip">## TASK 1: 物料匹配异常处理功能 - Spec设计与任务列表  **STATUS**: done  **DETAILS**: 已完成设计文档和任务列表创建。功能名称 `material-match-exception-handling`。  **FILEPATHS**: - `.kiro/specs/mate</td></tr><tr class="hit">
+          <td>kiro</td><td>针对第4点检查，可通过~/projects/ct</td>
+          <td>重构工程仓</td><td>2025-12-02</td>
+          <td>18</td><td>6,309</td>
+          <td class="snip">请注意以下工作规则： 1. 始终保持中文回复，以及中文输出文档 2. 有任何不清楚的问题，向用户确认后再执行 3. 执行工作时尝试查看.kiro文件是否有匹配的类似任务 4. 实际上设计输出测试用例不需要单元测试，保证编译即可 5. 简明扼要回复，节省Credits 6. 这是一个涉及约100个工程服务（Java和Re</td></tr><tr class="hit">
+          <td>claude_code</td><td>测试 Claude Code 多模态识别</td>
+          <td>中台工程仓</td><td>2026-07-17</td>
+          <td>44</td><td>6,264</td>
+          <td class="snip">&lt;local-command-caveat&gt;Caveat: The messages below were generated by the user while running local commands. DO NOT respond to these messages or otherwise consider</td></tr><tr class="hit">
+          <td>claude_code</td><td>Claude Code 实践迁移到 Copilot 工作流方案</td>
+          <td>中台海事仓</td><td>2026-07-20</td>
+          <td>79</td><td>6,159</td>
+          <td class="snip">~/projects/中台工程仓 参考这里的一些 claude 的相关工作实践。 主要是： ~/projects/中台工程仓/.claude ~/projects/中台工程仓/AI探索 /Users/lijiachen</td></tr><tr class="hit">
+          <td>kiro</td><td>3.观察~/projects/工程C/vgdt/</td>
+          <td>工程C</td><td>2026-02-10</td>
+          <td>18</td><td>6,037</td>
+          <td class="snip">~/projects/工程C/工程C仓/.kiro/steering/数据库治理规范.md 需要调整： 1.数据库的规范 一般是这样的 ： fea_online_cookbook_db 2.数据库表的命名规范一般是这样的：`fea_online_cookbook_db`.`cookbo</td></tr></tbody></table></section>
+
+<section><h2>数据源与边界</h2>
+<p style="font-size:13px;color:var(--mut)">已索引源（本地只读）：
+<span class="tag">~/.claude/projects/*.jsonl</span>
+<span class="tag">Kiro workspace-sessions</span>
+<span class="tag">~/.codex/sessions</span>
+<span class="tag">~/.kimi/sessions</span>
+<span class="tag">~/.local/state/opencode · mimocode</span>
+<span class="tag">VSCode 系 state.vscdb（Cursor/Trae/CodeBuddy/Claude 桌面）</span></p>
+<p style="font-size:13px;color:var(--mut)">本轮未纳入 / 待扩展：
+<span class="tag">GitHub Copilot 聊天（本地仅任务 todo，无对话）</span>
+<span class="tag">Cherry Studio（IndexedDB，待解析）</span>
+<span class="tag">Kiro 的 .chat 执行日志（12540 个，过碎）</span>
+<span class="tag">Claude-3p claude-code-sessions（元数据索引，对话已在 .claude）</span></p>
+<p style="font-size:12px;color:var(--mut)">⚠️ 合规：本报告与索引仅记录路径/文本片段用于内容选题分析，<b>不含任何企业项目业务数据外发</b>；索引库存于本地 tools/ 目录。</p>
+</section>
+
+</div></body></html>

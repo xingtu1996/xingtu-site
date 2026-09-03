@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>智谱 GLM-5.3 Flash 公众号文章预览 · 行途/Justin Li</title>
+<style>
+  :root {
+    --bg: #f5f6f8;
+    --card: #ffffff;
+    --text: #1f2329;
+    --text-2: #4e5969;
+    --text-3: #86909c;
+    --brand: #5b3df5;
+    --brand-2: #7c4dff;
+    --accent: #ff5f5f;
+    --green: #00b42a;
+    --gold: #ff9a00;
+    --border: #e5e6eb;
+    --code-bg: #f7f8fa;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1080px; margin: 0 auto; padding: 24px 20px 60px; }
+  /* 顶部 header */
+  .top-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 16px; background: #fff; border: 1px solid var(--border);
+    border-radius: 10px; margin-bottom: 20px;
+    font-size: 13px; color: var(--text-2);
+  }
+  .top-bar .brand { font-weight: 700; color: var(--brand); }
+  .top-bar .meta { display: flex; gap: 16px; }
+  /* 封面卡片 */
+  .cover-card {
+    background: #fff; border: 1px solid var(--border); border-radius: 14px;
+    padding: 18px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,.04);
+  }
+  .cover-card .cover-img {
+    width: 100%; height: auto; border-radius: 8px; display: block;
+  }
+  .cover-card .cover-caption {
+    margin-top: 10px; font-size: 12px; color: var(--text-3);
+    display: flex; justify-content: space-between;
+  }
+  /* 主体两栏 */
+  .main { display: grid; grid-template-columns: 1fr 320px; gap: 20px; }
+  @media (max-width: 900px) { .main { grid-template-columns: 1fr; } }
+  /* 文章卡片 */
+  .article {
+    background: #fff; border: 1px solid var(--border); border-radius: 14px;
+    padding: 36px 40px; box-shadow: 0 2px 8px rgba(0,0,0,.04);
+  }
+  .article h1 {
+    font-size: 24px; line-height: 1.4; margin: 0 0 8px; font-weight: 800;
+    color: var(--text);
+  }
+  .article .subtitle {
+    font-size: 13px; color: var(--text-3); margin-bottom: 22px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--border);
+  }
+  .article h2 {
+    font-size: 19px; margin: 36px 0 12px; font-weight: 700;
+    color: var(--text); padding-left: 12px;
+    border-left: 4px solid var(--brand);
+  }
+  .article h3 {
+    font-size: 16px; margin: 24px 0 8px; font-weight: 700; color: var(--text);
+  }
+  .article p { margin: 12px 0; font-size: 15.5px; color: var(--text-2); }
+  .article strong { color: var(--text); font-weight: 700; }
+  .article em { color: var(--text-3); font-style: normal; }
+  .article ul, .article ol { padding-left: 22px; color: var(--text-2); }
+  .article li { margin: 6px 0; font-size: 15px; }
+  .article img {
+    width: 100%; height: auto; border-radius: 8px; display: block;
+    margin: 16px 0 6px; border: 1px solid var(--border);
+  }
+  .article .img-cap {
+    font-size: 12px; color: var(--text-3); text-align: center;
+    margin: 0 0 20px; padding: 0 6px;
+  }
+  .article blockquote {
+    border-left: 3px solid var(--brand); padding: 8px 14px;
+    background: var(--code-bg); margin: 16px 0; border-radius: 6px;
+    color: var(--text-2); font-size: 14.5px;
+  }
+  .article blockquote p { margin: 4px 0; font-size: 14.5px; color: var(--text-2); }
+  /* 对比表 */
+  table.compare {
+    width: 100%; border-collapse: collapse; margin: 14px 0 18px;
+    font-size: 14px; background: #fff;
+    border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+  }
+  table.compare thead th {
+    background: linear-gradient(180deg, #fafbff, #f1f2f7);
+    color: var(--text); font-weight: 700; padding: 12px 10px;
+    text-align: center; border-bottom: 2px solid var(--brand);
+    font-size: 13.5px;
+  }
+  table.compare tbody td {
+    padding: 11px 10px; text-align: center; border-bottom: 1px solid var(--border);
+    color: var(--text-2);
+  }
+  table.compare tbody tr:last-child td { border-bottom: none; }
+  table.compare td:first-child {
+    text-align: left; font-weight: 600; color: var(--text);
+    background: #fafbff;
+  }
+  table.compare td.best {
+    color: var(--brand); font-weight: 800; background: #f4f1ff;
+  }
+  /* 来源块 */
+  .sources {
+    margin-top: 18px; padding: 14px 16px; background: var(--code-bg);
+    border: 1px dashed var(--border); border-radius: 8px;
+    font-size: 13px; color: var(--text-2);
+  }
+  .sources h4 { margin: 0 0 8px; font-size: 14px; color: var(--text); }
+  .sources table { width: 100%; border-collapse: collapse; }
+  .sources td { padding: 5px 6px; vertical-align: top; }
+  .sources td:first-child { width: 110px; color: var(--text-3); font-weight: 600; }
+  .sources a { color: var(--brand); text-decoration: none; word-break: break-all; }
+  .sources a:hover { text-decoration: underline; }
+  /* 侧栏 */
+  .sidebar { display: flex; flex-direction: column; gap: 16px; }
+  .panel {
+    background: #fff; border: 1px solid var(--border); border-radius: 12px;
+    padding: 16px; box-shadow: 0 2px 6px rgba(0,0,0,.04);
+  }
+  .panel h4 {
+    margin: 0 0 12px; font-size: 14px; font-weight: 700; color: var(--text);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .panel h4::before { content: ""; width: 4px; height: 14px; background: var(--brand); border-radius: 2px; }
+  .panel .pill {
+    display: inline-block; padding: 2px 10px; border-radius: 20px;
+    font-size: 11.5px; font-weight: 600; margin: 2px 4px 2px 0;
+  }
+  .pill-red { background: #ffe8e8; color: #cf2424; }
+  .pill-blue { background: #e8f0ff; color: #1d6fe6; }
+  .pill-green { background: #e6f7ec; color: var(--green); }
+  .pill-purple { background: #f0e8ff; color: var(--brand); }
+  .pill-gold { background: #fff5e0; color: #c97a00; }
+  .checklist { list-style: none; padding: 0; margin: 0; }
+  .checklist li {
+    padding: 6px 0 6px 22px; font-size: 13px; color: var(--text-2);
+    border-bottom: 1px dashed var(--border); position: relative;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before {
+    content: "✓"; color: var(--green); font-weight: 800;
+    position: absolute; left: 4px; top: 6px;
+  }
+  .download-btn {
+    display: block; padding: 10px 14px; background: var(--brand); color: #fff;
+    text-align: center; border-radius: 8px; font-size: 14px; font-weight: 600;
+    text-decoration: none; margin-top: 10px;
+  }
+  .download-btn:hover { background: var(--brand-2); }
+  .tip-box {
+    background: #fffbe6; border: 1px solid #ffe58f; border-radius: 8px;
+    padding: 10px 12px; font-size: 12.5px; color: #875800; line-height: 1.6;
+  }
+  /* 文章底部 */
+  .article-footer {
+    margin-top: 30px; padding-top: 18px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--text-3); text-align: center;
+  }
+  /* 复制提示 */
+  .copy-tip {
+    background: #e8f7ee; border: 1px solid #b3e0c2; border-radius: 8px;
+    padding: 12px 14px; font-size: 13px; color: #1a6b3b;
+    margin: 16px 0;
+  }
+  .mermaid {
+    text-align: center; margin: 16px 0; background: #fafbff;
+    border: 1px solid var(--border); border-radius: 8px;
+    padding: 14px; overflow-x: auto;
+  }
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="container">
+
+  <!-- 顶部元信息 -->
+  <div class="top-bar">
+    <div><span class="brand">行途 / Justin Li</span> · 自媒体 IP 创作工作台</div>
+    <div class="meta">
+      <span>📅 2026-08-27</span>
+      <span>🤖 deepseek-v4-pro</span>
+      <span>🏷️ 行途 · AI 编程工具链</span>
+    </div>
+  </div>
+
+  <!-- 封面卡片 -->
+  <div class="cover-card">
+    <img class="cover-img" src="公众号封面_900x383.png" alt="GLM-5.3 Flash 公众号封面">
+    <div class="cover-caption">
+      <span>封面图：900 × 383 px（公众号头条封面 2.35:1）</span>
+      <span>路径：glm53flash_imgs/公众号封面_900x383.png</span>
+    </div>
+  </div>
+
+  <!-- 主体两栏 -->
+  <div class="main">
+
+    <!-- 左：文章卡片 -->
+    <div class="article">
+      <h1>智谱「牛来（Ox Alpha）」GLM-5.3 Flash 正式开源：输入 0.4 元 / 输出 1.4 元，比 DeepSeek V4 Flash 还便宜</h1>
+      <div class="subtitle">
+        发布日期：2026-08-27 · 数据全部来自官方来源（文末标注） · 配图来源：智谱官网 z.ai/blog/glm-5.3-flash
+      </div>
+
+      <div class="copy-tip">
+        📋 <b>使用说明</b>：本文 Markdown 源文件在 <code>glm53flash_imgs/公众号正文.md</code>，可直接复制到公众号编辑器；公众号编辑器对 Markdown 表格支持有限，可把对比表改成「图片版」插入。
+      </div>
+
+      <p>上周 AI 圈最大的悬案破案了——OpenRouter 和 OpenCode 上那个匿名跑霸榜首的「Ox Alpha」，被智谱正式认领：它就是 <strong>GLM-5.3 Flash</strong>，GLM-5 系列首个<strong>原生多模态大模型</strong>，320B 总参数 / 18B 激活参数，<strong>输入 0.4 元、输出 1.4 元（每百万 tokens，限时 5 折）</strong>。</p>
+
+      <p>它 6 天在 OpenRouter 吃了 <strong>23.2 万亿 tokens</strong>——是第二名 DeepSeek-V4-Flash (Jul 31) 9.9T 的 <strong>2.3 倍</strong>，直接把 DeepSeek 连续 56 天的霸榜纪录按在地上。</p>
+
+      <img src="公众号正文配图_01_榜单.png" alt="OpenRouter 官方榜单 Aug 20–25, 2026">
+      <div class="img-cap">（图片来源：OpenRouter 官方榜单，转引自智谱官网 z.ai/blog/glm-5.3-flash）</div>
+
+      <h2>一、价格屠夫：真神下凡带着价格表</h2>
+
+      <p>我第一时间打开 BigModel 官方定价页，白纸黑字：</p>
+
+      <blockquote>
+        <p><strong>GLM-5.3-Flash（5 折限时两周）</strong>：输入 <strong>0.4 元</strong> / 输出 <strong>1.4 元</strong> / 缓存命中 <strong>0.115 元</strong>（每百万 tokens）</p>
+        <p>原价：输入 0.8 元 / 输出 2.8 元 / 缓存命中 0.23 元</p>
+        <p>上线前两周半价，结束后恢复原价。</p>
+      </blockquote>
+
+      <p>横向对比 8 月刚提价的 DeepSeek V4 Flash（官方 api-docs.deepseek.com）：</p>
+
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>项目（元 / 百万 tokens）</th>
+            <th>GLM-5.3 Flash<br>限时 5 折</th>
+            <th>GLM-5.3 Flash<br>原价</th>
+            <th>DeepSeek V4 Flash<br>空闲时段</th>
+            <th>DeepSeek V4 Flash<br>高峰时段</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>输入（缓存未命中）</td>
+            <td class="best">0.4</td>
+            <td>0.8</td>
+            <td>1.5</td>
+            <td>3.0</td>
+          </tr>
+          <tr>
+            <td>输出</td>
+            <td class="best">1.4</td>
+            <td>2.8</td>
+            <td>4.5</td>
+            <td>9.0</td>
+          </tr>
+          <tr>
+            <td>缓存命中输入</td>
+            <td>0.115</td>
+            <td>0.23</td>
+            <td class="best">0.05</td>
+            <td>0.10</td>
+          </tr>
+          <tr>
+            <td>上下文窗口</td>
+            <td>1M</td>
+            <td>1M</td>
+            <td>1M</td>
+            <td>1M</td>
+          </tr>
+          <tr>
+            <td>输入模态</td>
+            <td>图/视频/文件/文本</td>
+            <td>同左</td>
+            <td>仅文本</td>
+            <td>仅文本</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><em>数据来源：智谱 BigModel 定价页 bigmodel.cn/pricing ；DeepSeek 官方定价页 api-docs.deepseek.com（核验日期 2026-08-26）。</em></p>
+
+      <p><strong>一句话结论</strong>：常规调用场景（输入未命中 + 输出为主）下，GLM-5.3 Flash 比 DeepSeek V4 Flash 更便宜；只有"几乎全是缓存命中输入"的极端重复前缀场景，DeepSeek 谷时略胜（0.05 vs 0.115）。</p>
+
+      <h2>二、性能怪兽：便宜，恰恰是它最不重要的优点</h2>
+
+      <p>怕「便宜没好货」？偏偏不是。</p>
+
+      <ul>
+        <li><strong>AA 智能指数 57 分</strong>，与 <strong>Claude Opus 4.8 持平</strong>，超过自家上一代 GLM-5.2，<strong>也超过 DeepSeek V4 Pro 正式版的 53 分</strong>。</li>
+        <li>在自研 Z.ai Code Bench v1.0（跑在 Claude Code 2.1.207 上）上，max effort 几乎打平 Claude Opus 4.8：<strong>29.0 vs 29.5</strong>。</li>
+        <li>DeepSWE v1.1 拿到 <strong>63.4</strong>（GLM-5.2 只有 46.2），AutomationBench <strong>48.8</strong>（GLM-5.2 只有 26.2）。</li>
+      </ul>
+
+      <img src="公众号正文配图_02_AA指数.png" alt="Artificial Analysis Intelligence Index Pareto frontier">
+      <div class="img-cap">（图片来源：智谱官网 z.ai/blog/glm-5.3-flash）</div>
+
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>基准（分数越高越好）</th>
+            <th>GLM-5.3-Flash</th>
+            <th>GLM-5.2（上代）</th>
+            <th>DeepSeek V4-Vision-Exp</th>
+            <th>Claude Opus 4.8</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>AA 智能指数</td><td class="best">57</td><td>—</td><td>—</td><td class="best">57</td></tr>
+          <tr><td>Coding Terminal Bench 2.1</td><td>84.3</td><td>81.0</td><td>83.9</td><td class="best">85.0</td></tr>
+          <tr><td>DeepSWE v1.1</td><td class="best">63.4</td><td>46.2</td><td>59.3</td><td>58.0</td></tr>
+          <tr><td>Toolathlon Verified</td><td class="best">78.4</td><td>59.9</td><td>75.9</td><td>76.2</td></tr>
+          <tr><td>AutomationBench v1.0.6</td><td class="best">48.8</td><td>26.2</td><td>38.8</td><td>41.0</td></tr>
+        </tbody>
+      </table>
+      <p><em>数据来源：智谱官方博客 z.ai/blog/glm-5.3-flash benchmark 表（DeepSWE / Toolathlon / AutomationBench 均为第三方权威 Agent 基准）。</em></p>
+
+      <img src="图_性能对比.png" alt="GLM-5.3-Flash 性能对比（官方 benchmark）">
+      <div class="img-cap">（图片来源：自制 · 数据源自智谱官方博客 z.ai/blog/glm-5.3-flash）</div>
+
+      <p>一句话：把右上角那一坨贵价旗舰的"能力天花板"，硬生生拉到了 $0.045 / 任务的左下角——以前要花 <strong>10 倍价格</strong>才能拿到的智能等级。而且在 <strong>DeepSWE（63.4 vs 58.0）和 Toolathlon（78.4 vs 76.2）</strong> 上，它甚至<strong>反超了 Claude Opus 4.8</strong>。</p>
+
+      <h2>三、架构 + 国产算力：模型、芯片、开源三件套</h2>
+
+      <p>GLM-5.3-Flash 是首个采用 <strong>稀疏注意力 + 线性注意力混合架构</strong> 的开源前沿模型，加上 IndexPool 索引压缩：</p>
+
+      <ul>
+        <li>注意力计算量相比 GLM-5.3 降低 <strong>3.01 倍</strong></li>
+        <li>KV Cache 降低 <strong>4.44 倍</strong></li>
+        <li>层数从 92 砍到 45，激活参数从 32B 砍到 18B，几乎减半</li>
+      </ul>
+
+      <img src="公众号正文配图_03_架构.png" alt="GLM-5.3-Flash 架构图">
+      <div class="img-cap">（图片来源：智谱官网 z.ai/blog/glm-5.3-flash）</div>
+
+      <p>混合注意力机制一图看懂：</p>
+      <img src="图_混合注意力架构.png" alt="GLM-5.3-Flash 混合注意力架构图">
+      <div class="img-cap">（图片来源：自制 · 数据源自智谱官方博客）</div>
+
+      <p>更狠的是：<strong>Ox Alpha 匿名测试期间所有 23 万亿 tokens 的流量，全部跑在国产芯片集群上</strong>。晚点 LatePost 报道集群规模超过 10 万张国产卡，供应商或来自华为昇腾 / 摩尔线程 / 海光（智谱未官方确认）。官方说：同硬件基线下端到端性能 +3 倍，单 token 成本追平主流英伟达 GPU。</p>
+
+      <p>视觉编码原生集成进模型：模型能在 Coding 循环里自主决定"何时看一眼"渲染结果，用视觉反馈迭代修改——前端 UI 设计稿经过 self-verification 后，布局问题被它自己修掉了。</p>
+
+      <h2>四、上手三步曲（可直接复制）</h2>
+
+      <h3>第一步 · 注册 BigModel，拿 API Key</h3>
+      <p>访问智谱开放平台模型文档 <a href="https://docs.bigmodel.cn/cn/guide/models/vlm/glm-5.3-flash" target="_blank">docs.bigmodel.cn/cn/guide/models/vlm/glm-5.3-flash</a>，注册账号、创建 API Key，即可调用 GLM-5.3-Flash 的原生多模态 API（限时 5 折两周，1M 上下文）。</p>
+
+      <h3>第二步 · 开 GLM Coding Plan（编程订阅，性价比最高）</h3>
+      <p>入口：<a href="https://bigmodel.cn/glm-coding" target="_blank">bigmodel.cn/glm-coding</a></p>
+      <ul>
+        <li>三档：<strong>Lite ¥118/月</strong>（每周 1 万积分）→ <strong>Pro ¥538/月</strong>（6 倍额度）→ <strong>Max ¥1078/月</strong>（14 倍额度），包季 8 折、包年 7 折</li>
+        <li>GLM-5.3-Flash 已全量接入，同等预算下可用配额是 GLM-5.3 的 <strong>3 倍</strong></li>
+        <li>支持 ZCode / Claude Code / OpenCode / Cline / Kilo Code 等 <strong>20+ 编程工具</strong>，套餐均含视觉理解、联网搜索、网页读取、开源仓库 MCP</li>
+        <li>安装教程：<a href="https://docs.bigmodel.cn/cn/coding-plan/quick-start" target="_blank">docs.bigmodel.cn/cn/coding-plan/quick-start</a></li>
+      </ul>
+
+      <h3>第三步 · 拉 HF 权重本地部署（可选，自托管）</h3>
+      <ul>
+        <li>标准权重（<strong>MIT 开源</strong>）：<a href="https://huggingface.co/zai-org/GLM-5.3-Flash" target="_blank">huggingface.co/zai-org/GLM-5.3-Flash</a></li>
+        <li>BF16 半精度权重：<a href="https://huggingface.co/zai-org/GLM-5.3-Flash-BF16" target="_blank">huggingface.co/zai-org/GLM-5.3-Flash-BF16</a></li>
+        <li>官方支持 SGLang / vLLM / TokenSpeed 本地推理，国产加速卡可承载 1M 上下文，企业可脱离公有云 API 实现数据闭环</li>
+      </ul>
+
+      <h2>写在最后</h2>
+
+      <blockquote>
+        <p>牛来，牛是自己的，草也是自己的。</p>
+      </blockquote>
+
+      <p>这次不只是一家模型厂发新品，而是 <strong>"前沿模型能力 + 1/40 价格 + 国产芯片承载 + MIT 开源权重"</strong> 四件事第一次同时发生。</p>
+
+      <h2>福利：注册就送 2000 万 tokens</h2>
+
+      <img src="BigmodelPoster.png" alt="BigModel 邀请海报（扫码注册，你我各得 2000 万 tokens）" style="max-width:300px;margin:14px auto;display:block;border-radius:10px;">
+      <div class="img-cap">（BigModel 邀请海报 · 扫码注册，你我各得 2000 万 tokens）</div>
+
+      <p>我正在 BigModel 开放平台上打造 AI 应用。通过下面这个邀请链接注册，<strong>你我各得 2000 万 tokens 新人大礼包</strong>，一起把 GLM-5.3 Flash 的性价比用起来（复制链接到浏览器打开）：</p>
+
+      <p><a href="https://www.bigmodel.cn/invite?icode=VWwqqiAL8m53RjMVI8cFvlwpqjqOwPB5EXW6OL4DgqY%3D" target="_blank" style="color:#5b3df5;word-break:break-all;">https://www.bigmodel.cn/invite?icode=VWwqqiAL8m53RjMVI8cFvlwpqjqOwPB5EXW6OL4DgqY%3D</a></p>
+
+      <blockquote>
+        <p>智谱新一代旗舰 GLM-5.3 已上线，推理 / 代码 / 智能体综合能力达到开源模型 SOTA。期待和你一起在 BigModel 畅享卓越模型能力。</p>
+      </blockquote>
+
+      <!-- 来源 -->
+      <div class="sources">
+        <h4>📎 资源链接清单（官方一手来源 · 搜一搜友好）</h4>
+        <p style="margin:4px 0 10px;font-size:12.5px;color:var(--text-3)">覆盖「云 API → 编程订阅 → 本地开源部署」完整链路</p>
+        <table>
+          <tr><td>BigModel 定价页</td><td><a href="https://bigmodel.cn/pricing" target="_blank">https://bigmodel.cn/pricing</a></td></tr>
+          <tr><td>BigModel · 模型文档</td><td><a href="https://docs.bigmodel.cn/cn/guide/models/vlm/glm-5.3-flash" target="_blank">https://docs.bigmodel.cn/cn/guide/models/vlm/glm-5.3-flash</a></td></tr>
+          <tr><td>Z.ai · 模型文档</td><td><a href="https://docs.z.ai/guides/vlm/glm-5.3-flash" target="_blank">https://docs.z.ai/guides/vlm/glm-5.3-flash</a></td></tr>
+          <tr><td>GLM Coding Plan</td><td><a href="https://bigmodel.cn/glm-coding" target="_blank">https://bigmodel.cn/glm-coding</a></td></tr>
+          <tr><td>Coding Plan 快速安装</td><td><a href="https://docs.bigmodel.cn/cn/coding-plan/quick-start" target="_blank">https://docs.bigmodel.cn/cn/coding-plan/quick-start</a></td></tr>
+          <tr><td>官方博客（公告）</td><td><a href="https://z.ai/blog/glm-5.3-flash" target="_blank">https://z.ai/blog/glm-5.3-flash</a></td></tr>
+          <tr><td>HF 标准权重</td><td><a href="https://huggingface.co/zai-org/GLM-5.3-Flash" target="_blank">https://huggingface.co/zai-org/GLM-5.3-Flash</a></td></tr>
+          <tr><td>HF BF16 权重</td><td><a href="https://huggingface.co/zai-org/GLM-5.3-Flash-BF16" target="_blank">https://huggingface.co/zai-org/GLM-5.3-Flash-BF16</a></td></tr>
+          <tr><td>DeepSeek 官方定价</td><td><a href="https://api-docs.deepseek.com/zh-cn/quick_start/pricing" target="_blank">https://api-docs.deepseek.com/zh-cn/quick_start/pricing</a></td></tr>
+          <tr><td>AA 智能指数</td><td><a href="https://artificialanalysis.ai" target="_blank">https://artificialanalysis.ai</a></td></tr>
+        </table>
+        <p style="margin:10px 0 0;font-size:12.5px;color:var(--text-2)">搜一搜关键词直达：<strong>GLM-5.3-Flash 开源下载</strong> / <strong>GLM Coding Plan 价格</strong> / <strong>BigModel 注册</strong> / <strong>GLM-5.3-Flash HuggingFace 权重</strong> / <strong>GLM-5.3-Flash 本地部署</strong></p>
+      </div>
+
+      <div class="article-footer">
+        本文图片均来源于智谱官方博客 z.ai/blog/glm-5.3-flash，仅用于技术报道与产品介绍用途。
+      </div>
+    </div>
+
+    <!-- 右：侧栏 -->
+    <aside class="sidebar">
+
+      <div class="panel">
+        <h4>本文核心数据（已核实）</h4>
+        <ul class="checklist">
+          <li>320B 总参 / 18B 激活（MoE）</li>
+          <li>AA 智能指数 <strong>57 分</strong></li>
+          <li>OpenRouter 6 天 <strong>23.2T tokens</strong></li>
+          <li>限时 5 折：0.4 / 1.4 / 0.115 元</li>
+          <li>原价：0.8 / 2.8 / 0.23 元</li>
+          <li>缓存命中 -3.01x / KV -4.44x</li>
+          <li>MIT 开源，1M 上下文</li>
+          <li>原生多模态（图/视频/文件）</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h4>SEO 埋词（搜一搜友好）</h4>
+        <div>
+          <span class="pill pill-purple">核心词 · GLM-5.3 Flash</span>
+          <span class="pill pill-purple">智谱 · 牛来</span>
+        </div>
+        <div style="margin-top:8px">
+          <span class="pill pill-blue">多模态大模型</span>
+          <span class="pill pill-blue">开源大模型</span>
+          <span class="pill pill-blue">DeepSeek V4 Flash 对比</span>
+          <span class="pill pill-blue">API 价格对比</span>
+          <span class="pill pill-blue">国产 AI 芯片</span>
+          <span class="pill pill-blue">AI 编程工具链</span>
+          <span class="pill pill-gold">GLM Coding Plan 价格</span>
+          <span class="pill pill-gold">BigModel 注册</span>
+          <span class="pill pill-gold">GLM-5.3-Flash HuggingFace 权重</span>
+          <span class="pill pill-gold">GLM-5.3-Flash 本地部署</span>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h4>关键差异化（诚实不吹）</h4>
+        <ul class="checklist">
+          <li><b>GLM 更便宜</b>：常规输入 + 输出场景</li>
+          <li><b>DeepSeek 更便宜</b>：纯缓存命中输入</li>
+          <li><b>GLM 多模态</b>：图/视频/文件全支持</li>
+          <li><b>DeepSeek 仅文本</b>：多模态走 V4-Vision-Exp</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h4>素材清单</h4>
+        <p style="font-size:12.5px;color:var(--text-2);margin:0 0 8px;line-height:1.7">
+          一键拿走以下素材即可发布：
+        </p>
+        <ul style="list-style:none;padding:0;margin:0;font-size:12.5px;color:var(--text-2)">
+          <li>📄 <code>公众号正文.md</code></li>
+          <li>🖼️ <code>公众号封面_900x383.png</code></li>
+          <li>🖼️ <code>公众号正文配图_01_榜单.png</code></li>
+          <li>🖼️ <code>公众号正文配图_02_AA指数.png</code></li>
+          <li>🖼️ <code>公众号正文配图_03_架构.png</code></li>
+        </ul>
+        <a class="download-btn" href="公众号封面_900x383.png" download>📥 下载封面图</a>
+      </div>
+
+      <div class="tip-box">
+        💡 <b>发布提示</b>：公众号编辑器对 Markdown 表格支持有限，可把对比表用 WPS / Excel 重新画一张图后插入；或者用我们提供的 HTML 预览里的对比表截图。
+      </div>
+
+    </aside>
+
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="DRHdg4YekdiUOQFi7IEUYA">
+<head data-page-node-id="p46ymbj3WdDDCCxnECZlXD">
+<meta charset="UTF-8" data-page-node-id="dAA1eJC8ap7kgvvzfFD9V8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="gzJdK14jo5YxODO47V33Aq">
+<title>MCP 与知识库素材接收站 · 行途</title>
+<style>
+:root{
+  --blue:#056DE8; --blue-l:#4A9EFF; --cyan:#00D4FF; --orange:#FF6B35;
+  --bg:#F7F9FB; --card:#FFFFFF; --bd:#E3E9F0; --bd2:#EFF3F8;
+  --t1:#14181F; --t2:#3D4757; --t3:#6B7787; --t4:#9AA5B4;
+  --ok:#0E9F6E; --warn:#E5A23C; --danger:#E5484D;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--t1);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  line-height:1.75; font-size:15px; padding:0 0 80px;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* header */
+header{
+  background:linear-gradient(135deg,#056DE8 0%,#0B7FE8 45%,#00A8E8 100%);
+  color:#fff;padding:52px 0 44px;margin-bottom:36px;
+}
+header .wrap{position:relative}
+.kicker{
+  display:inline-block;font-size:12px;letter-spacing:.18em;font-weight:600;
+  background:rgba(255,255,255,.16);padding:5px 12px;border-radius:4px;margin-bottom:18px;
+}
+h1{font-size:34px;font-weight:700;letter-spacing:-.01em;line-height:1.35;margin-bottom:14px}
+.sub{font-size:16px;opacity:.94;max-width:760px;line-height:1.8}
+.meta{margin-top:20px;font-size:13px;opacity:.85;display:flex;gap:20px;flex-wrap:wrap}
+
+/* section */
+section{margin-bottom:44px}
+h2{
+  font-size:22px;font-weight:700;color:var(--t1);margin-bottom:6px;
+  padding-left:14px;border-left:4px solid var(--blue);line-height:1.5;
+}
+.h2sub{font-size:13.5px;color:var(--t3);margin:0 0 20px 18px}
+h3{font-size:16px;font-weight:650;color:var(--t1);margin:26px 0 12px}
+
+/* card */
+.card{
+  background:var(--card);border:1px solid var(--bd);border-radius:10px;
+  padding:22px 24px;margin-bottom:16px;
+}
+.card.hl{border-left:4px solid var(--blue)}
+.card.warn{border-left:4px solid var(--orange);background:#FFF9F5}
+.card.dan{border-left:4px solid var(--danger);background:#FEF6F6}
+
+/* stat grid */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:18px}
+.stat{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:18px 20px;text-align:center}
+.stat .n{font-size:30px;font-weight:700;color:var(--blue);line-height:1.2;letter-spacing:-.02em}
+.stat .n.dim{color:var(--danger)}
+.stat .n.ok{color:var(--ok)}
+.stat .l{font-size:12.5px;color:var(--t3);margin-top:7px;line-height:1.5}
+
+/* table */
+table{width:100%;border-collapse:collapse;background:var(--card);
+  border:1px solid var(--bd);border-radius:8px;overflow:hidden;font-size:14px}
+th{
+  background:#F0F4F9;color:var(--t2);font-weight:650;text-align:left;
+  padding:11px 14px;border-bottom:1px solid var(--bd);font-size:13px;white-space:nowrap;
+}
+td{padding:11px 14px;border-bottom:1px solid var(--bd2);color:var(--t2);vertical-align:top;line-height:1.7}
+tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#FAFCFE}
+td.c,th.c{text-align:center}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px}
+
+/* tags */
+.tag{
+  display:inline-block;font-size:11.5px;font-weight:600;padding:2px 9px;
+  border-radius:20px;line-height:1.7;white-space:nowrap;
+}
+.t-a{background:#E3F7EF;color:#0B7A55}
+.t-b{background:#FEF2E3;color:#B5720F}
+.t-c{background:#FDECEC;color:#C2292D}
+.t-blue{background:#E5F0FE;color:#0455B8}
+.t-gray{background:#EEF1F5;color:#5A6675}
+
+/* flow */
+.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:18px 0 8px}
+.fnode{
+  background:var(--card);border:1px solid var(--bd);border-radius:9px;
+  padding:14px 10px;text-align:center;position:relative;
+}
+.fnode .step{
+  display:inline-flex;width:24px;height:24px;border-radius:50%;
+  background:var(--blue);color:#fff;font-size:12px;font-weight:700;
+  align-items:center;justify-content:center;margin-bottom:8px;
+}
+.fnode .fn{font-size:13.5px;font-weight:650;color:var(--t1);line-height:1.5}
+.fnode .fd{font-size:11.5px;color:var(--t3);margin-top:5px;line-height:1.6}
+.fnode.done .step{background:var(--ok)}
+.fnode.pending .step{background:var(--t4)}
+.fnode.pending{border-style:dashed;background:#FCFDFE}
+
+/* two col */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:860px){.two{grid-template-columns:1fr}.flow{grid-template-columns:repeat(3,1fr)}}
+
+/* list */
+ul.clean{list-style:none;padding:0}
+ul.clean li{
+  padding:9px 0 9px 22px;position:relative;color:var(--t2);
+  border-bottom:1px solid var(--bd2);font-size:14px;line-height:1.75;
+}
+ul.clean li:last-child{border-bottom:none}
+ul.clean li::before{
+  content:'';position:absolute;left:6px;top:18px;
+  width:5px;height:5px;border-radius:50%;background:var(--blue-l);
+}
+ul.clean li b{color:var(--t1);font-weight:650}
+
+/* box */
+.box{border-radius:9px;padding:16px 18px;font-size:14px;line-height:1.8;margin:14px 0}
+.box.b{background:#EEF5FE;border:1px solid #CFE3FB;color:#0B4A8F}
+.box.o{background:#FFF6EF;border:1px solid #FBDCC6;color:#8F4413}
+.box.g{background:#EDF9F3;border:1px solid #C6EBDA;color:#0A5D42}
+
+.quote{
+  border-left:3px solid var(--blue);background:#F5F9FE;
+  padding:14px 18px;margin:14px 0;font-size:15px;color:var(--t1);
+  line-height:1.85;border-radius:0 7px 7px 0;
+}
+.quote b{color:var(--blue)}
+
+/* checklist */
+.qitem{
+  display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--bd2);
+  font-size:14px;color:var(--t2);line-height:1.7;
+}
+.qitem:last-child{border-bottom:none}
+.qitem .qn{
+  flex:0 0 26px;height:26px;border-radius:50%;background:#EEF3F9;
+  color:var(--blue);font-size:12px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+}
+.qitem b{color:var(--t1)}
+
+/* todo */
+.todo{background:var(--card);border:1px solid var(--bd);border-radius:10px;overflow:hidden}
+.trow{display:flex;gap:14px;padding:15px 20px;border-bottom:1px solid var(--bd2);align-items:flex-start}
+.trow:last-child{border-bottom:none}
+.tid{
+  flex:0 0 30px;height:30px;border-radius:7px;background:var(--blue);
+  color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;
+}
+.tid.p1{background:var(--orange)}
+.tid.p2{background:var(--t4)}
+.tbody{flex:1}
+.tt{font-size:14.5px;font-weight:650;color:var(--t1);margin-bottom:4px}
+.td2{font-size:13px;color:var(--t3);line-height:1.7}
+
+footer{
+  margin-top:48px;padding-top:22px;border-top:1px solid var(--bd);
+  font-size:12.5px;color:var(--t4);line-height:1.9;
+}
+code{
+  background:#F0F4F9;padding:1.5px 6px;border-radius:4px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:#0455B8;
+}
+</style>
+</head>
+<body data-page-node-id="LSJvpuPUFsYlj10zCWySne"><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+
+<header data-page-node-id="l6V2FAdzcibSbruBv9VTee">
+  <div class="wrap" data-page-node-id="MPZ2mRxKssNrHNz9eZxXio">
+    <span class="kicker" data-page-node-id="IAPh70H2k1XzS6LOyZTgWc">XINGTU · 素材接收站</span>
+    <h1 data-page-node-id="OHPi6nQzx0m4fZCcP9pfgK">MCP 实践 &amp; 公司知识库建设<br data-page-node-id="xniQkGp3OnkcFIABxoupcX">素材接收与转化规范</h1>
+    <p class="sub" data-page-node-id="NhrhtpTtHjWTx0kDJXIQ6v">你手上这两块料，正好补能力模型里两个最关键的缺口：C1（AI 工程化）缺 MCP 落地证据，C4（技术管理）缺经历卡 —— 而 C4 是全场护城河第 2、证据密度垫底的最大盲区。</p>
+    <div class="meta" data-page-node-id="ti4G4SDK48ymCPB35QFRBB">
+      <span data-page-node-id="RtElfSHqEK96EzViB5LHTE">2026-09-02</span>
+      <span data-page-node-id="f4puGZ6cGpjULzuhYyuTCk">数据源：本地资产盘点 + 能力模型数据.json</span>
+      <span data-page-node-id="2jBCj47sGQg6IqYy0aZMHo">规范：SAF-004 / SAF-006 / SAF-012</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap" data-page-node-id="ewl7rFDzy7mdV30dyCokTW">
+
+<!-- 1 现状 -->
+<section data-page-node-id="mg500pgrg560XvFqdzzzYV">
+  <h2 data-page-node-id="Ut09ITYIAHs5vzV4TNeg3h">一、现状：两处「有货无卡」</h2>
+  <p class="h2sub" data-page-node-id="j46rtJ9mLGlH2bxjG5jRDD">先看清缺口在哪，再谈投喂</p>
+
+  <div class="stats" data-page-node-id="wixyTrGQ6yqXErEjk3Bp0l">
+    <div class="stat" data-page-node-id="Ofe6U4yn60po7N9JPoftXX"><div class="n dim" data-page-node-id="ZQadpCuBH0GvXS9j7mStZp">0</div><div class="l" data-page-node-id="DRFqBBvHqqtR8F2COEpYns">已装载 MCP<br data-page-node-id="mRkBdt3zm3UY8Nh0kiXyXw"><code data-page-node-id="taxXKfCIkk3BHgvKAsKuMg">mcp.json</code> 为空</div></div>
+    <div class="stat" data-page-node-id="HCfTLENPHqNJTc3WndDmHL"><div class="n" data-page-node-id="aYhaSpmcrTLbKPXYfCPno5">1</div><div class="l" data-page-node-id="HPbJv37p3c6bnTMehy0hQR">MCP 仓内 server<br data-page-node-id="VAFx3NwnDz329jeDmCzIpe">仅 feishu-bot</div></div>
+    <div class="stat" data-page-node-id="028jyprq2RvNgSOxXEME3B"><div class="n dim" data-page-node-id="WAI5fgVCYnqSI6r4A90TRM">1</div><div class="l" data-page-node-id="O15ewaPlquxqeT3CkTB5QG">实际经历素材卡<br data-page-node-id="PRNXP0tXCUP5JOnWxALiWE">索引登记 5 条</div></div>
+    <div class="stat" data-page-node-id="htnCxKZjOgP6DfIT7lhCD9"><div class="n ok" data-page-node-id="fKVZIwHIUvGGQt4Gpisb4Q">3</div><div class="l" data-page-node-id="MfPb8PKZu2FDLlMDFIQLTm">已建接收目录<br data-page-node-id="giqup8x4RiTUQTD7OF7Rpx">可写/待蒸馏/仅供阅读</div></div>
+  </div>
+
+  <div class="two" data-page-node-id="MCb7ZoEkx9R1mMlMy5AWlf">
+    <div class="card hl" data-page-node-id="FHJSVEQsYUYTezELAL42Jo">
+      <h3 style="margin-top:0" data-page-node-id="MTlG95Lk7KbywGjOMDJABW">MCP 资产：仓是空的</h3>
+      <ul class="clean" data-page-node-id="5nFBVxNIToGcBFf938AgQ4">
+        <li data-page-node-id="y1DZbojV5h06aNDCTCBv2n"><code data-page-node-id="aNRXnPfCb6eyQ7dZY7w8Gc">~/.workbuddy/mcp.json</code> = <b data-page-node-id="isBSusDtogjvC3GvnBVs5v">空配置</b>，当前未装载任何 MCP</li>
+        <li data-page-node-id="0ZPCZU7mb0kv7QJzG5T3Y5"><code data-page-node-id="RqPt5TtyliExOF3cohjxeN">xingtu-mcps/</code> 仅 <b data-page-node-id="N4Le4Kw7RQAaM3ZF8kep2a">feishu-bot</b> 一个 server，README 写「逐步填充中」</li>
+        <li data-page-node-id="wgMRq49P7VcrMuzwbmhMOv">该仓是规划中的<b data-page-node-id="IJUsRFsznMCGCjaFU3eyTK">开源资产</b>，但一直没料可填</li>
+        <li data-page-node-id="IeX4ddlTuOXFtjdgAiE09k">你记忆里有 <b data-page-node-id="IU9v0k3wyZ6zAcVKvDvMvv">CodeGraph + CBM（codebase-memory-mcp）</b> 实践，本地<b data-page-node-id="yOkNpuWRgcku4HYU7KMWg2">零记录</b></li>
+      </ul>
+      <div class="box o" style="margin-bottom:0" data-page-node-id="pDmp9FxIvzm3sOTU96YB5s">
+        <b data-page-node-id="aMCUzIz8D1HFoy28mD5304">缺口</b>：C1 域（AI 工程化）是唯一四维全满的能力，但 MCP 这条腿没证据。
+      </div>
+    </div>
+
+    <div class="card dan" data-page-node-id="wDKp3ykLa9EjIgyFpcXB01">
+      <h3 style="margin-top:0" data-page-node-id="zNN2QKVYS3K4oY0xmk1ewA">经历卡：索引 5 条，实卡 1 张</h3>
+      <ul class="clean" data-page-node-id="5MybhtWTwXqMfjWE4sR0A1">
+        <li data-page-node-id="f7QFTy6UPgtrHFYX7E4NVU"><code data-page-node-id="ICmCOlMqrhq4GaxPoZDmyJ">素材索引.md</code> 登记 <b data-page-node-id="TwEnReaIw7buC9O5oGW762">EXP-11-001 ~ 005</b></li>
+        <li data-page-node-id="SCLvhoGkvLqjWQHbB9giCg">实际文件只有 <b data-page-node-id="BhDm3r76FOVobwA8USCAmG">1 张</b>：<code data-page-node-id="9UZKHSrk7WlLdLFWNAq8EM">面试官_AI原生全栈交付招聘_202607.md</code></li>
+        <li data-page-node-id="M2yjeYpm08dRJJCRvlwbAH">而且这张卡<b data-page-node-id="OTFzB6dGR6BkRc5Y2YVPKY">还没进索引</b> —— 索引与文件双向脱节</li>
+        <li data-page-node-id="hCCBpBIZvgMCDoypuF5wzc">知识库建设 / RAG / MCP / 团队布道：<b data-page-node-id="RedIbIMrYvorGr3Mv1XfGI">零卡</b></li>
+      </ul>
+      <div class="box b" style="margin-bottom:0" data-page-node-id="Z5UT3ODK7EiccKjILr296q">
+        <b data-page-node-id="nj3A9SP0nqPbR3kXBUgqsR">缺口</b>：C4 域护城河 20 分（第 2），证据密度 <b data-page-node-id="ntqZmfyKLGLmsH8WIAYYOZ">2 分（垫底）</b>，隐藏指数 8.0（最高）。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 为什么值钱 -->
+<section data-page-node-id="7jQ8kRgGr4XJ0lQLi4FofD">
+  <h2 data-page-node-id="sdiO2JD7ypNmJNvOrjCrnu">二、为什么这两块料最值钱</h2>
+  <p class="h2sub" data-page-node-id="6oSaIuI8X1fmrfd21s67Cb">不是"多一点素材"，是补能力模型里最贵的两处空洞</p>
+
+  <table data-page-node-id="UgxX4D7Zl6D9FKVgzPXHRc">
+    <thead data-page-node-id="qcTmmM4QNEgMAUnWwhcO6e">
+      <tr data-page-node-id="VSh5kFrRBYQXS07VdOPs7H"><th style="width:15%" data-page-node-id="HTPwF8aWN0ulIAwt7mwsZC">材料</th><th style="width:11%" data-page-node-id="TiapIr8dfOsRdhnyFIFZ3g">补哪个域</th><th style="width:34%" data-page-node-id="MvPDH8Wz08XwIYDJsQJhAa">补的是什么</th><th style="width:40%" data-page-node-id="4y9qUuBeZ8HB4AdPxruvDB">为什么现在必须补</th></tr>
+    </thead>
+    <tbody data-page-node-id="70OTH9YQUDkbOyXGSE3DwG">
+      <tr data-page-node-id="W8wlQ09VIM38I42PBGbdOV">
+        <td data-page-node-id="zl1N4tXLwbDZH0Vo4AmDGs"><b data-page-node-id="o0X70XFn1Qo2xbsFlNxp7s">MCP 实践</b></td>
+        <td data-page-node-id="5ms4RQ9aD5cOVQQQInZWOA"><span class="tag t-blue" data-page-node-id="HxspIiwe3v7KKfTvZmtqhM">C1 工程化</span></td>
+        <td data-page-node-id="4TuUIcpaXJ3GYME8L5ueHs">MCP 落地证据 + 可开源 server 源码</td>
+        <td data-page-node-id="rh6mFmcXyBeGNHGEWRMpgQ">C1 是唯一四维全满（D5/E5/S5/V5）的主战场，但 MCP 这条腿是空的。<b data-page-node-id="a9fE8QvI6tU0yFhAt3JHGI">有料就能直接填 <code data-page-node-id="oFc0y6Jla5FxavF3BjvxC7">xingtu-mcps</code> 开源仓</b>，同时补上省 Token 系列的技术纵深。</td>
+      </tr>
+      <tr data-page-node-id="SZpPmRMOg8z9ATVh27xQID">
+        <td data-page-node-id="WvtlmrwsSuzRcnUv8nkPmZ"><b data-page-node-id="0KDd5lDDmuZgtbuoaKmma0">知识库建设</b></td>
+        <td data-page-node-id="xdczyxvImnXuJSKbNp0HnG"><span class="tag t-a" data-page-node-id="7Rvaw646EAq0WDb32vzh6R">C4 技术管理</span></td>
+        <td data-page-node-id="qwUOQWiGMU1qNodiI5Tw9f">「带队做 AI 落地」的一手经历</td>
+        <td data-page-node-id="96TIthFdQWGWpnOOWy7li2">护城河 20 分排第 2、<b data-page-node-id="PBc6viDjzEWzN2zje5l97i">证据密度 2 分垫底</b>。稀缺度 5 分全场最高 —— 市面技术经理内容大多"只管理不编码"，这个位置几乎没人站，且需要真实经历、无法速成。</td>
+      </tr>
+      <tr data-page-node-id="VPIZAzNSDdd6KrdG2V4XS8">
+        <td data-page-node-id="2G8y7srwTZ0bTG4qkzN3FF"><b data-page-node-id="DM0Z2E9rZbttyfGrXQuahA">团队 AI 布道</b></td>
+        <td data-page-node-id="cqBqrUGJGwJtEvKa6poTcp"><span class="tag t-a" data-page-node-id="m3bvGRbkbRvHXDAU6cneCS">C4 技术管理</span></td>
+        <td data-page-node-id="OyThiGZljGA3Kgpxp98w8Y">人设证据链（管理者 + 布道者）</td>
+        <td data-page-node-id="06ZqvsZGOnDCc6kMrTaQnI">2023 年至今两年多的布道史，全库仅 1 份卡提及。<b data-page-node-id="t90fsWYADUU2a26AiGQcsY">时间越久越难补</b>——记忆会衰减，现在是最便宜的时候。</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="quote" data-page-node-id="W6L1SjpSi8HYccqlantZf0">
+    <b data-page-node-id="OckBPuOKNCenRIUnaJyo9e">一句话定位</b>：MCP 是<b data-page-node-id="AjsXGHuGSl4COPRzwmNWWL">能开源的资产</b>（补 C1 + 填仓），知识库建设是<b data-page-node-id="RAB6X6Ba6xliCzPsDpOa9i">能立人设的经历</b>（补 C4 + 定位空隙）。<br data-page-node-id="c2WSd2AykbBtPGISj4vXNv">
+    前者可以直接变现成 GitHub Star，后者是别人抄不走的护城河 —— 而这两者指向同一个落点：<b data-page-node-id="wEvG9b6nkEjeOMnwLIb7Yx">「技术经理视角的 AI 工程化落地」</b>。
+  </div>
+</section>
+
+<!-- 3 投喂口径 -->
+<section data-page-node-id="kwLhQhMQzMLEvNc1giz3MA">
+  <h2 data-page-node-id="YFcNLj9aFoERXwD1sY7DHp">三、投喂口径：三分类 + 五问</h2>
+  <p class="h2sub" data-page-node-id="Hzgpk2edAA3iEydSg6vwKm">丢进来不用整理，但公司内容必须先分类 —— 原始素材不分级入库 = 埋雷</p>
+
+  <h3 data-page-node-id="eclfFkPL1AqvtMghphMXIq">三种投喂姿势（挑最省力的）</h3>
+  <table data-page-node-id="MqotRtEO1dATeTSQB2BtGw">
+    <thead data-page-node-id="tFyHpYgEzlh8pciFL7fsPC"><tr data-page-node-id="fHT47khpDr72hJh1o24Ue6"><th style="width:16%" data-page-node-id="gF0KHFGoXtK57LZiaAu51t">姿势</th><th style="width:24%" data-page-node-id="TYOMRkrcmNUov6vFgjLoqj">适用</th><th data-page-node-id="UhUrX6ZHzJzkbTE15KvktD">怎么做</th></tr></thead>
+    <tbody data-page-node-id="VI2a3hZRemeptKsZlEHh2L">
+      <tr data-page-node-id="QeegasZIgrXDyaigetLmIG"><td data-page-node-id="TIcgnQNmvQHxXjFnijBhr9"><span class="tag t-blue" data-page-node-id="QmmMfvNAcONg3NnUZDAIIO">① 口述要点</span> <b data-page-node-id="M3rKZxPC8cZLHUnny3SqUZ">推荐</b></td><td data-page-node-id="WYtazEbnzKj3npI9ZnG0tS">脑子里有货、懒得写</td><td data-page-node-id="ShxCD43z9G75gRdsLxedZ7">直接说「2023 年我在团队群推 AI，当时……」，<b data-page-node-id="nGZj8mkiST5cNPYCokG39L">我来做卡</b></td></tr>
+      <tr data-page-node-id="b6QcEMvI9XBNbBweAB8hTp"><td data-page-node-id="5GIopgKEg2a1y8z9HWm8C8"><span class="tag t-gray" data-page-node-id="638z9bdJdm6MD4D4orpu1d">② 丢原始文件</span></td><td data-page-node-id="MUEOkR0ZiFsXB6OcanUc5t">现成文档/截图/配置/聊天记录</td><td data-page-node-id="NbfFeSae50jvyVA701Mhmf">拖进 <code data-page-node-id="ogUjgnm7hklSh62IppstrL">_inbox/</code> 任意子目录，说一句「这是 XX」即可</td></tr>
+      <tr data-page-node-id="X5Ax0gfZmm4jb1QeK86GPE"><td data-page-node-id="ukv4jcIZQK8XraRywpghDm"><span class="tag t-gray" data-page-node-id="rBZELIVRmLDYWc2SiAQ21m">③ 丢链接</span></td><td data-page-node-id="rcVSjvsBVnmE31V7Y3Dqmf">公众号文章 / GitHub 仓 / 外链资料</td><td data-page-node-id="FAVpBGyeM91rzy72toeIDH">直接发链接，我抓</td></tr>
+    </tbody>
+  </table>
+  <div class="box g" data-page-node-id="ExpQovWp4jObFTZqlp4LfN"><b data-page-node-id="UGD316v7RpO3FULuyCj3d1">最低投喂单位</b>：一句话 + 一个时间。比如「2024 年给公司搭了个 RAG 知识库，用的 X」—— 这就够开一张卡。</div>
+
+  <h3 data-page-node-id="n0r0nB7OVtLGrCcBj7gADq">三个子目录怎么选</h3>
+  <p style="font-size:14px;color:var(--t2);margin-bottom:12px" data-page-node-id="3miHelzJHd1pM0UfBnq3sZ">判断标准只有一个：<b data-page-node-id="VD23n0G0pIPODqJdxx8TpH">这个东西如果原文发到公众号，会不会出事？</b></p>
+  <table data-page-node-id="DIUrpQBMr8ul9k1ydcY8p3">
+    <thead data-page-node-id="eGNGhnwGGngRilYDTm5Xgu"><tr data-page-node-id="43voDHi7EXVRUs4on95wkL"><th style="width:16%" data-page-node-id="PE4HipoBV6krb3DZNHvYaB">目录</th><th style="width:20%" data-page-node-id="9EgKTL3H09tTbqZyAfQ0lk">判定</th><th style="width:28%" data-page-node-id="IsCyk7W2gPQMKVbSNEqIJH">典型内容</th><th data-page-node-id="ZIk8nOAsEsabn0mNMK4W7V">下游处理</th></tr></thead>
+    <tbody data-page-node-id="p3OhIe3LvvCfABm82yCj8I">
+      <tr data-page-node-id="i5Smu9O7W8ABLli6iW86fB"><td data-page-node-id="eAccRvgmpF1wfA6le20pfT"><span class="tag t-a" data-page-node-id="TA77ibtYG6dX6ZFuY5XJKS">01_可写</span></td><td data-page-node-id="JDavaNLgAmEm0xhOWguYO7">原文发出去也没事</td><td data-page-node-id="Rqj7h1MFyoscKnSF33kGBS">个人技术实践、开源项目、工具配置、方法论</td><td data-page-node-id="27U3krJEDZQkBTcWtOz8fo">直接提卡 → 可发布</td></tr>
+      <tr data-page-node-id="PGO78PTvFEiwLmANBjTe6R"><td data-page-node-id="ifpaIXoVv6xA4N0JtmYiuy"><span class="tag t-b" data-page-node-id="agAn1Wz3XhBmM9RkI6WuOn">02_待蒸馏</span></td><td data-page-node-id="gkDh4xlxBH7D6izFSuiHl3">有公司痕迹，但<b data-page-node-id="XB3bcPz1ZXK2x4ik6xZxT1">方法论可抽</b></td><td data-page-node-id="N6cXwTeBxNvDx6GUfztHdV">公司知识库建设、内部平台方案、团队流程改造</td><td data-page-node-id="IGSd07YkBIST8EMGzpjZ0A"><b data-page-node-id="QfsPfYkwI9fNj5Vv1VUJfW">抽规则不讲架构</b>、去标识、量级化</td></tr>
+      <tr data-page-node-id="k3nDnF24rPsbSxXKHaql4M"><td data-page-node-id="wkF5o0xD0vGuYNL49iFU4o"><span class="tag t-c" data-page-node-id="fXuY8JU2lgGr2QQJKrJkkc">03_仅供阅读</span></td><td data-page-node-id="D7AxMHCk2mfGP8VO50Zwuz">给我看个背景，<b data-page-node-id="vaJ8maB6ohBsJiEv7E5ee3">永不发布</b></td><td data-page-node-id="om2ERcNCygj91wzZpVAJBM">内部架构图、真实账单、同事信息、可定位细节</td><td data-page-node-id="IHhvdbsHIMtvHEKU3bzKPJ">只做理解上下文，不进任何对外产出</td></tr>
+    </tbody>
+  </table>
+  <div class="box o" data-page-node-id="CGcF6jbdrNFAze7FUGzV8h"><b data-page-node-id="SZP50VQCDruxFtksNFBSmg">拿不准就丢 03_仅供阅读</b> —— 降级容易，泄露不可逆。</div>
+
+  <h3 data-page-node-id="Dr1Jpa4ICgAOaKJ8RSpiQt">脱敏五问（SAF-004 / SAF-006）</h3>
+  <p style="font-size:14px;color:var(--t2);margin-bottom:10px" data-page-node-id="PZYOV7XylDXHqVoDXp69aW">丢公司相关内容前先过这 5 问，<b data-page-node-id="ni3LCGADPNSCbOnXEIrZm2">任一命中「是」→ 进 02 或 03</b>：</p>
+  <div class="card" data-page-node-id="9qAQE3s7BfpugynBKYVrMC">
+    <div class="qitem" data-page-node-id="sf8i9H7tpaoHXlLjhof0aj"><span class="qn" data-page-node-id="RXSAh0RfSo3BQCfTkozArF">1</span><div data-page-node-id="eIXF0o8IcOfqiH3DnaJH60">含<b data-page-node-id="POyUNewDk3FksuPBXCsfkM">公司名 / 产品名 / 内部系统代号</b>？<br data-page-node-id="IHriSGpROMOPjyK0pPmOdC"><span style="color:var(--t3);font-size:13px" data-page-node-id="9fK1ZVr8NFmwOIlKn3t4hC">→ 蒸馏为「某供应链中台」「某零售企业」</span></div></div>
+    <div class="qitem" data-page-node-id="Rsx3fwulRmJ6X1PAKqqHfJ"><span class="qn" data-page-node-id="LOOTDvauXx3J9BAxSKhSib">2</span><div data-page-node-id="d4YV0H6PojQspJClVmpABF">含<b data-page-node-id="BRFPyYQWYBsx2JH2O5gWxi">可定位的数字</b>（数十个服务、千级权限点、真实账单）？<br data-page-node-id="5gxdimNGZldvzgzSOVsGGk"><span style="color:var(--t3);font-size:13px" data-page-node-id="U2bJC1kqylVCqEKSdlhiSh">→ 量级化：「数十个微服务」「权限点四位数」「降到原 1/3」</span></div></div>
+    <div class="qitem" data-page-node-id="7Xk7HZwZkTmucctfulBIeN"><span class="qn" data-page-node-id="em9zLKKUCy5QDudTbDFb6X">3</span><div data-page-node-id="59fNOFsOSDpnzwZxCakqKc">含<b data-page-node-id="zTlamJHvwVExGsktFYV255">同事/上级姓名、群聊原文、内部截图</b>？<br data-page-node-id="L9fviyjw49yZB2ncDmmOV9"><span style="color:var(--t3);font-size:13px" data-page-node-id="p2HgzDxJ9tlTrTdDiogouS">→ 03 仅供阅读，只抽结论不引原文</span></div></div>
+    <div class="qitem" data-page-node-id="Hph2cqPNgRBXthOek4U7ob"><span class="qn" data-page-node-id="nu9DpUGVT5cU3lMvBCx8WP">4</span><div data-page-node-id="QaDlJ92SAfpD5HmJOylG9j">含<b data-page-node-id="Y4In2fpTkF7T30cB6h2wTa">未公开的技术方案、架构图、源码</b>？<br data-page-node-id="rVNFQilRADCM4OfNSpnjQD"><span style="color:var(--t3);font-size:13px" data-page-node-id="iURenhRf7NV5wi8dWgOotk">→ 03 仅供阅读。<b data-page-node-id="KUJXMhMEMqG6e6rny7GjS1">只讲决策逻辑，不讲实现</b></span></div></div>
+    <div class="qitem" data-page-node-id="JK4NqxwK2tnpCH5fXXDqza"><span class="qn" data-page-node-id="mSs9wPH5oJlsiIM7FtsEFu">5</span><div data-page-node-id="nYgbeXAZ6XZlAGcm9Xt9cD">涉及<b data-page-node-id="ibl5LePerS768VuNESUwIS">人事 / 绩效 / 纠纷 / 薪资</b>？<br data-page-node-id="1Wrc3jGAbjI5dPVOqTlmUG"><span style="color:var(--t3);font-size:13px" data-page-node-id="B6GJzhRCuHLI4tKe7Zx1u1">→ 03 仅供阅读，永久封存</span></div></div>
+  </div>
+
+  <div class="quote" style="border-left-color:var(--orange);background:#FFF9F5" data-page-node-id="dXAbsEPxuAhjFF9p9tXbHo">
+    <b style="color:var(--orange)" data-page-node-id="dHj3aX3l9oBecxLVHXB7l5">蒸馏唯一心法</b>：讲规则，不讲架构；讲决策，不讲实现；讲量级，不讲数字。<br data-page-node-id="XmbXhFUHFuV2PByAhEpBzj">
+    <span style="color:var(--t3);font-size:14px" data-page-node-id="lqFiAepLMrlulQLqTN3SQs">❌「我们 数十个服务的工作流改造方案是……」&nbsp;→&nbsp; ✅「数十个服务的工作流改造里，我定了 3 条铁律：事务内禁止远程调用、列表强制分页、SQL 强制参数化」</span>
+  </div>
+</section>
+
+<!-- 4 转化链路 -->
+<section data-page-node-id="9vTuaw3Pa2bDl8NftbwZmz">
+  <h2 data-page-node-id="1HF4UGDPmRRxA330R1AxBC">四、投喂之后会发生什么</h2>
+  <p class="h2sub" data-page-node-id="De5VlXvlNErGEs4EkBdrRk">六步流水线，前三步已就绪</p>
+
+  <div class="flow" data-page-node-id="iKKKkrZCedMVIn0OTiwskQ">
+    <div class="fnode done" data-page-node-id="CkANt75SZYD3J8arc6WVr4"><span class="step" data-page-node-id="lDwGBFH9fDsNbxogDla2Rw">1</span><div class="fn" data-page-node-id="FPABiyZl6oERXBwGe99CNH">投喂</div><div class="fd" data-page-node-id="Ib78wc3sehes0A15H5sljt">口述 / 丢文件 / 丢链接</div></div>
+    <div class="fnode done" data-page-node-id="AetFvrgymDzpzjryg3zLoe"><span class="step" data-page-node-id="m8iUMx8YQoDPblT0sGb0aD">2</span><div class="fn" data-page-node-id="0JpRKWiHrFVwe7x29fRZKt">分类</div><div class="fd" data-page-node-id="8AUPDdzqxmUqAgxIK17Hpn">可写 / 待蒸馏 / 仅供阅读</div></div>
+    <div class="fnode done" data-page-node-id="jj8dXUT4IPkfTZIpY11lWh"><span class="step" data-page-node-id="s3U8AOI5S1q48IKQ3zqHlV">3</span><div class="fn" data-page-node-id="RsB5jL0IABBGRrZlSEbFQE">蒸馏</div><div class="fd" data-page-node-id="S5606O7glexezYq7NNWyMs">抽方法论，去标识量级化</div></div>
+    <div class="fnode pending" data-page-node-id="zquLuBzPGzafW68laeqARF"><span class="step" data-page-node-id="wegUhQj0nGZmmlUuk5K3CS">4</span><div class="fn" data-page-node-id="7LfBxABBvgotonvFfjRNcU">成卡</div><div class="fd" data-page-node-id="ThKYTyFJiMiEZtqoGipcRT">EXP-11-XXX 入素材索引</div></div>
+    <div class="fnode pending" data-page-node-id="FWqeoGgNkTWDmVCxYW3Vpk"><span class="step" data-page-node-id="0Ow9pq6ACARuelyBvZZzQt">5</span><div class="fn" data-page-node-id="Ujwi2y5EVnvExvWzSSPCdf">转选题</div><div class="fd" data-page-node-id="9c1MBw8JU8LXTlt2vx03Rg">07 选题池 + 利他验证</div></div>
+    <div class="fnode pending" data-page-node-id="oHSGAPiuOUAoCjnHkXE6GI"><span class="step" data-page-node-id="G9b4RFmAHDI1OI5ijklFWJ">6</span><div class="fn" data-page-node-id="TPGnx5ADu62JnMEzbTl6Lp">发布</div><div class="fd" data-page-node-id="k8E9mKvZUfBjNwTafBuk50">公众号首发 → 分发</div></div>
+  </div>
+
+  <div class="card hl" data-page-node-id="g1ekbbrUcEiR6Q9jgwGJUy">
+    <h3 style="margin-top:0" data-page-node-id="2jBeHWVqpkNrMQ5Wlq0kvj">出口不止一个</h3>
+    <table style="border:none" data-page-node-id="jomHd2FYu8IyN5J6h0AD1W">
+      <tbody data-page-node-id="OdScECX7YnCpYDdP8vHFV1">
+        <tr data-page-node-id="SAbufdKj0nyibrYCQJqw2E"><td style="width:24%;border:none" data-page-node-id="0kt7inr1D72n3kbl63DvNH"><b data-page-node-id="mUKuDPPNUit1I96tLjL1BT">MCP 材料</b></td><td style="border:none" data-page-node-id="flzvisNrwFFx8Jz9bgRKgT">→ <code data-page-node-id="AmBOwY8PFC3oovktfi4EGT">xingtu-mcps</code> 开源仓（填 server + README）→ 开源解读文 → 省 Token / Harness 系列选题</td></tr>
+        <tr data-page-node-id="hrDCW7VLDfyGNzmAWmJTxF"><td data-page-node-id="wXtoAauHAIvWivL9o43Vxt"><b data-page-node-id="przX7UpG4jcKWtk6JmzJJV">知识库建设</b></td><td style="border:none" data-page-node-id="cQhWsGFaGDkncLM7WpCkjs">→ C4 经历卡 → 「技术经理如何带团队落地 AI」系列 → 这是<b data-page-node-id="4D2xsDeWjTHr0sjGD8iDWa">定位空隙的正中间</b></td></tr>
+        <tr data-page-node-id="omj9T654wGT7aHOWDHZK6Q"><td data-page-node-id="8pMHKXAtMcCdzXCX5yr9gc"><b data-page-node-id="4OZEx8JkXyJeE5cWJrmoUv">团队布道</b></td><td style="border:none" data-page-node-id="z7OKnF4wxPUkVKeIBnCIMV">→ 人设证据链 → 启动篇 / 成长故事线素材</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 5 待填卡槽 -->
+<section data-page-node-id="VPPvFL5wQaowQMcdq0NVVj">
+  <h2 data-page-node-id="EJ0B9ZZfqomB9tXeLX7teD">五、待填卡槽：对着答就行</h2>
+  <p class="h2sub" data-page-node-id="0DYXjDXGNQJnS3rF4k4D6Y">每题答一两句即可，答不出就划掉。目标 8–10 张卡，不是 20 张</p>
+
+  <div class="two" data-page-node-id="bKifADxIjgdF2yTEZPnzQC">
+    <div class="card" data-page-node-id="WmZVH10nQbVGREcACCNwqE">
+      <h3 style="margin-top:0" data-page-node-id="aVKaWu9RcBCJPl4fY7WFF4">A 组 · 知识库 / RAG <span class="tag t-a" data-page-node-id="RxkC1tTRVF6rNAfUbA33rk">最高优先</span></h3>
+      <ul class="clean" data-page-node-id="vKuCT0HaBBooH87ovKIQ3A">
+        <li data-page-node-id="CWzOgJFJB5DFOxEW7ZbTuR"><b data-page-node-id="GqHdWlsF0MwEHFdVu7UQvy">A1 起点</b>：什么时间？老板派的还是你发起的？当时痛点是什么</li>
+        <li data-page-node-id="nxMtnP8BCvrcEAAiGUMbnw"><b data-page-node-id="giH5AflvyjK61QCSjVhczr">A2 角色</b>：执行者 / 带队者 / 布道者？管几个人</li>
+        <li data-page-node-id="ieNnHkoHiLafbf3KFIX0pL"><b data-page-node-id="EzLxYCw6lOhBHpALgH8NEl">A3 选型</b>：用了什么、放弃什么、<b data-page-node-id="kbPHsdsHwWnH6DDeYCi9JG">重来会改哪</b></li>
+        <li data-page-node-id="beMtD8dkrzGfVvXqOeG5ZQ"><b data-page-node-id="YhIZMgxHEyQcCuGrS4T1k5">A4 踩坑</b>：最大的坑？有没有"方向错了"的时刻</li>
+        <li data-page-node-id="wxbYeAHyDedBs0pzzOLbDS"><b data-page-node-id="LQagSMKNGA3PmFnmB5QjvJ">A5 效果</b>：怎么判断做成了（量级即可，没数字就跳）</li>
+        <li data-page-node-id="6O0UUMgC4QmmHg1v8RVIEb"><b data-page-node-id="P0BvvqpLnEyE4RQlQ281C2">A6 人的因素</b> <span class="tag t-b" data-page-node-id="V1WbeyOb7qRVPypKevHLyU">最值钱</span>：抵触声音是什么、怎么破的、现在用得怎样</li>
+        <li data-page-node-id="bqWQXG5e7SxTH0VAGstyNZ"><b data-page-node-id="Vn9vWRiKcrbwlGjiDDJRyc">A7 方法论</b>：换家公司重做，先做哪三件事？有什么反常识经验</li>
+      </ul>
+    </div>
+
+    <div class="card" data-page-node-id="DA2mtBYGGToCCOfBOBzk6u">
+      <h3 style="margin-top:0" data-page-node-id="M1rgxanFGfuux7EiSFGpGK">B 组 · MCP 实践</h3>
+      <ul class="clean" data-page-node-id="mfonROxqyOWkWrGHCEPOrp">
+        <li data-page-node-id="REvS4fte8fqhz6D0tOZMpV"><b data-page-node-id="h7PeAjwfwNCq9isHJKHyLa">B1</b>：用过/搭过哪些 server，哪些是<b data-page-node-id="vRLE11WPMEqJdsjfC4LEAT">自己写的</b></li>
+        <li data-page-node-id="wNUgsQCZ0UDWOHnpXL732m"><b data-page-node-id="HMDiZa8STuPwdjqAatJhKs">B2</b>：哪些活下来了、哪些吃灰、<b data-page-node-id="eH0R51Tbp4tuA1OBXL3mxm">为什么</b></li>
+        <li data-page-node-id="CF6wBQ9DU5cjXBvgpuafbF"><b data-page-node-id="KbYBsVLJs2NqE9OODnRH3l">B3</b>：有没有把内部系统包成 MCP？最大障碍是什么</li>
+        <li data-page-node-id="cFOxWneLAq4W7vWUxSjp3a"><b data-page-node-id="X1gozoinvTuZtbokP9P9kW">B4</b>：你判断"该不该做成 MCP"的标准是什么</li>
+      </ul>
+
+      <h3 data-page-node-id="SmCU2mnzoLhrev4ywS0EWD">C 组 · 团队 AI 布道（2023 至今）</h3>
+      <ul class="clean" data-page-node-id="oIzk21E8L5Ssd4remMQdhA">
+        <li data-page-node-id="8z3AZWb9gh0gc6OFTKH1Bi"><b data-page-node-id="1zKswKwCV6AtO9NOb4Bohd">C1 时间线</b>：什么时候开始、什么形式</li>
+        <li data-page-node-id="nwXkXc3QMoMIGQ3oD6XMVG"><b data-page-node-id="TgbrEoLctn1fkhe72MzlW5">C2 阻力</b>：最大阻力是什么、怎么破的、有转化的例子吗</li>
+        <li data-page-node-id="SfJzfO0daA2dlA2k5ZiXAv"><b data-page-node-id="WoR9DSDAYxegaBABypEeLw">C3 现状</b>：使用率什么量级？<b data-page-node-id="fuBoqBtaF8EOfpuQkxd0Sh">重来第一步会做什么不同的事</b></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box b" data-page-node-id="WkjGF1jh07FxyLE4AtQ3Jw">
+    <b data-page-node-id="hAxZjM3xjtDiqZb1t6GIra">建议顺序</b>：先答 <b data-page-node-id="AsEeYdno8d77G2RU6SeH8C">A6（人的因素）</b> 和 <b data-page-node-id="jBcSQ9pnJd2B8oukRgQp8Q">A4（踩坑）</b> —— 这两题的答案几乎必然是别人写不出来的内容，也是最容易直接变成爆款选题的。<br data-page-node-id="bcd95rSY0jS9ZnKjZwHNVm">
+    A3（技术选型）反而最不急，因为技术细节同质化最严重、最容易被抄。
+  </div>
+</section>
+
+<!-- 6 待办 -->
+<section data-page-node-id="diISV1ml1C6ANPhMLB5EGg">
+  <h2 data-page-node-id="UrIodxUqqhDAbFeBKXvWrl">六、待办</h2>
+  <p class="h2sub" data-page-node-id="PLwvYlyLMijEnlsRUit3vB">按优先级排，前两项是今天就能推进的</p>
+  <div class="todo" data-page-node-id="hkvDSnrypOdcMbCVWyJN0A">
+    <div class="trow" data-page-node-id="MgEIYFjxvaLhodz8p3I4s0">
+      <div class="tid" data-page-node-id="c7EfD6nIoCB0nUg7Y0JZQG">1</div>
+      <div class="tbody" data-page-node-id="v3qYGSLCDYdg3N1ggw883I">
+        <div class="tt" data-page-node-id="Ooj0vMU5JkZaGqYmKUIdg9">投喂第一批素材</div>
+        <div class="td2" data-page-node-id="p4edRCssxWHT3tZynmI9yE">口述 A4 + A6（踩坑 + 人的因素），或把公司知识库建设的相关文档拖进 <code data-page-node-id="R2AiByfyHULGDVKfU1DH1M">_inbox/02_待蒸馏/</code>。我来做卡。</div>
+      </div>
+    </div>
+    <div class="trow" data-page-node-id="OijRZofgBiWwzABjrTy5mw">
+      <div class="tid p1" data-page-node-id="ASa8T5EVer7cPUqNDVUKbF">2</div>
+      <div class="tbody" data-page-node-id="SDmL48xhWCAzJDReFO0jmq">
+        <div class="tt" data-page-node-id="5wnv0RdWrUGZo7ASKmLcng">修复素材索引与文件的脱节</div>
+        <div class="td2" data-page-node-id="uR8A5qDeVumqDZ68qxULqf">索引 5 条、实卡 1 张，且那 1 张未入索引。建议：<b data-page-node-id="ifR6OEyhG91HuG8kFIIrwl">要么补齐 5 张卡，要么把索引改成真实状态</b>。虚假的索引比没有索引更危险 —— 它会让你以为素材够了。</div>
+      </div>
+    </div>
+    <div class="trow" data-page-node-id="1Zqz3W8CPQAU0K8bXdShr4">
+      <div class="tid p1" data-page-node-id="Hy56N9UW036qHxTPMntKCT">3</div>
+      <div class="tbody" data-page-node-id="MJVSC7cEnktwl7Nz6f6gZE">
+        <div class="tt" data-page-node-id="EWRG17UCIEmyPCJBvvG4UH">MCP 装载清单</div>
+        <div class="td2" data-page-node-id="vGoWnySAfUhEVhN37XvT7A">把你以前用过的 MCP server 列个名字清单（不用详细），我对照着看哪些值得写进 <code data-page-node-id="08bzETfBERjJOZy8weRRpm">xingtu-mcps</code> 开源仓，哪些值得装回 <code data-page-node-id="x0mLDOtaX4yevkSn6yFF4Y">mcp.json</code>。</div>
+      </div>
+    </div>
+    <div class="trow" data-page-node-id="5FiT75OHISLWTvC8VlmeJE">
+      <div class="tid p2" data-page-node-id="BeJw9MJvCjNAxW3FFx3VnL">4</div>
+      <div class="tbody" data-page-node-id="yIvW9yZGNEHw4kx2sZPrBU">
+        <div class="tt" data-page-node-id="CwHUq44rHWvNJDW2qToiol">回填能力模型 C4 证据密度</div>
+        <div class="td2" data-page-node-id="7V8Csr8Ltzp43Cp8Sfofvo">经历卡补到 8–10 张后，C4 的 E（证据密度）从 2 分往上抬，隐藏指数 8.0 会随之下降 —— 这才是真正把埋着的资产挖出来。</div>
+      </div>
+    </div>
+    <div class="trow" data-page-node-id="u3M5el6nbdrnOgNcWvN7Ad">
+      <div class="tid p2" data-page-node-id="KlHAeivJM6NDLSr4JsYRNE">5</div>
+      <div class="tbody" data-page-node-id="1BvPzQCHjmJ8yWF5eHrMty">
+        <div class="tt" data-page-node-id="ZqQ6pRHdn8fEGwc96JaY9R">确认 C 级封存清单</div>
+        <div class="td2" data-page-node-id="xGMgTM1nlFLOQNVYvsoKhk">知识库建设里若含内部架构/同事信息，明确标 C 级，永不进公众号、开源 README、简历。<b data-page-node-id="rbEo7D8h4xWJoTQeEDOmam">这条不可协商。</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer data-page-node-id="kTHwBWGGhUT9kDZgIVIFFx">
+  行途 · 素材接收站 &nbsp;|&nbsp; 生成于 2026-09-02 &nbsp;|&nbsp; 数据源：本地资产盘点 + <code data-page-node-id="rLClrQEBQFYP4G10GkwqOi">xingtu-vault/06_运营资产/能力模型数据.json</code><br data-page-node-id="Nm2ew9BUElfPoeqTxKfT9k">
+  规范依据：SAF-004（脱敏）/ SAF-006（禁公司代码）/ SAF-012（真实经历是 credibility 锚，不是内容主角）<br data-page-node-id="vdYtgoTDepdCEmrSTgWHcC">
+  单文件零依赖，可离线打开。
+</footer>
+
+</div>
+
+  <footer style="margin-top:36px;border-top:2px solid #056DE8;padding:16px 20px;background:#f5f9ff;border-radius:10px;font-size:13px;color:#1a1a1a;line-height:1.9">
+    <div style="font-weight:700;color:#056DE8;margin-bottom:8px">📎 权威锚点 / 引用来源</div>
+    <ul style="margin:0;padding-left:18px">
+      <li>生产级 MCP 服务仓 xingtu-mcps（GitHub）：<a href="https://github.com/xingtu1996/xingtu-mcps" target="_blank" rel="noopener" style="color:#056DE8;text-decoration:underline">https://github.com/xingtu1996/xingtu-mcps</a></li>
+      <li>素材接收站 _inbox 规范：<code style="background:#eef4ff;padding:1px 6px;border-radius:4px;color:#0a3d7a">xingtu-vault/11_经历素材库/_inbox/</code></li>
+      <li>GitHub xingtu1996 账号（15 个仓库可查）：<a href="https://github.com/xingtu1996" target="_blank" rel="noopener" style="color:#056DE8;text-decoration:underline">https://github.com/xingtu1996</a></li>
+    </ul>
+    <div style="margin-top:8px;color:#555">完整引用索引：<code style="background:#eef4ff;padding:1px 6px;border-radius:4px;color:#0a3d7a">specs/20260902-断点续传与集中提示词/05_权威锚点与引用来源.md</code></div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行途 · 发布准备综合看板 2026-08-27</title>
+<style>
+  :root{
+    --blue:#056DE8; --blue-light:#E8F1FD; --blue-mid:#4D94F0;
+    --ink:#1F2937; --ink-2:#4B5563; --ink-3:#9CA3AF;
+    --bg:#F5F7FA; --card:#FFFFFF; --line:#E5E7EB;
+    --green:#16A34A; --green-bg:#EAF7EF;
+    --amber:#D97706; --amber-bg:#FEF4E6;
+    --red:#DC2626; --red-bg:#FDECEC;
+    --gray:#6B7280; --gray-bg:#F3F4F6;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;line-height:1.65;padding:32px 20px 60px;}
+  .wrap{max-width:1080px;margin:0 auto;}
+  header{background:linear-gradient(135deg,#056DE8 0%,#2F80ED 60%,#56CCF2 100%);border-radius:16px;padding:28px 32px;color:#fff;margin-bottom:24px;}
+  header h1{font-size:26px;font-weight:700;letter-spacing:.5px;}
+  header p{margin-top:6px;font-size:14px;opacity:.92;}
+  .badges{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;}
+  .badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:4px 14px;font-size:12.5px;backdrop-filter:blur(4px);}
+  .grid{display:grid;gap:16px;margin-bottom:24px;}
+  .g3{grid-template-columns:repeat(3,1fr);}
+  .g2{grid-template-columns:repeat(2,1fr);}
+  @media(max-width:820px){.g3,.g2{grid-template-columns:1fr;}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;}
+  .card h2{font-size:16px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .card h2 .ico{width:26px;height:26px;border-radius:8px;background:var(--blue-light);color:var(--blue);display:inline-flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+  .kpi{display:flex;align-items:center;gap:14px;}
+  .kpi .num{font-size:30px;font-weight:800;color:var(--blue);line-height:1;}
+  .kpi .lab{font-size:13px;color:var(--ink-2);}
+  .kpi .sub{font-size:11.5px;color:var(--ink-3);margin-top:2px;}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  th{background:var(--gray-bg);text-align:left;padding:8px 10px;font-weight:600;color:var(--ink-2);font-size:12.5px;white-space:nowrap;}
+  td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top;}
+  tr:last-child td{border-bottom:none;}
+  .tag{display:inline-block;padding:2px 10px;border-radius:999px;font-size:11.5px;font-weight:600;white-space:nowrap;}
+  .t-green{background:var(--green-bg);color:var(--green);}
+  .t-amber{background:var(--amber-bg);color:var(--amber);}
+  .t-red{background:var(--red-bg);color:var(--red);}
+  .t-gray{background:var(--gray-bg);color:var(--gray);}
+  .t-blue{background:var(--blue-light);color:var(--blue);}
+  .timeline{position:relative;padding-left:26px;}
+  .timeline::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line);}
+  .tl-item{position:relative;margin-bottom:18px;}
+  .tl-item:last-child{margin-bottom:0;}
+  .tl-item::before{content:"";position:absolute;left:-22px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--blue);border:2px solid #fff;box-shadow:0 0 0 2px var(--blue-mid);}
+  .tl-item.warn::before{background:var(--amber);box-shadow:0 0 0 2px #F3C878;}
+  .tl-item.done::before{background:var(--green);box-shadow:0 0 0 2px #86D9A8;}
+  .tl-time{font-size:12px;color:var(--blue);font-weight:700;letter-spacing:.3px;}
+  .tl-title{font-size:14px;font-weight:600;margin:2px 0;}
+  .tl-desc{font-size:12.5px;color:var(--ink-2);}
+  .check{list-style:none;}
+  .check li{padding:6px 0 6px 28px;position:relative;font-size:13.5px;border-bottom:1px dashed var(--line);}
+  .check li:last-child{border-bottom:none;}
+  .check li::before{content:"✓";position:absolute;left:4px;top:6px;width:18px;height:18px;border-radius:50%;background:var(--green-bg);color:var(--green);font-size:11px;display:flex;align-items:center;justify-content:center;font-weight:700;}
+  .check li.warn::before{content:"!";background:var(--amber-bg);color:var(--amber);}
+  .check li.no::before{content:"✕";background:var(--red-bg);color:var(--red);}
+  .note{background:var(--blue-light);border-left:4px solid var(--blue);border-radius:0 10px 10px 0;padding:12px 16px;font-size:13px;color:#0B3B7A;margin:12px 0;}
+  .note.amber{background:var(--amber-bg);border-left-color:var(--amber);color:#8A5308;}
+  .note.red{background:var(--red-bg);border-left-color:var(--red);color:#8A1F1F;}
+  .foot{margin-top:28px;text-align:center;font-size:12px;color:var(--ink-3);}
+  .section-title{font-size:18px;font-weight:700;margin:30px 0 14px;padding-left:12px;border-left:4px solid var(--blue);}
+  .link{color:var(--blue);text-decoration:none;word-break:break-all;}
+  .mini{font-size:11.5px;color:var(--ink-3);}
+</style>
+</head>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<div class="wrap">
+
+<header>
+  <h1>行途 · 发布准备综合看板</h1>
+  <p>下一篇博文 = <b>B09《改 1 个配置，AI 编程账单肉眼可见地瘦了》</b> ｜ 冷启动第 2 篇（自有实操文，立「省钱」人设）｜ 数据截至 2026-08-27 23:11</p>
+  <div class="badges">
+    <span class="badge">公众号 ✅ 已发 GLM-5.3 Flash</span>
+    <span class="badge">掘金 ✅ 账号已开</span>
+    <span class="badge">B09 🔥 资产全齐待发</span>
+    <span class="badge">知乎 / 小红书 / CSDN ❌ 未开</span>
+  </div>
+</header>
+
+<div class="grid g3">
+  <div class="card">
+    <h2><span class="ico">📦</span> B09 发布包</h2>
+    <div class="kpi"><div class="num">5</div><div class="lab">平台差异化草稿<br><span class="sub">公众号/掘金/知乎/CSDN/小红书</span></div></div>
+    <div style="margin-top:14px" class="kpi"><div class="num">9</div><div class="lab">配图就绪<br><span class="sub">封面 1 + 自绘 4 + 实测截图 4</span></div></div>
+  </div>
+  <div class="card">
+    <h2><span class="ico">🚦</span> 账号矩阵</h2>
+    <div class="kpi"><div class="num">2<span style="font-size:16px;color:var(--ink-3)">/11</span></div><div class="lab">可用阵地<br><span class="sub">公众号 + 掘金（其余未开）</span></div></div>
+    <div style="margin-top:14px" class="kpi"><div class="num">3</div><div class="lab">待开账号<br><span class="sub">知乎(抢注) / 小红书 / CSDN</span></div></div>
+  </div>
+  <div class="card">
+    <h2><span class="ico">⏳</span> 时效压力</h2>
+    <div class="kpi"><div class="num">24h</div><div class="lab">GLM 文分发窗口<br><span class="sub">8-27 08:15 群发 → 最晚 8-28 08:15</span></div></div>
+    <div style="margin-top:14px" class="kpi"><div class="num">8-28</div><div class="lab">B09 目标首发日<br><span class="sub">今晚立发 或 明晚 20:00 黄金档</span></div></div>
+  </div>
+</div>
+
+<div class="section-title">一、当前真实发布状态（8-27 23:11 实盘）</div>
+<div class="card">
+  <table>
+    <tr><th style="width:90px">平台</th><th>状态</th><th>明细</th></tr>
+    <tr><td><b>公众号</b></td><td><span class="tag t-green">已发 2 篇</span></td><td>GLM-5.3 Flash 时效文（8-27 08:15 群发正式版，合集「技术闪记」）；002《4 小时排查压到 75 分钟》（公开）；001/003 仅个人可见冷冻</td></tr>
+    <tr><td><b>掘金</b></td><td><span class="tag t-green">账号已开</span></td><td>用户名「行途」+ 蓝圆头像 + 职业方向人工智能 + 公司「某互联网公司」+ 5 兴趣标签；<b>尚未发文</b>，B09 将是掘金首文</td></tr>
+    <tr><td><b>知乎</b></td><td><span class="tag t-red">未开</span></td><td>「行途」撞衫待抢注（防冒用）；建议 B09 分发时同步开号，优先做回答起步</td></tr>
+    <tr><td><b>小红书</b></td><td><span class="tag t-red">未开</span></td><td>B09 清单体 + 6 图卡草稿已备，开号即可发</td></tr>
+    <tr><td><b>CSDN</b></td><td><span class="tag t-amber">存量号待迁</span></td><td>H3 五层 Token 文在 thinkgame 号（待迁移到行途号）；B09 教程版草稿已备，周四/周五发</td></tr>
+  </table>
+  <div class="note">冷启动 = 真正的从零开始：B09 是行途 2.0 第一篇<b>自有实操文</b>（GLM 时效文抢先成了第一篇公开文）。发 B09 拿原创 → 立「省钱」人设 → 再引 B03/B11 同赛道成专栏。</div>
+</div>
+
+<div class="section-title">二、B09 发布包核对（发布前逐项过）</div>
+<div class="grid g2">
+  <div class="card">
+    <h2><span class="ico">✅</span> 资产清单（已全齐）</h2>
+    <ul class="check">
+      <li>成稿《改 1 个配置，AI 编程账单肉眼可见地瘦了》</li>
+      <li>5 平台差异化草稿（PUB-004 禁通稿，均已落地 <span class="mini">xingtu-vault/07_发布与归档/</span>）</li>
+      <li>多平台文案包（终检 4 通过：脱敏 / AI 味 / 事实性 / 标题合规+原创）</li>
+      <li>公众号排版预览 HTML（render_wechat.js 已修复 OOM bug）</li>
+      <li>封面图（ImageGen，深色编辑器背景 + 大字「改 1 个配置，账单瘦了」）</li>
+      <li class="warn">封面右下角有「AI 生成 WORKBUDDY」水印，发布前需裁掉</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2><span class="ico">🖼️</span> 配图 9 张</h2>
+    <table>
+      <tr><th>来源</th><th>内容</th><th>用途</th></tr>
+      <tr><td>封面 ×1</td><td>ImageGen 深色编辑器 + 大字标题</td><td>公众号封面 900×383</td></tr>
+      <tr><td>自绘 ×4</td><td>六层架构 / 五档风格 / Concise 前后对比 / 省 token 数据对比</td><td>正文插图（PIL 行途蓝风）</td></tr>
+      <tr><td>实测截图 ×4</td><td>/config 面板、output style 菜单、v2.1.246 启动界面等</td><td>「实测」人设证据，比网图更有说服力</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="section-title">三、8-28 发布行动清单（按优先级）</div>
+<div class="card">
+  <div class="timeline">
+    <div class="tl-item warn">
+      <div class="tl-time">今晚 23:00 前 · 公众号</div>
+      <div class="tl-title">B09 立发 or 定时明晚 20:00 —— 建议：明晚黄金档</div>
+      <div class="tl-desc">文案包 §2 已备（标题三选一主推「改 1 个配置，账单瘦了」10 字、摘要前 13 字埋核心词、原创声明、话题卡 #ClaudeCode #AI编程 #省token）。晚间 22:30–23:00 仍可立发，但错过 20–21 黄金档；实操收藏型内容对时段不敏感，明晚 20:00 打开率更优。</div>
+    </div>
+    <div class="tl-item warn">
+      <div class="tl-time">8-28 上午 9:00–11:00 · 掘金</div>
+      <div class="tl-title">GLM-5.3 Flash 文分发（窗口 08:15 截止，时效优先）</div>
+      <div class="tl-desc">已过 6h 下限，最晚 8-28 08:15 满 24h。新闻保鲜期短，应赶在 B09 之前/同批分发到掘金，吃「牛来 Ox Alpha」搜索长尾。差异化改写（掘金精炼版，禁寒暄）。</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">8-28 午间 12:00–13:30 · 掘金</div>
+      <div class="tl-title">B09 掘金版分发（首发后 ~14h ✓）</div>
+      <div class="tl-desc">标题《Claude Code 省 token 配置清单》12 字符，fast path 前置 + 三官方链接保留，标签 Claude Code · AI 编程 · 效率工具。掘金午+晚双峰。</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">8-28 午间/晚间 · 小红书</div>
+      <div class="tl-title">开号 + B09 清单体图卡（6 张 3:4 已规划）</div>
+      <div class="tl-desc">注册 + 简介头像统一「行途」；标题《AI编程账单瘦了✅就改了1个配置》。开号即可发，图卡文案包 §4 已备。</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">8-28 晚间 20:00–22:00 · 知乎</div>
+      <div class="tl-title">抢注「行途」+ B09 回答化发布</div>
+      <div class="tl-desc">优先搜「Claude Code token 消耗/成本」类问题做回答（流量比专栏稳），问题化标题《为什么你的 Claude Code 账单比别人贵？我改了 1 个配置》，结尾不加引流。</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">周四/周五 · CSDN</div>
+      <div class="tl-title">开号 + B09 教程版（+ GLM 文）</div>
+      <div class="tl-desc">教程化 5 节（环境/步骤/验证/注意/FAQ），关键词密度 2–4%，吃搜索长尾；H3 五层 Token 文从 thinkgame 号迁移。</div>
+    </div>
+  </div>
+  <div class="note red">最大卡点：知乎 / 小红书 / CSDN 三个账号未开。原则=先主阵地后矩阵，本周只补开掘金（已开）之外的 2 个（知乎抢注优先），CSDN 周四再说，避免一次开 5 个号全是孤儿内容。</div>
+</div>
+
+<div class="section-title">四、后续排期队列（4 周）</div>
+<div class="card">
+  <table>
+    <tr><th>顺位</th><th>篇目</th><th>时点</th><th>角色 / 备注</th></tr>
+    <tr><td>1</td><td><b>B09 改 1 个配置账单瘦了</b></td><td><span class="tag t-blue">8-27/28</span></td><td>冷启动第 2 篇 · 立「省钱」人设</td></tr>
+    <tr><td>2</td><td>B02 代码量砍 73%（Ponytail）</td><td><span class="tag t-blue">8-29 周六</span></td><td>人设三角「数据」位（此前"已发"为误记，实未发）</td></tr>
+    <tr><td>3</td><td>B11 技术人的复利</td><td><span class="tag t-blue">9-1 周二</span></td><td>理念位 · 涨信任</td></tr>
+    <tr><td>4</td><td>电脑城实录（脱敏后）</td><td><span class="tag t-blue">9-3 周四</span></td><td>故事线复产第一枪（素材：02_草稿/素材记录_电脑城经历.md）</td></tr>
+    <tr><td>5</td><td>T18 给 AI 装抓手·三模式</td><td><span class="tag t-blue">9-5 周六</span></td><td>回链 B09（省 token→省人力），harness 周开栏</td></tr>
+    <tr><td>6</td><td>AI 排查 BUG 实录（脱敏后）</td><td><span class="tag t-blue">9-8 周二</span></td><td>数据+实战（02_草稿 有多版本待并稿）</td></tr>
+    <tr><td>7</td><td>B08 harness 全景图</td><td><span class="tag t-blue">9-10 周四</span></td><td>定位文开栏</td></tr>
+    <tr><td>8</td><td>B03 账单深扒（97.7% 缓存读）</td><td><span class="tag t-blue">9-12 周六</span></td><td>视 B09 搜一搜「账单/费用」数据决定顺位</td></tr>
+  </table>
+  <div class="note amber">素材库新产能（8-27 已入库 1161 卡，+36）：六层 Token 系列素材卡 / 主流编程 Agent 横评 / 省 token 精简会话全景，可作为 9 月中下旬储备。周末批量产 3–5 篇 → 定时发布排一周（库存 &lt;3 即补货）。</div>
+</div>
+
+<div class="section-title">五、待 boss 拍板 & 前置闸门</div>
+<div class="grid g2">
+  <div class="card">
+    <h2><span class="ico">🤔</span> 待拍板</h2>
+    <ul class="check">
+      <li>B09 今晚立发 vs 明晚 20:00 黄金档？（建议明晚）</li>
+      <li>GLM 文掘金分发是否插在 B09 前面？（建议插，时效优先）</li>
+      <li>知乎/小红书本周内开齐？（建议知乎抢注优先）</li>
+      <li>B02 按 8-29 周六补位认不认？</li>
+      <li>8-28 是否顺手把「06_六层 Token 系列」提为 B09 姊妹篇候选</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2><span class="ico">🚧</span> 三闸门</h2>
+    <ul class="check">
+      <li><b>账号开通</b>：掘金已开 ✅；知乎/小红书/CSDN 逐个开，不批量</li>
+      <li><b>脱敏终检</b>（SAF-006）：电脑城/BUG 实录发布前必须过；公司业务数据绝不入稿</li>
+      <li><b>W8 复盘</b>（9-21 左右）：搜一搜收录词 + 各平台数据 → 定第 9 周起加注方向</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section-title">六、合规小抄（每次发布前扫一眼）</div>
+<div class="card">
+  <table>
+    <tr><th>规则</th><th>内容</th></tr>
+    <tr><td>SAF-003</td><td>绝不在上班时间发布/操作；发布天然落在下班后（公众号 20–21 / 小红书知乎 午+晚 / 掘金 午+晚）</td></tr>
+    <tr><td>PUB-004</td><td>禁通稿：每平台差异化微调（标题/开头/结构），隔 6–24h 再分发</td></tr>
+    <tr><td>SEO</td><td>标题前 13–15 字含核心词；开头 100–200 字埋词；小标题含词；密度 2–4%；每篇 1 核心词 + 2–3 长尾</td></tr>
+    <tr><td>原创/话题卡</td><td>首发拿原创；话题卡（绿色#）灰度 &lt;40%，能插就插 + 文末手动 # 双保险</td></tr>
+    <tr><td>AI 标识</td><td>AI 生成内容按《AI 生成标识办法》标注（GLM 文已标「内容由AI生成」）</td></tr>
+    <tr><td>利他铁律</td><td>每篇先问：对读者有什么用、对准谁？否则不写</td></tr>
+  </table>
+</div>
+
+<div class="foot">行途 · 发布作战台 ｜ 生成于 2026-08-27 23:11 ｜ 数据源：素材库/发布决策综合判断_2026-08-26 + 发布_B09_多平台文案包 + 工作日志 8-26/8-27 + 07_发布与归档 实盘核对</div>
+</div>
+</body>
+</html>

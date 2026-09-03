@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CHANGELOG 时间轴看板 · 2026-09-02</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+background:#f5f8fc;color:#1f2937;line-height:1.6;padding:28px 20px 60px}
+.wrap{max-width:1120px;margin:0 auto}
+header{background:linear-gradient(120deg,#056DE8 0%,#4A9EFF 55%,#00D4FF 100%);
+border-radius:16px;padding:30px 34px;color:#fff;box-shadow:0 10px 30px rgba(5,109,232,.18)}
+header h1{font-size:25px;font-weight:700;letter-spacing:.5px}
+header .sub{margin-top:8px;font-size:13.5px;opacity:.93}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
+.kpi{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
+border-radius:11px;padding:13px 15px}
+.kpi .n{font-size:26px;font-weight:700;line-height:1.15}
+.kpi .l{font-size:11.5px;opacity:.9;margin-top:3px}
+section{background:#fff;border-radius:14px;padding:26px 28px;margin-top:20px;
+box-shadow:0 2px 12px rgba(15,23,42,.06)}
+h2{font-size:18px;font-weight:700;color:#056DE8;margin-bottom:6px;
+display:flex;align-items:center;gap:9px}
+h2::before{content:"";width:4px;height:17px;background:#056DE8;border-radius:2px}
+.lead{font-size:13px;color:#4b5563;margin-bottom:16px}
+.alert{background:#fff5f0;border-left:4px solid #FF6B35;border-radius:0 9px 9px 0;
+padding:15px 18px;margin:16px 0;font-size:13.5px;color:#7c2d12}
+.alert b{color:#FF6B35}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0}
+.stat{border:1px solid #e8edf5;border-radius:10px;padding:14px 16px;background:#fbfcfe}
+.stat .n{font-size:23px;font-weight:700}
+.stat .l{font-size:12px;color:#4b5563;margin-top:2px}
+.tl{margin-top:8px}
+.tl-row{display:grid;grid-template-columns:52px 14px 1fr;gap:12px;position:relative;padding-bottom:14px}
+.tl-row:not(:last-child)::before{content:"";position:absolute;left:58px;top:16px;bottom:0;
+width:2px;background:#e8edf5}
+.tl-time{font-size:12.5px;color:#4b5563;font-variant-numeric:tabular-nums;padding-top:1px;font-weight:600}
+.tl-dot{width:11px;height:11px;border-radius:50%;margin-top:5px;position:relative;z-index:1;
+box-shadow:0 0 0 3px #fff}
+.tl-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.tl-type{font-size:11.5px;padding:1px 8px;border-radius:20px;font-weight:600}
+.tl-head code{font-size:12.5px;background:#f1f5f9;padding:2px 8px;border-radius:5px;color:#0f172a}
+.tl-desc{font-size:13px;color:#4b5563;margin-top:3px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 4px}
+.chip{font-size:12px;color:#4b5563;background:#f1f5f9;border-radius:20px;padding:3px 11px}
+.chip b{color:#056DE8;margin-right:4px}
+.corr{display:grid;grid-template-columns:190px 1fr;gap:14px;padding:12px 0;border-bottom:1px dashed #e8edf5}
+.corr:last-child{border-bottom:none}
+.corr-item{font-size:13px;font-weight:600;color:#1f2937}
+.corr-change{font-size:13px;color:#4b5563}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+.card{border:1px solid #e8edf5;border-radius:10px;padding:14px 16px;background:#fbfcfe}
+.card h4{font-size:13.5px;color:#056DE8;margin-bottom:5px}
+.card p{font-size:12.5px;color:#4b5563}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid #eef2f7}
+th{background:#f8fafc;font-weight:600;color:#4b5563;font-size:12.5px}
+td code{font-size:12px;background:#f1f5f9;padding:1px 6px;border-radius:4px}
+.badge{display:inline-block;font-size:11px;padding:1px 8px;border-radius:20px;font-weight:600}
+.b-p0{background:#fee2e2;color:#b91c1c}.b-p1{background:#fef3c7;color:#b45309}
+.b-p2{background:#e0f2fe;color:#0369a1}
+footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:26px}
+@media(max-width:820px){.kpis,.stat-row,.grid2{grid-template-columns:1fr 1fr}
+.corr{grid-template-columns:1fr}}
+</style></head><body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div><div class="wrap">
+
+<header>
+  <h1>CHANGELOG 时间轴看板 · 行途工作区</h1>
+  <div class="sub">记录「何时 · 因何 · 改了什么 · 落在哪」—— 供人回溯，也供其他 Agent 与定时任务消费</div>
+  <div class="kpis">
+    <div class="kpi"><div class="n">46</div><div class="l">2026-09-02 变更条目</div></div>
+    <div class="kpi"><div class="n">83</div><div class="l">历史会话（142 jsonl）</div></div>
+    <div class="kpi"><div class="n">71.9%</div><div class="l">产出落孤儿目录占比</div></div>
+    <div class="kpi"><div class="n">614</div><div class="l">boss 累计提示词</div></div>
+  </div>
+</header>
+
+<section>
+  <h2>★ 历史会话扫描：一个月的产出落错了地方</h2>
+  <div class="lead">扫描 <code>~/.workbuddy/projects/</code> 下 4 个 xingtu 相关会话目录，共 142 个 jsonl
+  （2026-05-03 → 09-02）。只统计 AI 实际落盘的 Write/Edit 文件（去重）。</div>
+  <div class="stat-row">
+    <div class="stat"><div class="n" style="color:#FF6B35">83.5%</div>
+      <div class="l">08-03～08-31 孤儿目录占比（394 / 472 文件）</div></div>
+    <div class="stat"><div class="n" style="color:#056DE8">4</div>
+      <div class="l">同期落在主工作区的文件数</div></div>
+    <div class="stat"><div class="n">71.9%</div>
+      <div class="l">全周期孤儿占比（422 / 587 文件）</div></div>
+  </div>
+  <div style="margin:6px 0 10px"><span style="display:inline-flex;align-items:center;gap:6px;margin-right:18px;font-size:12.5px;color:#4b5563"><i style="width:12px;height:12px;border-radius:3px;background:#056DE8;display:inline-block"></i>主工作区 ~/xingtu</span><span style="display:inline-flex;align-items:center;gap:6px;margin-right:18px;font-size:12.5px;color:#4b5563"><i style="width:12px;height:12px;border-radius:3px;background:#FF6B35;display:inline-block"></i>孤儿目录 ~/工作室/xingtu</span><span style="display:inline-flex;align-items:center;gap:6px;margin-right:18px;font-size:12.5px;color:#4b5563"><i style="width:12px;height:12px;border-radius:3px;background:#94a3b8;display:inline-block"></i>其他（~/.workbuddy、/tmp 等）</span></div>
+  <svg viewBox="0 0 1040 300" width="100%" style="max-width:1040px" font-family="system-ui,-apple-system,PingFang SC,sans-serif">
+<line x1="58" y1="246.0" x2="1026" y2="246.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="48" y="250.0" text-anchor="end" font-size="11" fill="#94a3b8">0</text>
+<line x1="58" y1="194.2" x2="1026" y2="194.2" stroke="#e5e7eb" stroke-width="1"/>
+<text x="48" y="198.2" text-anchor="end" font-size="11" fill="#94a3b8">25</text>
+<line x1="58" y1="142.4" x2="1026" y2="142.4" stroke="#e5e7eb" stroke-width="1"/>
+<text x="48" y="146.4" text-anchor="end" font-size="11" fill="#94a3b8">50</text>
+<line x1="58" y1="90.5" x2="1026" y2="90.5" stroke="#e5e7eb" stroke-width="1"/>
+<text x="48" y="94.5" text-anchor="end" font-size="11" fill="#94a3b8">75</text>
+<line x1="58" y1="38.7" x2="1026" y2="38.7" stroke="#e5e7eb" stroke-width="1"/>
+<text x="48" y="42.7" text-anchor="end" font-size="11" fill="#94a3b8">100</text>
+<text x="48" y="14" text-anchor="end" font-size="10" fill="#94a3b8">文件数</text>
+<rect x="65.4" y="243.9" width="24.0" height="2.1" fill="#94a3b8" rx="2"><title>2026-05-03 other 1</title></rect>
+<text x="77.4" y="238.9" text-anchor="middle" font-size="10" fill="#4b5563" font-weight="600">1</text>
+<text x="77.4" y="262.0" text-anchor="middle" font-size="10" fill="#4b5563">05-03</text>
+<rect x="104.1" y="190.0" width="24.0" height="56.0" fill="#94a3b8" rx="2"><title>2026-07-09 other 27</title></rect>
+<text x="116.1" y="185.0" text-anchor="middle" font-size="10" fill="#4b5563" font-weight="600">27</text>
+<rect x="142.8" y="233.6" width="24.0" height="12.4" fill="#94a3b8" rx="2"><title>2026-07-20 other 6</title></rect>
+<text x="154.8" y="228.6" text-anchor="middle" font-size="10" fill="#4b5563" font-weight="600">6</text>
+<text x="154.8" y="262.0" text-anchor="middle" font-size="10" fill="#4b5563">07-20</text>
+<rect x="181.5" y="210.8" width="24.0" height="35.2" fill="#94a3b8" rx="2"><title>2026-07-28 other 17</title></rect>
+<text x="193.5" y="205.8" text-anchor="middle" font-size="10" fill="#4b5563" font-weight="600">17</text>
+<rect x="220.2" y="196.3" width="24.0" height="49.7" fill="#FF6B35" rx="2"><title>2026-07-31 orphan 24</title></rect>
+<text x="232.2" y="191.3" text-anchor="middle" font-size="10" fill="#4b5563" font-weight="600">24</text>
+<text x="232.2" y="262.0" text-anchor="middle" font-size="10" fill="#4b5563">07-31</text>
+<rect x="259.0" y="202.5" width="24.0" height="43.5" fill="#FF6B35" rx="2"><title>2026-08-03 orphan 21</title></rect>
+<rect x="259.0" y="200.4" width="24.0" height="2.1" fill="#94a3b8" rx="2"><title>2026-08-03 other 1</title></rect>
+<text x="271.0" y="195.4" text-anchor="middle" font-size="10" fill="#4b5563" font-weight="600">22</text>
+<rect x="297.7" y="152.7" width="24.0" height="93.3" fill="#FF6B35" rx="2"><title>2026-08-06 orphan 45</title></rect>
+<rect x="297.7" y="36.7" width="24.0" height="116.1" fill="#94a3b8" rx="2"><title>2026-08-06 other 56</title></rect>
+<text x="309.7" y="31.7" text-anchor="middle" font-size="10" fill="#4b5563" font-weight="600">101</text>
+<text x="309.7" y="262.0" text-anchor="middle" font-size="10" fill="#4b5563">08-06</text>
+<rect x="336.4" y="227.3" width="24.0" height="18.7" fill="#FF6B35" rx="2"><title>2026-08-07 orphan 9</title></rect>
+<text x="348.4" y="222.3" text-anchor="middle" font-size="10" fill="#4b5563" font-weight="600">9</text>
+<text x="387.1" y="262.0" text-anchor="middle" font-size="10" fill="#4b5563">08-14</text>
+<rect x="413.8" y="198.3" width="24.0" height="47.7" fill="#FF6B35" rx="2"><title>2026-08-17 orphan 23</title></rect>
+<text x="425.8" y="193.3" text-anchor="middle" font-size="10" fill="#4b5563" font-weight="600">23</text>
+<rect x="452.6" y="235.6" width="24.0" height="10.4" fill="#FF6B35" rx="2"><title>2026-08-18 orphan 5</title></rect>
+<rect x="452.6" y="233.6" width="24.0" height="2.1" fill="#94a3b8" rx="2"><title>2026-08-18 other 1</title></rect>
+<text x="464.6" y="228.6" text-anchor="middle" font-size="10" fill="#4b5563" font-weight="600">6</text>
+<text x="464.6" y="262.0" text-anchor="middle" font-size="10" fill="#4b5563">08-18</text>
+<rect x="491.3" y="47.0" width="24.0" height="199.0" fill="#FF6B35" rx="2"><title>2026-08-19 orphan 96</title></rect>
+<rect x="491.3" y="34.6" width="24.0" height="12.4" fill="#94a3b8" rx="2"><title>2026-08-19 other 6</title></rect>
+<text x="503.3" y="29.6" text-anchor="middle" font-size="10" fill="#4b5563" font-weight="600">102</text>
+<rect x="530.0" y="231.5" width="24.0" height="14.5" fill="#FF6B35" rx="2"><title>2026-08-20 orphan 7</title></rect>
+<text x="542.0" y="226.5" text-anchor="middle" font-size="10" fill="#4b5563" font-weight="600">7</text>
+<text x="542.0" y="262.0" text-anchor="middle" font-size="10" fill="#4b5563">08-20</text>
+<rect x="568.7" y="239.8" width="24.0" height="6.2" fill="#FF6B35" rx="2"><title>2026-08-21 orphan 3</title></rect>
+<text x="580.7" y="234.8" text-anchor="middle" font-size="10" fill="#4b5563" font-weight="600">3</text>
+<text x="619.4" y="262.0" text-anchor="middle" font-size="10" fill="#4b5563">08-22</text>
+<rect x="684.9" y="239.8" width="24.0" height="6.2" fill="#FF6B35" rx="2"><title>2026-08-24 orphan 3</title></rect>
+<text x="696.9" y="234.8" text-anchor="middle" font-size="10" fill="#4b5563" font-weight="600">3</text>
+<text x="696.9" y="262.0" text-anchor="middle" font-size="10" fill="#4b5563">08-24</text>
+<rect x="723.6" y="173.5" width="24.0" height="72.5" fill="#FF6B35" rx="2"><title>2026-08-25 orphan 35</title></rect>
+<rect x="723.6" y="163.1" width="24.0" height="10.4" fill="#94a3b8" rx="2"><title>2026-08-25 other 5</title></rect>
+<text x="735.6" y="158.1" text-anchor="middle" font-size="10" fill="#4b5563" font-weight="600">40</text>
+<rect x="762.3" y="173.5" width="24.0" height="72.5" fill="#FF6B35" rx="2"><title>2026-08-26 orphan 35</title></rect>
+<rect x="762.3" y="167.2" width="24.0" height="6.2" fill="#94a3b8" rx="2"><title>2026-08-26 other 3</title></rect>
+<text x="774.3" y="162.2" text-anchor="middle" font-size="10" fill="#4b5563" font-weight="600">38</text>
+<text x="774.3" y="262.0" text-anchor="middle" font-size="10" fill="#4b5563">08-26</text>
+<rect x="801.0" y="92.6" width="24.0" height="153.4" fill="#FF6B35" rx="2"><title>2026-08-27 orphan 74</title></rect>
+<rect x="801.0" y="90.5" width="24.0" height="2.1" fill="#94a3b8" rx="2"><title>2026-08-27 other 1</title></rect>
+<text x="813.0" y="85.5" text-anchor="middle" font-size="10" fill="#4b5563" font-weight="600">75</text>
+<rect x="839.8" y="208.7" width="24.0" height="37.3" fill="#FF6B35" rx="2"><title>2026-08-28 orphan 18</title></rect>
+<rect x="839.8" y="206.6" width="24.0" height="2.1" fill="#94a3b8" rx="2"><title>2026-08-28 other 1</title></rect>
+<text x="851.8" y="201.6" text-anchor="middle" font-size="10" fill="#4b5563" font-weight="600">19</text>
+<text x="851.8" y="262.0" text-anchor="middle" font-size="10" fill="#4b5563">08-28</text>
+<rect x="878.5" y="237.7" width="24.0" height="8.3" fill="#FF6B35" rx="2"><title>2026-08-29 orphan 4</title></rect>
+<text x="890.5" y="232.7" text-anchor="middle" font-size="10" fill="#4b5563" font-weight="600">4</text>
+<text x="929.2" y="262.0" text-anchor="middle" font-size="10" fill="#4b5563">08-30</text>
+<rect x="955.9" y="237.7" width="24.0" height="8.3" fill="#056DE8" rx="2"><title>2026-08-31 main 4</title></rect>
+<rect x="955.9" y="204.5" width="24.0" height="33.2" fill="#FF6B35" rx="2"><title>2026-08-31 orphan 16</title></rect>
+<text x="967.9" y="199.5" text-anchor="middle" font-size="10" fill="#4b5563" font-weight="600">20</text>
+<text x="967.9" y="262.0" text-anchor="middle" font-size="10" fill="#4b5563">08-31</text>
+<rect x="994.6" y="171.4" width="24.0" height="74.6" fill="#056DE8" rx="2"><title>2026-09-02 main 36</title></rect>
+<rect x="994.6" y="163.1" width="24.0" height="8.3" fill="#FF6B35" rx="2"><title>2026-09-02 orphan 4</title></rect>
+<text x="1006.6" y="158.1" text-anchor="middle" font-size="10" fill="#4b5563" font-weight="600">40</text>
+<text x="1006.6" y="262.0" text-anchor="middle" font-size="10" fill="#4b5563">09-02</text>
+<line x1="58" y1="246.5" x2="1026" y2="246.5" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="62" y="292" font-size="10.5" fill="#94a3b8">▲ 07-31 工作空间合并 → 此后路径未同步，产出持续落孤儿目录，直到 09-02 才回归主工作区</text>
+</svg>
+  <div class="alert">
+    <b>结论：</b>08-03 → 08-31 整整一个月，394 个文件落进孤儿目录，主工作区只收到 4 个。
+    <b>08-27 单日 135 条提示词</b>（全周期最高产，当天在密集做发布准备与选题）的产出也全在那里。
+    这与「5 个定时任务全指向孤儿目录」是<b>同一根因的两种表现</b>：工作空间合并在 07-31 前后，
+    路径未同步。<b>修 P0-2 时优先看 08-19（102 文件）/ 08-06（101）/ 08-27（75）三天。</b>
+  </div>
+</section>
+
+<section>
+  <h2>2026-09-02 变更时间轴（46 条，倒序）</h2>
+  <div class="lead">数据源：<code>CHANGELOG.md</code> §1 当日变更总表 —— 改文档后重跑本脚本即同步。</div>
+  <div class="chips"><span class="chip"><b>13</b>🆕</span><span class="chip"><b>12</b>📊</span><span class="chip"><b>8</b>🔧</span><span class="chip"><b>6</b>✏️</span><span class="chip"><b>3</b>⚖️</span><span class="chip"><b>3</b>📦</span><span class="chip"><b>1</b>🔴</span></div>
+  <div class="tl">
+<div class="tl-row">
+      <div class="tl-time">22:10</div>
+      <div class="tl-dot" style="background:#7c3aed"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#7c3aed1a;color:#7c3aed">✏️</span>
+          <code>CHANGELOG.md</code></div>
+        <div class="tl-desc">**v2 复核补录**：全量对账今日豆包 10 场会话 + WorkBuddy 全部 spec，补录 9 项遗漏产出（见下方 17:02~14:26 行）；§0 状态块刷新（公开仓 16/私有 3）</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">17:02</div>
+      <div class="tl-dot" style="background:#f59e0b"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#f59e0b1a;color:#f59e0b">⚖️</span>
+          <code>—</code></div>
+        <div class="tl-desc">CLI/终端工具素材排查确认：中台工程仓 等 AI探索 素材已全部在库，无需补（零落盘会话，仅核对）</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">17:00</div>
+      <div class="tl-dot" style="background:#056DE8"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#056DE81a;color:#056DE8">🆕</span>
+          <code>~/projects/重构工程仓/.claude/specs/2026082117-…/deliverables/knowledge-archive/</code></div>
+        <div class="tl-desc">个人知识库档案（履历/能力矩阵）：`index.html` + `data.js`（3095 条任务 + 815 页知识库内嵌）；⚠️ **落点在 SSoT 工作区外**（重构工程仓 侧）</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">16:39</div>
+      <div class="tl-dot" style="background:#7c3aed"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#7c3aed1a;color:#7c3aed">✏️</span>
+          <code>素材库/素材看板.html` · `素材库/私聊案例_2026-09-02_AI工程化认知差与harness.md` · `素材库/成稿/B12-harness我只是听名字-认知差.md</code></div>
+        <div class="tl-desc">素材看板加六维排序/升降序/卡片-列表切换；私聊案例 + 成稿 B12（harness 认知差）落地；飞书 docx `Yxg0d54F…`</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">16:36</div>
+      <div class="tl-dot" style="background:#0d9488"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#0d94881a;color:#0d9488">🔧</span>
+          <code>tools/yuanbao_incremental_fetch.py` · `outputs/yuanbao_inventory/增量批次/</code></div>
+        <div class="tl-desc">元宝定时任务 **全量→增量**抓取（水位线去重 + 按时间归档），`run_pipeline.sh` 同步改造</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">16:22</div>
+      <div class="tl-dot" style="background:#00D4FF"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#00D4FF1a;color:#00D4FF">📊</span>
+          <code>specs/20260902-开源矩阵SEO与DSH生态优化/` · `specs/20260902-npm包发布SOP/</code></div>
+        <div class="tl-desc">**开源矩阵公开化**：15 安全仓转 PUBLIC + 新建 articles/video/book 3 仓；`dsh-xingtu-skills` DSH 插件（26 技能）打包建公开仓；npm 发布 SOP（卡 2FA 登录，待续）</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">16:22</div>
+      <div class="tl-dot" style="background:#0d9488"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#0d94881a;color:#0d9488">🔧</span>
+          <code>dsh-xingtu-skills/` · `xingtu-vault/08_开源与作品集/仓库映射表.md` · `09_个人台账/{01_自媒体账号台账,04_凭据备忘}` · `12_工具研究室/内容风控/check-flavor.sh</code></div>
+        <div class="tl-desc">全仓工程化配套：仓库映射表 / 账号台账 / 凭据备忘（含 npm 恢复码铁律）/ 内容风控脚本；20 仓盘点→16 仓公开化</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">16:15</div>
+      <div class="tl-dot" style="background:#4A9EFF"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#4A9EFF1a;color:#4A9EFF">📦</span>
+          <code>xingtu-vault/02_素材库/竞品剪藏_外部参考/AI工程-致网…/` · `AI工程-淘天…/` · `四大AI工程研读/</code></div>
+        <div class="tl-desc">**AI工程合集入库**：致网四大AI工程报告（47 截图+55 整页+全文+素材点拆分）+ 淘天研发体系（原文+18 素材点）；AI工程合集 4 文件 + 研读报告 HTML</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">15:21</div>
+      <div class="tl-dot" style="background:#056DE8"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#056DE81a;color:#056DE8">🆕</span>
+          <code>specs/20260902-内容商业化分层与付费咨询规划/</code></div>
+        <div class="tl-desc">内容商业化**三层制**（L1 公开/L2 出书/L3 付费）+ 项目镜像机制；✅ 协议分层决策：工具仓 MIT + 方法论仓（ai-engineering/rules/sdd）CC BY-NC-SA</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">15:02</div>
+      <div class="tl-dot" style="background:#056DE8"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#056DE81a;color:#056DE8">🆕</span>
+          <code>specs/20260902-全仓完善与Harness工程化/00_README.md</code></div>
+        <div class="tl-desc">全仓工程化 SDD 规格（5 空壳填内容 + 3 单薄补强 + 2 内容仓 git 化 + harness 借鉴），T1-T10 已完成</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">14:35</div>
+      <div class="tl-dot" style="background:#00D4FF"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#00D4FF1a;color:#00D4FF">📊</span>
+          <code>飞书 docx `GvmZdjQU…` · `draft_8a7cdaee_folder/</code></div>
+        <div class="tl-desc">**公众号第一篇推文落地**：Pro vs Turbo 六维对比（约 1700 字 / 4 章节）+ 封面与决策路径图</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">14:26</div>
+      <div class="tl-dot" style="background:#056DE8"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#056DE81a;color:#056DE8">🆕</span>
+          <code>.agents/skills/{session-sediment,xingtu-ingest,xingtu-workspace-context}` · `工作台/2026-09-02/</code></div>
+        <div class="tl-desc">元宝素材库会话同批产出：3 个新技能 + 工作台 specs 001-003 + AGENTS.md 重写（含 changelog 回写铁律）</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">22:06</div>
+      <div class="tl-dot" style="background:#0d9488"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#0d94881a;color:#0d9488">🔧</span>
+          <code>tools/gen_changelog_dashboard.py</code></div>
+        <div class="tl-desc">看板生成脚本（解析 CHANGELOG.md §1 表格 + data/session_landing_stats.json → 单文件 HTML），改文档重跑即同步</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">22:06</div>
+      <div class="tl-dot" style="background:#00D4FF"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#00D4FF1a;color:#00D4FF">📊</span>
+          <code>outputs/CHANGELOG时间轴看板_2026-09-02.html</code></div>
+        <div class="tl-desc">CHANGELOG 可视化看板：历史落点分布图（★08-03~08-31 期间 83.5% 产出落孤儿目录）+ 今日 32 条变更时间轴 + 七项纠偏 + P0-P2 卡点</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">22:01</div>
+      <div class="tl-dot" style="background:#7c3aed"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#7c3aed1a;color:#7c3aed">✏️</span>
+          <code>DIRECTORY.md · 产出索引.md · AGENTS.md</code></div>
+        <div class="tl-desc">三处索引回登记 CHANGELOG（按「新增产出必登记三处」规则）；AGENTS.md 读取顺序加入 CHANGELOG + 收尾必回写铁律</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">22:00</div>
+      <div class="tl-dot" style="background:#0d9488"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#0d94881a;color:#0d9488">🔧</span>
+          <code>tools/changelog_append.py</code></div>
+        <div class="tl-desc">一行命令追加 CHANGELOG 条目，供定时任务 / 其他 Agent 调用（已实测）</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">21:55</div>
+      <div class="tl-dot" style="background:#056DE8"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#056DE81a;color:#056DE8">🆕</span>
+          <code>CHANGELOG.md</code></div>
+        <div class="tl-desc">**本文件**：建立工作区时间轴，供跨工具传递信息</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">21:55</div>
+      <div class="tl-dot" style="background:#0d9488"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#0d94881a;color:#0d9488">🔧</span>
+          <code>tools/session_changelog_miner.py</code></div>
+        <div class="tl-desc">会话 jsonl 挖掘器：从持久化会话提取提示词/写改文件，给 CHANGELOG 供料（可复跑）</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">21:51</div>
+      <div class="tl-dot" style="background:#056DE8"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#056DE81a;color:#056DE8">🆕</span>
+          <code>specs/20260902-断点续传与集中提示词/06_会话交接包_20260902.md</code></div>
+        <div class="tl-desc">单文件自包含交接包，切换 agent 工具时整份丢出（已实测：全新 agent 读后 5 问全答对）</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">21:49</div>
+      <div class="tl-dot" style="background:#056DE8"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#056DE81a;color:#056DE8">🆕</span>
+          <code>产出索引.md</code></div>
+        <div class="tl-desc">产出物地图：29 看板 + JSON 数据族 + Spec 包 + 探针，含路径与一句话概要</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">21:49</div>
+      <div class="tl-dot" style="background:#7c3aed"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#7c3aed1a;color:#7c3aed">✏️</span>
+          <code>DIRECTORY.md</code></div>
+        <div class="tl-desc">§一 顶层入口登记「产出索引.md」</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">18:0x</div>
+      <div class="tl-dot" style="background:#0d9488"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#0d94881a;color:#0d9488">🔧</span>
+          <code>tools/wechat_api_probe.py</code></div>
+        <div class="tl-desc">P1-1 微信 API 探针（纯标准库 / 凭据走环境变量 / 自动生成封面 PNG）；双场景模拟已跑通（EXIT0 通 / EXIT3 48001）</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">16:43</div>
+      <div class="tl-dot" style="background:#7c3aed"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#7c3aed1a;color:#7c3aed">✏️</span>
+          <code>.workbuddy/memory/MEMORY.md</code></div>
+        <div class="tl-desc">压缩精简（196 行→精简版）；**修正「发布 0%」旧口径**；仓库口径 4→15</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">16:3x</div>
+      <div class="tl-dot" style="background:#056DE8"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#056DE81a;color:#056DE8">🆕</span>
+          <code>specs/20260902-断点续传与集中提示词/05_权威锚点与引用来源.md</code></div>
+        <div class="tl-desc">全部产出引用总索引（已核实锚点 + 待补链接）</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">16:3x</div>
+      <div class="tl-dot" style="background:#0d9488"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#0d94881a;color:#0d9488">🔧</span>
+          <code>tools_工作室根/_inject_citations.py</code></div>
+        <div class="tl-desc">批量给 HTML 看板注入「📎 引用来源」脚注（可复用）</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">16:04</div>
+      <div class="tl-dot" style="background:#056DE8"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#056DE81a;color:#056DE8">🆕</span>
+          <code>specs/20260902-断点续传与集中提示词/04_boss提示词整理.md</code></div>
+        <div class="tl-desc">从持久化 session jsonl 提取的 12 条 boss 真实提示词（指令库）</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">15:46</div>
+      <div class="tl-dot" style="background:#056DE8"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#056DE81a;color:#056DE8">🆕</span>
+          <code>specs/20260902-断点续传与集中提示词/00~03</code></div>
+        <div class="tl-desc">作战室收口：总纲 + 待办决策清单（T1-14/P0-4/P1-5/P2-1/IN1-5）+ 集中提示词 + 今日复盘</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">15:46</div>
+      <div class="tl-dot" style="background:#f59e0b"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#f59e0b1a;color:#f59e0b">⚖️</span>
+          <code>—</code></div>
+        <div class="tl-desc">输入源决策：招聘需求（智联/BOSS/猎聘）作公开市场信息入 SSoT；管理方法论按「AI 时代可用/不可用」二分蒸馏</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">15:39</div>
+      <div class="tl-dot" style="background:#f59e0b"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#f59e0b1a;color:#f59e0b">⚖️</span>
+          <code>—</code></div>
+        <div class="tl-desc">发布日历定调：**订阅号群发 1 次/天封顶**；「发布」（不群发）不占次数<br>⚠️ <b style="color:#d93025">2026-09-02 已纠错</b>：「只发表」不占次数属实，但<b>进搜一搜属误判</b>——多源实测显示只发表文章搜一搜收录概率远低于群发。主推文章必须走群发，「只发表」仅用于菜单/存档。详见 <code>outputs/发布作战台_日更版_2026-09-02.html</code> §0</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">15:23</div>
+      <div class="tl-dot" style="background:#00D4FF"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#00D4FF1a;color:#00D4FF">📊</span>
+          <code>outputs/多平台分发策略_公众号主阵地_2026-09-02.html</code></div>
+        <div class="tl-desc">跨平台复制的分水岭 = 受众问题域是否一致（文字圈可复制、短内容圈需二次创作）</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">15:06</div>
+      <div class="tl-dot" style="background:#00D4FF"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#00D4FF1a;color:#00D4FF">📊</span>
+          <code>outputs/协作断点与自动化补全_2026-09-02.html</code></div>
+        <div class="tl-desc">实读 4 篇成稿，定位 5 个协作断点；P0/P1/P2 补全方案</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">15:06</div>
+      <div class="tl-dot" style="background:#056DE8"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#056DE81a;color:#056DE8">🆕</span>
+          <code>xingtu-vault/09_个人台账/03_已发布文章档案/已发布文章档案.md</code></div>
+        <div class="tl-desc">发布回流台账模板（新目录），替代拿不到的公众号统计 API</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">14:57</div>
+      <div class="tl-dot" style="background:#00D4FF"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#00D4FF1a;color:#00D4FF">📊</span>
+          <code>outputs/工作流编排工具选型判断_2026-09-02.html</code></div>
+        <div class="tl-desc">**现阶段不上 n8n**（瓶颈是判断不是连接）；四工具判定表</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">14:57</div>
+      <div class="tl-dot" style="background:#FF6B35"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#FF6B351a;color:#FF6B35">🔴</span>
+          <code>outputs/内容变现路径与自动化发布流水线_2026-09-02.html</code></div>
+        <div class="tl-desc">5.1 节插入红色修正块：发布自动化封号风险，原「主 Playwright」建议变更</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">14:51</div>
+      <div class="tl-dot" style="background:#00D4FF"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#00D4FF1a;color:#00D4FF">📊</span>
+          <code>outputs/MCP与知识库素材接收站_2026-09-02.html</code></div>
+        <div class="tl-desc">公司知识库建设 = C4 补卡最高 ROI 料</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">14:51</div>
+      <div class="tl-dot" style="background:#056DE8"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#056DE81a;color:#056DE8">🆕</span>
+          <code>xingtu-vault/11_经历素材库/_inbox/</code></div>
+        <div class="tl-desc">三分类投喂管道（01 可写 / 02 待蒸馏 / 03 只读）+ README 规范 + 14 题卡槽</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">14:37</div>
+      <div class="tl-dot" style="background:#00D4FF"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#00D4FF1a;color:#00D4FF">📊</span>
+          <code>outputs/能力模型与作品集战略_2026-09-02.html</code></div>
+        <div class="tl-desc">六域四维（D/E/S/V）打分；C1 全满 25；C4 盲区</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">14:37</div>
+      <div class="tl-dot" style="background:#4A9EFF"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#4A9EFF1a;color:#4A9EFF">📦</span>
+          <code>xingtu-vault/06_运营资产/能力模型数据.json</code></div>
+        <div class="tl-desc">能力模型数据层（唯一数据源）</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">14:37</div>
+      <div class="tl-dot" style="background:#7c3aed"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#7c3aed1a;color:#7c3aed">✏️</span>
+          <code>xingtu-vault/06_运营资产/作品集索引.md</code></div>
+        <div class="tl-desc">升级 v2（原 v1 仅 4 行占位、代表作链接全是「待补」）</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">14:32</div>
+      <div class="tl-dot" style="background:#00D4FF"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#00D4FF1a;color:#00D4FF">📊</span>
+          <code>outputs/定时任务索引看板_2026-09-02.html</code></div>
+        <div class="tl-desc">5 个定时任务全失效，根因 = 路径指向孤儿目录</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">14:21</div>
+      <div class="tl-dot" style="background:#00D4FF"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#00D4FF1a;color:#00D4FF">📊</span>
+          <code>outputs/对标账号系统与适配度分析_2026-09-02.html</code></div>
+        <div class="tl-desc">9 账号五维打分；三轴模仿法；定位空隙</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">14:21</div>
+      <div class="tl-dot" style="background:#4A9EFF"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#4A9EFF1a;color:#4A9EFF">📦</span>
+          <code>素材库/对标账号数据.json` + `素材库/对标账号库_v2_2026-09-02.md</code></div>
+        <div class="tl-desc">对标系统数据层 + 文档层</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">14:21</div>
+      <div class="tl-dot" style="background:#056DE8"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#056DE81a;color:#056DE8">🆕</span>
+          <code>workflows/08_对标账号系统SOP.md</code></div>
+        <div class="tl-desc">对标账号系统 SOP（workflows 由 8 条增至 9 条）</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">14:14</div>
+      <div class="tl-dot" style="background:#00D4FF"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#00D4FF1a;color:#00D4FF">📊</span>
+          <code>outputs/内容变现路径与自动化发布流水线_2026-09-02.html</code></div>
+        <div class="tl-desc">以终为始倒推变现；署名长文 + 开源是唯一资产载体</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">全天</div>
+      <div class="tl-dot" style="background:#00D4FF"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#00D4FF1a;color:#00D4FF">📊</span>
+          <code>outputs/yuanbao_inventory/</code></div>
+        <div class="tl-desc">元宝素材库流水线产出：771 条素材清单 / 760 篇全文 / 卡片报告 + 盘点看板</div>
+      </div>
+    </div>
+<div class="tl-row">
+      <div class="tl-time">全天</div>
+      <div class="tl-dot" style="background:#0d9488"></div>
+      <div class="tl-body">
+        <div class="tl-head"><span class="tl-type" style="background:#0d94881a;color:#0d9488">🔧</span>
+          <code>tools/batch_fetch_yuanbao.py` · `tools/yuanbao_incremental_fetch.py` · `tools/wechat_chat_analyzer/</code></div>
+        <div class="tl-desc">元宝抓取与解析链路（增量抓取 + 全文提取 + 报告生成）</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>关键纠偏与决策（口径变更必须留痕）</h2>
+  <div class="lead">「原口径 → 新口径」，避免三天后无法还原决策依据。</div>
+<div class="corr">
+      <div class="corr-item">「成稿→发布 0%」</div>
+      <div class="corr-change">**误判，已纠正**。真实是「文章发了，但零回流、无法核实发布率」。原口径来自本地检索不到 mp.weixin 链接</div>
+    </div>
+<div class="corr">
+      <div class="corr-item">发布自动化路线</div>
+      <div class="corr-change">原建议「主 Playwright」→ **变更**：模拟登录违反微信协议有封号风险；公众号是职业安全垫载体，冒封号险 = 目的手段倒置。改为先实调 API（P1-1），48001 才评估 Playwright</div>
+    </div>
+<div class="corr">
+      <div class="corr-item">抖音漫画图文</div>
+      <div class="corr-change">判定为**过期 9 个月的引流钩子**（2025-11 分成系数：静态漫画仅 1，平台明确踩刹车），不入</div>
+    </div>
+<div class="corr">
+      <div class="corr-item">在职低调 → 高频出局</div>
+      <div class="corr-change">**推导错误**。出局的是「需全天在线运营」不是「非全职」；发布动作定时到非工作时间即守界</div>
+    </div>
+<div class="corr">
+      <div class="corr-item">素材库刷新频率</div>
+      <div class="corr-change">周日 21:00 → 建议改为**周日 + 周三 21:00**（原时序下发布飞轮每日 19:00 读最多 6 天前快照）</div>
+    </div>
+<div class="corr">
+      <div class="corr-item">仓库数量口径</div>
+      <div class="corr-change">记忆原记 4 → `gh` 实测 **15**（1 公开 + 14 私有）</div>
+    </div>
+<div class="corr">
+      <div class="corr-item">一句话定位</div>
+      <div class="corr-change">统一对外口径：**既带团队又写代码的人，讲 AI 工程化怎么落地**</div>
+    </div>
+<div class="corr">
+      <div class="corr-item">仓库公开状态</div>
+      <div class="corr-change">旧口径「1 公开 + 14 私有」→ **16 公开 + 3 私有**（gh 实测 09-02 22:10）。今日 15 安全仓转 PUBLIC + 新建 articles/video/book；`xingtu-vault`（实名简历/私聊/家庭健康数据）/ `xingtu-book`（书稿）/ `docs` 保持 PRIVATE，红线 SAF-006 不破</div>
+    </div>
+<div class="corr">
+      <div class="corr-item">开源协议分层</div>
+      <div class="corr-change">工具仓 MIT + 方法论仓（ai-engineering/rules/sdd）**CC BY-NC-SA**——防剽窃、保出书/付费价值（详见 `specs/20260902-内容商业化分层与付费咨询规划/`）</div>
+    </div>
+</section>
+
+<section>
+  <h2>当前卡点与红线（给下游工具消费）</h2>
+  <div class="grid2">
+    <div class="card"><h4>唯一硬卡点 P1-1</h4>
+      <p>未认证个人订阅号 <code>draft/add</code> 是否返回 48001 未实调。探针 <code>tools/wechat_api_probe.py</code>
+      已就绪，缺 AppSecret + IP 白名单。通 → 走 API；48001 → 才评估 Playwright。</p></div>
+    <div class="card"><h4>发布自动化红线</h4>
+      <p>只到草稿箱人工终审，禁止脚本点击发布。Playwright 模拟登录违反微信协议有封号风险——
+      公众号是职业安全垫载体，用它冒险是目的手段倒置。</p></div>
+    <div class="card"><h4>SAF-006</h4>
+      <p>公司代码/内部数据绝不进仓库与任何公开产出；43.2% 的素材卡被锁，只能蒸馏（讲规则不讲架构）。</p></div>
+    <div class="card"><h4>虚假索引</h4>
+      <p>索引必须与真实文件一致，宁缺毋滥。写完顺手 <code>ls</code> 验证——虚假索引比没有索引更危险。</p></div>
+  </div>
+  <table style="margin-top:16px">
+    <tr><th style="width:70px">优先级</th><th style="width:250px">事项</th><th>路径 / 命令</th></tr>
+    <tr><td><span class="badge b-p0">P0</span></td><td>实调微信 draft/add</td>
+      <td><code>tools/wechat_api_probe.py</code>，需 AppSecret + IP 白名单</td></tr>
+    <tr><td><span class="badge b-p0">P0</span></td><td>定时任务路径归一</td>
+      <td>5 任务的 cwds <b>和 prompt 正文内绝对路径</b>全量 A→B（只改 cwds 不够）</td></tr>
+    <tr><td><span class="badge b-p0">P0</span></td><td>孤儿目录产出迁回</td>
+      <td>先 diff 再合并，不覆盖；优先 08-19 / 08-06 / 08-27</td></tr>
+    <tr><td><span class="badge b-p0">P0</span></td><td>成稿数字同步</td>
+      <td>B11 写 76 卡 / M01 写 1100+ / 实测 1161 —— 违反单一事实源</td></tr>
+    <tr><td><span class="badge b-p1">P1</span></td><td>发布回流台账</td>
+      <td>替代拿不到的公众号统计 API（未认证号无数据权限）</td></tr>
+    <tr><td><span class="badge b-p2">P2</span></td><td>定时任务心跳巡检</td>
+      <td>15 行写心跳 + 每日巡检，48h 无心跳 → 飞书告警</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>维护规则（谁写、怎么写）</h2>
+  <div class="grid2">
+    <div class="card"><h4>命令追加</h4>
+      <p><code>python3 tools/changelog_append.py --type "🆕" --path "x.md" --desc "因为什么改了什么"</code><br>
+      自动插到当日表格首行；日期章节不存在时自动新建。</p></div>
+    <div class="card"><h4>重跑本看板</h4>
+      <p><code>python3 tools/gen_changelog_dashboard.py</code><br>
+      改了 CHANGELOG.md 或重扫会话后执行即同步。</p></div>
+    <div class="card"><h4>重扫历史会话</h4>
+      <p><code>python3 tools/session_changelog_miner.py</code><br>
+      可换 <code>--dir</code> 扫其他工作区；输出喂给 <code>data/session_landing_stats.json</code>。</p></div>
+    <div class="card"><h4>登记三处</h4>
+      <p>新增产出必须同时登记 CHANGELOG（时间）+ 产出索引.md（清单）+ DIRECTORY.md（资产）。
+      <b>不回写 = 变更未发生。</b></p></div>
+  </div>
+</section>
+
+<footer>生成于 2026-09-02 22:12 · tools/gen_changelog_dashboard.py ·
+数据源 CHANGELOG.md + data/session_landing_stats.json</footer>
+</div></body></html>

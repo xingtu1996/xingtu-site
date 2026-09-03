@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="LtqJkLIoif4w0Hd0yyzMeG">
+<head data-page-node-id="ljIBIUCTxd6QfoLJPi5PUB">
+<meta charset="UTF-8" data-page-node-id="oqN4HIDFr2yfS0Cvmfqj54">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="OaWPSzxLVsUFdURyCRvSGD">
+<title>工作流编排工具选型判断 · 行途</title>
+<style>
+:root{
+  --blue:#056DE8; --blue-l:#4A9EFF; --cyan:#00D4FF; --orange:#FF6B35;
+  --bg:#F7F9FB; --card:#FFFFFF; --bd:#E3E9F0; --bd2:#EFF3F8;
+  --t1:#14181F; --t2:#3D4757; --t3:#6B7787; --t4:#9AA5B4;
+  --ok:#0E9F6E; --warn:#E5A23C; --danger:#E5484D;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--t1);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  line-height:1.75; font-size:15px; padding:0 0 80px;
+}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+
+header{
+  background:linear-gradient(135deg,#056DE8 0%,#0B7FE8 45%,#00A8E8 100%);
+  color:#fff;padding:52px 0 44px;margin-bottom:36px;
+}
+.kicker{
+  display:inline-block;font-size:12px;letter-spacing:.18em;font-weight:600;
+  background:rgba(255,255,255,.16);padding:5px 12px;border-radius:4px;margin-bottom:18px;
+}
+h1{font-size:33px;font-weight:700;letter-spacing:-.01em;line-height:1.4;margin-bottom:14px}
+.sub{font-size:16px;opacity:.94;max-width:800px;line-height:1.8}
+.meta{margin-top:20px;font-size:13px;opacity:.85;display:flex;gap:20px;flex-wrap:wrap}
+
+section{margin-bottom:44px}
+h2{
+  font-size:22px;font-weight:700;color:var(--t1);margin-bottom:6px;
+  padding-left:14px;border-left:4px solid var(--blue);line-height:1.5;
+}
+.h2sub{font-size:13.5px;color:var(--t3);margin:0 0 20px 18px}
+h3{font-size:16px;font-weight:650;color:var(--t1);margin:26px 0 12px}
+
+.card{
+  background:var(--card);border:1px solid var(--bd);border-radius:10px;
+  padding:22px 24px;margin-bottom:16px;
+}
+.card.hl{border-left:4px solid var(--blue)}
+.card.warn{border-left:4px solid var(--orange);background:#FFF9F5}
+.card.dan{border-left:4px solid var(--danger);background:#FEF6F6}
+
+table{width:100%;border-collapse:collapse;background:var(--card);
+  border:1px solid var(--bd);border-radius:8px;overflow:hidden;font-size:14px}
+th{
+  background:#F0F4F9;color:var(--t2);font-weight:650;text-align:left;
+  padding:11px 14px;border-bottom:1px solid var(--bd);font-size:13px;white-space:nowrap;
+}
+td{padding:11px 14px;border-bottom:1px solid var(--bd2);color:var(--t2);vertical-align:top;line-height:1.7}
+tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#FAFCFE}
+td.c,th.c{text-align:center}
+
+.tag{display:inline-block;font-size:11.5px;font-weight:600;padding:2px 9px;border-radius:20px;line-height:1.7;white-space:nowrap}
+.t-a{background:#E3F7EF;color:#0B7A55}
+.t-b{background:#FEF2E3;color:#B5720F}
+.t-c{background:#FDECEC;color:#C2292D}
+.t-blue{background:#E5F0FE;color:#0455B8}
+.t-gray{background:#EEF1F5;color:#5A6675}
+.t-red{background:#FDECEC;color:#C2292D}
+
+.box{border-radius:9px;padding:16px 18px;font-size:14px;line-height:1.8;margin:14px 0}
+.box.b{background:#EEF5FE;border:1px solid #CFE3FB;color:#0B4A8F}
+.box.o{background:#FFF6EF;border:1px solid #FBDCC6;color:#8F4413}
+.box.g{background:#EDF9F3;border:1px solid #C6EBDA;color:#0A5D42}
+.box.r{background:#FDF0F0;border:1px solid #F7CFCF;color:#A82429}
+
+.quote{
+  border-left:3px solid var(--blue);background:#F5F9FE;
+  padding:14px 18px;margin:14px 0;font-size:15px;color:var(--t1);
+  line-height:1.85;border-radius:0 7px 7px 0;
+}
+.quote b{color:var(--blue)}
+.quote.red{border-left-color:var(--danger);background:#FDF0F0}
+.quote.red b{color:var(--danger)}
+
+ul.clean{list-style:none;padding:0}
+ul.clean li{
+  padding:9px 0 9px 22px;position:relative;color:var(--t2);
+  border-bottom:1px solid var(--bd2);font-size:14px;line-height:1.75;
+}
+ul.clean li:last-child{border-bottom:none}
+ul.clean li::before{content:'';position:absolute;left:6px;top:18px;width:5px;height:5px;border-radius:50%;background:var(--blue-l)}
+ul.clean li b{color:var(--t1);font-weight:650}
+
+/* 流水线分层 */
+.pipe{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;margin:18px 0}
+.pn{background:var(--card);border:1px solid var(--bd);border-radius:9px;padding:13px 9px;text-align:center}
+.pn .n{display:inline-flex;width:23px;height:23px;border-radius:50%;font-size:12px;font-weight:700;color:#fff;align-items:center;justify-content:center;margin-bottom:7px}
+.pn .t{font-size:13.5px;font-weight:650;color:var(--t1)}
+.pn .d{font-size:11.5px;color:var(--t3);margin-top:4px;line-height:1.6}
+.pn.human{border-color:#F0C98A;background:#FFFCF6}
+.pn.human .n{background:var(--orange)}
+.pn.llm{border-color:#CFE3FB;background:#F8FBFF}
+.pn.llm .n{background:var(--blue)}
+.pn.det{border-color:#C6EBDA;background:#F6FCF9}
+.pn.det .n{background:var(--ok)}
+.pn.risk{border-color:#F7CFCF;background:#FDF6F6}
+.pn.risk .n{background:var(--danger)}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:880px){.two{grid-template-columns:1fr}.pipe{grid-template-columns:repeat(3,1fr)}}
+
+/* 打分条 */
+.bar{display:flex;align-items:center;gap:8px;margin:5px 0}
+.bar .lb{flex:0 0 74px;font-size:12.5px;color:var(--t3);text-align:right}
+.bar .tr{flex:1;height:8px;background:#EEF2F7;border-radius:4px;overflow:hidden}
+.bar .fl{height:100%;border-radius:4px}
+.bar .vl{flex:0 0 26px;font-size:12px;color:var(--t2);font-weight:600}
+
+pre{
+  background:#F5F8FB;border:1px solid var(--bd);border-radius:8px;
+  padding:14px 16px;overflow-x:auto;font-size:12.5px;line-height:1.75;margin:12px 0;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#2A3543;
+}
+pre .c{color:#8A94A3}
+
+.todo{background:var(--card);border:1px solid var(--bd);border-radius:10px;overflow:hidden}
+.trow{display:flex;gap:14px;padding:15px 20px;border-bottom:1px solid var(--bd2);align-items:flex-start}
+.trow:last-child{border-bottom:none}
+.tid{flex:0 0 30px;height:30px;border-radius:7px;background:var(--blue);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.tid.p1{background:var(--orange)}
+.tid.p2{background:var(--t4)}
+.tid.p0{background:var(--danger)}
+.tbody{flex:1}
+.tt{font-size:14.5px;font-weight:650;color:var(--t1);margin-bottom:4px}
+.td2{font-size:13px;color:var(--t3);line-height:1.7}
+
+footer{margin-top:48px;padding-top:22px;border-top:1px solid var(--bd);font-size:12.5px;color:var(--t4);line-height:1.9}
+code{background:#F0F4F9;padding:1.5px 6px;border-radius:4px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:#0455B8}
+</style>
+</head>
+<body data-page-node-id="3pCwwcjFwYEvSljBABTxqY"><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+
+<header data-page-node-id="oiNU2s53HlrvX4Fk9iHHYy">
+  <div class="wrap" data-page-node-id="4MoCkuUWvDmWsBYmuyME2i">
+    <span class="kicker" data-page-node-id="ePIPY3gz2v1HvfF5rWoPRq">XINGTU · 工具选型判断</span>
+    <h1 data-page-node-id="GPpI1tCUBC4ZvsgvAHXdod">n8n / Dify / 扣子 / FastGPT<br data-page-node-id="WkdEdcjqcNJqYa1wxo7wZ2">要不要上？</h1>
+    <p class="sub" data-page-node-id="f6DaihEY5IR0jGBM6uDZJN">直接给结论：<b data-page-node-id="i10SqOSgi6rgcZNkUMQWdT">现阶段不上</b>——你的瓶颈是「判断」，这类工具卖的是「连接」。但过程中挖出一个必须纠偏的风险，以及一个值得单独评估的反转理由。</p>
+    <div class="meta" data-page-node-id="aK3ysHGhcPfXDAeBNtZAFk">
+      <span data-page-node-id="mG635AscWGy0ifVPFdAEyV">2026-09-02</span>
+      <span data-page-node-id="P5mRCXNkSxmkNIp57uvsu1">已核：微信 API 权限口径 + 四平台定位</span>
+      <span data-page-node-id="nNmKkupchfADdm2NaScwru">账号：行途技术手记（未认证个人订阅号）</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap" data-page-node-id="gQDS53lX9r01316ZRtqIXG">
+
+<!-- 0 结论 -->
+<section data-page-node-id="MGxI1HJ7hyBIptKReK8KDh">
+  <div class="quote" data-page-node-id="NjnNBUNBlZKpclXlv2ND47">
+    <b data-page-node-id="vxW0F2LiRDmBvN0ZNoagHf">核心判断</b>：把流水线 6 步按性质拆开看，<b data-page-node-id="YUZTlDpKXCyTmJVG5W8Vb3">只有「发布」这一步是确定性的</b>，而它恰恰一个脚本加定时任务就够，不需要 n8n。<br data-page-node-id="A1UX8LEQz6tRwdE5G9M11F">
+    前 5 步是 <b data-page-node-id="mFzqCtbIBpenCUP17cTTz0">LLM 判断密集型</b>——蒸馏、脱敏、选题，这些环节塞进可视化编排，等于把判断力关进固定流程的格子，还会丢掉你在 WorkBuddy 里已有的完整上下文。
+  </div>
+
+  <div class="pipe" data-page-node-id="x8s26uL4RHG2v4bnL4kOWF">
+    <div class="pn human" data-page-node-id="qN4IaqRUjMxJmHGy9tjDyI"><span class="n" data-page-node-id="vYvt37oe6c7fyu9jvLjN26">1</span><div class="t" data-page-node-id="U2BSH95iDATmX6zDtWZ4fb">投喂</div><div class="d" data-page-node-id="RLV9tfqNorr0cpLveFa1X0">人。不可自动化</div></div>
+    <div class="pn llm" data-page-node-id="AUHQAYJepQRyI4Amdugq1e"><span class="n" data-page-node-id="3NFD17loDkHIv4ZPhynWPu">2</span><div class="t" data-page-node-id="G5Pm6ptB5QFi731SSdMNBi">分类</div><div class="d" data-page-node-id="hceBnUDxf4TG14CgYZkRuk">LLM 判断。半自动</div></div>
+    <div class="pn risk" data-page-node-id="n0JKfBUacnZ9LE1tQKV7Vs"><span class="n" data-page-node-id="DW5MdhTni1eGUmQN0TPKEa">3</span><div class="t" data-page-node-id="1NzwqxKX6KBGAPPpoL89U5">蒸馏脱敏</div><div class="d" data-page-node-id="lCeVEDHJmGLFKQ2k7GG0H6">SAF-006 红线。不可自动化</div></div>
+    <div class="pn llm" data-page-node-id="CrMyk6i0AeYsTY2r3bTbsw"><span class="n" data-page-node-id="1Hx2ByNgUeTa1yjmSj7rFl">4</span><div class="t" data-page-node-id="INuQjDtryopaOizv6M2TUH">成卡</div><div class="d" data-page-node-id="gXvkyXGDpMpuWJ6LqFyF7J">结构化。可自动化</div></div>
+    <div class="pn llm" data-page-node-id="PhthpqB1EqnA5ou9xB1M9h"><span class="n" data-page-node-id="bT0QmdAtdA0hhruDnfItvq">5</span><div class="t" data-page-node-id="Ay70858YHmODLfUZzzh7mK">转选题</div><div class="d" data-page-node-id="lCr9e0TjeMABeT1pWXX0hs">LLM + 人决策。半自动</div></div>
+    <div class="pn det" data-page-node-id="BmwM9lrEPhV4zXNCCVemvq"><span class="n" data-page-node-id="06TZDdCP3Pe6nwoV2onRb6">6</span><div class="t" data-page-node-id="nCiuERKaYrN5KesVRSYo49">发布</div><div class="d" data-page-node-id="LMBushvOdTMLVe01wnhoP9">确定性。可自动化</div></div>
+  </div>
+
+  <div class="box g" data-page-node-id="A7C6NUT2rKszfExyoz18It">
+    <b data-page-node-id="6Etr2SGGtYrAQsdn8q4Kyk">这张图是全部答案</b>：绿框（第 6 步）是唯一真正适合工作流编排的环节，而它最不需要工具——一个 Python 脚本 + 定时任务即可。
+    橙框（第 1、3 步）是<b data-page-node-id="U1ME6SYnkiMAT9NmWSEbuG">人必须留在环里</b>的环节：投喂只能靠你，蒸馏脱敏是 SAF-006 不可协商的红线。
+  </div>
+</section>
+
+<!-- 1 四工具定位 -->
+<section data-page-node-id="RZGS6yAbwnULtKAlB7L1mv">
+  <h2 data-page-node-id="ELMecq7RRbHVJRFy6bkKi2">一、四个工具到底卖什么</h2>
+  <p class="h2sub" data-page-node-id="omKXJ7YGFWf20jGbOtnjsy">不是比谁强，是看核心竞争力打不打得中你的场景</p>
+
+  <table data-page-node-id="OwIBLvLUj9vQZ10V5D31ZR">
+    <thead data-page-node-id="5IBpZASBHOvcDPyfDzoM3X">
+      <tr data-page-node-id="BftqFHLmWcdWkc7BJ4lwkF"><th style="width:11%" data-page-node-id="xDnNhhUsMFKE0mvVtTVbGl">工具</th><th style="width:19%" data-page-node-id="1CtgTYaoB4aXiNW63YAO8e">核心竞争力</th><th style="width:27%" data-page-node-id="5cFS83x37IzbYOrZ0DjJ26">为什么它厉害</th><th data-page-node-id="1FVmiB1KtfAdhfhpTrNUFW">打不打得中你的场景</th></tr>
+    </thead>
+    <tbody data-page-node-id="WSYez8tbGzMqiat57uDbqf">
+      <tr data-page-node-id="ixE6tyaOaR6v0C9N8Spkxm">
+        <td data-page-node-id="ulvXJh9GPbXxKI7DuHGhpu"><b data-page-node-id="KmV6hHDRf5cyGKNcUlkAuQ">n8n</b></td>
+        <td data-page-node-id="A2r6OrKVcVMaedW5f4Le0e">连接 SaaS<br data-page-node-id="B58lw9zGJu2JOJcu1dDhOS">800+ 集成</td>
+        <td data-page-node-id="Rbr5DexJnHacSF0XTAMvar">触发器 + Webhook + 可视化执行历史 + 失败重试。强在把不同系统缝起来</td>
+        <td data-page-node-id="vys5clWE9uReswH9CNNFKo"><span class="tag t-c" data-page-node-id="PrZWIUWO0gVaFifpSkRwcj">打偏</span> 你的数据源 <b data-page-node-id="SLNC1g9pcDiiseQmpGVU90">90% 是本地文件</b>（1161 张卡、tools/、outputs/），不是 Notion/Slack/Google Sheets。n8n 最强的那 800 个集成，你一个都用不上。</td>
+      </tr>
+      <tr data-page-node-id="rlKqn4W22Tx6HG3j3ysIDn">
+        <td data-page-node-id="KdOpPn6rHSEHKvpJn8gWAd"><b data-page-node-id="pIQenSFOhuABQycIzwUV4v">Dify</b></td>
+        <td data-page-node-id="AcPCXVdW2VzBjRMaI1nqTO">LLM 全栈<br data-page-node-id="ZVrsnBjBf1oV5oculJi0nH">Workflow+RAG+Agent</td>
+        <td data-page-node-id="RKWK8UqdM1yYlSG7MnSuGC">唯一集 Workflow + RAG + Agent + LLMOps 的平台，142k⭐</td>
+        <td data-page-node-id="iMQMOt9fVOzCcE32bNUDnx"><span class="tag t-b" data-page-node-id="Hh5z6fWt0tu0dRSyeg7OgW">有点意思但不急</span> 唯一沾边的用法：把 1161 张卡做成 RAG 供写稿检索。但 WorkBuddy 已能直读本地文件、上下文完整——<b data-page-node-id="mTTU5NwO2GnvIAXjud0IcE">现在是重复建设</b>。建议留作「素材超 5000 张」时的备选。</td>
+      </tr>
+      <tr data-page-node-id="wiT3CkECDEH5h3aW3TKGCv">
+        <td data-page-node-id="Whibo0BiTkKjnUJA7ue3hE"><b data-page-node-id="wpGl805CXcsdyw7C3pABsK">扣子 Coze</b></td>
+        <td data-page-node-id="O2pJEFfDzHNJYI98VRGEbL">零门槛 Bot<br data-page-node-id="zE19kGKt8uystHjCQgEDDs">+ 一键分发</td>
+        <td data-page-node-id="VAdPeXEDm6nSw3jetHwKxL">字节出品，注册即用，500+ 插件，可发布到微信/飞书/抖音</td>
+        <td data-page-node-id="Re6vhBcA6krsdzBRvVl6Vk"><span class="tag t-c" data-page-node-id="re3lN6BfCtQMZtqj8IqPQt">排除</span> <b data-page-node-id="InoOmc3trrgDZJoP6FcmW4">闭源 SaaS，数据上云</b>——你的素材含大量待蒸馏的公司内容，与 <b data-page-node-id="oGwiAXgzCdBaG4u8QWgzC9">SAF-006 直接冲突</b>。且它分发的是「Bot 对话」，不是公众号发文。</td>
+      </tr>
+      <tr data-page-node-id="Av4jytBCHyr4baSx5239jr">
+        <td data-page-node-id="sBMSHNoea6z3wasel03gTa"><b data-page-node-id="v91JmdROCpaVL5GBgaSvDB">FastGPT</b></td>
+        <td data-page-node-id="uQfvHYUXLYKzYUxwu4KQfc">知识库问答<br data-page-node-id="ONFBCpEWKRl0fu3mmDJIxL">RAG 最强</td>
+        <td data-page-node-id="KhKEdpHrSsaeFTPFvYimwT">父子分段、QA 拆分、混合检索、重排序，企业级 RAG 首选</td>
+        <td data-page-node-id="aCXuZowss0e30QeZRgH2la"><span class="tag t-c" data-page-node-id="YYO86L2tlGab4M9WGmkc3h">方向反了</span> FastGPT 解决「用户提问 → 从知识库找答案」。你要的是「从素材库 <b data-page-node-id="MTrGG25KFCNIJgrOjh7rNw">产出内容</b>」。<b data-page-node-id="YRNZKsllan5kkOk24mG1bx">问答 ≠ 创作</b>，方向相反。</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="box o" data-page-node-id="sd71OaBUyAomWl6Xa9qxNJ">
+    <b data-page-node-id="R9XvHz6kv2Q15DBlflVOXb">一句话总结</b>：这四个工具的共同点是「把已有系统连起来、把已有知识问出来」。而你的问题既不是连接问题，也不是问答问题——你已经有 WorkBuddy 直读本地全量资产，缺的是<b data-page-node-id="iSyPD6zjCoDUDTDgEVLq8q">判断和出口</b>。
+  </div>
+</section>
+
+<!-- 2 风险纠偏 -->
+<section data-page-node-id="AUBYgCicQd6Lj8HzhaToTi">
+  <h2 data-page-node-id="65yZoU2xZwx1wuvFyP0gS9">二、必须纠偏：发布自动化有封号风险</h2>
+  <p class="h2sub" data-page-node-id="nkHd6ly5tnpf9fyuQWGTfR">这条昨天我设计的 Playwright 方案里没提到，今天补上——它权重最高</p>
+
+  <div class="card dan" data-page-node-id="xRFSaRuAaKqzC03D9KCQt9">
+    <h3 style="margin-top:0" data-page-node-id="UkfZiHX2GmQKCjxzi4YMTc">⚠️ 昨天方案的隐藏风险</h3>
+    <p style="font-size:14.5px;color:var(--t2);margin-bottom:12px" data-page-node-id="5u5NcHJVpzTxhZ6FFDbO0f">
+      昨天设计的「Playwright 模拟登录公众号后台 → 自动填草稿」路线，行业资料明确标注：
+    </p>
+    <div class="quote red" style="margin:0 0 14px" data-page-node-id="PfZTzxi72b9aa3fEt9bF4b">
+      违反《微信软件许可及服务协议》「自动化操作」条款，<b data-page-node-id="p6JGcJ3OI6JGcKOPAGW2xr">有封号与司法风险</b>。<br data-page-node-id="5vc2NzaRntqLxtMa7PD9gl">
+      <span style="font-size:13.5px;color:var(--t3)" data-page-node-id="Tkh7mlDZMlSMMvBqdFcwdB">适合：个人订阅号、低频自用、只存草稿后人工确认。<b data-page-node-id="pNagQZo6awblEeyC0scuYT">不适合商用 / 高频 / 多账号 / 代客发布。</b></span>
+    </div>
+    <p style="font-size:14.5px;color:var(--t2)" data-page-node-id="oB4rmRnSZ3MT8RKGBXPgx1">
+      <b data-page-node-id="h8uHHrcIfyx7QTbv48oTLT">为什么这条对你权重最高</b>：你做自媒体的定位是<b data-page-node-id="1kAUCZb3PlFGT5HEo7tjVG">职业安全垫</b>（对抗裁员风险的第二曲线）。主阵地公众号一旦被封，整个战略归零。
+      <b data-page-node-id="Qvd3uNmrQzTZGi0BlAxJ9x">用安全垫的载体去冒封号风险，是把目的和手段搞反了。</b>
+    </p>
+  </div>
+
+  <h3 data-page-node-id="S7Az8UYVkYkRJbgMz9LndM">微信 API 权限实测口径（关键）</h3>
+  <table data-page-node-id="sMunBXAErtEWCJTDeVwOia">
+    <thead data-page-node-id="YSgMiz4I1XzdZ7KqWCas3h"><tr data-page-node-id="LcvJEY1o751i2MMO13UzJd"><th style="width:22%" data-page-node-id="6C52i0ATE0duHzhcvQKHUO">接口</th><th style="width:13%" data-page-node-id="FmGk6K0xBNkci5S3cylGdk">个人订阅号</th><th style="width:13%" data-page-node-id="jBgWjpChgWhVPccFClUb0H">企业已认证</th><th data-page-node-id="OGCyvQZgrKvD4pV37HVZCK">说明</th></tr></thead>
+    <tbody data-page-node-id="X6CUCHbGeuAUPs3QCa49Bg">
+      <tr data-page-node-id="PGWVHOErgYzruQUoqCUEME"><td data-page-node-id="ftza22VMdr3fLT7XC6Utep">获取 access_token</td><td class="c" data-page-node-id="HDlDovS9yduhdSCItZkBXu"><span class="tag t-a" data-page-node-id="rMqQCgGH0iFzQoQWuYwMkT">✔</span></td><td class="c" data-page-node-id="B50G0YPjCtuFrIoYK4MDvx"><span class="tag t-a" data-page-node-id="sHMvXs8e7XkgstmOa5mnPB">✔</span></td><td data-page-node-id="0YLGnyKozNXPV3CLmIkAkY">—</td></tr>
+      <tr data-page-node-id="k2GdYnKNUtht7haYyn0pII"><td data-page-node-id="vsLux2Ltn5aKBo97TzXsIM">素材管理（封面/正文图）</td><td class="c" data-page-node-id="d4NqZGwEpctKvvA5UykEIs"><span class="tag t-a" data-page-node-id="H6SLLe3Pd9NH1NrP0ckRRw">✔</span></td><td class="c" data-page-node-id="jIeCecNeTF3e3aInEBU7SY"><span class="tag t-a" data-page-node-id="F4LhLXbCiwEyFk1YRQukFl">✔</span></td><td data-page-node-id="uEq99cGMf3WY7DJhfXz85I">无认证要求</td></tr>
+      <tr data-page-node-id="CMUnwLu9OCUsupyDprI4kX"><td data-page-node-id="kNWz6g546A0dPTecgtLNqs"><b data-page-node-id="jb2zMgiRTtQ47cVODSfKEt">draft/add</b> 建草稿</td><td class="c" data-page-node-id="GXwxelt6yFR0YewctThO1O"><span class="tag t-b" data-page-node-id="goTJcZe838DI9uU5txBke2">口径冲突</span></td><td class="c" data-page-node-id="yGdM0VSTA6DT5pQEsIz5Dl"><span class="tag t-a" data-page-node-id="SSDjpInFxwjFwSQFS662An">✔</span></td><td data-page-node-id="JC0yfopHLUQw1y2FchqqG4"><b data-page-node-id="9HKx7vwYQaF4f1ZJ83wAyh">官方文档标 ✔，但社区大量实测反馈未认证个人号返回 <code data-page-node-id="FcY0UkAIm6HEdSUjqKy5A2">48001 api unauthorized</code></b></td></tr>
+      <tr data-page-node-id="xSDTTNVpxOOCHQO346nvCT"><td data-page-node-id="CAebx2vGr92npVa9j0AEaL"><b data-page-node-id="wCmBETQyHLQypAKjBcU00D">freepublish</b> 发布</td><td class="c" data-page-node-id="KQDKghlFLcWGLQuUKtuwMG"><span class="tag t-c" data-page-node-id="qUPgnLFVGOWSGoBa4aKoV4">已回收</span></td><td class="c" data-page-node-id="l5kY1LaQvaIna8OeAdTw7u"><span class="tag t-a" data-page-node-id="U0bjHPngjZ96xe3wgA8WZi">✔</span></td><td data-page-node-id="syWYjP2h3GOPjQG5heiVv1"><b data-page-node-id="OgCUXFI5KQyTDEmB7LKnqB">2025-07 起</b>回收个人主体与未认证账号的发布权限</td></tr>
+      <tr data-page-node-id="oudscEZLlF43uaNXu6JZ33"><td data-page-node-id="pbjOQ7Ly9apCUwsij8kOLA">数据统计接口</td><td class="c" data-page-node-id="KPMPgnxvgO3cNHu7iTZBm7"><span class="tag t-c" data-page-node-id="bc6ZlSzlYCdGHH2mfyWa7G">✘</span></td><td class="c" data-page-node-id="Klkzc52C6kMFSGOlEDjIkQ"><span class="tag t-a" data-page-node-id="NNVMLYgouKRB9hlfxIlm1F">✔</span></td><td data-page-node-id="NdAXBtFsUaA8MMUIvfPdNX">未认证个人号拿不到阅读/转发数据</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box r" data-page-node-id="sCVqsk4AsBwn2iiRJ2OuJn">
+    <b data-page-node-id="P0KIXndGV9zszgBu9eRLoT">口径冲突怎么办</b>：官方文档表格把 <code data-page-node-id="dEsAKZVPxdpffIirY3wnmI">draft/add</code> 对订阅号标 ✔，但微信开放社区有大量实测反馈未认证个人号返回 48001。<b data-page-node-id="hOOAqUb4y0TRRTVEYprw3a">两者不一致 → 别信文档，实调一次定论。</b>
+  </div>
+
+  <h3 data-page-node-id="GUnRVuUce0TxFcwKj75Iay">一个命令就能定论</h3>
+  <pre data-page-node-id="LW9tiK1hmMrKGWqUL3sOoJ"><span class="c" data-page-node-id="CTysSK06PKDSXWJpqysW0V"># 1. 拿 AppSecret（2025 年底起已搬到微信开发者平台，不在 mp 后台）</span>
+<span class="c" data-page-node-id="LXTj186cqbSqU3T0w5CyEi">#    https://developers.weixin.qq.com/platform → 我的业务与服务 → 公众号</span>
+<span class="c" data-page-node-id="8WDGma6NfLNCefDF5NKH9a">#    → 基础信息 → 开发密钥 → 启用/重置（只显示一次，关窗即焚，务必先复制）</span>
+
+<span class="c" data-page-node-id="J8a8QWm498ABS9Gy8TXQia"># 2. 取 token（IP 白名单必配，否则 40164）</span>
+curl "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$APPID&secret=$SECRET"
+
+<span class="c" data-page-node-id="FynFkxekA14lRGc16NwQvq"># 3. 实调一次 draft/add，看返回码</span>
+curl -X POST "https://api.weixin.qq.com/cgi-bin/draft/add?access_token=$TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"articles":[{"title":"权限测试","content":"&lt;p&gt;test&lt;/p&gt;","thumb_media_id":""}]}'
+
+<span class="c" data-page-node-id="uHBmpjbbcRhPhFmw59B4Ux"># 返回 0 / media_id → 通了，API 路线可用（仅到草稿箱，发布仍手动）</span>
+<span class="c" data-page-node-id="Kef8lWyvEE5EO1VeU7vDIg"># 返回 48001 api unauthorized → 未认证个人号无权限，此路不通</span></pre>
+
+  <div class="box b" data-page-node-id="CbladnqhYam82yTz69VFwu">
+    <b data-page-node-id="OjjzJLDJZVw1Q6UmLq4mV8">注意 thumb_media_id 是必填</b>，所以严格说要先传一张封面图到永久素材（<code data-page-node-id="nZF1vboJ3seK1k1BdxUzBg">material/add_material</code>，这个接口无认证要求，个人号可用）拿到 media_id 再测。
+  </div>
+</section>
+
+<!-- 3 真痛点 -->
+<section data-page-node-id="wAjBEg6Q6Z3QmLApmOg7qL">
+  <h2 data-page-node-id="GI1U8XfCBRrydd15JPuoTH">三、但有一个真痛点：失效不可见</h2>
+  <p class="h2sub" data-page-node-id="ZjUfJKSJw4myNWAK0pQmyd">这是 n8n 真正能帮上你的地方，也是唯一值得考虑的理由</p>
+
+  <div class="card warn" data-page-node-id="dEPBOiizPpB3WPGaqxvWsN">
+    <p style="font-size:14.5px;color:var(--t2);margin-bottom:12px" data-page-node-id="37jAlErhjiaERkHSfUu9IS">
+      昨天盘出来的事实：<b data-page-node-id="NQkmU2Y8CZ5b7zMOaMbTsp">5 个定时任务 100% 指向孤儿目录，全部失效，而且没有任何告警。</b>
+      主工作区断更 4 天、素材库 6 天未刷新，你完全不知道。
+    </p>
+    <p style="font-size:14.5px;color:var(--t2)" data-page-node-id="Gfq5DEU8rMOuo1rDyLJ6kL">
+      这才是你自动化的真问题：<b data-page-node-id="Zciz7MvwdLCewIAldqmBgy">不是跑不起来，是跑不起来你还不知道。</b>
+      n8n 的执行历史可视化、失败重试、错误通知，正好治这个。
+    </p>
+  </div>
+
+  <div class="two" data-page-node-id="9KZFe1NTxyYGNDEpVQ3Mea">
+    <div class="card" data-page-node-id="vHIRcK2B0AaK8b9YWoGaJF">
+      <h3 style="margin-top:0" data-page-node-id="BgrDUfIOqHsaAAgh6EZ7wW">n8n 方案</h3>
+      <ul class="clean" data-page-node-id="ZQx0LKFY6pD4fL3ZXe80fB">
+        <li data-page-node-id="nmAqedzQHHY9z5kL9VcFA0"><b data-page-node-id="Oihce0qAP4H29jxyFJMjLP">优点</b>：执行历史可视化、失败自动重试、错误推送飞书</li>
+        <li data-page-node-id="rAwN7GUK1WgNX9RYT2bXxL"><b data-page-node-id="jeSQGAdR2Z6riwXIvWMDOU">优点</b>：改流程拖节点即可，不用改代码</li>
+        <li data-page-node-id="oxAp5CGmBWMAwDnB7c0eZR"><b data-page-node-id="v7isoV38GGVw0g9DJgmlE6">代价</b>：Docker 常驻服务，多一个要维护的东西</li>
+        <li data-page-node-id="NYSk0HLjGQpEMNNCw81Hl2"><b data-page-node-id="LnWudqxOURQqb6UZYRqYV8">代价</b>：AI 环节要重接 LLM API ——你在 WorkBuddy 已有模型分工（deepseek-v4-pro 等）和完整上下文，重接一层是<b data-page-node-id="OUAg5kGmFNkD6QfG35oBM7">重复建设 + 多一份 token 成本 + 丢上下文</b></li>
+        <li data-page-node-id="pZyLq6A6lftu4P62LJJQv4"><b data-page-node-id="QkAjBHXINbpr85lCeevedG">代价</b>：本地文件要绕 filesystem 或起本地 API</li>
+      </ul>
+    </div>
+    <div class="card" data-page-node-id="dKADmHVggZklYSs3LZYJQW">
+      <h3 style="margin-top:0" data-page-node-id="KSR8EB1otS0gGrXDeQdsER">更轻的替代方案</h3>
+      <ul class="clean" data-page-node-id="XNVzGtQRMcoRB9T1NpsuoP">
+        <li data-page-node-id="EHyzllvebl3DLEKcKnuv4H"><b data-page-node-id="IoQTSdKTp23qEgHLxIHBqC">先修 5 个任务的路径</b>（P0，昨天已列清单）</li>
+        <li data-page-node-id="VL39dWqU9KHX8RHSa6utEC"><b data-page-node-id="e5V0BPwll3YwZRxB4H3dl9">加一个 15 行的执行心跳脚本</b>：每次任务跑完写一行 JSON 到 <code data-page-node-id="hwMgSeH9Jvgp4KCAEqeAKz">data/pipeline_heartbeat.json</code></li>
+        <li data-page-node-id="MARFXw0BRGLDkx61CtUip2"><b data-page-node-id="bPzx1kAdhqeEi8Zg7FKBzw">加一个每日巡检</b>：读心跳文件，某任务超 48h 无心跳 → 推飞书告警（你的 <code data-page-node-id="m9yBw1BkPKlWu1b4gNA7fG">feishu_bot</code> 已经现成）</li>
+        <li data-page-node-id="isC9FD9xPiF3ExGJHJGeJK">成本：约 50 行 Python，<b data-page-node-id="S6Uq8sBCtxpFQ97AZLCb3f">零新增服务</b></li>
+      </ul>
+      <div class="box g" style="margin-bottom:0" data-page-node-id="mHaDj86DqIHDQfyDiVRZR2">
+        <b data-page-node-id="Lq7SV0g5L0zEVzE8dJ2Er5">建议先走这条路</b>。它的收益（失效可见）和 n8n 一样，成本低一个数量级。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 反转 -->
+<section data-page-node-id="AHOsBNSBWld8jrsu70fDMo">
+  <h2 data-page-node-id="AGXJCOqM51TeNcUNWyXEsr">四、反转：n8n 作为选题，值得单独评估</h2>
+  <p class="h2sub" data-page-node-id="VYHpsARtNSC3dC5YFlT214">上面所有分析都是「为了给自己提效」。换个目的，结论会反过来</p>
+
+  <div class="card hl" data-page-node-id="EAzw0C3zDnXZwXvAalK1It">
+    <p style="font-size:14.5px;color:var(--t2);margin-bottom:14px" data-page-node-id="P1BpH2ADQG63FE4ScbwDiB">
+      调研过程中挖到两个市场信号，说明这套东西本身<b data-page-node-id="1UX9QMLnu6FdB9rvcxEm9A">有人付费</b>：
+    </p>
+    <table style="border:none" data-page-node-id="hl00PWr1KgKD76rtFfqdCZ">
+      <tbody data-page-node-id="aeRe1utKyoV0fwxSTvGye9">
+        <tr data-page-node-id="Vc1OJJTWiizNofmBjMAbSN"><td style="width:44%;border:none" data-page-node-id="80EaFXzmNxPMPHtpyisj3V"><b data-page-node-id="59KWreGuyTtO1WLepDlUz4">公众号自动化系统交付</b></td><td style="border:none" data-page-node-id="syV5SjRSvbRAnP83s5t2jm">单客户交付，<b data-page-node-id="tdr3M7RGFtSQWZH3oNeTz8">3500 元全款到账</b>（架构：n8n 编排 + FastAPI + Playwright + 质量门）</td></tr>
+        <tr data-page-node-id="6BYv0LTzmhGzmVq0rApmkS"><td data-page-node-id="OYFBkl4fZU6iS7Pac678Cm"><b data-page-node-id="SZNiDKkPFiBpB7DmfsyyLr">卖工作流模板</b></td><td style="border:none" data-page-node-id="x5unzQZMVq5L9trkfX3R0m">「公众号内容工厂」类工作流 <b data-page-node-id="TyEfjTc43jMJCq56GiS6Qh">¥1000–3000/套</b></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:14.5px;color:var(--t2);margin-top:14px" data-page-node-id="oSpxwmDbbZf4kBjWKbiXws">
+      而这两个案例的技术架构，跟我昨天给你设计的方案<b data-page-node-id="ZjfB1zVtg0McubfJzZT9Q9">几乎一模一样</b>：section+span 渲染模式躲微信样式过滤、Playwright 持久化 user_data 存登录态、只到草稿箱人工终审、质量门做分支。
+      <b data-page-node-id="MZlsIsleNDKnYVwDHxfz3j">说明方向是对的，而且这套东西本身值钱。</b>
+    </p>
+  </div>
+
+  <div class="two" data-page-node-id="qmTlHP0rGBXCcTPA1heTym">
+    <div class="card" data-page-node-id="DHwzzMN53An7W2YwJ55eZW">
+      <h3 style="margin-top:0" data-page-node-id="jEL9PAFh60YeJlLEnrQZMT"><span class="tag t-c" data-page-node-id="uouXB1A1PK1rJk8yaVhZH6">目的 A</span> 给自己提效</h3>
+      <p style="font-size:14px;color:var(--t2)" data-page-node-id="gdZXGerMcOKNgBBCTiaoHU">现阶段<b data-page-node-id="HyQZOgmGQKG67vyQQDQbNS">不值得</b>。<br data-page-node-id="li38GR71jFihAY7ZriXQOm">瓶颈是判断不是编排，且会重复建设 AI 环节。</p>
+    </div>
+    <div class="card" data-page-node-id="4UGy4LI0ZcIsTn0uSZ80Eq">
+      <h3 style="margin-top:0" data-page-node-id="UBK6FCnqdW0y0DYB7cNCDd"><span class="tag t-a" data-page-node-id="1Vn66BJPrrFAHSFvuzQnb3">目的 B</span> 做选题 / 做产品</h3>
+      <p style="font-size:14px;color:var(--t2)" data-page-node-id="PIMO4qo6DpepI82u9tgVOD"><b data-page-node-id="xiNHrTulolqvH8dHDbhbg7">值得</b>。<br data-page-node-id="OEDJzb0ElxlyEot358RIaH">市场已验证付费意愿；研究过程本身产出内容，反哺 C1 能力域 + 可填 <code data-page-node-id="QyUgjc9nFx2TwmlyM4obir">xingtu-mcps</code> 开源仓。</p>
+    </div>
+  </div>
+
+  <div class="quote" data-page-node-id="hWSpBWyFFNx4JKuKQ4aauW">
+    <b data-page-node-id="B6CFIyipWmRG2H26ru3Yxk">这两个目的必须分开算账。</b>如果算在 A 头上，n8n 是净成本；如果算在 B 头上，它是<b data-page-node-id="PidQWvDMpPCswlL3DWiPGd">内容投资 + 潜在产品线</b>。
+    而且 B 有个 A 没有的好处：<b data-page-node-id="hXgr07rjwneTZqUM0qsvea">你可以先写文章，不用先搭系统</b>——把调研和判断写出来，本身就是内容。
+  </div>
+</section>
+
+<!-- 5 建议 -->
+<section data-page-node-id="i7D1aoDCFMGmuyVYowrDlU">
+  <h2 data-page-node-id="K9IoUnngBT5MXM6ZYoM8ar">五、我的建议：分三步走</h2>
+  <p class="h2sub" data-page-node-id="pAHrERy9bR5fDGHckCxblZ">按代价从低到高，每步都有独立产出</p>
+
+  <div class="todo" data-page-node-id="Efq8E064RCXdQZk2zG7KLE">
+    <div class="trow" data-page-node-id="heE0mdd1jnaxr4wQeLpnAB">
+      <div class="tid p0" data-page-node-id="JbcKIEQF0AGCGfxD5D9BCn">1</div>
+      <div class="tbody" data-page-node-id="OUPGXjldQevs9z9arpGgBQ">
+        <div class="tt" data-page-node-id="sHpiX0JtiIKjJ05H7a9M1s">实调一次 draft/add，定 API 生死</div>
+        <div class="td2" data-page-node-id="CYT0e9JNhE7s0PAeBF3Bqy"><b data-page-node-id="YuikSFZ0JgxpbUUjsUD9Gx">今天就能做，一个 curl。</b>通了 → 发布脚本走 API（比 Playwright 稳定得多，不受 UI 改版影响、不需反检测、不需关沙箱）。48001 → 只能 Playwright，那就必须重新评估封号风险。<b data-page-node-id="Y7CSSfmNqFJqSr14SMczKQ">这一步不定论，后面所有方案都是猜。</b></div>
+      </div>
+    </div>
+    <div class="trow" data-page-node-id="kxuXlvA2Oyrn0nELu1WNWD">
+      <div class="tid p1" data-page-node-id="RkLvRratijfttKwfqncuhI">2</div>
+      <div class="tbody" data-page-node-id="EovzaCYCsRnGBvpZiu0l2C">
+        <div class="tt" data-page-node-id="gtJxEbjFVPnBjahjmq8BTV">补执行心跳 + 每日巡检（约 50 行）</div>
+        <div class="td2" data-page-node-id="DlHsa6vyowmANu5O6lnl2D">解决「失效不可见」这个真痛点。用现成的 <code data-page-node-id="SzdhTU4EOlIAaoT2YfJESE">feishu_bot</code> 推告警，零新增服务。修完昨天的 5 个任务路径后再上这层。</div>
+      </div>
+    </div>
+    <div class="trow" data-page-node-id="i4DzTNSWRnufZrTU5NXflA">
+      <div class="tid p2" data-page-node-id="HTDcrwF9rz0N00M3hWR2LW">3</div>
+      <div class="tbody" data-page-node-id="9poHHMzfYl2MaPcyIedt0N">
+        <div class="tt" data-page-node-id="Zz1XfZLYGrefPrFUrZGQBZ">n8n 作为选题先写文章，不先搭系统</div>
+        <div class="td2" data-page-node-id="INBnB4vDFV0U8MLFH69Qqv">如果走目的 B，<b data-page-node-id="Wv3JFDfIHhEQeNInK6spPT">先产出内容验证需求</b>，别先投入搭系统。等有读者问「能不能帮我搭一套」时，再考虑上手实操——那时需求是真的，且能直接变现。</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 data-page-node-id="C42gw5Dgs13GY0xc57x61c">什么情况下值得真上 n8n（明确判据）</h3>
+  <div class="card" data-page-node-id="ft48bKQTAp7ItsybqUOu1e">
+    <ul class="clean" data-page-node-id="MDYArjsBo8nyHcZFl0dyVC">
+      <li data-page-node-id="PE6xS88n87vrWXN7FOr96D">出现<b data-page-node-id="ECARyauCaTDR61HHaJ126j">第 2 个内容出口</b>且它需要 API 对接（比如知乎/掘金同步真的跑起来了）</li>
+      <li data-page-node-id="5M69UCdILJ8XJ2xZwXxEja">素材库超过 <b data-page-node-id="8BnPMfLVePECn7i6zfRhCq">5000 张</b>，本地文件检索开始拖慢 WorkBuddy</li>
+      <li data-page-node-id="XZgyOzbNcMzsRMeXbbg3AL">你开始<b data-page-node-id="wr0XC2BXDRaDtvZThgC0e0">对外卖工作流/接单</b>（那时它是生产工具，不是自用品）</li>
+      <li data-page-node-id="U0OBEnowMyC16PYSGGs4pI">出现<b data-page-node-id="KOHUmgNWyYDHKsCNfEbHb6">需要 Webhook 触发</b>的场景（比如有读者投稿、表单提交）</li>
+    </ul>
+    <div class="box b" style="margin-bottom:0" data-page-node-id="DeIAO3eWIRVLqTSlaIpvu3">
+      <b data-page-node-id="PN4We38XtIf6lIvoSCYDIi">四条都不满足之前，别上。</b>多一个 Docker 常驻服务 = 多一个失效点，而你现在已经有一个失效不可见的问题了。
+    </div>
+  </div>
+</section>
+
+<footer data-page-node-id="T6zC3hqKixHfrRPSADCaI1">
+  行途 · 工作流编排工具选型判断 &nbsp;|&nbsp; 2026-09-02 &nbsp;|&nbsp; 单文件零依赖，可离线打开<br data-page-node-id="nuJzyMPVUwQAOj6DLxzRTL">
+  权限数据来源：微信开放社区实测反馈 / 接口文档「适用范围」表 / 多源交叉（口径冲突处已标注）<br data-page-node-id="ny4N1rnyuHvYaPlBfGcW5N">
+  关联：<code data-page-node-id="xPhWRpjBWcNJSxwPSMqylx">outputs/内容变现路径与自动化发布流水线_2026-09-02.html</code>（昨日方案，第 6 步发布路线需按本文修正）
+</footer>
+
+</div>
+
+  <footer style="margin-top:36px;border-top:2px solid #056DE8;padding:16px 20px;background:#f5f9ff;border-radius:10px;font-size:13px;color:#1a1a1a;line-height:1.9">
+    <div style="font-weight:700;color:#056DE8;margin-bottom:8px">📎 权威锚点 / 引用来源</div>
+    <ul style="margin:0;padding-left:18px">
+      <li>n8n 官网：<a href="https://n8n.io" target="_blank" rel="noopener" style="color:#056DE8;text-decoration:underline">https://n8n.io</a></li>
+      <li>Dify 官网：<a href="https://dify.ai" target="_blank" rel="noopener" style="color:#056DE8;text-decoration:underline">https://dify.ai</a></li>
+      <li>Coze 官网：<a href="https://www.coze.com" target="_blank" rel="noopener" style="color:#056DE8;text-decoration:underline">https://www.coze.com</a></li>
+      <li>FastGPT 官网：<a href="https://fastgpt.io" target="_blank" rel="noopener" style="color:#056DE8;text-decoration:underline">https://fastgpt.io</a></li>
+      <li>结论：内容流水线仅「发布」为确定性步骤，判断密集型占多数 → 编排工具是负债，暂不上</li>
+    </ul>
+    <div style="margin-top:8px;color:#555">完整引用索引：<code style="background:#eef4ff;padding:1px 6px;border-radius:4px;color:#0a3d7a">specs/20260902-断点续传与集中提示词/05_权威锚点与引用来源.md</code></div>
+  </footer>
+
+</body>
+</html>
