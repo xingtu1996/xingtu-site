@@ -49,7 +49,7 @@
     <tr><th>#</th><th>知识点</th><th>关键事实 / 用法</th><th>标签</th></tr>
     <tr><td>1</td><td>改名规则</td><td>旧用户名立即释放可被抢注；仓库 URL 自动重定向；旧主页/gists 永久 404；本地 remote 要手动更新</td><td><span class="k g">规则</span></td></tr>
     <tr><td>2</td><td>账号年龄</td><td>`curl -s https://api.github.com/users/名 | grep created_at`；年龄随账号不随用户名</td><td><span class="k g">工具</span></td></tr>
-    <tr><td>3</td><td>SSH key</td><td>公钥挂 Settings→SSH keys；本机走 443+ProxyCommand；`ssh -T ***@***` 验证</td><td><span class="k g">工具</span></td></tr>
+    <tr><td>3</td><td>SSH key</td><td>公钥挂 Settings→SSH keys；本机走 443+ProxyCommand；`ssh -T git@github.com` 验证</td><td><span class="k g">工具</span></td></tr>
     <tr><td>4</td><td>gh CLI 授权</td><td>设备流需 POST github.com（本机直连不通→走代理或 PAT）；`GH_HOST=github.com` 强制个人主机；`--with-token` 存 PAT</td><td><span class="k o">避坑</span></td></tr>
     <tr><td>5</td><td>commit 邮箱</td><td>用 noreply `ID+USERNAME@users.noreply.github.com`；禁止公司邮箱（全局已配 Justin Li）</td><td><span class="k g">规则</span></td></tr>
     <tr><td>6</td><td>私有仓库+gitignore 双保险</td><td>敏感目录永不入库；vault .gitignore 已排除 素材库/运营资产</td><td><span class="k g">安全</span></td></tr>
