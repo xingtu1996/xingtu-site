@@ -78,10 +78,10 @@
   <table>
     <tr><th>位置</th><th>git 现状</th><th>GitHub 关联</th><th>判定</th></tr>
     <tr><td><code>xingtu-site/</code>（个人站点）</td><td>✅ 独立 .git（今天 14:46 创建）</td><td>✅ <code>***@***:xingtu1996/xingtu-site.git</code>（已 push）</td><td><span class="chip ok">✅ 正确形态</span></td></tr>
-    <tr><td><code>xingtu/</code>（工作区根）</td><td>❌ 无独立 .git，<b>嵌套在家目录大仓库</b>（git root = <code>~</code>）</td><td>❌ 无 remote</td><td><span class="chip bad">⚠ 混乱根源</span></td></tr>
+    <tr><td><code>xingtu/</code>（工作区根）</td><td>❌ 无独立 .git，<b>嵌套在家目录大仓库</b>（git root = <code>/Users/lijiacheng</code>）</td><td>❌ 无 remote</td><td><span class="chip bad">⚠ 混乱根源</span></td></tr>
     <tr><td><code>08_开源与作品集/tokenhub_bench/</code></td><td>❌ 未建 git</td><td>❌ 无远程仓库</td><td><span class="chip warn">待规划</span></td></tr>
   </table>
-  <div class="rednote note"><b>混乱根源：</b>xingtu 所有文件都在家目录仓库（<code>~</code>）的跟踪范围内，但没有自己的提交历史 / remote / 版本线。之前 <code>git status</code> 显示 547 项未跟踪（含 中台工程仓 等无关项目），就是这个原因——<b>工作区与家目录互相污染</b>。</div>
+  <div class="rednote note"><b>混乱根源：</b>xingtu 所有文件都在家目录仓库（<code>/Users/lijiacheng</code>）的跟踪范围内，但没有自己的提交历史 / remote / 版本线。之前 <code>git status</code> 显示 547 项未跟踪（含 tfm-ng 等无关项目），就是这个原因——<b>工作区与家目录互相污染</b>。</div>
   <div class="note"><b>你的直觉是对的：</b>1 个项目 = 1 个独立 git 仓库（含 GitHub remote）。xingtu 工作区、xingtu-site、每个开源项目都应各自独立。</div>
 </section>
 
