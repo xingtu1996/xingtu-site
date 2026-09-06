@@ -166,9 +166,35 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
   section{padding:44px 0}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* ---------- 粒子流动背景（科技感）---------- */
+***REMOVED***particleCanvas{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  z-index:0;pointer-events:none;opacity:.6;
+}
+:root[data-theme="dark"] ***REMOVED***particleCanvas{opacity:.8}
+body{position:relative}
+body > *:not(***REMOVED***particleCanvas){position:relative;z-index:1}
+/* Hero 区域发光效果 */
+header{position:relative;overflow:hidden}
+header::before{
+  content:'';position:absolute;top:-50%;left:50%;transform:translateX(-50%);
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(5,109,232,.12) 0%,transparent 70%);
+  pointer-events:none;animation:glowPulse 8s ease-in-out infinite;
+}
+:root[data-theme="dark"] header::before{
+  background:radial-gradient(circle,rgba(41,151,255,.18) 0%,transparent 70%);
+}
+@keyframes glowPulse{
+  0%,100%{opacity:.6;transform:translateX(-50%) scale(1)}
+  50%{opacity:1;transform:translateX(-50%) scale(1.1)}
+}
 </style>
 </head>
 <body>
+
+<canvas id="particleCanvas"></canvas>
 
 <nav>
   <div class="wrap">
@@ -191,9 +217,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 
 <header id="top">
   <div class="wrap">
-    <span class="badge" data-i18n="hero.badge">11 年 Java 后端 · 技术经理 + 一线开发</span>
+    <span class="badge" data-i18n="hero.badge">11 年 Java 后端 · 技术经理 + 一线开发 · AI 工程化布道者</span>
     <h1 data-i18n="hero.title">行途 XingTu</h1>
-    <p class="sub" data-i18n="hero.sub">11 年 Java 后端，近两年把 AI 当作研发底层引擎——一个人 + AI，顶一支传统团队。这里记的是跑过生产、有数字、能抄作业的实践。</p>
+    <p class="sub" data-i18n="hero.sub">11 年 Java 后端，近两年把 AI 当作研发底层引擎——一个人 + AI，顶一支传统团队。GPT-6 Astra 时代，专注 Harness Engineering 与多平台内容复利。这里记的是跑过生产、有数字、能抄作业的实践。</p>
     <div class="cta">
       <a class="btn p" href="***REMOVED***career" data-i18n="hero.cta1">看履历</a>
       <a class="btn s" href="***REMOVED***articles" data-i18n="hero.cta2">读文章</a>
@@ -215,6 +241,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
         <span class="chip">终端 coding agent</span>
         <span class="chip">多 harness 协作</span>
         <span class="chip">AI Native 开发循环</span>
+        <span class="chip">Harness Engineering</span>
+        <span class="chip">墨排排版引擎</span>
+        <span class="chip">多平台内容复利</span>
       </div>
     </div>
   </div>
@@ -345,27 +374,33 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 <script>
 /* ===== 数据层（url 指向本地脱敏副本 works/；公众号首发稿只展目录）===== */
 const ARTICLES = [
+  { kicker:"AI 工程化", title:"Harness 是工具还是规矩？AI 工程化五级认知梯度", desc:"从「完全没听过」到「建 harness 体系」，你在第几级？讲透 AI 可控化的底层逻辑。", url:"https://mp.weixin.qq.com/s/b5nsNKoY1gNvJqpwMYcVLA", tag:"公众号已发" },
+  { kicker:"知识复利", title:"AI 时代知识复利｜让过去的自己替未来的你打工", desc:"2153 条会话蒸馏到 771 条素材卡，一套普通人也能用的知识复利方法。", url:"https://mp.weixin.qq.com/s/HWpOU1rMxCF1Uve7uQFFhA", tag:"公众号已发" },
+  { kicker:"AI 工程化", title:"AI 时代的 5 种工程师，你是哪种？", desc:"Vibe Coder、FDE、Harness Engineer……AI 时代的角色定位与转型路径。", url:"https://mp.weixin.qq.com/s?__biz=MzU0MjgyNDM2MQ==&mid=2247483879", tag:"公众号已发" },
   { kicker:"AI 工程化", title:"五层 Token 首篇", desc:"从 197M Token / ¥1,043 真实账单拆出五层成本结构，AI 花销一次看明白。", url:"works/H3.html", tag:"公众号已发" },
   { kicker:"工具箱", title:"行途个人站从 0 到 1 白盒教程", desc:"本站即白盒样例：单文件 HTML、零框架、两小时上线，附结构改造清单。", url:"works/行途个人站从0到1白盒教程_2026-08.html", tag:"公众号已发" },
   { kicker:"省 token 系列", title:"省 token 的第一性原理", desc:"把「不用推理的活」从模型手里拿回来。省 token 全系列总纲。", url:"works/A0-_成品浏览_带图版.html", tag:"公众号已发" },
-  { kicker:"出海", title:"出海收款与税务实操手册", desc:"个人出海的收款通道、税务合规与成本测算，全流程实操。", url:"works/出海收款与税务实操手册_2026-08.html", tag:"全文" },
-  { kicker:"模型选型", title:"国内外免费便宜大模型全景", desc:"主流免费 / 低价模型的上下文、速率、价格横向对照。", url:"works/国内外免费便宜大模型全景_2026-08.html", tag:"全文" },
-  { kicker:"排障实录", title:"把 4 小时排查压到 75 分钟（微服务超卖悬案）", desc:"线上库存超卖事故，从 4 小时压到 75 分钟定位根因，附链路回溯步骤与复盘清单。", url:"works/index.html", tag:"见作品库" },
+  { kicker:"大模型观察", title:"智谱「牛来」GLM-5.3 Flash 正式开源", desc:"输入 0.4 元/输出 1.4 元，比 DeepSeek V4 Flash 还便宜。爆款 141 阅读。", url:"https://mp.weixin.qq.com/s/_PqvmYkiitgfjJtbiOG_CQ", tag:"公众号已发" },
+  { kicker:"排障实录", title:"把 4 小时排查压到 75 分钟（微服务超卖悬案）", desc:"线上库存超卖事故，从 4 小时压到 75 分钟定位根因，附链路回溯步骤与复盘清单。爆款 111 阅读。", url:"works/index.html", tag:"见作品库" },
 ];
 const REPOS = [
   { kicker:"方法论", title:"xingtu-ai-engineering", desc:"五大工程（上下文 / 提示词 / 驾驭 / 图 / 循环）+ 哲学 / 方法 / 治理。", url:"https://github.com/xingtu1996/xingtu-ai-engineering", tag:"MIT" },
+  { kicker:"文章库", title:"xingtu-articles", desc:"公众号文章 Markdown 镜像库，已发布文章 + 配图，GitHub 做内容承载。", url:"https://github.com/xingtu1996/xingtu-articles", tag:"MIT" },
+  { kicker:"排版引擎", title:"墨排 · md2wechat", desc:"Markdown → 微信公众号排版引擎，6 主题 + Mac 视窗代码块，行途自研。", url:"https://github.com/xingtu1996/md2wechat", tag:"MIT" },
   { kicker:"Skills", title:"xingtu-skills", desc:"AI Agent 技能聚合仓，29 个 skill，可直接检索安装。", url:"https://github.com/xingtu1996/xingtu-skills", tag:"MIT" },
+  { kicker:"脚手架", title:"xingtu-harness", desc:"AI 工程化脚手架，一键拉全开源资产，DSH 生态兼容。", url:"https://github.com/xingtu1996/xingtu-harness", tag:"MIT" },
   { kicker:"Bench", title:"tokenhub-bench", desc:"可复现 LLM 模型榜单评测：评测引擎 + 真实数据。", url:"https://github.com/xingtu1996/tokenhub-bench", tag:"MIT" },
 ];
 const FOLLOW = [
   // st: live=已运营可关注 / soon=账号已注册·内容筹备中（卡片明示，不装正式入口）
   { b:"公众号", s:"行途技术手记", st:"live", note:"微信内搜索「行途技术手记」关注" },
   { b:"GitHub", s:"xingtu1996", url:"https://github.com/xingtu1996", st:"live" },
+  { b:"X", s:"@xingtu1996", url:"https://x.com/xingtu1996", st:"live", note:"AI 工程化实战，build in public" },
+  { b:"个人站", s:"xingtu1996.pages.dev", url:"https://xingtu1996.pages.dev", st:"live" },
   { b:"掘金", s:"行途", st:"soon" },
   { b:"CSDN", s:"行途 thinkgame", st:"soon" },
   { b:"知乎", s:"行途", st:"soon" },
   { b:"小红书", s:"行途", st:"soon" },
-  { b:"X", s:"@xingtu1996", st:"soon" },
   { b:"知识星球", s:"行途年度社群", st:"soon" },
 ];
 
@@ -374,8 +409,8 @@ const I18N = {
   zh: {
     "nav.brand":"行途 · XingTu", "nav.about":"关于", "nav.career":"履历", "nav.articles":"文章", "nav.videos":"视频",
     "nav.opensource":"开源", "nav.follow":"关注", "nav.works":"作品库 99",
-    "hero.badge":"11 年 Java 后端 · 技术经理 + 一线开发", "hero.title":"行途 XingTu",
-    "hero.sub":"11 年 Java 后端，近两年把 AI 当作研发底层引擎——一个人 + AI，顶一支传统团队。这里记的是跑过生产、有数字、能抄作业的实践。",
+    "hero.badge":"11 年 Java 后端 · 技术经理 + 一线开发 · AI 工程化布道者", "hero.title":"行途 XingTu",
+    "hero.sub":"11 年 Java 后端，近两年把 AI 当作研发底层引擎——一个人 + AI，顶一支传统团队。GPT-6 Astra 时代，专注 Harness Engineering 与多平台内容复利。这里记的是跑过生产、有数字、能抄作业的实践。",
     "hero.cta1":"看履历", "hero.cta2":"读文章", "hero.cta3":"作品与证据库 · 99 件 →",
     "about.eyebrow":"About", "about.title":"关于行途",
     "about.p1":"我是行途（行途 XingTu），既带团队又写代码的技术经理。2023 年起在团队里推 AI，完整经历了 ChatGPT → Cursor → Kiro → Claude Code → WorkBuddy 的工具链演进。这里写的东西都从真实项目里来——跑过生产、有数字、能直接抄。",
@@ -390,8 +425,8 @@ const I18N = {
   en: {
     "nav.brand":"XingTu", "nav.about":"About", "nav.career":"Career", "nav.articles":"Writing", "nav.videos":"Video",
     "nav.opensource":"Open Source", "nav.follow":"Follow", "nav.works":"Works 99",
-    "hero.badge":"11y Java Backend · Eng Manager + Hands-on Dev", "hero.title":"XingTu",
-    "hero.sub":"11 years of Java backend; for the last two, AI has been my engineering engine — one person + AI doing the work of a team. Notes from production, with numbers you can copy.",
+    "hero.badge":"11y Java Backend · Eng Manager + Hands-on Dev · AI Engineering Advocate", "hero.title":"XingTu",
+    "hero.sub":"11 years of Java backend; for the last two, AI has been my engineering engine — one person + AI doing the work of a team. In the GPT-6 Astra era, focused on Harness Engineering and multi-platform content compounding. Notes from production, with numbers you can copy.",
     "hero.cta1":"Career", "hero.cta2":"Articles", "hero.cta3":"Works & Evidence · 99 →",
     "about.eyebrow":"About", "about.title":"About XingTu",
     "about.p1":"I'm 行途 XingTu — an engineering manager who still writes code. Since 2023 I've pushed AI inside teams through the full toolchain shift: ChatGPT → Cursor → Kiro → Claude Code → WorkBuddy. Everything here comes from real projects — in production, with numbers, copy-ready.",
@@ -470,6 +505,91 @@ document.getElementById('followGrid').innerHTML = FOLLOW.map(f => {
 document.getElementById('year').textContent = new Date().getFullYear();
 
 initTheme(); paintTheme(); applyLang();
+
+/* ===== 粒子流动背景（科技感）===== */
+(function(){
+  const canvas = document.getElementById('particleCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [], mouse = {x:null, y:null};
+  const PARTICLE_COUNT = 60;
+  const CONNECT_DIST = 120;
+  const MOUSE_DIST = 150;
+
+  function resize(){
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  function getColor(){
+    const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    return dark ? 'rgba(41,151,255,' : 'rgba(5,109,232,';
+  }
+  function initParticles(){
+    particles = [];
+    for(let i=0;i<PARTICLE_COUNT;i++){
+      particles.push({
+        x: Math.random()*W,
+        y: Math.random()*H,
+        vx: (Math.random()-0.5)*0.4,
+        vy: (Math.random()-0.5)*0.4,
+        r: Math.random()*2+1
+      });
+    }
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    const baseColor = getColor();
+    // 画粒子
+    for(let p of particles){
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fillStyle = baseColor + '0.6)';
+      ctx.fill();
+      // 移动
+      p.x += p.vx;
+      p.y += p.vy;
+      // 边界反弹
+      if(p.x<0||p.x>W) p.vx *= -1;
+      if(p.y<0||p.y>H) p.vy *= -1;
+      // 鼠标交互
+      if(mouse.x!==null){
+        const dx = p.x - mouse.x, dy = p.y - mouse.y;
+        const dist = Math.sqrt(dx*dx+dy*dy);
+        if(dist < MOUSE_DIST){
+          const force = (MOUSE_DIST-dist)/MOUSE_DIST * 0.5;
+          p.x += dx/dist * force;
+          p.y += dy/dist * force;
+        }
+      }
+    }
+    // 画连线
+    for(let i=0;i<particles.length;i++){
+      for(let j=i+1;j<particles.length;j++){
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx*dx+dy*dy);
+        if(dist < CONNECT_DIST){
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = baseColor + (0.15*(1-dist/CONNECT_DIST)) + ')';
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize', () => { resize(); initParticles(); });
+  window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+  window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
+  // 主题切换时重新初始化颜色
+  const observer = new MutationObserver(() => { /* 颜色在draw时动态获取 */ });
+  observer.observe(document.documentElement, {attributes:true, attributeFilter:['data-theme']});
+  resize();
+  initParticles();
+  draw();
+})();
 </script>
 </body>
 </html>
