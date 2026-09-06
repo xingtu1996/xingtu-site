@@ -3,7 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="icon" type="image/png" href="favicon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+<link rel="manifest" href="site.webmanifest" />
+<meta name="theme-color" content="***REMOVED***ffffff" />
 <title>行途 XingTu · AI 工程化一线实践</title>
 <meta name="description" content="行途（XingTu）个人作品集 —— 11 年 Java 后端，技术经理兼一线开发，近两年把 AI 当研发引擎：1 人 + AI 52 天交付全栈平台，生产问题排查 8-10x 提效。" />
 <meta property="og:title" content="行途 XingTu · AI 工程化一线实践" />
@@ -90,7 +94,7 @@ nav{position:sticky;top:0;z-index:20;
 nav .wrap{display:flex;align-items:center;justify-content:space-between;height:52px}
 .logo{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:var(--txt);letter-spacing:0}
 .logo:hover{text-decoration:none}
-.logo .dot{width:9px;height:9px;border-radius:3px;background:var(--brand)}
+.logo .logo-icon{width:22px;height:22px;border-radius:4px}
 .nav-links{display:flex;align-items:center;gap:26px;font-size:14px}
 .nav-links a{color:var(--txt-2)}
 .nav-links a:hover{color:var(--txt)}
@@ -198,7 +202,7 @@ header::before{
 
 <nav>
   <div class="wrap">
-    <a class="logo" href="***REMOVED***top"><span class="dot"></span><span data-i18n="nav.brand">行途 · XingTu</span></a>
+    <a class="logo" href="***REMOVED***top"><img src="favicon-32x32.png" class="logo-icon" alt="行途" /><span data-i18n="nav.brand">行途 · XingTu</span></a>
     <div class="nav-links">
       <a href="***REMOVED***about" data-i18n="nav.about">关于</a>
       <a href="***REMOVED***career" data-i18n="nav.career">履历</a>
@@ -374,9 +378,9 @@ header::before{
 <script>
 /* ===== 数据层（url 指向本地脱敏副本 works/；公众号首发稿只展目录）===== */
 const ARTICLES = [
-  { kicker:"AI 工程化", title:"Harness 是工具还是规矩？AI 工程化五级认知梯度", desc:"从「完全没听过」到「建 harness 体系」，你在第几级？讲透 AI 可控化的底层逻辑。", url:"https://mp.weixin.qq.com/s/b5nsNKoY1gNvJqpwMYcVLA", tag:"公众号已发" },
-  { kicker:"知识复利", title:"AI 时代知识复利｜让过去的自己替未来的你打工", desc:"2153 条会话蒸馏到 771 条素材卡，一套普通人也能用的知识复利方法。", url:"https://mp.weixin.qq.com/s/HWpOU1rMxCF1Uve7uQFFhA", tag:"公众号已发" },
-  { kicker:"AI 工程化", title:"AI 时代的 5 种工程师，你是哪种？", desc:"Vibe Coder、FDE、Harness Engineer……AI 时代的角色定位与转型路径。", url:"https://mp.weixin.qq.com/s?__biz=MzU0MjgyNDM2MQ==&mid=2247483879", tag:"公众号已发" },
+  { kicker:"AI 工程化", title:"Harness 是工具还是规矩？AI 工程化五级认知梯度", desc:"GPT-6 Astra 与 Work Agent 时代，讲透 AI 可控化的底层逻辑。", url:"https://mp.weixin.qq.com/s/HWpOU1rMxCF1Uve7uQFFhA", tag:"公众号已发" },
+  { kicker:"知识复利", title:"AI 时代知识复利｜让过去的自己替未来的你打工", desc:"2153 条会话蒸馏到 771 张素材卡，一套普通人也能用的知识复利方法。首篇爆款：31 阅读 + 首笔赞赏。", url:"https://mp.weixin.qq.com/s/UriDR65cpUT_caABxjfYCQ", tag:"公众号已发" },
+  { kicker:"AI 工程化", title:"AI 时代的 5 种工程师，你是哪种？", desc:"Vibe Coder、FDE、Harness Engineer……AI 时代的角色定位与转型路径。", url:"https://mp.weixin.qq.com/s/b5nsNKoY1gNvJqpwMYcVLA", tag:"公众号已发" },
   { kicker:"AI 工程化", title:"五层 Token 首篇", desc:"从 197M Token / ¥1,043 真实账单拆出五层成本结构，AI 花销一次看明白。", url:"works/H3.html", tag:"公众号已发" },
   { kicker:"工具箱", title:"行途个人站从 0 到 1 白盒教程", desc:"本站即白盒样例：单文件 HTML、零框架、两小时上线，附结构改造清单。", url:"works/行途个人站从0到1白盒教程_2026-08.html", tag:"公众号已发" },
   { kicker:"省 token 系列", title:"省 token 的第一性原理", desc:"把「不用推理的活」从模型手里拿回来。省 token 全系列总纲。", url:"works/A0-_成品浏览_带图版.html", tag:"公众号已发" },
