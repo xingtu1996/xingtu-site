@@ -1,0 +1,9 @@
+# 敏感配置文件，不提交到GitHub
+.env
+*.env
+# 备份文件
+*.backup_*
+# 系统文件
+.DS_Store
+# 日志
+*.log
