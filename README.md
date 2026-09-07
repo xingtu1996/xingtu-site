@@ -121,7 +121,7 @@ CLOUDFLARE_API_TOKEN=xxx npx -y wrangler pages deploy . --project-name=xingtu199
 ***REMOVED******REMOVED*** ⚠️ 安全须知（红线）
 
 - **凭证不入聊天/不入仓库**：密码/PAT/Token 一旦暴露立即 revoke；
-- **commit 邮箱**：一律 GitHub noreply（`274853659+xingtu1996@users.noreply.github.com`），**禁止公司邮箱**；
+- **commit 邮箱**：一律 GitHub noreply（`ID+USERNAME@users.noreply.github.com`），**禁止公司邮箱**；
 - 本仓库 private，公开前先清 commit 历史公司邮箱（filter-repo + force-push）；
 - 登录/改绑定/申诉由本人操作（AI 只做提醒与模板）。
 
