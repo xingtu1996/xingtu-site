@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
 <link rel="manifest" href="site.webmanifest" />
-<meta name="theme-color" content="***REMOVED***ffffff" />
+<meta name="theme-color" content="#ffffff" />
 <title>行途 XingTu · AI 工程化一线实践</title>
 <meta name="description" content="行途（XingTu）个人作品集 —— 11 年 Java 后端，技术经理兼一线开发，近两年把 AI 当研发引擎：1 人 + AI 52 天交付全栈平台，生产问题排查 8-10x 提效。" />
 <meta property="og:title" content="行途 XingTu · AI 工程化一线实践" />
@@ -20,20 +20,20 @@
    行途 Design System v2 · Apple-inspired
    tokens → 组件 → 布局。全站单源变量，改色只需动这里。
    规范参考: xingtu-vault/02_素材库/可复用资产/设计系统参考/apple.md
-   品牌色: 行途蓝 ***REMOVED***056DE8（唯一强调色，仅用于交互元素）
+   品牌色: 行途蓝 #056DE8（唯一强调色，仅用于交互元素）
    ============================================================ */
 :root{
   /* 行途品牌 tokens（亮色默认，暗色在 [data-theme=dark] 覆盖） */
-  --brand:***REMOVED***056DE8;            /* 主强调 · 行途蓝 */
-  --brand-strong:***REMOVED***0066CC;     /* 深蓝 hover/按压 */
+  --brand:#056DE8;            /* 主强调 · 行途蓝 */
+  --brand-strong:#0066CC;     /* 深蓝 hover/按压 */
   --brand-weak:rgba(5,109,232,.10);
-  --on-brand:***REMOVED***ffffff;
-  --ok:***REMOVED***34C759;
+  --on-brand:#ffffff;
+  --ok:#34C759;
   /* 表面 & 文本 */
-  --bg:***REMOVED***f5f5f7;               /* 页面底 · Apple light gray */
-  --surface:***REMOVED***ffffff;          /* 卡片 */
-  --surface-2:***REMOVED***fbfbfd;        /* 微差面 */
-  --txt:***REMOVED***1d1d1f;              /* 主文本 · near black */
+  --bg:#f5f5f7;               /* 页面底 · Apple light gray */
+  --surface:#ffffff;          /* 卡片 */
+  --surface-2:#fbfbfd;        /* 微差面 */
+  --txt:#1d1d1f;              /* 主文本 · near black */
   --txt-2:rgba(0,0,0,.72);    /* 次级 */
   --txt-3:rgba(0,0,0,.48);    /* 弱 */
   --line:rgba(0,0,0,.10);     /* 分隔 */
@@ -48,10 +48,10 @@
   --ls-head:-.015em; --ls-body:-.011em;
 }
 :root[data-theme="dark"]{
-  --bg:***REMOVED***000000; --surface:***REMOVED***1d1d1f; --surface-2:***REMOVED***242426;
-  --txt:***REMOVED***f5f5f7; --txt-2:rgba(255,255,255,.72); --txt-3:rgba(255,255,255,.48);
+  --bg:#000000; --surface:#1d1d1f; --surface-2:#242426;
+  --txt:#f5f5f7; --txt-2:rgba(255,255,255,.72); --txt-3:rgba(255,255,255,.48);
   --line:rgba(255,255,255,.14); --line-2:rgba(255,255,255,.06);
-  --brand:***REMOVED***2997ff; --brand-strong:***REMOVED***4aa5ff; --brand-weak:rgba(41,151,255,.16);
+  --brand:#2997ff; --brand-strong:#4aa5ff; --brand-weak:rgba(41,151,255,.16);
   --nav-bg:rgba(0,0,0,.72);
   --shadow:0 4px 24px rgba(0,0,0,.4);
 }
@@ -172,13 +172,13 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 
 /* ---------- 粒子流动背景（科技感）---------- */
-***REMOVED***particleCanvas{
+#particleCanvas{
   position:fixed;top:0;left:0;width:100%;height:100%;
   z-index:0;pointer-events:none;opacity:.6;
 }
-:root[data-theme="dark"] ***REMOVED***particleCanvas{opacity:.8}
+:root[data-theme="dark"] #particleCanvas{opacity:.8}
 body{position:relative}
-body > *:not(***REMOVED***particleCanvas){position:relative;z-index:1}
+body > *:not(#particleCanvas){position:relative;z-index:1}
 /* Hero 区域发光效果 */
 header{position:relative;overflow:hidden}
 header::before{
@@ -202,14 +202,14 @@ header::before{
 
 <nav>
   <div class="wrap">
-    <a class="logo" href="***REMOVED***top"><img src="favicon-32x32.png" class="logo-icon" alt="行途" /><span data-i18n="nav.brand">行途 · XingTu</span></a>
+    <a class="logo" href="#top"><img src="favicon-32x32.png" class="logo-icon" alt="行途" /><span data-i18n="nav.brand">行途 · XingTu</span></a>
     <div class="nav-links">
-      <a href="***REMOVED***about" data-i18n="nav.about">关于</a>
-      <a href="***REMOVED***career" data-i18n="nav.career">履历</a>
-      <a href="***REMOVED***articles" data-i18n="nav.articles">文章</a>
-      <a href="***REMOVED***videos" data-i18n="nav.videos">视频</a>
-      <a href="***REMOVED***opensource" data-i18n="nav.opensource">开源</a>
-      <a href="***REMOVED***follow" data-i18n="nav.follow">关注</a>
+      <a href="#about" data-i18n="nav.about">关于</a>
+      <a href="#career" data-i18n="nav.career">履历</a>
+      <a href="#articles" data-i18n="nav.articles">文章</a>
+      <a href="#videos" data-i18n="nav.videos">视频</a>
+      <a href="#opensource" data-i18n="nav.opensource">开源</a>
+      <a href="#follow" data-i18n="nav.follow">关注</a>
       <a class="hl" href="works/index.html" data-i18n="nav.works">作品库 99</a>
     </div>
     <div class="tools">
@@ -225,8 +225,8 @@ header::before{
     <h1 data-i18n="hero.title">行途 XingTu</h1>
     <p class="sub" data-i18n="hero.sub">11 年 Java 后端，近两年把 AI 当作研发底层引擎——一个人 + AI，顶一支传统团队。GPT-6 Astra 时代，专注 Harness Engineering 与多平台内容复利。这里记的是跑过生产、有数字、能抄作业的实践。</p>
     <div class="cta">
-      <a class="btn p" href="***REMOVED***career" data-i18n="hero.cta1">看履历</a>
-      <a class="btn s" href="***REMOVED***articles" data-i18n="hero.cta2">读文章</a>
+      <a class="btn p" href="#career" data-i18n="hero.cta1">看履历</a>
+      <a class="btn s" href="#articles" data-i18n="hero.cta2">读文章</a>
       <a class="btn s" href="works/index.html" data-i18n="hero.cta3">作品与证据库 · 99 件 →</a>
     </div>
   </div>

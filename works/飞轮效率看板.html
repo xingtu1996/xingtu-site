@@ -1,8 +1,8 @@
 <!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>飞轮效率观测台</title><style>
-:root{--bg:***REMOVED***f5f6f8;--card:***REMOVED***ffffff;--ink:***REMOVED***1f2329;--sub:***REMOVED***6b7280;--line:***REMOVED***e5e7eb;
---blue:***REMOVED***2563eb;--green:***REMOVED***16a34a;--red:***REMOVED***dc2626;--amber:***REMOVED***d97706;--chip:***REMOVED***eef2ff}
+:root{--bg:#f5f6f8;--card:#ffffff;--ink:#1f2329;--sub:#6b7280;--line:#e5e7eb;
+--blue:#2563eb;--green:#16a34a;--red:#dc2626;--amber:#d97706;--chip:#eef2ff}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
 background:var(--bg);color:var(--ink);padding:28px;line-height:1.65}
@@ -18,11 +18,11 @@ h2{font-size:16px;margin:26px 0 12px;padding-left:10px;border-left:4px solid var
 .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
 table{width:100%;border-collapse:collapse;font-size:13px}
 th{text-align:left;color:var(--sub);font-weight:600;padding:7px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
-td{padding:7px 8px;border-bottom:1px solid ***REMOVED***f1f2f4;vertical-align:middle}
+td{padding:7px 8px;border-bottom:1px solid #f1f2f4;vertical-align:middle}
 tr:last-child td{border-bottom:none}
 .badge{display:inline-block;padding:1px 9px;border-radius:99px;font-size:12px;font-weight:600}
-.b-ok{background:***REMOVED***dcfce7;color:var(--green)} .b-bad{background:***REMOVED***fee2e2;color:var(--red)}
-.b-wait{background:***REMOVED***fef3c7;color:var(--amber)} .b-info{background:var(--chip);color:var(--blue)}
+.b-ok{background:#dcfce7;color:var(--green)} .b-bad{background:#fee2e2;color:var(--red)}
+.b-wait{background:#fef3c7;color:var(--amber)} .b-info{background:var(--chip);color:var(--blue)}
 .gantt-row{display:flex;align-items:center;gap:8px;margin:5px 0;font-size:12px}
 .gantt-row .t{width:118px;color:var(--sub);flex:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .gantt-row .bar{height:14px;border-radius:4px;min-width:3px}
@@ -30,12 +30,12 @@ tr:last-child td{border-bottom:none}
 .bar.ok{background:var(--green)} .bar.bad{background:var(--red)}
 .ubar{background:var(--line);border-radius:99px;height:8px;width:110px;display:inline-block;vertical-align:middle;margin-right:6px}
 .ubar>i{display:block;height:8px;border-radius:99px;background:var(--blue)}
-code{background:***REMOVED***f3f4f6;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:12px;font-family:ui-monospace,Menlo,monospace}
+code{background:#f3f4f6;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:12px;font-family:ui-monospace,Menlo,monospace}
 .note{font-size:12px;color:var(--sub);margin-top:8px}
 .big{font-size:30px;font-weight:800;color:var(--blue)}
 .method li{margin:6px 0;font-size:13.5px}
 .footer{color:var(--sub);font-size:12px;text-align:center;margin-top:26px}
-</style></head><body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:***REMOVED***056DE8;color:***REMOVED***fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:***REMOVED***fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div><div class="wrap">
+</style></head><body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div><div class="wrap">
 <h1>🛞 飞轮效率观测台</h1>
 <div class="sub">生成于 2026-08-26 22:28:44 · 数据源 ~/.workbuddy/workbuddy.db + 飞轮运行日志.jsonl ·
 刷新：<code>python3 tools/flywheel_monitor.py</code></div>

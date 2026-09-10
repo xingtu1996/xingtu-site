@@ -5,17 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>行途 MCN 多 Agent 自动化发布工作台</title>
 <style>
-:root{--blue:***REMOVED***056DE8;--blue-dark:***REMOVED***0352B0;--blue-light:***REMOVED***E8F1FD;--blue-bg:***REMOVED***F5F9FF;--dark:***REMOVED***1A2332;--dark2:***REMOVED***2C3E50;--gray:***REMOVED***6B7C93;--gray-light:***REMOVED***F0F3F7;--border:***REMOVED***E1E8F0;--green:***REMOVED***10B981;--orange:***REMOVED***F59E0B;--red:***REMOVED***EF4444;--purple:***REMOVED***8B5CF6;--cyan:***REMOVED***06B6D4;--pink:***REMOVED***EC4899}
+:root{--blue:#056DE8;--blue-dark:#0352B0;--blue-light:#E8F1FD;--blue-bg:#F5F9FF;--dark:#1A2332;--dark2:#2C3E50;--gray:#6B7C93;--gray-light:#F0F3F7;--border:#E1E8F0;--green:#10B981;--orange:#F59E0B;--red:#EF4444;--purple:#8B5CF6;--cyan:#06B6D4;--pink:#EC4899}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--gray-light);color:var(--dark);line-height:1.6;font-size:14px}
 a{color:var(--blue);text-decoration:none}
 /* 顶部导航 */
-.topnav{background:linear-gradient(135deg,var(--dark) 0%,var(--dark2) 100%);color:***REMOVED***fff;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.15)}
+.topnav{background:linear-gradient(135deg,var(--dark) 0%,var(--dark2) 100%);color:#fff;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.15)}
 .topnav .logo{display:flex;align-items:center;gap:12px;font-size:18px;font-weight:700}
 .topnav .logo .dot{width:10px;height:10px;border-radius:50%;background:var(--blue);box-shadow:0 0 12px var(--blue)}
 .topnav .nav-links{display:flex;gap:24px;font-size:13px}
 .topnav .nav-links a{color:rgba(255,255,255,.7);transition:color .2s}
-.topnav .nav-links a:hover{color:***REMOVED***fff}
+.topnav .nav-links a:hover{color:#fff}
 .topnav .status{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,.6)}
 .topnav .status .live{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
@@ -24,12 +24,12 @@ a{color:var(--blue);text-decoration:none}
 /* 区块标题 */
 .section{margin-bottom:36px}
 .section-title{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid var(--border)}
-.section-title .num{width:32px;height:32px;border-radius:8px;background:var(--blue);color:***REMOVED***fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0}
+.section-title .num{width:32px;height:32px;border-radius:8px;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0}
 .section-title h2{font-size:20px;font-weight:700;color:var(--dark)}
 .section-title .sub{font-size:13px;color:var(--gray);margin-left:8px}
 /* 数据卡片 */
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px}
-.stat-card{background:***REMOVED***fff;border-radius:12px;padding:20px;border:1px solid var(--border);position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.stat-card{background:#fff;border-radius:12px;padding:20px;border:1px solid var(--border);position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
 .stat-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(5,109,232,.12)}
 .stat-card .icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:12px}
 .stat-card .label{font-size:13px;color:var(--gray);margin-bottom:4px}
@@ -39,7 +39,7 @@ a{color:var(--blue);text-decoration:none}
 .stat-card .trend.up{color:var(--green)}
 .stat-card .trend.warn{color:var(--orange)}
 /* 主线横幅 */
-.mainline{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-dark) 100%);border-radius:12px;padding:20px 24px;color:***REMOVED***fff;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.mainline{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-dark) 100%);border-radius:12px;padding:20px 24px;color:#fff;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
 .mainline .left{display:flex;align-items:center;gap:16px}
 .mainline .badge{background:rgba(255,255,255,.2);padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;backdrop-filter:blur(4px)}
 .mainline h3{font-size:18px;font-weight:700;margin-bottom:2px}
@@ -49,7 +49,7 @@ a{color:var(--blue);text-decoration:none}
 .mainline .mini-stat .v{font-size:22px;font-weight:800}
 .mainline .mini-stat .l{font-size:11px;opacity:.8}
 /* 表格 */
-.table-wrap{background:***REMOVED***fff;border-radius:12px;border:1px solid var(--border);overflow:hidden}
+.table-wrap{background:#fff;border-radius:12px;border:1px solid var(--border);overflow:hidden}
 table{width:100%;border-collapse:collapse;font-size:13px}
 thead{background:var(--blue-bg)}
 th{padding:12px 14px;text-align:left;font-weight:600;color:var(--dark2);border-bottom:2px solid var(--border);white-space:nowrap}
@@ -58,17 +58,17 @@ tr:last-child td{border-bottom:none}
 tr:hover td{background:var(--blue-bg)}
 /* 状态标签 */
 .tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:600;white-space:nowrap}
-.tag.todo{background:***REMOVED***FEF3C7;color:***REMOVED***92400E}
-.tag.writing{background:***REMOVED***DBEAFE;color:***REMOVED***1E40AF}
-.tag.review{background:***REMOVED***FCE7F3;color:***REMOVED***9D174D}
-.tag.ready{background:***REMOVED***D1FAE5;color:***REMOVED***065F46}
-.tag.done{background:***REMOVED***E5E7EB;color:***REMOVED***374151}
-.tag.line-a{background:***REMOVED***DBEAFE;color:***REMOVED***1E40AF}
-.tag.line-b{background:***REMOVED***FEF3C7;color:***REMOVED***92400E}
-.tag.line-c{background:***REMOVED***FCE7F3;color:***REMOVED***9D174D}
+.tag.todo{background:#FEF3C7;color:#92400E}
+.tag.writing{background:#DBEAFE;color:#1E40AF}
+.tag.review{background:#FCE7F3;color:#9D174D}
+.tag.ready{background:#D1FAE5;color:#065F46}
+.tag.done{background:#E5E7EB;color:#374151}
+.tag.line-a{background:#DBEAFE;color:#1E40AF}
+.tag.line-b{background:#FEF3C7;color:#92400E}
+.tag.line-c{background:#FCE7F3;color:#9D174D}
 /* 卡片网格 */
 .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
-.agent-card{background:***REMOVED***fff;border-radius:12px;padding:18px;border:1px solid var(--border);transition:all .2s;position:relative}
+.agent-card{background:#fff;border-radius:12px;padding:18px;border:1px solid var(--border);transition:all .2s;position:relative}
 .agent-card:hover{border-color:var(--blue);box-shadow:0 4px 16px rgba(5,109,232,.1)}
 .agent-card .head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
 .agent-card .avatar{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
@@ -80,7 +80,7 @@ tr:hover td{background:var(--blue-bg)}
 .agent-card .meta .chip.model{background:var(--blue-light);color:var(--blue-dark);font-weight:600}
 /* 工作流卡片 */
 .wf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
-.wf-card{background:***REMOVED***fff;border-radius:10px;padding:16px;border-left:4px solid var(--blue);border-top:1px solid var(--border);border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
+.wf-card{background:#fff;border-radius:10px;padding:16px;border-left:4px solid var(--blue);border-top:1px solid var(--border);border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
 .wf-card .wf-id{font-size:11px;font-family:monospace;color:var(--gray);margin-bottom:4px}
 .wf-card .wf-name{font-size:14px;font-weight:700;margin-bottom:8px;color:var(--dark)}
 .wf-card .wf-desc{font-size:12px;color:var(--gray);margin-bottom:10px;line-height:1.5}
@@ -90,7 +90,7 @@ tr:hover td{background:var(--blue-bg)}
 .timeline{position:relative;padding-left:28px}
 .timeline::before{content:'';position:absolute;left:8px;top:4px;bottom:4px;width:2px;background:var(--border)}
 .tl-item{position:relative;margin-bottom:18px}
-.tl-item::before{content:'';position:absolute;left:-24px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--blue);border:2px solid ***REMOVED***fff;box-shadow:0 0 0 2px var(--blue)}
+.tl-item::before{content:'';position:absolute;left:-24px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--blue);border:2px solid #fff;box-shadow:0 0 0 2px var(--blue)}
 .tl-item.done::before{background:var(--green);box-shadow:0 0 0 2px var(--green)}
 .tl-item.active::before{background:var(--orange);box-shadow:0 0 0 2px var(--orange);animation:pulse 1.5s infinite}
 .tl-item .tl-title{font-size:14px;font-weight:700;color:var(--dark);margin-bottom:2px}
@@ -98,15 +98,15 @@ tr:hover td{background:var(--blue-bg)}
 .tl-item .tl-time{font-size:11px;color:var(--blue);font-weight:600;margin-bottom:4px}
 /* 波次 */
 .wave-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
-.wave-card{background:***REMOVED***fff;border-radius:12px;padding:16px;border:1px solid var(--border);position:relative}
-.wave-card .wave-num{position:absolute;top:-8px;left:16px;background:var(--blue);color:***REMOVED***fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:10px}
+.wave-card{background:#fff;border-radius:12px;padding:16px;border:1px solid var(--border);position:relative}
+.wave-card .wave-num{position:absolute;top:-8px;left:16px;background:var(--blue);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:10px}
 .wave-card h4{font-size:14px;font-weight:700;margin:8px 0 8px;color:var(--dark)}
 .wave-card p{font-size:12px;color:var(--gray);line-height:1.5}
 .wave-card .articles{margin-top:10px;display:flex;flex-wrap:wrap;gap:4px}
 .wave-card .articles span{font-size:11px;padding:2px 7px;border-radius:5px;background:var(--blue-light);color:var(--blue-dark)}
 /* 站点卡片 */
 .site-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.site-card{background:***REMOVED***fff;border-radius:12px;padding:20px;border:1px solid var(--border)}
+.site-card{background:#fff;border-radius:12px;padding:20px;border:1px solid var(--border)}
 .site-card .site-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
 .site-card .site-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px}
 .site-card h4{font-size:15px;font-weight:700}
@@ -117,34 +117,34 @@ tr:hover td{background:var(--blue-bg)}
 /* 底部 */
 .footer{background:var(--dark);color:rgba(255,255,255,.8);padding:32px;border-radius:12px;margin-top:40px}
 .footer .mantra{background:rgba(255,255,255,.06);border-radius:10px;padding:18px 22px;margin-bottom:20px;border:1px solid rgba(255,255,255,.1)}
-.footer .mantra h4{color:***REMOVED***fff;font-size:14px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.footer .mantra h4{color:#fff;font-size:14px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
 .footer .mantra .formula{font-size:16px;font-weight:700;color:var(--blue);letter-spacing:1px;line-height:2}
 .footer .links{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.footer .links h5{color:***REMOVED***fff;font-size:13px;margin-bottom:10px}
+.footer .links h5{color:#fff;font-size:13px;margin-bottom:10px}
 .footer .links a{display:block;font-size:12px;color:rgba(255,255,255,.6);padding:3px 0;transition:color .2s}
 .footer .links a:hover{color:var(--blue)}
 .footer .copy{text-align:center;margin-top:24px;padding-top:16px;border-top:1px solid rgba(255,255,255,.1);font-size:12px;color:rgba(255,255,255,.4)}
 /* SVG容器 */
-.svg-box{background:***REMOVED***fff;border-radius:12px;padding:20px;border:1px solid var(--border);margin-bottom:16px;overflow-x:auto}
+.svg-box{background:#fff;border-radius:12px;padding:20px;border:1px solid var(--border);margin-bottom:16px;overflow-x:auto}
 .svg-box h4{font-size:14px;font-weight:700;margin-bottom:14px;color:var(--dark2);display:flex;align-items:center;gap:8px}
 /* 门禁标签 */
-.gate{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;background:***REMOVED***FEF3C7;color:***REMOVED***92400E}
+.gate{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;background:#FEF3C7;color:#92400E}
 /* 响应式 */
 @media(max-width:1024px){.stats-grid{grid-template-columns:repeat(2,1fr)}.wave-grid{grid-template-columns:repeat(2,1fr)}.site-grid{grid-template-columns:1fr}.footer .links{grid-template-columns:1fr}}
 @media(max-width:640px){.container{padding:16px}.stats-grid{grid-template-columns:1fr}.wave-grid{grid-template-columns:1fr}.topnav .nav-links{display:none}}
 </style>
 </head>
-<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:***REMOVED***056DE8;color:***REMOVED***fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:***REMOVED***fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
 
 <!-- 模块1：顶部导航 -->
 <nav class="topnav">
   <div class="logo"><span class="dot"></span>行途 MCN · 多 Agent 自动化发布工作台</div>
   <div class="nav-links">
-    <a href="***REMOVED***publish">发布清单</a>
-    <a href="***REMOVED***agents">Agent 团队</a>
-    <a href="***REMOVED***workflow">工作流</a>
-    <a href="***REMOVED***roadmap">路线图</a>
-    <a href="***REMOVED***sites">站点维护</a>
+    <a href="#publish">发布清单</a>
+    <a href="#agents">Agent 团队</a>
+    <a href="#workflow">工作流</a>
+    <a href="#roadmap">路线图</a>
+    <a href="#sites">站点维护</a>
   </div>
   <div class="status"><span class="live"></span>系统运行中 · 2026-08-28</div>
 </nav>
@@ -156,25 +156,25 @@ tr:hover td{background:var(--blue-bg)}
   <div class="section-title"><span class="num">1</span><h2>现状总览</h2><span class="sub">一人公司 · MCN 级自动化运营</span></div>
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="icon" style="background:***REMOVED***DBEAFE">📚</div>
+      <div class="icon" style="background:#DBEAFE">📚</div>
       <div class="label">素材库</div>
       <div class="value">1125<span class="unit">条</span></div>
       <div class="trend up">↑ 每日增量摄取</div>
     </div>
     <div class="stat-card">
-      <div class="icon" style="background:***REMOVED***FEF3C7">💡</div>
+      <div class="icon" style="background:#FEF3C7">💡</div>
       <div class="label">选题池</div>
       <div class="value">T12-T18</div>
       <div class="trend warn">7 个待孵化</div>
     </div>
     <div class="stat-card">
-      <div class="icon" style="background:***REMOVED***D1FAE5">📱</div>
+      <div class="icon" style="background:#D1FAE5">📱</div>
       <div class="label">平台账号</div>
       <div class="value">11<span class="unit">个</span></div>
       <div class="trend up">全平台覆盖</div>
     </div>
     <div class="stat-card">
-      <div class="icon" style="background:***REMOVED***FCE7F3">🚀</div>
+      <div class="icon" style="background:#FCE7F3">🚀</div>
       <div class="label">在途项目</div>
       <div class="value">省Token专题</div>
       <div class="trend warn">A0 待发布 · 三线16篇</div>
@@ -292,7 +292,7 @@ tr:hover td{background:var(--blue-bg)}
     <h4>🏗️ 团队架构图（主编居中 · 环形协作）</h4>
     <svg viewBox="0 0 800 420" width="100%" style="max-width:800px;display:block;margin:0 auto">
       <!-- 连接线 -->
-      <g stroke="***REMOVED***056DE8" stroke-width="1.5" fill="none" opacity="0.3">
+      <g stroke="#056DE8" stroke-width="1.5" fill="none" opacity="0.3">
         <line x1="400" y1="210" x2="120" y2="80"/><line x1="400" y1="210" x2="280" y2="50"/>
         <line x1="400" y1="210" x2="520" y2="50"/><line x1="400" y1="210" x2="680" y2="80"/>
         <line x1="400" y1="210" x2="80" y2="210"/><line x1="400" y1="210" x2="720" y2="210"/>
@@ -300,81 +300,81 @@ tr:hover td{background:var(--blue-bg)}
         <line x1="400" y1="210" x2="520" y2="370"/><line x1="400" y1="210" x2="680" y2="340"/>
       </g>
       <!-- 中心主编 -->
-      <circle cx="400" cy="210" r="52" fill="***REMOVED***056DE8"/>
-      <circle cx="400" cy="210" r="56" fill="none" stroke="***REMOVED***056DE8" stroke-width="2" opacity="0.3"/>
-      <text x="400" y="200" text-anchor="middle" fill="***REMOVED***fff" font-size="14" font-weight="700">🎯 主编</text>
-      <text x="400" y="218" text-anchor="middle" fill="***REMOVED***fff" font-size="10" opacity="0.9">Orchestrator</text>
-      <text x="400" y="232" text-anchor="middle" fill="***REMOVED***fff" font-size="9" opacity="0.7">项目经理</text>
+      <circle cx="400" cy="210" r="52" fill="#056DE8"/>
+      <circle cx="400" cy="210" r="56" fill="none" stroke="#056DE8" stroke-width="2" opacity="0.3"/>
+      <text x="400" y="200" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">🎯 主编</text>
+      <text x="400" y="218" text-anchor="middle" fill="#fff" font-size="10" opacity="0.9">Orchestrator</text>
+      <text x="400" y="232" text-anchor="middle" fill="#fff" font-size="9" opacity="0.7">项目经理</text>
       <!-- 上排4个 -->
-      <g><rect x="60" y="50" width="120" height="60" rx="10" fill="***REMOVED***fff" stroke="***REMOVED***E1E8F0"/><text x="120" y="75" text-anchor="middle" font-size="18">📋</text><text x="120" y="95" text-anchor="middle" font-size="11" font-weight="600" fill="***REMOVED***1A2332">选题策划</text></g>
-      <g><rect x="220" y="20" width="120" height="60" rx="10" fill="***REMOVED***fff" stroke="***REMOVED***E1E8F0"/><text x="280" y="45" text-anchor="middle" font-size="18">✍️</text><text x="280" y="65" text-anchor="middle" font-size="11" font-weight="600" fill="***REMOVED***1A2332">内容创作</text></g>
-      <g><rect x="460" y="20" width="120" height="60" rx="10" fill="***REMOVED***fff" stroke="***REMOVED***E1E8F0"/><text x="520" y="45" text-anchor="middle" font-size="18">🎨</text><text x="520" y="65" text-anchor="middle" font-size="11" font-weight="600" fill="***REMOVED***1A2332">排版设计</text></g>
-      <g><rect x="620" y="50" width="120" height="60" rx="10" fill="***REMOVED***fff" stroke="***REMOVED***E1E8F0"/><text x="680" y="75" text-anchor="middle" font-size="18">⚖️</text><text x="680" y="95" text-anchor="middle" font-size="11" font-weight="600" fill="***REMOVED***1A2332">合规审查</text></g>
+      <g><rect x="60" y="50" width="120" height="60" rx="10" fill="#fff" stroke="#E1E8F0"/><text x="120" y="75" text-anchor="middle" font-size="18">📋</text><text x="120" y="95" text-anchor="middle" font-size="11" font-weight="600" fill="#1A2332">选题策划</text></g>
+      <g><rect x="220" y="20" width="120" height="60" rx="10" fill="#fff" stroke="#E1E8F0"/><text x="280" y="45" text-anchor="middle" font-size="18">✍️</text><text x="280" y="65" text-anchor="middle" font-size="11" font-weight="600" fill="#1A2332">内容创作</text></g>
+      <g><rect x="460" y="20" width="120" height="60" rx="10" fill="#fff" stroke="#E1E8F0"/><text x="520" y="45" text-anchor="middle" font-size="18">🎨</text><text x="520" y="65" text-anchor="middle" font-size="11" font-weight="600" fill="#1A2332">排版设计</text></g>
+      <g><rect x="620" y="50" width="120" height="60" rx="10" fill="#fff" stroke="#E1E8F0"/><text x="680" y="75" text-anchor="middle" font-size="18">⚖️</text><text x="680" y="95" text-anchor="middle" font-size="11" font-weight="600" fill="#1A2332">合规审查</text></g>
       <!-- 中排2个 -->
-      <g><rect x="20" y="180" width="120" height="60" rx="10" fill="***REMOVED***fff" stroke="***REMOVED***E1E8F0"/><text x="80" y="205" text-anchor="middle" font-size="18">🔍</text><text x="80" y="225" text-anchor="middle" font-size="11" font-weight="600" fill="***REMOVED***1A2332">SEO优化</text></g>
-      <g><rect x="660" y="180" width="120" height="60" rx="10" fill="***REMOVED***fff" stroke="***REMOVED***E1E8F0"/><text x="720" y="205" text-anchor="middle" font-size="18">📡</text><text x="720" y="225" text-anchor="middle" font-size="11" font-weight="600" fill="***REMOVED***1A2332">分发运营</text></g>
+      <g><rect x="20" y="180" width="120" height="60" rx="10" fill="#fff" stroke="#E1E8F0"/><text x="80" y="205" text-anchor="middle" font-size="18">🔍</text><text x="80" y="225" text-anchor="middle" font-size="11" font-weight="600" fill="#1A2332">SEO优化</text></g>
+      <g><rect x="660" y="180" width="120" height="60" rx="10" fill="#fff" stroke="#E1E8F0"/><text x="720" y="205" text-anchor="middle" font-size="18">📡</text><text x="720" y="225" text-anchor="middle" font-size="11" font-weight="600" fill="#1A2332">分发运营</text></g>
       <!-- 下排4个 -->
-      <g><rect x="60" y="310" width="120" height="60" rx="10" fill="***REMOVED***fff" stroke="***REMOVED***E1E8F0"/><text x="120" y="335" text-anchor="middle" font-size="18">📊</text><text x="120" y="355" text-anchor="middle" font-size="11" font-weight="600" fill="***REMOVED***1A2332">数据复盘</text></g>
-      <g><rect x="220" y="340" width="120" height="60" rx="10" fill="***REMOVED***fff" stroke="***REMOVED***E1E8F0"/><text x="280" y="365" text-anchor="middle" font-size="18">🔬</text><text x="280" y="385" text-anchor="middle" font-size="11" font-weight="600" fill="***REMOVED***1A2332">调研情报</text></g>
-      <g><rect x="460" y="340" width="120" height="60" rx="10" fill="***REMOVED***fff" stroke="***REMOVED***E1E8F0"/><text x="520" y="365" text-anchor="middle" font-size="18">🐙</text><text x="520" y="385" text-anchor="middle" font-size="11" font-weight="600" fill="***REMOVED***1A2332">开源品牌</text></g>
-      <g><rect x="620" y="310" width="120" height="60" rx="10" fill="***REMOVED***fff" stroke="***REMOVED***E1E8F0"/><text x="680" y="335" text-anchor="middle" font-size="18">🖼️</text><text x="680" y="355" text-anchor="middle" font-size="11" font-weight="600" fill="***REMOVED***1A2332">视觉设计</text></g>
+      <g><rect x="60" y="310" width="120" height="60" rx="10" fill="#fff" stroke="#E1E8F0"/><text x="120" y="335" text-anchor="middle" font-size="18">📊</text><text x="120" y="355" text-anchor="middle" font-size="11" font-weight="600" fill="#1A2332">数据复盘</text></g>
+      <g><rect x="220" y="340" width="120" height="60" rx="10" fill="#fff" stroke="#E1E8F0"/><text x="280" y="365" text-anchor="middle" font-size="18">🔬</text><text x="280" y="385" text-anchor="middle" font-size="11" font-weight="600" fill="#1A2332">调研情报</text></g>
+      <g><rect x="460" y="340" width="120" height="60" rx="10" fill="#fff" stroke="#E1E8F0"/><text x="520" y="365" text-anchor="middle" font-size="18">🐙</text><text x="520" y="385" text-anchor="middle" font-size="11" font-weight="600" fill="#1A2332">开源品牌</text></g>
+      <g><rect x="620" y="310" width="120" height="60" rx="10" fill="#fff" stroke="#E1E8F0"/><text x="680" y="335" text-anchor="middle" font-size="18">🖼️</text><text x="680" y="355" text-anchor="middle" font-size="11" font-weight="600" fill="#1A2332">视觉设计</text></g>
     </svg>
   </div>
 
   <!-- Agent 卡片网格 -->
   <div class="card-grid">
     <div class="agent-card" style="border-color:var(--blue);background:var(--blue-bg)">
-      <div class="head"><div class="avatar" style="background:***REMOVED***056DE8;color:***REMOVED***fff">🎯</div><div><div class="name">主编 Agent</div><div class="role">项目经理 / 总控</div></div></div>
+      <div class="head"><div class="avatar" style="background:#056DE8;color:#fff">🎯</div><div><div class="name">主编 Agent</div><div class="role">项目经理 / 总控</div></div></div>
       <div class="duty">意图识别、任务拆解、分配调度、进度跟踪、成果汇总、质量门禁、决策上报、归档解散</div>
       <div class="meta"><span class="chip model">deepseek-v4-pro</span><span class="chip">新增（核心）</span><span class="chip">常驻</span></div>
     </div>
     <div class="agent-card">
-      <div class="head"><div class="avatar" style="background:***REMOVED***DBEAFE">📋</div><div><div class="name">选题策划</div><div class="role">编辑策划</div></div></div>
+      <div class="head"><div class="avatar" style="background:#DBEAFE">📋</div><div><div class="name">选题策划</div><div class="role">编辑策划</div></div></div>
       <div class="duty">素材挖掘、选题评估、优先级排序、系列规划、选题卡生成（3标题备选）</div>
       <div class="meta"><span class="chip model">v4-pro</span><span class="chip">content-positioning</span><span class="chip">常驻</span></div>
     </div>
     <div class="agent-card">
-      <div class="head"><div class="avatar" style="background:***REMOVED***FEF3C7">✍️</div><div><div class="name">内容创作</div><div class="role">撰稿人</div></div></div>
+      <div class="head"><div class="avatar" style="background:#FEF3C7">✍️</div><div><div class="name">内容创作</div><div class="role">撰稿人</div></div></div>
       <div class="duty">正文撰写、故事打磨、思想锚点、引用核实、多平台差异化改写（3段法）</div>
       <div class="meta"><span class="chip model">v4-pro</span><span class="chip">新增（主力）</span><span class="chip">常驻</span></div>
     </div>
     <div class="agent-card">
-      <div class="head"><div class="avatar" style="background:***REMOVED***FCE7F3">🎨</div><div><div class="name">排版设计</div><div class="role">排版师</div></div></div>
+      <div class="head"><div class="avatar" style="background:#FCE7F3">🎨</div><div><div class="name">排版设计</div><div class="role">排版师</div></div></div>
       <div class="duty">公众号排版、行途蓝风格、图片占位、代码块处理、render_wechat.js 渲染</div>
       <div class="meta"><span class="chip model">v4-flash</span><span class="chip">新增</span><span class="chip">常驻</span></div>
     </div>
     <div class="agent-card">
-      <div class="head"><div class="avatar" style="background:***REMOVED***FEE2E2">⚖️</div><div><div class="name">合规审查</div><div class="role">法务 / 合规（门禁）</div></div></div>
+      <div class="head"><div class="avatar" style="background:#FEE2E2">⚖️</div><div><div class="name">合规审查</div><div class="role">法务 / 合规（门禁）</div></div></div>
       <div class="duty">SAF-004 四红线、去AI味、check-flavor、虚构口径、在职合规、平台规则、AIGC声明</div>
       <div class="meta"><span class="chip model">v4-pro</span><span class="chip">新增（门禁）</span><span class="chip">常驻</span></div>
     </div>
     <div class="agent-card">
-      <div class="head"><div class="avatar" style="background:***REMOVED***D1FAE5">🔍</div><div><div class="name">SEO优化</div><div class="role">流量运营</div></div></div>
+      <div class="head"><div class="avatar" style="background:#D1FAE5">🔍</div><div><div class="name">SEO优化</div><div class="role">流量运营</div></div></div>
       <div class="duty">标题优化（≤15字）、关键词埋词（2-4%）、搜一搜SEO、GEO埋词、话题卡片、摘要优化</div>
       <div class="meta"><span class="chip model">v4-flash</span><span class="chip">audience-analyst</span><span class="chip">按需</span></div>
     </div>
     <div class="agent-card">
-      <div class="head"><div class="avatar" style="background:***REMOVED***E0E7FF">📡</div><div><div class="name">分发运营</div><div class="role">平台运营</div></div></div>
+      <div class="head"><div class="avatar" style="background:#E0E7FF">📡</div><div><div class="name">分发运营</div><div class="role">平台运营</div></div></div>
       <div class="duty">多平台分发、定时发布、平台差异化（禁通稿）、账号管理、发布SOP执行、链接回填</div>
       <div class="meta"><span class="chip model">v4-flash</span><span class="chip">account-operator</span><span class="chip">按需</span></div>
     </div>
     <div class="agent-card">
-      <div class="head"><div class="avatar" style="background:***REMOVED***CFFAFE">📊</div><div><div class="name">数据复盘</div><div class="role">数据分析</div></div></div>
+      <div class="head"><div class="avatar" style="background:#CFFAFE">📊</div><div><div class="name">数据复盘</div><div class="role">数据分析</div></div></div>
       <div class="duty">发布数据采集（24h/72h/7d）、阅读量分析、选题效果评估、复盘报告、反哺选题池</div>
       <div class="meta"><span class="chip model">v4-flash</span><span class="chip">新增</span><span class="chip">按需</span></div>
     </div>
     <div class="agent-card">
-      <div class="head"><div class="avatar" style="background:***REMOVED***FEF9C3">🔬</div><div><div class="name">调研情报</div><div class="role">研究员</div></div></div>
+      <div class="head"><div class="avatar" style="background:#FEF9C3">🔬</div><div><div class="name">调研情报</div><div class="role">研究员</div></div></div>
       <div class="duty">热点追踪、竞品分析、工具评测、事实核查（≥2来源）、WebSearch、素材挖掘去敏</div>
       <div class="meta"><span class="chip model">v4-pro</span><span class="chip">新增</span><span class="chip">按需</span></div>
     </div>
     <div class="agent-card">
-      <div class="head"><div class="avatar" style="background:***REMOVED***F3E8FF">🐙</div><div><div class="name">开源与品牌运营</div><div class="role">开源 / 品牌</div></div></div>
+      <div class="head"><div class="avatar" style="background:#F3E8FF">🐙</div><div><div class="name">开源与品牌运营</div><div class="role">开源 / 品牌</div></div></div>
       <div class="duty">GitHub仓库维护、README优化、Pages站点同步、开源发布、个人名片页、品牌一致性</div>
       <div class="meta"><span class="chip model">v4-pro</span><span class="chip">open-source-expert</span><span class="chip">按需</span></div>
     </div>
     <div class="agent-card">
-      <div class="head"><div class="avatar" style="background:***REMOVED***FCE7F3">🖼️</div><div><div class="name">视觉设计</div><div class="role">设计师</div></div></div>
+      <div class="head"><div class="avatar" style="background:#FCE7F3">🖼️</div><div><div class="name">视觉设计</div><div class="role">设计师</div></div></div>
       <div class="duty">封面图生成（900×383）、配图制作、数据可视化（Y轴+网格+注脚）、PIL绘图、ImageGen</div>
       <div class="meta"><span class="chip model">glm-5v-turbo</span><span class="chip">新增</span><span class="chip">按需</span></div>
     </div>
@@ -391,57 +391,57 @@ tr:hover td{background:var(--blue-bg)}
     <svg viewBox="0 0 900 280" width="100%" style="max-width:900px;display:block;margin:0 auto">
       <!-- 阶段节点 -->
       <g>
-        <rect x="10" y="100" width="100" height="60" rx="8" fill="***REMOVED***056DE8"/>
-        <text x="60" y="125" text-anchor="middle" fill="***REMOVED***fff" font-size="11" font-weight="700">S0 项目启动</text>
-        <text x="60" y="142" text-anchor="middle" fill="***REMOVED***fff" font-size="9" opacity="0.8">建群·拉人·2min</text>
+        <rect x="10" y="100" width="100" height="60" rx="8" fill="#056DE8"/>
+        <text x="60" y="125" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">S0 项目启动</text>
+        <text x="60" y="142" text-anchor="middle" fill="#fff" font-size="9" opacity="0.8">建群·拉人·2min</text>
       </g>
       <g>
-        <rect x="130" y="100" width="100" height="60" rx="8" fill="***REMOVED***056DE8"/>
-        <text x="180" y="125" text-anchor="middle" fill="***REMOVED***fff" font-size="11" font-weight="700">S1 选题确认</text>
-        <text x="180" y="142" text-anchor="middle" fill="***REMOVED***fff" font-size="9" opacity="0.8">并行·10min</text>
+        <rect x="130" y="100" width="100" height="60" rx="8" fill="#056DE8"/>
+        <text x="180" y="125" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">S1 选题确认</text>
+        <text x="180" y="142" text-anchor="middle" fill="#fff" font-size="9" opacity="0.8">并行·10min</text>
       </g>
       <g>
-        <rect x="250" y="100" width="100" height="60" rx="8" fill="***REMOVED***056DE8"/>
-        <text x="300" y="125" text-anchor="middle" fill="***REMOVED***fff" font-size="11" font-weight="700">S2 并行创作</text>
-        <text x="300" y="142" text-anchor="middle" fill="***REMOVED***fff" font-size="9" opacity="0.8">3路并行·30-60min</text>
+        <rect x="250" y="100" width="100" height="60" rx="8" fill="#056DE8"/>
+        <text x="300" y="125" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">S2 并行创作</text>
+        <text x="300" y="142" text-anchor="middle" fill="#fff" font-size="9" opacity="0.8">3路并行·30-60min</text>
       </g>
       <g>
-        <rect x="370" y="100" width="100" height="60" rx="8" fill="***REMOVED***056DE8"/>
-        <text x="420" y="125" text-anchor="middle" fill="***REMOVED***fff" font-size="11" font-weight="700">S3 汇总初稿</text>
-        <text x="420" y="142" text-anchor="middle" fill="***REMOVED***fff" font-size="9" opacity="0.8">主编·5min</text>
+        <rect x="370" y="100" width="100" height="60" rx="8" fill="#056DE8"/>
+        <text x="420" y="125" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">S3 汇总初稿</text>
+        <text x="420" y="142" text-anchor="middle" fill="#fff" font-size="9" opacity="0.8">主编·5min</text>
       </g>
       <g>
-        <rect x="490" y="100" width="100" height="60" rx="8" fill="***REMOVED***056DE8"/>
-        <text x="540" y="125" text-anchor="middle" fill="***REMOVED***fff" font-size="11" font-weight="700">S4 并行审查</text>
-        <text x="540" y="142" text-anchor="middle" fill="***REMOVED***fff" font-size="9" opacity="0.8">合规+SEO·15min</text>
+        <rect x="490" y="100" width="100" height="60" rx="8" fill="#056DE8"/>
+        <text x="540" y="125" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">S4 并行审查</text>
+        <text x="540" y="142" text-anchor="middle" fill="#fff" font-size="9" opacity="0.8">合规+SEO·15min</text>
       </g>
       <g>
-        <rect x="610" y="100" width="100" height="60" rx="8" fill="***REMOVED***056DE8"/>
-        <text x="660" y="125" text-anchor="middle" fill="***REMOVED***fff" font-size="11" font-weight="700">S5 排版</text>
-        <text x="660" y="142" text-anchor="middle" fill="***REMOVED***fff" font-size="9" opacity="0.8">渲染·10min</text>
+        <rect x="610" y="100" width="100" height="60" rx="8" fill="#056DE8"/>
+        <text x="660" y="125" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">S5 排版</text>
+        <text x="660" y="142" text-anchor="middle" fill="#fff" font-size="9" opacity="0.8">渲染·10min</text>
       </g>
       <g>
-        <rect x="730" y="100" width="100" height="60" rx="8" fill="***REMOVED***056DE8"/>
-        <text x="780" y="125" text-anchor="middle" fill="***REMOVED***fff" font-size="11" font-weight="700">S6 交付归档</text>
-        <text x="780" y="142" text-anchor="middle" fill="***REMOVED***fff" font-size="9" opacity="0.8">@用户·5min</text>
+        <rect x="730" y="100" width="100" height="60" rx="8" fill="#056DE8"/>
+        <text x="780" y="125" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">S6 交付归档</text>
+        <text x="780" y="142" text-anchor="middle" fill="#fff" font-size="9" opacity="0.8">@用户·5min</text>
       </g>
       <!-- 箭头 -->
-      <g stroke="***REMOVED***056DE8" stroke-width="2" fill="none" marker-end="url(***REMOVED***arrow)">
+      <g stroke="#056DE8" stroke-width="2" fill="none" marker-end="url(#arrow)">
         <line x1="110" y1="130" x2="128" y2="130"/><line x1="230" y1="130" x2="248" y2="130"/>
         <line x1="350" y1="130" x2="368" y2="130"/><line x1="470" y1="130" x2="488" y2="130"/>
         <line x1="590" y1="130" x2="608" y2="130"/><line x1="710" y1="130" x2="728" y2="130"/>
       </g>
-      <defs><marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="***REMOVED***056DE8"/></marker></defs>
+      <defs><marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#056DE8"/></marker></defs>
       <!-- 门禁 -->
       <g>
-        <rect x="155" y="180" width="50" height="24" rx="4" fill="***REMOVED***FEF3C7"/><text x="180" y="196" text-anchor="middle" font-size="10" font-weight="700" fill="***REMOVED***92400E">G1</text>
-        <rect x="275" y="180" width="50" height="24" rx="4" fill="***REMOVED***FEF3C7"/><text x="300" y="196" text-anchor="middle" font-size="10" font-weight="700" fill="***REMOVED***92400E">G2</text>
-        <rect x="515" y="180" width="50" height="24" rx="4" fill="***REMOVED***FEF3C7"/><text x="540" y="196" text-anchor="middle" font-size="10" font-weight="700" fill="***REMOVED***92400E">G3/G4</text>
-        <rect x="635" y="180" width="50" height="24" rx="4" fill="***REMOVED***FEF3C7"/><text x="660" y="196" text-anchor="middle" font-size="10" font-weight="700" fill="***REMOVED***92400E">G5</text>
-        <rect x="755" y="180" width="50" height="24" rx="4" fill="***REMOVED***FEF3C7"/><text x="780" y="196" text-anchor="middle" font-size="10" font-weight="700" fill="***REMOVED***92400E">G6</text>
+        <rect x="155" y="180" width="50" height="24" rx="4" fill="#FEF3C7"/><text x="180" y="196" text-anchor="middle" font-size="10" font-weight="700" fill="#92400E">G1</text>
+        <rect x="275" y="180" width="50" height="24" rx="4" fill="#FEF3C7"/><text x="300" y="196" text-anchor="middle" font-size="10" font-weight="700" fill="#92400E">G2</text>
+        <rect x="515" y="180" width="50" height="24" rx="4" fill="#FEF3C7"/><text x="540" y="196" text-anchor="middle" font-size="10" font-weight="700" fill="#92400E">G3/G4</text>
+        <rect x="635" y="180" width="50" height="24" rx="4" fill="#FEF3C7"/><text x="660" y="196" text-anchor="middle" font-size="10" font-weight="700" fill="#92400E">G5</text>
+        <rect x="755" y="180" width="50" height="24" rx="4" fill="#FEF3C7"/><text x="780" y="196" text-anchor="middle" font-size="10" font-weight="700" fill="#92400E">G6</text>
       </g>
       <!-- 门禁说明 -->
-      <g font-size="9" fill="***REMOVED***6B7C93">
+      <g font-size="9" fill="#6B7C93">
         <text x="180" y="220" text-anchor="middle">选题门禁</text>
         <text x="300" y="220" text-anchor="middle">事实门禁</text>
         <text x="540" y="220" text-anchor="middle">合规/SEO门禁</text>
@@ -450,46 +450,46 @@ tr:hover td{background:var(--blue-bg)}
       </g>
       <!-- 并行标注 -->
       <g>
-        <rect x="250" y="40" width="100" height="20" rx="4" fill="***REMOVED***D1FAE5"/><text x="300" y="54" text-anchor="middle" font-size="9" font-weight="600" fill="***REMOVED***065F46">⚡ 3路并行</text>
-        <rect x="490" y="40" width="100" height="20" rx="4" fill="***REMOVED***D1FAE5"/><text x="540" y="54" text-anchor="middle" font-size="9" font-weight="600" fill="***REMOVED***065F46">⚡ 2路并行</text>
-        <text x="420" y="80" text-anchor="middle" font-size="11" font-weight="700" fill="***REMOVED***056DE8">并行编排加速比 40-50% · 传统150-180min → 并行90min</text>
+        <rect x="250" y="40" width="100" height="20" rx="4" fill="#D1FAE5"/><text x="300" y="54" text-anchor="middle" font-size="9" font-weight="600" fill="#065F46">⚡ 3路并行</text>
+        <rect x="490" y="40" width="100" height="20" rx="4" fill="#D1FAE5"/><text x="540" y="54" text-anchor="middle" font-size="9" font-weight="600" fill="#065F46">⚡ 2路并行</text>
+        <text x="420" y="80" text-anchor="middle" font-size="11" font-weight="700" fill="#056DE8">并行编排加速比 40-50% · 传统150-180min → 并行90min</text>
       </g>
     </svg>
   </div>
 
   <!-- 6条工作流清单 -->
   <div class="wf-grid">
-    <div class="wf-card" style="border-left-color:***REMOVED***056DE8">
+    <div class="wf-card" style="border-left-color:#056DE8">
       <div class="wf-id">wf-content-produce</div>
       <div class="wf-name">📝 内容生产</div>
       <div class="wf-desc">选题→成稿→排版→门禁→交付，7阶段6门禁，主编+创作+调研+视觉+合规+SEO+排版</div>
       <div class="wf-meta"><span>按需触发</span><span>7 Agent</span></div>
     </div>
-    <div class="wf-card" style="border-left-color:***REMOVED***10B981">
+    <div class="wf-card" style="border-left-color:#10B981">
       <div class="wf-id">wf-publish-dispatch</div>
       <div class="wf-name">📡 发布分发</div>
       <div class="wf-desc">门禁通过→多平台差异化版本→定时发布→链接回填→触发站点同步，禁通稿</div>
       <div class="wf-meta"><span>按需/定时</span><span>3 Agent</span></div>
     </div>
-    <div class="wf-card" style="border-left-color:***REMOVED***8B5CF6">
+    <div class="wf-card" style="border-left-color:#8B5CF6">
       <div class="wf-id">wf-open-source-release</div>
       <div class="wf-name">🐙 开源发布</div>
       <div class="wf-desc">项目整理→去敏检查→README优化→GitHub Release→解读文章→多平台引流→站点同步</div>
       <div class="wf-meta"><span>按需触发</span><span>5 Agent</span></div>
     </div>
-    <div class="wf-card" style="border-left-color:***REMOVED***06B6D4">
+    <div class="wf-card" style="border-left-color:#06B6D4">
       <div class="wf-id">wf-site-sync</div>
       <div class="wf-name">🌐 站点同步</div>
       <div class="wf-desc">新文章/项目发布→名片页更新→作品集站更新→GitHub Profile更新→品牌一致性检查</div>
       <div class="wf-meta"><span>事件驱动</span><span>2 Agent</span></div>
     </div>
-    <div class="wf-card" style="border-left-color:***REMOVED***F59E0B">
+    <div class="wf-card" style="border-left-color:#F59E0B">
       <div class="wf-id">wf-ingest-daily</div>
       <div class="wf-name">📥 每日摄取</div>
       <div class="wf-desc">每日凌晨02:00 cron→扫描会话/项目→素材卡生成→入库→早间素材简报推送</div>
       <div class="wf-meta"><span>每日定时</span><span>1 Agent</span></div>
     </div>
-    <div class="wf-card" style="border-left-color:***REMOVED***EC4899">
+    <div class="wf-card" style="border-left-color:#EC4899">
       <div class="wf-id">wf-review-weekly</div>
       <div class="wf-name">📊 每周复盘</div>
       <div class="wf-desc">每周日20:00 cron→数据采集→效果评估→高阅读提炼→低阅读分析→反哺选题池→周报</div>
@@ -507,41 +507,41 @@ tr:hover td{background:var(--blue-bg)}
     <h4>🗺️ 四阶段落地时间线</h4>
     <svg viewBox="0 0 900 200" width="100%" style="max-width:900px;display:block;margin:0 auto">
       <!-- 主轴 -->
-      <line x1="60" y1="100" x2="840" y2="100" stroke="***REMOVED***E1E8F0" stroke-width="4"/>
+      <line x1="60" y1="100" x2="840" y2="100" stroke="#E1E8F0" stroke-width="4"/>
       <!-- Phase节点 -->
       <g>
-        <circle cx="120" cy="100" r="28" fill="***REMOVED***056DE8"/><text x="120" y="105" text-anchor="middle" fill="***REMOVED***fff" font-size="12" font-weight="700">P1</text>
-        <text x="120" y="60" text-anchor="middle" font-size="13" font-weight="700" fill="***REMOVED***1A2332">飞书基建+台账</text>
-        <text x="120" y="76" text-anchor="middle" font-size="10" fill="***REMOVED***6B7C93">1周 · 可立即启动</text>
-        <text x="120" y="145" text-anchor="middle" font-size="10" fill="***REMOVED***6B7C93">CLI·6张表·Wiki</text>
-        <text x="120" y="158" text-anchor="middle" font-size="10" fill="***REMOVED***6B7C93">云盘·名片页·日报</text>
+        <circle cx="120" cy="100" r="28" fill="#056DE8"/><text x="120" y="105" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">P1</text>
+        <text x="120" y="60" text-anchor="middle" font-size="13" font-weight="700" fill="#1A2332">飞书基建+台账</text>
+        <text x="120" y="76" text-anchor="middle" font-size="10" fill="#6B7C93">1周 · 可立即启动</text>
+        <text x="120" y="145" text-anchor="middle" font-size="10" fill="#6B7C93">CLI·6张表·Wiki</text>
+        <text x="120" y="158" text-anchor="middle" font-size="10" fill="#6B7C93">云盘·名片页·日报</text>
       </g>
       <g>
-        <circle cx="330" cy="100" r="28" fill="***REMOVED***056DE8"/><text x="330" y="105" text-anchor="middle" fill="***REMOVED***fff" font-size="12" font-weight="700">P2</text>
-        <text x="330" y="60" text-anchor="middle" font-size="13" font-weight="700" fill="***REMOVED***1A2332">单Agent跑通</text>
-        <text x="330" y="76" text-anchor="middle" font-size="10" fill="***REMOVED***6B7C93">2周 · 端到端验证</text>
-        <text x="330" y="145" text-anchor="middle" font-size="10" fill="***REMOVED***6B7C93">4核心Agent·工作流</text>
-        <text x="330" y="158" text-anchor="middle" font-size="10" fill="***REMOVED***6B7C93">门禁自动化·A0验证</text>
+        <circle cx="330" cy="100" r="28" fill="#056DE8"/><text x="330" y="105" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">P2</text>
+        <text x="330" y="60" text-anchor="middle" font-size="13" font-weight="700" fill="#1A2332">单Agent跑通</text>
+        <text x="330" y="76" text-anchor="middle" font-size="10" fill="#6B7C93">2周 · 端到端验证</text>
+        <text x="330" y="145" text-anchor="middle" font-size="10" fill="#6B7C93">4核心Agent·工作流</text>
+        <text x="330" y="158" text-anchor="middle" font-size="10" fill="#6B7C93">门禁自动化·A0验证</text>
       </g>
       <g>
-        <circle cx="540" cy="100" r="28" fill="***REMOVED***056DE8"/><text x="540" y="105" text-anchor="middle" fill="***REMOVED***fff" font-size="12" font-weight="700">P3</text>
-        <text x="540" y="60" text-anchor="middle" font-size="13" font-weight="700" fill="***REMOVED***1A2332">多Agent并行</text>
-        <text x="540" y="76" text-anchor="middle" font-size="10" fill="***REMOVED***6B7C93">2周 · MCN级团队</text>
-        <text x="540" y="145" text-anchor="middle" font-size="10" fill="***REMOVED***6B7C93">10Agent·6工作流</text>
-        <text x="540" y="158" text-anchor="middle" font-size="10" fill="***REMOVED***6B7C93">每日/每周自动化</text>
+        <circle cx="540" cy="100" r="28" fill="#056DE8"/><text x="540" y="105" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">P3</text>
+        <text x="540" y="60" text-anchor="middle" font-size="13" font-weight="700" fill="#1A2332">多Agent并行</text>
+        <text x="540" y="76" text-anchor="middle" font-size="10" fill="#6B7C93">2周 · MCN级团队</text>
+        <text x="540" y="145" text-anchor="middle" font-size="10" fill="#6B7C93">10Agent·6工作流</text>
+        <text x="540" y="158" text-anchor="middle" font-size="10" fill="#6B7C93">每日/每周自动化</text>
       </g>
       <g>
-        <circle cx="780" cy="100" r="28" fill="***REMOVED***056DE8"/><text x="780" y="105" text-anchor="middle" fill="***REMOVED***fff" font-size="12" font-weight="700">P4</text>
-        <text x="780" y="60" text-anchor="middle" font-size="13" font-weight="700" fill="***REMOVED***1A2332">全自动+动态扩缩</text>
-        <text x="780" y="76" text-anchor="middle" font-size="10" fill="***REMOVED***6B7C93">持续 · 究极状态</text>
-        <text x="780" y="145" text-anchor="middle" font-size="10" fill="***REMOVED***6B7C93">动态建群·事件驱动</text>
-        <text x="780" y="158" text-anchor="middle" font-size="10" fill="***REMOVED***6B7C93">自我优化·一人公司</text>
+        <circle cx="780" cy="100" r="28" fill="#056DE8"/><text x="780" y="105" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">P4</text>
+        <text x="780" y="60" text-anchor="middle" font-size="13" font-weight="700" fill="#1A2332">全自动+动态扩缩</text>
+        <text x="780" y="76" text-anchor="middle" font-size="10" fill="#6B7C93">持续 · 究极状态</text>
+        <text x="780" y="145" text-anchor="middle" font-size="10" fill="#6B7C93">动态建群·事件驱动</text>
+        <text x="780" y="158" text-anchor="middle" font-size="10" fill="#6B7C93">自我优化·一人公司</text>
       </g>
       <!-- 进度标注 -->
-      <rect x="60" y="175" width="120" height="20" rx="4" fill="***REMOVED***D1FAE5"/><text x="120" y="189" text-anchor="middle" font-size="10" font-weight="600" fill="***REMOVED***065F46">✅ 可立即启动</text>
-      <rect x="270" y="175" width="120" height="20" rx="4" fill="***REMOVED***FEF3C7"/><text x="330" y="189" text-anchor="middle" font-size="10" font-weight="600" fill="***REMOVED***92400E">⏳ 依赖P1</text>
-      <rect x="480" y="175" width="120" height="20" rx="4" fill="***REMOVED***FEF3C7"/><text x="540" y="189" text-anchor="middle" font-size="10" font-weight="600" fill="***REMOVED***92400E">⏳ 依赖P2</text>
-      <rect x="720" y="175" width="120" height="20" rx="4" fill="***REMOVED***FEE2E2"/><text x="780" y="189" text-anchor="middle" font-size="10" font-weight="600" fill="***REMOVED***991B1B">🔮 远期目标</text>
+      <rect x="60" y="175" width="120" height="20" rx="4" fill="#D1FAE5"/><text x="120" y="189" text-anchor="middle" font-size="10" font-weight="600" fill="#065F46">✅ 可立即启动</text>
+      <rect x="270" y="175" width="120" height="20" rx="4" fill="#FEF3C7"/><text x="330" y="189" text-anchor="middle" font-size="10" font-weight="600" fill="#92400E">⏳ 依赖P1</text>
+      <rect x="480" y="175" width="120" height="20" rx="4" fill="#FEF3C7"/><text x="540" y="189" text-anchor="middle" font-size="10" font-weight="600" fill="#92400E">⏳ 依赖P2</text>
+      <rect x="720" y="175" width="120" height="20" rx="4" fill="#FEE2E2"/><text x="780" y="189" text-anchor="middle" font-size="10" font-weight="600" fill="#991B1B">🔮 远期目标</text>
     </svg>
   </div>
 
@@ -564,31 +564,31 @@ tr:hover td{background:var(--blue-bg)}
       <h4>🏛️ 本地+飞书双层架构</h4>
       <svg viewBox="0 0 380 280" width="100%">
         <!-- 飞书层 -->
-        <rect x="20" y="10" width="340" height="110" rx="10" fill="***REMOVED***E8F1FD" stroke="***REMOVED***056DE8" stroke-width="1.5"/>
-        <text x="190" y="32" text-anchor="middle" font-size="12" font-weight="700" fill="***REMOVED***056DE8">☁️ 飞书云端（协作+展示层）</text>
-        <g font-size="10" fill="***REMOVED***1A2332">
-          <rect x="35" y="42" width="70" height="28" rx="5" fill="***REMOVED***fff"/><text x="70" y="60" text-anchor="middle">群聊+卡片</text>
-          <rect x="115" y="42" width="70" height="28" rx="5" fill="***REMOVED***fff"/><text x="150" y="60" text-anchor="middle">多维表格</text>
-          <rect x="195" y="42" width="70" height="28" rx="5" fill="***REMOVED***fff"/><text x="230" y="60" text-anchor="middle">文档+Wiki</text>
-          <rect x="275" y="42" width="70" height="28" rx="5" fill="***REMOVED***fff"/><text x="310" y="60" text-anchor="middle">云盘</text>
-          <rect x="70" y="78" width="100" height="28" rx="5" fill="***REMOVED***fff"/><text x="120" y="96" text-anchor="middle">Agent机器人×10</text>
-          <rect x="190" y="78" width="100" height="28" rx="5" fill="***REMOVED***fff"/><text x="240" y="96" text-anchor="middle">长连接回调</text>
+        <rect x="20" y="10" width="340" height="110" rx="10" fill="#E8F1FD" stroke="#056DE8" stroke-width="1.5"/>
+        <text x="190" y="32" text-anchor="middle" font-size="12" font-weight="700" fill="#056DE8">☁️ 飞书云端（协作+展示层）</text>
+        <g font-size="10" fill="#1A2332">
+          <rect x="35" y="42" width="70" height="28" rx="5" fill="#fff"/><text x="70" y="60" text-anchor="middle">群聊+卡片</text>
+          <rect x="115" y="42" width="70" height="28" rx="5" fill="#fff"/><text x="150" y="60" text-anchor="middle">多维表格</text>
+          <rect x="195" y="42" width="70" height="28" rx="5" fill="#fff"/><text x="230" y="60" text-anchor="middle">文档+Wiki</text>
+          <rect x="275" y="42" width="70" height="28" rx="5" fill="#fff"/><text x="310" y="60" text-anchor="middle">云盘</text>
+          <rect x="70" y="78" width="100" height="28" rx="5" fill="#fff"/><text x="120" y="96" text-anchor="middle">Agent机器人×10</text>
+          <rect x="190" y="78" width="100" height="28" rx="5" fill="#fff"/><text x="240" y="96" text-anchor="middle">长连接回调</text>
         </g>
         <!-- 同步箭头 -->
-        <g stroke="***REMOVED***056DE8" stroke-width="2" fill="none" stroke-dasharray="4,3">
+        <g stroke="#056DE8" stroke-width="2" fill="none" stroke-dasharray="4,3">
           <line x1="100" y1="125" x2="100" y2="155"/><line x1="280" y1="125" x2="280" y2="155"/>
         </g>
-        <text x="190" y="146" text-anchor="middle" font-size="10" fill="***REMOVED***056DE8" font-weight="600">双向同步 · 本地为真相源</text>
+        <text x="190" y="146" text-anchor="middle" font-size="10" fill="#056DE8" font-weight="600">双向同步 · 本地为真相源</text>
         <!-- 本地层 -->
-        <rect x="20" y="160" width="340" height="110" rx="10" fill="***REMOVED***F0F3F7" stroke="***REMOVED***6B7C93" stroke-width="1.5"/>
-        <text x="190" y="182" text-anchor="middle" font-size="12" font-weight="700" fill="***REMOVED***2C3E50">💻 本地（真相源+Raw素材层）</text>
-        <g font-size="10" fill="***REMOVED***1A2332">
-          <rect x="35" y="192" width="70" height="28" rx="5" fill="***REMOVED***fff"/><text x="70" y="210" text-anchor="middle">Obsidian</text>
-          <rect x="115" y="192" width="70" height="28" rx="5" fill="***REMOVED***fff"/><text x="150" y="210" text-anchor="middle">WorkBuddy</text>
-          <rect x="195" y="192" width="70" height="28" rx="5" fill="***REMOVED***fff"/><text x="230" y="210" text-anchor="middle">素材库1125</text>
-          <rect x="275" y="192" width="70" height="28" rx="5" fill="***REMOVED***fff"/><text x="310" y="210" text-anchor="middle">会话历史</text>
-          <rect x="70" y="228" width="100" height="28" rx="5" fill="***REMOVED***fff"/><text x="120" y="246" text-anchor="middle">工具脚本+CC Agent</text>
-          <rect x="190" y="228" width="100" height="28" rx="5" fill="***REMOVED***fff"/><text x="240" y="246" text-anchor="middle">规则体系SAF/BUL</text>
+        <rect x="20" y="160" width="340" height="110" rx="10" fill="#F0F3F7" stroke="#6B7C93" stroke-width="1.5"/>
+        <text x="190" y="182" text-anchor="middle" font-size="12" font-weight="700" fill="#2C3E50">💻 本地（真相源+Raw素材层）</text>
+        <g font-size="10" fill="#1A2332">
+          <rect x="35" y="192" width="70" height="28" rx="5" fill="#fff"/><text x="70" y="210" text-anchor="middle">Obsidian</text>
+          <rect x="115" y="192" width="70" height="28" rx="5" fill="#fff"/><text x="150" y="210" text-anchor="middle">WorkBuddy</text>
+          <rect x="195" y="192" width="70" height="28" rx="5" fill="#fff"/><text x="230" y="210" text-anchor="middle">素材库1125</text>
+          <rect x="275" y="192" width="70" height="28" rx="5" fill="#fff"/><text x="310" y="210" text-anchor="middle">会话历史</text>
+          <rect x="70" y="228" width="100" height="28" rx="5" fill="#fff"/><text x="120" y="246" text-anchor="middle">工具脚本+CC Agent</text>
+          <rect x="190" y="228" width="100" height="28" rx="5" fill="#fff"/><text x="240" y="246" text-anchor="middle">规则体系SAF/BUL</text>
         </g>
       </svg>
     </div>
@@ -601,7 +601,7 @@ tr:hover td{background:var(--blue-bg)}
 
   <div class="site-grid">
     <div class="site-card">
-      <div class="site-head"><div class="site-icon" style="background:***REMOVED***F0F3F7">🌐</div><h4>GitHub Pages 名片页</h4></div>
+      <div class="site-head"><div class="site-icon" style="background:#F0F3F7">🌐</div><h4>GitHub Pages 名片页</h4></div>
       <div class="url">xingtu1996.github.io</div>
       <div class="status-row"><span class="k">定位</span><span class="v">精简个人名片（入口页）</span></div>
       <div class="status-row"><span class="k">当前状态</span><span class="v" style="color:var(--orange)">6.6KB 简单卡片</span></div>
@@ -610,7 +610,7 @@ tr:hover td{background:var(--blue-bg)}
       <div class="status-row"><span class="k">部署方式</span><span class="v">git push 自动部署</span></div>
     </div>
     <div class="site-card">
-      <div class="site-head"><div class="site-icon" style="background:***REMOVED***F3E8FF">⚡</div><h4>Cloudflare Pages 作品集</h4></div>
+      <div class="site-head"><div class="site-icon" style="background:#F3E8FF">⚡</div><h4>Cloudflare Pages 作品集</h4></div>
       <div class="url">xingtu1996.pages.dev</div>
       <div class="status-row"><span class="k">定位</span><span class="v">详细作品集+博客索引</span></div>
       <div class="status-row"><span class="k">当前状态</span><span class="v" style="color:var(--orange)">15KB 较详细单页</span></div>
@@ -619,7 +619,7 @@ tr:hover td{background:var(--blue-bg)}
       <div class="status-row"><span class="k">部署方式</span><span class="v">deploy.sh 手动部署</span></div>
     </div>
     <div class="site-card">
-      <div class="site-head"><div class="site-icon" style="background:***REMOVED***E8F1FD">🐙</div><h4>GitHub Profile</h4></div>
+      <div class="site-head"><div class="site-icon" style="background:#E8F1FD">🐙</div><h4>GitHub Profile</h4></div>
       <div class="url">github.com/xingtu1996</div>
       <div class="status-row"><span class="k">定位</span><span class="v">Profile README + 精选仓库</span></div>
       <div class="status-row"><span class="k">当前状态</span><span class="v" style="color:var(--red)">待优化</span></div>
@@ -640,9 +640,9 @@ tr:hover td{background:var(--blue-bg)}
         </div>
         <p style="font-size:12.5px;color:var(--gray);margin-bottom:10px">Token 消耗基准测试工具集，多模型/多场景对比，为省Token专题提供数据支撑</p>
         <div style="display:flex;gap:6px;flex-wrap:wrap">
-          <span class="chip" style="font-size:11px;padding:2px 8px;border-radius:6px;background:***REMOVED***fff;color:var(--gray)">MIT</span>
-          <span class="chip" style="font-size:11px;padding:2px 8px;border-radius:6px;background:***REMOVED***fff;color:var(--gray)">Python</span>
-          <span class="chip" style="font-size:11px;padding:2px 8px;border-radius:6px;background:***REMOVED***fff;color:var(--gray)">去敏独立包</span>
+          <span class="chip" style="font-size:11px;padding:2px 8px;border-radius:6px;background:#fff;color:var(--gray)">MIT</span>
+          <span class="chip" style="font-size:11px;padding:2px 8px;border-radius:6px;background:#fff;color:var(--gray)">Python</span>
+          <span class="chip" style="font-size:11px;padding:2px 8px;border-radius:6px;background:#fff;color:var(--gray)">去敏独立包</span>
         </div>
       </div>
       <div style="margin-top:12px;padding:12px;border-radius:8px;background:var(--gray-light);font-size:12px;color:var(--gray)">

@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>行途个人站 从0到1 白盒教程（可视化）｜2026-08-19 实录</title>
 <style>
-  :root{--bg:***REMOVED***f7f8fb;--card:***REMOVED***fff;--line:***REMOVED***e3e6ef;--txt:***REMOVED***1a2333;--muted:***REMOVED***5b6b83;
-        --brand:***REMOVED***4f46e5;--brand2:***REMOVED***7c6cf0;--accent:***REMOVED***d97706;--ok:***REMOVED***059669;--warn:***REMOVED***dc2626;}
+  :root{--bg:#f7f8fb;--card:#fff;--line:#e3e6ef;--txt:#1a2333;--muted:#5b6b83;
+        --brand:#4f46e5;--brand2:#7c6cf0;--accent:#d97706;--ok:#059669;--warn:#dc2626;}
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
        background:var(--bg);color:var(--txt);line-height:1.7;padding:28px 14px}
@@ -15,30 +15,30 @@
   .meta{color:var(--muted);font-size:13px;margin:8px 0 22px}
   h2{font-size:18px;margin:34px 0 10px;padding-left:10px;border-left:4px solid var(--brand)}
   h3{font-size:15px;margin:16px 0 6px}
-  p,li{font-size:14px;color:***REMOVED***2a3648}
+  p,li{font-size:14px;color:#2a3648}
   table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;background:var(--card)}
   th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
-  th{background:***REMOVED***eef0f8;font-weight:600}
-  code{background:***REMOVED***eef0f8;border-radius:5px;padding:1px 6px;font-size:12.5px;color:***REMOVED***4338ca}
-  pre{background:***REMOVED***0f1220;color:***REMOVED***d5dcf2;border-radius:10px;padding:12px 14px;font-size:12.5px;
+  th{background:#eef0f8;font-weight:600}
+  code{background:#eef0f8;border-radius:5px;padding:1px 6px;font-size:12.5px;color:#4338ca}
+  pre{background:#0f1220;color:#d5dcf2;border-radius:10px;padding:12px 14px;font-size:12.5px;
       overflow-x:auto;margin:8px 0;line-height:1.55}
   pre code{background:none;color:inherit;padding:0}
   .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:10px 0}
   .stage{border:1px solid var(--line);border-radius:12px;margin:14px 0;overflow:hidden;background:var(--card)}
-  .stage>.head{background:***REMOVED***eef0f8;padding:9px 16px;font-weight:700;font-size:14px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .stage>.head{background:#eef0f8;padding:9px 16px;font-weight:700;font-size:14px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
   .stage>.body{padding:14px 16px}
-  .num{display:inline-flex;width:22px;height:22px;border-radius:50%;background:var(--brand);color:***REMOVED***fff;align-items:center;justify-content:center;font-size:12px;flex-shrink:0}
-  .chip{display:inline-block;font-size:11.5px;padding:2px 9px;border-radius:999px;margin:2px 4px 2px 0;background:***REMOVED***eae9fd;color:var(--brand)}
-  .chip.g{background:***REMOVED***e7f6ef;color:var(--ok)} .chip.o{background:***REMOVED***fdf0e0;color:var(--accent)} .chip.r{background:***REMOVED***fdeaea;color:var(--warn)}
+  .num{display:inline-flex;width:22px;height:22px;border-radius:50%;background:var(--brand);color:#fff;align-items:center;justify-content:center;font-size:12px;flex-shrink:0}
+  .chip{display:inline-block;font-size:11.5px;padding:2px 9px;border-radius:999px;margin:2px 4px 2px 0;background:#eae9fd;color:var(--brand)}
+  .chip.g{background:#e7f6ef;color:var(--ok)} .chip.o{background:#fdf0e0;color:var(--accent)} .chip.r{background:#fdeaea;color:var(--warn)}
   .kv{display:grid;grid-template-columns:90px 1fr;gap:4px 12px;font-size:13px;margin:6px 0}
   .kv b{color:var(--muted);font-weight:600}
   .flow{width:100%;overflow-x:auto}
   .foot{margin-top:34px;color:var(--muted);font-size:12.5px;border-top:1px solid var(--line);padding-top:12px}
-  .bb{background:***REMOVED***fffdf5;border:1px solid ***REMOVED***f0e0b8;border-radius:8px;padding:10px 12px;font-size:13px;margin:8px 0}
+  .bb{background:#fffdf5;border:1px solid #f0e0b8;border-radius:8px;padding:10px 12px;font-size:13px;margin:8px 0}
   .bb b{color:var(--accent)}
 </style>
 </head>
-<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:***REMOVED***056DE8;color:***REMOVED***fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:***REMOVED***fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
 <div class="wrap">
   <h1>行途个人站 · 从 0 到 1 白盒教程</h1>
   <div class="meta">2026-08-19 实录 ｜ 全程 3 小时 ｜ 目标：<code>https://xingtu1996.pages.dev</code> 上线 + 知识库 Git 化 + GitHub 品牌统一 ｜ 原则：不黑盒，每一步的工具 / 命令 / 提示词 / 原理全部摊开</div>
@@ -49,30 +49,30 @@
       <svg viewBox="0 0 920 150" width="100%" style="min-width:860px">
         <defs>
           <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-            <path d="M0,0 L10,5 L0,10 z" fill="***REMOVED***4f46e5"/>
+            <path d="M0,0 L10,5 L0,10 z" fill="#4f46e5"/>
           </marker>
         </defs>
         <!-- nodes -->
         <g font-family="inherit" font-size="12" text-anchor="middle">
-          <rect x="10" y="30" width="100" height="56" rx="10" fill="***REMOVED***eae9fd" stroke="***REMOVED***4f46e5"/>
-          <text x="60" y="50" font-weight="700">①需求澄清</text><text x="60" y="68" fill="***REMOVED***5b6b83">AskUserQuestion</text>
-          <rect x="130" y="30" width="100" height="56" rx="10" fill="***REMOVED***eae9fd" stroke="***REMOVED***4f46e5"/>
-          <text x="180" y="50" font-weight="700">②域名调研</text><text x="180" y="68" fill="***REMOVED***5b6b83">Search/Fetch/whois</text>
-          <rect x="250" y="30" width="100" height="56" rx="10" fill="***REMOVED***eae9fd" stroke="***REMOVED***4f46e5"/>
-          <text x="300" y="50" font-weight="700">③决策1996</text><text x="300" y="68" fill="***REMOVED***5b6b83">RDAP实测</text>
-          <rect x="370" y="30" width="100" height="56" rx="10" fill="***REMOVED***eae9fd" stroke="***REMOVED***4f46e5"/>
-          <text x="420" y="50" font-weight="700">④建站MVP</text><text x="420" y="68" fill="***REMOVED***5b6b83">Write 单文件</text>
-          <rect x="490" y="30" width="100" height="56" rx="10" fill="***REMOVED***eae9fd" stroke="***REMOVED***4f46e5"/>
-          <text x="540" y="50" font-weight="700">⑤GitHub改名</text><text x="540" y="68" fill="***REMOVED***5b6b83">Settings/API</text>
-          <rect x="610" y="30" width="100" height="56" rx="10" fill="***REMOVED***eae9fd" stroke="***REMOVED***4f46e5"/>
-          <text x="660" y="50" font-weight="700">⑥授权推送</text><text x="660" y="68" fill="***REMOVED***5b6b83">gh + SSH</text>
-          <rect x="730" y="30" width="100" height="56" rx="10" fill="***REMOVED***eae9fd" stroke="***REMOVED***4f46e5"/>
-          <text x="780" y="50" font-weight="700">⑦CF部署</text><text x="780" y="68" fill="***REMOVED***5b6b83">wrangler/API</text>
-          <rect x="850" y="30" width="60" height="56" rx="10" fill="***REMOVED***e7f6ef" stroke="***REMOVED***059669"/>
-          <text x="880" y="50" font-weight="700">⑧上线</text><text x="880" y="68" fill="***REMOVED***059669">pages.dev</text>
+          <rect x="10" y="30" width="100" height="56" rx="10" fill="#eae9fd" stroke="#4f46e5"/>
+          <text x="60" y="50" font-weight="700">①需求澄清</text><text x="60" y="68" fill="#5b6b83">AskUserQuestion</text>
+          <rect x="130" y="30" width="100" height="56" rx="10" fill="#eae9fd" stroke="#4f46e5"/>
+          <text x="180" y="50" font-weight="700">②域名调研</text><text x="180" y="68" fill="#5b6b83">Search/Fetch/whois</text>
+          <rect x="250" y="30" width="100" height="56" rx="10" fill="#eae9fd" stroke="#4f46e5"/>
+          <text x="300" y="50" font-weight="700">③决策1996</text><text x="300" y="68" fill="#5b6b83">RDAP实测</text>
+          <rect x="370" y="30" width="100" height="56" rx="10" fill="#eae9fd" stroke="#4f46e5"/>
+          <text x="420" y="50" font-weight="700">④建站MVP</text><text x="420" y="68" fill="#5b6b83">Write 单文件</text>
+          <rect x="490" y="30" width="100" height="56" rx="10" fill="#eae9fd" stroke="#4f46e5"/>
+          <text x="540" y="50" font-weight="700">⑤GitHub改名</text><text x="540" y="68" fill="#5b6b83">Settings/API</text>
+          <rect x="610" y="30" width="100" height="56" rx="10" fill="#eae9fd" stroke="#4f46e5"/>
+          <text x="660" y="50" font-weight="700">⑥授权推送</text><text x="660" y="68" fill="#5b6b83">gh + SSH</text>
+          <rect x="730" y="30" width="100" height="56" rx="10" fill="#eae9fd" stroke="#4f46e5"/>
+          <text x="780" y="50" font-weight="700">⑦CF部署</text><text x="780" y="68" fill="#5b6b83">wrangler/API</text>
+          <rect x="850" y="30" width="60" height="56" rx="10" fill="#e7f6ef" stroke="#059669"/>
+          <text x="880" y="50" font-weight="700">⑧上线</text><text x="880" y="68" fill="#059669">pages.dev</text>
         </g>
         <!-- arrows -->
-        <g stroke="***REMOVED***4f46e5" stroke-width="2" marker-end="url(***REMOVED***ar)">
+        <g stroke="#4f46e5" stroke-width="2" marker-end="url(#ar)">
           <line x1="110" y1="58" x2="126" y2="58"/>
           <line x1="230" y1="58" x2="246" y2="58"/>
           <line x1="350" y1="58" x2="366" y2="58"/>
@@ -82,7 +82,7 @@
           <line x1="830" y1="58" x2="846" y2="58"/>
         </g>
         <!-- timeline -->
-        <g font-size="11" fill="***REMOVED***5b6b83" text-anchor="middle">
+        <g font-size="11" fill="#5b6b83" text-anchor="middle">
           <text x="60" y="120">11:15</text><text x="180" y="120">11:30</text><text x="300" y="120">11:50</text>
           <text x="420" y="120">12:00</text><text x="540" y="120">13:21</text><text x="660" y="120">14:33</text>
           <text x="780" y="120">14:46</text><text x="880" y="120">14:46</text>
@@ -111,9 +111,9 @@
       <div class="kv"><b>AI 工具</b><span><span class="chip">WebSearch</span>×3 并行（续费价/实名范围/隐私保护）＋<span class="chip">WebFetch</span>（抓 xingtu.com/.cn 身份）＋<span class="chip">Bash whois</span>（批量查占用）</span></div>
       <div class="kv"><b>skill</b><span>无（纯 Web + 终端）</span></div>
       <div class="kv"><b>关键命令</b><span>
-<pre><code>whois -h whois.nic.google xingtu.dev        ***REMOVED*** 查 Google 系后缀
-whois xingtu1996.com                          ***REMOVED*** 查 .com
-curl -s https://rdap.nic.google/domain/xingtu.dev   ***REMOVED*** RDAP 标准接口</code></pre></span></div>
+<pre><code>whois -h whois.nic.google xingtu.dev        # 查 Google 系后缀
+whois xingtu1996.com                          # 查 .com
+curl -s https://rdap.nic.google/domain/xingtu.dev   # RDAP 标准接口</code></pre></span></div>
       <div class="kv"><b>关键发现</b><span>xingtu.com=兴图新科；xingtu.cn=字节巨量星图；拼音 xingtu 撞 兴图/星途/星图 → 高度拥挤</span></div>
       <div class="bb"><b>白盒点：</b>whois 是注册局的真实数据库，不是注册商「建议页」（Spaceship 那页全是溢价 upsell）；RDAP 是 ICANN 标准 HTTP 接口，whois 服务器不通时的替代。</div>
     </div>
@@ -125,21 +125,21 @@ curl -s https://rdap.nic.google/domain/xingtu.dev   ***REMOVED*** RDAP 标准接
       <div class="flow">
         <svg viewBox="0 0 920 170" width="100%" style="min-width:840px">
           <g font-family="inherit" font-size="12" text-anchor="middle">
-            <rect x="370" y="8" width="180" height="40" rx="10" fill="***REMOVED***eae9fd" stroke="***REMOVED***4f46e5"/>
+            <rect x="370" y="8" width="180" height="40" rx="10" fill="#eae9fd" stroke="#4f46e5"/>
             <text x="460" y="32">候选词根 xingtu/thinkgame/…</text>
-            <rect x="360" y="70" width="200" height="40" rx="10" fill="***REMOVED***fff" stroke="***REMOVED***5b6b83"/>
+            <rect x="360" y="70" width="200" height="40" rx="10" fill="#fff" stroke="#5b6b83"/>
             <text x="460" y="94">所有「根」域名都被大厂/米农占？</text>
-            <rect x="110" y="70" width="180" height="40" rx="10" fill="***REMOVED***fdeaea" stroke="***REMOVED***dc2626"/>
+            <rect x="110" y="70" width="180" height="40" rx="10" fill="#fdeaea" stroke="#dc2626"/>
             <text x="200" y="86" font-weight="700">是 → 纯 xingtu 不能直接用</text>
-            <text x="200" y="102" fill="***REMOVED***5b6b83">撞名+法务风险（字节/兴图）</text>
-            <rect x="110" y="130" width="180" height="34" rx="10" fill="***REMOVED***e7f6ef" stroke="***REMOVED***059669"/>
+            <text x="200" y="102" fill="#5b6b83">撞名+法务风险（字节/兴图）</text>
+            <rect x="110" y="130" width="180" height="34" rx="10" fill="#e7f6ef" stroke="#059669"/>
             <text x="200" y="151">加 1996（出生年）绕开占用</text>
-            <rect x="380" y="130" width="180" height="34" rx="10" fill="***REMOVED***e7f6ef" stroke="***REMOVED***059669"/>
+            <rect x="380" y="130" width="180" height="34" rx="10" fill="#e7f6ef" stroke="#059669"/>
             <text x="470" y="151">0 元：pages.dev 先跑 MVP</text>
-            <rect x="650" y="130" width="200" height="34" rx="10" fill="***REMOVED***e7f6ef" stroke="***REMOVED***059669"/>
+            <rect x="650" y="130" width="200" height="34" rx="10" fill="#e7f6ef" stroke="#059669"/>
             <text x="750" y="151">真域名：xingtu1996.com/.cn</text>
           </g>
-          <g stroke="***REMOVED***5b6b83" stroke-width="1.5" marker-end="url(***REMOVED***ar)" fill="none">
+          <g stroke="#5b6b83" stroke-width="1.5" marker-end="url(#ar)" fill="none">
             <line x1="460" y1="48" x2="460" y2="66"/>
             <line x1="360" y1="90" x2="295" y2="90"/>
             <line x1="200" y1="110" x2="200" y2="126"/>
@@ -170,8 +170,8 @@ git remote add origin git@github.com:xingtu1996/xingtu-site.git</code></pre></sp
     <div class="body">
       <div class="kv"><b>AI 工具</b><span><span class="chip">WebFetch</span>（绕过缓存实测用户名）+ <span class="chip">Bash curl</span>（GitHub API 查创建时间）</span></div>
       <div class="kv"><b>关键命令</b><span>
-<pre><code>curl -s https://api.github.com/users/xingtu1996 | grep created_at   ***REMOVED*** 查账号年龄
-***REMOVED*** 改名：Settings → Account → Change username（官方规则：旧名立即释放）</code></pre></span></div>
+<pre><code>curl -s https://api.github.com/users/xingtu1996 | grep created_at   # 查账号年龄
+# 改名：Settings → Account → Change username（官方规则：旧名立即释放）</code></pre></span></div>
       <div class="kv"><b>白盒结论</b><span>改名已生效；旧主页永久 404 是官方行为；1996 = 时间戳资产（「出厂日期」），不进显示名</span></div>
     </div>
   </div>
@@ -181,12 +181,12 @@ git remote add origin git@github.com:xingtu1996/xingtu-site.git</code></pre></sp
     <div class="body">
       <div class="kv"><b>skill</b><span><span class="chip g">github</span>（gh CLI）+ <span class="chip">agent-browser</span>（登录表单，最终因沙箱限制由 boss 手动）</span></div>
       <div class="kv"><b>关键命令</b><span>
-<pre><code>***REMOVED*** 授权（走代理，因为直连 github.com 不通）
+<pre><code># 授权（走代理，因为直连 github.com 不通）
 HTTPS_PROXY=http://127.0.0.1:7897 gh auth login -h github.com
-echo 'github_pat_...' | gh auth login --with-token -h github.com   ***REMOVED*** 备选：PAT 方式
-GH_HOST=github.com gh repo create xingtu1996/xingtu-site --private   ***REMOVED*** 建仓（强制走 github.com）
-ssh -T git@github.com                                                ***REMOVED*** SSH 验证
-git push -u origin main                                              ***REMOVED*** 推送（SSH 走 443+代理）</code></pre></span></div>
+echo 'github_pat_...' | gh auth login --with-token -h github.com   # 备选：PAT 方式
+GH_HOST=github.com gh repo create xingtu1996/xingtu-site --private   # 建仓（强制走 github.com）
+ssh -T git@github.com                                                # SSH 验证
+git push -u origin main                                              # 推送（SSH 走 443+代理）</code></pre></span></div>
       <div class="kv"><b>坑</b><span>gh 默认走公司主机（github.cn-pgcloud.com）→ 必须 <code>GH_HOST=github.com</code>；设备流需 POST github.com → 直连超时 → 走代理或 PAT</span></div>
       <div class="bb"><b>白盒点：</b>这台机器「直连 github.com 不通、走 127.0.0.1:7897 代理通」（curl 实测 000 vs 200）；SSH 用 443 + ProxyCommand 已配好 → 推送走 SSH 最稳。</div>
     </div>
@@ -197,7 +197,7 @@ git push -u origin main                                              ***REMOVED*
     <div class="body">
       <div class="kv"><b>AI 工具</b><span><span class="chip">Bash curl</span>（验证 token / 建项目）+ <span class="chip">wrangler</span>（部署）</span></div>
       <div class="kv"><b>关键命令</b><span>
-<pre><code>curl "https://api.cloudflare.com/client/v4/user/tokens/verify" -H "Authorization: Bearer $CF_TOKEN"   ***REMOVED*** 验 token
+<pre><code>curl "https://api.cloudflare.com/client/v4/user/tokens/verify" -H "Authorization: Bearer $CF_TOKEN"   # 验 token
 ACCT_ID=$(curl -s "https://api.cloudflare.com/client/v4/accounts" -H "Authorization: Bearer $CF_TOKEN" | grep -oE '"id":"[a-f0-9]{32}"' | head -1 | cut -d'"' -f4)
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCT_ID/pages/projects" \
   -H "Authorization: Bearer $CF_TOKEN" -H "Content-Type: application/json" \
@@ -212,8 +212,8 @@ CLOUDFLARE_API_TOKEN=$CF_TOKEN npx -y wrangler pages deploy . --project-name=xin
     <div class="head"><span class="num">8</span>上线 + 验证</div>
     <div class="body">
       <div class="kv"><b>验证命令</b><span>
-<pre><code>curl -sI https://xingtu1996.pages.dev   ***REMOVED*** HTTP 200
-curl -s https://xingtu1996.pages.dev | head   ***REMOVED*** 返回真实首页内容</code></pre></span></div>
+<pre><code>curl -sI https://xingtu1996.pages.dev   # HTTP 200
+curl -s https://xingtu1996.pages.dev | head   # 返回真实首页内容</code></pre></span></div>
       <div class="kv"><b>结果</b><span>自动 HTTPS ✅ 免备案 ✅ 永久免费 ✅；源代码在私有仓库 xingtu1996/xingtu-site，后续 git push 可接自动部署</span></div>
     </div>
   </div>
@@ -255,28 +255,28 @@ curl -s https://xingtu1996.pages.dev | head   ***REMOVED*** 返回真实首页�
       <svg viewBox="0 0 920 150" width="100%" style="min-width:860px">
         <defs>
           <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-            <path d="M0,0 L10,5 L0,10 z" fill="***REMOVED***4f46e5"/>
+            <path d="M0,0 L10,5 L0,10 z" fill="#4f46e5"/>
           </marker>
         </defs>
         <g font-family="inherit" font-size="12" text-anchor="middle">
-          <rect x="40" y="40" width="150" height="60" rx="10" fill="***REMOVED***eae9fd" stroke="***REMOVED***4f46e5"/>
-          <text x="115" y="62" font-weight="700">本地文件</text><text x="115" y="82" fill="***REMOVED***5b6b83">index.html 等（整包）</text>
-          <rect x="260" y="40" width="170" height="60" rx="10" fill="***REMOVED***eae9fd" stroke="***REMOVED***4f46e5"/>
-          <text x="345" y="62" font-weight="700">wrangler API 上传</text><text x="345" y="82" fill="***REMOVED***5b6b83">生成不可变快照</text>
-          <rect x="500" y="40" width="170" height="60" rx="10" fill="***REMOVED***e7f6ef" stroke="***REMOVED***059669"/>
-          <text x="585" y="62" font-weight="700">production 指针</text><text x="585" y="82" fill="***REMOVED***059669">v1/v2/v3…旧版可回滚</text>
-          <rect x="740" y="40" width="140" height="60" rx="10" fill="***REMOVED***fdf0e0" stroke="***REMOVED***d97706"/>
-          <text x="810" y="62" font-weight="700">全球 CDN 边缘</text><text x="810" y="82" fill="***REMOVED***d97706">用户读 production</text>
+          <rect x="40" y="40" width="150" height="60" rx="10" fill="#eae9fd" stroke="#4f46e5"/>
+          <text x="115" y="62" font-weight="700">本地文件</text><text x="115" y="82" fill="#5b6b83">index.html 等（整包）</text>
+          <rect x="260" y="40" width="170" height="60" rx="10" fill="#eae9fd" stroke="#4f46e5"/>
+          <text x="345" y="62" font-weight="700">wrangler API 上传</text><text x="345" y="82" fill="#5b6b83">生成不可变快照</text>
+          <rect x="500" y="40" width="170" height="60" rx="10" fill="#e7f6ef" stroke="#059669"/>
+          <text x="585" y="62" font-weight="700">production 指针</text><text x="585" y="82" fill="#059669">v1/v2/v3…旧版可回滚</text>
+          <rect x="740" y="40" width="140" height="60" rx="10" fill="#fdf0e0" stroke="#d97706"/>
+          <text x="810" y="62" font-weight="700">全球 CDN 边缘</text><text x="810" y="82" fill="#d97706">用户读 production</text>
         </g>
-        <g stroke="***REMOVED***4f46e5" stroke-width="2" marker-end="url(***REMOVED***ar2)">
+        <g stroke="#4f46e5" stroke-width="2" marker-end="url(#ar2)">
           <line x1="190" y1="70" x2="256" y2="70"/>
           <line x1="430" y1="70" x2="496" y2="70"/>
           <line x1="670" y1="70" x2="736" y2="70"/>
         </g>
-        <g stroke="***REMOVED***888" stroke-width="1.5" stroke-dasharray="5 4" fill="none">
+        <g stroke="#888" stroke-width="1.5" stroke-dasharray="5 4" fill="none">
           <path d="M585 100 L585 120 L200 120 L200 104" />
         </g>
-        <text x="340" y="136" font-size="12" fill="***REMOVED***888">出错 → Rollback 指回旧快照（1 秒恢复）</text>
+        <text x="340" y="136" font-size="12" fill="#888">出错 → Rollback 指回旧快照（1 秒恢复）</text>
       </svg>
     </div>
     <div class="kv"><b>原理</b><span>每次部署 = 一个不可变版本（类似 git commit）；Cloudflare 无服务器进程，文件存在边缘存储、全球 300+ 节点代为分发</span></div>

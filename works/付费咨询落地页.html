@@ -6,53 +6,53 @@
 <title>行途 · AI 工程化咨询</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; background:***REMOVED***f7f9fc; color:***REMOVED***1e293b; padding:36px 20px; }
+  body { font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; background:#f7f9fc; color:#1e293b; padding:36px 20px; }
   .wrap { max-width:860px; margin:0 auto; }
-  h1 { text-align:center; font-size:25px; color:***REMOVED***0f172a; margin-bottom:6px; }
-  .tagline { text-align:center; color:***REMOVED***64748b; font-size:14px; margin-bottom:26px; }
-  .tagline b { color:***REMOVED***2E8B57; }
+  h1 { text-align:center; font-size:25px; color:#0f172a; margin-bottom:6px; }
+  .tagline { text-align:center; color:#64748b; font-size:14px; margin-bottom:26px; }
+  .tagline b { color:#2E8B57; }
 
-  .intro { background:***REMOVED***fff; border:1px solid ***REMOVED***eef2f7; border-radius:14px; padding:22px 26px; margin-bottom:22px; box-shadow:0 1px 4px rgba(0,0,0,.05); }
-  .intro p { font-size:14px; color:***REMOVED***475569; line-height:1.9; }
-  .intro .hl { color:***REMOVED***2E8B57; font-weight:600; }
+  .intro { background:#fff; border:1px solid #eef2f7; border-radius:14px; padding:22px 26px; margin-bottom:22px; box-shadow:0 1px 4px rgba(0,0,0,.05); }
+  .intro p { font-size:14px; color:#475569; line-height:1.9; }
+  .intro .hl { color:#2E8B57; font-weight:600; }
 
-  .sec { display:flex; align-items:center; gap:9px; font-size:16px; font-weight:700; color:***REMOVED***0f172a; margin:24px 0 12px; }
-  .sec .bar { width:4px; height:17px; background:***REMOVED***2E8B57; border-radius:2px; }
+  .sec { display:flex; align-items:center; gap:9px; font-size:16px; font-weight:700; color:#0f172a; margin:24px 0 12px; }
+  .sec .bar { width:4px; height:17px; background:#2E8B57; border-radius:2px; }
 
   .plans { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
-  .plan { background:***REMOVED***fff; border:1px solid ***REMOVED***eef2f7; border-radius:14px; padding:20px 22px; box-shadow:0 1px 4px rgba(0,0,0,.05); }
-  .plan.hl { border:2px solid ***REMOVED***2E8B57; }
-  .plan .pt { font-size:15px; font-weight:700; color:***REMOVED***0f172a; display:flex; justify-content:space-between; align-items:center; }
-  .plan .pt .tag { font-size:10px; background:***REMOVED***e8f5ee; color:***REMOVED***2E8B57; padding:2px 8px; border-radius:999px; }
-  .plan .pv { font-size:24px; font-weight:700; color:***REMOVED***2E8B57; margin:10px 0 6px; }
-  .plan .pd { font-size:12.5px; color:***REMOVED***64748b; line-height:1.8; }
+  .plan { background:#fff; border:1px solid #eef2f7; border-radius:14px; padding:20px 22px; box-shadow:0 1px 4px rgba(0,0,0,.05); }
+  .plan.hl { border:2px solid #2E8B57; }
+  .plan .pt { font-size:15px; font-weight:700; color:#0f172a; display:flex; justify-content:space-between; align-items:center; }
+  .plan .pt .tag { font-size:10px; background:#e8f5ee; color:#2E8B57; padding:2px 8px; border-radius:999px; }
+  .plan .pv { font-size:24px; font-weight:700; color:#2E8B57; margin:10px 0 6px; }
+  .plan .pd { font-size:12.5px; color:#64748b; line-height:1.8; }
   .plan ul { list-style:none; margin-top:10px; }
-  .plan li { font-size:12.5px; color:***REMOVED***475569; padding:4px 0; padding-left:16px; position:relative; }
-  .plan li::before { content:"◆"; position:absolute; left:0; color:***REMOVED***94a3b8; font-size:9px; top:6px; }
+  .plan li { font-size:12.5px; color:#475569; padding:4px 0; padding-left:16px; position:relative; }
+  .plan li::before { content:"◆"; position:absolute; left:0; color:#94a3b8; font-size:9px; top:6px; }
 
-  .note { background:***REMOVED***fff8ec; border:1px solid ***REMOVED***fde68a; border-radius:12px; padding:18px 22px; margin-top:16px; }
-  .note h3 { font-size:14px; color:***REMOVED***92400e; margin-bottom:8px; }
+  .note { background:#fff8ec; border:1px solid #fde68a; border-radius:12px; padding:18px 22px; margin-top:16px; }
+  .note h3 { font-size:14px; color:#92400e; margin-bottom:8px; }
   .note ul { list-style:none; }
-  .note li { font-size:12.5px; color:***REMOVED***78350f; line-height:1.9; padding-left:16px; position:relative; }
-  .note li::before { content:"→"; position:absolute; left:0; color:***REMOVED***d97706; }
+  .note li { font-size:12.5px; color:#78350f; line-height:1.9; padding-left:16px; position:relative; }
+  .note li::before { content:"→"; position:absolute; left:0; color:#d97706; }
 
-  .steps { background:***REMOVED***fff; border:1px solid ***REMOVED***eef2f7; border-radius:14px; padding:22px 26px; box-shadow:0 1px 4px rgba(0,0,0,.05); }
-  .step { display:flex; gap:14px; padding:12px 0; border-bottom:1px dashed ***REMOVED***eef2f7; }
+  .steps { background:#fff; border:1px solid #eef2f7; border-radius:14px; padding:22px 26px; box-shadow:0 1px 4px rgba(0,0,0,.05); }
+  .step { display:flex; gap:14px; padding:12px 0; border-bottom:1px dashed #eef2f7; }
   .step:last-child { border-bottom:none; }
-  .step .n { width:26px; height:26px; background:***REMOVED***e8f5ee; color:***REMOVED***2E8B57; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px; flex-shrink:0; }
-  .step .t { font-size:14px; font-weight:600; color:***REMOVED***0f172a; margin-bottom:3px; }
-  .step .d { font-size:12.5px; color:***REMOVED***64748b; line-height:1.7; }
+  .step .n { width:26px; height:26px; background:#e8f5ee; color:#2E8B57; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px; flex-shrink:0; }
+  .step .t { font-size:14px; font-weight:600; color:#0f172a; margin-bottom:3px; }
+  .step .d { font-size:12.5px; color:#64748b; line-height:1.7; }
 
-  .contact { text-align:center; background:***REMOVED***2E8B57; border-radius:14px; padding:26px; margin-top:24px; color:***REMOVED***fff; }
+  .contact { text-align:center; background:#2E8B57; border-radius:14px; padding:26px; margin-top:24px; color:#fff; }
   .contact .ct { font-size:16px; font-weight:700; margin-bottom:10px; }
   .contact .ce { font-size:15px; background:rgba(255,255,255,.18); display:inline-block; padding:8px 20px; border-radius:999px; }
   .contact .cs { font-size:12px; opacity:.85; margin-top:10px; }
 
-  .footer { text-align:center; color:***REMOVED***94a3b8; font-size:11px; margin-top:20px; }
+  .footer { text-align:center; color:#94a3b8; font-size:11px; margin-top:20px; }
   @media (max-width:680px){ .plans{ grid-template-columns:1fr; } }
 </style>
 </head>
-<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:***REMOVED***056DE8;color:***REMOVED***fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:***REMOVED***fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
 <div class="wrap">
   <h1>行途 · AI 工程化咨询</h1>
   <div class="tagline">一线 AI 工程化实践者，把<b>真实生产经验</b>给你讲透 —— 不卖课，给方向与方法</div>

@@ -6,10 +6,10 @@
 <title>快手平台调研 · 行途适配度分析 | 2026-08-31</title>
 <style>
 :root{
-  --blue:***REMOVED***056DE8; --blue-l:***REMOVED***4A9EFF; --cyan:***REMOVED***00D4FF; --orange:***REMOVED***FF6B35;
-  --ink:***REMOVED***12233F; --ink-2:***REMOVED***3D5470; --ink-3:***REMOVED***7189A6;
-  --bg:***REMOVED***F5F8FC; --card:***REMOVED***FFFFFF; --line:***REMOVED***E3EAF3; --line-2:***REMOVED***EEF3F9;
-  --ok:***REMOVED***0E9F6E; --warn:***REMOVED***E8A317; --bad:***REMOVED***D93025;
+  --blue:#056DE8; --blue-l:#4A9EFF; --cyan:#00D4FF; --orange:#FF6B35;
+  --ink:#12233F; --ink-2:#3D5470; --ink-3:#7189A6;
+  --bg:#F5F8FC; --card:#FFFFFF; --line:#E3EAF3; --line-2:#EEF3F9;
+  --ok:#0E9F6E; --warn:#E8A317; --bad:#D93025;
   --r:14px; --sh:0 2px 10px rgba(16,42,78,.06);
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -22,8 +22,8 @@ body{
 
 /* ---------- Hero ---------- */
 .hero{
-  background:linear-gradient(135deg,***REMOVED***056DE8 0%,***REMOVED***0d7ff0 45%,***REMOVED***00A8D8 100%);
-  color:***REMOVED***fff;padding:48px 0 40px;margin-bottom:34px;
+  background:linear-gradient(135deg,#056DE8 0%,#0d7ff0 45%,#00A8D8 100%);
+  color:#fff;padding:48px 0 40px;margin-bottom:34px;
   position:relative;overflow:hidden;
 }
 .hero::after{
@@ -38,10 +38,10 @@ body{
 h1{font-size:31px;font-weight:800;letter-spacing:-.5px;line-height:1.35;margin-bottom:14px}
 .hero-sub{font-size:15px;opacity:.93;max-width:790px;margin-bottom:26px}
 .verdict{
-  background:rgba(255,255,255,.14);border-left:4px solid ***REMOVED***FFD9A0;
+  background:rgba(255,255,255,.14);border-left:4px solid #FFD9A0;
   border-radius:0 10px 10px 0;padding:16px 20px;max-width:840px;backdrop-filter:blur(4px);
 }
-.verdict b{color:***REMOVED***FFE9C7;font-size:16px;display:block;margin-bottom:6px}
+.verdict b{color:#FFE9C7;font-size:16px;display:block;margin-bottom:6px}
 .verdict p{font-size:14.5px;opacity:.96}
 
 .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px}
@@ -56,7 +56,7 @@ h2{
   display:flex;align-items:center;gap:10px;
 }
 h2 .idx{
-  background:var(--blue);color:***REMOVED***fff;font-size:12px;font-weight:700;
+  background:var(--blue);color:#fff;font-size:12px;font-weight:700;
   width:25px;height:25px;border-radius:7px;display:grid;place-items:center;flex:none;
 }
 .h2-sub{color:var(--ink-3);font-size:13.5px;margin:0 0 18px 35px}
@@ -72,11 +72,11 @@ h2 .idx{
 .kv .v{font-weight:650;text-align:right;max-width:62%}
 
 .pill{display:inline-block;font-size:11.5px;font-weight:700;padding:2.5px 9px;border-radius:20px;vertical-align:middle}
-.p-gray{background:***REMOVED***EEF2F7;color:***REMOVED***6B8098}
-.p-orange{background:***REMOVED***FFF0E8;color:***REMOVED***C2531B}
-.p-blue{background:***REMOVED***E8F2FE;color:***REMOVED***056DE8}
-.p-green{background:***REMOVED***E6F7F0;color:***REMOVED***0B7A55}
-.p-red{background:***REMOVED***FDECEA;color:***REMOVED***B3251B}
+.p-gray{background:#EEF2F7;color:#6B8098}
+.p-orange{background:#FFF0E8;color:#C2531B}
+.p-blue{background:#E8F2FE;color:#056DE8}
+.p-green{background:#E6F7F0;color:#0B7A55}
+.p-red{background:#FDECEA;color:#B3251B}
 
 /* ---------- Opportunity cards ---------- */
 .opp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -93,10 +93,10 @@ h2 .idx{
 /* ---------- Mismatch ---------- */
 .mm{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
 .mm-box{border-radius:12px;padding:18px 20px;border:1px solid}
-.mm-a{background:***REMOVED***F0F6FE;border-color:***REMOVED***CBE1FB}
-.mm-b{background:***REMOVED***FFF6F1;border-color:***REMOVED***FBDCC8}
+.mm-a{background:#F0F6FE;border-color:#CBE1FB}
+.mm-b{background:#FFF6F1;border-color:#FBDCC8}
 .mm-box h4{font-size:14px;font-weight:750;margin-bottom:11px;display:flex;align-items:center;gap:7px}
-.mm-a h4{color:var(--blue)} .mm-b h4{color:***REMOVED***C2531B}
+.mm-a h4{color:var(--blue)} .mm-b h4{color:#C2531B}
 .mm-box ul{list-style:none;font-size:13.5px}
 .mm-box li{padding:5px 0 5px 17px;position:relative;color:var(--ink-2)}
 .mm-box li::before{content:"";position:absolute;left:0;top:13px;width:6px;height:6px;border-radius:50%}
@@ -106,28 +106,28 @@ h2 .idx{
 .bars{display:flex;flex-direction:column;gap:13px}
 .bar-row{display:grid;grid-template-columns:150px 1fr 52px;align-items:center;gap:14px}
 .bar-row .lb{font-size:13.5px;font-weight:600;color:var(--ink-2);text-align:right}
-.track{background:***REMOVED***EEF3F9;border-radius:6px;height:26px;position:relative;overflow:hidden}
+.track{background:#EEF3F9;border-radius:6px;height:26px;position:relative;overflow:hidden}
 .fill{
   height:100%;border-radius:6px;display:flex;align-items:center;justify-content:flex-end;
-  padding-right:9px;color:***REMOVED***fff;font-size:11.5px;font-weight:700;
-  background:linear-gradient(90deg,***REMOVED***4A9EFF,***REMOVED***056DE8);
+  padding-right:9px;color:#fff;font-size:11.5px;font-weight:700;
+  background:linear-gradient(90deg,#4A9EFF,#056DE8);
   width:0;transition:width 1s cubic-bezier(.22,1,.36,1);
 }
-.fill.low{background:linear-gradient(90deg,***REMOVED***FFB088,***REMOVED***FF6B35)}
-.fill.mid{background:linear-gradient(90deg,***REMOVED***8FC4FF,***REMOVED***4A9EFF)}
+.fill.low{background:linear-gradient(90deg,#FFB088,#FF6B35)}
+.fill.mid{background:linear-gradient(90deg,#8FC4FF,#4A9EFF)}
 .bar-row .sc{font-size:14px;font-weight:800;color:var(--ink)}
 
 /* ---------- Table ---------- */
 table{width:100%;border-collapse:collapse;font-size:13.5px}
 th{
-  background:***REMOVED***F3F7FC;color:var(--ink-2);font-weight:700;text-align:left;
+  background:#F3F7FC;color:var(--ink-2);font-weight:700;text-align:left;
   padding:11px 13px;border-bottom:2px solid var(--line);font-size:12.5px;white-space:nowrap;
 }
 td{padding:11px 13px;border-bottom:1px solid var(--line-2);vertical-align:middle}
 tr:last-child td{border-bottom:none}
-tbody tr:hover{background:***REMOVED***FAFCFF}
+tbody tr:hover{background:#FAFCFF}
 td.num{font-weight:750;white-space:nowrap}
-.hl{background:***REMOVED***FFF8F3 !important}
+.hl{background:#FFF8F3 !important}
 .hl td{font-weight:600}
 
 /* ---------- Plan cards ---------- */
@@ -138,7 +138,7 @@ td.num{font-weight:750;white-space:nowrap}
 }
 .plan.rec{border:2px solid var(--blue);box-shadow:0 4px 18px rgba(5,109,232,.12)}
 .plan .badge{
-  position:absolute;top:-11px;left:18px;background:var(--blue);color:***REMOVED***fff;
+  position:absolute;top:-11px;left:18px;background:var(--blue);color:#fff;
   font-size:11px;font-weight:700;padding:3px 11px;border-radius:20px;
 }
 .plan h3{font-size:16px;font-weight:750;margin-bottom:4px}
@@ -147,7 +147,7 @@ td.num{font-weight:750;white-space:nowrap}
 .plan li{padding:4px 0 4px 16px;position:relative;color:var(--ink-2);line-height:1.6}
 .plan li::before{content:"›";position:absolute;left:3px;color:var(--blue-l);font-weight:800}
 .plan .out{
-  background:***REMOVED***F3F7FC;border-radius:8px;padding:10px 12px;font-size:12.5px;color:var(--ink-2);
+  background:#F3F7FC;border-radius:8px;padding:10px 12px;font-size:12.5px;color:var(--ink-2);
   border-left:3px solid var(--blue-l);
 }
 .plan .out b{color:var(--blue)}
@@ -160,7 +160,7 @@ td.num{font-weight:750;white-space:nowrap}
 .risk:last-child{border-bottom:none}
 .risk .ic{
   width:34px;height:34px;border-radius:9px;display:grid;place-items:center;
-  font-size:16px;font-weight:800;color:***REMOVED***fff;flex:none;
+  font-size:16px;font-weight:800;color:#fff;flex:none;
 }
 .ic-r{background:var(--bad)} .ic-w{background:var(--warn)} .ic-i{background:var(--blue)}
 .risk .tt{font-size:14px;font-weight:700;margin-bottom:3px}
@@ -168,19 +168,19 @@ td.num{font-weight:750;white-space:nowrap}
 
 /* ---------- Callout ---------- */
 .callout{
-  background:linear-gradient(135deg,***REMOVED***FFF8F3,***REMOVED***FFF3EA);
-  border:1px solid ***REMOVED***FBDCC8;border-radius:12px;padding:18px 20px;margin-top:16px;
+  background:linear-gradient(135deg,#FFF8F3,#FFF3EA);
+  border:1px solid #FBDCC8;border-radius:12px;padding:18px 20px;margin-top:16px;
 }
-.callout .h{font-size:14.5px;font-weight:750;color:***REMOVED***C2531B;margin-bottom:7px}
+.callout .h{font-size:14.5px;font-weight:750;color:#C2531B;margin-bottom:7px}
 .callout p{font-size:13.5px;color:var(--ink-2);line-height:1.75}
 
 .final{
-  background:linear-gradient(135deg,***REMOVED***12233F,***REMOVED***1B3A63);color:***REMOVED***fff;border-radius:14px;padding:26px 28px;
+  background:linear-gradient(135deg,#12233F,#1B3A63);color:#fff;border-radius:14px;padding:26px 28px;
 }
-.final h3{font-size:17px;font-weight:750;margin-bottom:12px;color:***REMOVED***7FC4FF}
+.final h3{font-size:17px;font-weight:750;margin-bottom:12px;color:#7FC4FF}
 .final ol{margin-left:19px;font-size:14px;line-height:1.85}
 .final li{margin-bottom:5px}
-.final b{color:***REMOVED***FFD9A0}
+.final b{color:#FFD9A0}
 
 footer{text-align:center;color:var(--ink-3);font-size:12.5px;margin-top:40px;padding-top:22px;border-top:1px solid var(--line)}
 
@@ -193,7 +193,7 @@ footer{text-align:center;color:var(--ink-3);font-size:12.5px;margin-top:40px;pad
 @media(max-width:560px){.kpi-row,.opp-grid,.plans{grid-template-columns:1fr}}
 </style>
 </head>
-<body data-page-node-id="QwyMAXWkkx9blIZ3xOeAsN"><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:***REMOVED***056DE8;color:***REMOVED***fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:***REMOVED***fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<body data-page-node-id="QwyMAXWkkx9blIZ3xOeAsN"><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
 
 <div class="hero" data-page-node-id="EU0NdYG4hwlQ1cJbEBMbFB">
   <div class="wrap" data-page-node-id="OrfCtsXTs5In8DS6sF6ceH">
@@ -238,13 +238,13 @@ footer{text-align:center;color:var(--ink-3);font-size:12.5px;margin-top:40px;pad
       <div class="kv" data-page-node-id="KfZG4hqCgwQmOjNRsFdi1b"><span class="k" data-page-node-id="GAjwCGAKSOCCC2ypyroy3R">变现能力开通</span><span class="v" data-page-node-id="WrA4LAkJmnKmNAGWTWFT6b">无（磁力聚星 / 快享 / 课堂 均需门槛）</span></div>
     </div>
 
-    <div class="card" style="background:***REMOVED***FFFBF7;border-color:***REMOVED***FBE3CF" data-page-node-id="h2oKitDChX8aax1VYn3Hqn">
-      <div style="font-size:14px;font-weight:750;margin-bottom:10px;color:***REMOVED***C2531B" data-page-node-id="1wwKoM2aFKOz3guQ3dhcnT">⚠ 需 boss 手工确认的 3 件事</div>
+    <div class="card" style="background:#FFFBF7;border-color:#FBE3CF" data-page-node-id="h2oKitDChX8aax1VYn3Hqn">
+      <div style="font-size:14px;font-weight:750;margin-bottom:10px;color:#C2531B" data-page-node-id="1wwKoM2aFKOz3guQ3dhcnT">⚠ 需 boss 手工确认的 3 件事</div>
       <div style="font-size:13.5px;color:var(--ink-2);line-height:1.85" data-page-node-id="ggGuBAiDznIjQMP1VOFfa6">
         <div data-page-node-id="aOCZbVDeKCIcEmWfVMQ2cV"><b data-page-node-id="NPqbiE4sXknGUOyJBWELvx">①</b> 快手号是否发过内容？（本地内容台账/素材卡/文章台账中<b data-page-node-id="xmDmzUP6BAtgJMt4EjGHhX">均无快手记录</b>，推定未运营）</div>
         <div style="margin-top:8px" data-page-node-id="O4ojhPSI1sgLSO3dyERLfD"><b data-page-node-id="YVxEoiK8mbqAc6K5wEhPrc">②</b> 昵称是否已是「行途」、头像是否与全平台统一？</div>
         <div style="margin-top:8px" data-page-node-id="vUBK1YvCGjCu1BUdazx0Qd"><b data-page-node-id="DT1v76UHiKEE2ZnxOTJTli">③</b> 注册时是否授权了<b data-page-node-id="L5l6CnvBmNG4St0wzHmFsG">通讯录/通讯录好友推荐</b>？<br data-page-node-id="yQyLDJqGrq6qYfSrHvqONf">
-        <span style="color:***REMOVED***B3251B;font-size:12.5px" data-page-node-id="Gy80KfwVcWsZaRmt6tJpsk">→ 这条直接关系到「在职低调」红线，见第 6 节风险</span></div>
+        <span style="color:#B3251B;font-size:12.5px" data-page-node-id="Gy80KfwVcWsZaRmt6tJpsk">→ 这条直接关系到「在职低调」红线，见第 6 节风险</span></div>
       </div>
     </div>
   </div>
@@ -380,7 +380,7 @@ footer{text-align:center;color:var(--ink-3);font-size:12.5px;margin-top:40px;pad
       <div class="bar-row" data-page-node-id="JGooELZAZSDri1HyS3s3At"><span class="lb" data-page-node-id="RFyEIidHmE5hC6i7i46EtJ">B 站</span><div class="track" data-page-node-id="H1qRerU37Yo8IUR5SEPUI4"><div class="fill mid" data-w="68" data-page-node-id="ioxXVcDjSl00dH7PHVj4dv">人群对但贵</div></div><span class="sc" data-page-node-id="bLhq4ErlCAZ3Stfod42fX6">6.8</span></div>
       <div class="bar-row" data-page-node-id="M9axnGeaYbHLlnuO8e4gHY"><span class="lb" data-page-node-id="38Fmyf9AXcGSITmZ2B1E2U">小红书</span><div class="track" data-page-node-id="Xgc2sd4LRDGX8kQgF8o576"><div class="fill mid" data-w="55" data-page-node-id="6XtCC4yYVII5HghANhEYVO">需图文重构</div></div><span class="sc" data-page-node-id="uylVCDWl08OL6BsKe55wrs">5.5</span></div>
       <div class="bar-row" data-page-node-id="3rhwS4g4MeVfRUWakhIvg8"><span class="lb" data-page-node-id="yGkt9CNgKZBHAjdafYkC1H">抖音</span><div class="track" data-page-node-id="VCM8fUldj4FInyHaOKPavZ"><div class="fill low" data-w="42" data-page-node-id="v48LBBpBDvk0ng39ZqOQHA">短视频成本高</div></div><span class="sc" data-page-node-id="eCe9DqzfZ0jGOZb1q7Ro3j">4.2</span></div>
-      <div class="bar-row" data-page-node-id="iFfmGH9c9wCevv6vLlb6WE"><span class="lb" style="color:***REMOVED***C2531B;font-weight:800" data-page-node-id="nD2sAgLuw2UfIKPqK0YWIE">快手</span><div class="track" data-page-node-id="j2UqBICKlXRrNepMmeU9XQ"><div class="fill low" data-w="33" data-page-node-id="DaWlBMTPFZlmnCA3gbKAFK">三层错配</div></div><span class="sc" style="color:***REMOVED***C2531B" data-page-node-id="ysXs8pwbDVUmASJdb2jry4">3.3</span></div>
+      <div class="bar-row" data-page-node-id="iFfmGH9c9wCevv6vLlb6WE"><span class="lb" style="color:#C2531B;font-weight:800" data-page-node-id="nD2sAgLuw2UfIKPqK0YWIE">快手</span><div class="track" data-page-node-id="j2UqBICKlXRrNepMmeU9XQ"><div class="fill low" data-w="33" data-page-node-id="DaWlBMTPFZlmnCA3gbKAFK">三层错配</div></div><span class="sc" style="color:#C2531B" data-page-node-id="ysXs8pwbDVUmASJdb2jry4">3.3</span></div>
     </div>
     <p style="font-size:12.5px;color:var(--ink-3);margin-top:16px;padding-top:14px;border-top:1px dashed var(--line)" data-page-node-id="hDbRYfc1Wq7K3OTRMVFwVD">
       评分口径：受众重合度 35% + 内容形态匹配 25% + 变现可达性 20% + SEO 长尾 10% + 战略优先级 10%。
@@ -417,7 +417,7 @@ footer{text-align:center;color:var(--ink-3);font-size:12.5px;margin-top:40px;pad
         </tr>
         <tr class="hl" data-page-node-id="icBgyZJDzdZgw880YmE6sw">
           <td data-page-node-id="uri3C3GGdOXhgtsnQwCdao"><b data-page-node-id="44xHybke02HKCbcZRkpJ18">快手</b></td><td data-page-node-id="t9VqRk5KwWDsA9k4hy9Q5D">付费内容 / 快手课堂</td><td class="num" data-page-node-id="nog9x8ljCGi77oju6mBpdk">5000 粉起</td>
-          <td data-page-node-id="6otbgziBA74qnhGqDbAWhw"><span class="pill p-red" data-page-node-id="aQjSZSR9Oan7ASUwuA8Gf1">未达</span></td><td data-page-node-id="HIHHjV4fA3mBDuMiVQ5WzO"><b style="color:***REMOVED***B3251B" data-page-node-id="QSlHYIWi2hy0HG8jlpjadh">iOS 用户暂不能购买</b>，课程客单 99–999 元</td>
+          <td data-page-node-id="6otbgziBA74qnhGqDbAWhw"><span class="pill p-red" data-page-node-id="aQjSZSR9Oan7ASUwuA8Gf1">未达</span></td><td data-page-node-id="HIHHjV4fA3mBDuMiVQ5WzO"><b style="color:#B3251B" data-page-node-id="QSlHYIWi2hy0HG8jlpjadh">iOS 用户暂不能购买</b>，课程客单 99–999 元</td>
         </tr>
         <tr class="hl" data-page-node-id="cSdjVEDR1nXTK4KVkYLlOJ">
           <td data-page-node-id="2BbsZ9zIDUmlC1aVDA8WLd"><b data-page-node-id="sQhQEJTkEVWBEjhi56mswQ">快手</b></td><td data-page-node-id="GKQIPSLFA1Wz4OWuYNxOhM">快手小店（带货）</td><td class="num" data-page-node-id="rmUfVjNynTXtPkki1XepkS">0 粉</td>
@@ -431,7 +431,7 @@ footer{text-align:center;color:var(--ink-3);font-size:12.5px;margin-top:40px;pad
     </table>
   </div>
 
-  <div class="callout" style="background:***REMOVED***FFF6F1;border-color:***REMOVED***FBDCC8" data-page-node-id="fwZvrdRTOYFRc4F1IMThxJ">
+  <div class="callout" style="background:#FFF6F1;border-color:#FBDCC8" data-page-node-id="fwZvrdRTOYFRc4F1IMThxJ">
     <div class="h" data-page-node-id="wFFgHgHqH1DJm6NetYF547">一句话读表</div>
     <p data-page-node-id="XdHygDySqshHAOMmbqvx0f">快手的钱全在 <b data-page-node-id="bTPHc2IlRmTM84aElXoyFe">1 万粉之后</b>，而你现在是 0；主阵地的钱 <b data-page-node-id="5MWOw2k9vGoiaSBPzZp99p">0 粉就能开始积累</b>。
     在「利他 → 信任 → 星球变现」这条链路上，快手粉丝无法有效导入知识星球（严打站外导流），

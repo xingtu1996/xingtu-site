@@ -6,23 +6,23 @@
 <title>AI 协作偏好自我进化闭环 · 通用方法论</title>
 <style>
   :root{
-    --blue:***REMOVED***056DE8; --blue-dark:***REMOVED***0C2A4D; --blue-light:***REMOVED***EAF2FB;
-    --teal:***REMOVED***0F6E56; --teal-light:***REMOVED***E1F5EE;
-    --purple:***REMOVED***534AB7; --purple-light:***REMOVED***EEEDFE;
-    --coral:***REMOVED***993C1D; --coral-light:***REMOVED***FAECE7;
-    --ink:***REMOVED***1a2433; --muted:***REMOVED***5a6678; --line:***REMOVED***d9e2ee;
+    --blue:#056DE8; --blue-dark:#0C2A4D; --blue-light:#EAF2FB;
+    --teal:#0F6E56; --teal-light:#E1F5EE;
+    --purple:#534AB7; --purple-light:#EEEDFE;
+    --coral:#993C1D; --coral-light:#FAECE7;
+    --ink:#1a2433; --muted:#5a6678; --line:#d9e2ee;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
-    background:***REMOVED***f5f8fc; color:var(--ink); line-height:1.65; padding:32px 20px;}
+    background:#f5f8fc; color:var(--ink); line-height:1.65; padding:32px 20px;}
   .wrap{max-width:960px;margin:0 auto;}
   header{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-dark) 100%);
-    color:***REMOVED***fff;border-radius:16px;padding:28px 32px;margin-bottom:24px;}
+    color:#fff;border-radius:16px;padding:28px 32px;margin-bottom:24px;}
   header h1{font-size:24px;font-weight:700;letter-spacing:.5px;}
   header p{font-size:14px;opacity:.92;margin-top:8px;max-width:680px;}
   .tag{display:inline-block;background:rgba(255,255,255,.18);border-radius:20px;
     padding:3px 12px;font-size:12px;margin-top:14px;margin-right:8px;}
-  section{background:***REMOVED***fff;border:1px solid var(--line);border-radius:14px;
+  section{background:#fff;border:1px solid var(--line);border-radius:14px;
     padding:22px 26px;margin-bottom:18px;}
   h2{font-size:17px;color:var(--blue-dark);margin-bottom:14px;
     padding-left:10px;border-left:4px solid var(--blue);}
@@ -34,17 +34,17 @@
   .ring .t{font-size:15px;font-weight:700;margin:4px 0 8px;}
   .ring .row{font-size:12px;margin:6px 0;line-height:1.5;}
   .ring .k{font-weight:600;}
-  .r1{background:var(--blue-light);border:1px solid ***REMOVED***b5d4f4;}
+  .r1{background:var(--blue-light);border:1px solid #b5d4f4;}
   .r1 .t{color:var(--blue-dark);} .r1 .k{color:var(--blue);}
-  .r2{background:var(--teal-light);border:1px solid ***REMOVED***9fe1cb;}
+  .r2{background:var(--teal-light);border:1px solid #9fe1cb;}
   .r2 .t{color:var(--teal);} .r2 .k{color:var(--teal);}
-  .r3{background:var(--purple-light);border:1px solid ***REMOVED***afa9ec;}
+  .r3{background:var(--purple-light);border:1px solid #afa9ec;}
   .r3 .t{color:var(--purple);} .r3 .k{color:var(--purple);}
-  .r4{background:var(--coral-light);border:1px solid ***REMOVED***f0997b;}
+  .r4{background:var(--coral-light);border:1px solid #f0997b;}
   .r4 .t{color:var(--coral);} .r4 .k{color:var(--coral);}
   .flywheel{display:flex;align-items:center;justify-content:center;gap:8px;
     flex-wrap:wrap;background:var(--purple-light);border-radius:12px;padding:18px;margin-top:8px;}
-  .fw-node{background:***REMOVED***fff;border:1.5px solid var(--purple);border-radius:20px;
+  .fw-node{background:#fff;border:1.5px solid var(--purple);border-radius:20px;
     padding:6px 14px;font-size:13px;font-weight:600;color:var(--purple);}
   .fw-arrow{color:var(--purple);font-size:18px;font-weight:700;}
   .fw-loop{width:100%;text-align:center;font-size:12px;color:var(--purple);
@@ -52,9 +52,9 @@
   table{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px;}
   th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top;}
   th{background:var(--blue-light);color:var(--blue-dark);font-weight:600;}
-  td code{background:***REMOVED***f0f4fa;padding:1px 6px;border-radius:5px;font-size:12px;color:var(--blue-dark);}
+  td code{background:#f0f4fa;padding:1px 6px;border-radius:5px;font-size:12px;color:var(--blue-dark);}
   .mig{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:8px;}
-  .mig .card{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:***REMOVED***fafcff;}
+  .mig .card{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:#fafcff;}
   .mig .card b{color:var(--blue-dark);font-size:13px;}
   .mig .card p{font-size:12px;color:var(--muted);margin-top:4px;}
   .case{font-size:13px;}
@@ -62,14 +62,14 @@
   .case .bad{color:var(--coral);font-weight:600;}
   .case .good{color:var(--teal);font-weight:600;}
   .assets{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;}
-  .asset{background:var(--blue-light);border:1px solid ***REMOVED***b5d4f4;border-radius:10px;
+  .asset{background:var(--blue-light);border:1px solid #b5d4f4;border-radius:10px;
     padding:10px 14px;font-size:13px;}
   .asset b{color:var(--blue-dark);}
   .asset span{display:block;font-size:12px;color:var(--muted);margin-top:3px;}
   footer{text-align:center;font-size:12px;color:var(--muted);margin-top:10px;}
 </style>
 </head>
-<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:***REMOVED***056DE8;color:***REMOVED***fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:***REMOVED***fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
 <div class="wrap">
 
 <header>

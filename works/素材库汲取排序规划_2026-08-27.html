@@ -6,13 +6,13 @@
 <title>行途素材库 · 汲取×排序×保鲜期作战规划（2026-08-27）</title>
 <style>
   :root{
-    --blue:***REMOVED***056DE8; --blue-dark:***REMOVED***044EA6; --blue-light:***REMOVED***E8F1FD; --blue-mist:***REMOVED***F4F8FE;
-    --ink:***REMOVED***1A2433; --ink2:***REMOVED***44536B; --ink3:***REMOVED***7A879C;
-    --line:***REMOVED***E3E9F2; --card:***REMOVED***FFFFFF; --bg:***REMOVED***F5F7FA;
-    --green:***REMOVED***0A9C6E; --green-light:***REMOVED***E6F6F0;
-    --amber:***REMOVED***C97B12; --amber-light:***REMOVED***FBF1E0;
-    --red:***REMOVED***D64545; --red-light:***REMOVED***FCEBEB;
-    --purple:***REMOVED***6D4FC4; --purple-light:***REMOVED***F0EBFB;
+    --blue:#056DE8; --blue-dark:#044EA6; --blue-light:#E8F1FD; --blue-mist:#F4F8FE;
+    --ink:#1A2433; --ink2:#44536B; --ink3:#7A879C;
+    --line:#E3E9F2; --card:#FFFFFF; --bg:#F5F7FA;
+    --green:#0A9C6E; --green-light:#E6F6F0;
+    --amber:#C97B12; --amber-light:#FBF1E0;
+    --red:#D64545; --red-light:#FCEBEB;
+    --purple:#6D4FC4; --purple-light:#F0EBFB;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   body{
@@ -22,8 +22,8 @@
   .wrap{max-width:1080px;margin:0 auto;padding:32px 20px 80px;}
   /* Header */
   header.hero{
-    background:linear-gradient(135deg,***REMOVED***056DE8 0%,***REMOVED***044EA6 60%,***REMOVED***053C7A 100%);
-    border-radius:18px;color:***REMOVED***fff;padding:40px 44px;position:relative;overflow:hidden;
+    background:linear-gradient(135deg,#056DE8 0%,#044EA6 60%,#053C7A 100%);
+    border-radius:18px;color:#fff;padding:40px 44px;position:relative;overflow:hidden;
   }
   header.hero::after{
     content:"";position:absolute;right:-80px;top:-80px;width:320px;height:320px;
@@ -39,7 +39,7 @@
     padding:28px 32px;margin-top:22px;box-shadow:0 1px 3px rgba(16,32,64,.05);}
   h2.sec{font-size:20px;font-weight:800;display:flex;align-items:center;gap:10px;margin-bottom:4px;}
   h2.sec .no{
-    background:var(--blue);color:***REMOVED***fff;width:30px;height:30px;border-radius:8px;
+    background:var(--blue);color:#fff;width:30px;height:30px;border-radius:8px;
     display:inline-flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;
   }
   .sec-desc{color:var(--ink2);font-size:13.5px;margin:4px 0 18px 40px;}
@@ -53,9 +53,9 @@
   .numcard{background:var(--blue-mist);border:1px solid var(--line);border-radius:12px;padding:16px 14px;text-align:center;}
   .numcard .n{font-size:26px;font-weight:800;color:var(--blue);}
   .numcard .l{font-size:12px;color:var(--ink2);margin-top:2px;}
-  .numcard.warn{background:var(--red-light);border-color:***REMOVED***F3CACA;}
+  .numcard.warn{background:var(--red-light);border-color:#F3CACA;}
   .numcard.warn .n{color:var(--red);}
-  .numcard.ok{background:var(--green-light);border-color:***REMOVED***BEE8D7;}
+  .numcard.ok{background:var(--green-light);border-color:#BEE8D7;}
   .numcard.ok .n{color:var(--green);}
   /* Tables */
   table{width:100%;border-collapse:collapse;font-size:13.5px;margin:12px 0;}
@@ -81,7 +81,7 @@
   .tl{position:relative;margin:16px 0 0 8px;padding-left:28px;}
   .tl::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:var(--line);}
   .tl .item{position:relative;margin-bottom:14px;}
-  .tl .item::before{content:"";position:absolute;left:-27px;top:8px;width:10px;height:10px;border-radius:50%;background:var(--blue);border:2px solid ***REMOVED***fff;box-shadow:0 0 0 2px var(--blue-light);}
+  .tl .item::before{content:"";position:absolute;left:-27px;top:8px;width:10px;height:10px;border-radius:50%;background:var(--blue);border:2px solid #fff;box-shadow:0 0 0 2px var(--blue-light);}
   .tl .wk{font-size:12px;font-weight:800;color:var(--blue);letter-spacing:.5px;}
   .tl .ttl{font-size:14.5px;font-weight:700;}
   .tl .ttl .plat{font-size:11px;font-weight:600;border-radius:5px;padding:1px 7px;margin-left:6px;vertical-align:2px;}
@@ -89,17 +89,17 @@
   .p-gzh{background:var(--red-light);color:var(--red);}
   .p-jue{background:var(--blue-light);color:var(--blue-dark);}
   .p-zh{background:var(--purple-light);color:var(--purple);}
-  .p-xhs{background:***REMOVED***FDEEF3;color:***REMOVED***D6336C;}
-  .p-csdn{background:***REMOVED***E9F5EF;color:var(--green);}
+  .p-xhs{background:#FDEEF3;color:#D6336C;}
+  .p-csdn{background:#E9F5EF;color:var(--green);}
   /* Bars */
   .bar-row{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:12.8px;}
   .bar-row .lb{width:90px;text-align:right;color:var(--ink2);flex-shrink:0;}
   .bar{flex:1;height:18px;background:var(--blue-mist);border-radius:5px;overflow:hidden;position:relative;}
-  .bar i{display:block;height:100%;border-radius:5px;background:linear-gradient(90deg,var(--blue),***REMOVED***4D9BEF);}
-  .bar i.amber{background:linear-gradient(90deg,***REMOVED***C97B12,***REMOVED***E8A23B);}
-  .bar i.green{background:linear-gradient(90deg,***REMOVED***0A9C6E,***REMOVED***3CC896);}
-  .bar i.red{background:linear-gradient(90deg,***REMOVED***D64545,***REMOVED***EF7B7B);}
-  .bar i.purple{background:linear-gradient(90deg,***REMOVED***6D4FC4,***REMOVED***9A82E0);}
+  .bar i{display:block;height:100%;border-radius:5px;background:linear-gradient(90deg,var(--blue),#4D9BEF);}
+  .bar i.amber{background:linear-gradient(90deg,#C97B12,#E8A23B);}
+  .bar i.green{background:linear-gradient(90deg,#0A9C6E,#3CC896);}
+  .bar i.red{background:linear-gradient(90deg,#D64545,#EF7B7B);}
+  .bar i.purple{background:linear-gradient(90deg,#6D4FC4,#9A82E0);}
   .bar-row .v{width:46px;font-weight:700;color:var(--ink);flex-shrink:0;}
   /* Formula */
   .formula{background:var(--blue-mist);border:1px dashed var(--blue);border-radius:10px;padding:16px 18px;margin:14px 0;font-size:13.5px;}
@@ -108,23 +108,23 @@
   /* Check list */
   .todo{list-style:none;margin-top:10px;}
   .todo li{padding:10px 14px;border:1px solid var(--line);border-radius:10px;margin-bottom:8px;font-size:13.5px;
-    display:flex;align-items:flex-start;gap:10px;background:***REMOVED***fff;}
+    display:flex;align-items:flex-start;gap:10px;background:#fff;}
   .todo li .box{width:18px;height:18px;border:2px solid var(--blue);border-radius:5px;flex-shrink:0;margin-top:3px;}
   .todo li b{color:var(--ink);}
   .todo li .why{color:var(--ink3);font-size:12px;display:block;margin-top:2px;}
   /* Model cards */
-  .mcard{display:flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px;background:***REMOVED***fff;}
+  .mcard{display:flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px;background:#fff;}
   .mcard .m{font-size:15px;font-weight:800;color:var(--blue-dark);min-width:150px;}
   .mcard .r{font-size:12.5px;color:var(--ink2);flex:1;}
   .mcard .px{font-size:12px;font-weight:800;border-radius:6px;padding:2px 10px;white-space:nowrap;}
-  .px-lock{background:var(--blue);color:***REMOVED***fff;}
-  .px-sub{background:var(--green);color:***REMOVED***fff;}
-  .px-free{background:var(--amber);color:***REMOVED***fff;}
-  .px-no{background:var(--red);color:***REMOVED***fff;}
-  .px-night{background:var(--purple);color:***REMOVED***fff;}
-  .warnbox{background:var(--red-light);border:1px solid ***REMOVED***F3CACA;border-radius:10px;padding:14px 18px;margin:12px 0;font-size:13.5px;}
+  .px-lock{background:var(--blue);color:#fff;}
+  .px-sub{background:var(--green);color:#fff;}
+  .px-free{background:var(--amber);color:#fff;}
+  .px-no{background:var(--red);color:#fff;}
+  .px-night{background:var(--purple);color:#fff;}
+  .warnbox{background:var(--red-light);border:1px solid #F3CACA;border-radius:10px;padding:14px 18px;margin:12px 0;font-size:13.5px;}
   .warnbox b{color:var(--red);}
-  .okbox{background:var(--green-light);border:1px solid ***REMOVED***BEE8D7;border-radius:10px;padding:14px 18px;margin:12px 0;font-size:13.5px;}
+  .okbox{background:var(--green-light);border:1px solid #BEE8D7;border-radius:10px;padding:14px 18px;margin:12px 0;font-size:13.5px;}
   .okbox b{color:var(--green);}
   .quote{border-left:3px solid var(--blue);background:var(--blue-mist);border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0;font-size:13.5px;color:var(--ink2);}
   footer{margin-top:34px;text-align:center;color:var(--ink3);font-size:12px;}
@@ -136,7 +136,7 @@
   }
 </style>
 </head>
-<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:***REMOVED***056DE8;color:***REMOVED***fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:***REMOVED***fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
 <div class="wrap">
 
 <header class="hero">

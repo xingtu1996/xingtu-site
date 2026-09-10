@@ -6,26 +6,26 @@
 <title>个人 IP 平台全景与变现调研 · 2026-08</title>
 <style>
   :root{
-    --bg:***REMOVED***f7f8fa; --card:***REMOVED***ffffff; --ink:***REMOVED***1f2329; --sub:***REMOVED***5b6470;
-    --line:***REMOVED***e6e9ef; --brand:***REMOVED***2f6df0; --brand2:***REMOVED***13b58a; --warn:***REMOVED***e8743b;
-    --gold:***REMOVED***e0a93b; --soft:***REMOVED***eef3ff; --soft2:***REMOVED***eafaf3; --soft3:***REMOVED***fff5ec;
+    --bg:#f7f8fa; --card:#ffffff; --ink:#1f2329; --sub:#5b6470;
+    --line:#e6e9ef; --brand:#2f6df0; --brand2:#13b58a; --warn:#e8743b;
+    --gold:#e0a93b; --soft:#eef3ff; --soft2:#eafaf3; --soft3:#fff5ec;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
     background:var(--bg);color:var(--ink);line-height:1.75;font-size:15px}
   .wrap{max-width:1080px;margin:0 auto;padding:32px 20px 80px}
-  header{background:linear-gradient(135deg,***REMOVED***2f6df0,***REMOVED***13b58a);color:***REMOVED***fff;
+  header{background:linear-gradient(135deg,#2f6df0,#13b58a);color:#fff;
     border-radius:18px;padding:34px 32px;margin-bottom:26px}
   header h1{font-size:27px;letter-spacing:.5px;margin-bottom:10px}
   header p{opacity:.92;font-size:14.5px;max-width:760px}
   .tag{display:inline-block;background:rgba(255,255,255,.2);border-radius:20px;
     padding:3px 12px;font-size:12.5px;margin:8px 8px 0 0}
   h2{font-size:21px;margin:38px 0 14px;padding-left:12px;border-left:5px solid var(--brand)}
-  h3{font-size:17px;margin:22px 0 10px;color:***REMOVED***2b3340}
+  h3{font-size:17px;margin:22px 0 10px;color:#2b3340}
   h4{font-size:15px;margin:14px 0 6px;color:var(--brand)}
   p{margin:8px 0}
   .lead{background:var(--soft);border-radius:12px;padding:16px 20px;margin:14px 0;
-    border:1px solid ***REMOVED***d7e3ff}
+    border:1px solid #d7e3ff}
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;margin:16px 0}
   .pcard{background:var(--card);border:1px solid var(--line);border-radius:14px;
     padding:18px 18px 16px;box-shadow:0 2px 10px rgba(20,40,80,.04)}
@@ -34,32 +34,32 @@
   .ptype{font-size:12px;color:var(--sub);background:var(--soft);padding:2px 9px;border-radius:8px;white-space:nowrap}
   .scores{display:flex;gap:14px;margin:10px 0 6px;font-size:12.5px}
   .score{display:flex;align-items:center;gap:5px}
-  .bar{width:60px;height:7px;background:***REMOVED***e9edf3;border-radius:5px;overflow:hidden}
+  .bar{width:60px;height:7px;background:#e9edf3;border-radius:5px;overflow:hidden}
   .bar i{display:block;height:100%;border-radius:5px}
   .s-adapt i{background:var(--brand)} .s-feas i{background:var(--brand2)}
   .kv{font-size:13.5px;margin:4px 0}
-  .kv b{color:***REMOVED***33405a}
+  .kv b{color:#33405a}
   .mono{background:var(--soft3);border-left:3px solid var(--gold);padding:8px 12px;
     border-radius:0 8px 8px 0;margin:8px 0;font-size:13.5px}
   ul{margin:8px 0 8px 20px} li{margin:4px 0}
   table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;
     background:var(--card);border-radius:10px;overflow:hidden;box-shadow:0 1px 6px rgba(20,40,80,.05)}
   th,td{border:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
-  th{background:***REMOVED***eef2f8;color:***REMOVED***2b3340;font-weight:600}
-  tr:nth-child(even) td{background:***REMOVED***fafbfd}
+  th{background:#eef2f8;color:#2b3340;font-weight:600}
+  tr:nth-child(even) td{background:#fafbfd}
   .pill{display:inline-block;padding:1px 8px;border-radius:20px;font-size:11.5px;font-weight:600}
-  .p-hi{background:***REMOVED***eafaf3;color:***REMOVED***0f8f63} .p-mid{background:***REMOVED***fff5ec;color:***REMOVED***c4742a}
-  .p-lo{background:***REMOVED***fdecec;color:***REMOVED***c0392b} .p-must{background:***REMOVED***eef3ff;color:***REMOVED***2f6df0}
-  .band{background:***REMOVED***fff;border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:14px 0}
-  .band.blue{background:var(--soft);border-color:***REMOVED***d7e3ff}
-  .band.green{background:var(--soft2);border-color:***REMOVED***cdeee0}
-  .band.gold{background:var(--soft3);border-color:***REMOVED***f3dcae}
+  .p-hi{background:#eafaf3;color:#0f8f63} .p-mid{background:#fff5ec;color:#c4742a}
+  .p-lo{background:#fdecec;color:#c0392b} .p-must{background:#eef3ff;color:#2f6df0}
+  .band{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:14px 0}
+  .band.blue{background:var(--soft);border-color:#d7e3ff}
+  .band.green{background:var(--soft2);border-color:#cdeee0}
+  .band.gold{background:var(--soft3);border-color:#f3dcae}
   .steps{counter-reset:s;list-style:none;margin:10px 0;padding:0}
   .steps li{counter-increment:s;position:relative;padding:10px 12px 10px 44px;margin:8px 0;
-    background:***REMOVED***fff;border:1px solid var(--line);border-radius:10px}
+    background:#fff;border:1px solid var(--line);border-radius:10px}
   .steps li::before{content:counter(s);position:absolute;left:12px;top:10px;width:24px;height:24px;
-    background:var(--brand);color:***REMOVED***fff;border-radius:50%;text-align:center;line-height:24px;font-size:13px;font-weight:700}
-  .note{background:***REMOVED***fbfaff;border:1px dashed ***REMOVED***c4b8f0;color:***REMOVED***5a4b9c;border-radius:10px;
+    background:var(--brand);color:#fff;border-radius:50%;text-align:center;line-height:24px;font-size:13px;font-weight:700}
+  .note{background:#fbfaff;border:1px dashed #c4b8f0;color:#5a4b9c;border-radius:10px;
     padding:12px 16px;margin:16px 0;font-size:13px}
   .foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);color:var(--sub);font-size:12.5px}
   .legend{display:flex;flex-wrap:wrap;gap:10px;font-size:12.5px;margin:8px 0 4px}
@@ -68,7 +68,7 @@
   @media(max-width:640px){.grid{grid-template-columns:1fr}header{padding:24px 18px}}
 </style>
 </head>
-<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:***REMOVED***056DE8;color:***REMOVED***fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:***REMOVED***fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
 <div class="wrap">
 
 <header>
@@ -93,8 +93,8 @@
   <p>两个分都高 = 优先打；适配高可行低 = 值得投入但需沉淀；适配低 = 辅助或放弃。</p>
 </div>
 <div class="legend">
-  <span><i class="dot" style="background:***REMOVED***2f6df0"></i>适配性</span>
-  <span><i class="dot" style="background:***REMOVED***13b58a"></i>可行性</span>
+  <span><i class="dot" style="background:#2f6df0"></i>适配性</span>
+  <span><i class="dot" style="background:#13b58a"></i>可行性</span>
   <span><i class="pill p-hi">高</i>强烈推荐</span>
   <span><i class="pill p-mid">中</i>可用/辅助</span>
   <span><i class="pill p-lo">低</i>慎入/放弃</span>

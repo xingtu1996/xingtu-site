@@ -6,19 +6,19 @@
 <title>行途工作空间 · 防弹工作法（AI）· 理念与落地</title>
 <style>
   :root{
-    --bg:***REMOVED***f7f8fa; --card:***REMOVED***ffffff; --ink:***REMOVED***1d2129; --sub:***REMOVED***5c6670; --line:***REMOVED***e5e6eb;
-    --brand:***REMOVED***2f54eb; --brand-bg:***REMOVED***eaf0ff;
-    --red:***REMOVED***e5484d; --redbg:***REMOVED***fdecec;
-    --amber:***REMOVED***d97706; --amberbg:***REMOVED***fdf3e7;
-    --ok:***REMOVED***0e9f6e; --okbg:***REMOVED***e7f7f0;
+    --bg:#f7f8fa; --card:#ffffff; --ink:#1d2129; --sub:#5c6670; --line:#e5e6eb;
+    --brand:#2f54eb; --brand-bg:#eaf0ff;
+    --red:#e5484d; --redbg:#fdecec;
+    --amber:#d97706; --amberbg:#fdf3e7;
+    --ok:#0e9f6e; --okbg:#e7f7f0;
     --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   }
   *{box-sizing:border-box}
   body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.7}
-  header{background:linear-gradient(135deg,***REMOVED***1d2129,***REMOVED***2f54eb);color:***REMOVED***fff;padding:34px 28px 28px}
+  header{background:linear-gradient(135deg,#1d2129,#2f54eb);color:#fff;padding:34px 28px 28px}
   header h1{margin:0 0 6px;font-size:24px;letter-spacing:.5px}
   header p{margin:0;opacity:.85;font-size:14px}
-  nav{position:sticky;top:0;z-index:20;background:***REMOVED***fff;border-bottom:1px solid var(--line);display:flex;gap:4px;flex-wrap:wrap;padding:10px 16px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+  nav{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line);display:flex;gap:4px;flex-wrap:wrap;padding:10px 16px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
   nav a{font-size:12.5px;color:var(--sub);text-decoration:none;padding:6px 11px;border-radius:8px;white-space:nowrap}
   nav a:hover{background:var(--brand-bg);color:var(--brand)}
   main{max-width:1100px;margin:0 auto;padding:24px 18px 80px}
@@ -27,44 +27,44 @@
   h3{font-size:15.5px;margin:20px 0 8px;color:var(--ink);border-left:4px solid var(--brand);padding-left:10px}
   p,li{font-size:14px;color:var(--sub)}
   .lead{color:var(--ink);font-size:14.5px}
-  .chip{display:inline-block;font-size:11.5px;font-family:var(--mono);background:***REMOVED***f0f2f5;color:***REMOVED***39424d;padding:2px 8px;border-radius:6px;margin:2px 4px 2px 0}
+  .chip{display:inline-block;font-size:11.5px;font-family:var(--mono);background:#f0f2f5;color:#39424d;padding:2px 8px;border-radius:6px;margin:2px 4px 2px 0}
   .chip.rule{background:var(--redbg);color:var(--red);font-weight:600}
   table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
   th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
-  th{background:***REMOVED***fafbfc;color:var(--ink);font-weight:600}
-  td code{font-family:var(--mono);background:***REMOVED***f0f2f5;padding:1px 5px;border-radius:4px;font-size:12px}
+  th{background:#fafbfc;color:var(--ink);font-weight:600}
+  td code{font-family:var(--mono);background:#f0f2f5;padding:1px 5px;border-radius:4px;font-size:12px}
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:14px 0}
-  .kcard{border:1px solid var(--line);border-radius:11px;padding:14px 16px;background:***REMOVED***fcfcfd}
+  .kcard{border:1px solid var(--line);border-radius:11px;padding:14px 16px;background:#fcfcfd}
   .kcard h4{margin:0 0 6px;font-size:14px;color:var(--ink)}
   .kcard p{margin:0;font-size:12.8px}
-  .note{border:1px dashed var(--brand);background:var(--brand-bg);border-radius:10px;padding:12px 14px;font-size:13px;color:***REMOVED***1d3a8a;margin:12px 0}
-  .rednote{border:1px dashed var(--red);background:var(--redbg);color:***REMOVED***8a1f23}
-  .oknote{border:1px dashed var(--ok);background:var(--okbg);color:***REMOVED***0b6b4a}
+  .note{border:1px dashed var(--brand);background:var(--brand-bg);border-radius:10px;padding:12px 14px;font-size:13px;color:#1d3a8a;margin:12px 0}
+  .rednote{border:1px dashed var(--red);background:var(--redbg);color:#8a1f23}
+  .oknote{border:1px dashed var(--ok);background:var(--okbg);color:#0b6b4a}
   .fcard{border-radius:12px;padding:16px 18px;margin:12px 0;border:1px solid var(--line)}
-  .fcard .fnum{font-family:var(--mono);font-weight:700;font-size:13px;background:var(--brand);color:***REMOVED***fff;border-radius:6px;padding:2px 8px;display:inline-block;margin-bottom:6px}
-  .footer{font-size:12px;color:***REMOVED***9aa1ab;text-align:center;padding:20px}
+  .fcard .fnum{font-family:var(--mono);font-weight:700;font-size:13px;background:var(--brand);color:#fff;border-radius:6px;padding:2px 8px;display:inline-block;margin-bottom:6px}
+  .footer{font-size:12px;color:#9aa1ab;text-align:center;padding:20px}
   ul.tight li{margin:3px 0}
   .ok{color:var(--ok);font-weight:600}
   .steps{counter-reset:st;margin:12px 0}
   .steps li{list-style:none;position:relative;padding:0 0 14px 34px;border-left:2px solid var(--line);margin-left:14px}
-  .steps li::before{counter-increment:st;content:counter(st);position:absolute;left:-14px;top:0;width:26px;height:26px;border-radius:50%;background:var(--brand);color:***REMOVED***fff;font-size:12px;display:flex;align-items:center;justify-content:center;font-weight:600}
+  .steps li::before{counter-increment:st;content:counter(st);position:absolute;left:-14px;top:0;width:26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center;font-weight:600}
   .steps li:last-child{border-left-color:transparent}
-  blockquote{border-left:4px solid var(--brand);margin:14px 0;padding:10px 16px;background:var(--brand-bg);border-radius:0 10px 10px 0;font-size:14px;color:***REMOVED***1d3a8a}
+  blockquote{border-left:4px solid var(--brand);margin:14px 0;padding:10px 16px;background:var(--brand-bg);border-radius:0 10px 10px 0;font-size:14px;color:#1d3a8a}
 </style>
 </head>
-<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:***REMOVED***056DE8;color:***REMOVED***fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:***REMOVED***fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
 <header>
   <h1>行途工作空间 · 防弹工作法（AI）· 理念与落地</h1>
   <p>源自某海事工程集团 2026-08-07 复盘沉淀 · 核心：留痕 + 边界 + 依据 + 对齐 · 让工作自带可解释性 · 2026-08</p>
 </header>
 
 <nav>
-  <a href="***REMOVED***origin">① 来源与复盘</a>
-  <a href="***REMOVED***core">② 核心理念</a>
-  <a href="***REMOVED***f14">③ F1–F4 详解</a>
-  <a href="***REMOVED***map">④ xingtu 落地映射</a>
-  <a href="***REMOVED***check">⑤ 内容域防弹检查清单</a>
-  <a href="***REMOVED***rules">⑥ 规则族 BUL-*</a>
+  <a href="#origin">① 来源与复盘</a>
+  <a href="#core">② 核心理念</a>
+  <a href="#f14">③ F1–F4 详解</a>
+  <a href="#map">④ xingtu 落地映射</a>
+  <a href="#check">⑤ 内容域防弹检查清单</a>
+  <a href="#rules">⑥ 规则族 BUL-*</a>
 </nav>
 
 <main>

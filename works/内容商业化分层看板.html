@@ -6,42 +6,42 @@
 <title>行途内容商业化 · 分层规划</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; background:***REMOVED***f7f9fc; color:***REMOVED***1e293b; padding:32px 20px; }
+  body { font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; background:#f7f9fc; color:#1e293b; padding:32px 20px; }
   .wrap { max-width:1000px; margin:0 auto; }
-  h1 { text-align:center; font-size:24px; color:***REMOVED***0f172a; margin-bottom:6px; }
-  .sub { text-align:center; color:***REMOVED***64748b; font-size:13px; margin-bottom:28px; }
-  .principle { text-align:center; font-size:14px; color:***REMOVED***2E8B57; font-weight:600; background:***REMOVED***e8f5ee; border:1px solid ***REMOVED***cdeadd; border-radius:10px; padding:10px; margin-bottom:26px; }
+  h1 { text-align:center; font-size:24px; color:#0f172a; margin-bottom:6px; }
+  .sub { text-align:center; color:#64748b; font-size:13px; margin-bottom:28px; }
+  .principle { text-align:center; font-size:14px; color:#2E8B57; font-weight:600; background:#e8f5ee; border:1px solid #cdeadd; border-radius:10px; padding:10px; margin-bottom:26px; }
   .layers { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:28px; }
-  .layer { background:***REMOVED***fff; border-radius:14px; padding:20px 18px; border:1px solid ***REMOVED***eef2f7; box-shadow:0 1px 4px rgba(0,0,0,.05); }
+  .layer { background:#fff; border-radius:14px; padding:20px 18px; border:1px solid #eef2f7; box-shadow:0 1px 4px rgba(0,0,0,.05); }
   .layer .tag { font-size:11px; font-weight:700; letter-spacing:.5px; padding:3px 10px; border-radius:999px; display:inline-block; margin-bottom:10px; }
-  .l1 .tag { background:***REMOVED***e8f5ee; color:***REMOVED***2E8B57; }
-  .l2 .tag { background:***REMOVED***fef3c7; color:***REMOVED***b45309; }
-  .l3 .tag { background:***REMOVED***ede9fe; color:***REMOVED***6d28d9; }
+  .l1 .tag { background:#e8f5ee; color:#2E8B57; }
+  .l2 .tag { background:#fef3c7; color:#b45309; }
+  .l3 .tag { background:#ede9fe; color:#6d28d9; }
   .layer h2 { font-size:17px; margin-bottom:6px; }
-  .layer .role { font-size:12px; color:***REMOVED***64748b; margin-bottom:12px; }
+  .layer .role { font-size:12px; color:#64748b; margin-bottom:12px; }
   .layer ul { list-style:none; }
-  .layer li { font-size:13px; color:***REMOVED***475569; line-height:1.9; padding-left:16px; position:relative; }
-  .layer li::before { content:"◆"; position:absolute; left:0; color:***REMOVED***94a3b8; font-size:10px; top:4px; }
-  table { width:100%; border-collapse:collapse; background:***REMOVED***fff; border-radius:12px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,.05); margin-bottom:28px; }
-  th,td { padding:10px 14px; font-size:13px; text-align:left; border-bottom:1px solid ***REMOVED***eef2f7; }
-  th { background:***REMOVED***f8fafc; color:***REMOVED***475569; font-weight:600; }
+  .layer li { font-size:13px; color:#475569; line-height:1.9; padding-left:16px; position:relative; }
+  .layer li::before { content:"◆"; position:absolute; left:0; color:#94a3b8; font-size:10px; top:4px; }
+  table { width:100%; border-collapse:collapse; background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,.05); margin-bottom:28px; }
+  th,td { padding:10px 14px; font-size:13px; text-align:left; border-bottom:1px solid #eef2f7; }
+  th { background:#f8fafc; color:#475569; font-weight:600; }
   .price { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:28px; }
-  .price .p { background:***REMOVED***fff; border:1px solid ***REMOVED***eef2f7; border-radius:12px; padding:16px; text-align:center; }
-  .price .pt { font-size:14px; font-weight:600; color:***REMOVED***0f172a; }
-  .price .pv { font-size:22px; font-weight:700; color:***REMOVED***2E8B57; margin:8px 0 4px; }
-  .price .pd { font-size:12px; color:***REMOVED***64748b; }
-  .checks { background:***REMOVED***fff; border:1px solid ***REMOVED***eef2f7; border-radius:12px; padding:18px 20px; }
+  .price .p { background:#fff; border:1px solid #eef2f7; border-radius:12px; padding:16px; text-align:center; }
+  .price .pt { font-size:14px; font-weight:600; color:#0f172a; }
+  .price .pv { font-size:22px; font-weight:700; color:#2E8B57; margin:8px 0 4px; }
+  .price .pd { font-size:12px; color:#64748b; }
+  .checks { background:#fff; border:1px solid #eef2f7; border-radius:12px; padding:18px 20px; }
   .checks h2 { font-size:15px; margin-bottom:10px; }
-  .checks .row { display:flex; align-items:center; font-size:13px; color:***REMOVED***475569; padding:6px 0; border-bottom:1px dashed ***REMOVED***eef2f7; }
+  .checks .row { display:flex; align-items:center; font-size:13px; color:#475569; padding:6px 0; border-bottom:1px dashed #eef2f7; }
   .checks .row:last-child { border-bottom:none; }
-  .checks .idx { color:***REMOVED***94a3b8; font-family:monospace; margin-right:12px; width:24px; }
+  .checks .idx { color:#94a3b8; font-family:monospace; margin-right:12px; width:24px; }
   .checks .d { flex:1; }
-  .checks .wait { color:***REMOVED***b45309; font-size:12px; }
-  .footer { text-align:center; color:***REMOVED***94a3b8; font-size:11.5px; margin-top:24px; }
+  .checks .wait { color:#b45309; font-size:12px; }
+  .footer { text-align:center; color:#94a3b8; font-size:11.5px; margin-top:24px; }
   @media (max-width:760px){ .layers,.price{ grid-template-columns:1fr; } }
 </style>
 </head>
-<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:***REMOVED***056DE8;color:***REMOVED***fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:***REMOVED***fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
 <div class="wrap">
   <h1>行途内容商业化 · 分层规划</h1>
   <div class="sub">2026-09-02 · 开源 / 出书 / 付费咨询 三层制</div>

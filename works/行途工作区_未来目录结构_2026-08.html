@@ -6,9 +6,9 @@
 <title>行途工作区 · 未来目录结构（目标态）</title>
 <style>
   :root{
-    --bg:***REMOVED***f5f7fa; --panel:***REMOVED***fff; --ink:***REMOVED***1f2933; --sub:***REMOVED***5b6b7b; --line:***REMOVED***e3e8ef;
-    --brand:***REMOVED***3a6ea5; --brand-d:***REMOVED***2b5580; --accent:***REMOVED***e8772e; --ok:***REMOVED***1f9d6b; --warn:***REMOVED***e0a800; --bad:***REMOVED***d64545;
-    --l5:***REMOVED***d64545; --l4:***REMOVED***e8772e; --l3:***REMOVED***7b61ff; --l2:***REMOVED***1f9d6b; --l1:***REMOVED***3a6ea5; --l0:***REMOVED***5b6b7b;
+    --bg:#f5f7fa; --panel:#fff; --ink:#1f2933; --sub:#5b6b7b; --line:#e3e8ef;
+    --brand:#3a6ea5; --brand-d:#2b5580; --accent:#e8772e; --ok:#1f9d6b; --warn:#e0a800; --bad:#d64545;
+    --l5:#d64545; --l4:#e8772e; --l3:#7b61ff; --l2:#1f9d6b; --l1:#3a6ea5; --l0:#5b6b7b;
     --shadow:0 1px 3px rgba(20,40,70,.08),0 6px 18px rgba(20,40,70,.06); --radius:14px;
   }
   *{box-sizing:border-box}
@@ -16,7 +16,7 @@
     background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
   a{color:var(--brand);text-decoration:none}
   .wrap{max-width:1080px;margin:0 auto;padding:0 20px 80px}
-  header{background:linear-gradient(135deg,***REMOVED***2b5580,***REMOVED***3a6ea5 55%,***REMOVED***4f86c6);color:***REMOVED***fff;padding:28px 0 24px;box-shadow:var(--shadow)}
+  header{background:linear-gradient(135deg,#2b5580,#3a6ea5 55%,#4f86c6);color:#fff;padding:28px 0 24px;box-shadow:var(--shadow)}
   header .wrap{padding-bottom:0}
   .brand-row{display:flex;align-items:center;gap:14px}
   .logo{width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.18);display:grid;place-items:center;font-size:24px;font-weight:800;border:1px solid rgba(255,255,255,.3)}
@@ -27,14 +27,14 @@
   section{margin-top:32px}
   .sec-head{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
   .sec-head h2{font-size:20px;margin:0}
-  .sec-head .n{font-size:13px;color:***REMOVED***fff;background:var(--brand);border-radius:6px;padding:2px 9px;font-weight:700}
+  .sec-head .n{font-size:13px;color:#fff;background:var(--brand);border-radius:6px;padding:2px 9px;font-weight:700}
   .sec-head .desc{font-size:13px;color:var(--sub)}
   .panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;box-shadow:var(--shadow)}
 
   .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--sub);margin-bottom:16px}
   .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:middle}
-  .legend .anc{border:2px solid var(--brand);background:***REMOVED***fff}
-  .legend .plan{border:2px dashed var(--brand);background:***REMOVED***fff}
+  .legend .anc{border:2px solid var(--brand);background:#fff}
+  .legend .plan{border:2px dashed var(--brand);background:#fff}
 
   .tree{font-size:14px}
   .tree ul{list-style:none;margin:0;padding-left:22px;position:relative}
@@ -43,28 +43,28 @@
   .tree ul ul::before{content:"";position:absolute;left:8px;top:0;bottom:14px;width:1px;background:var(--line)}
   .tree li::before{content:"";position:absolute;left:-14px;top:16px;width:14px;height:1px;background:var(--line)}
   .tree>ul>li::before{display:none}
-  .node{display:inline-flex;align-items:center;gap:8px;padding:3px 10px;border-radius:8px;background:***REMOVED***fff;border:1px solid var(--line)}
+  .node{display:inline-flex;align-items:center;gap:8px;padding:3px 10px;border-radius:8px;background:#fff;border:1px solid var(--line)}
   .node .ic{font-size:15px}
   .node .nm{font-weight:600}
   .node.dir .nm{color:var(--brand-d)}
-  .badge{font-size:11.5px;font-weight:700;color:***REMOVED***fff;border-radius:6px;padding:1px 8px;white-space:nowrap}
+  .badge{font-size:11.5px;font-weight:700;color:#fff;border-radius:6px;padding:1px 8px;white-space:nowrap}
   .b-l5{background:var(--l5)} .b-l4{background:var(--l4)} .b-l3{background:var(--l3)}
   .b-l2{background:var(--l2)} .b-l1{background:var(--l1)} .b-l0{background:var(--l0)}
-  .b-anc{background:***REMOVED***fff;color:var(--brand-d);border:2px solid var(--brand)}
+  .b-anc{background:#fff;color:var(--brand-d);border:2px solid var(--brand)}
   .b-keep{background:var(--warn);}
-  .b-opt{background:***REMOVED***fff;color:var(--sub);border:1px dashed var(--sub)}
-  .b-plan{background:***REMOVED***fff;color:var(--brand);border:2px dashed var(--brand)}
+  .b-opt{background:#fff;color:var(--sub);border:1px dashed var(--sub)}
+  .b-plan{background:#fff;color:var(--brand);border:2px dashed var(--brand)}
   .note{font-size:13px;color:var(--sub);margin:7px 0 0 4px}
   .sub-note{font-size:12px;color:var(--sub);margin-left:8px}
 
   table{border-collapse:collapse;width:100%;font-size:13.5px}
   th,td{border:1px solid var(--line);padding:10px 13px;text-align:left;vertical-align:top}
-  th{background:***REMOVED***eef3f8;color:var(--brand-d);font-weight:700}
+  th{background:#eef3f8;color:var(--brand-d);font-weight:700}
   .from{color:var(--bad);font-weight:600}
   .to{color:var(--ok);font-weight:600}
-  .tagwarn{display:inline-block;background:***REMOVED***fdf3dc;color:var(--warn);border-radius:6px;padding:1px 8px;font-size:12px;font-weight:600}
-  .tagok{display:inline-block;background:***REMOVED***e6f6ee;color:var(--ok);border-radius:6px;padding:1px 8px;font-size:12px;font-weight:600}
-  .tagplan{display:inline-block;background:***REMOVED***eaf1f8;color:var(--brand-d);border-radius:6px;padding:1px 8px;font-size:12px;font-weight:700;border:1px solid var(--brand)}
+  .tagwarn{display:inline-block;background:#fdf3dc;color:var(--warn);border-radius:6px;padding:1px 8px;font-size:12px;font-weight:600}
+  .tagok{display:inline-block;background:#e6f6ee;color:var(--ok);border-radius:6px;padding:1px 8px;font-size:12px;font-weight:600}
+  .tagplan{display:inline-block;background:#eaf1f8;color:var(--brand-d);border-radius:6px;padding:1px 8px;font-size:12px;font-weight:700;border:1px solid var(--brand)}
 
   .callout{border-left:4px solid var(--brand);background:var(--panel);border-radius:0 12px 12px 0;padding:14px 18px;box-shadow:var(--shadow);margin-top:16px}
   .callout b{color:var(--brand-d)}
@@ -72,7 +72,7 @@
   footer{margin-top:40px;font-size:12px;color:var(--sub);text-align:center;border-top:1px solid var(--line);padding-top:18px}
 </style>
 </head>
-<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:***REMOVED***056DE8;color:***REMOVED***fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:***REMOVED***fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
 <header>
   <div class="wrap">
     <div class="brand-row">
@@ -105,7 +105,7 @@
       <span><i class="anc"></i>锚点文档（刻留根）</span>
       <span><i style="background:var(--warn)"></i>保留不动</span>
       <span><i class="plan"></i>规划空间（待建）</span>
-      <span><i style="background:***REMOVED***fff;border:1px dashed var(--sub)"></i>待定/可选归位</span>
+      <span><i style="background:#fff;border:1px dashed var(--sub)"></i>待定/可选归位</span>
     </div>
   </div>
 
@@ -266,7 +266,7 @@
     <div class="sec-head"><span class="n">02</span><h2>现状 → 目标 · 变化对照</h2><span class="desc">执行整理提案后发生的实际改动（走 mv / 回收站，无 rm）</span></div>
     <div class="panel">
       <table>
-        <thead><tr><th>***REMOVED***</th><th>变化</th><th>现状</th><th>目标</th><th>方式</th></tr></thead>
+        <thead><tr><th>#</th><th>变化</th><th>现状</th><th>目标</th><th>方式</th></tr></thead>
         <tbody>
           <tr><td>1</td><td>重复目录合并</td><td class="from">02_内容仓库（44K 空壳）+ 02_内容仓库 (Content Hub) 并存</td><td class="to">仅保留 02_内容仓库 (Content Hub)，空壳进回收站</td><td><span class="tagwarn">先 diff 再回收</span></td></tr>
           <tr><td>2</td><td>根散落文件归位</td><td class="from">8 个分析/看板/数据文件丢在根</td><td class="to">→ 03_运营工具箱（手册/看板留根）</td><td><span class="tagok">mv 归位</span></td></tr>

@@ -6,14 +6,14 @@
 <title>行途 · 自媒体工作台</title>
 <style>
   :root{
-    --bg:***REMOVED***f3f4f9; --card:***REMOVED***ffffff; --border:***REMOVED***e7e9f0;
-    --primary:***REMOVED***6d5ce7; --primary-soft:***REMOVED***efebfd;
-    --green:***REMOVED***10b981; --green-soft:***REMOVED***e5f8f0;
-    --orange:***REMOVED***f59e0b; --orange-soft:***REMOVED***fdf3e0;
-    --red:***REMOVED***ef4444; --red-soft:***REMOVED***fdeaea;
-    --blue:***REMOVED***3b82f6; --blue-soft:***REMOVED***e8f1fe;
-    --purple:***REMOVED***8b5cf6; --purple-soft:***REMOVED***f1ecfe;
-    --text:***REMOVED***1f2430; --text2:***REMOVED***6b7280; --text3:***REMOVED***9aa1b0;
+    --bg:#f3f4f9; --card:#ffffff; --border:#e7e9f0;
+    --primary:#6d5ce7; --primary-soft:#efebfd;
+    --green:#10b981; --green-soft:#e5f8f0;
+    --orange:#f59e0b; --orange-soft:#fdf3e0;
+    --red:#ef4444; --red-soft:#fdeaea;
+    --blue:#3b82f6; --blue-soft:#e8f1fe;
+    --purple:#8b5cf6; --purple-soft:#f1ecfe;
+    --text:#1f2430; --text2:#6b7280; --text3:#9aa1b0;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
@@ -23,8 +23,8 @@
   /* header */
   header{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:18px}
   .brand{display:flex;align-items:center;gap:12px}
-  .logo{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,***REMOVED***6d5ce7,***REMOVED***a78bfa);
-    display:flex;align-items:center;justify-content:center;color:***REMOVED***fff;font-weight:800;font-size:20px;box-shadow:0 6px 16px rgba(109,92,231,.28)}
+  .logo{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,#6d5ce7,#a78bfa);
+    display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:20px;box-shadow:0 6px 16px rgba(109,92,231,.28)}
   h1{font-size:24px;font-weight:800;letter-spacing:.5px}
   .sub{color:var(--text2);font-size:13px;margin-top:2px}
   .stamp{font-size:12px;color:var(--text3);background:var(--card);border:1px solid var(--border);border-radius:999px;padding:5px 12px}
@@ -56,19 +56,19 @@
 
   /* anchor */
   .anchor .row{display:flex;flex-wrap:wrap;gap:10px}
-  .anchor .pill{background:var(--primary-soft);color:***REMOVED***5b45d6;border-radius:10px;padding:9px 14px;font-size:13px;font-weight:600}
-  .anchor .pill.g{background:var(--green-soft);color:***REMOVED***0a9168}
-  .anchor .pill.o{background:var(--orange-soft);color:***REMOVED***b97a06}
-  .anchor .pill.b{background:var(--blue-soft);color:***REMOVED***2563eb}
+  .anchor .pill{background:var(--primary-soft);color:#5b45d6;border-radius:10px;padding:9px 14px;font-size:13px;font-weight:600}
+  .anchor .pill.g{background:var(--green-soft);color:#0a9168}
+  .anchor .pill.o{background:var(--orange-soft);color:#b97a06}
+  .anchor .pill.b{background:var(--blue-soft);color:#2563eb}
 
   /* tags */
   .tag{display:inline-block;font-size:11px;font-weight:600;border-radius:6px;padding:2px 8px;margin:2px 4px 2px 0;line-height:1.5}
-  .tag.green{background:var(--green-soft);color:***REMOVED***0a9168}
-  .tag.orange{background:var(--orange-soft);color:***REMOVED***b97a06}
-  .tag.red{background:var(--red-soft);color:***REMOVED***dc2626}
-  .tag.blue{background:var(--blue-soft);color:***REMOVED***2563eb}
-  .tag.purple{background:var(--purple-soft);color:***REMOVED***7c3aed}
-  .tag.gray{background:***REMOVED***f0f1f5;color:***REMOVED***6b7280}
+  .tag.green{background:var(--green-soft);color:#0a9168}
+  .tag.orange{background:var(--orange-soft);color:#b97a06}
+  .tag.red{background:var(--red-soft);color:#dc2626}
+  .tag.blue{background:var(--blue-soft);color:#2563eb}
+  .tag.purple{background:var(--purple-soft);color:#7c3aed}
+  .tag.gray{background:#f0f1f5;color:#6b7280}
 
   /* list cards */
   .item{border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:10px}
@@ -97,19 +97,19 @@
   .plat .l .ic{width:26px;height:26px;border-radius:7px;background:var(--primary-soft);color:var(--primary);font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
 
   /* todo */
-  .todo{border-left:3px solid var(--orange);border-radius:12px;padding:10px 14px;margin-bottom:9px;background:***REMOVED***fffdf7;border:1px solid var(--border);border-left:3px solid var(--orange)}
+  .todo{border-left:3px solid var(--orange);border-radius:12px;padding:10px 14px;margin-bottom:9px;background:#fffdf7;border:1px solid var(--border);border-left:3px solid var(--orange)}
   .todo .t{font-size:13.5px;font-weight:600}
   .todo .d{font-size:12px;color:var(--text2);margin-top:2px}
 
-  .redline{border-left:3px solid var(--red);border-radius:12px;padding:10px 14px;margin-bottom:9px;background:***REMOVED***fffafa;border:1px solid var(--border);border-left:3px solid var(--red)}
-  .redline .t{font-size:13px;font-weight:600;color:***REMOVED***b91c1c}
+  .redline{border-left:3px solid var(--red);border-radius:12px;padding:10px 14px;margin-bottom:9px;background:#fffafa;border:1px solid var(--border);border-left:3px solid var(--red)}
+  .redline .t{font-size:13px;font-weight:600;color:#b91c1c}
 
   .empty{color:var(--text3);font-size:13px;text-align:center;padding:18px 0}
   footer{margin-top:22px;text-align:center;color:var(--text3);font-size:12px}
   .loading{color:var(--text3);font-size:13px;padding:14px;text-align:center}
 </style>
 </head>
-<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:***REMOVED***056DE8;color:***REMOVED***fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:***REMOVED***fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
 <div class="wrap">
   <header>
     <div class="brand">
@@ -159,7 +159,7 @@
 
       <!-- 高优先级素材 -->
       <section>
-        <div class="sec-h"><div class="sec-t"><span class="dot"></span>高优先级素材 Top</div><a class="sec-more" href="https://www.workbuddy.cn/space/d/RcCLQ8k45NHg5CD7TTfssQ" style="color:***REMOVED***6d5ce7;font-weight:600;text-decoration:none">白盒查看全部 1125 条 →</a></div>
+        <div class="sec-h"><div class="sec-t"><span class="dot"></span>高优先级素材 Top</div><a class="sec-more" href="https://www.workbuddy.cn/space/d/RcCLQ8k45NHg5CD7TTfssQ" style="color:#6d5ce7;font-weight:600;text-decoration:none">白盒查看全部 1125 条 →</a></div>
         <div id="sucai" data-sp-bindable="database" data-sp-database-id="BMu3OZgVvurFsZAUGxWVCp"><div class="loading">加载中…</div></div>
       </section>
     </div>
@@ -202,7 +202,7 @@
 (function(){
   var db = (window.__SMART_PAGE__ && window.__SMART_PAGE__.database) || null;
 
-  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&***REMOVED***39;'}[c];}); }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
   function dateShort(s){ if(!s) return ''; return String(s).slice(0,10); }
 
   // select 状态 → 颜色

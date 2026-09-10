@@ -6,30 +6,30 @@
 <title>省 token 的第一性原理 · 去 AI 味版对照 · 行途</title>
 <style>
   :root {
-    --bg: ***REMOVED***f5f6f8; --card: ***REMOVED***fff; --text: ***REMOVED***1f2329; --text-2: ***REMOVED***4e5969; --text-3: ***REMOVED***86909c;
-    --brand: ***REMOVED***056DE8; --accent: ***REMOVED***FF6B35; --green: ***REMOVED***00b42a; --border: ***REMOVED***e5e6eb; --code-bg: ***REMOVED***f7f8fa;
+    --bg: #f5f6f8; --card: #fff; --text: #1f2329; --text-2: #4e5969; --text-3: #86909c;
+    --brand: #056DE8; --accent: #FF6B35; --green: #00b42a; --border: #e5e6eb; --code-bg: #f7f8fa;
   }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; line-height: 1.75; }
   .container { max-width: 820px; margin: 0 auto; padding: 24px 20px 60px; }
-  .top { background: ***REMOVED***fff; border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; margin-bottom: 20px; font-size: 13px; color: var(--text-2); }
+  .top { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; margin-bottom: 20px; font-size: 13px; color: var(--text-2); }
   .top b { color: var(--brand); }
   h1 { font-size: 21px; margin: 0 0 6px; }
   .sub { font-size: 13px; color: var(--text-3); margin-bottom: 22px; }
-  .card { background: ***REMOVED***fff; border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; margin-bottom: 14px; box-shadow: 0 1px 4px rgba(0,0,0,.04); }
+  .card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; margin-bottom: 14px; box-shadow: 0 1px 4px rgba(0,0,0,.04); }
   .card h3 { margin: 0 0 12px; font-size: 14px; color: var(--text); display: flex; align-items: center; gap: 8px; }
   .card h3 .tag { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; }
-  .tag.ai { background: ***REMOVED***ffe8e8; color: ***REMOVED***cf2424; }
-  .tag.ok { background: ***REMOVED***e6f7ec; color: var(--green); }
-  .before { background: ***REMOVED***fff5f5; border-left: 3px solid ***REMOVED***f87171; padding: 10px 14px; border-radius: 6px; font-size: 14px; color: ***REMOVED***9f1239; margin-bottom: 8px; }
-  .before .lbl { font-size: 11px; font-weight: 700; color: ***REMOVED***f87171; display: block; margin-bottom: 2px; }
-  .after { background: ***REMOVED***f0fdf4; border-left: 3px solid ***REMOVED***22c55e; padding: 10px 14px; border-radius: 6px; font-size: 14.5px; color: ***REMOVED***14532d; }
-  .after .lbl { font-size: 11px; font-weight: 700; color: ***REMOVED***22c55e; display: block; margin-bottom: 2px; }
-  .note { background: ***REMOVED***fffbe6; border: 1px solid ***REMOVED***ffe58f; border-radius: 8px; padding: 12px 14px; font-size: 13px; color: ***REMOVED***875800; line-height: 1.7; margin-top: 8px; }
-  .note b { color: ***REMOVED***5a3a00; }
+  .tag.ai { background: #ffe8e8; color: #cf2424; }
+  .tag.ok { background: #e6f7ec; color: var(--green); }
+  .before { background: #fff5f5; border-left: 3px solid #f87171; padding: 10px 14px; border-radius: 6px; font-size: 14px; color: #9f1239; margin-bottom: 8px; }
+  .before .lbl { font-size: 11px; font-weight: 700; color: #f87171; display: block; margin-bottom: 2px; }
+  .after { background: #f0fdf4; border-left: 3px solid #22c55e; padding: 10px 14px; border-radius: 6px; font-size: 14.5px; color: #14532d; }
+  .after .lbl { font-size: 11px; font-weight: 700; color: #22c55e; display: block; margin-bottom: 2px; }
+  .note { background: #fffbe6; border: 1px solid #ffe58f; border-radius: 8px; padding: 12px 14px; font-size: 13px; color: #875800; line-height: 1.7; margin-top: 8px; }
+  .note b { color: #5a3a00; }
 </style>
 </head>
-<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:***REMOVED***056DE8;color:***REMOVED***fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:***REMOVED***fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
 <div class="container">
 
   <div class="top">🛠️ <b>de-ai-flavor 技能</b> · 检测清单：空泛形容词 / 口号式对称 / 万能结论 / 空承诺 / 伪逻辑 / 过度抽象 → 数字说话 + 动词对象 + 删空话 + 留代价 + 口语化</div>

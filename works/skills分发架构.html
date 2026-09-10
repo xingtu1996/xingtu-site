@@ -6,44 +6,44 @@
 <title>行途 Skills 分发架构</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; background:***REMOVED***f7f9fc; color:***REMOVED***1e293b; padding:36px 20px; }
+  body { font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; background:#f7f9fc; color:#1e293b; padding:36px 20px; }
   .wrap { max-width:980px; margin:0 auto; }
-  h1 { text-align:center; font-size:26px; color:***REMOVED***0f172a; letter-spacing:1px; margin-bottom:6px; }
-  .sub { text-align:center; color:***REMOVED***64748b; font-size:13px; margin-bottom:28px; }
+  h1 { text-align:center; font-size:26px; color:#0f172a; letter-spacing:1px; margin-bottom:6px; }
+  .sub { text-align:center; color:#64748b; font-size:13px; margin-bottom:28px; }
 
-  .conclusion { background:***REMOVED***fff; border:1px solid ***REMOVED***eef2f7; border-radius:14px; padding:20px 24px; margin-bottom:26px; box-shadow:0 1px 4px rgba(0,0,0,.05); border-left:4px solid ***REMOVED***2E8B57; }
-  .conclusion h2 { font-size:15px; color:***REMOVED***0f172a; margin-bottom:8px; }
-  .conclusion code { background:***REMOVED***e8f5ee; color:***REMOVED***1e6b42; padding:2px 8px; border-radius:6px; font-size:13px; }
+  .conclusion { background:#fff; border:1px solid #eef2f7; border-radius:14px; padding:20px 24px; margin-bottom:26px; box-shadow:0 1px 4px rgba(0,0,0,.05); border-left:4px solid #2E8B57; }
+  .conclusion h2 { font-size:15px; color:#0f172a; margin-bottom:8px; }
+  .conclusion code { background:#e8f5ee; color:#1e6b42; padding:2px 8px; border-radius:6px; font-size:13px; }
 
-  .sec { font-size:16px; font-weight:700; color:***REMOVED***0f172a; margin:26px 0 12px; display:flex; align-items:center; gap:8px; }
-  .sec .bar { width:4px; height:17px; background:***REMOVED***2E8B57; border-radius:2px; }
+  .sec { font-size:16px; font-weight:700; color:#0f172a; margin:26px 0 12px; display:flex; align-items:center; gap:8px; }
+  .sec .bar { width:4px; height:17px; background:#2E8B57; border-radius:2px; }
 
   .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
-  .card { background:***REMOVED***fff; border:1px solid ***REMOVED***eef2f7; border-radius:14px; padding:20px; box-shadow:0 1px 4px rgba(0,0,0,.05); }
+  .card { background:#fff; border:1px solid #eef2f7; border-radius:14px; padding:20px; box-shadow:0 1px 4px rgba(0,0,0,.05); }
   .card .tag { display:inline-block; font-size:11px; font-weight:600; border-radius:999px; padding:2px 10px; margin-bottom:10px; }
-  .card.a .tag { background:***REMOVED***e8f5ee; color:***REMOVED***2E8B57; }
-  .card.b .tag { background:***REMOVED***eef2ff; color:***REMOVED***4f46e5; }
-  .card.c .tag { background:***REMOVED***fef3c7; color:***REMOVED***b45309; }
-  .card h3 { font-size:14.5px; color:***REMOVED***0f172a; margin-bottom:8px; }
-  .card p { font-size:12.5px; color:***REMOVED***64748b; line-height:1.8; }
-  .card .cmd { background:***REMOVED***f1f5f9; border-radius:8px; padding:8px 10px; font-size:11px; color:***REMOVED***334155; margin-top:10px; font-family:Menlo,monospace; word-break:break-all; }
+  .card.a .tag { background:#e8f5ee; color:#2E8B57; }
+  .card.b .tag { background:#eef2ff; color:#4f46e5; }
+  .card.c .tag { background:#fef3c7; color:#b45309; }
+  .card h3 { font-size:14.5px; color:#0f172a; margin-bottom:8px; }
+  .card p { font-size:12.5px; color:#64748b; line-height:1.8; }
+  .card .cmd { background:#f1f5f9; border-radius:8px; padding:8px 10px; font-size:11px; color:#334155; margin-top:10px; font-family:Menlo,monospace; word-break:break-all; }
 
-  .path { background:***REMOVED***fff; border:1px solid ***REMOVED***eef2f7; border-radius:14px; padding:22px 24px; box-shadow:0 1px 4px rgba(0,0,0,.05); }
+  .path { background:#fff; border:1px solid #eef2f7; border-radius:14px; padding:22px 24px; box-shadow:0 1px 4px rgba(0,0,0,.05); }
   .path-row { display:flex; align-items:stretch; gap:4px; }
-  .node { flex:1; background:***REMOVED***f8fafc; border:1px solid ***REMOVED***e2e8f0; border-radius:10px; padding:14px 10px; text-align:center; }
-  .node .t { font-size:13px; font-weight:600; color:***REMOVED***0f172a; }
-  .node .d { font-size:10.5px; color:***REMOVED***94a3b8; margin-top:4px; line-height:1.5; }
-  .node.hl { background:***REMOVED***2E8B57; border-color:***REMOVED***2E8B57; }
-  .node.hl .t, .node.hl .d { color:***REMOVED***fff; }
+  .node { flex:1; background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:14px 10px; text-align:center; }
+  .node .t { font-size:13px; font-weight:600; color:#0f172a; }
+  .node .d { font-size:10.5px; color:#94a3b8; margin-top:4px; line-height:1.5; }
+  .node.hl { background:#2E8B57; border-color:#2E8B57; }
+  .node.hl .t, .node.hl .d { color:#fff; }
   .node.hl .d { color:rgba(255,255,255,.85); }
-  .arrow { display:flex; align-items:center; color:***REMOVED***cbd5e1; font-size:16px; flex-shrink:0; }
-  .path-cap { text-align:center; font-size:11px; color:***REMOVED***94a3b8; margin-top:12px; }
-  .tip { background:***REMOVED***e8f5ee; border-radius:10px; padding:12px 16px; font-size:12.5px; color:***REMOVED***1e6b42; margin-top:14px; line-height:1.8; }
-  .footer { text-align:center; color:***REMOVED***94a3b8; font-size:11.5px; margin-top:26px; border-top:1px solid ***REMOVED***eef2f7; padding-top:14px; }
+  .arrow { display:flex; align-items:center; color:#cbd5e1; font-size:16px; flex-shrink:0; }
+  .path-cap { text-align:center; font-size:11px; color:#94a3b8; margin-top:12px; }
+  .tip { background:#e8f5ee; border-radius:10px; padding:12px 16px; font-size:12.5px; color:#1e6b42; margin-top:14px; line-height:1.8; }
+  .footer { text-align:center; color:#94a3b8; font-size:11.5px; margin-top:26px; border-top:1px solid #eef2f7; padding-top:14px; }
   @media (max-width:720px){ .grid{ grid-template-columns:1fr; } .path-row{ flex-wrap:wrap; } .node{ min-width:45%; } .arrow{ transform:rotate(90deg); } }
 </style>
 </head>
-<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:***REMOVED***056DE8;color:***REMOVED***fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:***REMOVED***fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
 <div class="wrap">
   <h1>行途 Skills 分发架构</h1>
   <div class="sub">聚合管理 · 按需取用 · 独立演进 —— 不需要 1 个 skill 1 个仓</div>

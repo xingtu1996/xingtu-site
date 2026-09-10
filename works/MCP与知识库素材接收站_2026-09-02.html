@@ -6,10 +6,10 @@
 <title>MCP 与知识库素材接收站 · 行途</title>
 <style>
 :root{
-  --blue:***REMOVED***056DE8; --blue-l:***REMOVED***4A9EFF; --cyan:***REMOVED***00D4FF; --orange:***REMOVED***FF6B35;
-  --bg:***REMOVED***F7F9FB; --card:***REMOVED***FFFFFF; --bd:***REMOVED***E3E9F0; --bd2:***REMOVED***EFF3F8;
-  --t1:***REMOVED***14181F; --t2:***REMOVED***3D4757; --t3:***REMOVED***6B7787; --t4:***REMOVED***9AA5B4;
-  --ok:***REMOVED***0E9F6E; --warn:***REMOVED***E5A23C; --danger:***REMOVED***E5484D;
+  --blue:#056DE8; --blue-l:#4A9EFF; --cyan:#00D4FF; --orange:#FF6B35;
+  --bg:#F7F9FB; --card:#FFFFFF; --bd:#E3E9F0; --bd2:#EFF3F8;
+  --t1:#14181F; --t2:#3D4757; --t3:#6B7787; --t4:#9AA5B4;
+  --ok:#0E9F6E; --warn:#E5A23C; --danger:#E5484D;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
@@ -21,8 +21,8 @@ body{
 
 /* header */
 header{
-  background:linear-gradient(135deg,***REMOVED***056DE8 0%,***REMOVED***0B7FE8 45%,***REMOVED***00A8E8 100%);
-  color:***REMOVED***fff;padding:52px 0 44px;margin-bottom:36px;
+  background:linear-gradient(135deg,#056DE8 0%,#0B7FE8 45%,#00A8E8 100%);
+  color:#fff;padding:52px 0 44px;margin-bottom:36px;
 }
 header .wrap{position:relative}
 .kicker{
@@ -48,8 +48,8 @@ h3{font-size:16px;font-weight:650;color:var(--t1);margin:26px 0 12px}
   padding:22px 24px;margin-bottom:16px;
 }
 .card.hl{border-left:4px solid var(--blue)}
-.card.warn{border-left:4px solid var(--orange);background:***REMOVED***FFF9F5}
-.card.dan{border-left:4px solid var(--danger);background:***REMOVED***FEF6F6}
+.card.warn{border-left:4px solid var(--orange);background:#FFF9F5}
+.card.dan{border-left:4px solid var(--danger);background:#FEF6F6}
 
 /* stat grid */
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:18px}
@@ -63,12 +63,12 @@ h3{font-size:16px;font-weight:650;color:var(--t1);margin:26px 0 12px}
 table{width:100%;border-collapse:collapse;background:var(--card);
   border:1px solid var(--bd);border-radius:8px;overflow:hidden;font-size:14px}
 th{
-  background:***REMOVED***F0F4F9;color:var(--t2);font-weight:650;text-align:left;
+  background:#F0F4F9;color:var(--t2);font-weight:650;text-align:left;
   padding:11px 14px;border-bottom:1px solid var(--bd);font-size:13px;white-space:nowrap;
 }
 td{padding:11px 14px;border-bottom:1px solid var(--bd2);color:var(--t2);vertical-align:top;line-height:1.7}
 tr:last-child td{border-bottom:none}
-tbody tr:hover{background:***REMOVED***FAFCFE}
+tbody tr:hover{background:#FAFCFE}
 td.c,th.c{text-align:center}
 .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px}
 
@@ -77,11 +77,11 @@ td.c,th.c{text-align:center}
   display:inline-block;font-size:11.5px;font-weight:600;padding:2px 9px;
   border-radius:20px;line-height:1.7;white-space:nowrap;
 }
-.t-a{background:***REMOVED***E3F7EF;color:***REMOVED***0B7A55}
-.t-b{background:***REMOVED***FEF2E3;color:***REMOVED***B5720F}
-.t-c{background:***REMOVED***FDECEC;color:***REMOVED***C2292D}
-.t-blue{background:***REMOVED***E5F0FE;color:***REMOVED***0455B8}
-.t-gray{background:***REMOVED***EEF1F5;color:***REMOVED***5A6675}
+.t-a{background:#E3F7EF;color:#0B7A55}
+.t-b{background:#FEF2E3;color:#B5720F}
+.t-c{background:#FDECEC;color:#C2292D}
+.t-blue{background:#E5F0FE;color:#0455B8}
+.t-gray{background:#EEF1F5;color:#5A6675}
 
 /* flow */
 .flow{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:18px 0 8px}
@@ -91,14 +91,14 @@ td.c,th.c{text-align:center}
 }
 .fnode .step{
   display:inline-flex;width:24px;height:24px;border-radius:50%;
-  background:var(--blue);color:***REMOVED***fff;font-size:12px;font-weight:700;
+  background:var(--blue);color:#fff;font-size:12px;font-weight:700;
   align-items:center;justify-content:center;margin-bottom:8px;
 }
 .fnode .fn{font-size:13.5px;font-weight:650;color:var(--t1);line-height:1.5}
 .fnode .fd{font-size:11.5px;color:var(--t3);margin-top:5px;line-height:1.6}
 .fnode.done .step{background:var(--ok)}
 .fnode.pending .step{background:var(--t4)}
-.fnode.pending{border-style:dashed;background:***REMOVED***FCFDFE}
+.fnode.pending{border-style:dashed;background:#FCFDFE}
 
 /* two col */
 .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -119,12 +119,12 @@ ul.clean li b{color:var(--t1);font-weight:650}
 
 /* box */
 .box{border-radius:9px;padding:16px 18px;font-size:14px;line-height:1.8;margin:14px 0}
-.box.b{background:***REMOVED***EEF5FE;border:1px solid ***REMOVED***CFE3FB;color:***REMOVED***0B4A8F}
-.box.o{background:***REMOVED***FFF6EF;border:1px solid ***REMOVED***FBDCC6;color:***REMOVED***8F4413}
-.box.g{background:***REMOVED***EDF9F3;border:1px solid ***REMOVED***C6EBDA;color:***REMOVED***0A5D42}
+.box.b{background:#EEF5FE;border:1px solid #CFE3FB;color:#0B4A8F}
+.box.o{background:#FFF6EF;border:1px solid #FBDCC6;color:#8F4413}
+.box.g{background:#EDF9F3;border:1px solid #C6EBDA;color:#0A5D42}
 
 .quote{
-  border-left:3px solid var(--blue);background:***REMOVED***F5F9FE;
+  border-left:3px solid var(--blue);background:#F5F9FE;
   padding:14px 18px;margin:14px 0;font-size:15px;color:var(--t1);
   line-height:1.85;border-radius:0 7px 7px 0;
 }
@@ -137,7 +137,7 @@ ul.clean li b{color:var(--t1);font-weight:650}
 }
 .qitem:last-child{border-bottom:none}
 .qitem .qn{
-  flex:0 0 26px;height:26px;border-radius:50%;background:***REMOVED***EEF3F9;
+  flex:0 0 26px;height:26px;border-radius:50%;background:#EEF3F9;
   color:var(--blue);font-size:12px;font-weight:700;
   display:flex;align-items:center;justify-content:center;
 }
@@ -149,7 +149,7 @@ ul.clean li b{color:var(--t1);font-weight:650}
 .trow:last-child{border-bottom:none}
 .tid{
   flex:0 0 30px;height:30px;border-radius:7px;background:var(--blue);
-  color:***REMOVED***fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;
 }
 .tid.p1{background:var(--orange)}
 .tid.p2{background:var(--t4)}
@@ -162,12 +162,12 @@ footer{
   font-size:12.5px;color:var(--t4);line-height:1.9;
 }
 code{
-  background:***REMOVED***F0F4F9;padding:1.5px 6px;border-radius:4px;
-  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:***REMOVED***0455B8;
+  background:#F0F4F9;padding:1.5px 6px;border-radius:4px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:#0455B8;
 }
 </style>
 </head>
-<body data-page-node-id="LSJvpuPUFsYlj10zCWySne"><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:***REMOVED***056DE8;color:***REMOVED***fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:***REMOVED***fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<body data-page-node-id="LSJvpuPUFsYlj10zCWySne"><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
 
 <header data-page-node-id="l6V2FAdzcibSbruBv9VTee">
   <div class="wrap" data-page-node-id="MPZ2mRxKssNrHNz9eZxXio">
@@ -300,7 +300,7 @@ code{
     <div class="qitem" data-page-node-id="JK4NqxwK2tnpCH5fXXDqza"><span class="qn" data-page-node-id="mSs9wPH5oJlsiIM7FtsEFu">5</span><div data-page-node-id="nYgbeXAZ6XZlAGcm9Xt9cD">涉及<b data-page-node-id="ibl5LePerS768VuNESUwIS">人事 / 绩效 / 纠纷 / 薪资</b>？<br data-page-node-id="1Wrc3jGAbjI5dPVOqTlmUG"><span style="color:var(--t3);font-size:13px" data-page-node-id="B6GJzhRCuHLI4tKe7Zx1u1">→ 03 仅供阅读，永久封存</span></div></div>
   </div>
 
-  <div class="quote" style="border-left-color:var(--orange);background:***REMOVED***FFF9F5" data-page-node-id="dXAbsEPxuAhjFF9p9tXbHo">
+  <div class="quote" style="border-left-color:var(--orange);background:#FFF9F5" data-page-node-id="dXAbsEPxuAhjFF9p9tXbHo">
     <b style="color:var(--orange)" data-page-node-id="dHj3aX3l9oBecxLVHXB7l5">蒸馏唯一心法</b>：讲规则，不讲架构；讲决策，不讲实现；讲量级，不讲数字。<br data-page-node-id="XmbXhFUHFuV2PByAhEpBzj">
     <span style="color:var(--t3);font-size:14px" data-page-node-id="lqFiAepLMrlulQLqTN3SQs">❌「我们 数十个服务的工作流改造方案是……」&nbsp;→&nbsp; ✅「数十个服务的工作流改造里，我定了 3 条铁律：事务内禁止远程调用、列表强制分页、SQL 强制参数化」</span>
   </div>
@@ -426,14 +426,14 @@ code{
 
 </div>
 
-  <footer style="margin-top:36px;border-top:2px solid ***REMOVED***056DE8;padding:16px 20px;background:***REMOVED***f5f9ff;border-radius:10px;font-size:13px;color:***REMOVED***1a1a1a;line-height:1.9">
-    <div style="font-weight:700;color:***REMOVED***056DE8;margin-bottom:8px">📎 权威锚点 / 引用来源</div>
+  <footer style="margin-top:36px;border-top:2px solid #056DE8;padding:16px 20px;background:#f5f9ff;border-radius:10px;font-size:13px;color:#1a1a1a;line-height:1.9">
+    <div style="font-weight:700;color:#056DE8;margin-bottom:8px">📎 权威锚点 / 引用来源</div>
     <ul style="margin:0;padding-left:18px">
-      <li>生产级 MCP 服务仓 xingtu-mcps（GitHub）：<a href="https://github.com/xingtu1996/xingtu-mcps" target="_blank" rel="noopener" style="color:***REMOVED***056DE8;text-decoration:underline">https://github.com/xingtu1996/xingtu-mcps</a></li>
-      <li>素材接收站 _inbox 规范：<code style="background:***REMOVED***eef4ff;padding:1px 6px;border-radius:4px;color:***REMOVED***0a3d7a">xingtu-vault/11_经历素材库/_inbox/</code></li>
-      <li>GitHub xingtu1996 账号（15 个仓库可查）：<a href="https://github.com/xingtu1996" target="_blank" rel="noopener" style="color:***REMOVED***056DE8;text-decoration:underline">https://github.com/xingtu1996</a></li>
+      <li>生产级 MCP 服务仓 xingtu-mcps（GitHub）：<a href="https://github.com/xingtu1996/xingtu-mcps" target="_blank" rel="noopener" style="color:#056DE8;text-decoration:underline">https://github.com/xingtu1996/xingtu-mcps</a></li>
+      <li>素材接收站 _inbox 规范：<code style="background:#eef4ff;padding:1px 6px;border-radius:4px;color:#0a3d7a">xingtu-vault/11_经历素材库/_inbox/</code></li>
+      <li>GitHub xingtu1996 账号（15 个仓库可查）：<a href="https://github.com/xingtu1996" target="_blank" rel="noopener" style="color:#056DE8;text-decoration:underline">https://github.com/xingtu1996</a></li>
     </ul>
-    <div style="margin-top:8px;color:***REMOVED***555">完整引用索引：<code style="background:***REMOVED***eef4ff;padding:1px 6px;border-radius:4px;color:***REMOVED***0a3d7a">specs/20260902-断点续传与集中提示词/05_权威锚点与引用来源.md</code></div>
+    <div style="margin-top:8px;color:#555">完整引用索引：<code style="background:#eef4ff;padding:1px 6px;border-radius:4px;color:#0a3d7a">specs/20260902-断点续传与集中提示词/05_权威锚点与引用来源.md</code></div>
   </footer>
 
 </body>

@@ -6,10 +6,10 @@
 <title>行途 Harness 控制台</title>
 <style>
   :root{
-    --bg:***REMOVED***f5f6f8; --card:***REMOVED***ffffff; --ink:***REMOVED***1d2129; --sub:***REMOVED***5c6670; --line:***REMOVED***e5e6eb;
-    --brand:***REMOVED***2f54eb; --brand-bg:***REMOVED***eaf0ff;
-    --c-doc:***REMOVED***2f54eb; --c-dir:***REMOVED***8c5cf0; --c-sh:***REMOVED***0e9f6e; --c-skill:***REMOVED***0ea5e9; --c-rule:***REMOVED***d97706; --c-flow:***REMOVED***db2777; --c-plan:***REMOVED***14b8a6;
-    --red:***REMOVED***e5484d;
+    --bg:#f5f6f8; --card:#ffffff; --ink:#1d2129; --sub:#5c6670; --line:#e5e6eb;
+    --brand:#2f54eb; --brand-bg:#eaf0ff;
+    --c-doc:#2f54eb; --c-dir:#8c5cf0; --c-sh:#0e9f6e; --c-skill:#0ea5e9; --c-rule:#d97706; --c-flow:#db2777; --c-plan:#14b8a6;
+    --red:#e5484d;
     --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   }
   *{box-sizing:border-box}
@@ -18,19 +18,19 @@
   /* 顶栏 */
   .topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:10px 18px}
   .logo{display:flex;align-items:center;gap:9px;font-weight:700;font-size:16px;white-space:nowrap}
-  .logo .dot{width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,***REMOVED***2f54eb,***REMOVED***0ea5e9);display:flex;align-items:center;justify-content:center;color:***REMOVED***fff;font-size:13px}
+  .logo .dot{width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,#2f54eb,#0ea5e9);display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px}
   .search{flex:1;max-width:420px;position:relative}
-  .search input{width:100%;padding:8px 14px 8px 34px;border:1px solid var(--line);border-radius:9px;font-size:13px;background:***REMOVED***fff;outline:none;transition:border .15s}
+  .search input{width:100%;padding:8px 14px 8px 34px;border:1px solid var(--line);border-radius:9px;font-size:13px;background:#fff;outline:none;transition:border .15s}
   .search input:focus{border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-bg)}
-  .search .si{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:***REMOVED***9aa1ab;font-size:13px}
+  .search .si{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:#9aa1ab;font-size:13px}
   .toplinks{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
-  .toplinks a{font-size:12px;color:var(--sub);text-decoration:none;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:***REMOVED***fff;white-space:nowrap}
+  .toplinks a{font-size:12px;color:var(--sub);text-decoration:none;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:#fff;white-space:nowrap}
   .toplinks a:hover{color:var(--brand);border-color:var(--brand)}
 
   main{max-width:1180px;margin:0 auto;padding:20px 18px 70px}
 
   /* Hero */
-  .hero{background:linear-gradient(135deg,***REMOVED***1d2129 0%,***REMOVED***2f54eb 100%);border-radius:16px;color:***REMOVED***fff;padding:26px 28px;margin:16px 0 18px}
+  .hero{background:linear-gradient(135deg,#1d2129 0%,#2f54eb 100%);border-radius:16px;color:#fff;padding:26px 28px;margin:16px 0 18px}
   .hero h1{margin:0 0 6px;font-size:22px;letter-spacing:.4px}
   .hero p{margin:0;opacity:.88;font-size:13.5px}
   .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:18px}
@@ -40,8 +40,8 @@
 
   /* Tabs */
   .tabs{display:flex;gap:6px;margin:0 0 14px;flex-wrap:wrap}
-  .tabs button{border:1px solid var(--line);background:***REMOVED***fff;color:var(--sub);padding:8px 18px;border-radius:9px;font-size:13px;cursor:pointer;font-weight:600}
-  .tabs button.on{background:var(--brand);border-color:var(--brand);color:***REMOVED***fff}
+  .tabs button{border:1px solid var(--line);background:#fff;color:var(--sub);padding:8px 18px;border-radius:9px;font-size:13px;cursor:pointer;font-weight:600}
+  .tabs button.on{background:var(--brand);border-color:var(--brand);color:#fff}
   .tabpane{display:none}
   .tabpane.on{display:block}
 
@@ -53,38 +53,38 @@
   /* 六层 */
   .layers{display:flex;flex-direction:column;gap:8px}
   .layer{border:1px solid var(--line);border-radius:11px;overflow:hidden}
-  .layer .hd{display:flex;align-items:center;gap:12px;padding:11px 15px;cursor:pointer;background:***REMOVED***fafbfc;user-select:none}
+  .layer .hd{display:flex;align-items:center;gap:12px;padding:11px 15px;cursor:pointer;background:#fafbfc;user-select:none}
   .layer .hd:hover{background:var(--brand-bg)}
-  .layer .lv{font-family:var(--mono);font-weight:700;font-size:12px;color:***REMOVED***fff;border-radius:6px;padding:3px 9px;min-width:38px;text-align:center}
+  .layer .lv{font-family:var(--mono);font-weight:700;font-size:12px;color:#fff;border-radius:6px;padding:3px 9px;min-width:38px;text-align:center}
   .layer .nm{font-weight:600;font-size:14px}
   .layer .cr{font-size:12px;color:var(--sub);margin-left:auto}
   .layer .bd{display:none;padding:12px 15px;border-top:1px dashed var(--line);font-size:13px;color:var(--sub)}
   .layer.open .bd{display:block}
   .layer.open .hd .arrow{transform:rotate(90deg)}
-  .arrow{transition:transform .15s;color:***REMOVED***9aa1ab;font-size:11px}
+  .arrow{transition:transform .15s;color:#9aa1ab;font-size:11px}
 
   /* 资产卡 */
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:11px}
-  .acard{border:1px solid var(--line);border-radius:11px;padding:13px 14px;background:***REMOVED***fff;cursor:default;transition:box-shadow .15s}
+  .acard{border:1px solid var(--line);border-radius:11px;padding:13px 14px;background:#fff;cursor:default;transition:box-shadow .15s}
   .acard:hover{box-shadow:0 3px 12px rgba(0,0,0,.07)}
   .acard .tt{display:flex;align-items:center;gap:7px;font-weight:600;font-size:13.5px;margin-bottom:5px}
   .acard .tt .ic{font-size:15px}
   .acard .ds{font-size:12px;color:var(--sub);line-height:1.5}
   .badge{display:inline-block;font-size:10.5px;font-family:var(--mono);padding:2px 7px;border-radius:5px;font-weight:600}
-  .b-doc{background:***REMOVED***eaf0ff;color:***REMOVED***2f54eb}.b-dir{background:***REMOVED***f1ebff;color:***REMOVED***8c5cf0}.b-sh{background:***REMOVED***e7f7f0;color:***REMOVED***0e9f6e}.b-skill{background:***REMOVED***e7f6fe;color:***REMOVED***0ea5e9}.b-rule{background:***REMOVED***fdf3e7;color:***REMOVED***d97706}.b-flow{background:***REMOVED***fdeef5;color:***REMOVED***db2777}.b-plan{background:***REMOVED***e6f7f5;color:***REMOVED***14b8a6}.b-lock{background:***REMOVED***fdecec;color:***REMOVED***e5484d}
+  .b-doc{background:#eaf0ff;color:#2f54eb}.b-dir{background:#f1ebff;color:#8c5cf0}.b-sh{background:#e7f7f0;color:#0e9f6e}.b-skill{background:#e7f6fe;color:#0ea5e9}.b-rule{background:#fdf3e7;color:#d97706}.b-flow{background:#fdeef5;color:#db2777}.b-plan{background:#e6f7f5;color:#14b8a6}.b-lock{background:#fdecec;color:#e5484d}
 
   /* 规则族 */
   .rulefam{display:flex;flex-direction:column;gap:9px}
   .rf{display:flex;align-items:center;gap:12px}
   .rf .nm{font-family:var(--mono);font-weight:700;font-size:13px;width:62px;text-align:right}
-  .rf .bar{flex:1;height:22px;background:***REMOVED***f0f2f5;border-radius:6px;overflow:hidden;position:relative}
+  .rf .bar{flex:1;height:22px;background:#f0f2f5;border-radius:6px;overflow:hidden;position:relative}
   .rf .bar i{display:block;height:100%;border-radius:6px}
   .rf .cnt{font-size:12px;color:var(--sub);width:44px}
-  .rf .ex{font-size:11px;color:***REMOVED***9aa1ab;font-family:var(--mono)}
+  .rf .ex{font-size:11px;color:#9aa1ab;font-family:var(--mono)}
 
   /* 任务路由 */
   .flows{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:11px}
-  .flow{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:***REMOVED***fff}
+  .flow{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:#fff}
   .flow h4{margin:0 0 3px;font-size:14px}
   .flow .steps{font-size:12px;color:var(--sub);margin-top:8px;display:none;border-top:1px dashed var(--line);padding-top:8px}
   .flow.open .steps{display:block}
@@ -92,23 +92,23 @@
 
   /* 安全 & 兼容 */
   .safe{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:11px}
-  .safe .sc{border:1px solid var(--line);border-radius:11px;padding:13px 15px;background:***REMOVED***fff}
+  .safe .sc{border:1px solid var(--line);border-radius:11px;padding:13px 15px;background:#fff}
   .safe .sc b{font-family:var(--mono);font-size:13px}
   .safe .sc p{font-size:12px;color:var(--sub);margin:6px 0 0}
   .okdot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--c-sh);margin-right:5px}
 
   table{width:100%;border-collapse:collapse;margin:10px 0;font-size:12.5px}
   th,td{border:1px solid var(--line);padding:7px 9px;text-align:left}
-  th{background:***REMOVED***fafbfc}
-  td code{font-family:var(--mono);background:***REMOVED***f0f2f5;padding:1px 5px;border-radius:4px;font-size:11.5px}
+  th{background:#fafbfc}
+  td code{font-family:var(--mono);background:#f0f2f5;padding:1px 5px;border-radius:4px;font-size:11.5px}
 
   .pstatus{display:inline-block;font-size:11px;font-weight:600;padding:2px 9px;border-radius:20px;background:var(--brand-bg);color:var(--brand)}
-  .pstatus.done{background:***REMOVED***e7f7f0;color:***REMOVED***0e9f6e}
-  .footer{font-size:12px;color:***REMOVED***9aa1ab;text-align:center;padding:18px}
-  .empty{text-align:center;color:***REMOVED***9aa1ab;padding:30px;font-size:13px;display:none}
+  .pstatus.done{background:#e7f7f0;color:#0e9f6e}
+  .footer{font-size:12px;color:#9aa1ab;text-align:center;padding:18px}
+  .empty{text-align:center;color:#9aa1ab;padding:30px;font-size:13px;display:none}
 </style>
 </head>
-<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:***REMOVED***056DE8;color:***REMOVED***fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:***REMOVED***fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
 
 <div class="topbar">
   <div class="logo"><span class="dot">行</span>行途 Harness 控制台</div>
@@ -149,27 +149,27 @@
       <h2><span class="n">01</span>六层架构 <span class="desc" style="margin-left:auto">点击展开每层资产</span></h2>
       <div class="layers">
         <div class="layer" onclick="this.classList.toggle('open')">
-          <div class="hd"><span class="lv" style="background:***REMOVED***1d2129">L5</span><span class="nm">产品</span><span class="cr">HARNESS.md · 工作看板 · 路标</span><span class="arrow">▶</span></div>
+          <div class="hd"><span class="lv" style="background:#1d2129">L5</span><span class="nm">产品</span><span class="cr">HARNESS.md · 工作看板 · 路标</span><span class="arrow">▶</span></div>
           <div class="bd">产品说明书（HARNESS.md）· 业务中枢看板（00_Canvas）· 体系手册 / 可视化看板 / 目录树 HTML——进空间先读的「门面」。</div>
         </div>
         <div class="layer" onclick="this.classList.toggle('open')">
-          <div class="hd"><span class="lv" style="background:***REMOVED***2f54eb">L4</span><span class="nm">编排</span><span class="cr">workflows/ 4 条 SOP + 03_运营工具箱</span><span class="arrow">▶</span></div>
+          <div class="hd"><span class="lv" style="background:#2f54eb">L4</span><span class="nm">编排</span><span class="cr">workflows/ 4 条 SOP + 03_运营工具箱</span><span class="arrow">▶</span></div>
           <div class="bd">四类任务路由：指向性 / 调研 / 开发 / 开源，每条内嵌「先备份 + 不 rm + 对抗审查 + 防弹检查」护栏。</div>
         </div>
         <div class="layer" onclick="this.classList.toggle('open')">
-          <div class="hd"><span class="lv" style="background:***REMOVED***0ea5e9">L3</span><span class="nm">执行</span><span class="cr">tools/*.py/js + Skills（adversarial-review / ponytail）</span><span class="arrow">▶</span></div>
+          <div class="hd"><span class="lv" style="background:#0ea5e9">L3</span><span class="nm">执行</span><span class="cr">tools/*.py/js + Skills（adversarial-review / ponytail）</span><span class="arrow">▶</span></div>
           <div class="bd">排版引擎 / 素材索引器 / 模型评测 / 历史会话索引；可复用能力优先写成 Skill，CC/WB 一份双用。</div>
         </div>
         <div class="layer" onclick="this.classList.toggle('open')">
-          <div class="hd"><span class="lv" style="background:***REMOVED***d97706">L2</span><span class="nm">护栏</span><span class="cr">rules/RULES.md（SAF/BUL/IP/PUB/FEN/STR）+ 01_战略与规章</span><span class="arrow">▶</span></div>
+          <div class="hd"><span class="lv" style="background:#d97706">L2</span><span class="nm">护栏</span><span class="cr">rules/RULES.md（SAF/BUL/IP/PUB/FEN/STR）+ 01_战略与规章</span><span class="arrow">▶</span></div>
           <div class="bd">44 条编号规则 SSoT：SAF 红线拦截（触犯即拦）、BUL 防弹工作法（留痕/边界/依据/对齐）、IP 人设、PUB 分发、FEN 变现、STR 战略。</div>
         </div>
         <div class="layer" onclick="this.classList.toggle('open')">
-          <div class="hd"><span class="lv" style="background:***REMOVED***0e9f6e">L1</span><span class="nm">土壤</span><span class="cr">models.json / mcp.json + tools/safety/*.sh</span><span class="arrow">▶</span></div>
+          <div class="hd"><span class="lv" style="background:#0e9f6e">L1</span><span class="nm">土壤</span><span class="cr">models.json / mcp.json + tools/safety/*.sh</span><span class="arrow">▶</span></div>
           <div class="bd">模型与连接器配置；安全武器库：safe-delete（不 rm）/ backup-before-op（先备份）/ env-check / gate。</div>
         </div>
         <div class="layer" onclick="this.classList.toggle('open')">
-          <div class="hd"><span class="lv" style="background:***REMOVED***8c5cf0">L0</span><span class="nm">记忆</span><span class="cr">.workbuddy/memory/ + 04_会话与复盘 + 06_Obsidian</span><span class="arrow">▶</span></div>
+          <div class="hd"><span class="lv" style="background:#8c5cf0">L0</span><span class="nm">记忆</span><span class="cr">.workbuddy/memory/ + 04_会话与复盘 + 06_Obsidian</span><span class="arrow">▶</span></div>
           <div class="bd">每日工作日志（append-only）· 项目长期记忆 · 多 harness 历史会话索引（ai_history_indexer）· 协作片段挖选题（ai_collab_miner）。</div>
         </div>
       </div>
@@ -242,12 +242,12 @@
     <section>
       <h2><span class="n">04</span>规则族分布（44 条）</h2>
       <div class="rulefam">
-        <div class="rf"><span class="nm">SAF</span><div class="bar"><i style="width:27%;background:***REMOVED***e5484d"></i></div><span class="cnt">12</span><span class="ex">红线拦截 · SAF-004 四红线</span></div>
-        <div class="rf"><span class="nm">BUL</span><div class="bar"><i style="width:11%;background:***REMOVED***8c5cf0"></i></div><span class="cnt">5</span><span class="ex">防弹工作法 · BUL-003 依据链</span></div>
-        <div class="rf"><span class="nm">IP</span><div class="bar"><i style="width:9%;background:***REMOVED***0ea5e9"></i></div><span class="cnt">4</span><span class="ex">品牌人设 · IP-001 一线实践者</span></div>
-        <div class="rf"><span class="nm">PUB</span><div class="bar"><i style="width:20%;background:***REMOVED***d97706"></i></div><span class="cnt">9</span><span class="ex">发布/SEO · PUB-004 平台差异化</span></div>
-        <div class="rf"><span class="nm">FEN</span><div class="bar"><i style="width:14%;background:***REMOVED***0e9f6e"></i></div><span class="cnt">6</span><span class="ex">变现 · FEN-001 信任成本铁律</span></div>
-        <div class="rf"><span class="nm">STR</span><div class="bar"><i style="width:18%;background:***REMOVED***db2777"></i></div><span class="cnt">8</span><span class="ex">战略 · STR-001 技术实战≥70%</span></div>
+        <div class="rf"><span class="nm">SAF</span><div class="bar"><i style="width:27%;background:#e5484d"></i></div><span class="cnt">12</span><span class="ex">红线拦截 · SAF-004 四红线</span></div>
+        <div class="rf"><span class="nm">BUL</span><div class="bar"><i style="width:11%;background:#8c5cf0"></i></div><span class="cnt">5</span><span class="ex">防弹工作法 · BUL-003 依据链</span></div>
+        <div class="rf"><span class="nm">IP</span><div class="bar"><i style="width:9%;background:#0ea5e9"></i></div><span class="cnt">4</span><span class="ex">品牌人设 · IP-001 一线实践者</span></div>
+        <div class="rf"><span class="nm">PUB</span><div class="bar"><i style="width:20%;background:#d97706"></i></div><span class="cnt">9</span><span class="ex">发布/SEO · PUB-004 平台差异化</span></div>
+        <div class="rf"><span class="nm">FEN</span><div class="bar"><i style="width:14%;background:#0e9f6e"></i></div><span class="cnt">6</span><span class="ex">变现 · FEN-001 信任成本铁律</span></div>
+        <div class="rf"><span class="nm">STR</span><div class="bar"><i style="width:18%;background:#db2777"></i></div><span class="cnt">8</span><span class="ex">战略 · STR-001 技术实战≥70%</span></div>
       </div>
       <p class="desc" style="margin-top:12px">使用约定：审查文章先过 SAF-004；写 SEO 标题引用 PUB-001/002；发布过 PUB-003/004；变现表述引 FEN-001；产出时过 BUL-001/003 防弹检查。</p>
     </section>
@@ -323,7 +323,7 @@ function sw(id,btn){
 }
 function filterCards(v){
   v=v.trim().toLowerCase();
-  const cards=document.querySelectorAll('***REMOVED***cards .acard');
+  const cards=document.querySelectorAll('#cards .acard');
   let shown=0;
   cards.forEach(c=>{
     const t=c.getAttribute('data-t').toLowerCase();

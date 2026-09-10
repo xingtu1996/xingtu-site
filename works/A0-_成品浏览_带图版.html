@@ -7,8 +7,8 @@
   <title>省 token 的第一性原理：把「不用推理的活」，从模型手里拿回来</title>
   <style>
 html {
-color: ***REMOVED***1a1a1a;
-background-color: ***REMOVED***fdfdfd;
+color: #1a1a1a;
+background-color: #fdfdfd;
 }
 body {
 margin: 0 auto;
@@ -52,10 +52,10 @@ p {
 margin: 1em 0;
 }
 a {
-color: ***REMOVED***1a1a1a;
+color: #1a1a1a;
 }
 a:visited {
-color: ***REMOVED***1a1a1a;
+color: #1a1a1a;
 }
 img {
 max-width: 100%;
@@ -84,8 +84,8 @@ margin-top: 0;
 blockquote {
 margin: 1em 0 1em 1.7em;
 padding-left: 1em;
-border-left: 2px solid ***REMOVED***e6e6e6;
-color: ***REMOVED***606060;
+border-left: 2px solid #e6e6e6;
+color: #606060;
 }
 code {
 font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
@@ -107,7 +107,7 @@ background-color: transparent;
 overflow: visible;
 }
 hr {
-background-color: ***REMOVED***1a1a1a;
+background-color: #1a1a1a;
 border: none;
 height: 1px;
 margin: 1em 0;
@@ -125,11 +125,11 @@ margin-bottom: 0.75em;
 }
 tbody {
 margin-top: 0.5em;
-border-top: 1px solid ***REMOVED***1a1a1a;
-border-bottom: 1px solid ***REMOVED***1a1a1a;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
 }
 th {
-border-top: 1px solid ***REMOVED***1a1a1a;
+border-top: 1px solid #1a1a1a;
 padding: 0.25em 0.5em 0.25em 0.5em;
 }
 td {
@@ -139,16 +139,16 @@ header {
 margin-bottom: 4em;
 text-align: center;
 }
-***REMOVED***TOC li {
+#TOC li {
 list-style: none;
 }
-***REMOVED***TOC ul {
+#TOC ul {
 padding-left: 1.3em;
 }
-***REMOVED***TOC > ul {
+#TOC > ul {
 padding-left: 0;
 }
-***REMOVED***TOC a:not(:hover) {
+#TOC a:not(:hover) {
 text-decoration: none;
 }
 code{white-space: pre-wrap;}
@@ -168,9 +168,9 @@ vertical-align: middle;
 </style>
   <style>
 :root{
---bg:***REMOVED***f7f8fa; --card:***REMOVED***ffffff; --ink:***REMOVED***1f2328; --sub:***REMOVED***57606a;
---line:***REMOVED***e3e6ea; --brand:***REMOVED***2f6df0; --brand2:***REMOVED***0ea5a4; --warn:***REMOVED***d9480f;
---code-bg:***REMOVED***f2f3f5; --quote:***REMOVED***eef3ff; --radius:12px;
+--bg:#f7f8fa; --card:#ffffff; --ink:#1f2328; --sub:#57606a;
+--line:#e3e6ea; --brand:#2f6df0; --brand2:#0ea5a4; --warn:#d9480f;
+--code-bg:#f2f3f5; --quote:#eef3ff; --radius:12px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -185,7 +185,7 @@ padding:36px 44px; box-shadow:0 1px 3px rgba(16,24,40,.04);}
 h1{font-size:28px; line-height:1.3; margin:0 0 8px; padding-bottom:14px;
 border-bottom:3px solid var(--brand);}
 h2{font-size:21px; margin:34px 0 12px; padding-left:11px; border-left:4px solid var(--brand2);}
-h3{font-size:17px; margin:24px 0 8px; color:***REMOVED***2b333b;}
+h3{font-size:17px; margin:24px 0 8px; color:#2b333b;}
 h4{font-size:15px; margin:18px 0 6px; color:var(--sub);}
 p{margin:10px 0;}
 a{color:var(--brand); text-decoration:none; word-break:break-all;}
@@ -194,44 +194,44 @@ ul,ol{padding-left:24px; margin:10px 0;}
 li{margin:5px 0;}
 code{background:var(--code-bg); padding:2px 6px; border-radius:5px;
 font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
-font-size:13.5px; color:***REMOVED***c2185b;}
-pre{background:***REMOVED***1e2530; color:***REMOVED***e6edf3; padding:16px 18px; border-radius:10px;
+font-size:13.5px; color:#c2185b;}
+pre{background:#1e2530; color:#e6edf3; padding:16px 18px; border-radius:10px;
 overflow:auto; font-size:13px; line-height:1.55;}
 pre code{background:none; color:inherit; padding:0;}
 blockquote{margin:14px 0; padding:10px 16px; background:var(--quote);
-border-left:4px solid var(--brand); border-radius:6px; color:***REMOVED***33415c;}
+border-left:4px solid var(--brand); border-radius:6px; color:#33415c;}
 table{border-collapse:collapse; width:100%; margin:16px 0; font-size:14.5px;
 overflow:hidden; border-radius:8px; box-shadow:0 0 0 1px var(--line);}
 th,td{border:1px solid var(--line); padding:9px 12px; text-align:left; vertical-align:top;}
-th{background:***REMOVED***f0f4ff; font-weight:600;}
-tr:nth-child(even) td{background:***REMOVED***fafbfc;}
+th{background:#f0f4ff; font-weight:600;}
+tr:nth-child(even) td{background:#fafbfc;}
 hr{border:none; border-top:1px solid var(--line); margin:28px 0;}
 img{max-width:100%; border-radius:8px;}
 .meta{color:var(--sub); font-size:13px; margin-bottom:22px;}
 @media (max-width:600px){.doc{padding:24px 18px} h1{font-size:23px}}
 </style>
 </head>
-<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:***REMOVED***056DE8;color:***REMOVED***fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:***REMOVED***fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
 <header id="title-block-header">
 <h1 class="title">省 token
 的第一性原理：把「不用推理的活」，从模型手里拿回来</h1>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="***REMOVED***省-token-的第一性原理把不用推理的活从模型手里拿回来" id="toc-省-token-的第一性原理把不用推理的活从模型手里拿回来">省 token
+<li><a href="#省-token-的第一性原理把不用推理的活从模型手里拿回来" id="toc-省-token-的第一性原理把不用推理的活从模型手里拿回来">省 token
 的第一性原理：把「不用推理的活」，从模型手里拿回来</a>
 <ul>
-<li><a href="***REMOVED***一省-token-先纠正认知token-到底烧在哪" id="toc-一省-token-先纠正认知token-到底烧在哪">一、省 token
+<li><a href="#一省-token-先纠正认知token-到底烧在哪" id="toc-一省-token-先纠正认知token-到底烧在哪">一、省 token
 先纠正认知：token 到底烧在哪</a></li>
-<li><a href="***REMOVED***二省-token-的第一性原理token-只有两种" id="toc-二省-token-的第一性原理token-只有两种">二、省 token
+<li><a href="#二省-token-的第一性原理token-只有两种" id="toc-二省-token-的第一性原理token-只有两种">二、省 token
 的第一性原理：token 只有两种</a></li>
-<li><a href="***REMOVED***三省-token-的六层把不用推理的活一层层剥离" id="toc-三省-token-的六层把不用推理的活一层层剥离">三、省 token
+<li><a href="#三省-token-的六层把不用推理的活一层层剥离" id="toc-三省-token-的六层把不用推理的活一层层剥离">三、省 token
 的六层：把「不用推理的活」一层层剥离</a></li>
-<li><a href="***REMOVED***四省-token-的两条底层律比工具更底层" id="toc-四省-token-的两条底层律比工具更底层">四、省 token
+<li><a href="#四省-token-的两条底层律比工具更底层" id="toc-四省-token-的两条底层律比工具更底层">四、省 token
 的两条底层律（比工具更底层）</a></li>
-<li><a href="***REMOVED***五收束省-token-真正的杠杆是思想不是配置" id="toc-五收束省-token-真正的杠杆是思想不是配置">五、收束：省 token
+<li><a href="#五收束省-token-真正的杠杆是思想不是配置" id="toc-五收束省-token-真正的杠杆是思想不是配置">五、收束：省 token
 真正的杠杆是思想，不是配置</a></li>
-<li><a href="***REMOVED***附录-六层工具链github-实时数据2026-08-28-查证" id="toc-附录-六层工具链github-实时数据2026-08-28-查证">附录 ·
+<li><a href="#附录-六层工具链github-实时数据2026-08-28-查证" id="toc-附录-六层工具链github-实时数据2026-08-28-查证">附录 ·
 六层工具链（GitHub 实时数据，2026-08-28 查证）</a></li>
 </ul></li>
 </ul>

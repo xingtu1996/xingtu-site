@@ -6,40 +6,40 @@
 <title>CLI 工具使用报告 · 2026-08-24</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; background:***REMOVED***f5f6f8; color:***REMOVED***2d3748; padding:32px 16px; }
+  body { font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; background:#f5f6f8; color:#2d3748; padding:32px 16px; }
   .wrap { max-width:960px; margin:0 auto; }
   h1 { font-size:26px; margin-bottom:4px; }
-  .sub { color:***REMOVED***718096; font-size:13px; margin-bottom:28px; }
-  h2 { font-size:17px; margin:32px 0 12px; padding-left:10px; border-left:4px solid ***REMOVED***4f46e5; }
+  .sub { color:#718096; font-size:13px; margin-bottom:28px; }
+  h2 { font-size:17px; margin:32px 0 12px; padding-left:10px; border-left:4px solid #4f46e5; }
   .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; }
-  .card { background:***REMOVED***fff; border-radius:10px; padding:16px 18px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
-  .card .num { font-size:26px; font-weight:700; color:***REMOVED***4f46e5; }
-  .card .lbl { font-size:12px; color:***REMOVED***718096; margin-top:4px; }
-  .panel { background:***REMOVED***fff; border-radius:10px; padding:18px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+  .card { background:#fff; border-radius:10px; padding:16px 18px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+  .card .num { font-size:26px; font-weight:700; color:#4f46e5; }
+  .card .lbl { font-size:12px; color:#718096; margin-top:4px; }
+  .panel { background:#fff; border-radius:10px; padding:18px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
   table { width:100%; border-collapse:collapse; font-size:13px; }
-  th { text-align:left; padding:8px 10px; background:***REMOVED***f7f8fa; color:***REMOVED***4a5568; border-bottom:2px solid ***REMOVED***e2e8f0; }
-  td { padding:8px 10px; border-bottom:1px solid ***REMOVED***edf0f3; }
-  tr:hover td { background:***REMOVED***f9fafc; }
+  th { text-align:left; padding:8px 10px; background:#f7f8fa; color:#4a5568; border-bottom:2px solid #e2e8f0; }
+  td { padding:8px 10px; border-bottom:1px solid #edf0f3; }
+  tr:hover td { background:#f9fafc; }
   .num-r { text-align:right; font-variant-numeric:tabular-nums; }
   .bar-row { display:flex; align-items:center; margin:5px 0; font-size:12px; }
-  .bar-name { width:220px; color:***REMOVED***4a5568; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-  .bar-track { flex:1; background:***REMOVED***edf0f3; border-radius:4px; height:16px; }
-  .bar-fill { height:100%; border-radius:4px; background:linear-gradient(90deg,***REMOVED***6366f1,***REMOVED***8b5cf6); }
-  .bar-val { width:44px; text-align:right; color:***REMOVED***718096; }
+  .bar-name { width:220px; color:#4a5568; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .bar-track { flex:1; background:#edf0f3; border-radius:4px; height:16px; }
+  .bar-fill { height:100%; border-radius:4px; background:linear-gradient(90deg,#6366f1,#8b5cf6); }
+  .bar-val { width:44px; text-align:right; color:#718096; }
   .chart { display:flex; align-items:flex-end; gap:6px; height:130px; padding:8px 4px 0; }
   .col { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; }
-  .col .stick { width:100%; max-width:26px; background:linear-gradient(180deg,***REMOVED***818cf8,***REMOVED***4f46e5); border-radius:4px 4px 0 0; min-height:2px; }
-  .col .d { font-size:9px; color:***REMOVED***a0aec0; margin-top:4px; transform:rotate(-45deg); }
-  .col .v { font-size:10px; color:***REMOVED***4f46e5; margin-bottom:2px; }
+  .col .stick { width:100%; max-width:26px; background:linear-gradient(180deg,#818cf8,#4f46e5); border-radius:4px 4px 0 0; min-height:2px; }
+  .col .d { font-size:9px; color:#a0aec0; margin-top:4px; transform:rotate(-45deg); }
+  .col .v { font-size:10px; color:#4f46e5; margin-bottom:2px; }
   .tag { display:inline-block; padding:2px 8px; border-radius:99px; font-size:11px; margin-right:6px; }
-  .tag.g { background:***REMOVED***def7ec; color:***REMOVED***046c4e; } .tag.y { background:***REMOVED***fdf6b2; color:***REMOVED***8e4b10; } .tag.r { background:***REMOVED***fde8e8; color:***REMOVED***9b1c1c; }
-  .note { font-size:12px; color:***REMOVED***718096; margin-top:10px; line-height:1.7; }
-  code { background:***REMOVED***edf2f7; padding:2px 6px; border-radius:4px; font-size:12px; }
-  .win { border-left:4px solid ***REMOVED***38a169; } .lose { border-left:4px solid ***REMOVED***e53e3e; }
-  footer { margin-top:36px; font-size:11px; color:***REMOVED***a0aec0; text-align:center; }
+  .tag.g { background:#def7ec; color:#046c4e; } .tag.y { background:#fdf6b2; color:#8e4b10; } .tag.r { background:#fde8e8; color:#9b1c1c; }
+  .note { font-size:12px; color:#718096; margin-top:10px; line-height:1.7; }
+  code { background:#edf2f7; padding:2px 6px; border-radius:4px; font-size:12px; }
+  .win { border-left:4px solid #38a169; } .lose { border-left:4px solid #e53e3e; }
+  footer { margin-top:36px; font-size:11px; color:#a0aec0; text-align:center; }
 </style>
 </head>
-<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:***REMOVED***056DE8;color:***REMOVED***fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:***REMOVED***fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
 <div class="wrap">
   <h1>CLI 编码工具使用报告</h1>
   <div class="sub">生成于 2026-08-24 · 数据源：cc-switch 用量账本（2025-10 ~ 2026-07-17）+ 本机会话文件统计</div>

@@ -6,10 +6,10 @@
 <title>行途·定时任务索引看板 2026-09-02</title>
 <style>
 :root{
-  --blue:***REMOVED***056DE8; --blue-l:***REMOVED***4A9EFF; --cyan:***REMOVED***00D4FF; --orange:***REMOVED***FF6B35;
-  --ok:***REMOVED***0F9D58; --warn:***REMOVED***F5A623; --err:***REMOVED***D93025;
-  --bg:***REMOVED***F7F9FC; --card:***REMOVED***FFFFFF; --line:***REMOVED***E3E9F2;
-  --t1:***REMOVED***1A1F2B; --t2:***REMOVED***4A5568; --t3:***REMOVED***8492A6;
+  --blue:#056DE8; --blue-l:#4A9EFF; --cyan:#00D4FF; --orange:#FF6B35;
+  --ok:#0F9D58; --warn:#F5A623; --err:#D93025;
+  --bg:#F7F9FC; --card:#FFFFFF; --line:#E3E9F2;
+  --t1:#1A1F2B; --t2:#4A5568; --t3:#8492A6;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
@@ -24,12 +24,12 @@ body{
 .hd h1{font-size:26px;font-weight:700;letter-spacing:-.3px}
 .hd .sub{color:var(--t3);font-size:13px;margin-top:4px}
 .verdict{
-  background:linear-gradient(90deg,***REMOVED***FFF4EF 0%,***REMOVED***FFF9F6 100%);
-  border:1px solid ***REMOVED***FFD9C9;border-left:4px solid var(--orange);
+  background:linear-gradient(90deg,#FFF4EF 0%,#FFF9F6 100%);
+  border:1px solid #FFD9C9;border-left:4px solid var(--orange);
   border-radius:8px;padding:14px 18px;margin:20px 0 28px;
 }
 .verdict b{color:var(--orange)}
-.verdict p{color:***REMOVED***7A3E22;font-size:14px}
+.verdict p{color:#7A3E22;font-size:14px}
 
 /* stats */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px}
@@ -50,22 +50,22 @@ h2::before{content:"";width:4px;height:15px;background:var(--blue);border-radius
 /* table */
 table{width:100%;border-collapse:collapse;background:var(--card);
   border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:13px}
-th{background:***REMOVED***EEF3FA;color:var(--t2);font-weight:600;text-align:left;
+th{background:#EEF3FA;color:var(--t2);font-weight:600;text-align:left;
   padding:11px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
-td{padding:11px 12px;border-bottom:1px solid ***REMOVED***F0F3F8;vertical-align:top}
+td{padding:11px 12px;border-bottom:1px solid #F0F3F8;vertical-align:top}
 tr:last-child td{border-bottom:none}
 td.name{font-weight:600;min-width:190px}
-code{background:***REMOVED***EEF3FA;color:var(--blue);padding:1px 5px;border-radius:4px;
+code{background:#EEF3FA;color:var(--blue);padding:1px 5px;border-radius:4px;
   font-family:"SF Mono",Menlo,Consolas,monospace;font-size:12px}
 .path{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:11.5px;color:var(--t2);
   word-break:break-all;display:block;margin-top:3px}
 
 /* badges */
 .b{display:inline-block;padding:2px 9px;border-radius:11px;font-size:11.5px;font-weight:600;white-space:nowrap}
-.b-ok{background:***REMOVED***E6F4EA;color:***REMOVED***0B6B3A}
-.b-warn{background:***REMOVED***FEF3E2;color:***REMOVED***9A6212}
-.b-err{background:***REMOVED***FCE8E6;color:***REMOVED***A52714}
-.b-idle{background:***REMOVED***EEF1F6;color:var(--t3)}
+.b-ok{background:#E6F4EA;color:#0B6B3A}
+.b-warn{background:#FEF3E2;color:#9A6212}
+.b-err{background:#FCE8E6;color:#A52714}
+.b-idle{background:#EEF1F6;color:var(--t3)}
 
 /* finding box */
 .find{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--err);
@@ -80,24 +80,24 @@ code{background:***REMOVED***EEF3FA;color:var(--blue);padding:1px 5px;border-rad
 .flow{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px}
 .frow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin-bottom:14px}
 .fbox{flex:1;min-width:150px;border:1px solid var(--line);border-radius:8px;
-  padding:12px 14px;background:***REMOVED***FBFCFE}
-.fbox.prod{border-color:***REMOVED***BFE0FF;background:***REMOVED***F5FAFF}
-.fbox.cons{border-color:***REMOVED***FFD9C9;background:***REMOVED***FFF8F5}
+  padding:12px 14px;background:#FBFCFE}
+.fbox.prod{border-color:#BFE0FF;background:#F5FAFF}
+.fbox.cons{border-color:#FFD9C9;background:#FFF8F5}
 .fbox .t{font-weight:600;font-size:13px;margin-bottom:3px}
 .fbox .m{font-size:11.5px;color:var(--t3)}
 .arrow{display:flex;align-items:center;padding:0 12px;color:var(--t3);font-size:18px}
 .arrow.broken{color:var(--err)}
-.break-note{background:***REMOVED***FCE8E6;border:1px dashed ***REMOVED***F5B7B1;border-radius:8px;
-  padding:12px 16px;color:***REMOVED***8C2B1E;font-size:13px;margin-top:6px}
-.break-note b{color:***REMOVED***A52714}
+.break-note{background:#FCE8E6;border:1px dashed #F5B7B1;border-radius:8px;
+  padding:12px 16px;color:#8C2B1E;font-size:13px;margin-top:6px}
+.break-note b{color:#A52714}
 
 /* fixes */
 .fix{background:var(--card);border:1px solid var(--line);border-radius:10px;
   padding:0;overflow:hidden}
-.fix-item{display:flex;gap:14px;padding:14px 18px;border-bottom:1px solid ***REMOVED***F0F3F8}
+.fix-item{display:flex;gap:14px;padding:14px 18px;border-bottom:1px solid #F0F3F8}
 .fix-item:last-child{border-bottom:none}
 .pri{flex-shrink:0;width:44px;height:24px;border-radius:6px;display:flex;
-  align-items:center;justify-content:center;font-size:12px;font-weight:700;color:***REMOVED***fff}
+  align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff}
 .p0{background:var(--err)} .p1{background:var(--warn)} .p2{background:var(--t3)}
 .fix-body{flex:1}
 .fix-body .ti{font-weight:600;margin-bottom:3px}
@@ -105,7 +105,7 @@ code{background:***REMOVED***EEF3FA;color:var(--blue);padding:1px 5px;border-rad
 
 /* todo */
 .todo{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:4px 18px}
-.todo li{padding:11px 0;border-bottom:1px solid ***REMOVED***F0F3F8;list-style:none;color:var(--t2)}
+.todo li{padding:11px 0;border-bottom:1px solid #F0F3F8;list-style:none;color:var(--t2)}
 .todo li:last-child{border-bottom:none}
 .todo li b{color:var(--t1)}
 
@@ -118,7 +118,7 @@ code{background:***REMOVED***EEF3FA;color:var(--blue);padding:1px 5px;border-rad
 }
 </style>
 </head>
-<body data-page-node-id="9X58BWTUvzPBDBWE7XsXiB"><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:***REMOVED***056DE8;color:***REMOVED***fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:***REMOVED***fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<body data-page-node-id="9X58BWTUvzPBDBWE7XsXiB"><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
 <div class="wrap" data-page-node-id="hLc6m1LCwM9hMIcjLMpdbW">
 
   <div class="hd" data-page-node-id="82Azs9Ytsg7DBwd6VeY014">
@@ -354,15 +354,15 @@ code{background:***REMOVED***EEF3FA;color:var(--blue);padding:1px 5px;border-rad
 
 </div>
 
-  <footer style="margin-top:36px;border-top:2px solid ***REMOVED***056DE8;padding:16px 20px;background:***REMOVED***f5f9ff;border-radius:10px;font-size:13px;color:***REMOVED***1a1a1a;line-height:1.9">
-    <div style="font-weight:700;color:***REMOVED***056DE8;margin-bottom:8px">📎 权威锚点 / 引用来源</div>
+  <footer style="margin-top:36px;border-top:2px solid #056DE8;padding:16px 20px;background:#f5f9ff;border-radius:10px;font-size:13px;color:#1a1a1a;line-height:1.9">
+    <div style="font-weight:700;color:#056DE8;margin-bottom:8px">📎 权威锚点 / 引用来源</div>
     <ul style="margin:0;padding-left:18px">
-      <li>微信公众平台·发布能力官方文档（确认 2025-07 起个人主体账号被回收 freepublish 权限）：<a href="https://developers.weixin.qq.com/doc/service/guide/product/publish.html" target="_blank" rel="noopener" style="color:***REMOVED***056DE8;text-decoration:underline">https://developers.weixin.qq.com/doc/service/guide/product/publish.html</a></li>
-      <li>微信公众平台·草稿箱官方文档（草稿管理归属服务号能力；个人号 draft/add 社区实测 48001，待 curl 实调定论）：<a href="https://developers.weixin.qq.com/doc/service/guide/product/draft.html" target="_blank" rel="noopener" style="color:***REMOVED***056DE8;text-decoration:underline">https://developers.weixin.qq.com/doc/service/guide/product/draft.html</a></li>
-      <li>心跳/失效告警方案：本工作区 feishu_bot 现成脚本 + 定时任务巡检：<code style="background:***REMOVED***eef4ff;padding:1px 6px;border-radius:4px;color:***REMOVED***0a3d7a">feishu_bot/</code></li>
-      <li>已发布文章档案（回流钩子）：<code style="background:***REMOVED***eef4ff;padding:1px 6px;border-radius:4px;color:***REMOVED***0a3d7a">xingtu-vault/09_个人台账/03_已发布文章档案/已发布文章档案.md</code></li>
+      <li>微信公众平台·发布能力官方文档（确认 2025-07 起个人主体账号被回收 freepublish 权限）：<a href="https://developers.weixin.qq.com/doc/service/guide/product/publish.html" target="_blank" rel="noopener" style="color:#056DE8;text-decoration:underline">https://developers.weixin.qq.com/doc/service/guide/product/publish.html</a></li>
+      <li>微信公众平台·草稿箱官方文档（草稿管理归属服务号能力；个人号 draft/add 社区实测 48001，待 curl 实调定论）：<a href="https://developers.weixin.qq.com/doc/service/guide/product/draft.html" target="_blank" rel="noopener" style="color:#056DE8;text-decoration:underline">https://developers.weixin.qq.com/doc/service/guide/product/draft.html</a></li>
+      <li>心跳/失效告警方案：本工作区 feishu_bot 现成脚本 + 定时任务巡检：<code style="background:#eef4ff;padding:1px 6px;border-radius:4px;color:#0a3d7a">feishu_bot/</code></li>
+      <li>已发布文章档案（回流钩子）：<code style="background:#eef4ff;padding:1px 6px;border-radius:4px;color:#0a3d7a">xingtu-vault/09_个人台账/03_已发布文章档案/已发布文章档案.md</code></li>
     </ul>
-    <div style="margin-top:8px;color:***REMOVED***555">完整引用索引：<code style="background:***REMOVED***eef4ff;padding:1px 6px;border-radius:4px;color:***REMOVED***0a3d7a">specs/20260902-断点续传与集中提示词/05_权威锚点与引用来源.md</code></div>
+    <div style="margin-top:8px;color:#555">完整引用索引：<code style="background:#eef4ff;padding:1px 6px;border-radius:4px;color:#0a3d7a">specs/20260902-断点续传与集中提示词/05_权威锚点与引用来源.md</code></div>
   </footer>
 
 </body>

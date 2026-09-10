@@ -6,19 +6,19 @@
 <title>行途工作空间 · 仓库规划与知识编译方案</title>
 <style>
   :root{
-    --bg:***REMOVED***f7f8fa; --card:***REMOVED***ffffff; --ink:***REMOVED***1d2129; --sub:***REMOVED***5c6670; --line:***REMOVED***e5e6eb;
-    --brand:***REMOVED***2f54eb; --brand-bg:***REMOVED***eaf0ff;
-    --red:***REMOVED***e5484d; --redbg:***REMOVED***fdecec;
-    --amber:***REMOVED***d97706; --amberbg:***REMOVED***fdf3e7;
-    --ok:***REMOVED***0e9f6e; --okbg:***REMOVED***e7f7f0;
+    --bg:#f7f8fa; --card:#ffffff; --ink:#1d2129; --sub:#5c6670; --line:#e5e6eb;
+    --brand:#2f54eb; --brand-bg:#eaf0ff;
+    --red:#e5484d; --redbg:#fdecec;
+    --amber:#d97706; --amberbg:#fdf3e7;
+    --ok:#0e9f6e; --okbg:#e7f7f0;
     --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   }
   *{box-sizing:border-box}
   body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.7}
-  header{background:linear-gradient(135deg,***REMOVED***1d2129,***REMOVED***2f54eb);color:***REMOVED***fff;padding:32px 28px 26px}
+  header{background:linear-gradient(135deg,#1d2129,#2f54eb);color:#fff;padding:32px 28px 26px}
   header h1{margin:0 0 6px;font-size:23px}
   header p{margin:0;opacity:.85;font-size:13.5px}
-  nav{position:sticky;top:0;z-index:20;background:***REMOVED***fff;border-bottom:1px solid var(--line);display:flex;gap:4px;flex-wrap:wrap;padding:10px 16px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+  nav{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line);display:flex;gap:4px;flex-wrap:wrap;padding:10px 16px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
   nav a{font-size:12.5px;color:var(--sub);text-decoration:none;padding:6px 11px;border-radius:8px;white-space:nowrap}
   nav a:hover{background:var(--brand-bg);color:var(--brand)}
   main{max-width:1120px;margin:0 auto;padding:22px 18px 70px}
@@ -28,45 +28,45 @@
   h3{font-size:14.5px;margin:18px 0 7px;border-left:4px solid var(--brand);padding-left:10px}
   p,li{font-size:13.5px;color:var(--sub)}
   .lead{color:var(--ink);font-size:14px}
-  .chip{display:inline-block;font-size:11.5px;font-family:var(--mono);background:***REMOVED***f0f2f5;color:***REMOVED***39424d;padding:2px 8px;border-radius:6px;margin:2px 4px 2px 0}
+  .chip{display:inline-block;font-size:11.5px;font-family:var(--mono);background:#f0f2f5;color:#39424d;padding:2px 8px;border-radius:6px;margin:2px 4px 2px 0}
   .chip.ok{background:var(--okbg);color:var(--ok);font-weight:600}
   .chip.warn{background:var(--amberbg);color:var(--amber);font-weight:600}
   .chip.bad{background:var(--redbg);color:var(--red);font-weight:600}
   table{width:100%;border-collapse:collapse;margin:11px 0;font-size:12.8px}
   th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
-  th{background:***REMOVED***fafbfc;color:var(--ink);font-weight:600}
-  td code{font-family:var(--mono);background:***REMOVED***f0f2f5;padding:1px 5px;border-radius:4px;font-size:11.5px}
-  .note{border:1px dashed var(--brand);background:var(--brand-bg);border-radius:10px;padding:11px 14px;font-size:13px;color:***REMOVED***1d3a8a;margin:11px 0}
-  .rednote{border:1px dashed var(--red);background:var(--redbg);color:***REMOVED***8a1f23}
-  .oknote{border:1px dashed var(--ok);background:var(--okbg);color:***REMOVED***0b6b4a}
+  th{background:#fafbfc;color:var(--ink);font-weight:600}
+  td code{font-family:var(--mono);background:#f0f2f5;padding:1px 5px;border-radius:4px;font-size:11.5px}
+  .note{border:1px dashed var(--brand);background:var(--brand-bg);border-radius:10px;padding:11px 14px;font-size:13px;color:#1d3a8a;margin:11px 0}
+  .rednote{border:1px dashed var(--red);background:var(--redbg);color:#8a1f23}
+  .oknote{border:1px dashed var(--ok);background:var(--okbg);color:#0b6b4a}
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:12px 0}
-  .kcard{border:1px solid var(--line);border-radius:11px;padding:13px 15px;background:***REMOVED***fcfcfd}
+  .kcard{border:1px solid var(--line);border-radius:11px;padding:13px 15px;background:#fcfcfd}
   .kcard h4{margin:0 0 5px;font-size:13.5px;color:var(--ink)}
   .kcard p{margin:0;font-size:12.5px}
   .flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin:14px 0}
-  .flow .node{flex:1;min-width:120px;background:***REMOVED***fff;border:1px solid var(--line);border-radius:10px;padding:11px;text-align:center;margin:5px}
+  .flow .node{flex:1;min-width:120px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px;text-align:center;margin:5px}
   .flow .node b{display:block;font-size:13px;color:var(--ink)}
   .flow .node span{font-size:11px;color:var(--sub)}
   .flow .arrow{display:flex;align-items:center;color:var(--brand);font-size:18px;padding:0 3px}
   .todo{list-style:none;padding:0;margin:10px 0}
-  .todo li{padding:8px 12px;border:1px solid var(--line);border-radius:9px;margin:6px 0;background:***REMOVED***fcfcfd;font-size:13px;color:var(--ink)}
+  .todo li{padding:8px 12px;border:1px solid var(--line);border-radius:9px;margin:6px 0;background:#fcfcfd;font-size:13px;color:var(--ink)}
   .todo li b{color:var(--brand)}
-  .footer{font-size:12px;color:***REMOVED***9aa1ab;text-align:center;padding:16px}
-  pre{background:***REMOVED***f6f8fa;border:1px solid var(--line);border-radius:10px;padding:13px 15px;font-family:var(--mono);font-size:12px;overflow-x:auto;color:***REMOVED***39424d;line-height:1.6}
+  .footer{font-size:12px;color:#9aa1ab;text-align:center;padding:16px}
+  pre{background:#f6f8fa;border:1px solid var(--line);border-radius:10px;padding:13px 15px;font-family:var(--mono);font-size:12px;overflow-x:auto;color:#39424d;line-height:1.6}
 </style>
 </head>
-<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:***REMOVED***056DE8;color:***REMOVED***fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:***REMOVED***fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
 <header>
   <h1>行途工作空间 · 仓库规划与知识编译方案</h1>
   <p>Git 关联诊断（1 项目 1 仓库）· 散乱文件归位 · LLM Wiki 知识编译层（Raw→Wiki→Schema）· 2026-08-19</p>
 </header>
 
 <nav>
-  <a href="***REMOVED***git">① Git 现状诊断</a>
-  <a href="***REMOVED***plan">② 仓库规划（1项目1仓库）</a>
-  <a href="***REMOVED***mess">③ 散乱文件归位</a>
-  <a href="***REMOVED***wiki">④ LLM Wiki 知识编译层</a>
-  <a href="***REMOVED***todo">⑤ 待确认执行清单</a>
+  <a href="#git">① Git 现状诊断</a>
+  <a href="#plan">② 仓库规划（1项目1仓库）</a>
+  <a href="#mess">③ 散乱文件归位</a>
+  <a href="#wiki">④ LLM Wiki 知识编译层</a>
+  <a href="#todo">⑤ 待确认执行清单</a>
 </nav>
 
 <main>
@@ -128,22 +128,22 @@
   </table>
 
   <h3>🔧 待建：06_Obsidian/AGENTS.md（知识编译规则，Schema 层落地）</h3>
-  <pre>***REMOVED*** kb-wiki · 知识编译规则（AGENTS.md）
+  <pre># kb-wiki · 知识编译规则（AGENTS.md）
 > 本文件是知识库的「加工宪法」：AI 按此规则把 Raw 素材编译成 Wiki 结构化页。
 
-***REMOVED******REMOVED*** 三层目录
+## 三层目录
 raw/    原始不可变（剪藏/会话/调研素材）——只存不改
 wiki/   AI 编译页（实体页/主题页/对比页）——双向链接 + 矛盾标注
 templates/ 页面模板
 
-***REMOVED******REMOVED*** 编译规则（AI 执行）
+## 编译规则（AI 执行）
 1. 实体/概念页：一页一主题（如 "LLM原理"、"Harness"），标题即实体名
 2. 双向链接：页内用 [[双链]] 关联相关页，新概念自动建页
 3. 矛盾标注：两源冲突时保留双方 + 标注 ⚠冲突（来源A vs 来源B）
 4. 增量更新：编译是编辑已有页，不重复建页（像 Git commit，非覆盖重写）
 5. 来源必录：每页底部挂来源 + 验证程度（BUL-003：实测/引用/估算）
 
-***REMOVED******REMOVED*** 治理（健康检查）
+## 治理（健康检查）
 - 孤儿页 / 断链 / 30 天未更新页 → 周度清单
 - 采集来源：Web Clipper → raw/；会话 → 04_；WorkBuddy 定时同步 → 编译</pre>
 

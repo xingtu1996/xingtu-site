@@ -6,10 +6,10 @@
 <title>行途 · 变现路径倒推与自动化发布流水线 2026-09-02</title>
 <style>
 :root{
-  --xt-blue:***REMOVED***056DE8; --xt-blue-l:***REMOVED***4A9EFF; --xt-cyan:***REMOVED***00D4FF; --xt-orange:***REMOVED***FF6B35;
-  --ink:***REMOVED***1a1a1a; --ink-2:***REMOVED***3f3f3f; --ink-3:***REMOVED***6b7280; --ink-4:***REMOVED***9ca3af;
-  --line:***REMOVED***e5e7eb; --line-2:***REMOVED***f0f2f5; --bg:***REMOVED***ffffff; --bg-soft:***REMOVED***f8fafc;
-  --green:***REMOVED***10b981; --red:***REMOVED***ef4444; --amber:***REMOVED***f59e0b;
+  --xt-blue:#056DE8; --xt-blue-l:#4A9EFF; --xt-cyan:#00D4FF; --xt-orange:#FF6B35;
+  --ink:#1a1a1a; --ink-2:#3f3f3f; --ink-3:#6b7280; --ink-4:#9ca3af;
+  --line:#e5e7eb; --line-2:#f0f2f5; --bg:#ffffff; --bg-soft:#f8fafc;
+  --green:#10b981; --red:#ef4444; --amber:#f59e0b;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
@@ -19,7 +19,7 @@ body{
 .wrap{max-width:1180px;margin:0 auto;padding:0 24px 80px}
 
 /* header */
-header{background:linear-gradient(135deg,var(--xt-blue) 0%,var(--xt-blue-l) 55%,var(--xt-cyan) 100%);color:***REMOVED***fff;padding:52px 0 44px;margin-bottom:36px}
+header{background:linear-gradient(135deg,var(--xt-blue) 0%,var(--xt-blue-l) 55%,var(--xt-cyan) 100%);color:#fff;padding:52px 0 44px;margin-bottom:36px}
 header .wrap{padding-bottom:0}
 .kicker{font-size:13px;letter-spacing:2px;opacity:.85;font-weight:500}
 h1{font-size:34px;font-weight:800;margin:10px 0 14px;letter-spacing:-.5px;line-height:1.3}
@@ -30,7 +30,7 @@ h1{font-size:34px;font-weight:800;margin:10px 0 14px;letter-spacing:-.5px;line-h
 /* section */
 section{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:30px 32px;margin-bottom:24px}
 h2{font-size:22px;font-weight:800;color:var(--ink);margin-bottom:6px;display:flex;align-items:center;gap:11px;letter-spacing:-.3px}
-h2 .no{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:9px;background:var(--xt-blue);color:***REMOVED***fff;font-size:15px;font-weight:800;flex-shrink:0}
+h2 .no{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:9px;background:var(--xt-blue);color:#fff;font-size:15px;font-weight:800;flex-shrink:0}
 h2 .no.warn{background:var(--red)}
 h2 .no.ok{background:var(--green)}
 .lead{color:var(--ink-3);font-size:14px;margin:0 0 22px 41px}
@@ -42,31 +42,31 @@ p{margin-bottom:12px;color:var(--ink-2)}
 .callout{border-radius:11px;padding:18px 22px;margin:18px 0;border-left:4px solid}
 .callout h4{font-size:15px;font-weight:800;margin-bottom:8px}
 .callout p:last-child{margin-bottom:0}
-.c-red{background:***REMOVED***fef2f2;border-color:var(--red)}
-.c-red h4{color:***REMOVED***b91c1c}
-.c-green{background:***REMOVED***ecfdf5;border-color:var(--green)}
-.c-green h4{color:***REMOVED***047857}
-.c-blue{background:***REMOVED***eff6ff;border-color:var(--xt-blue)}
+.c-red{background:#fef2f2;border-color:var(--red)}
+.c-red h4{color:#b91c1c}
+.c-green{background:#ecfdf5;border-color:var(--green)}
+.c-green h4{color:#047857}
+.c-blue{background:#eff6ff;border-color:var(--xt-blue)}
 .c-blue h4{color:var(--xt-blue)}
-.c-amber{background:***REMOVED***fffbeb;border-color:var(--amber)}
-.c-amber h4{color:***REMOVED***b45309}
+.c-amber{background:#fffbeb;border-color:var(--amber)}
+.c-amber h4{color:#b45309}
 
 /* table */
 table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13.5px}
 th{background:var(--bg-soft);text-align:left;padding:11px 13px;font-weight:700;color:var(--ink-2);border-bottom:2px solid var(--line);white-space:nowrap;font-size:13px}
 td{padding:11px 13px;border-bottom:1px solid var(--line-2);vertical-align:top;color:var(--ink-2)}
 tr:last-child td{border-bottom:none}
-tbody tr:hover{background:***REMOVED***fafbfc}
+tbody tr:hover{background:#fafbfc}
 td.num,th.num{text-align:center;font-variant-numeric:tabular-nums}
 .star{color:var(--amber);letter-spacing:-1px}
 
 /* badges */
 .b{display:inline-block;padding:2px 9px;border-radius:5px;font-size:11.5px;font-weight:700;white-space:nowrap}
-.b-hi{background:***REMOVED***dcfce7;color:***REMOVED***166534}
-.b-mid{background:***REMOVED***fef3c7;color:***REMOVED***92400e}
-.b-lo{background:***REMOVED***fee2e2;color:***REMOVED***991b1b}
-.b-gray{background:***REMOVED***f3f4f6;color:***REMOVED***4b5563}
-.b-blue{background:***REMOVED***dbeafe;color:***REMOVED***1e40af}
+.b-hi{background:#dcfce7;color:#166534}
+.b-mid{background:#fef3c7;color:#92400e}
+.b-lo{background:#fee2e2;color:#991b1b}
+.b-gray{background:#f3f4f6;color:#4b5563}
+.b-blue{background:#dbeafe;color:#1e40af}
 
 /* cards */
 .grid{display:grid;gap:14px;margin:18px 0}
@@ -74,7 +74,7 @@ td.num,th.num{text-align:center;font-variant-numeric:tabular-nums}
 .g3{grid-template-columns:repeat(3,1fr)}
 .g4{grid-template-columns:repeat(4,1fr)}
 .card{border:1px solid var(--line);border-radius:11px;padding:17px 19px;background:var(--bg)}
-.card.hl{border-color:var(--xt-blue);background:***REMOVED***f5f9ff;box-shadow:0 1px 3px rgba(5,109,232,.08)}
+.card.hl{border-color:var(--xt-blue);background:#f5f9ff;box-shadow:0 1px 3px rgba(5,109,232,.08)}
 .card h5{font-size:14.5px;font-weight:800;margin-bottom:7px;color:var(--ink)}
 .card .big{font-size:26px;font-weight:800;color:var(--xt-blue);line-height:1.2;font-variant-numeric:tabular-nums}
 .card .big.red{color:var(--red)}
@@ -89,16 +89,16 @@ td.num,th.num{text-align:center;font-variant-numeric:tabular-nums}
 .pstep .pn{font-size:11px;font-weight:800;color:var(--xt-blue);letter-spacing:1px}
 .pstep .pt{font-size:13.5px;font-weight:700;margin:5px 0 4px;color:var(--ink)}
 .pstep .pd{font-size:11.5px;color:var(--ink-3);line-height:1.5}
-.pstep.human{background:***REMOVED***fff7ed;border-color:***REMOVED***fed7aa}
+.pstep.human{background:#fff7ed;border-color:#fed7aa}
 .pstep.human .pn{color:var(--xt-orange)}
-.pstep.ai{background:***REMOVED***eff6ff;border-color:***REMOVED***bfdbfe}
+.pstep.ai{background:#eff6ff;border-color:#bfdbfe}
 
 /* code */
-pre{background:***REMOVED***0f172a;color:***REMOVED***e2e8f0;padding:16px 18px;border-radius:10px;overflow-x:auto;font-size:12.5px;line-height:1.7;margin:14px 0;font-family:"SF Mono",Menlo,Consolas,monospace}
-pre .c{color:***REMOVED***64748b}
-pre .k{color:***REMOVED***7dd3fc}
-pre .s{color:***REMOVED***86efac}
-code{background:***REMOVED***f1f5f9;padding:1.5px 6px;border-radius:4px;font-size:12.5px;font-family:"SF Mono",Menlo,Consolas,monospace;color:***REMOVED***b91c1c}
+pre{background:#0f172a;color:#e2e8f0;padding:16px 18px;border-radius:10px;overflow-x:auto;font-size:12.5px;line-height:1.7;margin:14px 0;font-family:"SF Mono",Menlo,Consolas,monospace}
+pre .c{color:#64748b}
+pre .k{color:#7dd3fc}
+pre .s{color:#86efac}
+code{background:#f1f5f9;padding:1.5px 6px;border-radius:4px;font-size:12.5px;font-family:"SF Mono",Menlo,Consolas,monospace;color:#b91c1c}
 
 /* list */
 ul,ol{margin:10px 0 14px 20px;color:var(--ink-2)}
@@ -110,7 +110,7 @@ li strong{color:var(--ink)}
 .dec-h{background:var(--bg-soft);padding:13px 18px;font-weight:800;font-size:14.5px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
 .dec-b{padding:16px 18px}
 .opt{margin-bottom:11px;padding:11px 14px;border-radius:8px;background:var(--bg-soft);border-left:3px solid var(--line)}
-.opt.rec{border-left-color:var(--green);background:***REMOVED***f0fdf4}
+.opt.rec{border-left-color:var(--green);background:#f0fdf4}
 .opt.no{border-left-color:var(--red)}
 .opt b{font-size:13.5px;color:var(--ink)}
 .opt span{font-size:12.5px;color:var(--ink-3);display:block;margin-top:3px}
@@ -119,7 +119,7 @@ li strong{color:var(--ink)}
 .bar-row{display:grid;grid-template-columns:150px 1fr 70px;gap:12px;align-items:center;margin-bottom:9px;font-size:13px}
 .bar-label{color:var(--ink-2);font-weight:600}
 .bar-track{background:var(--line-2);border-radius:5px;height:22px;overflow:hidden}
-.bar-fill{height:100%;border-radius:5px;display:flex;align-items:center;padding-left:9px;color:***REMOVED***fff;font-size:11.5px;font-weight:700}
+.bar-fill{height:100%;border-radius:5px;display:flex;align-items:center;padding-left:9px;color:#fff;font-size:11.5px;font-weight:700}
 .bar-val{text-align:right;font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink-2)}
 
 footer{text-align:center;color:var(--ink-4);font-size:12.5px;padding:28px 0 0;border-top:1px solid var(--line);margin-top:8px}
@@ -131,7 +131,7 @@ footer{text-align:center;color:var(--ink-4);font-size:12.5px;padding:28px 0 0;bo
 }
 </style>
 </head>
-<body data-page-node-id="QwVWMslVy3tTMRAcLvWDU5"><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:***REMOVED***056DE8;color:***REMOVED***fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:***REMOVED***fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<body data-page-node-id="QwVWMslVy3tTMRAcLvWDU5"><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
 
 <header data-page-node-id="nq3qIvLdw7DR6fVxyBNuKE">
 <div class="wrap" data-page-node-id="RKM9JTOf9W59pYFd1Dbuv1">
@@ -394,10 +394,10 @@ footer{text-align:center;color:var(--ink-4);font-size:12.5px;padding:28px 0 0;bo
       <tr data-page-node-id="HmvBxbOXz74FsdH6MiAOwO"><td data-page-node-id="kH70hkP5BhcUkkOryERh0e">字体</td><td data-page-node-id="LhtUc0wKSabJfxi74Nyt1F"><strong data-page-node-id="H54FcGMM2llwgWW7Ri2xQp">保持默认，不要手动改</strong></td><td data-page-node-id="Wr5VUWDTkltdzNxY7VLP4b">你在电脑端选的字体，到手机端会被微信强制还原成系统字体（iOS 苹方 / 安卓思源黑体），改了白改还容易格式错乱</td></tr>
       <tr data-page-node-id="1iUAzZKCBcBJupSELDiLDZ"><td data-page-node-id="fNTfqDAo8c7pcXFdqUWgqS">字号</td><td data-page-node-id="Yd7sS2GlxTiGftYr1nGpUQ">15-16 px</td><td data-page-node-id="X2IMwiPOCiTAK14ttGYc03">手机阅读黄金尺寸；14 太小费眼，17+ 偏大显粗糙</td></tr>
       <tr data-page-node-id="ssRdXI9GD2zR1n0V7juNk7"><td data-page-node-id="ETYr1wwcrIsAEjANtkdper">行距</td><td data-page-node-id="eCjhJ0PQUeEFwX22jOpLb8">1.75</td><td data-page-node-id="A1KTsThA2LqjQQNEkN4hwS">疏密适中，拉长停留时长</td></tr>
-      <tr data-page-node-id="IVCGMZmX98LxmcL66wa2Tz"><td data-page-node-id="FfhumuDBZznLCXhMwnNGVG">字色</td><td data-page-node-id="SV0xgxHmZvriwMajGI2Aav">***REMOVED***333333</td><td data-page-node-id="2Aufo4DTNTGbYNZ0UBLWwH">比纯黑柔和，不累眼；<strong data-page-node-id="i3nleL7Blyan1pB1bsS7ga">拒绝大红大紫</strong></td></tr>
+      <tr data-page-node-id="IVCGMZmX98LxmcL66wa2Tz"><td data-page-node-id="FfhumuDBZznLCXhMwnNGVG">字色</td><td data-page-node-id="SV0xgxHmZvriwMajGI2Aav">#333333</td><td data-page-node-id="2Aufo4DTNTGbYNZ0UBLWwH">比纯黑柔和，不累眼；<strong data-page-node-id="i3nleL7Blyan1pB1bsS7ga">拒绝大红大紫</strong></td></tr>
       <tr data-page-node-id="KEq9kuwUCDZcQyjvfEIfUK"><td data-page-node-id="ljD2lHKSlVdUCeDqZYyebY">段间距</td><td data-page-node-id="4R6LnA9Tg18jEsttYRx9GI">8-15 px</td><td data-page-node-id="jjaO9LWpEhCUIBhQPITnny">制造呼吸感</td></tr>
       <tr data-page-node-id="LmsDlH2pHTo90BaZz2vx5g"><td data-page-node-id="dgZnVA7Zs8igj8Ubr0pHd8">段落长度</td><td data-page-node-id="KgPGrr1khdKSU1YXEaXAvp"><strong data-page-node-id="gtC9UnoZrVVCfQ5fBwAFsQ">每段 2-4 行</strong></td><td data-page-node-id="VqFYef7uakg7gA7zWsr1SR">单段超 5 行，跳出率直接翻倍</td></tr>
-      <tr data-page-node-id="nVXjMXaYWS5zBd6ymt1Sbr"><td data-page-node-id="qZfGloNO9EUQ1ArzFX7o0n">强调方式</td><td data-page-node-id="yd5xN1E3AjmaeHNvGw2XAn"><strong data-page-node-id="AR2EK908lY7w9IrHB5ZeLU">只加粗，不上色</strong></td><td data-page-node-id="fUvo6vbGMSWQxAYvdguKEO">全篇仅 1 种低饱和强调色（行途蓝 ***REMOVED***056DE8）</td></tr>
+      <tr data-page-node-id="nVXjMXaYWS5zBd6ymt1Sbr"><td data-page-node-id="qZfGloNO9EUQ1ArzFX7o0n">强调方式</td><td data-page-node-id="yd5xN1E3AjmaeHNvGw2XAn"><strong data-page-node-id="AR2EK908lY7w9IrHB5ZeLU">只加粗，不上色</strong></td><td data-page-node-id="fUvo6vbGMSWQxAYvdguKEO">全篇仅 1 种低饱和强调色（行途蓝 #056DE8）</td></tr>
       <tr data-page-node-id="wRZGzT5VE4tyEci6088Oag"><td data-page-node-id="zXr3TAzdsd5R9wVlA3FDaA">标题层级</td><td data-page-node-id="AcoZUV4t9yeUpqzIQ3QNkx">一级 18px 加粗 / 二级 16px 加粗</td><td data-page-node-id="Vtrv0Cmhm59uvRzUQyl7E7">只放大字号 + 加粗，<strong data-page-node-id="xlqf3utgayzvATu6UEg91N">不换字体、不涂色、不加底纹</strong></td></tr>
       <tr data-page-node-id="mPeMNnOtn7gCFjp8nArdkB"><td data-page-node-id="osM4RlJ8jx1Zhy3u2NQ5Fx">禁止清单</td><td colspan="2" data-page-node-id="4lkT6AfTDlQT5fUlAv93ZY">❌ 花哨分割线 ❌ 背景模板 ❌ 动图贴纸 ❌ 多色文字 ❌ 花边框 ❌ 彩虹标题</td></tr>
     </tbody>
@@ -405,7 +405,7 @@ footer{text-align:center;color:var(--ink-4);font-size:12.5px;padding:28px 0 0;bo
 
   <div class="callout c-amber" data-page-node-id="z2KOMFHQeO35lcv56OYTjQ">
     <h4 data-page-node-id="gvaCxAC8AfkspOSFWDL1VM">对现有工具的影响：<code data-page-node-id="3IQJSonIzbtH7vgyTykIEY">render_wechat.js</code> 不是推倒重来，是降级</h4>
-    <p data-page-node-id="WSQXDiv8XSDpDbRZX6dExd">行途蓝 ***REMOVED***056DE8 作为<strong data-page-node-id="DAthg0ER4HmmaEs7XfOF06">唯一强调色</strong>完全 OK，品牌识别度就靠它。要动的是：砍掉装饰性元素（背景、花哨分割线、多色），统一字号行距段距，把「设计感」的预算从正文转移到<strong data-page-node-id="fWd0XPpXC9uB54p5WBHq9W">封面图和头图</strong>上——正文老实系统默认，封面图做足品牌感，这才是高级感的正确投放位置。</p>
+    <p data-page-node-id="WSQXDiv8XSDpDbRZX6dExd">行途蓝 #056DE8 作为<strong data-page-node-id="DAthg0ER4HmmaEs7XfOF06">唯一强调色</strong>完全 OK，品牌识别度就靠它。要动的是：砍掉装饰性元素（背景、花哨分割线、多色），统一字号行距段距，把「设计感」的预算从正文转移到<strong data-page-node-id="fWd0XPpXC9uB54p5WBHq9W">封面图和头图</strong>上——正文老实系统默认，封面图做足品牌感，这才是高级感的正确投放位置。</p>
   </div>
 </section>
 
@@ -446,23 +446,23 @@ footer{text-align:center;color:var(--ink-4);font-size:12.5px;padding:28px 0 0;bo
     <p data-page-node-id="nmR6bW1wQBKJySTTVDduFd">先用 Playwright 跑通（不依赖 API 权限，且能填合集/标签等 API 不好做的字段），等确认你的号类型和 IP 条件后，把稳定性要求高的部分切到官方 API。<strong data-page-node-id="6UtGrsHR4WEkd7hpwGp5av">两条路不冲突，可以并存。</strong></p>
   </div>
 
-  <div style="background:***REMOVED***fef2f2;border:1px solid ***REMOVED***fecaca;border-left:4px solid ***REMOVED***ef4444;border-radius:8px;padding:16px 20px;margin:16px 0">
-    <h4 style="color:***REMOVED***b91c1c;font-size:15px;font-weight:650;margin-bottom:8px">⚠️ 2026-09-02 修正：主线建议已变更，动手前先看这条</h4>
-    <p style="font-size:14px;color:***REMOVED***3f3f3f;line-height:1.85;margin-bottom:10px">
+  <div style="background:#fef2f2;border:1px solid #fecaca;border-left:4px solid #ef4444;border-radius:8px;padding:16px 20px;margin:16px 0">
+    <h4 style="color:#b91c1c;font-size:15px;font-weight:650;margin-bottom:8px">⚠️ 2026-09-02 修正：主线建议已变更，动手前先看这条</h4>
+    <p style="font-size:14px;color:#3f3f3f;line-height:1.85;margin-bottom:10px">
       上面「主 Playwright」的建议，在后续调研中发现两个此前未纳入的硬约束，<strong>优先级高于原建议</strong>：
     </p>
-    <p style="font-size:14px;color:***REMOVED***3f3f3f;line-height:1.85;margin-bottom:10px">
+    <p style="font-size:14px;color:#3f3f3f;line-height:1.85;margin-bottom:10px">
       <strong>① 封号风险。</strong>浏览器自动化模拟登录公众号后台，行业资料明确标注<strong>违反《微信软件许可及服务协议》「自动化操作」条款，有封号与司法风险</strong>；适用场景被限定为「个人订阅号、低频自用、只存草稿后人工确认」，明确<strong>不适合高频/商用/多账号</strong>。而公众号是你 IP 战略的<strong>主阵地、职业安全垫的载体</strong>——用安全垫载体去冒封号风险，是目的与手段倒置。
     </p>
-    <p style="font-size:14px;color:***REMOVED***3f3f3f;line-height:1.85;margin-bottom:10px">
+    <p style="font-size:14px;color:#3f3f3f;line-height:1.85;margin-bottom:10px">
       <strong>② API 权限口径冲突。</strong>行途技术手记为<strong>未认证个人订阅号</strong>。官方接口文档「适用范围」表把 <code>draft/add</code> 对订阅号标为可调，但<strong>微信开放社区有大量实测反馈：未认证/个人订阅号调用返回 <code>48001 api unauthorized</code></strong>。官方回答原文亦称「该接口仅对企业主体且已完成微信认证的公众号开放」。同时 <code>freepublish</code> 发布接口<strong>自 2025-07 起已对个人主体回收</strong>。
     </p>
-    <p style="font-size:14px;color:***REMOVED***3f3f3f;line-height:1.85;margin-bottom:10px">
+    <p style="font-size:14px;color:#3f3f3f;line-height:1.85;margin-bottom:10px">
       <strong>修正后的执行顺序</strong>：<strong>先实调一次 <code>draft/add</code> 定生死（一个 curl，成本极低）</strong>。
       · 返回 media_id → <strong>改走 API 路线为主</strong>（比 Playwright 稳定得多：不受 UI 改版影响、不需反检测、不需关沙箱；且「只到草稿箱、人工终审」本来就是我们的设计原则，与个人号权限天然契合）。
       · 返回 48001 → Playwright 成为唯一路线，<strong>此时必须重新评估封号风险后再决定是否推进</strong>。
     </p>
-    <p style="font-size:13px;color:***REMOVED***6b7280;line-height:1.8;margin-bottom:0">
+    <p style="font-size:13px;color:#6b7280;line-height:1.8;margin-bottom:0">
       补充坑位：AppSecret 自 2025 年底起已迁至<strong>微信开发者平台</strong>（developers.weixin.qq.com/platform，不在 mp 后台），仅在「启用/重置」时显示一次，关窗即焚；IP 白名单必配，否则报 40164。
       详见 <code>outputs/工作流编排工具选型判断_2026-09-02.html</code>（含完整 curl 测试命令）。
     </p>
@@ -514,30 +514,30 @@ footer{text-align:center;color:var(--ink-4);font-size:12.5px;padding:28px 0 0;bo
   </table>
 
   <h3 data-page-node-id="RU1CGeAXMhrR4VyNXyvCQ7">5.4 脚本骨架</h3>
-  <pre data-page-node-id="UPjFeaQhjLPkmMidhmSm8k"><span class="c" data-page-node-id="Xf9cY2aBvSbiyrymH4Q0Ah">***REMOVED*** 目录结构（建议放在 tools/publish/，独立 gitignore 凭据）</span>
+  <pre data-page-node-id="UPjFeaQhjLPkmMidhmSm8k"><span class="c" data-page-node-id="Xf9cY2aBvSbiyrymH4Q0Ah"># 目录结构（建议放在 tools/publish/，独立 gitignore 凭据）</span>
 tools/publish/
-├── wechat_draft.py      <span class="c" data-page-node-id="gjj6PlFezXa8O9o6pHm3rB">***REMOVED*** Playwright 填草稿主脚本</span>
-├── config.yaml          <span class="c" data-page-node-id="moDeoa6f2Px7mdrSrCJtwB">***REMOVED*** 合集映射、默认作者、摘要模板</span>
-├── state/               <span class="c" data-page-node-id="E5GK0vOaD1uqw0xVqjOo5t">***REMOVED*** 持久化登录态 ⚠️ 必须 gitignore</span>
+├── wechat_draft.py      <span class="c" data-page-node-id="gjj6PlFezXa8O9o6pHm3rB"># Playwright 填草稿主脚本</span>
+├── config.yaml          <span class="c" data-page-node-id="moDeoa6f2Px7mdrSrCJtwB"># 合集映射、默认作者、摘要模板</span>
+├── state/               <span class="c" data-page-node-id="E5GK0vOaD1uqw0xVqjOo5t"># 持久化登录态 ⚠️ 必须 gitignore</span>
 │   └── wechat-state.json
 ├── logs/
-│   └── screenshots/     <span class="c" data-page-node-id="IYRdHTEqYVnoj7UIR3aBPe">***REMOVED*** 每步截图，失败可回溯</span>
-└── published.json       <span class="c" data-page-node-id="09eyWIwVS3XKxQsID6ydaT">***REMOVED*** 发布台账（标题/合集/草稿URL/发布时间/数据）</span>
+│   └── screenshots/     <span class="c" data-page-node-id="IYRdHTEqYVnoj7UIR3aBPe"># 每步截图，失败可回溯</span>
+└── published.json       <span class="c" data-page-node-id="09eyWIwVS3XKxQsID6ydaT"># 发布台账（标题/合集/草稿URL/发布时间/数据）</span>
 
-<span class="c" data-page-node-id="LsRb3YUWZb6pY0AtD7mmxO">***REMOVED*** 核心流程（伪代码）</span>
+<span class="c" data-page-node-id="LsRb3YUWZb6pY0AtD7mmxO"># 核心流程（伪代码）</span>
 <span class="k" data-page-node-id="x96fH9fFQg1sIWtlv9E6kc">def</span> push_draft(md_path, collection, cover):
-    html = render_wechat(md_path)          <span class="c" data-page-node-id="beus5a8HtIxOpdCOhlkhZC">***REMOVED*** 复用已有 render_wechat.js</span>
+    html = render_wechat(md_path)          <span class="c" data-page-node-id="beus5a8HtIxOpdCOhlkhZC"># 复用已有 render_wechat.js</span>
     ctx  = browser.new_context(storage_state=<span class="s" data-page-node-id="oGW9jOdjgsoEfYdOrZQX9l">"state/wechat-state.json"</span>)
     page = ctx.new_page()
     goto_draft_editor(page)
-    fill_title(page, frontmatter.title)    <span class="c" data-page-node-id="IsuWcZ4Yme3hJzAtyxOgUh">***REMOVED*** 前 13 字含核心词（SEO）</span>
+    fill_title(page, frontmatter.title)    <span class="c" data-page-node-id="IsuWcZ4Yme3hJzAtyxOgUh"># 前 13 字含核心词（SEO）</span>
     fill_author(page, <span class="s" data-page-node-id="Edh99y1BldsZEDiG9oLUmM">"行途"</span>)
-    fill_content(page, html)               <span class="c" data-page-node-id="P056kBksNjdj0jDj3FmEUL">***REMOVED*** section+span 渲染，规避样式过滤</span>
-    upload_cover(page, cover)              <span class="c" data-page-node-id="TE2rCwmd7J1kVj5Bqu46zu">***REMOVED*** 900×383</span>
-    select_collection(page, collection)    <span class="c" data-page-node-id="BSbqHCL31nVWFfrx58pvfi">***REMOVED*** ← 你要的「合集/系列」在这里定义</span>
+    fill_content(page, html)               <span class="c" data-page-node-id="P056kBksNjdj0jDj3FmEUL"># section+span 渲染，规避样式过滤</span>
+    upload_cover(page, cover)              <span class="c" data-page-node-id="TE2rCwmd7J1kVj5Bqu46zu"># 900×383</span>
+    select_collection(page, collection)    <span class="c" data-page-node-id="BSbqHCL31nVWFfrx58pvfi"># ← 你要的「合集/系列」在这里定义</span>
     fill_summary(page, frontmatter.digest)
-    save_draft(page)                       <span class="c" data-page-node-id="FVmA3Nrw0NMcI6X29ReoGL">***REMOVED*** ⚠️ 只存草稿，绝不点发布</span>
-    <span class="k" data-page-node-id="PLrzeWB2RyVY2DD7m1cuFw">return</span> draft_url                       <span class="c" data-page-node-id="c4DI7vQ23NJvopQZPhFyEa">***REMOVED*** 返回链接，人工审核后手动发布</span></pre>
+    save_draft(page)                       <span class="c" data-page-node-id="FVmA3Nrw0NMcI6X29ReoGL"># ⚠️ 只存草稿，绝不点发布</span>
+    <span class="k" data-page-node-id="PLrzeWB2RyVY2DD7m1cuFw">return</span> draft_url                       <span class="c" data-page-node-id="c4DI7vQ23NJvopQZPhFyEa"># 返回链接，人工审核后手动发布</span></pre>
 
   <div class="callout c-red" data-page-node-id="WhEWEDMsiuAFec9EOLO5g7">
     <h4 data-page-node-id="GzqSiIUWmRCv2JyAGOQn87">四条红线（写进脚本，不可绕过）</h4>
@@ -571,7 +571,7 @@ tools/publish/
   <div class="dec" data-page-node-id="GiDkm45nW3AzBCUyyDY9h3">
     <div class="dec-h" data-page-node-id="DLZsyN8yDgXHMvIjN42I7o"><span data-page-node-id="JxalTC43PrcueTtoqEYawV">D2 · 排版风格</span><span class="b b-gray" data-page-node-id="vK4S1ax0WrkdIDZirwkDvK">影响工具改造</span></div>
     <div class="dec-b" data-page-node-id="PeDhM672B0mpj0b8TGtoAX">
-      <div class="opt rec" data-page-node-id="Km9WGS1JCHQj9AYY2lDyhZ"><b data-page-node-id="l6aiuLBTPJiK8wnS7Zd5rH">A. render_wechat.js 降级为「克制排版」（推荐）</b><span data-page-node-id="PL4vNUK46fQbS74E3qVAPW">保留行途蓝作唯一强调色，砍掉装饰元素，统一 15-16px / 1.75 行距 / ***REMOVED***333333 / 段距 8-15px。改造量小，收益是完读率和搜一搜收录。</span></div>
+      <div class="opt rec" data-page-node-id="Km9WGS1JCHQj9AYY2lDyhZ"><b data-page-node-id="l6aiuLBTPJiK8wnS7Zd5rH">A. render_wechat.js 降级为「克制排版」（推荐）</b><span data-page-node-id="PL4vNUK46fQbS74E3qVAPW">保留行途蓝作唯一强调色，砍掉装饰元素，统一 15-16px / 1.75 行距 / #333333 / 段距 8-15px。改造量小，收益是完读率和搜一搜收录。</span></div>
       <div class="opt" data-page-node-id="YS2NIpy9sQEk2OVRPvxnPf"><b data-page-node-id="v9PFksHEEkbh5lBdMOU6V1">B. 保持现有行途蓝风格</b><span data-page-node-id="1AECUcK5H3rn6BRqKb7pWT">品牌识别度高，但需先验证当前风格是否含装饰性元素、是否拖累完读率。</span></div>
     </div>
   </div>
@@ -628,15 +628,15 @@ tools/publish/
 
 </div>
 
-  <footer style="margin-top:36px;border-top:2px solid ***REMOVED***056DE8;padding:16px 20px;background:***REMOVED***f5f9ff;border-radius:10px;font-size:13px;color:***REMOVED***1a1a1a;line-height:1.9">
-    <div style="font-weight:700;color:***REMOVED***056DE8;margin-bottom:8px">📎 权威锚点 / 引用来源</div>
+  <footer style="margin-top:36px;border-top:2px solid #056DE8;padding:16px 20px;background:#f5f9ff;border-radius:10px;font-size:13px;color:#1a1a1a;line-height:1.9">
+    <div style="font-weight:700;color:#056DE8;margin-bottom:8px">📎 权威锚点 / 引用来源</div>
     <ul style="margin:0;padding-left:18px">
-      <li>微信公众平台·发布能力官方文档（freepublish 回收确认）：<a href="https://developers.weixin.qq.com/doc/service/guide/product/publish.html" target="_blank" rel="noopener" style="color:***REMOVED***056DE8;text-decoration:underline">https://developers.weixin.qq.com/doc/service/guide/product/publish.html</a></li>
-      <li>微信公众平台·草稿箱官方文档（draft/add 个人号待实调）：<a href="https://developers.weixin.qq.com/doc/service/guide/product/draft.html" target="_blank" rel="noopener" style="color:***REMOVED***056DE8;text-decoration:underline">https://developers.weixin.qq.com/doc/service/guide/product/draft.html</a></li>
+      <li>微信公众平台·发布能力官方文档（freepublish 回收确认）：<a href="https://developers.weixin.qq.com/doc/service/guide/product/publish.html" target="_blank" rel="noopener" style="color:#056DE8;text-decoration:underline">https://developers.weixin.qq.com/doc/service/guide/product/publish.html</a></li>
+      <li>微信公众平台·草稿箱官方文档（draft/add 个人号待实调）：<a href="https://developers.weixin.qq.com/doc/service/guide/product/draft.html" target="_blank" rel="noopener" style="color:#056DE8;text-decoration:underline">https://developers.weixin.qq.com/doc/service/guide/product/draft.html</a></li>
       <li>公众号「行途技术手记」</li>
       <li>变现分层（赞赏/矿石/星球年费）为规划口径，实际到账数据待跑通回填，禁编造</li>
     </ul>
-    <div style="margin-top:8px;color:***REMOVED***555">完整引用索引：<code style="background:***REMOVED***eef4ff;padding:1px 6px;border-radius:4px;color:***REMOVED***0a3d7a">specs/20260902-断点续传与集中提示词/05_权威锚点与引用来源.md</code></div>
+    <div style="margin-top:8px;color:#555">完整引用索引：<code style="background:#eef4ff;padding:1px 6px;border-radius:4px;color:#0a3d7a">specs/20260902-断点续传与集中提示词/05_权威锚点与引用来源.md</code></div>
   </footer>
 
 </body>

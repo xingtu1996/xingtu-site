@@ -6,61 +6,61 @@
 <title>行途模型智能提示决策卡 · 2026-08-27</title>
 <style>
   :root {
-    --blue: ***REMOVED***056DE8;
-    --blue-dark: ***REMOVED***044FA8;
-    --blue-light: ***REMOVED***EAF2FE;
-    --ink: ***REMOVED***1a2433;
-    --sub: ***REMOVED***5b6b82;
-    --line: ***REMOVED***e3e9f2;
-    --bg: ***REMOVED***f7f9fc;
-    --red: ***REMOVED***d64545;
-    --green: ***REMOVED***1e9e6a;
-    --amber: ***REMOVED***b7791f;
-    --orange: ***REMOVED***e8813b;
+    --blue: #056DE8;
+    --blue-dark: #044FA8;
+    --blue-light: #EAF2FE;
+    --ink: #1a2433;
+    --sub: #5b6b82;
+    --line: #e3e9f2;
+    --bg: #f7f9fc;
+    --red: #d64545;
+    --green: #1e9e6a;
+    --amber: #b7791f;
+    --orange: #e8813b;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; background:var(--bg); color:var(--ink); line-height:1.65; padding:32px 16px 64px; }
   .wrap { max-width:980px; margin:0 auto; }
 
   /* Header */
-  .hero { background:linear-gradient(135deg,var(--blue) 0%,***REMOVED***2b8cf5 100%); border-radius:18px; padding:34px 36px; color:***REMOVED***fff; position:relative; overflow:hidden; }
+  .hero { background:linear-gradient(135deg,var(--blue) 0%,#2b8cf5 100%); border-radius:18px; padding:34px 36px; color:#fff; position:relative; overflow:hidden; }
   .hero::after { content:""; position:absolute; right:-60px; top:-60px; width:240px; height:240px; border-radius:50%; background:rgba(255,255,255,.08); }
   .hero::before { content:""; position:absolute; right:40px; bottom:-90px; width:200px; height:200px; border-radius:50%; background:rgba(255,255,255,.06); }
   .hero h1 { font-size:26px; letter-spacing:1px; }
   .hero .sub { margin-top:6px; font-size:14px; opacity:.85; }
   .kousi { margin-top:16px; display:inline-block; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.35); padding:8px 16px; border-radius:10px; font-size:14px; font-weight:600; }
-  .kousi b { color:***REMOVED***ffe9a8; }
+  .kousi b { color:#ffe9a8; }
 
   h2 { font-size:19px; margin:38px 0 14px; display:flex; align-items:center; gap:9px; }
-  h2 .no { display:inline-flex; width:26px; height:26px; border-radius:8px; background:var(--blue); color:***REMOVED***fff; font-size:13px; align-items:center; justify-content:center; flex:none; }
-  .card { background:***REMOVED***fff; border:1px solid var(--line); border-radius:14px; padding:22px 24px; }
+  h2 .no { display:inline-flex; width:26px; height:26px; border-radius:8px; background:var(--blue); color:#fff; font-size:13px; align-items:center; justify-content:center; flex:none; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:14px; padding:22px 24px; }
 
   /* Decision tree */
   .tree-root { text-align:center; }
-  .root-node { display:inline-block; background:var(--ink); color:***REMOVED***fff; padding:10px 26px; border-radius:12px; font-weight:700; font-size:15px; }
+  .root-node { display:inline-block; background:var(--ink); color:#fff; padding:10px 26px; border-radius:12px; font-weight:700; font-size:15px; }
   .tree-branches { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:16px; }
   @media (max-width:720px){ .tree-branches { grid-template-columns:1fr; } }
-  .branch { border:1px solid var(--line); border-radius:12px; padding:12px 14px; background:***REMOVED***fbfcfe; display:flex; gap:12px; align-items:flex-start; }
+  .branch { border:1px solid var(--line); border-radius:12px; padding:12px 14px; background:#fbfcfe; display:flex; gap:12px; align-items:flex-start; }
   .branch .cond { flex:1; font-size:13.5px; color:var(--sub); }
   .branch .cond b { color:var(--ink); display:block; font-size:14px; margin-bottom:2px; }
   .branch .model { flex:none; text-align:center; min-width:132px; }
   .branch .model .m { display:inline-block; font-weight:700; font-size:13.5px; padding:4px 12px; border-radius:8px; }
   .branch .model .r { font-size:11.5px; color:var(--sub); margin-top:2px; }
   .m-pro { background:var(--blue-light); color:var(--blue-dark); }
-  .m-flash { background:***REMOVED***e6f9f0; color:var(--green); }
-  .m-hy3 { background:***REMOVED***fff4e0; color:var(--amber); }
-  .m-m3 { background:***REMOVED***fdeaf2; color:***REMOVED***b5327f; }
-  .m-glm53 { background:***REMOVED***f0ecff; color:***REMOVED***6b46c1; }
-  .m-5v { background:***REMOVED***e0f2ff; color:***REMOVED***0b7dc2; }
-  .m-kimi { background:***REMOVED***e8eef7; color:***REMOVED***34558b; }
-  .m-auto { background:***REMOVED***f1f3f6; color:var(--sub); }
-  .m-ban { background:***REMOVED***fdeaea; color:var(--red); }
+  .m-flash { background:#e6f9f0; color:var(--green); }
+  .m-hy3 { background:#fff4e0; color:var(--amber); }
+  .m-m3 { background:#fdeaf2; color:#b5327f; }
+  .m-glm53 { background:#f0ecff; color:#6b46c1; }
+  .m-5v { background:#e0f2ff; color:#0b7dc2; }
+  .m-kimi { background:#e8eef7; color:#34558b; }
+  .m-auto { background:#f1f3f6; color:var(--sub); }
+  .m-ban { background:#fdeaea; color:var(--red); }
 
   /* Table */
   table { width:100%; border-collapse:collapse; font-size:13.5px; }
   th { background:var(--blue-light); color:var(--blue-dark); text-align:left; padding:10px 12px; font-weight:600; white-space:nowrap; }
   td { padding:9px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
-  tr:hover td { background:***REMOVED***fafcff; }
+  tr:hover td { background:#fafcff; }
   .sig { color:var(--sub); font-size:12.5px; }
   .badge { display:inline-block; padding:2px 8px; border-radius:6px; font-size:11.5px; font-weight:600; }
 
@@ -68,9 +68,9 @@
   .rules { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
   @media (max-width:720px){ .rules { grid-template-columns:1fr; } }
   .rule { border-radius:12px; padding:14px 16px; border:1px solid var(--line); }
-  .rule.red { background:***REMOVED***fef7f6; border-color:***REMOVED***f3d3d0; }
-  .rule.blue { background:***REMOVED***f2f8ff; border-color:***REMOVED***cfe4fb; }
-  .rule.dark { background:***REMOVED***f5f6f9; border-color:***REMOVED***dfe4ec; }
+  .rule.red { background:#fef7f6; border-color:#f3d3d0; }
+  .rule.blue { background:#f2f8ff; border-color:#cfe4fb; }
+  .rule.dark { background:#f5f6f9; border-color:#dfe4ec; }
   .rule h4 { font-size:14px; margin-bottom:4px; }
   .rule p { font-size:13px; color:var(--sub); }
 
@@ -78,17 +78,17 @@
   .steps { counter-reset:s; }
   .step { display:flex; gap:14px; padding:12px 0; border-bottom:1px dashed var(--line); }
   .step:last-child { border-bottom:none; }
-  .step::before { counter-increment:s; content:counter(s); flex:none; width:26px; height:26px; border-radius:50%; background:var(--blue); color:***REMOVED***fff; font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center; margin-top:2px; }
+  .step::before { counter-increment:s; content:counter(s); flex:none; width:26px; height:26px; border-radius:50%; background:var(--blue); color:#fff; font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center; margin-top:2px; }
   .step .t { font-size:14px; font-weight:600; }
   .step .d { font-size:13px; color:var(--sub); }
-  code { background:***REMOVED***eef1f6; border:1px solid ***REMOVED***e0e5ee; border-radius:6px; padding:1px 7px; font-family:"SF Mono",Menlo,Consolas,monospace; font-size:12.5px; color:***REMOVED***24344d; }
-  .cmd { display:block; background:***REMOVED***1a2433; color:***REMOVED***9fd0ff; padding:10px 14px; border-radius:10px; font-family:"SF Mono",Menlo,monospace; font-size:12.5px; margin-top:6px; }
+  code { background:#eef1f6; border:1px solid #e0e5ee; border-radius:6px; padding:1px 7px; font-family:"SF Mono",Menlo,Consolas,monospace; font-size:12.5px; color:#24344d; }
+  .cmd { display:block; background:#1a2433; color:#9fd0ff; padding:10px 14px; border-radius:10px; font-family:"SF Mono",Menlo,monospace; font-size:12.5px; margin-top:6px; }
 
   .foot { text-align:center; color:var(--sub); font-size:12px; margin-top:40px; }
   .pill { display:inline-block; background:var(--blue-light); color:var(--blue-dark); border-radius:999px; padding:2px 10px; font-size:12px; font-weight:600; margin:0 3px 3px 0; }
 </style>
 </head>
-<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:***REMOVED***056DE8;color:***REMOVED***fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:***REMOVED***fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
 <div class="wrap">
 
   <div class="hero">
@@ -123,14 +123,14 @@
       <thead><tr><th>模型</th><th>倍率</th><th>优先级</th><th>典型场景</th><th>触发信号词</th></tr></thead>
       <tbody>
         <tr><td><span class="badge" style="background:var(--blue-light);color:var(--blue-dark);">deepseek-v4-pro</span></td><td>0.51x</td><td>🔒 默认锁死</td><td>公众号深度文 / 深度分析 / 长文整稿 / 方案评估</td><td class="sig">公众号 主稿 深度 长文 整稿 观点 解读 行业 专栏 定稿 首发 研究报告 文章 方案 评估 思路 规划</td></tr>
-        <tr><td><span class="badge" style="background:***REMOVED***e6f9f0;color:var(--green);">deepseek-v4-flash</span></td><td>0.17x</td><td>⚡ 副手主力</td><td>跨平台改写 / 批量蒸馏 / 标题与 SEO 提取</td><td class="sig">改写 搬运 分发 掘金 CSDN 知乎 批量 蒸馏 标题 SEO 长尾 关键词 摘要 卡片</td></tr>
-        <tr><td><span class="badge" style="background:***REMOVED***fff4e0;color:var(--amber);">hy3 夜间版</span></td><td>0.00x</td><td>🌙 白嫖优先</td><td>夜间批量生产（周末 3-5 篇定时排一周）</td><td class="sig">夜间 批量生产 周末 定时发布 排一周 排期 备稿</td></tr>
-        <tr><td><span class="badge" style="background:***REMOVED***fff4e0;color:var(--amber);">hy3 标准版</span></td><td>0.05x</td><td>☀️ 白天碎片</td><td>补标题 / 改错别字 / 轻整理</td><td class="sig">碎片 补标题 错别字 轻整理 小改 微调 快速 顺手</td></tr>
-        <tr><td><span class="badge" style="background:***REMOVED***fdeaf2;color:***REMOVED***b5327f;">minimax-m3</span></td><td>0.25x</td><td>🌸 差异化调教</td><td>小红书短版 / 口语化改写 / 转发文案</td><td class="sig">小红书 口语化 短版 调性 朋友圈 接地气 转发文案 家人群</td></tr>
-        <tr><td><span class="badge" style="background:***REMOVED***f0ecff;color:***REMOVED***6b46c1;">glm-5.3</span></td><td>0.79x</td><td>🎯 疑难备胎</td><td>金句润色 / 更地道中文 / V4-Pro 写不动时</td><td class="sig">金句 润色 地道 疑难 拗口 文笔 文采</td></tr>
-        <tr><td><span class="badge" style="background:***REMOVED***e0f2ff;color:***REMOVED***0b7dc2;">glm-5v-turbo</span></td><td>0.71x</td><td>🖼️ 唯一视觉</td><td>读图 / 截图 / 封面描述 / 图说</td><td class="sig">看图 读图 截图 封面 配图 图说 图片 OCR 识别 海报 图解 视觉</td></tr>
-        <tr><td><span class="badge" style="background:***REMOVED***e8eef7;color:***REMOVED***34558b;">kimi-k2.6</span></td><td>0.52x</td><td>🧠 烧 token 专用</td><td>超长素材蒸馏 / 信息员长会话整本</td><td class="sig">超长 长会话 整本 信息员 会话记录 历史会话 海量素材 全量分析</td></tr>
-        <tr><td><span class="badge" style="background:***REMOVED***f1f3f6;color:var(--sub);">Auto</span></td><td>—</td><td>📋 杂活默认</td><td>问答 / 查资料 / 读文件 / 整理表格</td><td class="sig">查资料 搜索 读文件 整理表格 问答 查一下 汇总 小问题 查证 找一下 翻译 换算 算一下</td></tr>
+        <tr><td><span class="badge" style="background:#e6f9f0;color:var(--green);">deepseek-v4-flash</span></td><td>0.17x</td><td>⚡ 副手主力</td><td>跨平台改写 / 批量蒸馏 / 标题与 SEO 提取</td><td class="sig">改写 搬运 分发 掘金 CSDN 知乎 批量 蒸馏 标题 SEO 长尾 关键词 摘要 卡片</td></tr>
+        <tr><td><span class="badge" style="background:#fff4e0;color:var(--amber);">hy3 夜间版</span></td><td>0.00x</td><td>🌙 白嫖优先</td><td>夜间批量生产（周末 3-5 篇定时排一周）</td><td class="sig">夜间 批量生产 周末 定时发布 排一周 排期 备稿</td></tr>
+        <tr><td><span class="badge" style="background:#fff4e0;color:var(--amber);">hy3 标准版</span></td><td>0.05x</td><td>☀️ 白天碎片</td><td>补标题 / 改错别字 / 轻整理</td><td class="sig">碎片 补标题 错别字 轻整理 小改 微调 快速 顺手</td></tr>
+        <tr><td><span class="badge" style="background:#fdeaf2;color:#b5327f;">minimax-m3</span></td><td>0.25x</td><td>🌸 差异化调教</td><td>小红书短版 / 口语化改写 / 转发文案</td><td class="sig">小红书 口语化 短版 调性 朋友圈 接地气 转发文案 家人群</td></tr>
+        <tr><td><span class="badge" style="background:#f0ecff;color:#6b46c1;">glm-5.3</span></td><td>0.79x</td><td>🎯 疑难备胎</td><td>金句润色 / 更地道中文 / V4-Pro 写不动时</td><td class="sig">金句 润色 地道 疑难 拗口 文笔 文采</td></tr>
+        <tr><td><span class="badge" style="background:#e0f2ff;color:#0b7dc2;">glm-5v-turbo</span></td><td>0.71x</td><td>🖼️ 唯一视觉</td><td>读图 / 截图 / 封面描述 / 图说</td><td class="sig">看图 读图 截图 封面 配图 图说 图片 OCR 识别 海报 图解 视觉</td></tr>
+        <tr><td><span class="badge" style="background:#e8eef7;color:#34558b;">kimi-k2.6</span></td><td>0.52x</td><td>🧠 烧 token 专用</td><td>超长素材蒸馏 / 信息员长会话整本</td><td class="sig">超长 长会话 整本 信息员 会话记录 历史会话 海量素材 全量分析</td></tr>
+        <tr><td><span class="badge" style="background:#f1f3f6;color:var(--sub);">Auto</span></td><td>—</td><td>📋 杂活默认</td><td>问答 / 查资料 / 读文件 / 整理表格</td><td class="sig">查资料 搜索 读文件 整理表格 问答 查一下 汇总 小问题 查证 找一下 翻译 换算 算一下</td></tr>
       </tbody>
     </table>
   </div>

@@ -6,14 +6,14 @@
 <title>行途工作空间 · Harness 体系手册 (2026-08)</title>
 <style>
   :root{
-    --bg:***REMOVED***f7f8fa; --panel:***REMOVED***ffffff; --ink:***REMOVED***1f2430; --sub:***REMOVED***5b6472; --line:***REMOVED***e6e9ef;
-    --brand:***REMOVED***2f6df0; --brand-soft:***REMOVED***eaf1ff; --teal:***REMOVED***0f9d8a; --amber:***REMOVED***d98a00; --red:***REMOVED***d9483b; --purple:***REMOVED***7a5af0;
-    --code-bg:***REMOVED***f1f3f7; --shadow:0 1px 3px rgba(20,30,60,.07),0 6px 24px rgba(20,30,60,.06);
+    --bg:#f7f8fa; --panel:#ffffff; --ink:#1f2430; --sub:#5b6472; --line:#e6e9ef;
+    --brand:#2f6df0; --brand-soft:#eaf1ff; --teal:#0f9d8a; --amber:#d98a00; --red:#d9483b; --purple:#7a5af0;
+    --code-bg:#f1f3f7; --shadow:0 1px 3px rgba(20,30,60,.07),0 6px 24px rgba(20,30,60,.06);
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.7 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;}
   .wrap{max-width:1080px;margin:0 auto;padding:32px 24px 96px;}
-  header.hero{background:linear-gradient(135deg,***REMOVED***2f6df0,***REMOVED***0f9d8a);color:***REMOVED***fff;border-radius:16px;padding:32px 34px;box-shadow:var(--shadow);}
+  header.hero{background:linear-gradient(135deg,#2f6df0,#0f9d8a);color:#fff;border-radius:16px;padding:32px 34px;box-shadow:var(--shadow);}
   header.hero h1{margin:0 0 6px;font-size:26px;letter-spacing:.5px}
   header.hero p{margin:4px 0 0;opacity:.92;font-size:14px}
   .meta{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
@@ -25,40 +25,40 @@
   section{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px 30px;margin:22px 0;box-shadow:var(--shadow);}
   section h2{margin:0 0 16px;font-size:20px;display:flex;align-items:center;gap:10px}
   section h2 .tag{font-size:11px;background:var(--brand-soft);color:var(--brand);padding:2px 9px;border-radius:6px;font-weight:600}
-  h3{font-size:16px;margin:22px 0 8px;color:***REMOVED***2a3140}
+  h3{font-size:16px;margin:22px 0 8px;color:#2a3140}
   p{margin:8px 0}
   ul,ol{margin:8px 0;padding-left:22px}
   li{margin:5px 0}
-  code{background:var(--code-bg);padding:1px 6px;border-radius:5px;font-size:13px;font-family:"SF Mono",Consolas,monospace;color:***REMOVED***27406b}
+  code{background:var(--code-bg);padding:1px 6px;border-radius:5px;font-size:13px;font-family:"SF Mono",Consolas,monospace;color:#27406b}
   .lead{color:var(--sub);font-size:14.5px}
   table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px}
   th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
-  th{background:***REMOVED***f3f6fc;color:***REMOVED***33415c;font-weight:600}
-  tr:nth-child(even) td{background:***REMOVED***fafbfd}
+  th{background:#f3f6fc;color:#33415c;font-weight:600}
+  tr:nth-child(even) td{background:#fafbfd}
   .stack{display:flex;flex-direction:column;gap:8px;margin:16px 0}
-  .layer{border-radius:10px;padding:12px 16px;color:***REMOVED***fff;position:relative}
+  .layer{border-radius:10px;padding:12px 16px;color:#fff;position:relative}
   .layer .lv{font-weight:700;font-size:13px;opacity:.9}
   .layer .nm{font-size:15px;font-weight:700;margin:2px 0}
   .layer .ds{font-size:12.5px;opacity:.92}
-  .l5{background:***REMOVED***7a5af0}.l4{background:***REMOVED***2f6df0}.l3{background:***REMOVED***0f9d8a}.l2{background:***REMOVED***1f8f6b}.l1{background:***REMOVED***5a6b85}.l0{background:***REMOVED***3b4658}
+  .l5{background:#7a5af0}.l4{background:#2f6df0}.l3{background:#0f9d8a}.l2{background:#1f8f6b}.l1{background:#5a6b85}.l0{background:#3b4658}
   .roadmap{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:14px 0}
-  .phase{border:1px solid var(--line);border-radius:12px;padding:16px;background:***REMOVED***fcfdff}
+  .phase{border:1px solid var(--line);border-radius:12px;padding:16px;background:#fcfdff}
   .phase h4{margin:0 0 8px;color:var(--brand);font-size:15px}
   .phase .ph{font-size:11px;color:var(--sub);text-transform:uppercase;letter-spacing:1px}
   .pill{display:inline-block;font-size:11px;padding:1px 8px;border-radius:6px;font-weight:600;margin-right:4px}
-  .p-safe{background:***REMOVED***e7f7ee;color:***REMOVED***117a4d}
-  .p-warn{background:***REMOVED***fff3e0;color:***REMOVED***a8650b}
-  .p-rec{background:***REMOVED***eaf1ff;color:***REMOVED***2f6df0}
-  .note{background:***REMOVED***fff8e8;border-left:4px solid var(--amber);padding:12px 16px;border-radius:8px;font-size:13.5px;margin:14px 0}
-  .key{background:***REMOVED***eef6ff;border-left:4px solid var(--brand);padding:12px 16px;border-radius:8px;font-size:13.5px;margin:14px 0}
+  .p-safe{background:#e7f7ee;color:#117a4d}
+  .p-warn{background:#fff3e0;color:#a8650b}
+  .p-rec{background:#eaf1ff;color:#2f6df0}
+  .note{background:#fff8e8;border-left:4px solid var(--amber);padding:12px 16px;border-radius:8px;font-size:13.5px;margin:14px 0}
+  .key{background:#eef6ff;border-left:4px solid var(--brand);padding:12px 16px;border-radius:8px;font-size:13.5px;margin:14px 0}
   .twocol{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   @media(max-width:760px){.twocol{grid-template-columns:1fr}}
   .foot{color:var(--sub);font-size:12.5px;text-align:center;margin-top:30px}
   a.inline{color:var(--brand)}
-  .hl{background:***REMOVED***fff3bf;padding:0 3px;border-radius:3px}
+  .hl{background:#fff3bf;padding:0 3px;border-radius:3px}
 </style>
 </head>
-<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:***REMOVED***056DE8;color:***REMOVED***fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:***REMOVED***fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
 <div class="wrap">
 
 <header class="hero">
@@ -71,15 +71,15 @@
 
 <nav class="toc">
   <h3>目录</h3>
-  <a href="***REMOVED***t1">一、Harness 是什么（理论）</a>
-  <a href="***REMOVED***t2">二、六层架构模型</a>
-  <a href="***REMOVED***t3">三、八大核心机制</a>
-  <a href="***REMOVED***t4">四、xingtu 工作空间 harness 化映射</a>
-  <a href="***REMOVED***t5">五、四类任务路由</a>
-  <a href="***REMOVED***t6">六、Claude Code ↔ WorkBuddy 兼容映射</a>
-  <a href="***REMOVED***t7">七、工具与脚本复用清单</a>
-  <a href="***REMOVED***t8">八、落地路线图</a>
-  <a href="***REMOVED***t9">附录：术语与引用</a>
+  <a href="#t1">一、Harness 是什么（理论）</a>
+  <a href="#t2">二、六层架构模型</a>
+  <a href="#t3">三、八大核心机制</a>
+  <a href="#t4">四、xingtu 工作空间 harness 化映射</a>
+  <a href="#t5">五、四类任务路由</a>
+  <a href="#t6">六、Claude Code ↔ WorkBuddy 兼容映射</a>
+  <a href="#t7">七、工具与脚本复用清单</a>
+  <a href="#t8">八、落地路线图</a>
+  <a href="#t9">附录：术语与引用</a>
 </nav>
 
 <!-- ========== 1 ========== -->

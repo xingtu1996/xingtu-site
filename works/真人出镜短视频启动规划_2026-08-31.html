@@ -6,10 +6,10 @@
 <title>真人出镜短视频启动规划 · 行途 | 2026-08-31</title>
 <style>
 :root{
-  --blue:***REMOVED***056DE8; --blue-l:***REMOVED***4A9EFF; --cyan:***REMOVED***00D4FF; --orange:***REMOVED***FF6B35;
-  --ink:***REMOVED***12233F; --ink-2:***REMOVED***3D5470; --ink-3:***REMOVED***7189A6;
-  --bg:***REMOVED***F5F8FC; --card:***REMOVED***FFFFFF; --line:***REMOVED***E3EAF3; --line-2:***REMOVED***EEF3F9;
-  --ok:***REMOVED***0E9F6E; --warn:***REMOVED***E8A317; --bad:***REMOVED***D93025;
+  --blue:#056DE8; --blue-l:#4A9EFF; --cyan:#00D4FF; --orange:#FF6B35;
+  --ink:#12233F; --ink-2:#3D5470; --ink-3:#7189A6;
+  --bg:#F5F8FC; --card:#FFFFFF; --line:#E3EAF3; --line-2:#EEF3F9;
+  --ok:#0E9F6E; --warn:#E8A317; --bad:#D93025;
   --r:14px; --sh:0 2px 10px rgba(16,42,78,.06);
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -21,8 +21,8 @@ body{
 .wrap{max-width:1120px;margin:0 auto;padding:0 20px 80px}
 
 .hero{
-  background:linear-gradient(135deg,***REMOVED***12233F 0%,***REMOVED***1B3A63 55%,***REMOVED***056DE8 100%);
-  color:***REMOVED***fff;padding:46px 0 38px;margin-bottom:34px;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#12233F 0%,#1B3A63 55%,#056DE8 100%);
+  color:#fff;padding:46px 0 38px;margin-bottom:34px;position:relative;overflow:hidden;
 }
 .hero::after{content:"";position:absolute;right:-70px;top:-70px;width:320px;height:320px;
   background:radial-gradient(circle,rgba(255,255,255,.13),transparent 62%);border-radius:50%}
@@ -31,14 +31,14 @@ body{
   padding:5px 13px;border-radius:20px;margin-bottom:16px}
 h1{font-size:29px;font-weight:800;letter-spacing:-.5px;line-height:1.35;margin-bottom:13px}
 .hero-sub{font-size:14.5px;opacity:.92;max-width:800px;margin-bottom:24px}
-.verdict{background:rgba(255,255,255,.12);border-left:4px solid ***REMOVED***7FC4FF;border-radius:0 10px 10px 0;
+.verdict{background:rgba(255,255,255,.12);border-left:4px solid #7FC4FF;border-radius:0 10px 10px 0;
   padding:15px 19px;max-width:850px}
-.verdict b{color:***REMOVED***7FC4FF;font-size:15px;display:block;margin-bottom:5px}
+.verdict b{color:#7FC4FF;font-size:15px;display:block;margin-bottom:5px}
 .verdict p{font-size:14px;opacity:.95}
 
 section{margin-bottom:38px}
 h2{font-size:20px;font-weight:750;display:flex;align-items:center;gap:10px;margin-bottom:6px}
-h2 .idx{background:var(--blue);color:***REMOVED***fff;font-size:12px;font-weight:700;width:25px;height:25px;
+h2 .idx{background:var(--blue);color:#fff;font-size:12px;font-weight:700;width:25px;height:25px;
   border-radius:7px;display:grid;place-items:center;flex:none}
 .h2-sub{color:var(--ink-3);font-size:13.5px;margin:0 0 18px 35px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;box-shadow:var(--sh)}
@@ -47,33 +47,33 @@ h2 .idx{background:var(--blue);color:***REMOVED***fff;font-size:12px;font-weight
 /* gate */
 .gate{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .g-box{border-radius:12px;padding:18px 20px;border:1px solid}
-.g-a{background:***REMOVED***F0F6FE;border-color:***REMOVED***CBE1FB}
-.g-b{background:***REMOVED***FFF6F1;border-color:***REMOVED***FBDCC8}
+.g-a{background:#F0F6FE;border-color:#CBE1FB}
+.g-b{background:#FFF6F1;border-color:#FBDCC8}
 .g-box h4{font-size:14px;font-weight:750;margin-bottom:10px}
-.g-a h4{color:var(--blue)} .g-b h4{color:***REMOVED***C2531B}
+.g-a h4{color:var(--blue)} .g-b h4{color:#C2531B}
 .g-box ul{list-style:none;font-size:13.5px}
 .g-box li{padding:5px 0 5px 17px;position:relative;color:var(--ink-2)}
 .g-box li::before{content:"";position:absolute;left:0;top:13px;width:6px;height:6px;border-radius:50%}
 .g-a li::before{background:var(--blue-l)} .g-b li::before{background:var(--orange)}
 .decision{
-  background:linear-gradient(135deg,***REMOVED***FFF8F3,***REMOVED***FFF3EA);border:1px solid ***REMOVED***FBDCC8;border-radius:12px;
+  background:linear-gradient(135deg,#FFF8F3,#FFF3EA);border:1px solid #FBDCC8;border-radius:12px;
   padding:17px 20px;margin-top:14px;font-size:13.5px;color:var(--ink-2);line-height:1.8;
 }
-.decision b{color:***REMOVED***C2531B}
+.decision b{color:#C2531B}
 
 /* levels */
 .lv{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .lv-item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:17px;position:relative}
-.lv-item .lv-tag{display:inline-block;font-size:11px;font-weight:800;color:***REMOVED***fff;background:var(--ink-3);
+.lv-item .lv-tag{display:inline-block;font-size:11px;font-weight:800;color:#fff;background:var(--ink-3);
   padding:2px 9px;border-radius:20px;margin-bottom:9px}
 .lv-item .lv-tag.hot{background:var(--orange)}
 .lv-item .lv-tag.ok{background:var(--ok)}
 .lv-item h4{font-size:14.5px;font-weight:750;margin-bottom:5px}
 .lv-item .desc{font-size:12.5px;color:var(--ink-3);line-height:1.6;min-height:76px}
-.lv-item .risk{margin-top:10px;font-size:12px;padding:7px 9px;border-radius:7px;background:***REMOVED***F6F8FB;color:var(--ink-2)}
+.lv-item .risk{margin-top:10px;font-size:12px;padding:7px 9px;border-radius:7px;background:#F6F8FB;color:var(--ink-2)}
 .lv-item .risk b{display:block;margin-bottom:2px}
 .path{
-  margin-top:14px;background:***REMOVED***F3F7FC;border-left:3px solid var(--blue);border-radius:0 10px 10px 0;
+  margin-top:14px;background:#F3F7FC;border-left:3px solid var(--blue);border-radius:0 10px 10px 0;
   padding:13px 17px;font-size:13.5px;color:var(--ink-2);line-height:1.8;
 }
 .path b{color:var(--blue)}
@@ -86,10 +86,10 @@ h2 .idx{background:var(--blue);color:***REMOVED***fff;font-size:12px;font-weight
 .day .slots{list-style:none}
 .day .slots li{font-size:11.5px;color:var(--ink-2);padding:3.5px 0 3.5px 11px;position:relative;line-height:1.5}
 .day .slots li::before{content:"·";position:absolute;left:2px;color:var(--blue-l);font-weight:800}
-.l-hi{background:***REMOVED***E8F2FE;color:***REMOVED***056DE8}
-.l-mid{background:***REMOVED***FFF0E8;color:***REMOVED***C2531B}
-.l-lo{background:***REMOVED***E6F7F0;color:***REMOVED***0B7A55}
-.day.sat,.day.sun{background:***REMOVED***FBFDFF;border-color:***REMOVED***CBE1FB}
+.l-hi{background:#E8F2FE;color:#056DE8}
+.l-mid{background:#FFF0E8;color:#C2531B}
+.l-lo{background:#E6F7F0;color:#0B7A55}
+.day.sat,.day.sun{background:#FBFDFF;border-color:#CBE1FB}
 
 .flow{display:flex;flex-direction:column;gap:0}
 .fstep{display:grid;grid-template-columns:130px 1fr 150px;gap:16px;align-items:center;
@@ -97,17 +97,17 @@ h2 .idx{background:var(--blue);color:***REMOVED***fff;font-size:12px;font-weight
 .fstep:last-child{border-bottom:none}
 .fstep .role{font-size:13px;font-weight:750;color:var(--ink)}
 .fstep .do{font-size:13px;color:var(--ink-2)}
-.fstep .when{font-size:12px;color:var(--ink-3);text-align:right;background:***REMOVED***F3F7FC;border-radius:7px;padding:5px 10px}
+.fstep .when{font-size:12px;color:var(--ink-3);text-align:right;background:#F3F7FC;border-radius:7px;padding:5px 10px}
 
 /* equip */
 .eq{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.eq-item{border:1px solid var(--line);border-radius:11px;padding:14px 15px;background:***REMOVED***FBFCFE}
+.eq-item{border:1px solid var(--line);border-radius:11px;padding:14px 15px;background:#FBFCFE}
 .eq-item .n{font-size:13.5px;font-weight:750;margin-bottom:4px}
 .eq-item .p{font-size:12.5px;color:var(--blue);font-weight:800;margin-bottom:5px}
 .eq-item .d{font-size:12px;color:var(--ink-3);line-height:1.55}
 
 /* formula */
-.formula{background:linear-gradient(90deg,***REMOVED***F3F7FC,***REMOVED***FAFCFF);border:1px solid var(--line);border-radius:12px;
+.formula{background:linear-gradient(90deg,#F3F7FC,#FAFCFF);border:1px solid var(--line);border-radius:12px;
   padding:18px 20px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .f-step{border-left:3px solid var(--blue-l);padding-left:12px}
 .f-step .t{font-size:12px;font-weight:800;color:var(--blue);margin-bottom:3px}
@@ -116,7 +116,7 @@ h2 .idx{background:var(--blue);color:***REMOVED***fff;font-size:12px;font-weight
 /* rhythm */
 .rh{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .rh-item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
-.rh-item .ph{font-size:11px;font-weight:800;color:***REMOVED***fff;background:var(--blue);display:inline-block;
+.rh-item .ph{font-size:11px;font-weight:800;color:#fff;background:var(--blue);display:inline-block;
   padding:2px 10px;border-radius:20px;margin-bottom:9px}
 .rh-item:nth-child(2) .ph{background:var(--blue-l)}
 .rh-item:nth-child(3) .ph{background:var(--orange)}
@@ -128,7 +128,7 @@ h2 .idx{background:var(--blue);color:***REMOVED***fff;font-size:12px;font-weight
 /* risk */
 .risk{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;padding:14px 0;border-bottom:1px solid var(--line-2)}
 .risk:last-child{border-bottom:none}
-.risk .ic{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;font-size:15px;font-weight:800;color:***REMOVED***fff;flex:none}
+.risk .ic{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;font-size:15px;font-weight:800;color:#fff;flex:none}
 .ic-r{background:var(--bad)} .ic-w{background:var(--warn)} .ic-i{background:var(--blue)}
 .risk .tt{font-size:14px;font-weight:700;margin-bottom:3px}
 .risk .ds{font-size:13px;color:var(--ink-2);line-height:1.65}
@@ -137,16 +137,16 @@ h2 .idx{background:var(--blue);color:***REMOVED***fff;font-size:12px;font-weight
 .actions{counter-reset:act}
 .act{display:flex;gap:14px;align-items:flex-start;padding:13px 0;border-bottom:1px dashed var(--line-2)}
 .act:last-child{border-bottom:none}
-.act .no{counter-increment:act;flex:none;width:30px;height:30px;border-radius:8px;background:var(--blue);color:***REMOVED***fff;
+.act .no{counter-increment:act;flex:none;width:30px;height:30px;border-radius:8px;background:var(--blue);color:#fff;
   font-weight:800;font-size:14px;display:grid;place-items:center}
 .act .tx{font-size:13.5px;color:var(--ink-2);line-height:1.7}
 .act .tx b{color:var(--ink)}
 
-.final{background:linear-gradient(135deg,***REMOVED***12233F,***REMOVED***1B3A63);color:***REMOVED***fff;border-radius:14px;padding:26px 28px}
-.final h3{font-size:17px;font-weight:750;margin-bottom:12px;color:***REMOVED***7FC4FF}
+.final{background:linear-gradient(135deg,#12233F,#1B3A63);color:#fff;border-radius:14px;padding:26px 28px}
+.final h3{font-size:17px;font-weight:750;margin-bottom:12px;color:#7FC4FF}
 .final ol{margin-left:19px;font-size:14px;line-height:1.85}
 .final li{margin-bottom:5px}
-.final b{color:***REMOVED***FFD9A0}
+.final b{color:#FFD9A0}
 
 footer{text-align:center;color:var(--ink-3);font-size:12.5px;margin-top:40px;padding-top:22px;border-top:1px solid var(--line)}
 
@@ -160,7 +160,7 @@ footer{text-align:center;color:var(--ink-3);font-size:12.5px;margin-top:40px;pad
 @media(max-width:560px){.gate,.lv,.eq,.rh,.formula,.days{grid-template-columns:1fr}}
 </style>
 </head>
-<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:***REMOVED***056DE8;color:***REMOVED***fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:***REMOVED***fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
 
 <div class="hero">
   <div class="wrap">
@@ -186,7 +186,7 @@ footer{text-align:center;color:var(--ink-3);font-size:12.5px;margin-top:40px;pad
   <p class="h2-sub">你认可的那个想法——快手作为流量入口存在——是对的，但要想清楚入口往哪引。</p>
   <div class="card">
     <div style="font-size:14px;font-weight:750;margin-bottom:12px;color:var(--blue)">短视频（快手/抖音）在这个体系里的位置</div>
-    <div style="font-size:13.5px;color:var(--ink-2);line-height:2;background:***REMOVED***F8FAFD;border-radius:9px;padding:14px 17px">
+    <div style="font-size:13.5px;color:var(--ink-2);line-height:2;background:#F8FAFD;border-radius:9px;padding:14px 17px">
       <b style="color:var(--ink)">入口层（拉新）</b>：短视频 → 用「AI 帮普通人解决具体问题」的低门槛内容吸引泛流量<br>
       &nbsp;&nbsp;&nbsp;&nbsp;↓ 同名搜索 / 简介引导<br>
       <b style="color:var(--ink)">信任层（沉淀）</b>：公众号 / 掘金 / 知乎 → 深度长文建立专业信任<br>
@@ -354,7 +354,7 @@ footer{text-align:center;color:var(--ink-3);font-size:12.5px;margin-top:40px;pad
       <div class="fstep"><div class="role">⑥ 互动</div><div class="do">回复前 10 条评论（真实互动是快手权重关键），顺手把评论区好问题记入选题池</div><div class="when">晚间统一 10 分钟</div></div>
       <div class="fstep"><div class="role">⑦ 复盘</div><div class="do">看 3 个数：完播率、3 秒留存、搜索曝光；只调选题不调节奏</div><div class="when">周日 30 分钟</div></div>
     </div>
-    <p style="font-size:12.5px;color:var(--ink-3);margin-top:13px;background:***REMOVED***F8FAFD;border-radius:8px;padding:10px 14px">
+    <p style="font-size:12.5px;color:var(--ink-3);margin-top:13px;background:#F8FAFD;border-radius:8px;padding:10px 14px">
       💡 三条省力机制：<b>① 批量生产</b>——周末一次录一周的，日更只是「每天定时发一条」；
       <b>② 语音优先</b>——通勤用语音输入写稿，不动键盘不花眼睛；
       <b>③ 发布自动化</b>——所有平台都支持定时发布，你在床上设置，内容按时上线，铁律零触碰。
@@ -406,7 +406,7 @@ footer{text-align:center;color:var(--ink-3);font-size:12.5px;margin-top:40px;pad
       <b>④ 评论区</b> → 真实用户问题 = 天然选题，还能增强互动权重<br>
       <b>⑤ 你自己当「技术管理者」的日常</b> → 带团队落地 AI 的真实片段，这是别人抄不走的差异化
     </div>
-    <p style="font-size:12.5px;color:var(--ink-3);margin-top:10px;background:***REMOVED***F8FAFD;border-radius:8px;padding:10px 14px">
+    <p style="font-size:12.5px;color:var(--ink-3);margin-top:10px;background:#F8FAFD;border-radius:8px;padding:10px 14px">
       示例（占位，具体选题等 boss 拍板口径后由素材卡拆解产出）：「用 AI 3 分钟写完周报」/「不懂代码，怎么让 AI 帮你整理文件」/
       「AI 写文案不对味？一个提示词技巧」——全部是「问题 + 能直接抄」结构。
     </p>

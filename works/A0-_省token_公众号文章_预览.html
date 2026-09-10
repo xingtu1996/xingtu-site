@@ -6,18 +6,18 @@
 <title>省 token 的第一性原理 · 公众号文章预览 · 行途 XingTu</title>
 <style>
   :root {
-    --bg: ***REMOVED***f5f6f8;
-    --card: ***REMOVED***ffffff;
-    --text: ***REMOVED***1f2329;
-    --text-2: ***REMOVED***4e5969;
-    --text-3: ***REMOVED***86909c;
-    --brand: ***REMOVED***056DE8;
-    --brand-2: ***REMOVED***0A84FF;
-    --accent: ***REMOVED***FF6B35;
-    --green: ***REMOVED***00b42a;
-    --gold: ***REMOVED***ff9a00;
-    --border: ***REMOVED***e5e6eb;
-    --code-bg: ***REMOVED***f7f8fa;
+    --bg: #f5f6f8;
+    --card: #ffffff;
+    --text: #1f2329;
+    --text-2: #4e5969;
+    --text-3: #86909c;
+    --brand: #056DE8;
+    --brand-2: #0A84FF;
+    --accent: #FF6B35;
+    --green: #00b42a;
+    --gold: #ff9a00;
+    --border: #e5e6eb;
+    --code-bg: #f7f8fa;
   }
   * { box-sizing: border-box; }
   html, body {
@@ -31,13 +31,13 @@
   .container { max-width: 1080px; margin: 0 auto; padding: 24px 20px 60px; }
   .top-bar {
     display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
-    padding: 12px 16px; background: ***REMOVED***fff; border: 1px solid var(--border);
+    padding: 12px 16px; background: #fff; border: 1px solid var(--border);
     border-radius: 10px; margin-bottom: 20px; font-size: 13px; color: var(--text-2);
   }
   .top-bar .brand { font-weight: 700; color: var(--brand); }
   .top-bar .meta { display: flex; gap: 16px; }
   .cover-card {
-    background: ***REMOVED***fff; border: 1px solid var(--border); border-radius: 14px;
+    background: #fff; border: 1px solid var(--border); border-radius: 14px;
     padding: 18px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,.04);
   }
   .cover-card .cover-img { width: 100%; height: auto; border-radius: 8px; display: block; }
@@ -45,7 +45,7 @@
   .main { display: grid; grid-template-columns: 1fr 320px; gap: 20px; }
   @media (max-width: 900px) { .main { grid-template-columns: 1fr; } }
   .article {
-    background: ***REMOVED***fff; border: 1px solid var(--border); border-radius: 14px;
+    background: #fff; border: 1px solid var(--border); border-radius: 14px;
     padding: 36px 40px; box-shadow: 0 2px 8px rgba(0,0,0,.04);
   }
   .article h1 { font-size: 24px; line-height: 1.4; margin: 0 0 8px; font-weight: 800; color: var(--text); }
@@ -65,36 +65,36 @@
   }
   .article blockquote p { margin: 4px 0; font-size: 14.5px; color: var(--text-2); }
   .article blockquote.key {
-    border-left-color: var(--accent); background: ***REMOVED***fff7f0;
+    border-left-color: var(--accent); background: #fff7f0;
   }
-  .article blockquote.key p { color: ***REMOVED***9a3412; }
+  .article blockquote.key p { color: #9a3412; }
   table.compare {
     width: 100%; border-collapse: collapse; margin: 14px 0 18px; font-size: 14px;
-    background: ***REMOVED***fff; border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+    background: #fff; border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
   }
   table.compare thead th {
-    background: linear-gradient(180deg, ***REMOVED***f0f6ff, ***REMOVED***e8f0fb); color: var(--text);
+    background: linear-gradient(180deg, #f0f6ff, #e8f0fb); color: var(--text);
     font-weight: 700; padding: 12px 10px; text-align: center; border-bottom: 2px solid var(--brand); font-size: 13.5px;
   }
   table.compare tbody td { padding: 11px 10px; text-align: center; border-bottom: 1px solid var(--border); color: var(--text-2); }
   table.compare tbody tr:last-child td { border-bottom: none; }
-  table.compare td:first-child { text-align: left; font-weight: 600; color: var(--text); background: ***REMOVED***f0f6ff; }
-  table.compare td.best { color: var(--brand); font-weight: 800; background: ***REMOVED***eef5ff; }
+  table.compare td:first-child { text-align: left; font-weight: 600; color: var(--text); background: #f0f6ff; }
+  table.compare td.best { color: var(--brand); font-weight: 800; background: #eef5ff; }
   .layer-box {
     border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; margin: 12px 0;
-    background: ***REMOVED***fafcff; border-left: 4px solid var(--brand);
+    background: #fafcff; border-left: 4px solid var(--brand);
   }
   .layer-box .l-name { font-weight: 700; color: var(--text); font-size: 15px; }
   .layer-box .l-name .idx { color: var(--brand); font-weight: 800; margin-right: 4px; }
   .layer-box .l-think { font-size: 13.5px; color: var(--text-2); margin-top: 4px; }
   .layer-box .l-think b { color: var(--brand); }
   /* 六层颜色：与金字塔配图一一对应 */
-  .layer-box.l1 { border-left-color: ***REMOVED***1E40AF; } .layer-box.l1 .l-name .idx { color: ***REMOVED***1E40AF; }
-  .layer-box.l2 { border-left-color: ***REMOVED***0A84FF; background: ***REMOVED***f0f7ff; box-shadow: 0 2px 14px rgba(10,132,255,0.14); } .layer-box.l2 .l-name .idx { color: ***REMOVED***0A84FF; }
-  .layer-box.l3 { border-left-color: ***REMOVED***7C3AED; } .layer-box.l3 .l-name .idx { color: ***REMOVED***7C3AED; }
-  .layer-box.l4 { border-left-color: ***REMOVED***F97316; background: ***REMOVED***fff7f0; } .layer-box.l4 .l-name .idx { color: ***REMOVED***F97316; }
-  .layer-box.l5 { border-left-color: ***REMOVED***06B6D4; } .layer-box.l5 .l-name .idx { color: ***REMOVED***06B6D4; }
-  .layer-box.l6 { border-left-color: ***REMOVED***22C55E; } .layer-box.l6 .l-name .idx { color: ***REMOVED***22C55E; }
+  .layer-box.l1 { border-left-color: #1E40AF; } .layer-box.l1 .l-name .idx { color: #1E40AF; }
+  .layer-box.l2 { border-left-color: #0A84FF; background: #f0f7ff; box-shadow: 0 2px 14px rgba(10,132,255,0.14); } .layer-box.l2 .l-name .idx { color: #0A84FF; }
+  .layer-box.l3 { border-left-color: #7C3AED; } .layer-box.l3 .l-name .idx { color: #7C3AED; }
+  .layer-box.l4 { border-left-color: #F97316; background: #fff7f0; } .layer-box.l4 .l-name .idx { color: #F97316; }
+  .layer-box.l5 { border-left-color: #06B6D4; } .layer-box.l5 .l-name .idx { color: #06B6D4; }
+  .layer-box.l6 { border-left-color: #22C55E; } .layer-box.l6 .l-name .idx { color: #22C55E; }
   .sources { margin-top: 18px; padding: 14px 16px; background: var(--code-bg); border: 1px dashed var(--border); border-radius: 8px; font-size: 13px; color: var(--text-2); }
   .sources h4 { margin: 0 0 8px; font-size: 14px; color: var(--text); }
   .sources table { width: 100%; border-collapse: collapse; }
@@ -102,25 +102,25 @@
   .sources td:first-child { width: 120px; color: var(--text-3); font-weight: 600; }
   .sources a { color: var(--brand); text-decoration: none; word-break: break-all; }
   .sidebar { display: flex; flex-direction: column; gap: 16px; }
-  .panel { background: ***REMOVED***fff; border: 1px solid var(--border); border-radius: 12px; padding: 16px; box-shadow: 0 2px 6px rgba(0,0,0,.04); }
+  .panel { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 16px; box-shadow: 0 2px 6px rgba(0,0,0,.04); }
   .panel h4 { margin: 0 0 12px; font-size: 14px; font-weight: 700; color: var(--text); display: flex; align-items: center; gap: 6px; }
   .panel h4::before { content: ""; width: 4px; height: 14px; background: var(--brand); border-radius: 2px; }
   .pill { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11.5px; font-weight: 600; margin: 2px 4px 2px 0; }
-  .pill-red { background: ***REMOVED***ffe8e8; color: ***REMOVED***cf2424; }
-  .pill-blue { background: ***REMOVED***e8f0ff; color: ***REMOVED***1d6fe6; }
-  .pill-green { background: ***REMOVED***e6f7ec; color: var(--green); }
-  .pill-purple { background: ***REMOVED***eef5ff; color: var(--brand); }
-  .pill-gold { background: ***REMOVED***fff5e0; color: ***REMOVED***c97a00; }
+  .pill-red { background: #ffe8e8; color: #cf2424; }
+  .pill-blue { background: #e8f0ff; color: #1d6fe6; }
+  .pill-green { background: #e6f7ec; color: var(--green); }
+  .pill-purple { background: #eef5ff; color: var(--brand); }
+  .pill-gold { background: #fff5e0; color: #c97a00; }
   .checklist { list-style: none; padding: 0; margin: 0; }
   .checklist li { padding: 6px 0 6px 22px; font-size: 13px; color: var(--text-2); border-bottom: 1px dashed var(--border); position: relative; }
   .checklist li:last-child { border-bottom: none; }
   .checklist li::before { content: "✓"; color: var(--green); font-weight: 800; position: absolute; left: 4px; top: 6px; }
-  .tip-box { background: ***REMOVED***fffbe6; border: 1px solid ***REMOVED***ffe58f; border-radius: 8px; padding: 10px 12px; font-size: 12.5px; color: ***REMOVED***875800; line-height: 1.6; }
+  .tip-box { background: #fffbe6; border: 1px solid #ffe58f; border-radius: 8px; padding: 10px 12px; font-size: 12.5px; color: #875800; line-height: 1.6; }
   .article-footer { margin-top: 30px; padding-top: 18px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-3); text-align: center; }
-  .copy-tip { background: ***REMOVED***e8f7ee; border: 1px solid ***REMOVED***b3e0c2; border-radius: 8px; padding: 12px 14px; font-size: 13px; color: ***REMOVED***1a6b3b; margin: 16px 0; }
+  .copy-tip { background: #e8f7ee; border: 1px solid #b3e0c2; border-radius: 8px; padding: 12px 14px; font-size: 13px; color: #1a6b3b; margin: 16px 0; }
 </style>
 </head>
-<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:***REMOVED***056DE8;color:***REMOVED***fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:***REMOVED***fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<body><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
 <div class="container">
 
   <div class="top-bar">

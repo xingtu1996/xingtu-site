@@ -6,10 +6,10 @@
 <title>行途 · 对标账号系统与适配度分析 2026-09-02</title>
 <style>
 :root{
-  --blue:***REMOVED***056DE8; --blue-l:***REMOVED***4A9EFF; --cyan:***REMOVED***00D4FF; --orange:***REMOVED***FF6B35;
-  --ink:***REMOVED***1a1a1a; --ink-2:***REMOVED***333; --ink-3:***REMOVED***5a5a5a; --ink-4:***REMOVED***8a8a8a;
-  --bg:***REMOVED***f7f9fc; --card:***REMOVED***ffffff; --line:***REMOVED***e3e8ef; --line-2:***REMOVED***eef1f6;
-  --green:***REMOVED***0a8f4d; --red:***REMOVED***d93025; --amber:***REMOVED***e8860c;
+  --blue:#056DE8; --blue-l:#4A9EFF; --cyan:#00D4FF; --orange:#FF6B35;
+  --ink:#1a1a1a; --ink-2:#333; --ink-3:#5a5a5a; --ink-4:#8a8a8a;
+  --bg:#f7f9fc; --card:#ffffff; --line:#e3e8ef; --line-2:#eef1f6;
+  --green:#0a8f4d; --red:#d93025; --amber:#e8860c;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
@@ -21,8 +21,8 @@ body{
 
 /* header */
 .hero{
-  background:linear-gradient(135deg,***REMOVED***056DE8 0%,***REMOVED***2b8ef5 55%,***REMOVED***00b8e6 100%);
-  border-radius:16px; padding:34px 38px; color:***REMOVED***fff; margin-bottom:26px;
+  background:linear-gradient(135deg,#056DE8 0%,#2b8ef5 55%,#00b8e6 100%);
+  border-radius:16px; padding:34px 38px; color:#fff; margin-bottom:26px;
   box-shadow:0 8px 28px rgba(5,109,232,.18);
 }
 .hero h1{font-size:27px;font-weight:700;letter-spacing:-.3px;margin-bottom:8px}
@@ -54,48 +54,48 @@ h3{font-size:16px;color:var(--ink);font-weight:650;margin:20px 0 10px}
 .diag .lbl{font-size:12.5px;color:var(--ink-4);margin-top:4px}
 
 .alert{
-  background:***REMOVED***fff5ed;border:1px solid ***REMOVED***ffd7bd;border-left:4px solid var(--orange);
-  border-radius:8px;padding:14px 18px;font-size:14.5px;color:***REMOVED***7a3b12;
+  background:#fff5ed;border:1px solid #ffd7bd;border-left:4px solid var(--orange);
+  border-radius:8px;padding:14px 18px;font-size:14.5px;color:#7a3b12;
 }
-.alert b{color:***REMOVED***c2410c}
+.alert b{color:#c2410c}
 
 /* 打分表 */
 .tbl{width:100%;border-collapse:separate;border-spacing:0;font-size:13.5px;
   background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
 .tbl th{
-  background:***REMOVED***f0f4fa;color:var(--ink);font-weight:650;text-align:left;
+  background:#f0f4fa;color:var(--ink);font-weight:650;text-align:left;
   padding:11px 12px;border-bottom:1px solid var(--line);font-size:12.5px;white-space:nowrap;
 }
 .tbl td{padding:11px 12px;border-bottom:1px solid var(--line-2);vertical-align:middle}
 .tbl tr:last-child td{border-bottom:none}
-.tbl tbody tr:hover{background:***REMOVED***fafcff}
+.tbl tbody tr:hover{background:#fafcff}
 .tbl .rank{font-weight:700;color:var(--ink-4);width:34px}
 .tbl .nm{font-weight:650;color:var(--ink);white-space:nowrap}
 .tbl .plat{font-size:11.5px;color:var(--ink-4);line-height:1.5}
 
 /* 分数点 */
 .sc{display:inline-flex;gap:2px;align-items:center}
-.sc i{width:7px;height:7px;border-radius:50%;background:***REMOVED***dfe4ec;display:inline-block}
+.sc i{width:7px;height:7px;border-radius:50%;background:#dfe4ec;display:inline-block}
 .sc i.on{background:var(--blue)}
-.sc i.half{background:linear-gradient(90deg,var(--blue) 50%,***REMOVED***dfe4ec 50%)}
+.sc i.half{background:linear-gradient(90deg,var(--blue) 50%,#dfe4ec 50%)}
 .tot{
   display:inline-block;min-width:52px;text-align:center;font-weight:700;font-size:14px;
-  padding:3px 8px;border-radius:6px;background:***REMOVED***eaf2fd;color:var(--blue);
+  padding:3px 8px;border-radius:6px;background:#eaf2fd;color:var(--blue);
 }
-.tot.s{background:***REMOVED***e6f4ec;color:var(--green)}
-.tot.m{background:***REMOVED***fff4e5;color:var(--amber)}
-.tot.l{background:***REMOVED***fdecea;color:var(--red)}
+.tot.s{background:#e6f4ec;color:var(--green)}
+.tot.m{background:#fff4e5;color:var(--amber)}
+.tot.l{background:#fdecea;color:var(--red)}
 
 .tier{display:inline-block;font-size:11px;font-weight:700;padding:2px 7px;border-radius:4px;margin-left:6px}
-.tier.S{background:***REMOVED***056DE8;color:***REMOVED***fff}
-.tier.A{background:***REMOVED***4A9EFF;color:***REMOVED***fff}
-.tier.B{background:***REMOVED***a8b6c8;color:***REMOVED***fff}
+.tier.S{background:#056DE8;color:#fff}
+.tier.A{background:#4A9EFF;color:#fff}
+.tier.B{background:#a8b6c8;color:#fff}
 
 /* 账号卡 */
 .acct{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;overflow:hidden}
 .acct-hd{
   display:flex;align-items:flex-start;gap:14px;padding:16px 22px;
-  background:linear-gradient(90deg,***REMOVED***f5f9ff 0%,***REMOVED***fff 100%);border-bottom:1px solid var(--line-2);
+  background:linear-gradient(90deg,#f5f9ff 0%,#fff 100%);border-bottom:1px solid var(--line-2);
 }
 .acct-hd .ti{flex:1}
 .acct-hd .ti h3{margin:0 0 4px;font-size:17px;color:var(--ink)}
@@ -105,7 +105,7 @@ h3{font-size:16px;color:var(--ink);font-weight:650;margin:20px 0 10px}
 .acct-hd .score .u{font-size:11px;color:var(--ink-4)}
 .acct-bd{padding:18px 22px}
 .metrics{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
-.metrics span{font-size:12px;background:***REMOVED***f0f4fa;color:var(--ink-3);padding:4px 10px;border-radius:5px}
+.metrics span{font-size:12px;background:#f0f4fa;color:var(--ink-3);padding:4px 10px;border-radius:5px}
 .facts{list-style:none;margin-bottom:16px}
 .facts li{
   font-size:14px;color:var(--ink-2);padding:5px 0 5px 18px;position:relative;line-height:1.65;
@@ -115,8 +115,8 @@ h3{font-size:16px;color:var(--ink);font-weight:650;margin:20px 0 10px}
 .lv{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media(max-width:860px){.lv{grid-template-columns:1fr}.diag{grid-template-columns:repeat(2,1fr)}}
 .lv .blk{border-radius:9px;padding:13px 16px}
-.lv .learn{background:***REMOVED***f0f7ff;border:1px solid ***REMOVED***cfe4fb}
-.lv .avoid{background:***REMOVED***fff6f5;border:1px solid ***REMOVED***fbd5d0}
+.lv .learn{background:#f0f7ff;border:1px solid #cfe4fb}
+.lv .avoid{background:#fff6f5;border:1px solid #fbd5d0}
 .lv .blk h4{font-size:13.5px;font-weight:700;margin-bottom:7px}
 .lv .learn h4{color:var(--blue)}
 .lv .avoid h4{color:var(--red)}
@@ -125,11 +125,11 @@ h3{font-size:16px;color:var(--ink);font-weight:650;margin:20px 0 10px}
 .lv .learn li::before{content:"+";position:absolute;left:0;color:var(--blue);font-weight:700}
 .lv .avoid li::before{content:"−";position:absolute;left:0;color:var(--red);font-weight:700}
 .beyond{
-  margin-top:14px;background:linear-gradient(90deg,***REMOVED***fff9f2,***REMOVED***fffdfa);
-  border:1px solid ***REMOVED***ffe0c2;border-left:4px solid var(--orange);
-  border-radius:8px;padding:12px 16px;font-size:13.8px;color:***REMOVED***7a3b12;line-height:1.7;
+  margin-top:14px;background:linear-gradient(90deg,#fff9f2,#fffdfa);
+  border:1px solid #ffe0c2;border-left:4px solid var(--orange);
+  border-radius:8px;padding:12px 16px;font-size:13.8px;color:#7a3b12;line-height:1.7;
 }
-.beyond b{color:***REMOVED***c2410c}
+.beyond b{color:#c2410c}
 
 /* 三轴 */
 .axes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -145,18 +145,18 @@ h3{font-size:16px;color:var(--ink);font-weight:650;margin:20px 0 10px}
 
 /* 定位空隙 */
 .gap{
-  background:linear-gradient(135deg,***REMOVED***f0f7ff 0%,***REMOVED***f7fbff 50%,***REMOVED***fff5ef 100%);
+  background:linear-gradient(135deg,#f0f7ff 0%,#f7fbff 50%,#fff5ef 100%);
   border:2px solid var(--blue);border-radius:14px;padding:26px 28px;
 }
 .gap .st{font-size:20px;font-weight:700;color:var(--ink);margin-bottom:10px;line-height:1.5}
 .gap .fm{
-  font-size:14px;color:var(--blue);background:***REMOVED***fff;padding:12px 16px;border-radius:8px;
+  font-size:14px;color:var(--blue);background:#fff;padding:12px 16px;border-radius:8px;
   border:1px dashed var(--blue-l);margin:14px 0;
 }
 .gap .rs{font-size:14px;color:var(--ink-2);line-height:1.8}
 .evid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
 @media(max-width:860px){.evid{grid-template-columns:1fr 1fr}}
-.evid .e{background:***REMOVED***fff;border:1px solid var(--line);border-radius:8px;padding:11px 13px}
+.evid .e{background:#fff;border:1px solid var(--line);border-radius:8px;padding:11px 13px}
 .evid .e .n{font-size:13px;font-weight:650;color:var(--ink)}
 .evid .e .d{font-size:11.8px;color:var(--ink-4);line-height:1.5;margin-top:2px}
 
@@ -166,10 +166,10 @@ h3{font-size:16px;color:var(--ink);font-weight:650;margin:20px 0 10px}
 .road .r:last-child{border-bottom:none}
 .road .ph{
   flex-shrink:0;width:78px;text-align:center;font-size:12.5px;font-weight:700;
-  color:***REMOVED***fff;background:var(--blue);border-radius:6px;padding:5px 0;height:fit-content;
+  color:#fff;background:var(--blue);border-radius:6px;padding:5px 0;height:fit-content;
 }
 .road .r:nth-child(2) .ph{background:var(--blue-l)}
-.road .r:nth-child(3) .ph{background:var(--cyan);color:***REMOVED***00404d}
+.road .r:nth-child(3) .ph{background:var(--cyan);color:#00404d}
 .road .r:nth-child(4) .ph{background:var(--orange)}
 .road .ct{flex:1}
 .road .ct h4{font-size:15px;color:var(--ink);margin-bottom:4px}
@@ -180,21 +180,21 @@ ul.plain{list-style:none}
 ul.plain li{font-size:14px;padding:5px 0 5px 18px;position:relative;line-height:1.7}
 ul.plain li::before{content:"▸";position:absolute;left:0;color:var(--blue-l);font-weight:700}
 .pill{display:inline-block;font-size:11.5px;padding:2px 9px;border-radius:11px;
-  background:***REMOVED***eaf2fd;color:var(--blue);margin-right:6px}
-.pill.g{background:***REMOVED***e6f4ec;color:var(--green)}
-.pill.o{background:***REMOVED***fff0e6;color:***REMOVED***c2410c}
-.pill.gy{background:***REMOVED***eef0f3;color:var(--ink-4)}
+  background:#eaf2fd;color:var(--blue);margin-right:6px}
+.pill.g{background:#e6f4ec;color:var(--green)}
+.pill.o{background:#fff0e6;color:#c2410c}
+.pill.gy{background:#eef0f3;color:var(--ink-4)}
 table.mini{width:100%;border-collapse:collapse;font-size:13.3px;margin-top:8px}
-table.mini th{background:***REMOVED***f0f4fa;padding:9px 11px;text-align:left;font-weight:650;
+table.mini th{background:#f0f4fa;padding:9px 11px;text-align:left;font-weight:650;
   font-size:12.5px;border-bottom:1px solid var(--line)}
 table.mini td{padding:9px 11px;border-bottom:1px solid var(--line-2);vertical-align:top;line-height:1.6}
 table.mini tr:last-child td{border-bottom:none}
 footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);
   font-size:12.5px;color:var(--ink-4);line-height:1.8}
-code{background:***REMOVED***f0f4fa;padding:1px 5px;border-radius:4px;font-size:12.5px;color:var(--blue)}
+code{background:#f0f4fa;padding:1px 5px;border-radius:4px;font-size:12.5px;color:var(--blue)}
 </style>
 </head>
-<body data-page-node-id="XohdhXY3KsW5liaVi5DlQE"><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:***REMOVED***056DE8;color:***REMOVED***fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:***REMOVED***fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<body data-page-node-id="XohdhXY3KsW5liaVi5DlQE"><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
 <div class="wrap" data-page-node-id="EHNZ56tjvmdTDsxpBEBDFk">
 
 <div class="hero" data-page-node-id="LVis1cfpcQoqlzQEF9YaUT">
@@ -252,7 +252,7 @@ code{background:***REMOVED***f0f4fa;padding:1px 5px;border-radius:4px;font-size:
 <table class="tbl" data-page-node-id="1MBOHS1SNj5FTx2AFIF5dU">
 <thead data-page-node-id="KFmP31bOBpJ6gZAkcSGaBx">
 <tr data-page-node-id="zpIcbGhuRX9mnuA2ayHAIN">
-  <th data-page-node-id="vhzwtTARMLIGL3PBBbQwB2">***REMOVED***</th><th data-page-node-id="ZqtOBemCWEhjCYxeL7qPuY">账号</th><th data-page-node-id="IIUsBZ3FitZeNn6Xdpg26z">平台体量</th>
+  <th data-page-node-id="vhzwtTARMLIGL3PBBbQwB2">#</th><th data-page-node-id="ZqtOBemCWEhjCYxeL7qPuY">账号</th><th data-page-node-id="IIUsBZ3FitZeNn6Xdpg26z">平台体量</th>
   <th data-page-node-id="L2HmqxU7LHJO20jvVzDRBZ">人设</th><th data-page-node-id="HCEWEBpfK271DTysB2mVob">可复制</th><th data-page-node-id="LjCC0s9M3tyKFqpMOltqHn">资产</th><th data-page-node-id="hmxsZBzNoAYaEdqt3N4SWM">变现</th><th data-page-node-id="rYhggwDZvqYqeYppmT3HPJ">空隙</th><th data-page-node-id="fpAmrYniFFfYXP4owG2I8b">总分</th>
 </tr>
 </thead>
@@ -702,7 +702,7 @@ code{background:***REMOVED***f0f4fa;padding:1px 5px;border-radius:4px;font-size:
 <!-- 4 三轴模仿法 -->
 <section data-page-node-id="6xwY9qugyRALgCZ7XO3JKe">
 <h2 data-page-node-id="4eOA3A3yylqDMyPVVIvEBJ">四、三轴模仿法：不要整体抄，要拆开抄<span class="en" data-page-node-id="biUfswylkuTgfppvP3pXSm">Decomposed Imitation</span></h2>
-<div class="card" style="background:***REMOVED***fafcff;border-color:***REMOVED***cfe4fb;margin-bottom:16px" data-page-node-id="xFBd42ia9sYQSpx3Ey8lYn">
+<div class="card" style="background:#fafcff;border-color:#cfe4fb;margin-bottom:16px" data-page-node-id="xFBd42ia9sYQSpx3Ey8lYn">
   <div style="font-size:14px;color:var(--ink-2);line-height:1.8" data-page-node-id="7DxwrBmEsmBqSaGWB7Ksx6">
     <b data-page-node-id="wODAdM9Ve7BZu5Ys63j16V">核心方法论：</b>对标账号是一个「组合体」，不能整体复制。把它拆成三个独立维度 ——
     <b data-page-node-id="NAXm378DkDBIeTadm3q2bI">形态（长什么样）、结构（怎么组织）、深度（讲多深）</b> —— 然后各取最强的一个，拼成你自己的东西。
@@ -846,15 +846,15 @@ code{background:***REMOVED***f0f4fa;padding:1px 5px;border-radius:4px;font-size:
 
 </div>
 
-  <footer style="margin-top:36px;border-top:2px solid ***REMOVED***056DE8;padding:16px 20px;background:***REMOVED***f5f9ff;border-radius:10px;font-size:13px;color:***REMOVED***1a1a1a;line-height:1.9">
-    <div style="font-weight:700;color:***REMOVED***056DE8;margin-bottom:8px">📎 权威锚点 / 引用来源</div>
+  <footer style="margin-top:36px;border-top:2px solid #056DE8;padding:16px 20px;background:#f5f9ff;border-radius:10px;font-size:13px;color:#1a1a1a;line-height:1.9">
+    <div style="font-weight:700;color:#056DE8;margin-bottom:8px">📎 权威锚点 / 引用来源</div>
     <ul style="margin:0;padding-left:18px">
       <li>本看板 9 个对标账号均为各平台公开账号；精确主页链接待 boss 提供（平台：微信公众号/掘金/知乎/抖音/B站/小红书）</li>
-      <li>对标账号数据（SSoT）：<code style="background:***REMOVED***eef4ff;padding:1px 6px;border-radius:4px;color:***REMOVED***0a3d7a">素材库/对标账号数据.json</code></li>
-      <li>对标账号库 v2 文档：<code style="background:***REMOVED***eef4ff;padding:1px 6px;border-radius:4px;color:***REMOVED***0a3d7a">素材库/对标账号库_v2_2026-09-02.md</code></li>
-      <li>对标系统 SOP：<code style="background:***REMOVED***eef4ff;padding:1px 6px;border-radius:4px;color:***REMOVED***0a3d7a">workflows/08_对标账号系统SOP.md</code></li>
+      <li>对标账号数据（SSoT）：<code style="background:#eef4ff;padding:1px 6px;border-radius:4px;color:#0a3d7a">素材库/对标账号数据.json</code></li>
+      <li>对标账号库 v2 文档：<code style="background:#eef4ff;padding:1px 6px;border-radius:4px;color:#0a3d7a">素材库/对标账号库_v2_2026-09-02.md</code></li>
+      <li>对标系统 SOP：<code style="background:#eef4ff;padding:1px 6px;border-radius:4px;color:#0a3d7a">workflows/08_对标账号系统SOP.md</code></li>
     </ul>
-    <div style="margin-top:8px;color:***REMOVED***555">完整引用索引：<code style="background:***REMOVED***eef4ff;padding:1px 6px;border-radius:4px;color:***REMOVED***0a3d7a">specs/20260902-断点续传与集中提示词/05_权威锚点与引用来源.md</code></div>
+    <div style="margin-top:8px;color:#555">完整引用索引：<code style="background:#eef4ff;padding:1px 6px;border-radius:4px;color:#0a3d7a">specs/20260902-断点续传与集中提示词/05_权威锚点与引用来源.md</code></div>
   </footer>
 
 </body>

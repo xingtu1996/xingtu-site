@@ -6,15 +6,15 @@
 <title>「六层」三件套 · 建仓与公众号配置规划</title>
 <style>
   :root{
-    --blue:***REMOVED***056DE8; --lblue:***REMOVED***4A9EFF; --cyan:***REMOVED***00D4FF; --orange:***REMOVED***FF6B35;
-    --bg:***REMOVED***f5f7fa; --card:***REMOVED***ffffff; --ink:***REMOVED***1a2333; --sub:***REMOVED***5b6b83; --line:***REMOVED***e3e9f2;
-    --ok:***REMOVED***0a9e6b; --warn:***REMOVED***e8a200; --bad:***REMOVED***e5484d;
+    --blue:#056DE8; --lblue:#4A9EFF; --cyan:#00D4FF; --orange:#FF6B35;
+    --bg:#f5f7fa; --card:#ffffff; --ink:#1a2333; --sub:#5b6b83; --line:#e3e9f2;
+    --ok:#0a9e6b; --warn:#e8a200; --bad:#e5484d;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;padding:32px 20px}
   .wrap{max-width:1080px;margin:0 auto}
   .topbar{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--sub);margin-bottom:14px;flex-wrap:wrap;gap:6px}
-  .topbar .badge{background:var(--blue);color:***REMOVED***fff;padding:2px 10px;border-radius:20px;font-weight:600}
+  .topbar .badge{background:var(--blue);color:#fff;padding:2px 10px;border-radius:20px;font-weight:600}
   h1{font-size:26px;margin-bottom:6px;letter-spacing:.5px}
   .subtitle{color:var(--sub);font-size:14px;margin-bottom:24px}
   .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-bottom:26px}
@@ -26,37 +26,37 @@
   .sec h3{font-size:15px;margin:14px 0 8px;color:var(--ink)}
   table{width:100%;border-collapse:collapse;font-size:13.5px;margin:10px 0}
   th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
-  th{background:***REMOVED***f0f4fb;font-weight:600;white-space:nowrap}
+  th{background:#f0f4fb;font-weight:600;white-space:nowrap}
   .tag{display:inline-block;padding:1px 9px;border-radius:12px;font-size:12px;font-weight:600;white-space:nowrap}
-  .tag.ok{background:***REMOVED***e6f7f0;color:var(--ok)} .tag.warn{background:***REMOVED***fdf3e0;color:var(--warn)} .tag.bad{background:***REMOVED***fdeaea;color:var(--bad)}
-  .tag.blue{background:***REMOVED***e8f1fe;color:var(--blue)} .tag.orange{background:***REMOVED***fdeee6;color:var(--orange)}
+  .tag.ok{background:#e6f7f0;color:var(--ok)} .tag.warn{background:#fdf3e0;color:var(--warn)} .tag.bad{background:#fdeaea;color:var(--bad)}
+  .tag.blue{background:#e8f1fe;color:var(--blue)} .tag.orange{background:#fdeee6;color:var(--orange)}
   .opt{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0}
   .opt .box{flex:1;min-width:280px;border:1.5px solid var(--line);border-radius:12px;padding:14px 16px;cursor:default}
-  .opt .box.rec{border-color:var(--blue);background:***REMOVED***f5f9ff}
+  .opt .box.rec{border-color:var(--blue);background:#f5f9ff}
   .opt .box h4{font-size:14px;margin-bottom:6px}
   .opt .box.rec h4{color:var(--blue)}
   .opt .box ul{margin:6px 0 0 18px;font-size:13px;color:var(--sub)}
   .opt .box li{margin:3px 0}
-  .rec-mark{background:var(--blue);color:***REMOVED***fff;font-size:11px;padding:1px 8px;border-radius:10px;margin-left:6px;vertical-align:2px}
-  code{background:***REMOVED***eef2f8;padding:1px 6px;border-radius:5px;font-family:"SF Mono",Menlo,monospace;font-size:12.5px;color:***REMOVED***0b3d91}
-  pre{background:***REMOVED***f6f8fc;border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow-x:auto;font-size:12.5px;font-family:"SF Mono",Menlo,monospace;white-space:pre-wrap;margin:10px 0}
-  .quote{background:***REMOVED***f5f9ff;border-left:3px solid var(--lblue);padding:10px 14px;border-radius:0 8px 8px 0;font-size:13.5px;margin:10px 0}
-  .warnbox{background:***REMOVED***fdf3e0;border:1px solid ***REMOVED***f2ddb0;border-radius:10px;padding:12px 16px;font-size:13.5px;margin:12px 0}
+  .rec-mark{background:var(--blue);color:#fff;font-size:11px;padding:1px 8px;border-radius:10px;margin-left:6px;vertical-align:2px}
+  code{background:#eef2f8;padding:1px 6px;border-radius:5px;font-family:"SF Mono",Menlo,monospace;font-size:12.5px;color:#0b3d91}
+  pre{background:#f6f8fc;border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow-x:auto;font-size:12.5px;font-family:"SF Mono",Menlo,monospace;white-space:pre-wrap;margin:10px 0}
+  .quote{background:#f5f9ff;border-left:3px solid var(--lblue);padding:10px 14px;border-radius:0 8px 8px 0;font-size:13.5px;margin:10px 0}
+  .warnbox{background:#fdf3e0;border:1px solid #f2ddb0;border-radius:10px;padding:12px 16px;font-size:13.5px;margin:12px 0}
   .flow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;font-size:13px;margin:10px 0}
-  .flow .step{background:***REMOVED***e8f1fe;color:var(--blue);padding:4px 12px;border-radius:18px;font-weight:600}
-  .flow .arr{color:***REMOVED***9aa9bd;font-weight:700}
+  .flow .step{background:#e8f1fe;color:var(--blue);padding:4px 12px;border-radius:18px;font-weight:600}
+  .flow .arr{color:#9aa9bd;font-weight:700}
   .check li{margin:6px 0;font-size:13.5px;list-style:none}
   .check li:before{content:"✔ ";color:var(--ok);font-weight:700}
-  .stepnum{display:inline-flex;width:22px;height:22px;background:var(--blue);color:***REMOVED***fff;border-radius:50%;align-items:center;justify-content:center;font-size:12px;font-weight:700;margin-right:6px}
-  .foot{color:***REMOVED***9aa9bd;font-size:12px;text-align:center;margin-top:10px}
+  .stepnum{display:inline-flex;width:22px;height:22px;background:var(--blue);color:#fff;border-radius:50%;align-items:center;justify-content:center;font-size:12px;font-weight:700;margin-right:6px}
+  .foot{color:#9aa9bd;font-size:12px;text-align:center;margin-top:10px}
   .files{margin:10px 0}
-  .files .f{display:flex;align-items:center;gap:8px;padding:7px 12px;background:***REMOVED***f6f8fc;border:1px solid var(--line);border-radius:8px;margin:5px 0;font-size:13px}
-  .files .f .n{font-family:Menlo,monospace;font-size:12.5px;color:***REMOVED***0b3d91;font-weight:600}
+  .files .f{display:flex;align-items:center;gap:8px;padding:7px 12px;background:#f6f8fc;border:1px solid var(--line);border-radius:8px;margin:5px 0;font-size:13px}
+  .files .f .n{font-family:Menlo,monospace;font-size:12.5px;color:#0b3d91;font-weight:600}
   .files .f .d{color:var(--sub);font-size:12px}
   .dot{color:var(--orange);font-weight:700}
 </style>
 </head>
-<body data-page-node-id="ZDBO38eFJqbCenostKUAxb"><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:***REMOVED***056DE8;color:***REMOVED***fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:***REMOVED***fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<body data-page-node-id="ZDBO38eFJqbCenostKUAxb"><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
 <div class="wrap" data-page-node-id="tq2WRfr9Owy7EXuTj0OAqu">
   <div class="topbar" data-page-node-id="xkEbbvSbZbUVIOzgWuYVM3"><span class="badge" data-page-node-id="M6aWQh8PBx3VxV66RVVCGt">行途 · 内容工厂</span><span data-page-node-id="Qc3zNWUv5iAtBagBC3FJoI">2026-09-02 · 状态：✅ 已拍板并落地（方案 A）</span></div>
   <h1 data-page-node-id="CVhaUxeEH6ejBRiluCXMUF">「六层」三件套 · GitHub 建仓 + 公众号配置规划</h1>
@@ -84,7 +84,7 @@
   <!-- ② 载体 -->
   <div class="sec" data-page-node-id="9WCDM9tttlonpAIRUP2MKD">
     <h2 data-page-node-id="1XKaqIZRrG7m6iRwI2Fr5Y">② 载体方案：已拍板 = 方案 A（并入 xingtu-articles）✅</h2>
-    <div class="warnbox" style="background:***REMOVED***e6f7f0;border-color:***REMOVED***bfe8d8" data-page-node-id="viweEozmFfyb2ZmgwyTtQL">✅ <b data-page-node-id="e84XVIHeSBiQM8vuyGDHQP">2026-09-03 已落地</b>：`toolchain-practice/token-saving/` 目录已建（README + 3 份资料），commit `961b737` 已 push 至 GitHub 公开仓；直达页 HTTP 200 实测可达。<br data-page-node-id="b7xBQ2J09a2BAcDaW9uyvT">📎 公众号回复 URL：<code data-page-node-id="rh6L0bARddaNSOrnqTpLmo">github.com/xingtu1996/xingtu-articles/tree/main/toolchain-practice/token-saving</code></div>
+    <div class="warnbox" style="background:#e6f7f0;border-color:#bfe8d8" data-page-node-id="viweEozmFfyb2ZmgwyTtQL">✅ <b data-page-node-id="e84XVIHeSBiQM8vuyGDHQP">2026-09-03 已落地</b>：`toolchain-practice/token-saving/` 目录已建（README + 3 份资料），commit `961b737` 已 push 至 GitHub 公开仓；直达页 HTTP 200 实测可达。<br data-page-node-id="b7xBQ2J09a2BAcDaW9uyvT">📎 公众号回复 URL：<code data-page-node-id="rh6L0bARddaNSOrnqTpLmo">github.com/xingtu1996/xingtu-articles/tree/main/toolchain-practice/token-saving</code></div>
     <div class="opt" data-page-node-id="XoHgTTOCFSb5TDP5shBMPZ">
       <div class="box rec" data-page-node-id="PGp8FDrCAfSuLAIq5utOgl">
         <h4 data-page-node-id="EBVhoFBxqfmRQBqVuWJEC7">方案 A：并入 <code data-page-node-id="YntVXt1RT76wiUb6rDHh09">xingtu-articles</code> 文章仓 <span class="rec-mark" data-page-node-id="yB4BcPWgEjgACiDpF7vzGE">推荐</span></h4>

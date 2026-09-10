@@ -6,10 +6,10 @@
 <title>工作流编排工具选型判断 · 行途</title>
 <style>
 :root{
-  --blue:***REMOVED***056DE8; --blue-l:***REMOVED***4A9EFF; --cyan:***REMOVED***00D4FF; --orange:***REMOVED***FF6B35;
-  --bg:***REMOVED***F7F9FB; --card:***REMOVED***FFFFFF; --bd:***REMOVED***E3E9F0; --bd2:***REMOVED***EFF3F8;
-  --t1:***REMOVED***14181F; --t2:***REMOVED***3D4757; --t3:***REMOVED***6B7787; --t4:***REMOVED***9AA5B4;
-  --ok:***REMOVED***0E9F6E; --warn:***REMOVED***E5A23C; --danger:***REMOVED***E5484D;
+  --blue:#056DE8; --blue-l:#4A9EFF; --cyan:#00D4FF; --orange:#FF6B35;
+  --bg:#F7F9FB; --card:#FFFFFF; --bd:#E3E9F0; --bd2:#EFF3F8;
+  --t1:#14181F; --t2:#3D4757; --t3:#6B7787; --t4:#9AA5B4;
+  --ok:#0E9F6E; --warn:#E5A23C; --danger:#E5484D;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
@@ -20,8 +20,8 @@ body{
 .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
 
 header{
-  background:linear-gradient(135deg,***REMOVED***056DE8 0%,***REMOVED***0B7FE8 45%,***REMOVED***00A8E8 100%);
-  color:***REMOVED***fff;padding:52px 0 44px;margin-bottom:36px;
+  background:linear-gradient(135deg,#056DE8 0%,#0B7FE8 45%,#00A8E8 100%);
+  color:#fff;padding:52px 0 44px;margin-bottom:36px;
 }
 .kicker{
   display:inline-block;font-size:12px;letter-spacing:.18em;font-weight:600;
@@ -44,41 +44,41 @@ h3{font-size:16px;font-weight:650;color:var(--t1);margin:26px 0 12px}
   padding:22px 24px;margin-bottom:16px;
 }
 .card.hl{border-left:4px solid var(--blue)}
-.card.warn{border-left:4px solid var(--orange);background:***REMOVED***FFF9F5}
-.card.dan{border-left:4px solid var(--danger);background:***REMOVED***FEF6F6}
+.card.warn{border-left:4px solid var(--orange);background:#FFF9F5}
+.card.dan{border-left:4px solid var(--danger);background:#FEF6F6}
 
 table{width:100%;border-collapse:collapse;background:var(--card);
   border:1px solid var(--bd);border-radius:8px;overflow:hidden;font-size:14px}
 th{
-  background:***REMOVED***F0F4F9;color:var(--t2);font-weight:650;text-align:left;
+  background:#F0F4F9;color:var(--t2);font-weight:650;text-align:left;
   padding:11px 14px;border-bottom:1px solid var(--bd);font-size:13px;white-space:nowrap;
 }
 td{padding:11px 14px;border-bottom:1px solid var(--bd2);color:var(--t2);vertical-align:top;line-height:1.7}
 tr:last-child td{border-bottom:none}
-tbody tr:hover{background:***REMOVED***FAFCFE}
+tbody tr:hover{background:#FAFCFE}
 td.c,th.c{text-align:center}
 
 .tag{display:inline-block;font-size:11.5px;font-weight:600;padding:2px 9px;border-radius:20px;line-height:1.7;white-space:nowrap}
-.t-a{background:***REMOVED***E3F7EF;color:***REMOVED***0B7A55}
-.t-b{background:***REMOVED***FEF2E3;color:***REMOVED***B5720F}
-.t-c{background:***REMOVED***FDECEC;color:***REMOVED***C2292D}
-.t-blue{background:***REMOVED***E5F0FE;color:***REMOVED***0455B8}
-.t-gray{background:***REMOVED***EEF1F5;color:***REMOVED***5A6675}
-.t-red{background:***REMOVED***FDECEC;color:***REMOVED***C2292D}
+.t-a{background:#E3F7EF;color:#0B7A55}
+.t-b{background:#FEF2E3;color:#B5720F}
+.t-c{background:#FDECEC;color:#C2292D}
+.t-blue{background:#E5F0FE;color:#0455B8}
+.t-gray{background:#EEF1F5;color:#5A6675}
+.t-red{background:#FDECEC;color:#C2292D}
 
 .box{border-radius:9px;padding:16px 18px;font-size:14px;line-height:1.8;margin:14px 0}
-.box.b{background:***REMOVED***EEF5FE;border:1px solid ***REMOVED***CFE3FB;color:***REMOVED***0B4A8F}
-.box.o{background:***REMOVED***FFF6EF;border:1px solid ***REMOVED***FBDCC6;color:***REMOVED***8F4413}
-.box.g{background:***REMOVED***EDF9F3;border:1px solid ***REMOVED***C6EBDA;color:***REMOVED***0A5D42}
-.box.r{background:***REMOVED***FDF0F0;border:1px solid ***REMOVED***F7CFCF;color:***REMOVED***A82429}
+.box.b{background:#EEF5FE;border:1px solid #CFE3FB;color:#0B4A8F}
+.box.o{background:#FFF6EF;border:1px solid #FBDCC6;color:#8F4413}
+.box.g{background:#EDF9F3;border:1px solid #C6EBDA;color:#0A5D42}
+.box.r{background:#FDF0F0;border:1px solid #F7CFCF;color:#A82429}
 
 .quote{
-  border-left:3px solid var(--blue);background:***REMOVED***F5F9FE;
+  border-left:3px solid var(--blue);background:#F5F9FE;
   padding:14px 18px;margin:14px 0;font-size:15px;color:var(--t1);
   line-height:1.85;border-radius:0 7px 7px 0;
 }
 .quote b{color:var(--blue)}
-.quote.red{border-left-color:var(--danger);background:***REMOVED***FDF0F0}
+.quote.red{border-left-color:var(--danger);background:#FDF0F0}
 .quote.red b{color:var(--danger)}
 
 ul.clean{list-style:none;padding:0}
@@ -93,16 +93,16 @@ ul.clean li b{color:var(--t1);font-weight:650}
 /* 流水线分层 */
 .pipe{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;margin:18px 0}
 .pn{background:var(--card);border:1px solid var(--bd);border-radius:9px;padding:13px 9px;text-align:center}
-.pn .n{display:inline-flex;width:23px;height:23px;border-radius:50%;font-size:12px;font-weight:700;color:***REMOVED***fff;align-items:center;justify-content:center;margin-bottom:7px}
+.pn .n{display:inline-flex;width:23px;height:23px;border-radius:50%;font-size:12px;font-weight:700;color:#fff;align-items:center;justify-content:center;margin-bottom:7px}
 .pn .t{font-size:13.5px;font-weight:650;color:var(--t1)}
 .pn .d{font-size:11.5px;color:var(--t3);margin-top:4px;line-height:1.6}
-.pn.human{border-color:***REMOVED***F0C98A;background:***REMOVED***FFFCF6}
+.pn.human{border-color:#F0C98A;background:#FFFCF6}
 .pn.human .n{background:var(--orange)}
-.pn.llm{border-color:***REMOVED***CFE3FB;background:***REMOVED***F8FBFF}
+.pn.llm{border-color:#CFE3FB;background:#F8FBFF}
 .pn.llm .n{background:var(--blue)}
-.pn.det{border-color:***REMOVED***C6EBDA;background:***REMOVED***F6FCF9}
+.pn.det{border-color:#C6EBDA;background:#F6FCF9}
 .pn.det .n{background:var(--ok)}
-.pn.risk{border-color:***REMOVED***F7CFCF;background:***REMOVED***FDF6F6}
+.pn.risk{border-color:#F7CFCF;background:#FDF6F6}
 .pn.risk .n{background:var(--danger)}
 
 .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -111,21 +111,21 @@ ul.clean li b{color:var(--t1);font-weight:650}
 /* 打分条 */
 .bar{display:flex;align-items:center;gap:8px;margin:5px 0}
 .bar .lb{flex:0 0 74px;font-size:12.5px;color:var(--t3);text-align:right}
-.bar .tr{flex:1;height:8px;background:***REMOVED***EEF2F7;border-radius:4px;overflow:hidden}
+.bar .tr{flex:1;height:8px;background:#EEF2F7;border-radius:4px;overflow:hidden}
 .bar .fl{height:100%;border-radius:4px}
 .bar .vl{flex:0 0 26px;font-size:12px;color:var(--t2);font-weight:600}
 
 pre{
-  background:***REMOVED***F5F8FB;border:1px solid var(--bd);border-radius:8px;
+  background:#F5F8FB;border:1px solid var(--bd);border-radius:8px;
   padding:14px 16px;overflow-x:auto;font-size:12.5px;line-height:1.75;margin:12px 0;
-  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:***REMOVED***2A3543;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#2A3543;
 }
-pre .c{color:***REMOVED***8A94A3}
+pre .c{color:#8A94A3}
 
 .todo{background:var(--card);border:1px solid var(--bd);border-radius:10px;overflow:hidden}
 .trow{display:flex;gap:14px;padding:15px 20px;border-bottom:1px solid var(--bd2);align-items:flex-start}
 .trow:last-child{border-bottom:none}
-.tid{flex:0 0 30px;height:30px;border-radius:7px;background:var(--blue);color:***REMOVED***fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.tid{flex:0 0 30px;height:30px;border-radius:7px;background:var(--blue);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
 .tid.p1{background:var(--orange)}
 .tid.p2{background:var(--t4)}
 .tid.p0{background:var(--danger)}
@@ -134,10 +134,10 @@ pre .c{color:***REMOVED***8A94A3}
 .td2{font-size:13px;color:var(--t3);line-height:1.7}
 
 footer{margin-top:48px;padding-top:22px;border-top:1px solid var(--bd);font-size:12.5px;color:var(--t4);line-height:1.9}
-code{background:***REMOVED***F0F4F9;padding:1.5px 6px;border-radius:4px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:***REMOVED***0455B8}
+code{background:#F0F4F9;padding:1.5px 6px;border-radius:4px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:#0455B8}
 </style>
 </head>
-<body data-page-node-id="3pCwwcjFwYEvSljBABTxqY"><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:***REMOVED***056DE8;color:***REMOVED***fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:***REMOVED***fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
+<body data-page-node-id="3pCwwcjFwYEvSljBABTxqY"><style>.xt-nav{position:sticky;top:0;z-index:99999;display:flex;gap:12px;align-items:center;padding:10px 14px;background:#056DE8;color:#fff;font:14px/1.4 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}.xt-nav a{color:#fff;text-decoration:none;opacity:.92}.xt-nav a:hover{opacity:1}.xt-nav .sp{flex:1}.xt-nav b{opacity:.75}</style><div class="xt-nav"><a href="index.html">← 返回作品集</a><span class="sp"></span><b>行途 · 作品集</b></div>
 
 <header data-page-node-id="oiNU2s53HlrvX4Fk9iHHYy">
   <div class="wrap" data-page-node-id="4MoCkuUWvDmWsBYmuyME2i">
@@ -255,20 +255,20 @@ code{background:***REMOVED***F0F4F9;padding:1.5px 6px;border-radius:4px;font-fam
   </div>
 
   <h3 data-page-node-id="GUnRVuUce0TxFcwKj75Iay">一个命令就能定论</h3>
-  <pre data-page-node-id="LW9tiK1hmMrKGWqUL3sOoJ"><span class="c" data-page-node-id="CTysSK06PKDSXWJpqysW0V">***REMOVED*** 1. 拿 AppSecret（2025 年底起已搬到微信开发者平台，不在 mp 后台）</span>
-<span class="c" data-page-node-id="LXTj186cqbSqU3T0w5CyEi">***REMOVED***    https://developers.weixin.qq.com/platform → 我的业务与服务 → 公众号</span>
-<span class="c" data-page-node-id="8WDGma6NfLNCefDF5NKH9a">***REMOVED***    → 基础信息 → 开发密钥 → 启用/重置（只显示一次，关窗即焚，务必先复制）</span>
+  <pre data-page-node-id="LW9tiK1hmMrKGWqUL3sOoJ"><span class="c" data-page-node-id="CTysSK06PKDSXWJpqysW0V"># 1. 拿 AppSecret（2025 年底起已搬到微信开发者平台，不在 mp 后台）</span>
+<span class="c" data-page-node-id="LXTj186cqbSqU3T0w5CyEi">#    https://developers.weixin.qq.com/platform → 我的业务与服务 → 公众号</span>
+<span class="c" data-page-node-id="8WDGma6NfLNCefDF5NKH9a">#    → 基础信息 → 开发密钥 → 启用/重置（只显示一次，关窗即焚，务必先复制）</span>
 
-<span class="c" data-page-node-id="J8a8QWm498ABS9Gy8TXQia">***REMOVED*** 2. 取 token（IP 白名单必配，否则 40164）</span>
+<span class="c" data-page-node-id="J8a8QWm498ABS9Gy8TXQia"># 2. 取 token（IP 白名单必配，否则 40164）</span>
 curl "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$APPID&secret=$SECRET"
 
-<span class="c" data-page-node-id="FynFkxekA14lRGc16NwQvq">***REMOVED*** 3. 实调一次 draft/add，看返回码</span>
+<span class="c" data-page-node-id="FynFkxekA14lRGc16NwQvq"># 3. 实调一次 draft/add，看返回码</span>
 curl -X POST "https://api.weixin.qq.com/cgi-bin/draft/add?access_token=$TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"articles":[{"title":"权限测试","content":"&lt;p&gt;test&lt;/p&gt;","thumb_media_id":""}]}'
 
-<span class="c" data-page-node-id="uHBmpjbbcRhPhFmw59B4Ux">***REMOVED*** 返回 0 / media_id → 通了，API 路线可用（仅到草稿箱，发布仍手动）</span>
-<span class="c" data-page-node-id="Kef8lWyvEE5EO1VeU7vDIg">***REMOVED*** 返回 48001 api unauthorized → 未认证个人号无权限，此路不通</span></pre>
+<span class="c" data-page-node-id="uHBmpjbbcRhPhFmw59B4Ux"># 返回 0 / media_id → 通了，API 路线可用（仅到草稿箱，发布仍手动）</span>
+<span class="c" data-page-node-id="Kef8lWyvEE5EO1VeU7vDIg"># 返回 48001 api unauthorized → 未认证个人号无权限，此路不通</span></pre>
 
   <div class="box b" data-page-node-id="CbladnqhYam82yTz69VFwu">
     <b data-page-node-id="OjjzJLDJZVw1Q6UmLq4mV8">注意 thumb_media_id 是必填</b>，所以严格说要先传一张封面图到永久素材（<code data-page-node-id="nZF1vboJ3seK1k1BdxUzBg">material/add_material</code>，这个接口无认证要求，个人号可用）拿到 media_id 再测。
@@ -406,16 +406,16 @@ curl -X POST "https://api.weixin.qq.com/cgi-bin/draft/add?access_token=$TOKEN" \
 
 </div>
 
-  <footer style="margin-top:36px;border-top:2px solid ***REMOVED***056DE8;padding:16px 20px;background:***REMOVED***f5f9ff;border-radius:10px;font-size:13px;color:***REMOVED***1a1a1a;line-height:1.9">
-    <div style="font-weight:700;color:***REMOVED***056DE8;margin-bottom:8px">📎 权威锚点 / 引用来源</div>
+  <footer style="margin-top:36px;border-top:2px solid #056DE8;padding:16px 20px;background:#f5f9ff;border-radius:10px;font-size:13px;color:#1a1a1a;line-height:1.9">
+    <div style="font-weight:700;color:#056DE8;margin-bottom:8px">📎 权威锚点 / 引用来源</div>
     <ul style="margin:0;padding-left:18px">
-      <li>n8n 官网：<a href="https://n8n.io" target="_blank" rel="noopener" style="color:***REMOVED***056DE8;text-decoration:underline">https://n8n.io</a></li>
-      <li>Dify 官网：<a href="https://dify.ai" target="_blank" rel="noopener" style="color:***REMOVED***056DE8;text-decoration:underline">https://dify.ai</a></li>
-      <li>Coze 官网：<a href="https://www.coze.com" target="_blank" rel="noopener" style="color:***REMOVED***056DE8;text-decoration:underline">https://www.coze.com</a></li>
-      <li>FastGPT 官网：<a href="https://fastgpt.io" target="_blank" rel="noopener" style="color:***REMOVED***056DE8;text-decoration:underline">https://fastgpt.io</a></li>
+      <li>n8n 官网：<a href="https://n8n.io" target="_blank" rel="noopener" style="color:#056DE8;text-decoration:underline">https://n8n.io</a></li>
+      <li>Dify 官网：<a href="https://dify.ai" target="_blank" rel="noopener" style="color:#056DE8;text-decoration:underline">https://dify.ai</a></li>
+      <li>Coze 官网：<a href="https://www.coze.com" target="_blank" rel="noopener" style="color:#056DE8;text-decoration:underline">https://www.coze.com</a></li>
+      <li>FastGPT 官网：<a href="https://fastgpt.io" target="_blank" rel="noopener" style="color:#056DE8;text-decoration:underline">https://fastgpt.io</a></li>
       <li>结论：内容流水线仅「发布」为确定性步骤，判断密集型占多数 → 编排工具是负债，暂不上</li>
     </ul>
-    <div style="margin-top:8px;color:***REMOVED***555">完整引用索引：<code style="background:***REMOVED***eef4ff;padding:1px 6px;border-radius:4px;color:***REMOVED***0a3d7a">specs/20260902-断点续传与集中提示词/05_权威锚点与引用来源.md</code></div>
+    <div style="margin-top:8px;color:#555">完整引用索引：<code style="background:#eef4ff;padding:1px 6px;border-radius:4px;color:#0a3d7a">specs/20260902-断点续传与集中提示词/05_权威锚点与引用来源.md</code></div>
   </footer>
 
 </body>
